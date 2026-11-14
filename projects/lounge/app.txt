@@ -1,0 +1,65 @@
+{
+  "name": "Lounge",
+  "version": "1.0.28",
+  "tagline": "Your PC, on the couch.",
+  "subtitle": "A full-screen media center for Windows, driven with an Xbox controller. Your films, music, games, web tiles, and files, from the best seat in the house.",
+  "repo": "https://github.com/fezcode/Lounge",
+  "download": "https://github.com/fezcode/Lounge/releases/latest",
+  "platforms": ["Windows 10", "Windows 11", "x64"],
+  "stack": ["C#", ".NET 10", "Avalonia", "FFmpeg 8", "libass", "WebView2"],
+  "rooms": [
+    {
+      "id": "cinema",
+      "label": "Cinema",
+      "eyebrow": "THE FEATURE PRESENTATION",
+      "title": "A little further from ordinary.",
+      "body": "Your local films, played by Lounge's own FFmpeg engine. Resume, chapters, subtitles, and a proper place to settle in.",
+      "titles": ["The Last Light", "Beyond the Blue", "After the Satellites"],
+      "meta": "ILLUSTRATIVE FILM ART / LOCAL LIBRARY"
+    },
+    {
+      "id": "music",
+      "label": "Music",
+      "eyebrow": "LET THE EVENING FIND ITS TEMPO",
+      "title": "An album. An atmosphere.",
+      "body": "Albums, artists, and covers from your folders. A queue that keeps playing while you explore the rest of your evening.",
+      "titles": ["Soft Machines", "Velvet Frequency", "Midnight, Slowly"],
+      "meta": "ILLUSTRATIVE ALBUM ART / YOUR MUSIC"
+    },
+    {
+      "id": "games",
+      "label": "Games",
+      "eyebrow": "YOUR NEXT WORLD IS WAITING",
+      "title": "From the sofa to somewhere else.",
+      "body": "Launch Steam or Cogas in Big Picture, or make a tile for any app on your PC. A return combination brings you home.",
+      "titles": ["Signal / Horizon", "Neon Runway", "A World Between"],
+      "meta": "ILLUSTRATIVE GAME ART / LOCAL APP LAUNCHER"
+    }
+  ],
+  "library": [
+    {
+      "number": "01",
+      "title": "Cinema, in your own collection.",
+      "body": "FFmpeg 8, D3D11VA hardware decoding, exact seeking, pitch-correct speed, and libass subtitles. Sidecar subtitles, chapters, resume, and Next up are built in.",
+      "detail": "LOCAL VIDEO / FFmpeg 8 + libass"
+    },
+    {
+      "number": "02",
+      "title": "The soundtrack stays with you.",
+      "body": "Browse tagged albums, artists, and songs. Queue, shuffle, or repeat. Original ambient music sets the home-screen mood and fades when something else plays.",
+      "detail": "YOUR FOLDERS / CONTINUOUS PLAYBACK"
+    },
+    {
+      "number": "03",
+      "title": "Your whole PC gets a front row.",
+      "body": "Your Start Menu, installed games, and chosen executables become tiles. Built-in web tiles open services through WebView2; your own accounts and subscriptions still apply.",
+      "detail": "APPS + GAMES / EMBEDDED WEB TILES"
+    },
+    {
+      "number": "04",
+      "title": "Even the practical things belong.",
+      "body": "Explore drives, move files, view pictures, change wallpaper, and rename with a controller keyboard. Every button can be remapped, including holds and combinations.",
+      "detail": "FILE EXPLORER / REMAPPABLE CONTROLS"
+    }
+  ]
+}

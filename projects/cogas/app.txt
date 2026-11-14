@@ -1,0 +1,643 @@
+{
+  "name": "Cogas",
+  "windowTitle": "Cogas — library",
+  "tagline": "One library for every store.",
+  "subtitle": "Cogas — common gaming software — collects the games already installed on this PC across seven storefronts into a single cover grid, and launches every one of them through its own platform.",
+  "accent": "#6B3AA0",
+  "accent2": "#1F4F86",
+  "version": "0.17.0",
+  "platforms": [
+    {
+      "key": "steam",
+      "name": "Steam",
+      "mark": "#1E293B",
+      "ink": "#66C0F4",
+      "reads": "Registry keys and Valve KeyValues libraryfolders / appmanifest_*.acf",
+      "launch": "steam://rungameid/<appid>"
+    },
+    {
+      "key": "epic",
+      "name": "Epic",
+      "mark": "#334155",
+      "ink": "#B9B9C7",
+      "reads": "Launcher .item manifests in ProgramData",
+      "launch": "com.epicgames.launcher://apps/<ns>:<item>:<app>?action=launch"
+    },
+    {
+      "key": "gog",
+      "name": "GOG",
+      "mark": "#475569",
+      "ink": "#A66FE8",
+      "reads": "GOG Galaxy registry entries",
+      "launch": "GOG Galaxy client"
+    },
+    {
+      "key": "ubisoft",
+      "name": "Ubisoft",
+      "mark": "#1E3A8A",
+      "ink": "#3E8EF7",
+      "reads": "Ubisoft Connect registry installs",
+      "launch": "uplay://launch/<id>/0"
+    },
+    {
+      "key": "battlenet",
+      "name": "Battle.net",
+      "mark": "#0284C7",
+      "ink": "#29A5E3",
+      "reads": "Uninstall registry entries published by Battle.net",
+      "launch": "Battle.net client"
+    },
+    {
+      "key": "ea",
+      "name": "EA",
+      "mark": "#DC2626",
+      "ink": "#FF6A5A",
+      "reads": "EA app registry installs",
+      "launch": "origin2://game/launch?offerIds=<id>"
+    },
+    {
+      "key": "xbox",
+      "name": "Xbox",
+      "mark": "#107C10",
+      "ink": "#3FB950",
+      "reads": "MicrosoftGame.config, then MSIX packages checked against the Store catalog",
+      "launch": "shell:AppsFolder\\<PackageFamilyName>!<AppId>"
+    }
+  ],
+  "stack": [
+    ".NET",
+    "Avalonia"
+  ],
+  "download": "https://github.com/fezcode/Cogas/releases",
+  "downloadLabel": "Download installer",
+  "repo": "https://github.com/fezcode/Cogas",
+  "summary": [
+    "Cogas never asks a launcher what you own. It reads what each one already wrote to disk — registry keys, Valve KeyValues manifests, Epic .item files, Game Pass configs and MSIX packages — then merges a game owned on several stores into one entry carrying each platform's mark.",
+    "Everything stays local. The library index, cached art and encrypted keys live in one folder that Settings will open for you, and API keys and refresh tokens are encrypted with Windows DPAPI."
+  ],
+  "panelsHeading": "What it does",
+  "panelsWindowTitle": "Cogas — panels",
+  "panels": [
+    {
+      "title": "Unified library",
+      "body": "Steam, Epic, GOG, Ubisoft Connect, Battle.net, EA and the Microsoft Store in one cover grid, plus anything you add yourself."
+    },
+    {
+      "title": "One-click launch",
+      "body": "Each game starts through its native platform, so overlays, achievements and cloud saves all keep working."
+    },
+    {
+      "title": "Store and Game Pass",
+      "body": "Game Pass installs are read from their MicrosoftGame.config; every other MSIX package is classified against Microsoft's own storefront catalog."
+    },
+    {
+      "title": "Critic scores",
+      "body": "Metacritic aggregates on the cover art, from Steam where it has them and Wikidata where it does not. No key required."
+    },
+    {
+      "title": "Deals and wishlist",
+      "body": "Search every store at once with historical lows, browse the discount feed, and set target prices."
+    },
+    {
+      "title": "Owned versus installed",
+      "body": "Connect Steam, GOG and Epic to also see games you own but have not installed. Ubisoft, Battle.net and EA publish no library API."
+    }
+  ],
+  "terminalHeading": "Build it yourself",
+  "terminal": {
+    "caption": "PowerShell — .NET 8 SDK",
+    "lines": [
+      "git clone https://github.com/fezcode/Cogas.git",
+      "cd Cogas; dotnet run",
+      "dotnet test Tests/Cogas.Tests   # parsers, matching, merge logic",
+      ".\\installer.ps1                # -> Cogas-Setup-0.17.0.exe"
+    ]
+  },
+  "notesTitle": "Setting it up",
+  "notes": "The library itself needs no accounts — launch Cogas and everything installed locally appears. The optional pieces each unlock one feature:\n\n| To enable | Do this |\n|---|---|\n| Store, deals, wishlist | Get a free [IsThereAnyDeal key](https://isthereanydeal.com/apps/), paste it into Settings, hit *Test Key* |\n| Extra critic scores | Get a free [RAWG key](https://rawg.io/apidocs) — optional, since Steam and Wikidata work without it |\n| Steam owned games | A [Web API key](https://steamcommunity.com/dev/apikey) plus your SteamID64, then *Sync owned games* |\n| GOG / Epic owned games | Sign in on the login page, paste back the URL or JSON, *Connect*, then *Sync* |",
+  "colophon": [
+    [
+      "Config",
+      "%APPDATA%\\fezcode\\cogas"
+    ],
+    [
+      "Secrets",
+      "Windows DPAPI"
+    ],
+    [
+      "Palettes",
+      "9 — seven light, two dark"
+    ],
+    [
+      "Typefaces",
+      "7 stacks, switchable live"
+    ],
+    [
+      "Prices",
+      "IsThereAnyDeal"
+    ],
+    [
+      "License",
+      "MIT"
+    ]
+  ],
+  "shots": [
+    {
+      "src": "/images/projects/cogas/real/library.webp",
+      "cap": "Library · cover grid"
+    },
+    {
+      "src": "/images/projects/cogas/real/list-view.webp",
+      "cap": "Library · list, installed only"
+    },
+    {
+      "src": "/images/projects/cogas/real/game-detail.webp",
+      "cap": "Game details"
+    },
+    {
+      "src": "/images/projects/cogas/real/deals.webp",
+      "cap": "Deals feed"
+    }
+  ],
+  "shotsHeading": "On screen",
+  "palettes": [
+    {
+      "key": "default",
+      "name": "Editorial Lemon",
+      "label": "EDITORIAL",
+      "dark": false,
+      "bg": "#FAF7EE",
+      "sidebar": "#183327",
+      "top": "#F4EFE3",
+      "surface": "#FFFFFF",
+      "line": "#E5DDCB",
+      "text": "#17261F",
+      "muted": "#5A6B62",
+      "accent": "#183327",
+      "onAccent": "#FFFFFF",
+      "hi": "#D97706",
+      "gold": "#B45309",
+      "green": "#15803D",
+      "red": "#BE123C",
+      "sidebarAccent": null,
+      "desc": "Warm ivory canvas with botanical deep forest green sidebar",
+      "shot": "/images/projects/cogas/real/settings-lemon.webp"
+    },
+    {
+      "key": "tuscan-vine",
+      "name": "Tuscan Vine",
+      "label": "TUSCAN SUNRISE",
+      "dark": false,
+      "bg": "#F8F5EC",
+      "sidebar": "#3B3D26",
+      "top": "#F0EDE0",
+      "surface": "#FFFFFF",
+      "line": "#DFDAC5",
+      "text": "#262719",
+      "muted": "#686A52",
+      "accent": "#3B3D26",
+      "onAccent": "#FFFFFF",
+      "hi": "#EDB964",
+      "gold": "#D99F45",
+      "green": "#57732F",
+      "red": "#C2410C",
+      "sidebarAccent": null,
+      "desc": "Sunrise Gold (#EDB964) with Deep Vine Green (#3B3D26)",
+      "shot": "/images/projects/cogas/real/set-tuscan.webp"
+    },
+    {
+      "key": "sunlit-forest",
+      "name": "Sunlit Forest",
+      "label": "ALPINE FOREST",
+      "dark": false,
+      "bg": "#F4F6ED",
+      "sidebar": "#223D22",
+      "top": "#E9EFE0",
+      "surface": "#FFFFFF",
+      "line": "#D6DFC6",
+      "text": "#1A2C1A",
+      "muted": "#546954",
+      "accent": "#223D22",
+      "onAccent": "#FFFFFF",
+      "hi": "#A3B533",
+      "gold": "#C5B834",
+      "green": "#2D7D32",
+      "red": "#C2410C",
+      "sidebarAccent": null,
+      "desc": "Sunlit Chartreuse (#DCD870) with Deep Forest Green (#223D22)",
+      "shot": "/images/projects/cogas/real/set-sunlit.webp"
+    },
+    {
+      "key": "midnight-teal",
+      "name": "Midnight Teal",
+      "label": "ARCTIC TEAL",
+      "dark": false,
+      "bg": "#EFF4F7",
+      "sidebar": "#062635",
+      "top": "#E3ECF0",
+      "surface": "#FFFFFF",
+      "line": "#CDDCE2",
+      "text": "#0B202B",
+      "muted": "#4E6773",
+      "accent": "#062635",
+      "onAccent": "#FFFFFF",
+      "hi": "#2B7894",
+      "gold": "#D97706",
+      "green": "#0D9488",
+      "red": "#E11D48",
+      "sidebarAccent": null,
+      "desc": "Misty Blue (#83A7B4) with Midnight Teal (#062635)",
+      "shot": "/images/projects/cogas/real/set-teal.webp"
+    },
+    {
+      "key": "deep-harbor",
+      "name": "Deep Harbor",
+      "label": "COASTAL FJORD",
+      "dark": false,
+      "bg": "#F0F4F5",
+      "sidebar": "#2B4851",
+      "top": "#E5ECEE",
+      "surface": "#FFFFFF",
+      "line": "#D0DCDD",
+      "text": "#1C2E33",
+      "muted": "#53686D",
+      "accent": "#2B4851",
+      "onAccent": "#FFFFFF",
+      "hi": "#487B8A",
+      "gold": "#D97706",
+      "green": "#059669",
+      "red": "#E11D48",
+      "sidebarAccent": null,
+      "desc": "Pale Mist (#C0C8CA) with Deep Harbor Slate (#2B4851)",
+      "shot": "/images/projects/cogas/real/set-deep-harbor.webp"
+    },
+    {
+      "key": "orchid-dusk",
+      "name": "Orchid Dusk",
+      "label": "ORCHID DUSK",
+      "dark": false,
+      "bg": "#F7F0F8",
+      "sidebar": "#2E294E",
+      "top": "#F0E7F2",
+      "surface": "#FFFFFF",
+      "line": "#E3D5E7",
+      "text": "#241F3D",
+      "muted": "#5E5578",
+      "accent": "#EFBCD5",
+      "onAccent": "#2E294E",
+      "hi": "#B0457C",
+      "gold": "#B26A12",
+      "green": "#177A52",
+      "red": "#C4335C",
+      "sidebarAccent": null,
+      "desc": "Deep indigo and blush over a lavender-white page",
+      "shot": "/images/projects/cogas/real/settings.webp"
+    },
+    {
+      "key": "blueprint",
+      "name": "Blueprint",
+      "label": "SWISS BLUEPRINT",
+      "dark": false,
+      "bg": "#F8F8F8",
+      "sidebar": "#173AFF",
+      "top": "#F1F1F1",
+      "surface": "#FFFFFF",
+      "line": "#E2E2E2",
+      "text": "#121212",
+      "muted": "#5A5A5A",
+      "accent": "#173AFF",
+      "onAccent": "#FFFFFF",
+      "hi": "#173AFF",
+      "gold": "#A9740B",
+      "green": "#087A3F",
+      "red": "#D32F2F",
+      "sidebarAccent": "#FFFFFF",
+      "desc": "Electric blue against plain paper, and nothing else",
+      "shot": "/images/projects/cogas/real/set-blueprint.webp"
+    },
+    {
+      "key": "harbor-night",
+      "name": "Harbor Night",
+      "label": "NOCTURNE HARBOR",
+      "dark": true,
+      "bg": "#121A1E",
+      "sidebar": "#0A1A20",
+      "top": "#162025",
+      "surface": "#182328",
+      "line": "#27363D",
+      "text": "#E8EFF2",
+      "muted": "#9AACB4",
+      "accent": "#E8B04B",
+      "onAccent": "#12191D",
+      "hi": "#F0B95C",
+      "gold": "#C98A3A",
+      "green": "#5FB98A",
+      "red": "#D9636B",
+      "sidebarAccent": null,
+      "desc": "Wet slate and fog, lit by one warm harbour lamp",
+      "shot": "/images/projects/cogas/real/set-harbor-night.webp"
+    },
+    {
+      "key": "lantern-oak",
+      "name": "Lantern Oak",
+      "label": "NOCTURNE OAK",
+      "dark": true,
+      "bg": "#1A1610",
+      "sidebar": "#140F08",
+      "top": "#1F1A13",
+      "surface": "#221C15",
+      "line": "#332B20",
+      "text": "#F2ECE0",
+      "muted": "#AEA089",
+      "accent": "#C9903A",
+      "onAccent": "#1A1409",
+      "hi": "#D9A441",
+      "gold": "#B8802E",
+      "green": "#86A961",
+      "red": "#C86A55",
+      "sidebarAccent": null,
+      "desc": "Oiled walnut and ink under aged brass lamplight",
+      "shot": "/images/projects/cogas/real/set-lantern-oak.webp"
+    }
+  ],
+  "faces": [
+    {
+      "name": "Bundled Inter",
+      "stack": "'Inter', system-ui, sans-serif"
+    },
+    {
+      "name": "Modern Grotesque",
+      "stack": "Aptos, 'Segoe UI Variable', 'Segoe UI', sans-serif"
+    },
+    {
+      "name": "Geometric Tech",
+      "stack": "Bahnschrift, 'DIN 1451', 'Barlow', sans-serif"
+    },
+    {
+      "name": "Windows UI",
+      "stack": "'Segoe UI Variable', 'Segoe UI', sans-serif"
+    },
+    {
+      "name": "Swiss Neo-Grotesque",
+      "stack": "'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+    },
+    {
+      "name": "Editorial Serif",
+      "stack": "Georgia, Garamond, 'Palatino Linotype', serif"
+    },
+    {
+      "name": "Monospace",
+      "stack": "'Cascadia Code', Consolas, monospace"
+    }
+  ],
+  "library": [
+    {
+      "title": "Hollow Pines",
+      "genre": "Metroidvania",
+      "on": [
+        "steam",
+        "gog"
+      ],
+      "score": 88,
+      "installed": true,
+      "hue": 150
+    },
+    {
+      "title": "Signal Fire",
+      "genre": "Survival",
+      "on": [
+        "epic"
+      ],
+      "score": 81,
+      "installed": true,
+      "hue": 18
+    },
+    {
+      "title": "Paper Cartographer",
+      "genre": "Puzzle",
+      "on": [
+        "steam"
+      ],
+      "score": 90,
+      "installed": true,
+      "hue": 44
+    },
+    {
+      "title": "Night Ferry",
+      "genre": "Adventure",
+      "on": [
+        "xbox"
+      ],
+      "score": 77,
+      "installed": true,
+      "hue": 222
+    },
+    {
+      "title": "Iron Orchard",
+      "genre": "Strategy",
+      "on": [
+        "ubisoft"
+      ],
+      "score": 72,
+      "installed": false,
+      "hue": 350
+    },
+    {
+      "title": "Tidewright",
+      "genre": "Sim",
+      "on": [
+        "steam",
+        "epic",
+        "xbox"
+      ],
+      "score": 86,
+      "installed": true,
+      "hue": 190
+    },
+    {
+      "title": "Moonlit Relay",
+      "genre": "Racing",
+      "on": [
+        "ea"
+      ],
+      "score": 69,
+      "installed": true,
+      "hue": 280
+    },
+    {
+      "title": "Lantern Keep",
+      "genre": "RPG",
+      "on": [
+        "gog"
+      ],
+      "score": 92,
+      "installed": false,
+      "hue": 32
+    },
+    {
+      "title": "Frostline",
+      "genre": "Shooter",
+      "on": [
+        "battlenet"
+      ],
+      "score": 84,
+      "installed": true,
+      "hue": 205
+    },
+    {
+      "title": "Quiet Harbor",
+      "genre": "Cozy",
+      "on": [
+        "steam"
+      ],
+      "score": 83,
+      "installed": false,
+      "hue": 170
+    },
+    {
+      "title": "Brass Meridian",
+      "genre": "Strategy",
+      "on": [
+        "epic",
+        "gog"
+      ],
+      "score": 79,
+      "installed": true,
+      "hue": 38
+    },
+    {
+      "title": "Static Bloom",
+      "genre": "Rhythm",
+      "on": [
+        "xbox"
+      ],
+      "score": 88,
+      "installed": false,
+      "hue": 310
+    }
+  ],
+  "deals": [
+    {
+      "title": "Lantern Keep",
+      "shop": "GOG",
+      "ink": "#A66FE8",
+      "now": "£8.99",
+      "was": "£29.99",
+      "cut": 70,
+      "low": true
+    },
+    {
+      "title": "Paper Cartographer",
+      "shop": "Steam",
+      "ink": "#66C0F4",
+      "now": "£4.49",
+      "was": "£14.99",
+      "cut": 70,
+      "low": false
+    },
+    {
+      "title": "Iron Orchard",
+      "shop": "Ubisoft Store",
+      "ink": "#3E8EF7",
+      "now": "£11.99",
+      "was": "£39.99",
+      "cut": 70,
+      "low": true
+    },
+    {
+      "title": "Moonlit Relay",
+      "shop": "EA app",
+      "ink": "#FF6A5A",
+      "now": "£9.99",
+      "was": "£24.99",
+      "cut": 60,
+      "low": false
+    },
+    {
+      "title": "Frostline",
+      "shop": "Battle.net",
+      "ink": "#29A5E3",
+      "now": "£17.49",
+      "was": "£34.99",
+      "cut": 50,
+      "low": false
+    }
+  ],
+  "startup": {
+    "eyebrow": "New in 0.17.0",
+    "title": "The window paints first. The library catches up.",
+    "body": "Cogas used to build its whole world before it drew anything. On a 928-game library that was about 1.7 seconds before the window existed and half a second of frozen window after it. 0.17.0 stages the launch: the window paints straight away, the database opens on a worker thread, and one status says what is happening.",
+    "before": [
+      {
+        "label": "Open the database, run migrations",
+        "ms": 420
+      },
+      {
+        "label": "Construct six view models",
+        "ms": 380
+      },
+      {
+        "label": "Parse the library view",
+        "ms": 900
+      },
+      {
+        "label": "Scan on the UI thread — frozen",
+        "ms": 500,
+        "frozen": true
+      }
+    ],
+    "after": [
+      {
+        "label": "Window paints",
+        "ms": 60
+      },
+      {
+        "label": "Database and theme, on a worker",
+        "ms": 700,
+        "bg": true
+      },
+      {
+        "label": "First scan, off the UI thread",
+        "ms": 1100,
+        "bg": true
+      }
+    ],
+    "notes": [
+      "A startup overlay only while there is nothing to show.",
+      "A top-bar pill whose dot is amber while working and green when idle.",
+      "A progress row counting platforms scanned and covers fetched.",
+      "Settings read once and served from memory, not a key per connection.",
+      "COGAS_STARTUP_TRACE=1 writes a phase-by-phase timing log."
+    ]
+  },
+  "setup": [
+    {
+      "step": "Just launch it",
+      "body": "The library needs no accounts. Everything installed locally appears.",
+      "need": "Nothing"
+    },
+    {
+      "step": "Store, deals and wishlist",
+      "body": "Paste a free IsThereAnyDeal key into Settings and hit Test Key.",
+      "need": "ITAD key",
+      "href": "https://isthereanydeal.com/apps/"
+    },
+    {
+      "step": "Wider critic scores",
+      "body": "Optional — Steam and Wikidata already work without it.",
+      "need": "RAWG key",
+      "href": "https://rawg.io/apidocs"
+    },
+    {
+      "step": "Steam games you own",
+      "body": "Web API key plus your SteamID64 or vanity name, then Sync owned games.",
+      "need": "Steam key",
+      "href": "https://steamcommunity.com/dev/apikey"
+    },
+    {
+      "step": "GOG and Epic games you own",
+      "body": "Sign in on the login page, paste back the URL or JSON, Connect, then Sync.",
+      "need": "Sign in"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+"Open Tab With Respect" is a Firefox/WebExtension that allows users to open new tabs in specific positions relative to the current tab.
+
+## Features:
+
+Users can choose to open a new tab as:
+
+*   First
+*   Last
+*   Next (to the current tab)
+*   Previous (to the current tab)
+
+## Firefox Add-on Link:
+
+[Open Tab With Respect on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/open-tab-with-respect/)

@@ -1,0 +1,15 @@
+## Built like a component, not a web app
+
+A borderless resizable window with rounded corners and a shadow — Win11 DWM on one side, a macOS layer on the other — aero snap, fullscreen, always-on-top, a right-click context menu and a pinnable control bar.
+
+Brightness, contrast, saturation, hue and gamma are applied live on the GPU. Five color themes ship, plus an **Adaptive** theme that tints the whole interface from the playing video, the way Timp tints itself from album art.
+
+Volume boost amplifies quiet media in software up to 200%, with a notch at 100% so you can find your way back.
+
+## Installed properly, on both platforms
+
+**Windows** — `tivi-Setup-<version>.exe` is fully self-contained: FFmpeg, libass and raylib bundled, registered in Add/Remove Programs, with its own uninstaller and a silent `/S` switch.
+
+**macOS (arm64)** — `tivi-<version>-macos-arm64.zip` unzips to a `tivi.app` with the same libraries bundled, no Homebrew required. Finder "Open With" works once it sits in `/Applications`.
+
+System-wide media keys, single-instance file handoff, snapshots to the Desktop, and settings that autosave as you change them round it out.

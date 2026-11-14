@@ -1,0 +1,234 @@
+# PASETO vs JWT: Choosing the Right Token for the Job
+
+Stateless authentication tokens are everywhere — between microservices, in `Authorization` headers, baked into single-sign-on flows. **JWT (JSON Web Token)** has been the de facto standard for over a decade. **PASETO (Platform-Agnostic SEcurity TOkens)**, introduced by Scott Arciszewski in 2018, is a deliberate response to JWT's recurring footguns.
+
+This is a side-by-side look at both formats: how they're structured, what they actually guarantee, where JWT bleeds, how PASETO patches the wound, and a Go example of each.
+
+---
+
+## What JWT Actually Is
+
+A JWT is three base64url-encoded segments joined by dots:
+
+```text
+<header>.<payload>.<signature>
+```
+
+A decoded example:
+
+```json
+// Header
+{ "alg": "HS256", "typ": "JWT" }
+
+// Payload (claims)
+{
+  "sub": "user-1138",
+  "iss": "auth.fezcodex.com",
+  "aud": "api.fezcodex.com",
+  "exp": 1747614000,
+  "iat": 1747610400
+}
+```
+
+The signature is computed over `base64url(header) + "." + base64url(payload)` using the algorithm the **header itself** declares. This last detail — the token telling the verifier how to verify it — is the source of most of JWT's grief.
+
+JWT is defined across a family of RFCs:
+
+- **JWS** (RFC 7515) — Signed tokens. What you almost always see.
+- **JWE** (RFC 7516) — Encrypted tokens. Rare in the wild.
+- **JWA** (RFC 7518) — The algorithm catalog: `HS256`, `RS256`, `ES256`, `EdDSA`, `PS256`, and the infamous `none`.
+- **JWT** (RFC 7519) — The claim format that rides on top.
+
+### JWT's Known Footguns
+
+1. **The `none` algorithm.** Set `"alg": "none"`, drop the signature, and naive verifiers will accept the token as valid. This is a library bug, but it has shipped in production code more than once.
+
+2. **Algorithm confusion.** A server expects `RS256` (asymmetric — public key verifies). An attacker submits a token signed with `HS256`, using the server's *public key* as the HMAC secret. A poorly-written verifier reads `alg` from the header and dutifully verifies with HMAC + the public key. Token forged.
+
+3. **Crypto agility as a footgun.** The same field that enables algorithm flexibility (`alg`) is what attackers manipulate. The standard's flexibility is the vulnerability.
+
+4. **JWE is barely used.** Most teams reach for JWS, sign claims, and ship them in the clear. Anything in the payload is readable by anyone holding the token.
+
+5. **Key confusion.** RSA keys, EC keys, HMAC secrets — all selected by a string in the header. Misconfiguration is a routine source of CVEs.
+
+The CVE record for JWT libraries (`jsonwebtoken`, `pyjwt`, `node-jose`, etc.) is long enough to be its own genre.
+
+---
+
+## What PASETO Actually Is
+
+PASETO drops the "let the token negotiate its own crypto" idea entirely. Instead, each PASETO token declares a **version** and a **purpose**, and the version pins the exact cryptographic primitives. No `alg` field. No negotiation. No confusion.
+
+A PASETO token looks like this:
+
+```text
+<version>.<purpose>.<payload>[.<footer>]
+```
+
+For example:
+
+```text
+v4.public.eyJzdWIiOiJ1c2VyLTExMzgiLCJleHAiOiIyMDI2LTA1LTE5VDA....signature
+```
+
+### Versions
+
+PASETO is intentionally versioned to allow safe migration:
+
+| Version | Status | Symmetric | Asymmetric |
+|---|---|---|---|
+| **v1** | Legacy | AES-256-CTR + HMAC-SHA384 | RSA-PSS-SHA384 |
+| **v2** | Deprecated (use v4) | XChaCha20-Poly1305 | Ed25519 |
+| **v3** | Modern (NIST-friendly) | AES-256-CTR + HMAC-SHA384 | ECDSA P-384 + SHA-384 |
+| **v4** | Modern (recommended) | XChaCha20 + BLAKE2b | Ed25519 + BLAKE2b |
+
+You pick `v3` if you're in a NIST-FIPS shop, `v4` everywhere else. The decision is once, not per-token.
+
+### Purposes
+
+- **`local`** — symmetric, **authenticated encryption**. Claims are confidential and tamper-proof. Use when only your own services need to read the token.
+- **`public`** — asymmetric, **signed**. Anyone with the public key can verify; only the private-key holder can mint. Use for cross-organizational SSO and federated identity. Claims are visible (just like JWS).
+
+That's the entire decision tree. There's no `none`. There's no algorithm confusion, because the algorithm is implied by the version string, and `v4.public` cannot be reinterpreted as `v4.local`.
+
+---
+
+## Side-by-Side: The Same Token in Both Formats
+
+### Go: Issuing a Token
+
+**JWT** with `github.com/golang-jwt/jwt/v5`:
+
+```go
+package main
+
+import (
+    "crypto/ed25519"
+    "crypto/rand"
+    "fmt"
+    "time"
+
+    "github.com/golang-jwt/jwt/v5"
+)
+
+func issueJWT() (string, ed25519.PublicKey, error) {
+    pub, priv, err := ed25519.GenerateKey(rand.Reader)
+    if err != nil {
+        return "", nil, err
+    }
+
+    claims := jwt.MapClaims{
+        "sub": "user-1138",
+        "iss": "auth.fezcodex.com",
+        "exp": time.Now().Add(15 * time.Minute).Unix(),
+        "iat": time.Now().Unix(),
+    }
+
+    tok := jwt.NewWithClaims(jwt.SigningMethodEdDSA, claims)
+    signed, err := tok.SignedString(priv)
+    return signed, pub, err
+}
+```
+
+**PASETO** with `aidanwoods.dev/go-paseto`:
+
+```go
+package main
+
+import (
+    "fmt"
+    "time"
+
+    "aidanwoods.dev/go-paseto"
+)
+
+func issuePASETO() (string, paseto.V4AsymmetricPublicKey) {
+    secret := paseto.NewV4AsymmetricSecretKey()
+    public := secret.Public()
+
+    token := paseto.NewToken()
+    token.SetIssuer("auth.fezcodex.com")
+    token.SetSubject("user-1138")
+    token.SetIssuedAt(time.Now())
+    token.SetExpiration(time.Now().Add(15 * time.Minute))
+
+    return token.V4Sign(secret, nil), public
+}
+```
+
+### Go: Verifying a Token
+
+**JWT** — note the keyfunc that *must* validate the algorithm before returning the key, or you've shipped algorithm confusion:
+
+```go
+func verifyJWT(tokenStr string, pub ed25519.PublicKey) (jwt.MapClaims, error) {
+    tok, err := jwt.Parse(tokenStr, func(t *jwt.Token) (interface{}, error) {
+        // CRITICAL: pin the algorithm. Without this check, you're vulnerable.
+        if _, ok := t.Method.(*jwt.SigningMethodEd25519); !ok {
+            return nil, fmt.Errorf("unexpected alg: %v", t.Header["alg"])
+        }
+        return pub, nil
+    })
+    if err != nil || !tok.Valid {
+        return nil, fmt.Errorf("invalid token: %w", err)
+    }
+    return tok.Claims.(jwt.MapClaims), nil
+}
+```
+
+**PASETO** — the version is part of the token, so there is nothing to "pin":
+
+```go
+func verifyPASETO(tokenStr string, public paseto.V4AsymmetricPublicKey) (*paseto.Token, error) {
+    parser := paseto.NewParser()
+    parser.AddRule(paseto.NotExpired())
+    parser.AddRule(paseto.IssuedBy("auth.fezcodex.com"))
+    return parser.ParseV4Public(public, tokenStr, nil)
+}
+```
+
+The PASETO verifier *can only* parse `v4.public` tokens. A `v3.local` token passed in is rejected before any crypto runs. No keyfunc, no `alg` check, no class of bug to forget.
+
+---
+
+## The Comparison That Matters
+
+| Concern | JWT | PASETO |
+|---|---|---|
+| Algorithm in header | Yes (`alg`) | No — implied by version |
+| Algorithm confusion possible | Yes (misconfig) | No (by design) |
+| `none` algorithm | Exists in spec | Does not exist |
+| Encrypted-by-default option | JWE (rarely used) | `local` purpose (first-class) |
+| Versioned protocol | No | Yes |
+| Key types | Many (RSA, EC, HMAC, OKP) | Two per version (sym / asym) |
+| Standards body | IETF (RFCs) | Informational draft + reference impls |
+| Ecosystem | Vast (every language, framework) | Solid but smaller |
+| Mobile / browser support | Universal | Library-dependent |
+
+---
+
+## When to Pick Which
+
+**Reach for JWT when:**
+
+- You need to interoperate with an OIDC / OAuth2 ecosystem (Auth0, Okta, Cognito, Google, Apple). The spec is the lingua franca there.
+- You're consuming tokens issued by an external IdP — you don't get to choose.
+- Tooling and library availability dominate (low-resource embedded targets, niche languages).
+
+**Reach for PASETO when:**
+
+- You control both the issuer and the verifier — internal services, your own mobile app, first-party SSO.
+- You want claims to be **encrypted**, not just signed, without learning the JWE spec.
+- You're starting fresh and don't want to inherit a decade of `alg`-related CVEs.
+
+A hybrid is common in practice: PASETO for internal service-to-service tokens, JWT at the public OAuth2 boundary because the rest of the world speaks JWT.
+
+---
+
+## The Honest Take
+
+JWT is not broken when used correctly. The trouble is that "used correctly" requires you to disable half the spec, pin the algorithm, refuse `none`, and choose between JWS and JWE with full awareness of the difference. Most teams don't. Most libraries have shipped at least one CVE that catered to those exact mistakes.
+
+PASETO removes the choices that produced the bugs. Pick a version, pick a purpose, mint a token. That's the whole API surface. Less flexibility, less rope.
+
+If you're greenfield and don't have to talk to the OAuth2 world, PASETO is the calmer choice. If you do have to talk to that world, write JWT carefully, pin your algorithm, and don't ever invent your own verifier.

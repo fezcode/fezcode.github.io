@@ -1,0 +1,82 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1600"
+  height="1000"
+  viewBox="0 0 1600 1000"
+>
+  <rect width="1600" height="1000" fill="#f4f1e9" />
+  <g fill="none" stroke="#cbbfe0" opacity=".5">
+    <ellipse cx="1160" cy="480" rx="340" ry="410" />
+    <ellipse cx="1160" cy="480" rx="310" ry="380" />
+    <ellipse cx="1160" cy="480" rx="280" ry="350" />
+    <ellipse cx="1160" cy="480" rx="250" ry="320" />
+    <ellipse cx="1160" cy="480" rx="220" ry="290" />
+    <ellipse cx="1160" cy="480" rx="190" ry="260" />
+    <ellipse cx="1160" cy="480" rx="160" ry="230" />
+  </g>
+  <g fill="none" stroke-linecap="round">
+    <path
+      d="M840 1050V780c0-110 180-80 180-210V80"
+      stroke="#645098"
+      stroke-width="14"
+    />
+    <path
+      d="M854 1050V800c0-120 400-70 400-260V350c0-100 110-90 110-200V50"
+      stroke="#d5a6c3"
+      stroke-width="8"
+    />
+    <path
+      d="M826 1050V780c0-100-110-90-110-220V400c0-110 304-60 304-200"
+      stroke="#a4a8d2"
+      stroke-width="8"
+    />
+  </g>
+  <g fill="#f4f1e9" stroke="#7966a3" stroke-width="3">
+    <circle cx="1020" cy="200" r="13" />
+    <circle cx="1020" cy="410" r="13" />
+    <circle cx="1020" cy="570" r="20" />
+    <circle cx="1254" cy="420" r="13" />
+    <circle cx="1364" cy="150" r="13" />
+    <circle cx="716" cy="510" r="13" />
+  </g>
+  <text
+    x="110"
+    y="135"
+    fill="#6e6183"
+    font-family="monospace"
+    font-size="18"
+    letter-spacing="4"
+  >
+    A FIELD GUIDE TO YOUR CODE
+  </text>
+  <text
+    x="100"
+    y="360"
+    fill="#302a43"
+    font-family="Georgia,serif"
+    font-size="150"
+    letter-spacing="-7"
+  >
+    Gitland
+  </text>
+  <text
+    x="110"
+    y="450"
+    fill="#746386"
+    font-family="Georgia,serif"
+    font-size="44"
+    font-style="italic"
+  >
+    A clear view of your code.
+  </text>
+  <text
+    x="110"
+    y="875"
+    fill="#756b83"
+    font-family="monospace"
+    font-size="18"
+    letter-spacing="2"
+  >
+    NATIVE GIT / WINDOWS / FEZCODE
+  </text>
+</svg>

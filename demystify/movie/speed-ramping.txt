@@ -1,0 +1,47 @@
+id: speed-ramping
+rank: 09
+name: SPEED RAMPING
+family: Camera
+years: 1998 → present
+sub: Speed changed inside the shot, so a moment can be inspected without stopping the scene
+
+ascii:
+┌────────────────────────────────────────┐
+│  ▁▂▃▄▅▆▇█  ██  ▇▆▅▄▃▂▁                 │
+│  fast ──── S L O W ──── fast           │
+│  ramp in, hold the impact, ramp out    │
+└────────────────────────────────────────┘
+
+what:
+ Altering frame rate within a single shot: accelerating into an action, dropping into slow motion at the moment of impact, then returning to speed. Straight slow motion is a century old, but ramping is a digital-era habit, because variable frame rates and optical flow made the transition smooth enough to use casually. It converts an action beat into a held pose, which is why it belongs so naturally to films adapted from a medium of held poses.
+
+artists:
+ Zack Snyder is the defining practitioner, carrying the technique through *Watchmen*, *Man of Steel*, *Batman v Superman* and *Zack Snyder's Justice League* until it became a signature and then a punchline. Matthew Vaughn uses it for comic emphasis in the *Kingsman* films. Robert Rodriguez ramps in *Sin City* to hold a frame that matches a drawn panel exactly.
+
+trivia:
+ The comic-book connection is not decorative. A comics page gives a reader unlimited time on a single image and film normally cannot. Ramping is the closest cinema gets to letting an audience linger on a splash panel without cutting away from the action around it, which is why the technique arrived with comic adaptations and stayed with them.
+
+sonic:
+ It tells you what to care about, forcefully. The slow section is the film underlining a sentence, and the effect is genuinely physical because your eye is given time it did not expect. Used constantly it inverts: if everything is underlined then nothing is, and the action becomes a series of poses with no connective tissue between them.
+
+gear:
+ High-speed capture, because slow motion has to be shot at a higher frame rate or it judders. A camera capable of 120 frames or more, enough light to expose at a very short shutter, and a plan. Ramping cannot be faked convincingly from twenty-four frames, though optical-flow interpolation in post is used constantly and is usually visible around fast-moving edges.
+
+prod:
+ Light is the cost. Shooting at 120 frames means roughly two and a half stops less exposure, so the technique inflates the lighting package on every setup where it might be used. It also makes performance strange, since actors play the beat at normal speed knowing it will be stretched, and stunt timing has to be adjusted to compensate.
+
+examples:
+ - Watchmen | the opening, every beat held
+ - Zack Snyders Justice League | ramping as the film's pulse
+ - Man of Steel | flight built out of speed changes
+ - Batman v Superman - Dawn of Justice | the warehouse, ramped throughout
+ - Sin City | frames held to match the panel
+ - Kingsman The Secret Service | the church, ramped and un-ramped
+ - Mortal Kombat Legends Scorpions Revenge | the animated version of the same move
+ - Upgrade | speed shifting as the implant takes over
+ - Wonder Woman | No Mans Land, ramped at every impact
+ - Injustice | the animated version of the same grammar
+ - Justice League Crisis on Two Earths | impact held, then released
+ - Blade | the fight slowed to read the choreography
+ - Spider-Man No Way Home | impact held across three films
+ - Spider-Man Homecoming | the ferry, ramped at the tear

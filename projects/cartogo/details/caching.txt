@@ -1,0 +1,8 @@
+# High-Speed Binary Caching
+
+Sub-second re-renders are achieved through a binary caching system using Go's `gob` format.
+
+## Optimization
+- **Binary Serialization**: Near-instant disk I/O compared to JSON or XML.
+- **Nominatim Cache**: Stores geocoding results locally to respect rate limits.
+- **Data Persistence**: Map data remains cached for future artistic iterations.

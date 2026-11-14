@@ -1,0 +1,30 @@
+id: power-pop-80s
+rank: 48
+name: 80S POWER POP & NEW WAVE
+family: Pop & Soul
+years: 1978 → 1989
+sub: Sixties melodic craft played with eighties gloss and a very high male vocal
+spec: 58,68,74,70,64,66,72,78,82,80,76,78,82,84,80,72,64,56,48,40
+synthType: triangle
+freqs: 267.37, 335.14, 420.08
+
+what:
+ Power pop is Beatles/Who melodic writing with amplified guitars — Big Star and Cheap Trick in the 1970s, then a 1980s wave that absorbed new wave's keyboard textures and gated drums. *The Outfield* are its most anomalous success: three Londoners who were essentially ignored in Britain and sold millions in America.
+
+artists:
+ Big Star, Cheap Trick, The Romantics, The Knack, Squeeze, The Cars; The Outfield — John Spinks (guitar, and sole songwriter), Tony Lewis (bass and that voice), Alan Jackman (drums).
+
+trivia:
+ *Play Deep* (1985) went double platinum in the US while the band remained obscure at home; they were routinely assumed to be American, and the name itself was chosen because it sounded like baseball, a sport none of them followed. Tony Lewis' vocal sits in a range so high that almost every cover version transposes it down. Both Spinks (2014) and Lewis (2020) have since died.
+
+sonic:
+ Jangly, chorused electric guitar with a lot of high-mid presence, bass playing melodically and mixed loud, a gated snare with a short bright reverb, and a lead vocal at the very top of a tenor range doubled at the octave in the chorus. Harmony is major-key and diatonic with a surprise chord in the pre-chorus — the classic power-pop trick.
+
+gear:
+ Rickenbacker and Telecaster guitars, Roland chorus (JC-120 amps or a Boss CE-2), Simmons electronic drum triggers layered under acoustic drums, Yamaha DX7 for the bell pads, and the era's defining processor: an *AMS or Lexicon gated reverb* on the snare.
+
+prod:
+ Recorded to 24-track analogue with heavy use of noise gates keyed to the snare — the gated-reverb sound was originally an accident from an SSL desk's reverse-talkback and became the decade's signature. Guitars are double-tracked and hard-panned; the bass is compressed heavily and given more high-mid than a modern mix would allow, which is why it cuts through so clearly on a small speaker.
+
+tracks:
+ - Your Love | The Outfield

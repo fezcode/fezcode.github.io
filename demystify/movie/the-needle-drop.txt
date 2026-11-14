@@ -1,0 +1,44 @@
+id: the-needle-drop
+rank: 04
+name: THE NEEDLE DROP
+family: Sound
+years: 1969 → present
+sub: A pre-existing song dropped in whole, doing the work a score would do more politely
+
+ascii:
+┌────────────────────────────────────────┐
+│  ♪ ──────────────────────────────────  │
+│  │ song enters on the cut, full level  │
+│  │ ██ ██ ██ ██  action locked to beat  │
+│  └─ no fade, no underscore, no apology │
+└────────────────────────────────────────┘
+
+what:
+ Using a commercially released song, at length and usually at full level, in place of composed score. *Easy Rider* made it a commercial method in 1969 and Scorsese turned it into an authorial voice. The difference from score is ownership: a composer writes toward the scene, whereas a needle drop arrives carrying everything the audience already associates with it — the year it came out, who they were when they first heard it — and the film borrows all of that in a single cut.
+
+artists:
+ Edgar Wright is the maximalist case: *Baby Driver* was cut to its songs before it was shot, with performance and gunfire choreographed to specific bars. James Gunn uses the device as characterisation in *Guardians of the Galaxy*, where the mixtape is a dead mother's voice. Tarantino treats anachronism as a weapon in *Django Unchained*. Wright again in *Shaun of the Dead*, where Queen over a pub beating is the joke and the tension at the same time.
+
+trivia:
+ *Baby Driver* inverted the usual order entirely. The songs were licensed and locked first, the film was edited to them, and the shoot had to hit timings set months earlier — actors performing to playback so a door slam or a gunshot would land on the beat. Most films do the reverse and cut a song to finished picture, which is why most needle drops sit alongside the action rather than welded into it.
+
+sonic:
+ It hands a scene a mood nobody had to earn, which is both the power and the trap. A great drop compresses exposition into three seconds: you learn the period, the character's taste and the film's attitude simultaneously. A lazy one is karaoke, the song doing all the work while the images wait politely underneath. The test is whether removing the track would leave the scene meaningless or merely quieter.
+
+gear:
+ Clearance, mostly. Two separate rights have to be bought — the composition and the specific recording — and either holder can refuse, which is why films sometimes end up using a cover version of a famous song. Music supervisors exist largely to negotiate this. In the edit the song usually dictates the cut points rather than the other way round.
+
+prod:
+ The most expensive seconds in a film. A recognisable track can cost more than a day of shooting, and the money is committed before anyone knows whether the scene works. Songs also age unpredictably: a needle drop is a bet that the association it borrows will still exist in twenty years, and a surprising number of them curdle into period markers instead.
+
+examples:
+ - Baby Driver | the coffee run, cut to Harlem Shuffle
+ - Guardians of the Galaxy | Come and Get Your Love, first landing
+ - Django Unchained | anachronism used as a weapon
+ - Shaun of the Dead | Don't Stop Me Now, pool cue in hand
+ - Straight Outta Compton | the catalogue as the plot
+ - The Big Lebowski | the dream sequence, scored by the era
+ - Jojo Rabbit | the Beatles in German, over a rally
+ - Guardians Of The Galaxy Vol 2 | the mixtape, side two
+ - Tropic Thunder | the drop played for satire
+ - Zack and Miri Make a Porno | the drop against the squalor

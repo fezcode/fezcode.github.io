@@ -1,0 +1,90 @@
+# Vampire: The Masquerade - Bloodlines 2
+
+- **Category:** Game
+- **Platform:** Steam
+- **Date:** 2025-10-28
+- **Rating:** 4/5
+- **Duration:** 18 Hours
+- **Link:** [Steam](https://store.steampowered.com/app/532790/Vampire_The_Masquerade__Bloodlines_2/)
+
+## A RPG Story About Vampires
+I want to start my review with a quintessential, four-word summary: **Good game, play it.**
+
+> This review contains spoilers.
+>
+> There are in-game screenshots that reveal the ending, so...
+>
+> BEWARE!
+>
+> This was your warning.
+
+My hopes for this game were _drained_. I didn't expect anything of value to come from it.
+I didn't think it was going to get out of development hell.
+In the hands of an unknown studio, the game I pre-ordered—_God knows when_—was, in my mind, born dead.
+
+Boy, was I wrong. This is one of the greatest games I've played this year. Sure, I haven't played much, but that doesn't diminish its quality.
+I have my criticisms, both negative and *constructive*, as well as my praises.
+Perhaps I should start with the bad.
+
+### The Bad
+- **The combat**: _Initially_, it was **anti-fun**. It was so bad that you were almost forced to play stealthily.
+_However_, it got so much better with perks. With the addition of enemies with firearms, you could start to have fun and get creative.
+
+- **Fabien's Walking Simulator**: The devs knew that walking from one part of the city to another would be a drag, so they made walking faster.
+How cool is that? But it didn't solve the—once again—**anti-fun** aspect of it. It felt like random chores, nothing more.
+
+- **Using Fabien's skills on people**: Even though it was fun to read people's minds from time to time,
+it didn't really make sense to me since you can't give wrong answers.
+Some conversations were fun, but most of the time, it was just a waste of time.
+
+- **The potential**: It's clear that this game had ambition. It breaks your heart to see its flaws.
+
+- **Optimisation**: Not good. It is `Unreal Engine`*(TM)* `5`*(C)* stuff.
+
+- **Role-Playing**: Non-existent.
+
+### The Good
+
+- **Fabien**: [Ronan Summers](https://www.imdb.com/name/nm2788751) did a _wonderful_ job with the character.
+For me, at least, his great performance was the reason the game was bearable for the most part.
+![Fabien](images/logs/games/bloodlines-2/9.png)
+
+- **The Story**: Vampires are weird. In general, the garlic thing (a myth), mirrors, no breathing, no sun, and all that—I don't really get the appeal.
+However, this was a good story. Not a great one, but a good one. I wanted to see how it ended, which is a great thing to have in a single-player game.
+It was intriguing and captivating. I didn't predict the plot twist; it wasn't that obvious.
+
+- **Environment**: This isn't just good; it's almost perfect. We know where the development money went. You feel like you belong to the city.
+It feels dark, cozy, and good to be a part of. The NPCs, as usual, aren't great, and there's not much you can do in the city, but I think that was a good choice. You didn't do a lot, and some of the stuff was repetitive, but everything you did in the game made sense. I _loved_ it.
+
+Let me show you some of the fine work they've done.
+![4](images/logs/games/bloodlines-2/4.png)
+![Tuah??](images/logs/games/bloodlines-2/13.png)
+![Garden](images/logs/games/bloodlines-2/10.png)
+![53](images/logs/games/bloodlines-2/53.png)
+![55](images/logs/games/bloodlines-2/55.png)
+
+- **Characters**: They were good. Enough. Complete. Not too boring to talk to.
+
+![Oh a Major Character](images/logs/games/bloodlines-2/0.png)
+![And a nobody](images/logs/games/bloodlines-2/7.png)
+![And a nobody](images/logs/games/bloodlines-2/11.png)
+![And two nobodies](images/logs/games/bloodlines-2/12.png)
+
+
+They were just good. You understand their motives.
+You get them, and that's a cool thing. Everyone felt unique. They felt like real people, most of the time.
+There are respectable ones, annoying ones, and funny ones, just like in real life.
+
+You know who was a great character? **Lou**. A powerful figure. Fun to observe.
+> You ask who I am? My dear - I am Seattle. - Prince in life and death
+
+![Queen](images/logs/games/bloodlines-2/2.png)
+The unknown, for the most part. A fun character with an aura.
+![Queens](images/logs/games/bloodlines-2/18.png)
+
+Who wasn't fun then? Easy. Mrs. Thorn, Tolly, Safia...
+
+### And A Spoiler-y Goodbye
+A sad farewell.
+
+![Fabien](images/logs/games/bloodlines-2/49.png)

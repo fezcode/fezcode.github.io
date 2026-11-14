@@ -1,0 +1,92 @@
+id: confessional-rap
+rank: 18
+name: CONFESSIONAL & CONSCIOUS MAINSTREAM RAP
+family: Hip Hop
+years: 2010 → present
+sub: Album-form storytelling rap that sells at pop scale without abandoning craft
+spec: 86,90,80,62,54,58,64,70,74,72,68,70,74,78,74,66,58,50,44,38
+synthType: square
+freqs: 55, 68.94, 86.41
+
+what:
+ The 2010s produced a class of rappers who did what the industry said was no longer possible: sell in enormous volume with dense, narrative, moralising albums. Kendrick Lamar's *good kid, m.A.A.d city* (2012) is a linear coming-of-age film in album form; J. Cole's *2014 Forest Hills Drive* went platinum with, famously, no guest features.
+
+artists:
+ Kendrick Lamar, J. Cole, Kanye West (as the structural precedent), Vince Staples, Isaiah Rashad, Little Simz. Producers: T-Minus, Sounwave, DJ Dahi, No I.D., and Cole himself — he produces most of his own catalogue.
+
+trivia:
+ "Swimming Pools (Drank)" was received as a party record and playlisted as one; it is in fact *a song about alcoholism*, with a verse voiced by Kendrick's conscience and a coda in which the album's narrative violence occurs. The gap between how it was played and what it says is the record's own point. "No Role Modelz" — built on a Project Pat sample — has become one of the most-streamed rap tracks of the decade despite never being released as a lead single.
+
+sonic:
+ A wider dynamic and harmonic palette than trap: live bass and keys mixed with programmed drums, real chord progressions rather than a two-chord loop, and vocal arrangements that shift register and character between verses. Kendrick in particular uses *pitch-shifted vocal personas* as a narrative device. Mixes leave headroom for spoken-word interludes and skits.
+
+gear:
+ Pro Tools and Ableton over FL; live session players (Thundercat, Terrace Martin on the TDE side); vintage keys — Rhodes, Wurlitzer, Juno — and analogue outboard on the vocal chain. Cole works largely in-the-box with an MPC-derived workflow and records vocals on a straightforward Neumann-into-preamp setup.
+
+prod:
+ These are *sequenced albums* in an era of playlists: track order carries meaning, interludes connect songs, and the mastering keeps enough dynamic range that a quiet passage stays quiet. The tradeoff is deliberate — individual tracks read as slightly less loud than trap singles on shuffle, which the artists accept in exchange for the album working as a single object.
+
+tracks:
+ - Power Trip | J. Cole, Miguel
+ - Blackberry Marmalade | Vince Staples
+ - ALL THE LOVE | Kanye West, Ye, Andre Troutman
+ - Good Flirts | Baby Keem, Kendrick Lamar, Momo Boyd
+ - Two Six | J. Cole
+ - The Let Out | J. Cole
+ - Rain | Mac Miller, Vince Staples
+ - Wat's Wrong | Isaiah Rashad, Zacari, Kendrick Lamar | none
+ - Work Out | J. Cole
+ - Money Trees | Kendrick Lamar, Jay Rock
+ - The Return | Logic
+ - Bruuuh (with Denzel Curry) - Remix | JID, Denzel Curry
+ - Soundtrack 2 My Life | Kid Cudi
+ - 3005 | Childish Gambino
+ - Swimming Pools (Drank) - Extended Version | Kendrick Lamar
+ - I Wonder | Kanye West
+ - Good News | Mac Miller
+ - Day 'N' Nite (Nightmare) | Kid Cudi
+ - The Prayer | Kid Cudi
+ - No Role Modelz | J. Cole
+ - Young Jesus | Logic, Big Lenbo
+ - Murder To Excellence | JAY-Z, Kanye West
+ - Low-Key | Hopsin
+ - Scott Mescudi Vs. The World | Kid Cudi, CeeLo Green
+ - Sky Might Fall | Kid Cudi
+ - Mr. Rager | Kid Cudi
+ - Don't Play This Song | Kid Cudi, Mary J. Blige
+ - Marijuana | Kid Cudi
+ - Man of the Year (feat. Curley the 5th) | Logic?, Curley The 5th
+ - Welcome To Heartbreak | Kanye West, Kid Cudi
+ - MIDDLE CHILD | J. Cole
+ - No Dope On Sundays (feat. Pusha T) | CyHi, Pusha T
+ - N95 | Kendrick Lamar
+ - The Art of Peer Pressure | Kendrick Lamar
+ - Silent Hill | Kendrick Lamar, Kodak Black
+ - the.climb.back | J. Cole
+ - Two Words | Kanye West, Mos Def, Freeway, The Boys Choir Of Harlem
+ - Deep Reverence (feat. Nipsey Hussle) | Big Sean, Nipsey Hussle
+ - CALLIGRAPHY | Saba
+ - Ego Check | Wynne, JID
+ - Young Man | WELL$, Sylvan Esso
+ - She Knows (feat. Amber Coffman & Cults) | J. Cole, Amber Coffman, Cults
+ - Run This Town | JAY-Z, Rihanna, Kanye West
+ - Lost In The World | Kanye West, Bon Iver
+ - Runaway | Kanye West, Pusha T
+ - All Of The Lights | Kanye West
+ - Devil In A New Dress | Kanye West, Rick Ross
+ - Cudi Zone | Kid Cudi
+ - Down (feat. Nikki Jean) | Lupe Fiasco, Nikki Jean
+ - Beautiful | Eminem
+ - Battle Scars (with Guy Sebastian) | Lupe Fiasco, Guy Sebastian
+ - House (feat. Mick Jenkins) | EARTHGANG, Mick Jenkins
+ - Crown Me | Hopsin
+ - Reborn | KIDS SEE GHOSTS
+ - The Fool Pt 3 (Frame Of Mind) | Shad, KAYTRANADA
+ - Drunk and Hot Girls | Kanye West, Mos Def
+ - Insomniac Dreaming | A.Dd+
+ - Red Dot Music | Mac Miller, Action Bronson
+ - So Appalled | Kanye West, JAY-Z, Pusha T, CyHi, Swizz Beatz, RZA
+ - King's Dead (with Kendrick Lamar, Future & James Blake) | Jay Rock, Kendrick Lamar, Future, James Blake
+ - Ni**as In Paris | JAY-Z, Kanye West
+ - A Tale of 2 Citiez | J. Cole
+ - Homecoming | Kanye West, Chris Martin

@@ -1,0 +1,5 @@
+# Agentic Engineering Patterns
+
+A guide by Simon Willison outlining strategies and best practices for effectively using coding agents, emphasizing "agentic engineering" to produce higher-quality code.
+
+Rating: 5/5

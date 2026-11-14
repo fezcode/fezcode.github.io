@@ -1,0 +1,51 @@
+id: liquid-dnb
+rank: 35
+name: LIQUID DRUM & BASS
+family: Electronic
+years: c. 1995 → present
+sub: Melodic, vocal-led offshoot of jungle — 174 BPM with the aggression traded for air
+spec: 95,88,60,35,28,30,38,45,50,52,55,58,62,66,72,80,86,90,84,70
+tag: BREAKBEAT
+origin: London Underground
+signature: 160-180 BPM chopped Amen breaks, sub-bass pressure, reggae dub stabs
+keyGear: E-mu E6400 Sampler, Novation Bass Station, Logic Audio
+audio: /demystify/genre/drumbass.mp3
+synthType: sawtooth
+freqs: 55, 68.94, 86.41
+
+ascii:
+┌─────────────────────────────────────────┐
+│ AMEN  ██·█·██·█·█··██·█·██·█·█··██      │
+│ BREAK ▓▒░▓▒░▓▒░▓▒░▓▒░▓▒░▓▒░▓▒░▓▒░       │
+│ SUB   ▇▇▇▇▇▇▁▁▁▁▁▁▇▇▇▇▇▇▁▁▁▁▁▁▇▇▇       │
+│ ──────────────────────────────  174 BPM │
+└─────────────────────────────────────────┘
+
+what:
+ Drum & bass split off from jungle around 1994–95 when producers began smoothing the ragga edges into something warmer. LTJ Bukem's Good Looking label is the origin point; the "liquid" name got fixed by Fabio's *Liquid Funk* compilation in 2000. The 2010s brought a second wave via Hospital Records and the Canadian label Monstercat, which is where Feint sits — big topline vocals, cinematic string pads, and a strict 172–176 BPM.
+
+artists:
+ LTJ Bukem, Fabio, Calibre, High Contrast, Netsky, Hospital Records' roster (London Elektricity, Danny Byrd), and the Monstercat/gaming-adjacent wing: Feint, Koven, Camellia. *Feint* is a UK producer whose Monstercat singles — "Snake Eyes" (2015) with vocalist CoMa among them — travelled far beyond DnB via osu!, Rocket League and Twitch playlists.
+
+trivia:
+ The genre's entire rhythmic DNA is one bar: the *Amen break*, six seconds of drums from The Winstons' 1969 B-side "Amen, Brother." Drummer G.C. Coleman died broke in the 1990s having never received a penny for it. Liquid producers usually re-layer the break with cleaner one-shots so it reads as texture rather than the ragged chop of 1993 jungle.
+
+sonic:
+ Two independent tempo layers running at once: a sub-bass and a half-time-feeling melodic line at ~87 BPM, and breakbeats at 174. Reverb tails are long and bright, the sub is sine-clean rather than growling, and vocals sit high and forward with heavy delay throws. Almost no midrange grit — that's what separates liquid from neurofunk.
+
+gear:
+ Amen/Think break samples, Roland TR-909 hats layered over chopped breaks, Reese-style bass (a detuned saw pair originally from Kevin Saunderson's "Just Want Another Chance"). Modern liquid is nearly all in-the-box: Serum and Massive for the sub, Valhalla or Lexicon-modelled reverbs, iZotope/FabFilter multiband on the drum bus.
+
+prod:
+ Mixed for the *drop-into-space* contrast: 16 bars of sparse pads and vocal, then full break plus sub. Because the sub carries the melody, the kick is usually short and midrange-heavy so it punches through without fighting the bass. Monstercat-era liquid is mastered loud and bright for headphone and stream playback rather than a soundsystem, which is why it reads as glossy next to a Good Looking record from 1996.
+
+tracks:
+ - The Flute Tune (Soulpride Remix) | Jaycut, Kolt Siewerts, Soulpride
+ - Snake Eyes | Feint, CoMa
+ - Sunking | State of Mind | 214331933
+
+examples:
+ - Goldie - Inner City Life (1994) | Soulful vocals over hyper-edited jungle breakbeats
+ - LTJ Bukem - Atlantis (1993) | Atmospheric liquid drum & bass pioneer, lush ambient synths
+ - Pendulum - Tarantula (2005) | High-energy stadium drum & bass with rock guitar fusion
+ - Shy FX - Original Nuttah (1994) | Classic ragga jungle anthem, pitch-shifted snare rolls

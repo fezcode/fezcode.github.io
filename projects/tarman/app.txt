@@ -1,0 +1,11 @@
+{
+  "name": "Tarman",
+  "version": "0.1.2",
+  "tagline": "The spike is gone. The evidence isn’t.",
+  "subtitle": "A native Windows task manager and resource monitor with a ten-minute moving history, one shared sample clock, and system and per-process analysis.",
+  "repo": "https://github.com/fezcode/Tarman",
+  "download": "https://github.com/fezcode/Tarman/releases/latest",
+  "platforms": ["Windows"],
+  "stack": ["C11", "raylib", "Win32"],
+  "image": "/images/projects/tarman/analysis.webp"
+}

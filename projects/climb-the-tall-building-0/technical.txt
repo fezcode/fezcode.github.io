@@ -1,0 +1,10 @@
+LABEL: Technical
+SUBTEXT: Stack
+IMAGE: /images/projects/climb-the-tall-building-0/3.png
+
+The project utilizes a fast and lightweight modern web stack for optimal browser performance:
+- **Frontend**: React 19 (TypeScript)
+- **Build Tool**: Vite 8
+- **State Management**: Zustand
+- **Styling**: Tailwind CSS 4
+- **Icons**: Lucide React

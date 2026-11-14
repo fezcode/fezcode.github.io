@@ -1,0 +1,15 @@
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> clockt new -n build        <span class="text-[#b8bb26]"># create a session and attach</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> clockt ls                  <span class="text-[#b8bb26]"># list daemon sessions</span>
+
+  NAME     PANES  CWD                     STATUS
+  build    2      D:\Workhammer\clockt    attached
+  agent    1      D:\Workhammer\fezcodex  detached
+  ssh:dev  1      ~                       detached
+
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> clockt send build "npm test"   <span class="text-[#b8bb26]"># type into a session</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> clockt read build              <span class="text-[#b8bb26]"># print its screen</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> clockt cmd pane.split.right    <span class="text-[#b8bb26]"># drive the window from a script</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> clockt cmd group.new name=work <span class="text-[#b8bb26]"># a workspace with a fresh shell</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> clockt browser open            <span class="text-[#b8bb26]"># a WebView2 pane beside your shells</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> clockt ssh dev                 <span class="text-[#b8bb26]"># hosts from ~\.ssh\config</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> clockt attach build            <span class="text-[#b8bb26]"># Ctrl+\ detaches again</span>

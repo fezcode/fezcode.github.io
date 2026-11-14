@@ -1,0 +1,66 @@
+# PIML: Parenthesis Intended Markup Language
+
+![piml - Cover Art](/images/projects/piml.webp)
+
+**PIML** is a data serialization format designed for humans first, machines second. It bridges the gap between the strictness of JSON and the ambiguity of YAML, offering a syntax that is readable, writable, and structurally obvious.
+
+> "Data should be beautiful. Structure should be self-evident."
+
+## Why PIML?
+
+In a world of configuration hell, PIML offers a sanctuary of clarity.
+*   **No Quotes:** Keys and simple strings don't need them.
+*   **No Trailing Commas:** End of line means end of value.
+*   **Explicit Structure:** Parentheses `(key)` clearly denote fields, preventing the "whitespace anxiety" of YAML.
+
+## Syntax Showcase
+
+Compare the elegance of PIML against traditional formats:
+
+### PIML
+```piml
+(server)
+  (host) localhost
+  (port) 8080
+  (ssl) true
+  (endpoints)
+    > /api/v1
+    > /health
+```
+
+### JSON
+```json
+{
+  "server": {
+    "host": "localhost",
+    "port": 8080,
+    "ssl": true,
+    "endpoints": [
+      "/api/v1",
+      "/health"
+    ]
+  }
+}
+```
+
+## Ecosystem & Tools
+
+PIML is supported by a growing ecosystem of tools:
+
+*   **[go-piml](/projects/go-piml):** A high-performance Go parser and serializer.
+*   **[piml.js](/projects/piml.js):** Full support for JavaScript/TypeScript environments.
+*   **[VS Code Extension](/projects/piml-highlighter):** Syntax highlighting and snippets for visual clarity.
+*   **[PIML Lab](/apps/piml-lab):** A live playground to test and convert your data.
+
+## Specification Highlights
+
+*   **Null Safety:** `nil` handles nulls, empty lists, and empty objects gracefully.
+*   **Lists:** Denoted by `>` for clear, vertical scanning.
+*   **Comments:** Native `#` support for documenting your configuration.
+*   **Multi-line Strings:** Indentation-based text blocks without escape character madness.
+
+## Get Started
+
+Adopt PIML for your next configuration file or data exchange format.
+
+[Read the Full Spec](https://github.com/fezcode/piml)

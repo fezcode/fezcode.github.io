@@ -1,0 +1,12 @@
+LABEL: Access
+SUBTEXT: Play Now
+IMAGE: /images/projects/swat-tactics/4.png
+
+SWAT TACTICS is available for immediate browser-based play at:
+**[Launch Game](https://fezcode.com/Swat-Tactics/)**
+
+**Controls:**
+- **Move**: `W/A/S/D` or `Arrow Keys`
+- **Aim**: `Mouse Cursor`
+- **Shoot**: `Left Click`
+- **Mute Audio**: `M` key

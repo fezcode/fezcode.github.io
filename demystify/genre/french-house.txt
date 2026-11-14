@@ -1,0 +1,45 @@
+id: french-house
+rank: 30
+name: FRENCH HOUSE & NU-DISCO
+family: Electronic
+years: 1995 → present
+sub: Filtered disco loops and vocoders — the sound of Paris rebuilding American dance music
+spec: 86,88,72,52,48,56,66,74,80,82,80,78,80,84,82,74,64,54,44,36
+synthType: sawtooth
+freqs: 55, 68.94, 420.08
+
+what:
+ The _French touch_ arrived around 1995 when a handful of Paris producers started looping obscure disco and boogie records through resonant band-pass filters, adding a compressor and very little else. Daft Punk's *Homework* (1997) and Air's *Moon Safari* (1998) marked the two poles — dancefloor and living room — and the template proved durable enough to carry Justice, Metronomy, L'Impératrice and Parcels decades later.
+
+artists:
+ *Daft Punk*, Cassius, Etienne de Crécy, Bob Sinclar, Alan Braxe and the Roulé/Crydamoure labels; *Air* (Nicolas Godin and Jean-Benoît Dunckel) on the downtempo side. The modern continuation: Justice, Breakbot, *L'Impératrice*, Parcels, Jungle, Metronomy, Digitalism, NZCA LINES.
+
+trivia:
+ Daft Punk wore the helmets because of a claimed studio accident on 9 September 1999 — a story they told with a straight face for twenty years — and the costumes let them tour without ever being recognised offstage. Air recorded *Moon Safari* largely at home on a Wurlitzer, a Solina string synth and a Minimoog, and the album sold on the strength of a sound most French critics initially dismissed as lounge pastiche.
+
+sonic:
+ A four-on-the-floor kick around 118–128 BPM, a looped sample that never resolves, and a resonant filter sweeping across it so the track's entire arc is one long tonal opening. Bass is compressed against the kick hard enough to breathe audibly. Vocals are vocoded or talkbox-processed rather than sung straight, and the whole mix is deliberately saturated — the loop is meant to sound like a record, not like a session.
+
+gear:
+ Akai S1100 and MPC for the loop, a Roland TR-909 or sampled disco drums underneath, and the crucial piece: a resonant filter — the Sherman Filterbank, a Moog ladder, or a plugin emulation. Talkbox (Heil) and vocoder (Roland VP-330) for the voice, plus vintage compressors driven far past their intended range.
+
+prod:
+ The production trick that defines the style is *sidechain compression*: the bass and pads are ducked by the kick so the whole mix pumps in time. Loops are usually left unquantised because the source record's own swing is the point. Mastering is loud and mid-forward, and many of the classic records were cut deliberately hot to vinyl so the saturation became part of the sound rather than a defect.
+
+tracks:
+ - Gamesofluck | Parcels
+ - End of Line | Daft Punk
+ - Holocene | Klangphonics, Anna Metko
+ - Lucky I Got What I Want | Jungle
+ - La femme d'argent | Air
+ - Parfum thérémine | L'Impératrice
+ - All I Need | Air, Beth Hirsch
+ - Lose Yourself to Dance | Daft Punk, Pharrell Williams
+ - Instant Crush | Daft Punk, Julian Casablancas
+ - Bad Feeling | Cobra Man
+ - Mer du Japon | Air
+ - There Is Still Pain Left - Laolu Remix | Sophie Hunger, Laolu
+ - Paris - Aeroplane Remix | Friendly Fires, Aeroplane
+ - Pogo | Digitalism
+ - Night Owl | Metronomy
+ - For Your Love (feat. VIAA) | NZCA LINES, VIAA

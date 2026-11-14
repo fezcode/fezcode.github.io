@@ -1,0 +1,56 @@
+id: the-legible-fight
+rank: 15
+name: THE LEGIBLE FIGHT
+family: Action
+years: 2003 → present
+sub: Wide, long and practical, so an audience can follow who is where and what it is costing them
+
+ascii:
+┌────────────────────────────────────────┐
+│  [   WIDE   ] hold ─── hold ─── hold   │
+│   ○──────○  geography kept intact      │
+│  vs. ▓▒░▓▒░ 14 cuts, 0 information     │
+└────────────────────────────────────────┘
+
+what:
+ Staging action so the audience can read it: wider lenses, longer takes, fewer cuts, and performers who do enough of the work that the camera does not have to hide them. It is a reaction against the shaky, heavily cut style that dominated after the *Bourne* films were widely imitated, and its central claim is that tension comes from comprehension. If you cannot tell who is winning, you cannot care.
+
+artists:
+ Chad Stahelski and David Leitch came from stunt work and built *John Wick* on the principle, letting Keanu Reeves reload on camera because the reload is the drama. George Miller storyboarded *Mad Max Fury Road* as a comic and centred nearly every frame so the eye never has to hunt during a cut. *Nobody* applies the same discipline to a smaller scale, and *Train To Busan* keeps its geography legible inside a moving train.
+
+trivia:
+ The *John Wick* films shoot reloads, jams and misses in the same take as the shooting, because a magazine change is an unfakeable clock: the audience knows the gun is empty and the fight has a deadline. It is a dramatic device that only exists if the camera refuses to cut away, which is precisely the argument the style is making.
+
+sonic:
+ Clarity produces tension, and confusion produces only noise. A held wide also restores consequence, since you can see distance, fatigue and damage accumulate on a body. The cost is exposure: with nothing hidden, a performer who cannot do the move is visible immediately, which is why the style demands casting and training decisions made a year before the shoot.
+
+gear:
+ Stunt teams involved from preproduction rather than hired for a week, previsualisation shot on video with the stunt performers themselves, and camera operators who can keep a wide frame composed while moving with a fight. Practical effects and real vehicles where possible, because a real object gives an operator something to react to.
+
+prod:
+ Months of rehearsal, and a schedule that treats action as principal photography rather than second unit. It is expensive up front and cheaper in post, since there is less to fix and less to stitch. The real risk is that the approach cannot be faked: half-committing produces a film that is neither legible nor kinetic.
+
+examples:
+ - John Wick | the reload as a clock
+ - John Wick Chapter 2 | geography held across a gallery
+ - John Wick Chapter 4 | the staircase, shot for comprehension
+ - Mad Max Fury Road | centred framing, practical vehicles
+ - Nobody | the bus, one confined space
+ - Upgrade | the body moved by the camera
+ - Unleashed | choreography given room
+ - Train To Busan | a fight legible inside a carriage
+ - Oldboy | the corridor as the argument
+ - Kingsman The Secret Service | the church as the counter-example
+ - Eastern Promises | the bathhouse, nothing hidden
+ - The Equalizer | the hardware store, geography kept
+ - The Fast and the Furious Tokyo Drift | practical drifting, wide
+ - Man On Fire | the opposite approach, for comparison
+ - Kung Fu Panda | choreography readable because it is drawn
+ - Warcraft | the legibility problem at scale
+ - Blade | choreography given room to read
+ - Spider-Man 2 | the train, staged to be read
+ - Spider-Man | practical web-swinging, wide
+ - Southpaw | the ring shot for geography
+ - Rogue One | the beach, legible at scale
+ - The Amazing Spider-Man | the same fight, cut tighter
+ - Mean Machine | the pitch as an arena

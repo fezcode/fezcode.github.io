@@ -1,0 +1,478 @@
+{
+  "name": "Airlift",
+  "byline": "by Fezcode",
+  "logo": "/images/projects/airlift/logo.svg",
+  "version": "0.3.3",
+  "tagline": "Your apps. In good hands.",
+  "subtitle": "A modern app manager for independent software. Discover apps, follow their public GitHub releases, and install, update and remove them from one place.",
+  "download": "https://github.com/fezcode/Airlift/releases/latest",
+  "downloadLabel": "Download",
+  "repo": "https://github.com/fezcode/Airlift",
+  "repoLabel": "fezcode/Airlift",
+  "platforms": ["Windows", "macOS", "Linux"],
+  "stack": [".NET 10", "Avalonia 12", "SQLite", "Forge"],
+
+  "announcement": {
+    "badge": "New in 0.3.3",
+    "text": "Open app and See repo now sit on every installed app's Manage dialog.",
+    "href": "#whats-new"
+  },
+
+  "nav": [
+    { "label": "What's new", "href": "#whats-new" },
+    { "label": "Catalog", "href": "#catalog" },
+    { "label": "Features", "href": "#features" },
+    { "label": "Ways to run", "href": "#ways" }
+  ],
+
+  "hero": {
+    "lines": ["Finds, installs, updates,", "and just"],
+    "script": "lifts",
+    "subtitle": "Airlift turns a folder of downloads into a library. Browse a catalog of independent apps, follow their GitHub releases, and keep every one of them current — with the release notes in front of you and the installer checked before it runs.",
+    "primary": { "label": "Download Airlift", "href": "https://github.com/fezcode/Airlift/releases/latest" },
+    "secondary": { "label": "See the source", "href": "https://github.com/fezcode/Airlift" },
+    "caption": "14 apps in the catalog"
+  },
+
+  "showcase": {
+    "address": "airlift — Discover",
+    "themes": [
+      { "id": "meadow", "label": "Meadow", "swatch": "#D7F59A", "image": "/images/projects/airlift/discover.webp" },
+      { "id": "altitude", "label": "Altitude", "swatch": "#8FC2F2", "image": "/images/projects/airlift/discover-altitude.webp" }
+    ],
+    "left": "/images/projects/airlift/collections.webp",
+    "right": "/images/projects/airlift/updates-available.webp"
+  },
+
+  "whatsNew": {
+    "eyebrow": "What's new in 0.3",
+    "title": "The biggest Airlift update yet.",
+    "tiles": [
+      {
+        "type": "shot",
+        "col": 5, "row": 2,
+        "title": "Open any installed app.",
+        "image": "/images/projects/airlift/manage-actions.webp",
+        "icon": "/images/projects/airlift/icons/io.fezcode.sirwordalot.webp",
+        "focus": "50% 100%"
+      },
+      {
+        "type": "photo",
+        "col": 4, "row": 2,
+        "image": "/images/bg/tim_simon.jpg",
+        "title": "Two themes.",
+        "highlight": "Pick your altitude.",
+        "highlightColor": "#1E3A8A",
+        "ink": "#0B1B3A",
+        "tint": "linear-gradient(180deg, rgba(255,255,255,0.35), rgba(255,255,255,0) 60%)"
+      },
+      {
+        "type": "toggle",
+        "col": 3, "row": 1,
+        "word": "silent",
+        "label": "Opt-in silent updates"
+      },
+      {
+        "type": "metal",
+        "col": 3, "row": 1,
+        "word": "SHA-256",
+        "label": "Verified before launch"
+      },
+      {
+        "type": "icons",
+        "col": 4, "row": 2,
+        "image": "/images/bg/emre.jpg",
+        "title": "New in the catalog",
+        "icons": [
+          "/images/projects/airlift/icons/io.fezcode.sirwordalot.webp",
+          "/images/projects/airlift/icons/io.fezcode.hammeros.webp",
+          "/images/projects/airlift/icons/com.fezcode.gitland.webp"
+        ]
+      },
+      {
+        "type": "big",
+        "col": 5, "row": 2,
+        "image": "/images/bg/3.webp",
+        "word": "airlift",
+        "number": "0.3"
+      },
+      {
+        "type": "chat",
+        "col": 3, "row": 2,
+        "ask": "airlift-cli update descry --silent",
+        "reply": "Done.",
+        "label": "CLI"
+      },
+      {
+        "type": "shot",
+        "col": 4, "row": 2,
+        "title": "A details dialog you can read.",
+        "image": "/images/projects/airlift/app-overview.webp",
+        "focus": "50% 20%"
+      },
+      {
+        "type": "keys",
+        "col": 3, "row": 2,
+        "keys": ["Ctrl", "K"],
+        "title": "Search the whole catalog."
+      },
+      {
+        "type": "note",
+        "col": 2, "row": 2,
+        "title": "Failures, out loud.",
+        "body": "A refused release check can no longer look like “up to date.”"
+      },
+      {
+        "type": "frame",
+        "col": 3, "row": 2,
+        "title": "Its own window frame",
+        "body": "wherever you run Airlift"
+      }
+    ],
+    "stories": [
+      {
+        "image": "/images/projects/airlift/updates-available.webp",
+        "title": "Your updates, finally in one place.",
+        "body": "Airlift reads every catalogued repository's public releases and lines the new versions up on one page, including its own."
+      },
+      {
+        "image": "/images/projects/airlift/release-history.webp",
+        "title": "Release notes before you commit.",
+        "body": "Each app's release history renders its Markdown notes and lists the assets, sizes and published digests, stable and prerelease alike."
+      },
+      {
+        "image": "/images/projects/airlift/collections.webp",
+        "title": "A better setup starts here.",
+        "body": "Three curated collections — Everyday essentials, The creative desk and After hours — download together in one go."
+      },
+      {
+        "image": "/images/projects/airlift/settings.webp",
+        "title": "Make Airlift your own.",
+        "body": "Meadow or Altitude, a background check interval, and a workspace that reconciles itself with what is actually installed."
+      }
+    ]
+  },
+
+  "pocket": {
+    "badge": "NEW",
+    "eyebrow": "airlift-cli",
+    "title": "Your apps, in your terminal.",
+    "body": "The desktop app and the CLI share one core: the same catalog, the same SQLite state, the same verification. Refresh, inspect, download, install, pin and export from any shell.",
+    "buttons": [
+      { "label": "Get the CLI", "href": "https://github.com/fezcode/Airlift/releases/latest" },
+      { "label": "Read the guide", "href": "https://github.com/fezcode/Airlift/blob/main/native/README.md" }
+    ],
+    "note": "Ships inside the installer, beside the desktop app.",
+    "commands": [
+      { "cmd": "airlift-cli refresh", "note": "check every repository" },
+      { "cmd": "airlift-cli info Descry", "note": "versions, sizes, channel" },
+      { "cmd": "airlift-cli install Descry", "note": "Forge wizard, verified" },
+      { "cmd": "airlift-cli pin Descry", "note": "keep this version" },
+      { "cmd": "airlift-cli update Descry --silent", "note": "no wizard, same folder" },
+      { "cmd": "airlift-cli export airlift-setup.json", "note": "take your setup along" }
+    ],
+    "panel": {
+      "title": "Airlift",
+      "subtitle": "0.3.3",
+      "status": "Connected",
+      "detail": "GitHub Releases",
+      "rows": [
+        { "label": "Catalog", "value": "14 apps" },
+        { "label": "Channels", "value": "stable · prerelease" },
+        { "label": "Integrity", "value": "SHA-256 + Forge identity" }
+      ],
+      "footTitle": "No sign-in required",
+      "foot": "Airlift reads public releases. There is no account to make."
+    }
+  },
+
+  "catalog": {
+    "eyebrow": "The Airlift catalog",
+    "title": ["14 apps.", "One click each."],
+    "subtitle": "Editors, players, readers, terminals, a whole retro desktop. Independent tools, each published from its own public repository.",
+    "groups": [
+      {
+        "label": "Productivity",
+        "icon": "/images/projects/airlift/icons/com.fezcode.descry.webp",
+        "heading": "A calmer place to get things done.",
+        "body": "Notes, documents and words, in apps that start fast and stay out of the way.",
+        "apps": [
+          { "name": "Descry", "line": "A little space for big ideas.", "icon": "/images/projects/airlift/icons/com.fezcode.descry.webp", "href": "/projects/descry" },
+          { "name": "pidi", "line": "A fresh page.", "icon": "/images/projects/airlift/icons/io.pidi.pidi.webp", "href": "/projects/pidi" },
+          { "name": "Sir Word-a-lot", "line": "Words that stay with you.", "icon": "/images/projects/airlift/icons/io.fezcode.sirwordalot.webp", "href": "https://github.com/fezcode/SirWordALot" }
+        ]
+      },
+      {
+        "label": "Developer tools",
+        "icon": "/images/projects/airlift/icons/io.clockt.clockt.webp",
+        "heading": "Your terminal, your territory.",
+        "body": "A multiplexer with persistent sessions and a Git client with three-way review.",
+        "apps": [
+          { "name": "clockt", "line": "Your terminal. Your territory.", "icon": "/images/projects/airlift/icons/io.clockt.clockt.webp", "href": "/projects/clockt" },
+          { "name": "Gitland", "line": "A clear view of your code.", "icon": "/images/projects/airlift/icons/com.fezcode.gitland.webp", "href": "https://github.com/fezcode/gitland" }
+        ]
+      },
+      {
+        "label": "Creative",
+        "icon": "/images/projects/airlift/icons/com.fezcode.atelier.webp",
+        "heading": "Room for the next good idea.",
+        "body": "A viewer that frames every image and an editor with the soul of a typewriter.",
+        "apps": [
+          { "name": "Atelier", "line": "Every image deserves a good frame.", "icon": "/images/projects/airlift/icons/com.fezcode.atelier.webp", "href": "/projects/atelier" },
+          { "name": "Typewriter", "line": "Just you and the next sentence.", "icon": "/images/projects/airlift/icons/com.fezcode.typewriter.webp", "href": "/projects/typewriter" }
+        ]
+      },
+      {
+        "label": "Media",
+        "icon": "/images/projects/airlift/icons/io.timp.timp.webp",
+        "heading": "Your library, on your terms.",
+        "body": "Music and video, played natively, with the artwork and the subtitles done properly.",
+        "apps": [
+          { "name": "Timp", "line": "Less interface. More music.", "icon": "/images/projects/airlift/icons/io.timp.timp.webp", "href": "/projects/timp" },
+          { "name": "tivi", "line": "Press play. Settle in.", "icon": "/images/projects/airlift/icons/io.tivi.tivi.webp", "href": "/projects/tivi" }
+        ]
+      },
+      {
+        "label": "Utilities",
+        "icon": "/images/projects/airlift/icons/io.hisashi.hisashi.webp",
+        "heading": "Make yourself at home.",
+        "body": "A top bar and dock, a controller keyboard, system care and a desktop inside your desktop.",
+        "apps": [
+          { "name": "Hisashi", "line": "Make yourself at home.", "icon": "/images/projects/airlift/icons/io.hisashi.hisashi.webp", "href": "/projects/hisashi" },
+          { "name": "HammerOS", "line": "A desktop inside your desktop.", "icon": "/images/projects/airlift/icons/io.fezcode.hammeros.webp", "href": "https://github.com/fezcode/hammeros" },
+          { "name": "osXos", "line": "System care, with no surprises.", "icon": "/images/projects/airlift/icons/com.fezcode.osxos.webp", "href": "https://github.com/fezcode/osXos" },
+          { "name": "xboard", "line": "A different way to type.", "icon": "/images/projects/airlift/icons/com.fezcode.xboard.webp", "href": "https://github.com/fezcode/xboard" }
+        ]
+      },
+      {
+        "label": "Gaming",
+        "icon": "/images/projects/airlift/icons/com.fezcode.cogas.webp",
+        "heading": "All your games. One library.",
+        "body": "Installed games from every store in one shelf, with prices compared before you buy the next one.",
+        "apps": [
+          { "name": "Cogas", "line": "All your games. One library.", "icon": "/images/projects/airlift/icons/com.fezcode.cogas.webp", "href": "/projects/cogas" }
+        ]
+      }
+    ],
+    "cta": { "label": "Browse every source", "href": "https://github.com/fezcode?tab=repositories" }
+  },
+
+  "features": {
+    "eyebrow": "Runs itself, so you don't have to",
+    "title": "Feature-rich. Friction-free.",
+    "subtitle": "Keeping a dozen small apps current used to mean a dozen release pages. With Airlift, checking, downloading, verifying and installing become things you click, not things you remember.",
+    "slides": [
+      {
+        "eyebrow": "Discover",
+        "title": "Good tools, great possibilities.",
+        "highlight": "One catalog",
+        "after": "for every app you follow.",
+        "image": "/images/projects/airlift/discover.webp"
+      },
+      {
+        "eyebrow": "Updates",
+        "highlight": "Stable or prerelease,",
+        "after": "compared by real semantic versions.",
+        "image": "/images/projects/airlift/updates-available.webp"
+      },
+      {
+        "eyebrow": "Sources",
+        "highlight": "Know where your apps come from.",
+        "after": "Public repositories, no sign-in.",
+        "image": "/images/projects/airlift/sources.webp"
+      },
+      {
+        "eyebrow": "Downloads",
+        "highlight": "Resumable downloads",
+        "after": "and a queue that survives a restart.",
+        "image": "/images/projects/airlift/downloads.webp"
+      },
+      {
+        "eyebrow": "Settings",
+        "highlight": "A few thoughtful defaults.",
+        "after": "The rest is up to you.",
+        "image": "/images/projects/airlift/settings.webp"
+      }
+    ]
+  },
+
+  "rails": [
+    {
+      "id": "updates",
+      "eyebrow": "Updates",
+      "title": "Updates, done properly.",
+      "cards": [
+        { "image": "/images/projects/airlift/silent-update.webp", "title": "Silent when you want it", "body": "An unchecked box on every managed update: skip the wizard, keep the install folder, use the installer's defaults." },
+        { "image": "/images/projects/airlift/release-history.webp", "title": "Release history", "body": "Every published release, its Markdown notes and its assets, stable and prerelease, one tab away." },
+        { "image": "/images/projects/airlift/my-library.webp", "title": "Pin a version", "body": "Pinned apps are left out of updates until you say otherwise. Your setup, your control." }
+      ]
+    },
+    {
+      "id": "safety",
+      "eyebrow": "Verification & cleanup",
+      "title": "Nothing runs unchecked.",
+      "cards": [
+        { "image": "/images/projects/airlift/app-overview.webp", "title": "Digest first", "body": "Airlift verifies the published SHA-256 digest, or asks for explicit consent when there is none, before any installer opens." },
+        { "image": "/images/projects/airlift/check-failed-modal.webp", "title": "Honest failures", "body": "When GitHub rate-limits a check, Airlift says so and tells you when to retry, instead of calling you up to date." },
+        { "image": "/images/projects/airlift/installer-cache-review.webp", "title": "Clear old installers", "body": "Review and remove cached installers older than what is installed. Current, newer and unfinished files are kept." }
+      ]
+    }
+  ],
+
+  "ways": {
+    "eyebrow": "Ways to run Airlift",
+    "title": "Pick your lift.",
+    "options": [
+      {
+        "name": "Installer",
+        "art": "installer",
+        "file": "Airlift-Setup-0.3.3.exe",
+        "badge": "Recommended",
+        "cta": { "label": "Download Setup", "href": "https://github.com/fezcode/Airlift/releases/latest" },
+        "ratings": [
+          { "label": "Ease of setup", "value": 5 },
+          { "label": "Self-updates", "value": 5 },
+          { "label": "Scriptable", "value": 3 },
+          { "label": "Footprint", "text": "Per-user" },
+          { "label": "Includes", "text": "Desktop + CLI" }
+        ],
+        "bestFor": "anyone who wants Airlift in the Start Menu and every future update handled for them.",
+        "youGet": "a six-step Forge wizard — licence, folder, shortcuts — a per-user install and silent self-updates that reopen Airlift."
+      },
+      {
+        "name": "Portable",
+        "art": "folder",
+        "file": "dist/win-x64/desktop/",
+        "cta": { "label": "Get the build", "href": "https://github.com/fezcode/Airlift/releases" },
+        "ratings": [
+          { "label": "Ease of setup", "value": 4 },
+          { "label": "Self-updates", "value": 2 },
+          { "label": "Scriptable", "value": 3 },
+          { "label": "Footprint", "text": "One folder" },
+          { "label": "Includes", "text": ".NET runtime" }
+        ],
+        "bestFor": "people who keep their tools on a drive, or want to try Airlift without installing it.",
+        "youGet": "a self-contained folder, runtime included. Updates open the normal wizard; a portable copy is never overwritten."
+      },
+      {
+        "name": "airlift-cli",
+        "art": "terminal",
+        "file": "airlift-cli.exe --help",
+        "cta": { "label": "Read the CLI guide", "href": "https://github.com/fezcode/Airlift/blob/main/native/README.md" },
+        "ratings": [
+          { "label": "Ease of setup", "value": 3 },
+          { "label": "Self-updates", "value": 3 },
+          { "label": "Scriptable", "value": 5 },
+          { "label": "Footprint", "text": "Headless" },
+          { "label": "Includes", "text": "Shared core" }
+        ],
+        "bestFor": "scripts, fresh machines and anyone who would rather type than click.",
+        "youGet": "the same catalog, state and checks as the desktop app, with --silent updates and setup export/import."
+      }
+    ]
+  },
+
+  "craft": {
+    "eyebrow": "The craft",
+    "title": "The little things aren't little.",
+    "body": "Most app managers stop at “it downloads.” Airlift keeps going, until every check, dialog and empty state feels considered.",
+    "cards": [
+      { "before": "Find anything via", "highlight": "Ctrl K.", "image": "/images/projects/airlift/discover.webp", "tone": "#8A3B2E" },
+      { "before": "Stay up to date with", "highlight": "real release notes.", "image": "/images/projects/airlift/release-history.webp", "tone": "#4B3A8A" },
+      { "before": "Pin it,", "highlight": "keep it.", "image": "/images/projects/airlift/manage-actions.webp", "tone": "#3F5A2A" },
+      { "before": "Grasp it at a glance with", "highlight": "Collections.", "image": "/images/projects/airlift/collections.webp", "tone": "#1F4A63" },
+      { "before": "Clear the runway with", "highlight": "one button.", "image": "/images/projects/airlift/downloads.webp", "tone": "#7A5A1E" }
+    ]
+  },
+
+  "trust": {
+    "eyebrow": "Private by design",
+    "title": "Built for trust.",
+    "body": "Not trust by promise. Trust by architecture. Open code, public releases, and checks that run before anything does.",
+    "big": {
+      "title": "Built in the open.",
+      "body": "Airlift's source code is available publicly on GitHub, MIT licensed.",
+      "cta": { "label": "Star on GitHub", "href": "https://github.com/fezcode/Airlift" }
+    },
+    "small": [
+      {
+        "icon": "home",
+        "title": "Local-first.",
+        "body": "Your library lives in a SQLite file on your machine. Airlift reads public GitHub releases; there is no account, no sign-in and no Airlift server in between.",
+        "chip": "No sign-in required"
+      },
+      {
+        "icon": "shield",
+        "title": "Checked before it runs.",
+        "body": "Downloads are matched against the release's SHA-256 digest, and a Forge installer's embedded identity, version and architecture are verified before it opens.",
+        "chip": "SHA-256 · Forge identity"
+      }
+    ]
+  },
+
+  "changelog": {
+    "eyebrow": "From the changelog",
+    "title": "Every release, in plain words.",
+    "body": "Airlift ships small and often. These are the notes, straight from the repository.",
+    "entries": [
+      { "version": "0.3.3", "date": "Sep 22, 2026", "body": "Sir Word-a-lot offered no way to open it. The lookup now tries the display name, then the project, then the uninstall record's icon. Manage also carries See repo, beside Open app.", "image": "/images/projects/airlift/manage-actions.webp" },
+      { "version": "0.3.2", "date": "Sep 22, 2026", "body": "HammerOS joins the catalog: a fullscreen retro workspace with your real files, independent shells and Windows apps tiled on one screen." },
+      { "version": "0.3.1", "date": "Sep 22, 2026", "body": "Sir Word-a-lot arrives, and the catalog becomes opt-in: a project joins only when its properties.piml says (airlift) true." },
+      { "version": "0.3.0", "date": "Sep 20, 2026", "body": "Selectable themes — Meadow and Altitude — and release checks that fail visibly, with the reason and a time to retry.", "image": "/images/projects/airlift/discover-altitude.webp" },
+      { "version": "0.2.10", "date": "Sep 20, 2026", "body": "A refused release check can no longer look like success. No published release is reported as unavailable, never as “up to date.”" },
+      { "version": "0.2.9", "date": "Sep 20, 2026", "body": "A readable details dialog and a searchable catalog. Ctrl K focuses search from anywhere.", "image": "/images/projects/airlift/app-overview.webp" },
+      { "version": "0.2.8", "date": "Sep 20, 2026", "body": "Gitland in the catalog: a native Git client with readable diffs, three-way review and an editable merge result." },
+      { "version": "0.2.7", "date": "Sep 20, 2026", "body": "Airlift draws its own window frame, so the title bar belongs to the app instead of fighting it." },
+      { "version": "0.2.6", "date": "Sep 20, 2026", "body": "Clear old cached installers from Settings and Downloads. Current, newer and unfinished files are always kept." },
+      { "version": "0.2.5", "date": "Sep 20, 2026", "body": "Optional silent updates for managed apps and a reliable inventory of what is actually installed." }
+    ]
+  },
+
+  "closing": {
+    "title": "Start lifting.",
+    "body": "Download Airlift for the machine you already have. Your catalog is ready the moment it opens.",
+    "primary": { "label": "Download Airlift", "href": "https://github.com/fezcode/Airlift/releases/latest" },
+    "secondary": { "label": "Ways to run", "href": "#ways" },
+    "links": [
+      { "title": "Releases", "body": "Installers, builds and notes.", "href": "https://github.com/fezcode/Airlift/releases" },
+      { "title": "Source", "body": "C#, Avalonia and the shared core.", "href": "https://github.com/fezcode/Airlift" },
+      { "title": "Issues", "body": "Bugs, ideas and requests.", "href": "https://github.com/fezcode/Airlift/issues" },
+      { "title": "More projects", "body": "Everything else from Fezcode.", "href": "/projects" }
+    ],
+    "tagline": "Because a good app deserves a good way home."
+  },
+
+  "footer": {
+    "title": "A little lift for your everyday.",
+    "body": "Airlift is MIT licensed and built by Fezcode alongside the apps it carries.",
+    "columns": [
+      {
+        "title": "Airlift",
+        "links": [
+          { "label": "Download", "href": "https://github.com/fezcode/Airlift/releases/latest" },
+          { "label": "Releases", "href": "https://github.com/fezcode/Airlift/releases" },
+          { "label": "Source", "href": "https://github.com/fezcode/Airlift" },
+          { "label": "Issues", "href": "https://github.com/fezcode/Airlift/issues" }
+        ]
+      },
+      {
+        "title": "In the catalog",
+        "links": [
+          { "label": "Descry", "href": "/projects/descry" },
+          { "label": "Timp", "href": "/projects/timp" },
+          { "label": "tivi", "href": "/projects/tivi" },
+          { "label": "Hisashi", "href": "/projects/hisashi" },
+          { "label": "Atelier", "href": "/projects/atelier" }
+        ]
+      },
+      {
+        "title": "Fezcodex",
+        "links": [
+          { "label": "Projects", "href": "/projects" },
+          { "label": "Blog", "href": "/blog" },
+          { "label": "About", "href": "/about" }
+        ]
+      }
+    ]
+  }
+}

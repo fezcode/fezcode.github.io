@@ -1,0 +1,35 @@
+id: classic-soul-funk
+rank: 45
+name: CLASSIC SOUL, FUNK & BLUES
+family: Pop & Soul
+years: 1965 → 1990
+sub: The rhythm section as the whole argument — recorded live, by people who could not fix it later
+spec: 80,88,86,72,64,68,76,82,84,80,76,76,80,82,78,68,58,48,40,32
+synthType: triangle
+freqs: 68.94, 86.41, 335.14
+
+what:
+ The core American popular tradition of the 1960s and 70s: Motown, Stax, Muscle Shoals and the Philadelphia sound on the soul side, and the harder rhythmic invention of James Brown and George Clinton's Parliament-Funkadelic on the funk side. Almost every genre elsewhere in this archive samples it. By the 1980s it had absorbed synthesizers and become the dominant grammar of mainstream pop.
+
+artists:
+ *Funkadelic* and Parliament, James Brown, Sly Stone; *Diana Ross* and the Motown roster; *Kool & The Gang*; *Michael Jackson*, whose _Thriller_-era records are the point where soul, funk and rock fully merged; blues elders including *Buddy Guy*; and modern revivalists such as The Heavy.
+
+trivia:
+ Eddie Hazel recorded the ten-minute guitar solo that is *"Maggot Brain"* in a single take after George Clinton told him to play as if he had just learned his mother had died — and then, in the second half, as if he learned it was untrue. Clinton mixed nearly the entire band out of the finished track. "Beat It" features Eddie Van Halen, who played the solo for free as a favour and was not credited on the sleeve.
+
+sonic:
+ Everything is the groove: bass and drums locked and mixed forward, guitar playing a rhythmic figure rather than chords, horns punctuating rather than sustaining. Vocals are performed rather than constructed. The frequency picture is warm and mid-heavy, with the extreme top and bottom rolled off by the tape and console rather than by choice.
+
+gear:
+ Fender Precision bass, Hohner Clavinet, Hammond B3 through a Leslie, Fender Rhodes; horns recorded as a section in one room. Consoles were Neve, API and custom Motown desks running to 8- and 16-track tape, with EMT plate reverb and no editing beyond razor blade.
+
+prod:
+ Recorded live with the band in one room and minimal isolation, so the leakage between microphones glues the mix — a record made this way cannot be un-mixed, which is why remasters of this era vary so wildly in quality. Vocals were cut with the band or in one or two passes. The dynamic range is wide and the transients intact, which is exactly why samplers have been mining these records for forty years.
+
+tracks:
+ - Easy Lover | Philip Bailey, Phil Collins
+ - I Thought It Took A Little Time | Diana Ross
+ - Maggot Brain | Funkadelic
+ - Get Down On It - Single Version | Kool & The Gang
+ - Beat It | Michael Jackson
+ - Mean Ol' Man | The Heavy

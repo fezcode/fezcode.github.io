@@ -1,0 +1,46 @@
+# Philosophy 101: Logic - The Toolbox
+
+## The Architect's Tools
+
+Before we can build a worldview, we need tools. In philosophy, our hammer and saw are **Logic**.
+
+You can have the most beautiful, poetic thoughts in the world, but if your logic is flawed, your philosophy is just poetry (no offense to poets).
+
+## What is an Argument?
+
+In philosophy, an argument isn't a shouting match. It's a set of statements (premises) intended to determine the degree of truth of another statement (the conclusion).
+
+**The Standard Form:**
+
+1.  **Premise 1:** All humans are mortal.
+2.  **Premise 2:** Socrates is a human.
+3.  **Conclusion:** Therefore, Socrates is mortal.
+
+## Validity vs. Soundness
+
+This is where 90% of internet debates fail.
+
+*   **Validity:** If the premises are true, the conclusion *must* be true. The *structure* is correct.
+*   **Soundness:** The argument is valid *AND* the premises are actually true.
+
+**Example of a VALID but UNSOUND argument:**
+1.  All toasters are time machines. (False premise)
+2.  This object is a toaster. (True premise)
+3.  Therefore, this object is a time machine. (Valid logic, but garbage conclusion because Premise 1 is false).
+
+## Deduction vs. Induction
+
+*   **Deductive:** Top-down. If premises are true, the conclusion is **certain** (like the Socrates example).
+*   **Inductive:** Bottom-up. Observation to pattern. The conclusion is **probable**, not certain. (e.g., "The sun has risen every day of my life, therefore it will rise tomorrow." High probability, but not logically guaranteed by the premises alone).
+
+## Recommended Resources
+
+**1. The Website:**
+[Internet Encyclopedia of Philosophy (IEP) - Logic](https://iep.utm.edu/)
+*   Generally more accessible than the SEP for beginners.
+
+**2. The Book:**
+*   **"A Rulebook for Arguments" by Anthony Weston**.
+*   It's short, cheap, and essential. It breaks down how to write and assess arguments without 500 pages of theory.
+
+Next time, we ask: **How do we know anything at all?** (Epistemology).

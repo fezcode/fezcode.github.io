@@ -1,0 +1,37 @@
+LABEL: Extensibility
+SUBTEXT: The Lua Host
+IMAGE: /images/projects/descry/banner.png
+
+Drop a `*.lua` file in `data/plugins/` and it is a plugin. No build step, no manifest, no packaging.
+
+:::feature
+title: Register actions
+description: descry.register_action("name", fn) puts your function in the command palette with a category chip and a bindable shortcut.
+:::
+
+:::feature
+title: Edit the document
+description: descry.buffer.* reads and edits the open document — real text manipulation, not a preview hook.
+:::
+
+:::feature
+title: Reach the vault
+description: descry.vault.* lists and refreshes notes, descry.open opens one, descry.invoke runs any other action including the built-ins.
+:::
+
+:::feature
+title: Subscribe to events
+description: descry.on hooks open, save, text_change, mode_change and vault_change — so a plugin can react instead of poll.
+:::
+
+:::feature
+title: Talk to the user
+description: descry.notify and descry.dialog surface output; descry.confirm and descry.prompt ask for input, in the editor's own modals.
+:::
+
+:::feature
+title: Typed settings
+description: descry.config(key, default, {type=...}) declares a setting and gets a real editor for free — toggles, choices and validated numbers in a per-plugin settings modal.
+:::
+
+The Plugins overlay lists every loaded file, its actions, an on/off switch, that settings modal, and a hot-reload button — so the write/run loop stays inside the editor.

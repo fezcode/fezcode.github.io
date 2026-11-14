@@ -1,0 +1,116 @@
+# Prompt Engineering: Zero-shot, One-shot, Many-shot, and Metaprompting
+
+Prompt engineering is the art of communicating with Large Language Models (LLMs) to get the best possible output. It's less about "engineering" in the traditional sense and more about understanding how these models predict the next token based on context.
+
+In this first post of the series, we'll explore the foundational strategies: **Zero-shot**, **One-shot**, **Many-shot (Few-shot)**, and the advanced **Metaprompting**.
+
+## 1. Zero-shot Prompting
+
+**Zero-shot** prompting is asking the model to perform a task without providing any examples. You rely entirely on the model's pre-trained knowledge and its ability to understand the instruction directly.
+
+### When to use it?
+- For simple, common tasks (e.g., "Summarize this text", "Translate to Spanish").
+- When you want to see the model's baseline capability.
+- When the task is self-explanatory.
+
+### Example
+**Prompt:**
+> Classify the sentiment of this review: "The movie was fantastic, I loved the acting."
+
+**Output:**
+> Positive
+
+Here, the model wasn't told *how* to classify or given examples of positive/negative reviews. It just "knew" what to do.
+
+## 2. One-shot Prompting
+
+**One-shot** prompting involves providing **one single example** of the input and desired output pair before the actual task. This helps "steer" the model towards the specific format or style you want.
+
+### When to use it?
+- When the task is slightly ambiguous.
+- When you need a specific output format (e.g., JSON, a specific sentence structure).
+- When zero-shot fails to capture the nuance.
+
+### Example
+**Prompt:**
+> Classify the sentiment of the review.
+>
+> Review: "The food was cold and the service was slow."
+> Sentiment: Negative
+>
+> Review: "The movie was fantastic, I loved the acting."
+> Sentiment:
+
+**Output:**
+> Positive
+
+The single example clarifies that you want the output to be just the word "Negative" or "Positive", not a full sentence like "The sentiment of this review is positive."
+
+## 3. Many-shot (Few-shot) Prompting
+
+**Many-shot** (or **Few-shot**) prompting takes this further by providing **multiple examples** (usually 3 to 5). This is one of the most powerful techniques to improve reliability and performance on complex tasks.
+
+### When to use it?
+- For complex tasks where one example isn't enough to cover edge cases.
+- To teach the model a new pattern or a made-up language/classification system.
+- To significantly boost accuracy on reasoning tasks.
+
+### Example
+**Prompt:**
+> Classify the sentiment of the review.
+>
+> Review: "The food was cold."
+> Sentiment: Negative
+>
+> Review: "Great atmosphere!"
+> Sentiment: Positive
+>
+> Review: "It was okay, nothing special."
+> Sentiment: Neutral
+>
+> Review: "I waited for an hour."
+> Sentiment: Negative
+>
+> Review: "The movie was fantastic, I loved the acting."
+> Sentiment:
+
+**Output:**
+> Positive
+
+By seeing multiple examples, the model understands that "Neutral" is also an option and gets a better sense of the pattern.
+
+## 4. Metaprompting
+
+**Metaprompting** is a higher-level technique where you ask the model to **help you write the prompt** or to think about the prompt itself. It's "prompting about prompting."
+
+Instead of racking your brain for the perfect instructions, you describe your goal to the LLM and ask it to generate the best prompt for that goal.
+
+### When to use it?
+- When you are stuck and don't know how to phrase your request.
+- To optimize a prompt for a specific model (e.g., asking Gemini to write a prompt for Gemini).
+- To build complex "agentic" workflows where one prompt generates instructions for another.
+
+### Example
+**Prompt (You asking the model):**
+> I want to create a prompt that acts as a strict code reviewer. It should look for security vulnerabilities and style issues. Can you write a comprehensive system instruction for this persona?
+
+**Output (The Model generates a prompt for you):**
+> "You are an expert Senior Security Engineer and Code Reviewer. Your task is to analyze code snippets for:
+> 1. OWASP Top 10 vulnerabilities.
+> 2. Adherence to Clean Code principles.
+> 3. Performance bottlenecks.
+>
+> For every issue found, cite the specific line number, explain the risk, and provide a secure refactored version. Be strict and concise."
+
+Now you use *that* output as your actual prompt.
+
+## Summary
+
+| Strategy | Definition | Best For |
+| :--- | :--- | :--- |
+| **Zero-shot** | No examples, just instructions. | Simple, well-known tasks. |
+| **One-shot** | One example provided. | Formatting, minor ambiguity. |
+| **Many-shot** | Multiple examples provided. | Complex patterns, edge cases, reliability. |
+| **Metaprompting** | Using the LLM to write prompts. | Optimization, complex personas, getting unstuck. |
+
+Mastering these four levels is the first step to becoming proficient in prompt engineering. Next time, we'll dive into **Chain of Thought (CoT)** and how to make models "think" before they speak.

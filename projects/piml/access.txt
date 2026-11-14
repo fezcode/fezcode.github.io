@@ -1,0 +1,6 @@
+LABEL: Adoption
+SUBTEXT: Get Started
+
+Adopt PIML for your next configuration file or data exchange format. It's designed to be human-centric and structurally obvious.
+
+[Read the Full Spec](https://github.com/fezcode/piml)

@@ -1,0 +1,35 @@
+# Philosophy 101: Al-Ghazali - The Incoherence of the Philosophers
+
+## The Skeptic of the Golden Age
+
+Abu Hamid Al-Ghazali (1058–1111) was a giant of the Islamic Golden Age. He was a brilliant philosopher who used philosophy to dismantle philosophy.
+
+## The Incoherence of the Philosophers
+
+In his famous book *The Incoherence of the Philosophers* (*Tahafut al-Falasifa*), he attacked the Greek-influenced Islamic philosophers (like Avicenna) for relying too heavily on reason.
+
+He argued that reason alone cannot prove metaphysical truths (like the nature of God or the soul).
+
+## The Illusion of Cause and Effect
+
+Centuries before David Hume, Al-Ghazali questioned causality.
+*   **The Argument:** When fire touches cotton, the cotton burns. We see the contact, and we see the burning. But we do *not* see a necessary connection.
+*   **The Occasionalism:** He argued that God creates the burning *at the moment* of contact. The "laws of physics" are just God's habits.
+
+This skepticism about causality paved the way for later empiricists (like Hume) to question how we know anything about the physical world.
+
+## The Crisis and the Sufi Path
+
+Al-Ghazali had a massive spiritual crisis, lost his ability to speak, and left his prestigious teaching post to wander the desert as a Sufi mystic. He concluded that truth isn't found in books, but in direct spiritual experience (*dhawq* or "tasting").
+
+## Why He Matters
+
+He saved Islamic orthodoxy from being subsumed by Greek rationalism, but some argue he also stifled scientific inquiry in the Muslim world (a controversial debate). His work on skepticism and intuition remains powerful today.
+
+## Recommended Resources
+
+**1. The Book:**
+*   **"The Deliverance from Error" (Al-Munqidh min al-Dalal)**.
+*   His spiritual autobiography. It's his version of Descartes' *Meditations*, written 500 years earlier.
+
+Next, we jump to the man who tried to restart Western philosophy from scratch: **Descartes**.

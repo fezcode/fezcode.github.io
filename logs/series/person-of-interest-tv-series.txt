@@ -1,0 +1,22 @@
+# Person of Interest (TV Series)
+
+- **Category:** Series
+- **Creator:** Jonathan Nolan
+- **Date:** 2012-01-01
+- **Rating:** [100/5](/vocab/poi-rating)
+- **Link:** [IMDb - Person of Interest](https://www.imdb.com/title/tt1839578/)
+
+## About
+
+**Person of Interest (2011)** is an American science fiction crime drama television series created by Jonathan Nolan.
+The series centers on a mysterious, reclusive billionaire computer genius, Harold Finch (Michael Emerson),
+who has built a superintelligent artificial intelligence (AI) known as "The Machine."
+This AI predicts future acts of terrorism by identifying individuals who will be involved,
+either as victims or perpetrators, by analyzing mass surveillance data. Unable to discern *which*
+role these "persons of interest" will play, Finch recruits John Reese (Jim Caviezel), a presumed-dead former CIA operative,
+to intervene and prevent the crimes.
+
+Over its five-season run, the show evolves from a procedural "crime of the week" format to a deeply serialized narrative
+exploring complex ethical dilemmas surrounding surveillance, privacy, government overreach, and the sentience of AI.
+It delves into the potential benefits and dangers of advanced artificial intelligence, with The Machine itself developing into a complex character.
+The series is lauded for its sophisticated writing, compelling character development, and its prophetic exploration of contemporary technological and societal concerns.

@@ -1,0 +1,14 @@
+LABEL: Setup Guide
+SUBTEXT: INSTALLATION
+
+To use `piml.js` in your project, you can install it via npm:
+
+```bash
+npm install piml.js
+```
+
+Or via yarn:
+
+```bash
+yarn add piml.js
+```

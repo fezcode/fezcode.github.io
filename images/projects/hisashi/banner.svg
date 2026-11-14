@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1280 400" width="1280" height="400"
+     role="img" aria-label="Hisashi — a cross-platform, plugin-driven top bar for every monitor">
+  <defs>
+    <!-- Brand gradient: amber -> pink -> violet, used by the icon and wordmark -->
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   stop-color="#fbbf24"/>
+      <stop offset="0.5" stop-color="#f472b6"/>
+      <stop offset="1"   stop-color="#a78bfa"/>
+    </linearGradient>
+
+    <!-- Same gradient but with low alpha, for the decorative kanji -->
+    <linearGradient id="brandSoft" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   stop-color="#fbbf24" stop-opacity="0.22"/>
+      <stop offset="0.5" stop-color="#f472b6" stop-opacity="0.22"/>
+      <stop offset="1"   stop-color="#a78bfa" stop-opacity="0.22"/>
+    </linearGradient>
+
+    <!-- Subtle vignette behind the wordmark to lift it off the background -->
+    <radialGradient id="vignette" cx="35%" cy="60%" r="65%">
+      <stop offset="0"   stop-color="#1a1f2a" stop-opacity="1"/>
+      <stop offset="1"   stop-color="#0f1216" stop-opacity="1"/>
+    </radialGradient>
+
+    <!-- Soft violet glow that bleeds out from beneath the top bar -->
+    <linearGradient id="eavesGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#a78bfa" stop-opacity="0.45"/>
+      <stop offset="0.6" stop-color="#a78bfa" stop-opacity="0.10"/>
+      <stop offset="1"   stop-color="#a78bfa" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Gentle blur for the bar's drop shadow -->
+    <filter id="softShadow" x="-10%" y="-50%" width="120%" height="300%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="6" result="off"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.45"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Stronger blur for the decorative kanji's outer halo -->
+    <filter id="kanjiHalo" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="400" fill="url(#vignette)"/>
+
+  <!-- Eaves: a soft glow cast beneath the top bar -->
+  <rect x="40" y="44" width="1200" height="120" fill="url(#eavesGlow)" rx="6"/>
+
+  <!-- The hisashi itself: three rounded-rect zones at the very top, brand gradient -->
+  <g filter="url(#softShadow)">
+    <rect x="40"   y="12" width="540" height="32" rx="8" fill="url(#brand)"/>
+    <rect x="592"  y="12" width="96"  height="32" rx="8" fill="url(#brand)"/>
+    <rect x="700"  y="12" width="540" height="32" rx="8" fill="url(#brand)"/>
+  </g>
+
+  <!-- Decorative kanji 庇 in the right half, large and faded -->
+  <g transform="translate(960 248)" filter="url(#kanjiHalo)">
+    <text x="0" y="0"
+          font-family="'Yu Gothic UI','Yu Gothic','Meiryo','MS Gothic','Microsoft YaHei UI','Noto Sans CJK JP','Hiragino Sans','sans-serif'"
+          font-size="320"
+          font-weight="500"
+          text-anchor="middle"
+          dominant-baseline="middle"
+          fill="url(#brandSoft)">&#x5E87;</text>
+  </g>
+
+  <!-- Wordmark: Hisashi -->
+  <text x="80" y="240"
+        font-family="'Segoe UI Variable Display','Segoe UI','Inter','SF Pro Display','Helvetica Neue','Arial','sans-serif'"
+        font-size="132"
+        font-weight="700"
+        letter-spacing="-2"
+        fill="url(#brand)">Hisashi</text>
+
+  <!-- Pronunciation + meaning line -->
+  <text x="84" y="278"
+        font-family="'Segoe UI','Inter','Helvetica Neue','Arial','sans-serif'"
+        font-size="20"
+        font-weight="500"
+        letter-spacing="2"
+        fill="#5a6372">hi <tspan fill="#3d4452">·</tspan> sa <tspan fill="#3d4452">·</tspan> shi <tspan fill="#3d4452" dx="6">/</tspan><tspan dx="6">eaves</tspan> <tspan fill="#3d4452" dx="6">/</tspan><tspan dx="6" font-family="'Yu Gothic UI','Yu Gothic','Meiryo','MS Gothic','sans-serif'">&#x5E87;</tspan></text>
+
+  <!-- Tagline -->
+  <text x="84" y="328"
+        font-family="'Segoe UI','Inter','Helvetica Neue','Arial','sans-serif'"
+        font-size="26"
+        font-weight="400"
+        fill="#8b95a4">A cross-platform, plugin-driven top bar for every monitor.</text>
+
+  <!-- Right-side meta badge: v0.1 · MIT -->
+  <g transform="translate(1196 348)">
+    <line x1="-160" y1="-12" x2="0" y2="-12" stroke="#2a3140" stroke-width="1"/>
+    <text x="0" y="6"
+          text-anchor="end"
+          font-family="'Segoe UI','Inter','Helvetica Neue','Arial','sans-serif'"
+          font-size="18"
+          font-weight="500"
+          letter-spacing="1"
+          fill="#5a6372">v0.1 <tspan fill="#2a3140" dx="6">·</tspan><tspan dx="6">MIT</tspan></text>
+  </g>
+</svg>

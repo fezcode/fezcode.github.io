@@ -1,0 +1,139 @@
+{
+  "name": "tivi",
+  "windowTitle": "tivi",
+  "tagline": "A video player that plays everything.",
+  "subtitle": "FFmpeg demux and decode with hardware acceleration, libass subtitles rasterized at display resolution, pitch-preserving speed, and GPU colour adjustments — inside a borderless window.",
+  "accent": "#C9A45A",
+  "accent2": "#A8843F",
+  "version": "0.4.1",
+  "platforms": [
+    "Windows",
+    "macOS"
+  ],
+  "stack": [
+    "C11",
+    "raylib",
+    "FFmpeg",
+    "libass"
+  ],
+  "download": "https://github.com/fezcode/tivi/releases/latest",
+  "downloadLabel": "Download installer",
+  "repo": "https://github.com/fezcode/tivi",
+  "summary": [
+    "H.264, HEVC, AV1, VP9, MPEG-2/4, VC-1, ProRes and Theora, with AAC, AC-3, E-AC-3, DTS, Opus, Vorbis, MP3, FLAC and TrueHD audio — decoded on the GPU through D3D11VA on Windows and VideoToolbox on macOS, with automatic software fallback.",
+    "Subtitles are rasterized at display resolution rather than video resolution, so a 720p file on a 4K panel keeps crisp anti-aliasing. Authored ASS styling is respected; plain-text subs get font, size, colour, outline and shadow options."
+  ],
+  "panelsHeading": "What it does",
+  "panelsWindowTitle": "tivi — panels",
+  "panels": [
+    {
+      "title": "Plays everything",
+      "body": "Demux and decode run through FFmpeg's libav*, with a live decode-path readout in Settings so you can see which path you got."
+    },
+    {
+      "title": "Precise seeking",
+      "body": "Arrow-key seeks land exactly on target even on WEB-DLs with ten to twenty second keyframe gaps.",
+      "keys": "j"
+    },
+    {
+      "title": "Pitch-preserving speed",
+      "body": "0.25× to 2× with VLC-style time-stretch, so voices stay natural at 1.5×. The pitch-shifting mode is one toggle away.",
+      "keys": "]"
+    },
+    {
+      "title": "Auto-queue",
+      "body": "Open one episode and the rest of the folder queues behind it in natural order — E2 before E10."
+    },
+    {
+      "title": "Adjustments and themes",
+      "body": "Brightness, contrast, saturation, hue and gamma live on the GPU, plus an Adaptive theme that tints the interface from the playing video.",
+      "keys": "a"
+    },
+    {
+      "title": "A/V sync that holds",
+      "body": "An audio-master clock with starvation freewheel, a background decode thread and late-frame scheduling."
+    }
+  ],
+  "shotsHeading": "On screen",
+  "shots": [
+    {
+      "src": "/images/projects/tivi/hero.png",
+      "caption": "tivi — playing the Sintel trailer"
+    },
+    {
+      "src": "/images/projects/tivi/settings.png",
+      "caption": "settings — performance and subtitles"
+    }
+  ],
+  "keysHeading": "From the keyboard",
+  "keys": [
+    {
+      "k": "space",
+      "a": "Play or pause"
+    },
+    {
+      "k": "f",
+      "a": "Fullscreen"
+    },
+    {
+      "k": "j",
+      "a": "Seek back ten seconds"
+    },
+    {
+      "k": "l",
+      "a": "Seek forward ten seconds"
+    },
+    {
+      "k": "c",
+      "a": "Cycle subtitle track"
+    },
+    {
+      "k": "x",
+      "a": "Cycle audio track"
+    },
+    {
+      "k": "s",
+      "a": "Snapshot to the Desktop"
+    },
+    {
+      "k": "a",
+      "a": "Adjustments panel"
+    },
+    {
+      "k": "t",
+      "a": "Always on top"
+    }
+  ],
+  "terminalHeading": "Build it yourself",
+  "terminal": {
+    "caption": "MSYS2 / MinGW-w64",
+    "lines": [
+      "pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-raylib",
+      ".\\build.ps1",
+      ".\\installer.ps1        # -> tivi-Setup-<version>.exe",
+      "./bundle-macos.sh      # -> tivi.app"
+    ]
+  },
+  "colophon": [
+    [
+      "Config",
+      "%APPDATA%\\tivi"
+    ],
+    [
+      "Windows",
+      "self-contained Setup.exe, silent /S"
+    ],
+    [
+      "macOS",
+      "ad-hoc signed .app, arm64"
+    ],
+    [
+      "Decode",
+      "D3D11VA / VideoToolbox"
+    ],
+    [
+      "Volume boost",
+      "up to 200%"
+    ]
+  ]
+}

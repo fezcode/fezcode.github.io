@@ -1,0 +1,200 @@
+# A Drawer Full of Razors: Definitions, Origins, and Worked Examples
+
+> **How to read this**
+>
+> Fourteen philosophical razors. Each entry gives the **definition**, the **origin** (including the ones that are misattributed), one **example** of the razor doing its job, and one **misuse** — the specific way it gets abused in the wild.
+>
+> A razor is a rule for deciding where to look first when the evidence has run out. None of them is a proof.
+
+---
+
+## 1. Occam's Razor
+
+**Definition.** When two explanations account for the same evidence equally well, prefer the one that requires fewer assumed entities. It breaks ties; it does not settle questions the evidence has already settled.
+
+**Origin.** [William of Ockham](/vocab/occams-razor), c. 1287–1347. The familiar Latin — *entia non sunt multiplicanda praeter necessitatem* — was coined by John Punch in 1639, roughly three centuries after Ockham could object. Ockham's own concern was ontological: how many *kinds of thing* you are obliged to believe exist.
+
+**Example.** Latency on your service spiked at 03:00. One explanation is a targeted attack by a competitor; another is the nightly backup job added last week. The backup posits no new actors, motives or capabilities. Look there first.
+
+**Misuse.** *"Occam's razor — the simplest explanation is that you're lying."* The razor counts entities, not words: "a wizard did it" is short and posits an entire wizard. It also operates on explanations, never on people.
+
+---
+
+## 2. Hume's Guillotine
+
+**Definition.** A statement about what *ought* to be cannot be derived from statements about what *is* without an additional premise that is itself normative. Also called the is–ought gap.
+
+**Origin.** David Hume, *A Treatise of Human Nature* (1739), Book III, Part I — in a paragraph he seems to have considered a minor aside.
+
+**Example.** "Humans evolved to eat meat" is a claim about the world. It does not by itself yield "you may eat meat." Something like *what we evolved to do is permissible* has to be added — and once stated out loud, it can be examined.
+
+**Misuse.** Answering every ethical claim with "that's an is–ought problem" and leaving. The guillotine requires the bridging premise to be made explicit. It does not say no bridge exists, and it is not a proof that ethics is impossible.
+
+---
+
+## 3. Hitchens's Razor
+
+**Definition.** What can be asserted without evidence can be dismissed without evidence. A rule about where the burden of proof sits.
+
+**Origin.** [Christopher Hitchens](/vocab/hitchens-razor), *God Is Not Great* (2007), restating a much older maxim of legal and theological argument: *quod gratis asseritur, gratis negatur*.
+
+**Example.** A vendor claims their library is "10× faster" and publishes no benchmark, no methodology and no repository. You are not obliged to build your own benchmark harness before declining to believe it.
+
+**Misuse.** Firing it at a real but weak study. Evidence you find unpersuasive is still evidence, and the razor covers claims with *none*. Used otherwise, it upgrades "I am unconvinced" into "you have presented nothing" — which is the whole disagreement, skipped. This is the appeal-to-ignorance [fallacy](/vocab/logical-fallacy) running in reverse.
+
+---
+
+## 4. The Sagan Standard
+
+**Definition.** Extraordinary claims require extraordinary evidence. The strength of evidence demanded should be proportional to how improbable the claim was beforehand.
+
+**Origin.** Carl Sagan, *Cosmos* (1980). Marcello Truzzi published a near-identical line in 1978, and Laplace got there around 1810: *"The weight of evidence for an extraordinary claim must be proportioned to its strangeness."* Underneath, it is Bayes' theorem with better phrasing.
+
+**Example.** A single unreplicated paper reports room-temperature superconductivity. The prior is very low, so one lab is not enough. The same sample size would be perfectly adequate for "this alloy is slightly denser than that one," because that claim costs almost nothing to believe.
+
+**Misuse.** Leaving "extraordinary" undefined, so that it quietly means "claims I dislike." The standard is a ratio, and it only does any work once you say what your prior was and why.
+
+---
+
+## 5. Popper's Criterion
+
+**Definition.** A claim belongs to science only if it forbids something — if some possible observation would refute it. Strictly a demarcation criterion rather than a razor.
+
+**Origin.** Karl Popper, *Logik der Forschung* (1934). See [falsifiability](/vocab/falsifiability).
+
+**Example.** "This cache invalidates within 50ms" forbids an observation: a stale read at 200ms. "The system is basically reliable" forbids nothing at all. Rewriting the second into the first is what makes the disagreement resolvable.
+
+**Misuse.** "That's unfalsifiable," aimed at claims that are merely expensive or slow to test. Separately, the Duhem–Quine problem: no experiment refutes a single hypothesis cleanly, because a failed prediction indicts the whole bundle — hypothesis, instrument, calibration and auxiliary assumptions. Which member to blame is a judgement the criterion will not make for you.
+
+---
+
+## 6. Einstein's Razor
+
+**Definition.** A model should be as simple as it can be while still accounting for every observation. Simplification that discards a real datum has gone too far.
+
+**Origin.** Usually quoted as *"everything should be made as simple as possible, but no simpler,"* which Einstein does not appear to have said in that form. The 1933 Herbert Spencer Lecture has the ancestor — "to make the irreducible basic elements as simple and as few as possible without having to surrender the adequate representation of a single datum of experience" — and the snappy version traces to composer Roger Sessions paraphrasing him in 1950.
+
+**Example.** A two-parameter model fits your traffic curve everywhere except the Monday spike. Dropping Monday as noise makes the model simpler and wrong. The spike is a datum.
+
+**Misuse.** Invoked after the fact to bless whatever already exists. A forty-service architecture and a single 4,000-line file can each be called "as simple as possible," because the razor supplies no independent test of which side of the line you are on.
+
+---
+
+## 7. Hanlon's Razor
+
+**Definition.** Never attribute to malice what is adequately explained by incompetence. A prior about intent, useful because incompetence is far more common than conspiracy, requires no coordination, and is cheaper to check.
+
+**Origin.** [Robert J. Hanlon](/vocab/hanlons-razor), who submitted it to a joke collection in 1980. Heinlein wrote nearly the same line in 1941, and Goethe made the observation in 1774.
+
+**Example.** Your invoice went unpaid for three weeks. Finance migrated systems in April and the approval queue silently dropped items already in it. Nobody was snubbing you, and a single question to a human resolves it.
+
+**Misuse.** A bank's "errors" overdraw customers hundreds of times and every error falls in the bank's favour. Repeated, one-directional and profitable is no longer *adequately* explained by incompetence — and "adequately" is the word that gets dropped every single time the razor is quoted.
+
+---
+
+## 8. Grey's Law
+
+**Definition.** Sufficiently advanced incompetence is indistinguishable from malice. The direct contradiction of the razor above it.
+
+**Origin.** Internet folklore, riffing on Clarke's third law. The attribution is unreliable and probably retrofitted.
+
+**Example.** A regulator's filing system reliably loses exactly the complaints that would have triggered an audit. From outside, intent is unobservable; from the position of the person harmed, it makes no difference. Fix the outcome.
+
+**Misuse.** Used to skip the diagnosis entirely. Incompetence and malice often *are* distinguishable, and they call for completely different responses — one needs a better process, the other needs a lawyer.
+
+---
+
+## 9. Chesterton's Fence
+
+**Definition.** Do not remove something until you know why it was put there. Your inability to see its purpose is a fact about your knowledge, not about the thing. An **anti-razor**: it withholds the knife instead of licensing the cut.
+
+**Origin.** [G. K. Chesterton](/vocab/chestertons-fence), *The Thing* (1929), in the essay "The Drift from Domesticity."
+
+**Example.** A deploy script sleeps ninety seconds before health checks run. No comment, no ticket, author gone since 2019. Before deleting it, reproduce the slowest cold start you can in staging and watch what happens without it. That is a bounded afternoon's work.
+
+**Misuse.** Turning "go and find out" into a permanent veto. Quoted by whoever benefits from the fence, nobody is ever *quite* certain enough and nothing is ever removed. "I don't know why this exists" is a research task, not a verdict.
+
+---
+
+## 10. The Duck Test
+
+**Definition.** If something displays all the customary properties of a category, treat it as a member of that category.
+
+**Origin.** The formulation is usually traced to the poet James Whitcomb Riley; it was given political teeth by trade unionist Emil Mazey in 1946.
+
+**Example.** An unregistered "consultancy" takes deposits, promises fixed monthly returns and pays existing clients out of new deposits. You do not need a court to name it a Ponzi scheme before declining to invest.
+
+**Misuse.** Treating resemblance as evidence when your reference class is tiny. "It looks like a cover-up" is partly a statement about how many cover-ups you have read about — and the test is at its most confident precisely where you know least.
+
+---
+
+## 11. Newton's Flaming Laser Sword
+
+**Definition.** What cannot be settled by experiment is not worth debating. Also called Alder's razor.
+
+**Origin.** Mike Alder, *Philosophy Now* (2004), who was explicit that it is "much sharper and more dangerous than Occam's razor" and that it cuts off too much.
+
+**Example.** Two engineers spend an hour arguing about which serialiser is faster. The sword says stop talking and run both against production-shaped data — an experiment that takes twenty minutes and ends the argument permanently.
+
+**Misuse.** Extending it from engineering disputes to ethics, aesthetics and politics and calling the result rigour. Alder published the disclaimer along with the razor; people quoting him almost always drop it.
+
+---
+
+## 12. Grice's Razor
+
+**Definition.** Senses are not to be multiplied beyond necessity. Before positing a new meaning for a word, check whether ordinary conversational implicature already explains what was said.
+
+**Origin.** Paul Grice's "Modified Occam's Razor" (1978), from his work on conversational implicature.
+
+**Example.** A colleague says "some of the tests pass." You could posit a technical sense of "some" that excludes "all," or you could note that speakers ordinarily *imply* not-all without it being part of the word's meaning. The second option invents nothing.
+
+**Misuse.** Run in reverse, to reinterpret someone so charitably that they are held never to have said the thing they plainly said.
+
+---
+
+## 13. Sturgeon's Law
+
+**Definition.** Ninety percent of everything is crap. A rule for budgeting attention across a field, not a verdict on any item within it.
+
+**Origin.** Theodore Sturgeon, around 1957 — and the context matters: he was **defending** science fiction against critics who judged the genre by its worst output, arguing the comparison class is other fields' 90%.
+
+**Example.** You are evaluating a new package ecosystem and the top search results are all abandoned repositories. That is the expected 90%. Compare it against another ecosystem's 90%, not against its two famous libraries.
+
+**Misuse.** Quoted as a judgement on a specific work the speaker has not read. The law tells you how to allocate reading time and precisely nothing about the thing in front of you.
+
+---
+
+## 14. Segal's Law
+
+**Definition.** A man with a watch knows what time it is; a man with two watches is never sure. Adding authorities can reduce confidence rather than increase it.
+
+**Origin.** Unclear and probably apocryphal, despite confident attributions.
+
+**Example.** Two monitoring systems report different error rates for the same service. The useful response is to find out which one is instrumented correctly — not to average them into a number that matches neither.
+
+**Misuse.** Used to justify keeping one source and ignoring the rest. Disagreeing instruments are information; silencing the second watch hides the problem rather than solving it.
+
+---
+
+## The Razor Drawer
+
+Five ordinary cases. Pick the razor you would reach for, then see which of the others reach the opposite conclusion from exactly the same facts.
+
+<probability-experiment experiment="razor-drawer" case="payroll"></probability-experiment>
+
+---
+
+## Further Reading and Sources
+
+### Books
+* **"Ockham's Razors: A User's Manual" by Elliott Sober:** The book-length answer to whether simplicity is actually evidence of truth. More qualified than either camp wants.
+* **"The Logic of Scientific Discovery" by Karl Popper:** The source, considerably more aware of its own limits than the slogan is.
+* **"Simple Heuristics That Make Us Smart" by Gerd Gigerenzer, Peter Todd and the ABC Research Group:** The case that fast-and-frugal rules outperform elaborate models under real uncertainty.
+* **"Thinking, Fast and Slow" by Daniel Kahneman:** The other side of that argument — heuristics as a source of systematic bias.
+* **"A Treatise of Human Nature" by David Hume:** Book III, Part I, Section I, where the guillotine falls.
+
+### Links & Resources
+* [Newton's Flaming Laser Sword](https://philosophynow.org/issues/46/Newtons_Flaming_Laser_Sword) — Mike Alder's 2004 essay, disclaimers intact.
+* [Stanford Encyclopedia of Philosophy: Simplicity](https://plato.stanford.edu/entries/simplicity/) — what Occam's razor actually justifies, and where the justification runs out.
+* [Stanford Encyclopedia of Philosophy: Karl Popper](https://plato.stanford.edu/entries/popper/) — including Duhem–Quine and what survived it.
+* [The Fezcodex rant on logic](/blog/a-colossal-rant-on-logic) — the machinery these heuristics stand in for.

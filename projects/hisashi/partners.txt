@@ -1,0 +1,2 @@
+label: Built with
+logos: .NET 9, AVALONIA, WIN32, SMTC, OPEN-METEO

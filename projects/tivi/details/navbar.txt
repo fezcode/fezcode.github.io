@@ -1,0 +1,9 @@
+{
+  "logo": {
+    "label": "TIVI"
+  },
+  "cta": {
+    "label": "DOWNLOAD",
+    "link": "https://github.com/fezcode/tivi/releases/latest"
+  }
+}

@@ -1,0 +1,943 @@
+# atlas.llm: A Deep Dive Into a Single-Binary, On-Device Coding Companion
+
+> _A study in systems-level glue code: how ~2,900 lines of Go turn a prebuilt
+> `llama.cpp` server into a usable local AI coding assistant, and the
+> surprising number of distinct failure modes that sit between "it runs" and
+> "it feels instant."_
+
+---
+
+## 0. The opening brief
+
+There is a particular class of tool that only exists because of a rare
+alignment between three forces: a capable open-weights model, a portable
+inference engine, and a user who is unwilling to hand their source tree to
+an API endpoint. `atlas.llm` is a thin, deliberately minimal Go program
+that sits at the intersection of those three forces. It ships as a single
+static binary. It runs a terminal chat UI with markdown rendering and
+clipboard integration. It speaks to a locally hosted `llama.cpp` server
+over HTTP, using the OpenAI chat-completions protocol. It can summarize a
+directory, perform a semantic grep over it, or flatten it into a single
+Markdown document you can paste into a frontier model.
+
+The README describes what it does. This document describes how it works,
+why the design ended up the way it did, and which production-grade traps
+we walked into and climbed back out of.
+
+---
+
+## 1. Design thesis: local-first, on-demand, no surprises
+
+Every nontrivial design decision in the project is downstream of three
+non-negotiables:
+
+1. **On-device inference.** No tokens leave the machine. There is no
+   cloud backend, no telemetry, no "optional" network call.
+2. **Explicit dependency acquisition.** Weights and the inference engine
+   are fetched only when the user types `/download`. The program never
+   downloads anything in the background. Running `atlas.llm --summarize`
+   on a fresh install prints an actionable error rather than silently
+   pulling 5 GB of GGUF weights while the user stares at a cursor.
+3. **Single static binary.** The full tool — TUI, slash-command parser,
+   archive extractor, HTTP client, markdown renderer, semantic grep,
+   directory dumper — is `go build`'d from one Go module. There are no
+   wrapper scripts, no Python layer, no Electron shell.
+
+Everything downstream — the `~/.atlas/atlas.llm.data/` layout, the
+llama-server lifecycle, the `/download engine` split, the refusal to
+fall back on mock inference when a dependency is missing — is a direct
+consequence of these three.
+
+---
+
+## 2. System architecture, at one altitude
+
+The program is a Go process that performs three roles simultaneously:
+
+```mermaid
+graph LR
+  subgraph atlas["atlas.llm (Go)"]
+    direction LR
+    TUI["TUI / CLI layer<br/>(bubbletea + lipgloss + glamour)"]
+    Orch["Orchestration & config<br/>(download, registry,<br/>chat history, slash commands)"]
+    Client["llama-server client<br/>(net/http + JSON)"]
+    TUI -->|command| Orch
+    Orch -->|reply| TUI
+    Orch --> Client
+  end
+  Server["llama-server (C++)<br/>GGUF mmap + KV cache +<br/>chat template from weights"]
+  Client -->|HTTP on localhost| Server
+```
+
+The Go process **never performs inference itself**. It spawns one long-
+lived `llama-server` subprocess the first time inference is requested,
+and talks to it over `127.0.0.1:<port>` using the OpenAI-compatible
+`/v1/chat/completions` endpoint. That decision — talking to a persistent
+server over HTTP rather than spawning `llama-cli` per turn — is the
+single most important architectural choice in the codebase, and we
+arrived at it the hard way. More on that in §5.
+
+---
+
+## 3. The model layer: GGUF, quantization, and a tiny registry
+
+The `availableModels` slice in `config.go` is a deliberately small
+registry of five GGUF-format models, each parameterized by `Name`,
+`Filename`, `URL`, and a human-readable `Size`:
+
+| Name                          | Params | Weights file               | Q4_K_M size |
+| ----------------------------- | ------ | -------------------------- | ----------- |
+| `gemma-3-1b-it`               | 1 B    | Unsloth Gemma 3 Instruct   | ~0.7 GB     |
+| `gemma-3-4b-it`               | 4 B    | Unsloth Gemma 3 Instruct   | ~2.5 GB     |
+| `gemma-4-e2b-it`              | ~2 B   | Unsloth Gemma 4 efficient  | ~2.9 GB     |
+| `qwen3.5-9b`                  | 9 B    | Unsloth Qwen3.5            | ~5.7 GB     |
+| `ministral-3-14b-instruct`    | 14 B   | Mistral AI Ministral-3     | ~8.2 GB     |
+
+Each weight file is a **GGUF** (GGML Universal File) container: a
+memory-mappable binary format that packs quantized tensors, tokenizer
+vocabulary, chat template, architectural metadata (layer count, rope
+parameters, attention heads), and stop-token IDs into a single file.
+GGUF's design lets `llama-server` `mmap(2)` the file on startup instead
+of parsing and allocating: the OS pages in weight tensors only as
+inference visits them, which is why a 9 GB model can "load" in under
+two seconds on an SSD-equipped laptop and only commit real RAM for the
+layers actually touched.
+
+All of atlas.llm's default weights are **Q4_K_M-quantized**: per-group
+4-bit weights with mixed precision metadata. Q4_K_M is the canonical
+"quality-preserving" quantization of llama.cpp — the `M` variant
+up-quantizes the most sensitive tensors (attention output, FFN down)
+to Q6_K, which empirically buys most of the perplexity recovery at
+minimal size cost. In round numbers, Q4_K_M shrinks an fp16 model to
+~27% of its original byte count while keeping Gemma-3-4B within ~3%
+perplexity of the full-precision checkpoint. On CPU, that 4× shrink
+translates almost linearly into tokens-per-second, because CPU inference
+for LLMs is overwhelmingly memory-bandwidth-bound rather than
+FLOP-bound.
+
+The model registry also stores one non-obvious field: `Size` is a
+human-readable string like `"~5.7GB"`, not a byte count. It appears in
+`/list` output and in the arrow-key picker. The picker is not cosmetic
+— it is a *policy enforcement UI*: selecting an undownloaded model
+writes `config.json` but emits a system message noting the model is
+not downloaded. The next inference call will fail with an explicit
+"run `/download <name>`" rather than starting a 5 GB background fetch.
+
+---
+
+## 4. Engine acquisition: picking a prebuilt llama.cpp release
+
+The `/download engine` command resolves the *latest* llama.cpp release
+for the current platform via GitHub's `releases/latest` JSON endpoint:
+
+```go
+// config.go
+const llamacppLatestURL =
+    "https://api.github.com/repos/ggml-org/llama.cpp/releases/latest"
+
+var llamacppAssetSuffix = map[string]string{
+    "windows/amd64": "win-cpu-x64.zip",
+    "windows/arm64": "win-cpu-arm64.zip",
+    "darwin/amd64":  "macos-x64.tar.gz",
+    "darwin/arm64":  "macos-arm64.tar.gz",
+    "linux/amd64":   "ubuntu-x64.tar.gz",
+    "linux/arm64":   "ubuntu-arm64.tar.gz",
+}
+```
+
+`engine.go:latestLlamacppAsset` queries the GitHub API, walks the
+asset list, and picks the one whose filename ends in the platform-
+specific suffix. We match on *suffix* rather than exact name because
+llama.cpp embeds the build number in each asset (`llama-b8892-bin-
+win-cpu-x64.zip`), and that number drifts every few days.
+
+After download, the archive is extracted into
+`~/.atlas/atlas.llm.data/engine/`. Zip and tar.gz are both handled
+natively using the Go standard library (`archive/zip`, `archive/tar`,
+`compress/gzip`) — a deliberate choice: it means zero external CLI
+dependencies and zero path-traversal surface area, which the extractor
+explicitly guards against:
+
+```go
+// engine.go:extractZip — zip-slip guard
+target := filepath.Join(destDir, f.Name)
+if !strings.HasPrefix(target, cleanDest) {
+    return fmt.Errorf("zip slip: %s", f.Name)
+}
+```
+
+llama.cpp's release archives are inconsistent about internal layout —
+sometimes the binary is at the root, sometimes under `build/bin/`.
+Rather than special-case per-platform paths, `findEngineExecutable`
+walks the engine directory looking for the target filename
+(`llama-server` or `llama-server.exe`). This is ugly, but it is
+resilient to the llama.cpp team rearranging their archive.
+
+We previously shipped with **llamafile** as the engine; commit
+`db5c258` ("swap engine from llamafile to stock llama.cpp prebuilts")
+captured that pivot. Llamafile is an impressive piece of engineering —
+a portable executable that runs on Windows, macOS, and Linux — but
+llamafile 0.10.0 predates llama.cpp's Gemma-4 support in its vendored
+tensor parser, and Gemma-4's GGUF metadata (`general.architecture =
+gemma4`) caused load failures. Vendored-binary packaging is a
+responsibility: you inherit the upstream's freshness problem. Pulling
+the upstream release on demand punts that responsibility to the user's
+disk but keeps the tool honest about what it's running.
+
+---
+
+## 5. The llama-server pivot, and why per-turn `llama-cli` had to go
+
+Every Go-based "talk to a local model" tutorial you find online suggests
+the same pattern: spawn `llama-cli`, pass the prompt on the command line,
+parse stdout. This is wrong for any interactive tool. It is wrong for
+three reasons that are each sufficient on their own.
+
+### 5.1 The mmap + warmup tax
+
+Each `llama-cli` invocation starts by `mmap`'ing the GGUF file, loading
+its metadata, initializing the tokenizer, allocating the KV cache,
+priming the attention warmup kernels, and only then reading the prompt.
+On a 9 B Q4 model on a 6-core laptop, that is a 3–8 second penalty.
+Worse, you pay it *per turn*. A user typing `hi` and expecting a reply
+in under a second is, instead, staring at a cursor for six seconds
+because llama.cpp is re-loading the same 5 GB file it loaded a minute
+ago.
+
+### 5.2 Console coupling on Windows
+
+`bubbletea` runs in alt-screen mode: it takes the terminal, enters the
+alternate buffer, and drives it as a canvas. `llama-cli` on Windows, by
+default, inherits the parent process's console handle. When it starts,
+the Windows console subsystem attaches it, and when it exits, terminal
+state subtly goes sideways. In early versions, typing `hello` and
+pressing Enter would make the chat process vanish — no crash, no stack
+trace, just a return to the PowerShell prompt. It took log-based
+debugging to pin it to the subprocess tearing down the alt-screen.
+
+The fix, in `engine_windows.go`, is two Windows-specific creation flags:
+
+```go
+const (
+    createNoWindow         = 0x08000000  // no console window at all
+    createNewProcessGroup  = 0x00000200  // isolate from Ctrl+C dispatch
+    engineChildCreateFlags = createNoWindow | createNewProcessGroup
+)
+
+func applyEngineSysProcAttr(cmd *exec.Cmd) {
+    cmd.SysProcAttr = &syscall.SysProcAttr{
+        HideWindow:    true,
+        CreationFlags: engineChildCreateFlags,
+    }
+}
+```
+
+`CREATE_NO_WINDOW` stops the child from attaching to any console at all;
+`CREATE_NEW_PROCESS_GROUP` isolates it from the Ctrl+C / Ctrl+Break
+events that Windows dispatches to the entire console group. Both are
+necessary. Neither is needed on Linux or macOS, which is why the
+sibling file `engine_other.go` is seven lines of no-op:
+
+```go
+//go:build !windows
+package main
+import "os/exec"
+func applyEngineSysProcAttr(cmd *exec.Cmd) {}
+```
+
+This is the first of several places where the code gets meaningfully
+more portable by *not* trying to be portable inside a single function.
+Per-platform build tags are a first-class affordance in Go's build
+system, and using them produces less conditional branching in the hot
+paths.
+
+### 5.3 The STATUS_STACK_OVERFLOW that wasn't our bug
+
+A third failure, orthogonal to the previous two, manifested as a
+Windows NTSTATUS code: `0xc00000fd` — stack overflow — inside
+`ggml-cpu-haswell.dll`. It reproduced on both Gemma-3-1B and Gemma-4,
+on Haswell-class Intel CPUs, across fresh clones. The root cause had
+nothing to do with our Go code: libomp, the OpenMP runtime llama.cpp
+links against for CPU parallelism, spawns worker threads with a
+default 1 MB stack. On some tokenization paths in the quantized GEMM
+kernels, that stack is insufficient.
+
+The fix is a one-line environment-variable override:
+
+```go
+// server.go:startLlamaServer
+cmd.Env = append(os.Environ(), "OMP_STACKSIZE=64M")
+```
+
+That pushed worker stacks to 64 MB — three orders of magnitude
+excess, and completely harmless because libomp only commits stack
+pages on first use. The incident is preserved in commit
+`8fd19b7`: a single-line production fix that took an afternoon to
+diagnose because none of our own Go code was in the failing call
+stack.
+
+### 5.4 The solution: persistent llama-server
+
+These three problems share a single mitigation. `llama-server` is
+llama.cpp's built-in HTTP server: an OpenAI-compatible endpoint that
+loads the model once and accepts requests forever. The pivot in
+commit `f47e38d` ("switch to persistent llama-server: prewarm + HTTP
+inference") restructured the inference layer around a `llamaServer`
+struct:
+
+```go
+// server.go
+type llamaServer struct {
+    cmd      *exec.Cmd     // the child process
+    port     int           // picked at startup via net.Listen(":0")
+    model    Model         // active model; drives eviction on switch
+    ctxN     int           // context window size (16384)
+    client   *http.Client  // timeout: 10 min
+    waitOnce sync.Once
+    waitErr  chan error
+}
+```
+
+A package-level `activeServer *llamaServer` plus a `sync.Mutex`
+guarantee at most one server at a time. `ensureServer()` is the single
+entry point: it compares the requested model with the one the server
+is hosting, and on mismatch it kills the current subprocess and spawns
+a new one.
+
+Port selection is worth a moment of attention:
+
+```go
+func pickFreePort() (int, error) {
+    l, err := net.Listen("tcp", "127.0.0.1:0")
+    if err != nil { return 0, err }
+    defer l.Close()
+    return l.Addr().(*net.TCPAddr).Port, nil
+}
+```
+
+Listening on `:0` asks the kernel to assign an ephemeral port, then we
+immediately close the listener and pass that port to llama-server. This
+has a tiny TOCTOU hole (another process could bind the port between our
+close and llama-server's listen), but on a developer laptop it has yet
+to fire, and the upside is zero hardcoded ports.
+
+Readiness is polled: after `cmd.Start()`, `waitReady` hits `/health`
+every 250 ms until it returns `{"status":"ok"}` or 90 s elapse. In
+parallel, a goroutine calls `cmd.Wait()` and forwards the exit error
+into a channel — if the subprocess dies early (bad model file, wrong
+arch), `waitReady` sees the error and surfaces it as
+`"llama-server exited before ready: <reason>"` instead of timing out.
+
+The UI benefits too. `warmupServerCmd()` is dispatched from
+`Init()` — the first thing bubbletea runs — so the model starts
+loading the moment the TUI opens. By the time the user has typed
+their first message, the server is usually ready and the reply
+latency is pure inference time. The header bar shows a spinner
+labelled `loading model Ns` while this is happening, so the wait is
+*legible* rather than silent.
+
+---
+
+## 6. Chat templates, or: why the model used to hallucinate "User:" turns
+
+Before the llama-server pivot, even after fixing the console and stack
+issues, inference was producing a recurring class of bug. The model
+would reply, and then continue with a fabricated "User:" turn, then
+a fabricated "Assistant:" turn, then another, filling up max-tokens
+with a hallucinated dialogue.
+
+The cause is a subtle mismatch between **chat formatting** and **stop
+conditions**.
+
+Modern instruction-tuned transformers aren't trained on raw text. They
+are trained on text wrapped in turn sentinels. Gemma-3 uses:
+
+```
+<start_of_turn>user
+hello<end_of_turn>
+<start_of_turn>model
+<...>
+```
+
+Qwen and ChatML-family models use `<|im_start|>user\n...\n<|im_end|>`.
+The EOS generation-stop token is typically `<end_of_turn>` or
+`<|im_end|>` — *not* an end-of-text token. If you feed the model raw
+text that contains `User:` / `Assistant:` string labels, three things
+happen:
+
+1. The tokens emitted for `User:` are not the turn sentinels the model
+   was trained on, so its learned "stop here" signal is absent.
+2. The model's cross-entropy gradient has seen billions of examples
+   of "assistant emits response, then next turn begins" — so after
+   finishing its answer, the most likely next token is a *new* user
+   turn. The model happily generates one.
+3. Without proper stop tokens, the decoder runs until `max_tokens`,
+   burning budget on increasingly unhinged self-dialogue.
+
+The fix is to use `/v1/chat/completions` instead of the raw
+`/completion` endpoint. The OpenAI-compatible route instructs
+llama-server to look up the model's native chat template from its
+GGUF metadata and apply it — so `messages: [{role:"user", content:"hi"}]`
+becomes exactly the byte sequence the model was trained on. The
+model emits `<end_of_turn>` at the correct boundary, llama-server
+detects it as a stop token, and we get back exactly the assistant
+response with no fake continuation.
+
+Commit `82e98d8` ("fix: use /v1/chat/completions so the model stops
+at its turn boundary") is the one-line diff that captures the
+semantic fix. The code path, in `server.go:ChatComplete`, now looks
+like:
+
+```go
+reqBody, _ := json.Marshal(chatRequest{
+    Messages:    msgs,
+    MaxTokens:   maxTokens,
+    Temperature: 0.2,
+    Stream:      false,
+    CachePrompt: true,
+})
+```
+
+Three of those fields are worth a sentence:
+
+- `Temperature: 0.2` is low-entropy decoding. Coding assistants are
+  more useful deterministic than creative; 0.2 is conservative enough
+  that seed-matched prompts produce near-identical replies.
+- `CachePrompt: true` engages llama-server's **prompt prefix cache**:
+  the KV-cache state for the shared prefix of consecutive requests
+  (system prompt + prior turns) is reused on the next call instead of
+  re-computed. For multi-turn chats this collapses per-turn latency
+  from O(history) to O(new tokens), which is the difference between
+  a chat that feels snappy and one that slows down as it progresses.
+- `Stream: false` is a deliberate current-state compromise — non-
+  streaming keeps the code simple (one POST, one JSON parse), at the
+  cost of the user watching a spinner for multi-second replies.
+  Streaming is item #1 on the roadmap (§14) and will eliminate this.
+
+---
+
+## 7. The context budget, and making it visible
+
+The `-c 16384` flag we pass to llama-server fixes the context window at
+16 Ki tokens. Anything longer — system prompt + message history +
+current user input + desired reply — causes llama-server to return
+HTTP 400 with the message `"request (N tokens) exceeds the available
+context size (16384 tokens)"`.
+
+`chatResponse.Usage` from `/v1/chat/completions` returns token counts
+per request. `setLastUsage()` in `server.go` stashes them into a
+package-level struct behind a `sync.RWMutex`:
+
+```go
+type UsageStats struct {
+    PromptTokens     int
+    CompletionTokens int
+    TotalTokens      int
+    ContextSize      int
+}
+```
+
+The TUI's `renderCtxSegment()` in `tui.go` reads this on every frame
+and draws `ctx 4.2K/16.0K (26%)` in the top bar. The percent colors
+shift by threshold — gray below 70%, amber at 70–90%, red above 90%.
+Crossing the red band is a warning that the next turn might fail with
+a 400. The user can then type `/reset`.
+
+`/reset` does three things:
+
+1. Nukes the in-Go conversation history.
+2. Zeros the `UsageStats` (preserving `ContextSize` so the denominator
+   stays meaningful).
+3. Issues a `POST /slots/0?action=erase` to llama-server to drop its
+   KV cache for that slot.
+
+The third step is subtle but important. llama-server caches prior KV
+states in RAM; if we only reset the Go-side history, the server could
+still reuse a stale prefix from the previous conversation on the next
+turn — because `cache_prompt: true` matches prefixes by content, not
+by session. `/slots erase` is the clean way to decouple conversations
+on the server side.
+
+---
+
+## 8. The TUI: bubbletea's Elm-style architecture, applied
+
+The terminal UI is built on [`bubbletea`](https://github.com/charmbracelet/bubbletea) —
+an Elm-Architecture implementation for Go. Every bubbletea program is
+a triple:
+
+```mermaid
+graph LR
+  state(("state"))
+  update["Update(state, msg)"]
+  next(("state'"))
+  cmd["cmd<br/>(async thunk)"]
+  view["View(state)"]
+  frame["string<br/>(full screen, redrawn)"]
+  state --> update
+  update --> next
+  update --> cmd
+  cmd -.->|msg| update
+  state --> view
+  view --> frame
+```
+
+Input events (`tea.KeyMsg`, `tea.WindowSizeMsg`, spinner ticks, HTTP
+responses wrapped as custom messages) are fed into `Update`. `Update`
+returns a new state plus an optional `tea.Cmd` — a thunk that will run
+asynchronously and eventually produce another `msg`. `View` is called
+every frame and is a pure function from state to a string that
+bubbletea diffs against the previous frame to compute terminal writes.
+
+`chatModel` in `tui.go` is that state:
+
+```go
+type chatModel struct {
+    viewport   viewport.Model     // scrollback region
+    textarea   textarea.Model     // input editor
+    spinner    spinner.Model      // busy indicator
+    progress   progress.Model     // download bar
+    history    []ChatMessage      // conversation state
+    rendered   []string           // pre-styled output lines
+
+    busy       bool
+    busyReason string              // "thinking" / "downloading" / ...
+    busyStart  time.Time
+
+    modelName  string
+    cwd        string
+
+    // Model picker state (modal overlay)
+    picking     string              // "" or "model"
+    pickerIdx   int
+    pickerItems []Model
+
+    // Markdown renderer (glamour) — cached, rebuilt on resize
+    mdRenderer *glamour.TermRenderer
+    mdWidth    int
+
+    // Download progress tracking
+    dlName    string
+    dlWritten int64
+    dlTotal   int64
+}
+```
+
+Several design choices in there are worth a note.
+
+### 8.1 Pre-rendered scrollback
+
+`rendered []string` holds already-styled strings, not raw content. Each
+time the user sends a message, or an `assistantReplyMsg` arrives, the
+relevant `pushUser` / `pushAssistant` / `pushSystem` helper formats with
+`lipgloss` styles and appends to the slice. The viewport's content is
+then set to `strings.Join(m.rendered, "\n")`. Lipgloss's width and
+style computation happens *once* per message rather than on every
+frame, which keeps redraw cost negligible even with long scrollback.
+
+### 8.2 Markdown rendering on assistant output
+
+Gemma-3 in particular loves markdown. Bare rendering of ``\`\`\`go...\`\`\``` or
+bulleted lists as literal characters is ugly. We integrate
+[`glamour`](https://github.com/charmbracelet/glamour), the charmbracelet
+markdown-to-ANSI renderer, in a cached-per-width wrapper:
+
+```go
+func (m *chatModel) renderMarkdown(s string) string {
+    wrap := m.viewport.Width - 4
+    if m.mdRenderer == nil || m.mdWidth != wrap {
+        r, _ := glamour.NewTermRenderer(
+            glamour.WithAutoStyle(),
+            glamour.WithWordWrap(wrap),
+        )
+        m.mdRenderer = r
+        m.mdWidth = wrap
+    }
+    out, err := m.mdRenderer.Render(s)
+    if err != nil { return s }
+    return strings.Trim(out, "\n")
+}
+```
+
+Glamour builds a `goldmark` AST, then walks it emitting ANSI escape
+sequences shaped by a style theme (`WithAutoStyle` picks dark or
+light based on the detected terminal background). The renderer is
+expensive-ish to construct, so we cache it and only rebuild when the
+viewport width changes — tracked by `mdWidth`. On resize (a
+`tea.WindowSizeMsg`), the next `pushAssistant` call invalidates the
+cache automatically.
+
+Cached raw text is kept on `history`, not on `rendered`. When
+`Ctrl+Y` copies the last assistant reply, we read from `history`:
+
+```go
+func (m *chatModel) lastAssistantContent() string {
+    for i := len(m.history) - 1; i >= 0; i-- {
+        if m.history[i].Role == "assistant" {
+            return m.history[i].Content
+        }
+    }
+    return ""
+}
+```
+
+This separation matters. The clipboard gets the original markdown
+text, not the ANSI-decorated glamour output. Paste it into a doc
+and it's real markdown, not terminal escape codes.
+
+### 8.3 Modal overlays, done with a state flag
+
+The arrow-key model picker is a modal overlay. Rather than composing
+views (a valid but verbose bubbletea pattern), we take the simpler
+route: when `picking != ""`, `Update` short-circuits key handling,
+writes `renderPicker()` output into the viewport directly, and
+ignores the textarea. Escape or Ctrl+C closes it.
+
+```go
+case tea.KeyMsg:
+    if m.picking != "" {
+        switch msg.Type {
+        case tea.KeyCtrlC, tea.KeyEsc:
+            m.pickerCancel()
+        case tea.KeyUp:   // ...
+        case tea.KeyDown: // ...
+        case tea.KeyEnter:
+            cmd := m.pickerConfirm()
+            if cmd != nil { cmds = append(cmds, cmd) }
+        }
+        return m, tea.Batch(cmds...)
+    }
+    // ... normal chat keybindings ...
+```
+
+The early `return` is load-bearing: it prevents `textarea.Update`
+from being called on the key, which is what keeps the text cursor
+from eating arrow keys while the picker is open.
+
+### 8.4 Background work as `tea.Cmd`
+
+Every long-running operation — inference, downloads, summarize,
+grep — is a `tea.Cmd`. bubbletea runs these on a worker goroutine
+pool and funnels their return values back into `Update` as
+messages. That makes the main UI loop non-blocking by construction.
+There is no explicit concurrency plumbing in the TUI — no channels,
+no goroutines, no locks. The runtime handles it.
+
+Download progress is the one place where a background goroutine
+sends messages *into* the program asynchronously (instead of
+returning them on completion). We use a package-level `var program
+*tea.Program` so the `throttledProgress` callback can call
+`program.Send(downloadProgressMsg{...})`. This would be a bad
+pattern in a library, but in a single-binary program with exactly
+one `tea.Program` it's the least-clever thing that works. Updates
+are throttled to one per 100 ms plus a final update — without
+throttling a fast mirror can overwhelm bubbletea's input channel
+with progress messages.
+
+---
+
+## 9. Semantic grep: turning an LLM into a ranked line matcher
+
+`/grep <query>` is the one feature that wouldn't exist without a
+local model. The premise: instead of matching literal regex, describe
+*what you're looking for* ("the retry logic with exponential
+backoff") and let the model pick the lines.
+
+Implementation in `grep.go`:
+
+1. Walk the target directory with `filepath.WalkDir`, respecting
+   `.gitignore` via `sabhiram/go-gitignore`.
+2. Skip binaries (files containing a null byte) and files larger
+   than `--max-size` (default 32 KiB, sized to stay under Windows'
+   ~32 K command-line limit).
+3. For each surviving file, build a *numbered* representation:
+   every line prefixed with `<line-number>: `. This turns line
+   numbers into an in-context primary key.
+4. Prompt the model with a strict system instruction:
+
+   ```
+   You are a strict semantic code-search tool. Identify file lines
+   that MATCH the user's query — exact matches, close paraphrases,
+   or clearly related code. Skip tangentially related lines.
+
+   Output format: one match per line, exactly "LINE:<number>".
+   If nothing matches, output exactly "NONE". No explanations,
+   no other text.
+   ```
+
+5. Parse the response with a regex:
+
+   ```go
+   var lineRe = regexp.MustCompile(`(?i)LINE\s*:\s*(\d+)`)
+   ```
+
+6. Map each parsed line number back to its snippet in the original
+   file and emit `path:line: snippet`.
+
+This is less accurate than a semantic-embedding index (Qdrant,
+LanceDB, etc.) but has three properties that matter more than
+accuracy for a CLI tool: **zero index-build step** (first invocation
+is the only invocation), **zero additional dependencies** (no vector
+store, no embedding model), and **natural-language queries** work on
+the same model the user already downloaded for chat. The trade-off is
+latency: grep is O(files × per-file inference), so searching a
+1000-file repo takes a while. Progress lines ("Searching
+file.go...") flow through the same `sysMsg` channel that powers
+`/summarize`, so the user always sees current state.
+
+The `NONE` sentinel is load-bearing. Without it, the model has
+"explain" as a strong attractor — it wants to say something about
+the file. `"If nothing matches, output exactly NONE"` turns "no
+matches" into a valid, tokenized answer instead of a failure mode.
+
+---
+
+## 10. The summarize pipeline
+
+`/summarize` and `atlas.llm --summarize DIR` share the same
+underlying function, `summarizeDirectory` in `summarize.go`. It:
+
+1. Walks `TargetDir`, respecting `.gitignore`.
+2. Skips binaries, `.git/`, the output file itself (so it doesn't
+   try to summarize its own evolving SUMMARY.md), files excluded
+   by `--exclude=.ext1,.ext2`, and files over `--max-size`
+   (default 256 KiB).
+3. For each surviving file, calls `summarizeContent(string)`,
+   which applies a hard 10,000-char truncation to keep the prompt
+   inside the model's context, then runs:
+
+   ```go
+   runSingleUser(
+       "You are a concise code summarizer. Respond with only 1-3 "+
+       "plain sentences describing the file's purpose. Do not use "+
+       "markdown, code blocks, or lists.",
+       "Summarize this file:\n\n"+truncated,
+       512,  // reply budget
+   )
+   ```
+
+4. Appends `## <relpath>\n\n<summary>\n\n` to `SUMMARY.md` as each
+   file completes — so the output is always incrementally valid.
+   Crashes halfway through leave a partial but readable SUMMARY.md.
+
+The 10,000-character truncation is deliberate. 10 K chars ≈ 2.5 K
+tokens for typical source code (variable-width, averaging ~4 chars/
+token with identifiers and whitespace). With a 16 K context window,
+a 50-token system prompt, and a 512-token reply budget, that leaves
+~13 K tokens of room — plenty. Summaries of large files use only
+the first 10 K chars, which in practice is almost always enough
+because the file's purpose is established in its top-of-file
+imports, type declarations, and constants.
+
+Per-file progress messages go through the `progressToSysMsg()`
+indirection instead of `fmt.Println`:
+
+```go
+func progressToSysMsg() func(string) {
+    return func(s string) {
+        if program != nil {
+            program.Send(sysMsg{content: s})
+        }
+    }
+}
+```
+
+That exists because bubbletea owns the alt-screen. A background
+goroutine writing to stdout will tear holes in the rendered UI —
+output appears "below" the prompt in the PowerShell prompt region
+on Windows, for instance. Routing progress through the message bus
+means each line renders as a styled system message in the scrollback,
+respects the alt-screen, and scrolls correctly.
+
+---
+
+## 11. `--dump`: deliberate simplicity for hosted-LLM paste
+
+`--dump` is the feature that exists because sometimes local inference
+isn't the right answer — sometimes you want to paste your project into
+Claude or Gemini for a deep architectural question. The mode flattens
+the directory into a single Markdown file:
+
+````markdown
+## main.go
+```go
+package main
+// ... full file contents ...
+```
+
+## engine.go
+```go
+// ...
+```
+````
+
+With `--with-summaries`, each block is prepended by an AI summary
+delivered as a Markdown blockquote:
+
+```markdown
+## engine.go
+> **AI Summary:** Handles llama.cpp archive download, extraction, and
+> model weight retrieval. Wraps llama-server HTTP calls into helper
+> functions for chat and one-shot tasks.
+```
+
+The blockquote encoding is deliberate: pasted into a frontier model,
+it visually separates the AI's take from the source, so the hosted
+model can weigh "what we think it does" against "what it actually
+does" when diagnosing.
+
+The mode is also the simplest in the codebase. `dump.go` is 124 lines,
+most of which are the directory walk. No model is required unless
+`--with-summaries` is set — `--dump` on its own is a portable
+project-flattener.
+
+---
+
+## 12. Observability: a tiny, file-based log
+
+Any program that spawns subprocesses and makes HTTP calls needs a log.
+`logging.go` routes the standard library `log` package to
+`~/.atlas/atlas.llm.data/atlas.llm.log`, with microsecond timestamps
+and append-mode. Every inference request is logged with its message
+count, token budget, and each message's role+size+preview. Every
+response is logged with its HTTP status, duration, body size, and a
+truncated preview.
+
+This turned out to be indispensable during the chat-template and
+stack-overflow bugs. A user-visible "inference failed" error is
+useless without context; a 2000-character `body: <...>` log line in
+the persistent log file is how we figured out, for example, that a
+7258-token request was exceeding a 4096-token context — which
+prompted the `-c 4096` → `-c 16384` bump *and* the 10K-char
+truncation on summarize.
+
+`--clear-logs` removes the file. A panic recovery in `startChat` dumps
+panic info + a full stack trace via `logPanicln`, because a panic
+inside the bubbletea alt-screen is otherwise swallowed as "terminal
+went back to the shell."
+
+---
+
+## 13. Cross-platform binaries via `gobake`
+
+The build system is `gobake`, which is driven by `Recipe.go`
+(Go code) plus `recipe.piml` (a tiny manifest format: name, version,
+description, license). A single `gobake build` invocation produces
+six binaries:
+
+| Target          | Binary                                |
+| --------------- | ------------------------------------- |
+| linux/amd64     | `build/atlas.llm-linux-amd64`         |
+| linux/arm64     | `build/atlas.llm-linux-arm64`         |
+| windows/amd64   | `build/atlas.llm-windows-amd64.exe`   |
+| windows/arm64   | `build/atlas.llm-windows-arm64.exe`   |
+| darwin/amd64    | `build/atlas.llm-darwin-amd64`        |
+| darwin/arm64    | `build/atlas.llm-darwin-arm64`        |
+
+Each is built with `CGO_ENABLED=0` and `-ldflags "-X main.Version=<v>"`,
+stamping the release version read from `recipe.piml` into the binary
+at link time. Pure-Go with `CGO_ENABLED=0` means the resulting
+executable has zero dynamic library dependencies — no libc version
+to match, no glibc/musl split on Linux. The binary you build on one
+machine will run on any machine of the same architecture.
+
+This is only possible because **we don't link against llama.cpp at
+all**. llama.cpp is fetched at runtime as a separate binary. Our Go
+binary is ~10 MB of pure Go standard library + a handful of small
+dependencies (bubbletea, lipgloss, glamour, clipboard, gitignore).
+
+---
+
+## 14. The roadmap: what we know is missing
+
+`PLANS.md` tracks the feature backlog. Three items lead the list:
+
+1. **Streaming replies.** The biggest UX win. llama-server already
+   supports Server-Sent Events; the only reason we don't use them
+   yet is that non-streaming keeps the JSON parser simple. Wiring
+   up a streaming decoder means aggregating `data: {...}` chunks
+   into `assistantDeltaMsg` tea messages, and updating `pushAssistant`
+   to append-in-place rather than push-new-line.
+
+2. **Inline file references.** `@path`, `@dir/`, `@glob/**/*.ts`
+   syntax in user prompts would be preprocessed into a "Referenced
+   files:" preamble. The model would then actually answer "how does
+   `runInference` route through the server?" instead of asking for
+   the code. Budget management is the only subtlety — reference
+   bytes compete with conversation history for context space.
+
+3. **Reasoning-model support.** Mistral's Ministral-3-Reasoning
+   variant emits two streams: `reasoning_content` (the model's
+   scratchpad) and `content` (the final answer). Routing both
+   through our current code would print the thinking verbatim as
+   the reply. The fix is a parallel `ReasoningContent` field on
+   `chatResponse` and a collapsed dim-block UI treatment — plus
+   a `/thoughts` toggle.
+
+Further down: persistent sessions (`/save NAME`, `/load NAME`),
+generation-settings (`/set temp 0.7`, `/set top_p 0.9` — `max_tokens`
+is already in), slash-command autocomplete, and GPU offload (which
+requires the CUDA asset of llama.cpp, plus detection and `-ngl N`
+exposure).
+
+---
+
+## 15. The empirical lessons
+
+A few takeaways surfaced repeatedly during the build:
+
+**Persistence beats cleverness.** The single biggest performance
+improvement was not a faster quantization or better prompting — it
+was stopping `exec.Command("llama-cli")` on every turn and keeping a
+long-lived subprocess around. A 5 s per-turn warmup tax is
+architectural, not algorithmic; no amount of prompt engineering
+makes it go away.
+
+**Protocol matters.** Using `/v1/chat/completions` instead of
+`/completion` eliminated an entire class of hallucination — not by
+improving the model, but by letting the model's *own* chat template
+and stop tokens do their job. The highest-leverage debugging tool
+we have is reading what the weights were trained on.
+
+**Platform boundaries want build tags.** Windows' process model is
+genuinely different from POSIX's. `CREATE_NO_WINDOW` has no
+equivalent on Linux and doesn't need one. A 7-line no-op file for
+`!windows` is cleaner than a `runtime.GOOS == "windows"` branch
+inside a shared function.
+
+**Observable systems fix themselves.** The stack-overflow crash, the
+context-exceeded 400s, the fake-turn hallucination — each took the
+same playbook to solve: log everything, read the logs, find the one
+line that contradicts your mental model. The `atlas.llm.log` file is
+10 KB of setup that paid for itself within the first week.
+
+**UI affordances are safety.** Showing `ctx 13.1K/16K (82%)` in amber
+tells the user that they need to `/reset` soon. Showing "engine: not
+downloaded" in `/list` tells them why their grep is failing. Silent
+"it didn't work" is the anti-pattern; visible state is the remedy.
+
+---
+
+## 16. Closing
+
+atlas.llm is a small program that stitches together a few mature
+components — llama.cpp, bubbletea, glamour, clipboard — with just
+enough Go to present them as a coherent local AI tool. It is
+approximately 2,900 lines of code across 12 files. None of the hard
+parts are novel; all of them are where they belong.
+
+The value of a project like this isn't the individual pieces. It's
+the demonstration that on-device developer AI is now a reasonable
+default rather than an exotic choice. A Gemma-3-4B on a 5-year-old
+laptop will answer a specific question about your own codebase with
+roughly the latency of a remote API and roughly the correctness of
+a mid-tier hosted model — and it will never see your code cross a
+network interface. The model weights are 2.5 GB. The binary that
+drives them is 10 MB. The whole stack fits on a USB drive.
+
+The only question left is what you want it to do.
+
+---
+
+*Version 0.13.0 — atlas.llm is MIT-licensed, written in Go, and lives
+at `https://github.com/fezcode/atlas.llm`.*

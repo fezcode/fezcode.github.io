@@ -1,0 +1,45 @@
+id: sound-dropout
+rank: 12
+name: SOUND DROPOUT
+family: Sound
+years: 1998 → present
+sub: The mix cut away to almost nothing, so the audience is deafened alongside the character
+
+ascii:
+┌────────────────────────────────────────┐
+│ ███████████▌                ▐██████████│
+│ full mix    │  ~~~~~~~~~~~  │  full mix│
+│             └─ ringing ─────┘          │
+└────────────────────────────────────────┘
+
+what:
+ Removing most of the soundtrack at a moment when the audience expects it to be loudest, usually leaving one thin element: a ringing tone, a heartbeat, a muffled low end as though heard through water. It is subjective sound, the mix taking a character's point of hearing the way the camera takes a point of view, and it works because a cinema is the only place an audience cannot escape a sudden absence.
+
+artists:
+ Spielberg fixed the modern grammar on Omaha Beach in *Saving Private Ryan*, where a shell blast strips the mix to tinnitus and holds it there. Nolan uses the inverse in *Tenet*, burying dialogue under sound design so the audience strains. Villeneuve favours long low-level passages that make an eventual noise unbearable, and Iñárritu drops the mix out entirely around the bear in *The Revenant*.
+
+trivia:
+ The tinnitus trick is now so established that it functions as a cue rather than an effect. Audiences read a ringing tone as trauma instantly, which means the device has completed the journey from innovation to convention in about twenty-five years, and directors reaching for it today are quoting *Saving Private Ryan* whether they intend to or not.
+
+sonic:
+ Silence in a loud film is physically startling, because your ears have adjusted to a high floor and the floor vanishes. It also isolates: with ambience gone you lose your sense of the space around the character, which is precisely the disorientation being dramatised. Used twice in a film it is powerful and used five times it is a tic.
+
+gear:
+ Entirely a mix decision, but one that has to be protected all the way from the shoot, since production sound still has to exist to be removed. The real work is in the return, because coming back to full mix too fast wastes the effect and too slowly strands the scene.
+
+prod:
+ Free in money and expensive in nerve. Exhibition is the risk: a passage mixed twenty decibels down plays as intended in a calibrated cinema and vanishes completely on a laptop or a phone, which is why a technique built for theatres keeps being blamed for films that are inaudible at home.
+
+examples:
+ - Saving Private Ryan | the landing, stripped to a ringing tone
+ - Tenet | dialogue buried under the design
+ - The Revenant | the mix falling away around the attack
+ - Upgrade | the implant taking over the soundtrack
+ - Sinners | the room going quiet around the performance
+ - Train To Busan | the carriage, heard through glass
+ - Mad Max Fury Road | the pause between engines
+ - No Country for Old Men | no score at all, as a principle
+ - Prisoners | rain filling the space a score would take
+ - Ex-Machina | the hum of the house as the only bed
+ - Flight | the cabin going quiet before it does not
+ - Southpaw | the crowd dropping away in the ring

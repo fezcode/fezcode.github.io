@@ -1,0 +1,8 @@
+# High-Performance Rendering
+
+At the heart of CartoGo lies a custom rendering engine built on top of the `gg` library. Optimized for 2D vector-like graphics operations in Go.
+
+## Key Features
+- **Z-Order Management**: Layering ensures water bodies, parks, and roads render correctly.
+- **Alpha Blending**: Custom `NRGBA` gradient fades for the signature "fading edge" look.
+- **Projection**: Precision conversion from Lat/Lon to local meter-based coordinate systems.

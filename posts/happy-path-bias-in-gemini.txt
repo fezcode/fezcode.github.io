@@ -1,0 +1,65 @@
+## TL;DR
+
+Gemini is unusually good at producing code that *reads* as senior — well-structured packages, sensible names, idiomatic syntax, even plausible comments. It is unusually bad at the thing that separates senior code from intermediate code: handling the cases the happy path doesn't visit. Treat its output as a confident first draft of the 80% that goes right, and assume the remaining 20% — fragmented inputs, partial failures, concurrent mutation, exotic but valid edge cases — has not been thought about at all.
+
+---
+
+## What "happy path bias" actually means
+
+Every developer has happy path bias. The interesting question is where on the spectrum a given author sits. A junior writes the path their test exercises; a senior writes the path *and* the contract — what happens when the input is empty, fragmented, oversized, concurrent, partially failed, or syntactically valid but semantically degenerate.
+
+Gemini, in my experience scaffolding non-trivial systems code, sits much closer to the junior end than its surface polish suggests. It will:
+
+- Pick the right library.
+- Lay out a reasonable package structure.
+- Name functions well.
+- Write a function body that handles the modal input.
+- Stop.
+
+The signature looks production-grade. The body assumes the input is the textbook example.
+
+---
+
+## Where it shows up
+
+A few categories I keep tripping over:
+
+**File-format parsers.** Real on-disk formats almost always have a "this record was too big to fit, here's a pointer to the rest" escape hatch — fragmented MFT records, multi-extent inodes, continuation frames. Gemini will write a clean parser for the common case and silently drop the fragmented one, because the fragmented case isn't in the first paragraph of the spec it learned from.
+
+**Concurrency setup.** Goroutines or worker tasks started before the event loop is ready. Channels with no documented closer. Mutations that look protected but aren't, because the receiver was a value rather than a pointer. The happy path — single-threaded test, clean shutdown — passes; the moment two things race, the bug surfaces as "sometimes the UI doesn't update."
+
+**Accounting / aggregation.** Counts, sums, percentages over data that has sparse, compressed, deduplicated, or symbolic representations. The naive sum is what gets written. The "this entry occupies less on disk than its logical size suggests" branch does not exist.
+
+**Error paths.** Errors are returned but not differentiated. A "file not found" and a "permission denied" and a "I/O timeout" all collapse into one log line, because the happy path returned `nil` and the unhappy path was an afterthought.
+
+None of this is hard to fix once you see it. The problem is that the surrounding code looks like it was written by someone who *would* have handled it — so reviewers skim past.
+
+---
+
+## Why it happens
+
+I won't speculate too hard about training internals, but the shape of the failure is consistent with optimizing for "code that runs on the first example you give it" rather than "code that survives a fuzzer." Reinforcement on visible correctness rewards confident, plausible output. The cases that aren't in the example don't get reinforced either way, so they don't get written.
+
+The model is also good at *style transfer*. It can match a senior author's surface tone — short functions, terse comments, idiomatic patterns — without matching the underlying habit those patterns came from, which is paranoia about inputs.
+
+---
+
+## How to read around it
+
+A few habits that have saved me time:
+
+1. **Audit the boundaries first.** Before reading the logic, list every input source and every output sink. For each, ask: what's the weirdest legal value? Is it handled? If the answer is "the code assumes it never happens," that's the bug.
+2. **Check receivers and ownership.** In Go specifically: any method that mutates state on a value receiver is a bug waiting to be triggered. In any language: any "shared" mutable state that isn't behind a lock or a channel is suspect by default.
+3. **Look for the missing branch.** If a function has an `if x { ... }` and no `else`, ask what happens in the else. If the answer is "nothing, by design," fine. If the answer is "I didn't think about it," that's where the next bug lives.
+4. **Don't trust polish.** Clean naming and good structure are no longer evidence of careful thinking. They're table stakes the model gets for free.
+5. **Be willing to rewrite.** When the scaffolding is 80% right and the remaining 20% is load-bearing, patching is often more work than rewriting the affected module with the edge cases in mind from the start.
+
+---
+
+## The takeaway
+
+LLM-scaffolded code is genuinely useful — it compresses the boring part of getting a project to "compiles and runs on the example." It is not, yet, a replacement for the part of engineering that consists of asking *what else could be true about this input.* Read accordingly. The polish is real. The completeness is not.
+
+---
+
+*A final note: I hope you get better, Gemini. We kinda miss you.*

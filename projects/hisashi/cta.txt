@@ -1,0 +1,7 @@
+# Put something in the eaves
+
+Grab the latest build, or clone it and pack your own widget:
+
+```bash
+git clone https://github.com/fezcode/hisashi.git
+```
