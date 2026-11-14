@@ -1,6 +1,75 @@
 (logs)
   > (item)
     (category) Game
+    (developer) MachineGames
+    (date) 2026-11-15
+    (link) https://store.steampowered.com/app/201810/
+    (platform) PC (Steam)
+    (rating) 5
+    (slug) wolfenstein-the-new-order
+    (tags)
+      > first-person-shooter
+      > alternate-history
+      > story-rich
+    (title) Wolfenstein: The New Order
+    (image) /images/discovery/art/game/wolfenstein-the-new-order.webp
+    (imageSource)
+      (provider) Steam store artwork
+      (page) https://store.steampowered.com/app/201810/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/201810/library_600x900_2x.jpg?t=1750784496
+      (title) Wolfenstein: The New Order
+      (width) 600
+      (height) 900
+    (description) MachineGames sends B.J. Blazkowicz into a Nazi-controlled alternate 1960s, pairing ferocious combat with a resistance worth caring about. I love, LOVE this game. One of the best games ever made, across any genre. An absolute 5/5.
+
+  > (item)
+    (category) Game
+    (developer) MachineGames
+    (date) 2026-11-15
+    (link) https://store.steampowered.com/app/350080/
+    (platform) PC (Steam)
+    (rating) 5
+    (slug) wolfenstein-the-old-blood
+    (tags)
+      > first-person-shooter
+      > alternate-history
+      > horror
+    (title) Wolfenstein: The Old Blood
+    (image) /images/discovery/art/game/wolfenstein-the-old-blood.webp
+    (imageSource)
+      (provider) Steam store artwork
+      (page) https://store.steampowered.com/app/350080/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/350080/library_600x900_2x.jpg?t=1750784023
+      (title) Wolfenstein: The Old Blood
+      (width) 600
+      (height) 900
+    (description) MachineGames' standalone prequel takes B.J. through Castle Wolfenstein and into the occult horrors of Wulfburg. A concentrated dose of everything I love about these games, with an atmosphere all its own. It belongs among my all-time favorites, across any genre. 5/5.
+
+  > (item)
+    (category) Game
+    (developer) MachineGames
+    (date) 2026-11-15
+    (link) https://store.steampowered.com/app/612880/
+    (platform) PC (Steam)
+    (rating) 5
+    (slug) wolfenstein-ii-the-new-colossus
+    (tags)
+      > first-person-shooter
+      > alternate-history
+      > story-rich
+    (title) Wolfenstein II: The New Colossus
+    (image) /images/discovery/art/game/wolfenstein-ii-the-new-colossus.webp
+    (imageSource)
+      (provider) Steam store artwork
+      (page) https://store.steampowered.com/app/612880/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/612880/library_600x900_2x.jpg?t=1750784115
+      (title) Wolfenstein II: The New Colossus
+      (width) 600
+      (height) 900
+    (description) B.J. Blazkowicz brings the resistance to Nazi-occupied America in MachineGames' ferocious sequel. Outrageous action, a defiant heart, and a cast that makes the fight matter. I love this game just as fiercely as The New Order and The Old Blood. One of the best games ever. 5/5.
+
+  > (item)
+    (category) Game
     (date) 2026-11-14T20:57:24+03:00
     (link) https://store.steampowered.com/app/813780/Age_of_Empires_II_Definitive_Edition/
     (platform) PC
