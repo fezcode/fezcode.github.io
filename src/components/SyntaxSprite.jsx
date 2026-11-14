@@ -215,6 +215,51 @@ const QUOTES = [
   'A good archive is one you could walk away from and still recognize.',
   'A file is a letter to the version of yourself who will read it next.',
   'Do the work. Write it down. Drop the line. Read it true.',
+
+  // Fun facts — nature
+  'Octopuses have three hearts and blue blood. Copper-based hemocyanin, not iron.',
+  'Bananas are botanically berries. Strawberries are not.',
+  'Wombats produce cube-shaped droppings. Nature ships square packets.',
+  'Sharks are older than trees. Sharks: ~450 million years. Trees: ~385 million.',
+  'Tardigrades survived 10 days exposed to open space in 2007. Uptime goals.',
+  'Crows can recognize individual human faces and hold a grudge for years.',
+  'Koalas have fingerprints so close to ours they could confuse a crime scene.',
+  'Sea otters often hold hands while sleeping so they do not drift apart.',
+  "A mantis shrimp's punch is so fast it boils the water around it for an instant.",
+  'Sloths can hold their breath for up to 40 minutes. Longer than most standups.',
+  'Elephants are one of the very few mammals that cannot jump.',
+  'Peanuts are not nuts. They are legumes, closer to beans and lentils.',
+
+  // Fun facts — science
+  'Sunlight takes about 8 minutes and 20 seconds to reach you. You are always seeing the past.',
+  'A day on Venus is longer than a year on Venus.',
+  'Pluto has not completed a single orbit since it was discovered in 1930. It needs 248 years.',
+  'A teaspoon of neutron star would weigh around a billion tons.',
+  'A lightning bolt can reach ~30,000 K, about five times hotter than the surface of the Sun.',
+  'Saturn is less dense than water. Find a big enough bathtub and it would float.',
+  'Your body carries roughly as many bacterial cells as human cells. You are a distributed system.',
+  'Humans faintly glow. The light is about a thousand times too weak for our eyes to see.',
+  'Your stomach lining replaces itself every few days, so it does not digest itself.',
+  'The Eiffel Tower grows up to 15 cm taller in summer heat. Thermal expansion is real.',
+  'In a room of just 23 people, the odds that two share a birthday are over 50%.',
+
+  // Fun facts — history & society
+  'Oxford University was teaching before the Aztec capital Tenochtitlan was even founded.',
+  'Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid.',
+  'The shortest war in history, Anglo-Zanzibar 1896, lasted about 40 minutes.',
+  "Scotland's national animal is the unicorn.",
+  'In the 1830s, ketchup was sold in America as a medicine.',
+  'When a Byzantine princess ate with a golden fork in 11th-century Venice, clergy called it decadent.',
+  "The word 'coffee' traveled from Arabic qahwa through Turkish kahve before reaching Europe.",
+  "The English word 'tulip' likely comes from Turkish tülbent, turban. The flower came via the Ottomans.",
+  'Robin Dunbar suggested humans can keep about 150 stable relationships. Your follower count disagrees.',
+  'The Ottoman spoon-makers had their own guild. A good spoon was practically personal property.',
+
+  // Fun facts — life
+  'Most people can only hold about four things in working memory at once. Write it down.',
+  'Laughter is around 30 times more likely when you are with other people than alone.',
+  'Walking meetings measurably boost creative thinking, at least in Stanford studies. Go outside.',
+  'You blink around 15 to 20 times a minute, a bit less when staring at a screen. Look away sometimes.',
 ];
 
 const SyntaxSprite = () => {
