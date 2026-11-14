@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { staticRoutes } from './routes.js';
+import piml from 'piml';
 
 const PUBLIC = 'public';
 
@@ -170,6 +171,15 @@ function projectRoutes() {
   return out;
 }
 
+function wordupRoutes() {
+  const registry = join(PUBLIC, 'wordup', 'words.piml');
+  if (!existsSync(registry)) return [];
+  const { words = [] } = piml.parse(readFileSync(registry, 'utf8'));
+  return words
+    .filter((word) => word.slug)
+    .map((word) => `/wordup/${word.slug}`);
+}
+
 export function discoverAllRoutes() {
   const all = new Set(staticRoutes);
   for (const r of appRoutes()) all.add(r);
@@ -179,5 +189,6 @@ export function discoverAllRoutes() {
   for (const r of storyBookRoutes()) all.add(r);
   for (const r of demystifyRoutes()) all.add(r);
   for (const r of vocabRoutes()) all.add(r);
+  for (const r of wordupRoutes()) all.add(r);
   return Array.from(all);
 }

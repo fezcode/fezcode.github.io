@@ -136,6 +136,8 @@ const Layout = ({
     location.pathname.startsWith('/apps/') && location.pathname !== '/apps/';
   const isDemystifyPage = location.pathname.startsWith('/demystify');
   const isColophonPage = location.pathname.startsWith('/colophon');
+  const isWordupPage =
+    location.pathname === '/wordup' || location.pathname.startsWith('/wordup/');
   const hideLayout =
     (isAboutPage && !isOrbitAboutPage) ||
     isGraphPage ||
@@ -145,6 +147,7 @@ const Layout = ({
     isSnfAny ||
     isDemystifyPage ||
     isColophonPage ||
+    isWordupPage ||
     (isAppDetail && isAppFullscreen);
 
   const mainContent = location.pathname.startsWith('/stories') ? (
@@ -306,7 +309,7 @@ const Layout = ({
 
   return (
     <>
-      {!isSnfAny && !isImmersiveShowcase && <Banner />}
+      {!isSnfAny && !isImmersiveShowcase && !isWordupPage && <Banner />}
       {!isSnfAny && <FalloutOverlay />}
       {isGarden && !hideLayout && <DigitalFlowers />}
       {isAutumn && !hideLayout && <DigitalLeaves />}
@@ -320,7 +323,7 @@ const Layout = ({
       />
       {!hideLayout && <SidePanel />}
       {mainContent}
-      {!isSnfAny && !isImmersiveShowcase && <SyntaxSprite />}
+      {!isSnfAny && !isImmersiveShowcase && !isWordupPage && <SyntaxSprite />}
     </>
   );
 };

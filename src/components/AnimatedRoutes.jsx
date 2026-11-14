@@ -260,6 +260,8 @@ const NotebookViewerPage = lazy(
 const CommandsPage = lazy(() => import('../pages/CommandsPage'));
 const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
 const VocabPage = lazy(() => import('../pages/VocabPage'));
+const WordupPage = lazy(() => import('../pages/wordup/WordupPage'));
+const WordupDetailPage = lazy(() => import('../pages/wordup/WordupDetailPage'));
 const SitemapPage = lazy(() => import('../pages/SitemapPage'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const DashboardPage = lazy(() => import('../pages/DashboardPage'));
@@ -576,6 +578,22 @@ const AnimatedRoutes = ({
                 <NotebookViewerPage />
               </Suspense>
             </motion.div>
+          }
+        />
+        <Route
+          path="/wordup"
+          element={
+            <Suspense fallback={<Loading />}>
+              <WordupPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/wordup/:slug"
+          element={
+            <Suspense fallback={<Loading />}>
+              <WordupDetailPage />
+            </Suspense>
           }
         />
         <Route

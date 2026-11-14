@@ -1,0 +1,45 @@
+(words)
+  > (word)
+    (slug) poskurmek
+    (word) pöskürmek
+    (language) tr
+    (contentLanguage) tr
+    (partOfSpeech) verb
+    (pronunciation) pös-kür-mek
+    (definition) To feel so mentally and emotionally depleted that you want only sleep, with no desire to work or move, despite not being physically tired.
+    (translation) Bedeni yorulmadığı hâlde, zihinsel tükenme ve ruhsal çöküntü yüzünden çalışmaya ya da hareket etmeye istek duyamayıp yalnızca uyumak istemek.
+    (register) Gündelik / ruhsal yorgunluk
+    (forms) pöskürdüm; pöskürüyorum; pöskürmüş.
+    (example) Bedenim yorgun değil ama bugün öyle bir pöskürdüm ki ne çalışasım var ne de yerimden kalkasım; yalnızca uyumak istiyorum.
+    (date) 2026-11-14
+    (status) defined
+    (number) 01
+  > (word)
+    (slug) kiraspan
+    (word) kıraspan
+    (language) tr
+    (contentLanguage) tr
+    (partOfSpeech) adjective
+    (pronunciation) kı-ras-pan
+    (definition) Marginally appropriate in context, but better replaced by a more fitting choice.
+    (translation) Bir ölçüde uygun olsa da bağlama tam oturmayan; daha yerinde bir seçeneğin tercih edilmesi beklenen.
+    (register) Gündelik / ölçülü eleştiri
+    (example) Yeni bir müşteriye gönderilen ilk e-postayı “Görüşürüz” diye bitirmek biraz kıraspan; “İyi çalışmalar dilerim” daha yerinde olur.
+    (date) 2026-11-14
+    (status) defined
+    (number) 02
+  > (word)
+    (slug) cancil
+    (word) cancıl
+    (language) tr
+    (contentLanguage) tr
+    (partOfSpeech) adjective
+    (pronunciation) can-cıl
+    (definition) Good-natured, openly affectionate and eager to connect with people, with an infectious enthusiasm for their company and happiness.
+    (translation) İnsanlarla bağ kurmaya hevesli, sevgisini ve sevincini açıkça gösteren; içten coşkusu çevresine yayılan.
+    (register) Gündelik / sevecen
+    (forms) Önerilen kullanım: cancıl biri; cancıl bir tavır; cancıllık.
+    (example) Daha dün tanıştık ama iyi haberime kendi başarısıymış gibi sevindi; çok cancıl biri.
+    (date) 2026-11-14
+    (status) defined
+    (number) 03

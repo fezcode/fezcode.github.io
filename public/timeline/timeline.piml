@@ -1,6 +1,14 @@
 (timeline)
   > (item)
     (date) 2026-11-14
+    (title) Wordup: A Living Lexicon
+    (description) Launched Wordup for invented Turkish and English words, with word-seeded 3D sculptures, detailed entries authored as Markdown text files, search, language filters, and an alphabetical index with Turkish-aware sorting. The first entries are pöskürmek, kıraspan, and cancıl. Released as v0.53.0.
+    (type) feature
+    (icon) TextAaIcon
+    (link) /wordup
+
+  > (item)
+    (date) 2026-11-14
     (title) Seven New Project Worlds
     (description) Added individually art-directed project pages for Tarman, osXos, Gitland, Sir Word-a-lot, Lounge, HammerOS, and Beetle, with interactive previews, native application artwork, and responsive layouts. Removed the Marquetry theme and retained the scheduled theme defaults. Released as v0.52.0.
     (type) feature

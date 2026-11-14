@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-11-14
+    (link) https://www.imdb.com/title/tt17009710/
+    (rating) 3
+    (slug) anatomy-of-a-fall-2023
+    (title) Anatomy of a Fall (2023)
+    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (description) Justine Triet's courtroom drama about a woman accused of killing her husband after he is found dead outside their mountain home. As their son witnesses the trial, the investigation becomes an examination of the couple's marriage and the difficulty of establishing what happened.
+    (director) Justine Triet
+  > (item)
+    (category) Movie
     (date) 2026-10-11
     (link) https://www.imdb.com/title/tt30144839/
     (rating) 3

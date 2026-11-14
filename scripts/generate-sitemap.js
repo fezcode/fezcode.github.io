@@ -146,6 +146,24 @@ const generateSitemap = async () => {
     console.error('Error reading vocabulary.js:', error);
   }
 
+  // Wordup uses the same text-file publishing flow as the logs.
+  try {
+    const registryPath = path.join(publicDirectory, 'wordup', 'words.piml');
+    if (fs.existsSync(registryPath)) {
+      const { words = [] } = piml.parse(fs.readFileSync(registryPath, 'utf-8'));
+      words.filter(word => word.slug).forEach(word => {
+        urls.push({
+          loc: `${baseUrl}/wordup/${word.slug}`,
+          lastmod: new Date(word.updated || word.date || new Date()).toISOString(),
+          changefreq: 'monthly',
+          priority: '0.6',
+        });
+      });
+    }
+  } catch (error) {
+    console.error('Error reading wordup/words.piml:', error);
+  }
+
   // Add dynamic routes from logs (category-based)
   try {
     const logsDirectory = path.join(publicDirectory, 'logs');

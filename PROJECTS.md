@@ -285,7 +285,7 @@ landing-page template. Their `(style)` value matches their project slug:
 | `osxos` | `OsxosProjectPage.jsx` | Porcelain orbital maintenance laboratory | Explain, Review, and Result walkthrough |
 | `gitland` | `GitlandProjectPage.jsx` | Ivory and lavender branch atlas | Revision selection and three-way merge |
 | `sir-word-a-lot` | `SirWordALotProjectPage.jsx` | Illuminated ultramarine lexicon | Connected words and recall exercise |
-| `lounge` | `LoungeProjectPage.jsx` | Personal cinema and media console | Keyboard-navigable media rooms |
+| `lounge` | `LoungeProjectPage.jsx` | Luminous ASCII signal poster and spatial app installation | URL-linked atmospheres, media collection and tactile controller tour |
 | `hammeros` | `HammerOsProjectPage.jsx` | Retrofuturist Department terminal | Desktop applications and workspace preview |
 | `beetle` | `BeetleProjectPage.jsx` | Sculptural chrome and responsive light | Colour, intensity, and lighting modes |
 
@@ -301,3 +301,9 @@ routes. Every page retains a link back to the project collection, real source
 and release links, keyboard-accessible controls, and a reduced-motion treatment.
 Preview data is illustrative: none of these web controls connects to Bluetooth,
 changes a repository, maintains a computer, or launches desktop applications.
+
+Lounge's four user-supplied backgrounds live in
+`public/images/projects/lounge/backgrounds/`, with exact PNG originals,
+responsive WebP variants, and provenance in `ASSETS.md`. Keep the original art
+unaltered; use local layout masks for readable text. The product screenshot is
+the actual application, while the luminous background imagery is presentation art.

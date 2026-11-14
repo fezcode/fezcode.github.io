@@ -100,12 +100,33 @@ function projectsMeta(routeMap) {
   }
 }
 
+function wordupMeta(routeMap) {
+  routeMap.set('/wordup', {
+    title: 'Wordup — A living lexicon | Fezcodex',
+    description:
+      "Invented Turkish and English words for feelings that don't have a name yet. Explore a living lexicon by fezcode.",
+    type: 'website',
+  });
+  const registryPath = join(PUBLIC, 'wordup', 'words.piml');
+  if (!existsSync(registryPath)) return;
+  const { words = [] } = piml.parse(readFileSync(registryPath, 'utf8'));
+  for (const word of words) {
+    if (!word?.slug) continue;
+    routeMap.set(`/wordup/${word.slug}`, {
+      title: `${word.word} — Wordup | Fezcodex`,
+      description: word.definition,
+      type: 'article',
+    });
+  }
+}
+
 export function buildRouteMetaMap() {
   const map = new Map();
   const posts = readJson(join(PUBLIC, 'posts', 'posts.json')) || [];
   blogMeta(map, posts);
   logsMeta(map);
   projectsMeta(map);
+  wordupMeta(map);
   return map;
 }
 

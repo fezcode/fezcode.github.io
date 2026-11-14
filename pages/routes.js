@@ -146,4 +146,5 @@ export const staticRoutes = [
   '/timeline',
   '/vocab',
   '/welcome',
+  '/wordup',
 ];

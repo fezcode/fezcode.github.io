@@ -18,148 +18,6 @@
     (image) /images/projects/fezcodex/fezcodex.webp
 
   > (project)
-    (slug) tarman
-    (title) Tarman
-    (style) tarman
-    (version) 0.1.2
-    (size) 2
-    (repo_link) https://github.com/fezcode/Tarman
-    (demo_link) https://github.com/fezcode/Tarman/releases/latest
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > C11
-      > raylib
-      > Win32
-      > System Monitor
-      > Windows
-    (shortDescription) A native Windows task manager and resource monitor with a ten-minute moving history. Shared-clock system and process timelines, retrospective analysis, resource monitoring, event logs, and read-only firmware inspection.
-    (date) 2026-11-14
-    (image) /images/projects/tarman/analysis.webp
-
-  > (project)
-    (slug) osxos
-    (title) osXos
-    (style) osxos
-    (version) 0.2.6
-    (size) 2
-    (repo_link) https://github.com/fezcode/osXos
-    (demo_link) https://github.com/fezcode/osXos/releases/latest
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > C#
-      > .NET 8
-      > Avalonia UI
-      > System Maintenance
-      > Windows
-    (shortDescription) A native maintenance toolkit that explains every operation, inspects the real machine, and lets you review exact paths and commands before running anything. Cache cleanup, developer tools, reports, and explicit results in one cross-platform app.
-    (date) 2026-11-14
-    (image) /images/projects/osxos/cover.svg
-
-  > (project)
-    (slug) gitland
-    (title) Gitland
-    (style) gitland
-    (version) 0.14.4
-    (size) 2
-    (repo_link) https://github.com/fezcode/gitland
-    (demo_link) https://github.com/fezcode/gitland/releases/latest
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > C#
-      > .NET 10
-      > Avalonia UI
-      > Git
-      > Windows
-    (shortDescription) A native Git client for Windows with readable diffs, hunk staging, three-way review, editable merge results, deterministic conflict suggestions, repository workspaces, history tools, and recovery.
-    (date) 2026-11-14
-    (image) /images/projects/gitland/atlas.svg
-
-  > (project)
-    (slug) sir-word-a-lot
-    (title) Sir Word-a-lot
-    (style) sir-word-a-lot
-    (version) 0.1.6
-    (size) 2
-    (repo_link) https://github.com/fezcode/SirWordALot
-    (demo_link) https://github.com/fezcode/SirWordALot/releases/latest
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > C#
-      > .NET 10
-      > Avalonia UI
-      > SQLite
-      > Spaced Repetition
-    (shortDescription) A vocabulary and thesaurus trainer that keeps words with the sentences you meet them in. Synonym discovery, a sentence bank, smart decks, four quiz modes, and SM-2 or Leitner scheduling turn a word list into a lasting library.
-    (date) 2026-11-14
-    (image) /images/projects/sir-word-a-lot/cover.svg
-
-  > (project)
-    (slug) lounge
-    (title) Lounge
-    (style) lounge
-    (version) 1.0.28
-    (size) 2
-    (repo_link) https://github.com/fezcode/Lounge
-    (demo_link) https://github.com/fezcode/Lounge/releases/latest
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > C#
-      > .NET 10
-      > Avalonia UI
-      > FFmpeg 8
-      > WebView2
-      > Windows
-    (shortDescription) A controller-first media center for Windows. Local FFmpeg playback, tagged music libraries, apps and games, embedded web tiles, and a controller file explorer bring your whole PC to the couch.
-    (date) 2026-11-14
-    (image) /images/projects/lounge/cover.svg
-
-  > (project)
-    (slug) hammeros
-    (title) HammerOS
-    (style) hammeros
-    (version) 0.3.7
-    (size) 2
-    (repo_link) https://github.com/fezcode/hammeros
-    (demo_link) https://github.com/fezcode/hammeros/releases/latest
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > C#
-      > .NET 10
-      > Avalonia UI
-      > ConPTY
-      > WebView2
-      > Windows
-    (shortDescription) A native fullscreen Windows workspace with real files, PowerShell and CMD sessions, native app tiling, saved desktops, and a fictional retrofuturist Department. Institutional chrome, live wireframe wallpapers, and a complete workspace beneath the fiction.
-    (date) 2026-11-14
-    (image) /images/projects/hammeros/cover.svg
-
-  > (project)
-    (slug) beetle
-    (title) Beetle
-    (style) beetle
-    (version) 0.1.2
-    (size) 2
-    (repo_link) https://github.com/fezcode/Beetle
-    (demo_link) https://github.com/fezcode/Beetle/releases/latest
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > C#
-      > .NET 10
-      > Avalonia 12
-      > Bluetooth LE
-      > Windows
-    (shortDescription) A native Windows controller for ELK-BLEDOM Bluetooth LED strips. Direct colour and brightness controls, screen-following ambient light, smooth rainbow cycles, and music-reactive beat colours, with remembered settings and a tray companion.
-    (date) 2026-11-14
-    (image) /images/projects/beetle/scarab.webp
-
-  > (project)
     (slug) piml
     (title) piml
     (style) museum
@@ -191,6 +49,87 @@
     (shortDescription) gobake is a Go-native build orchestrator. It replaces Makefiles and shell scripts with a single, type-safe Recipe.go file. v0.5.0 moves recipe.piml parsing to go-piml v1.3.0, enforcing PIML spec v1.2.0 (strict 2-space indentation, inline comments, quoted strings, duplicate-key errors).
     (date) 2026-04-27
     (image) /images/projects/gobake/gobake-banner.png
+
+  > (project)
+    (slug) atlas-projects
+    (title) Atlas Projects
+    (style) atlas
+    (size) 1
+    (repo_link) https://github.com/stars/fezcode/lists/atlas
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > Go
+      > TUI
+      > Bubble Tea
+      > Productivity
+    (shortDescription) A collection of 45 minimalist, high-performance CLI tools for productivity, including todo management, system stats, file exploration, image conversion, web search, password management, secure TOTP (2FA), world radio, network speedtests, DDC/CI monitor control, text editing, and git management.
+    (date) 2026-09-12
+    (image) /images/bg/emre.jpg
+    (backgroundImage) /images/bg/emre.jpg
+    (photoCreditText) Photo by Emre on Unsplash
+    (photoCreditLink) https://unsplash.com/photos/green-leafed-plant-in-closeup-shot-CBh4D3l0EwM
+
+  > (project)
+    (slug) clockt
+    (title) clockt
+    (style) panes
+    (version) 0.5.25
+    (size) 2
+    (repo_link) https://github.com/fezcode/clockt
+    (demo_link) https://github.com/fezcode/clockt/releases
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET 9
+      > Avalonia UI
+      > ConPTY
+      > Terminal
+      > Windows
+    (shortDescription) clockt is a terminal emulator and multiplexer for Windows. Sessions live in a background daemon, so a closed window never kills your shell. Workspaces, tabs and splits, developer panels, an embedded browser pane, a plugin-driven status bar, and fourteen themes that style the terminal itself - not just the chrome.
+    (date) 2026-09-12
+    (image) /images/projects/clockt/terminal.png
+
+  > (project)
+    (slug) gitland
+    (title) Gitland
+    (style) gitland
+    (version) 0.14.4
+    (size) 2
+    (repo_link) https://github.com/fezcode/gitland
+    (demo_link) https://github.com/fezcode/gitland/releases/latest
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET 10
+      > Avalonia UI
+      > Git
+      > Windows
+    (shortDescription) A native Git client for Windows with readable diffs, hunk staging, three-way review, editable merge results, deterministic conflict suggestions, repository workspaces, history tools, and recovery.
+    (date) 2026-11-14
+    (image) /images/projects/gitland/atlas.svg
+
+  > (project)
+    (slug) hisashi
+    (title) Hisashi
+    (style) flow
+    (version) 0.6.27
+    (size) 2
+    (repo_link) https://github.com/fezcode/hisashi
+    (demo_link) https://github.com/fezcode/hisashi/releases
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET 9
+      > Avalonia UI
+      > Windows
+      > Plugins
+    (shortDescription) Hisashi (庇, Japanese for "eaves") is a plugin-driven top bar for Windows that sits at the top of every monitor. Per-monitor configuration, three zones, 25 bundled plugins, 22 contrast-checked themes, host-rendered toasts, and an OS Window Layer that lets any app in any language publish its menus into a macOS-style menu bar.
+    (date) 2026-09-12
+    (image) /images/projects/hisashi/banner.svg
 
   > (project)
     (slug) airlift
@@ -233,6 +172,27 @@
     (image) /images/projects/qemik/banner.webp
 
   > (project)
+    (slug) descry
+    (title) Descry
+    (style) graph
+    (version) 0.91.0
+    (size) 2
+    (repo_link) https://github.com/fezcode/Descry
+    (demo_link) https://github.com/fezcode/Descry/releases
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C
+      > SDL2
+      > Lua
+      > md4c
+      > Markdown
+      > Editor
+    (shortDescription) Descry is a keyboard-driven markdown editor in C, SDL2 and Lua. Vault sidebar, wiki links, tags and backlinks, a force-directed graph view, live CommonMark preview, typographic math, and a real Lua plugin host - Obsidian ergonomics without the Electron tax.
+    (date) 2026-09-07
+    (image) /images/projects/descry/preview.png
+
+  > (project)
     (slug) timp
     (title) Timp
     (style) hifi
@@ -253,68 +213,6 @@
     (shortDescription) Timp is a small, native, album-art-forward music player written in C with raylib. Borderless Hi-Fi window, accent color sampled from the artwork, live spectrum, 10-band EQ, synced lyrics, saved .m3u8 playlists and a slide-out drawer. Ships as a real Windows installer built with Forge, a self-contained Timp.app for macOS, and a Hisashi menu bar. v0.13.0 adds eight EQ presets, output-device selection and a sleep timer.
     (date) 2026-09-01
     (image) /images/projects/timp/main.png
-
-  > (project)
-    (slug) hisashi
-    (title) Hisashi
-    (style) flow
-    (version) 0.6.27
-    (size) 2
-    (repo_link) https://github.com/fezcode/hisashi
-    (demo_link) https://github.com/fezcode/hisashi/releases
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > C#
-      > .NET 9
-      > Avalonia UI
-      > Windows
-      > Plugins
-    (shortDescription) Hisashi (庇, Japanese for "eaves") is a plugin-driven top bar for Windows that sits at the top of every monitor. Per-monitor configuration, three zones, 25 bundled plugins, 22 contrast-checked themes, host-rendered toasts, and an OS Window Layer that lets any app in any language publish its menus into a macOS-style menu bar.
-    (date) 2026-09-12
-    (image) /images/projects/hisashi/banner.svg
-
-  > (project)
-    (slug) clockt
-    (title) clockt
-    (style) panes
-    (version) 0.5.25
-    (size) 2
-    (repo_link) https://github.com/fezcode/clockt
-    (demo_link) https://github.com/fezcode/clockt/releases
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > C#
-      > .NET 9
-      > Avalonia UI
-      > ConPTY
-      > Terminal
-      > Windows
-    (shortDescription) clockt is a terminal emulator and multiplexer for Windows. Sessions live in a background daemon, so a closed window never kills your shell. Workspaces, tabs and splits, developer panels, an embedded browser pane, a plugin-driven status bar, and fourteen themes that style the terminal itself - not just the chrome.
-    (date) 2026-09-12
-    (image) /images/projects/clockt/terminal.png
-
-  > (project)
-    (slug) descry
-    (title) Descry
-    (style) graph
-    (version) 0.91.0
-    (size) 2
-    (repo_link) https://github.com/fezcode/Descry
-    (demo_link) https://github.com/fezcode/Descry/releases
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > C
-      > SDL2
-      > Lua
-      > md4c
-      > Markdown
-      > Editor
-    (shortDescription) Descry is a keyboard-driven markdown editor in C, SDL2 and Lua. Vault sidebar, wiki links, tags and backlinks, a force-directed graph view, live CommonMark preview, typographic math, and a real Lua plugin host - Obsidian ergonomics without the Electron tax.
-    (date) 2026-09-07
-    (image) /images/projects/descry/preview.png
 
   > (project)
     (slug) tivi
@@ -339,6 +237,67 @@
     (image) /images/projects/tivi/hero.png
 
   > (project)
+    (slug) hammeros
+    (title) HammerOS
+    (style) hammeros
+    (version) 0.3.7
+    (size) 2
+    (repo_link) https://github.com/fezcode/hammeros
+    (demo_link) https://github.com/fezcode/hammeros/releases/latest
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET 10
+      > Avalonia UI
+      > ConPTY
+      > WebView2
+      > Windows
+    (shortDescription) A native fullscreen Windows workspace with real files, PowerShell and CMD sessions, native app tiling, saved desktops, and a fictional retrofuturist Department. Institutional chrome, live wireframe wallpapers, and a complete workspace beneath the fiction.
+    (date) 2026-11-14
+    (image) /images/projects/hammeros/cover.svg
+
+  > (project)
+    (slug) osxos
+    (title) osXos
+    (style) osxos
+    (version) 0.2.6
+    (size) 2
+    (repo_link) https://github.com/fezcode/osXos
+    (demo_link) https://github.com/fezcode/osXos/releases/latest
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET 8
+      > Avalonia UI
+      > System Maintenance
+      > Windows
+    (shortDescription) A native maintenance toolkit that explains every operation, inspects the real machine, and lets you review exact paths and commands before running anything. Cache cleanup, developer tools, reports, and explicit results in one cross-platform app.
+    (date) 2026-11-14
+    (image) /images/projects/osxos/cover.svg
+
+  > (project)
+    (slug) tarman
+    (title) Tarman
+    (style) tarman
+    (version) 0.1.2
+    (size) 2
+    (repo_link) https://github.com/fezcode/Tarman
+    (demo_link) https://github.com/fezcode/Tarman/releases/latest
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C11
+      > raylib
+      > Win32
+      > System Monitor
+      > Windows
+    (shortDescription) A native Windows task manager and resource monitor with a ten-minute moving history. Shared-clock system and process timelines, retrospective analysis, resource monitoring, event logs, and read-only firmware inspection.
+    (date) 2026-11-14
+    (image) /images/projects/tarman/analysis.webp
+
+  > (project)
     (slug) cogas
     (title) Cogas
     (style) shelf
@@ -357,6 +316,47 @@
     (shortDescription) Cogas (common gaming software) is one library for every store. It collects the games installed across Steam, Epic, GOG, Ubisoft Connect, Battle.net, EA and the Microsoft Store into a single cover grid, launches each through its own platform, and searches every storefront at once for prices, deals and critic scores.
     (date) 2026-09-01
     (image) /images/projects/cogas/library.png
+
+  > (project)
+    (slug) lounge
+    (title) Lounge
+    (style) lounge
+    (version) 1.0.28
+    (size) 2
+    (repo_link) https://github.com/fezcode/Lounge
+    (demo_link) https://github.com/fezcode/Lounge/releases/latest
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET 10
+      > Avalonia UI
+      > FFmpeg 8
+      > WebView2
+      > Windows
+    (shortDescription) A controller-first media center for Windows. Local FFmpeg playback, tagged music libraries, apps and games, embedded web tiles, and a controller file explorer bring your whole PC to the couch.
+    (date) 2026-11-14
+    (image) /images/projects/lounge/backgrounds/signal-bloom.webp
+
+  > (project)
+    (slug) atelier
+    (title) Atelier
+    (style) gallery
+    (version) 0.4.0
+    (size) 2
+    (repo_link) https://github.com/fezcode/Atelier
+    (demo_link) https://github.com/fezcode/Atelier/releases
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET
+      > Avalonia UI
+      > SkiaSharp
+      > Image Viewer
+    (shortDescription) Atelier is a high-performance image and SVG viewer built with Avalonia UI and C#. GPU-accelerated SkiaSharp rendering, infinite vector zoom, native HEIC / AVIF / WebP support, EXIF-correct rotation, animated GIF and WebP, six wallpaper modes, and a minimalist dark interface that stays out of the way of the picture.
+    (date) 2026-09-01
+    (image) /images/projects/atelier/viewer.png
 
   > (project)
     (slug) pidi
@@ -400,24 +400,94 @@
     (image) /images/projects/typewriter/banner.png
 
   > (project)
-    (slug) atelier
-    (title) Atelier
-    (style) gallery
-    (version) 0.4.0
+    (slug) sir-word-a-lot
+    (title) Sir Word-a-lot
+    (style) sir-word-a-lot
+    (version) 0.1.6
     (size) 2
-    (repo_link) https://github.com/fezcode/Atelier
-    (demo_link) https://github.com/fezcode/Atelier/releases
-    (pinned) false
+    (repo_link) https://github.com/fezcode/SirWordALot
+    (demo_link) https://github.com/fezcode/SirWordALot/releases/latest
+    (pinned) true
     (isActive) true
     (technologies)
       > C#
-      > .NET
+      > .NET 10
       > Avalonia UI
-      > SkiaSharp
-      > Image Viewer
-    (shortDescription) Atelier is a high-performance image and SVG viewer built with Avalonia UI and C#. GPU-accelerated SkiaSharp rendering, infinite vector zoom, native HEIC / AVIF / WebP support, EXIF-correct rotation, animated GIF and WebP, six wallpaper modes, and a minimalist dark interface that stays out of the way of the picture.
-    (date) 2026-09-01
-    (image) /images/projects/atelier/viewer.png
+      > SQLite
+      > Spaced Repetition
+    (shortDescription) A vocabulary and thesaurus trainer that keeps words with the sentences you meet them in. Synonym discovery, a sentence bank, smart decks, four quiz modes, and SM-2 or Leitner scheduling turn a word list into a lasting library.
+    (date) 2026-11-14
+    (image) /images/projects/sir-word-a-lot/cover.svg
+
+  > (project)
+    (slug) beetle
+    (title) Beetle
+    (style) beetle
+    (version) 0.1.2
+    (size) 2
+    (repo_link) https://github.com/fezcode/Beetle
+    (demo_link) https://github.com/fezcode/Beetle/releases/latest
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET 10
+      > Avalonia 12
+      > Bluetooth LE
+      > Windows
+    (shortDescription) A native Windows controller for ELK-BLEDOM Bluetooth LED strips. Direct colour and brightness controls, screen-following ambient light, smooth rainbow cycles, and music-reactive beat colours, with remembered settings and a tray companion.
+    (date) 2026-11-14
+    (image) /images/projects/beetle/scarab.webp
+
+  > (project)
+    (slug) go-piml
+    (title) go-piml
+    (style) bento
+    (size) 1
+    (demo_link) https://pkg.go.dev/github.com/fezcode/go-piml
+    (repo_link) https://github.com/fezcode/go-piml
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > piml
+      > markup-language
+      > go
+    (shortDescription) go-piml is a Go package that provides functionality to marshal and unmarshal data to and from the PIML format.
+    (date) 2025-11-01
+    (image) /images/projects/covers/go-piml.svg
+
+  > (project)
+    (slug) piml.js
+    (title) piml.js
+    (style) bento
+    (size) 1
+    (demo_link) https://www.npmjs.com/package/piml
+    (repo_link) https://github.com/fezcode/piml.js
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > piml
+      > markup-language
+      > js
+    (shortDescription) piml.js is a JavaScript library for parsing and stringifying data in the PIML format.
+    (date) 2025-11-01
+    (image) /images/projects/covers/piml.js.svg
+
+  > (project)
+    (slug) piml-highlighter
+    (title) PIML Syntax Highlighter for VS Code
+    (size) 2
+    (repo_link) https://github.com/fezcode/piml-highlighter/
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > VS Code
+      > PIML
+      > Syntax Highlighting
+      > Extension
+    (shortDescription) This extension provides comprehensive syntax highlighting for PIML (Parenthesis Intended Markup Language) files in Visual Studio Code.
+    (date) 2025-11-11
+    (image) /images/projects/covers/piml-highlighter.svg
 
   > (project)
     (slug) runir
@@ -431,26 +501,6 @@
     (shortDescription) Runir is a modern documentation platform with extended markdown support.
     (date) 2026-04-12
     (image) /images/projects/runir/banner.png
-
-  > (project)
-    (slug) atlas-projects
-    (title) Atlas Projects
-    (style) atlas
-    (size) 1
-    (repo_link) https://github.com/stars/fezcode/lists/atlas
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > Go
-      > TUI
-      > Bubble Tea
-      > Productivity
-    (shortDescription) A collection of 45 minimalist, high-performance CLI tools for productivity, including todo management, system stats, file exploration, image conversion, web search, password management, secure TOTP (2FA), world radio, network speedtests, DDC/CI monitor control, text editing, and git management.
-    (date) 2026-09-12
-    (image) /images/bg/emre.jpg
-    (backgroundImage) /images/bg/emre.jpg
-    (photoCreditText) Photo by Emre on Unsplash
-    (photoCreditLink) https://unsplash.com/photos/green-leafed-plant-in-closeup-shot-CBh4D3l0EwM
 
   > (project)
     (slug) dush
@@ -471,6 +521,25 @@
     (backgroundImage) /images/bg/tim_simon.jpg
     (photoCreditText) Photo by Tim Simon
     (photoCreditLink) https://unsplash.com/photos/a-plane-flying-in-the-sky-with-a-lot-of-clouds-g3XW9EerLmE
+
+  > (project)
+    (slug) cartogo
+    (title) CartoGo
+    (style) landscape
+    (size) 2
+    (repo_link) https://github.com/fezcode/CartoGo
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > Go
+      > OpenStreetMap
+      > 300 DPI Rendering
+      > gg library
+      > Data Viz
+      > Algorithms
+    (shortDescription) High-performance Go implementation of the City Map Poster Generator. Generate beautiful, minimalist map posters for any city in the world.
+    (date) 2026-02-08
+    (image) /projects/cartogo/maps/london.webp
 
   > (project)
     (slug) castarook
@@ -508,43 +577,6 @@
     (image) /images/projects/swat-tactics/1.png
 
   > (project)
-    (slug) bm
-    (title) bm - bookmark manager
-    (style) editorial
-    (size) 1
-    (repo_link) https://github.com/fezcode/bm
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > Rust
-      > TOML
-    (shortDescription) BM is a simple command-line bookmark manager for your shell. It stores bookmarks in a `store.toml` file within a `~/.bm` directory.
-    (date) 2025-11-06
-    (image) /images/projects/covers/bm.svg
-    (backgroundImage) /images/bg/nik.jpg
-    (photoCreditText) Photo by Nik on Unsplash
-    (photoCreditLink) https://unsplash.com/photos/palm-fronds-against-a-sunset-sky-3ZMkvC45R_E
-
-  > (project)
-    (slug) cartogo
-    (title) CartoGo
-    (style) landscape
-    (size) 2
-    (repo_link) https://github.com/fezcode/CartoGo
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > Go
-      > OpenStreetMap
-      > 300 DPI Rendering
-      > gg library
-      > Data Viz
-      > Algorithms
-    (shortDescription) High-performance Go implementation of the City Map Poster Generator. Generate beautiful, minimalist map posters for any city in the world.
-    (date) 2026-02-08
-    (image) /projects/cartogo/maps/london.webp
-
-  > (project)
     (slug) climb-the-tall-building-0
     (title) Climb the Tall Building 0
     (style) minimal-modern
@@ -563,19 +595,22 @@
     (image) /images/projects/climb-the-tall-building-0/banner.png
 
   > (project)
-    (slug) villain-couch
-    (title) Villain Couch
-    (size) 2
-    (repo_link) https://github.com/fezcode/Villain-Couch
-    (pinned) false
+    (slug) bm
+    (title) bm - bookmark manager
+    (style) editorial
+    (size) 1
+    (repo_link) https://github.com/fezcode/bm
+    (pinned) true
     (isActive) true
     (technologies)
-      > VLC
-      > Go
-      > SQLite
-    (shortDescription) Villain Couch is a Windows application designed to track the status of VLC Media Player.
-    (date) 2025-11-04
-    (image) /images/projects/villain_couch.webp
+      > Rust
+      > TOML
+    (shortDescription) BM is a simple command-line bookmark manager for your shell. It stores bookmarks in a `store.toml` file within a `~/.bm` directory.
+    (date) 2025-11-06
+    (image) /images/projects/covers/bm.svg
+    (backgroundImage) /images/bg/nik.jpg
+    (photoCreditText) Photo by Nik on Unsplash
+    (photoCreditLink) https://unsplash.com/photos/palm-fronds-against-a-sunset-sky-3ZMkvC45R_E
 
   > (project)
     (slug) yap
@@ -595,38 +630,19 @@
     (image) /images/projects/yap/yap-banner.webp
 
   > (project)
-    (slug) go-piml
-    (title) go-piml
-    (style) bento
-    (size) 1
-    (demo_link) https://pkg.go.dev/github.com/fezcode/go-piml
-    (repo_link) https://github.com/fezcode/go-piml
+    (slug) villain-couch
+    (title) Villain Couch
+    (size) 2
+    (repo_link) https://github.com/fezcode/Villain-Couch
     (pinned) false
     (isActive) true
     (technologies)
-      > piml
-      > markup-language
-      > go
-    (shortDescription) go-piml is a Go package that provides functionality to marshal and unmarshal data to and from the PIML format.
-    (date) 2025-11-01
-    (image) /images/projects/covers/go-piml.svg
-
-  > (project)
-    (slug) piml.js
-    (title) piml.js
-    (style) bento
-    (size) 1
-    (demo_link) https://www.npmjs.com/package/piml
-    (repo_link) https://github.com/fezcode/piml.js
-    (pinned) false
-    (isActive) true
-    (technologies)
-      > piml
-      > markup-language
-      > js
-    (shortDescription) piml.js is a JavaScript library for parsing and stringifying data in the PIML format.
-    (date) 2025-11-01
-    (image) /images/projects/covers/piml.js.svg
+      > VLC
+      > Go
+      > SQLite
+    (shortDescription) Villain Couch is a Windows application designed to track the status of VLC Media Player.
+    (date) 2025-11-04
+    (image) /images/projects/villain_couch.webp
 
   > (project)
     (slug) doku
@@ -656,35 +672,6 @@
     (shortDescription) Stroque is a project for procedural box art generation. It draws boxes on a `2000 x 2000` SVG canvas and utilizes a backtracking algorithm.
     (date) 2024-01-01
     (image) /images/projects/covers/stroque.svg
-
-  > (project)
-    (slug) scrappy
-    (title) Scrappy.js
-    (size) 1
-    (repo_link) https://github.com/fezcode/scrappy
-    (pinned) false
-    (isActive) false
-    (technologies)
-      > JavaScript
-    (shortDescription) Scrappy.js is a simple command-line web scraper.
-    (date) 2024-01-01
-    (image) /images/projects/covers/scrappy.svg
-
-  > (project)
-    (slug) piml-highlighter
-    (title) PIML Syntax Highlighter for VS Code
-    (size) 2
-    (repo_link) https://github.com/fezcode/piml-highlighter/
-    (pinned) false
-    (isActive) true
-    (technologies)
-      > VS Code
-      > PIML
-      > Syntax Highlighting
-      > Extension
-    (shortDescription) This extension provides comprehensive syntax highlighting for PIML (Parenthesis Intended Markup Language) files in Visual Studio Code.
-    (date) 2025-11-11
-    (image) /images/projects/covers/piml-highlighter.svg
 
   > (project)
     (slug) go-homo-sapiens-time
@@ -748,6 +735,19 @@
     (shortDescription) "Clipboard Concat" is a Firefox/WebExtension that allows users to concatenate copied links and selections into their clipboard.
     (date) 2024-01-01
     (image) /images/projects/covers/clipboard-concat.svg
+
+  > (project)
+    (slug) scrappy
+    (title) Scrappy.js
+    (size) 1
+    (repo_link) https://github.com/fezcode/scrappy
+    (pinned) false
+    (isActive) false
+    (technologies)
+      > JavaScript
+    (shortDescription) Scrappy.js is a simple command-line web scraper.
+    (date) 2024-01-01
+    (image) /images/projects/covers/scrappy.svg
 
   > (project)
     (slug) boxer

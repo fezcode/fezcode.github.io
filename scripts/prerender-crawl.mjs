@@ -5,7 +5,20 @@ import { preview } from 'vite';
 import puppeteer from 'puppeteer';
 import { discoverAllRoutes } from '../pages/discoverRoutes.js';
 
-const allRoutes = discoverAllRoutes();
+const discoveredRoutes = discoverAllRoutes();
+const requestedRoutes = new Set(
+  (process.env.PRERENDER_ROUTES || '')
+    .split(',')
+    .map((route) => route.trim())
+    .filter(Boolean),
+);
+for (const route of requestedRoutes) {
+  if (!discoveredRoutes.includes(route))
+    throw new Error(`Unknown prerender route: ${route}`);
+}
+const allRoutes = discoveredRoutes.filter(
+  (route) => !requestedRoutes.size || requestedRoutes.has(route),
+);
 
 const DIST = 'dist/client';
 const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY) || 6;
@@ -90,15 +103,32 @@ async function crawlOne(browser, baseUrl, route) {
         ms: Date.now() - t0,
       };
     }
-    if (PROJECT_CONTENT_ROUTES.has(route.replace(/\/$/, ''))) {
+    const routePath = route.replace(/\/$/, '');
+    // A mounted shell or title can precede fetched content. Wait for the
+    // actual collection, reader or milestone list on asynchronous pages.
+    let contentSelector = null;
+    if (routePath === '/wordup') {
+      contentSelector =
+        '#react-root .wf-word-node, #react-root .wf-field-state:not([role])';
+    } else if (routePath.startsWith('/wordup/')) {
+      contentSelector = '#react-root .wf-entry .wf-markdown';
+    } else if (routePath === '/timeline') {
+      contentSelector = '#react-root main .space-y-16 h2';
+    } else if (routePath.startsWith('/logs/')) {
+      contentSelector =
+        '#react-root main .knt-prose > *, #react-root main .prose > *, #react-root main .ldg-prose > *, #react-root main .orb-prose > *';
+    } else if (PROJECT_CONTENT_ROUTES.has(routePath)) {
+      contentSelector = '#react-root h1';
+    }
+    if (contentSelector) {
       try {
-        await page.waitForSelector('#react-root h1', {
+        await page.waitForSelector(contentSelector, {
           timeout: SELECTOR_TIMEOUT,
         });
       } catch {
         return {
           route,
-          skipped: `project heading not rendered within ${SELECTOR_TIMEOUT}ms`,
+          skipped: `page content not rendered within ${SELECTOR_TIMEOUT}ms`,
           ms: Date.now() - t0,
         };
       }

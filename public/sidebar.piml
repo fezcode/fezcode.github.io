@@ -59,6 +59,10 @@
         (to) /demystify
         (icon) MagicWandIcon
       > (item)
+        (label) Wordup
+        (to) /wordup
+        (icon) TextAaIcon
+      > (item)
         (label) The Vague
         (to) /the-vague
         (icon) FilePdfIcon
