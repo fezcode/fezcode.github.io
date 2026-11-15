@@ -76,23 +76,27 @@ This will open the site at http://localhost:5190 (the dev server port set in `vi
 ---
 
 ## Routing and SEO
-This project uses `BrowserRouter` for clean URLs. To support this on static hosts like GitHub Pages, the build runs in two passes:
+This project uses `BrowserRouter` for clean URLs. To support this on static hosts like GitHub Pages, the build writes a real `index.html` for every route:
 
-1. **Vite + Vike** produces the JS bundles and writes one empty-shell `index.html` per route listed in `pages/routes.js` plus every dynamic route discovered by `pages/discoverRoutes.js` (blog posts, series episodes, log entries, story book pages — ~460 routes total).
-2. **`scripts/prerender-crawl.mjs`** spins up a Vite preview server, loads each shell in headless Chromium, and replaces the empty `#react-root` with the hydrated HTML. Skipped routes fall back to SPA rendering at runtime — not a build failure.
+1. **Vite + Vike** produces the JS bundles and writes one empty-shell `index.html` per route listed in `pages/routes.js` plus every dynamic route discovered by `pages/discoverRoutes.js` (blog posts, series episodes, log entries, story book pages, discovery entries, tag pages — ~1,100 routes total). Each shell gets its own title, description and OG image from `scripts/inject-meta.mjs` and `scripts/generate-og-images.mjs`, so link previews work without any further step.
+2. **`scripts/prerender-crawl.mjs`** (optional; full builds only) spins up a Vite preview server, loads each shell in headless Chromium, and replaces the empty `#react-root` with the rendered HTML. The browser discards that snapshot and renders fresh once the bundle runs, and the snapshot always shows the default theme, so its only real benefit is text for crawlers that don't run JavaScript. It takes ~7 minutes, so `npm run prod` skips it; use `npm run prod:full` when you want it. Skipped routes fall back to SPA rendering at runtime — not a build failure.
 
 ### Build variants
 | Command | What it does | When to use |
 | --- | --- | --- |
-| `npm run build` | Vite build + post-build + full prerender crawl | Default. Produces a fully SSG'd `dist/client/`. |
-| `npm run build:fast` | Vite build + post-build only (no crawl) | Fast iteration on components; skip the ~2–5 min crawler. |
+| `npm run build` | Vite build + post-build + full prerender crawl + OG images + meta | What `npm run prod:full` uses. Produces a fully prerendered `dist/client/`. |
+| `npm run build:lite` | Pregenerate + Vite build + OG images + per-page meta, no crawl | What `npm run prod` uses. Pages render in the browser; link previews are unchanged. |
+| `npm run build:fast` | Vite build + post-build only (no crawl, no OG images or meta) | Fast iteration on components; skip the ~7 min crawler. |
 | `npm run build:retry` | Full crawl, then re-attempts any routes that missed the render gate | Use when the default build reports many skipped routes (flaky JS/fetch under load). |
 
-Tune the crawler via env vars: `PRERENDER_CONCURRENCY=6` (default `6`), `PRERENDER_RETRY=1` (same as `--retry`).
+Tune the crawler via env vars: `PRERENDER_CONCURRENCY=6` (default `6`; use `3` if the crawl stalls), `PRERENDER_RETRY=1` (same as `--retry`).
 
 ### Deployment
 ```bash
 npm run deploy           # build (full crawl) + push dist/client to gh-pages
+npm run prod             # lint + git push + deploy:lite (no crawl, ~2 min) — the default release
+npm run prod:full        # lint + git push + deploy (full crawl, ~9 min)
+npm run deploy:lite      # build:lite + push dist/client to gh-pages
 npm run deploy:fast      # shell-only build + push (skipped routes become SPA-only)
 npm run deploy:retry     # full crawl with retry pass + push
 ```

@@ -3,6 +3,8 @@ import { spawn } from 'node:child_process';
 const flags = new Set(process.argv.slice(2));
 const FAST = flags.has('--fast');
 const RETRY = flags.has('--retry');
+// --no-prerender keeps OG images and per-page meta but skips the browser crawl.
+const NO_PRERENDER = flags.has('--no-prerender');
 
 const steps = [
   // Fast/retry scripts bypass npm's prebuild hook. Existing cards are kept.
@@ -15,11 +17,13 @@ const steps = [
   { name: 'post-build', cmd: 'node', args: ['scripts/post-build.mjs'] },
 ];
 if (!FAST) {
-  steps.push({
-    name: 'prerender-crawl',
-    cmd: 'node',
-    args: ['scripts/prerender-crawl.mjs', ...(RETRY ? ['--retry'] : [])],
-  });
+  if (!NO_PRERENDER) {
+    steps.push({
+      name: 'prerender-crawl',
+      cmd: 'node',
+      args: ['scripts/prerender-crawl.mjs', ...(RETRY ? ['--retry'] : [])],
+    });
+  }
   steps.push({
     name: 'generate-og-images',
     cmd: 'node',
