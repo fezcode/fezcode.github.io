@@ -1,6 +1,10 @@
 (projects)
   > (project)
     (slug) fezcodex
+    (tags)
+      > frontend
+      > writing
+      > open-source
     (title) Fezcodex Project
     (style) stylish
     (repo_link) https://github.com/fezcode/fezcode.github.io
@@ -19,6 +23,12 @@
 
   > (project)
     (slug) piml
+    (tags)
+      > data-format
+      > serialization
+      > markup
+      > parser
+      > open-source
     (title) piml
     (style) museum
     (version) 1.2.0
@@ -35,6 +45,11 @@
 
   > (project)
     (slug) gobake
+    (tags)
+      > build-system
+      > developer-tools
+      > cli
+      > open-source
     (title) gobake
     (style) ruby
     (version) 0.5.0
@@ -52,6 +67,12 @@
 
   > (project)
     (slug) atlas-projects
+    (tags)
+      > cli
+      > terminal
+      > developer-tools
+      > tools
+      > open-source
     (title) Atlas Projects
     (style) atlas
     (size) 1
@@ -72,6 +93,10 @@
 
   > (project)
     (slug) clockt
+    (tags)
+      > desktop-app
+      > developer-tools
+      > productivity
     (title) clockt
     (style) panes
     (version) 0.5.25
@@ -93,6 +118,10 @@
 
   > (project)
     (slug) gitland
+    (tags)
+      > desktop-app
+      > developer-tools
+      > version-control
     (title) Gitland
     (style) gitland
     (version) 0.14.4
@@ -113,6 +142,10 @@
 
   > (project)
     (slug) hisashi
+    (tags)
+      > desktop-app
+      > productivity
+      > menu-bar
     (title) Hisashi
     (style) flow
     (version) 0.6.27
@@ -133,6 +166,11 @@
 
   > (project)
     (slug) airlift
+    (tags)
+      > desktop-app
+      > package-manager
+      > security
+      > tools
     (title) Airlift
     (style) bentos
     (version) 0.3.3
@@ -153,6 +191,11 @@
 
   > (project)
     (slug) qemik
+    (tags)
+      > desktop-app
+      > virtualization
+      > linux
+      > developer-tools
     (title) Qemik
     (style) capsules
     (version) 0.1.1
@@ -173,6 +216,12 @@
 
   > (project)
     (slug) descry
+    (tags)
+      > desktop-app
+      > writing
+      > note-taking
+      > visualization
+      > productivity
     (title) Descry
     (style) graph
     (version) 0.91.0
@@ -194,6 +243,10 @@
 
   > (project)
     (slug) timp
+    (tags)
+      > music
+      > desktop-app
+      > music-player
     (title) Timp
     (style) hifi
     (version) 0.13.0
@@ -216,6 +269,10 @@
 
   > (project)
     (slug) tivi
+    (tags)
+      > desktop-app
+      > video-player
+      > media
     (title) tivi
     (style) filmstrip
     (version) 0.5.0
@@ -238,6 +295,11 @@
 
   > (project)
     (slug) hammeros
+    (tags)
+      > desktop-app
+      > productivity
+      > design
+      > window-management
     (title) HammerOS
     (style) hammeros
     (version) 0.3.7
@@ -259,6 +321,10 @@
 
   > (project)
     (slug) osxos
+    (tags)
+      > desktop-app
+      > developer-tools
+      > tools
     (title) osXos
     (style) osxos
     (version) 0.2.6
@@ -279,6 +345,11 @@
 
   > (project)
     (slug) tarman
+    (tags)
+      > desktop-app
+      > visualization
+      > tools
+      > task-manager
     (title) Tarman
     (style) tarman
     (version) 0.1.2
@@ -299,6 +370,10 @@
 
   > (project)
     (slug) cogas
+    (tags)
+      > gaming
+      > game-launcher
+      > desktop-app
     (title) Cogas
     (style) shelf
     (version) 0.18.0
@@ -319,6 +394,11 @@
 
   > (project)
     (slug) lounge
+    (tags)
+      > desktop-app
+      > gaming
+      > music
+      > media
     (title) Lounge
     (style) lounge
     (version) 1.0.28
@@ -340,6 +420,10 @@
 
   > (project)
     (slug) atelier
+    (tags)
+      > desktop-app
+      > graphics
+      > tools
     (title) Atelier
     (style) gallery
     (version) 0.4.0
@@ -360,6 +444,10 @@
 
   > (project)
     (slug) pidi
+    (tags)
+      > desktop-app
+      > pdf-reader
+      > documents
     (title) pidi
     (style) document
     (version) 0.2.2
@@ -380,6 +468,10 @@
 
   > (project)
     (slug) typewriter
+    (tags)
+      > writing
+      > desktop-app
+      > text-editor
     (title) Typewriter
     (style) page
     (version) 0.5.0
@@ -401,6 +493,11 @@
 
   > (project)
     (slug) sir-word-a-lot
+    (tags)
+      > education
+      > vocabulary
+      > desktop-app
+      > language-learning
     (title) Sir Word-a-lot
     (style) sir-word-a-lot
     (version) 0.1.6
@@ -421,6 +518,11 @@
 
   > (project)
     (slug) beetle
+    (tags)
+      > desktop-app
+      > smart-home
+      > rgb-lighting
+      > automation
     (title) Beetle
     (style) beetle
     (version) 0.1.2
@@ -441,6 +543,12 @@
 
   > (project)
     (slug) go-piml
+    (tags)
+      > data-format
+      > serialization
+      > parser
+      > library
+      > open-source
     (title) go-piml
     (style) bento
     (size) 1
@@ -458,6 +566,12 @@
 
   > (project)
     (slug) piml.js
+    (tags)
+      > data-format
+      > serialization
+      > parser
+      > library
+      > open-source
     (title) piml.js
     (style) bento
     (size) 1
@@ -475,6 +589,11 @@
 
   > (project)
     (slug) piml-highlighter
+    (tags)
+      > developer-tools
+      > markup
+      > data-format
+      > editor-extension
     (title) PIML Syntax Highlighter for VS Code
     (size) 2
     (repo_link) https://github.com/fezcode/piml-highlighter/
@@ -491,6 +610,11 @@
 
   > (project)
     (slug) runir
+    (tags)
+      > markup
+      > writing
+      > webdev
+      > developer-tools
     (title) Runir
     (redirect_url) https://fezcode.com/runir/
     (pinned) false
@@ -504,6 +628,11 @@
 
   > (project)
     (slug) dush
+    (tags)
+      > terminal
+      > developer-tools
+      > education
+      > open-source
     (title) Dush
     (style) editorial
     (size) 1
@@ -524,6 +653,11 @@
 
   > (project)
     (slug) cartogo
+    (tags)
+      > maps
+      > generative-art
+      > visualization
+      > design
     (title) CartoGo
     (style) landscape
     (size) 2
@@ -543,6 +677,11 @@
 
   > (project)
     (slug) castarook
+    (tags)
+      > gaming
+      > 3d
+      > chess
+      > rpg
     (title) Castarook
     (style) neon-slideshow
     (size) 2
@@ -559,6 +698,11 @@
 
   > (project)
     (slug) swat-tactics
+    (tags)
+      > game-dev
+      > gaming
+      > strategy
+      > 3d
     (title) Swat Tactics
     (style) minimal-modern
     (size) 2
@@ -578,6 +722,11 @@
 
   > (project)
     (slug) climb-the-tall-building-0
+    (tags)
+      > game-dev
+      > gaming
+      > card-game
+      > roguelike
     (title) Climb the Tall Building 0
     (style) minimal-modern
     (size) 2
@@ -596,6 +745,11 @@
 
   > (project)
     (slug) bm
+    (tags)
+      > cli
+      > productivity
+      > bookmarks
+      > terminal
     (title) bm - bookmark manager
     (style) editorial
     (size) 1
@@ -614,6 +768,11 @@
 
   > (project)
     (slug) yap
+    (tags)
+      > music
+      > terminal
+      > cli
+      > youtube
     (title) yap
     (style) minimal-modern
     (size) 1
@@ -631,6 +790,10 @@
 
   > (project)
     (slug) villain-couch
+    (tags)
+      > desktop-app
+      > media
+      > tools
     (title) Villain Couch
     (size) 2
     (repo_link) https://github.com/fezcode/Villain-Couch
@@ -646,6 +809,11 @@
 
   > (project)
     (slug) doku
+    (tags)
+      > terminal
+      > markup
+      > documentation
+      > cli
     (title) doku.js
     (size) 1
     (repo_link) https://github.com/fezcode/doku.js
@@ -661,6 +829,10 @@
 
   > (project)
     (slug) stroque
+    (tags)
+      > generative-art
+      > procedural-generation
+      > design
     (title) Stroque
     (size) 1
     (repo_link) https://github.com/fezcode/Stroque
@@ -675,6 +847,11 @@
 
   > (project)
     (slug) go-homo-sapiens-time
+    (tags)
+      > library
+      > time
+      > parser
+      > open-source
     (title) Go Homo Sapiens Time
     (size) 1
     (repo_link) https://github.com/fezcode/go-homo-sapiens-time
@@ -688,6 +865,11 @@
 
   > (project)
     (slug) go-tournament-brackets
+    (tags)
+      > library
+      > tournaments
+      > cli
+      > open-source
     (title) Go Tournament Bracket Generator Lib
     (size) 1
     (demo_link) https://pkg.go.dev/github.com/fezcode/go-tournament-brackets
@@ -702,6 +884,10 @@
 
   > (project)
     (slug) open-tab-with-respect
+    (tags)
+      > browser-extension
+      > productivity
+      > tools
     (title) Open Tab with Respect
     (size) 1
     (demo_link) https://addons.mozilla.org/en-US/firefox/addon/open-tab-with-respect/
@@ -720,6 +906,10 @@
 
   > (project)
     (slug) clipboard-concat
+    (tags)
+      > browser-extension
+      > productivity
+      > tools
     (title) Clipboard Concat
     (size) 1
     (demo_link) https://addons.mozilla.org/en-US/firefox/addon/clipboard-concat/
@@ -738,6 +928,10 @@
 
   > (project)
     (slug) scrappy
+    (tags)
+      > cli
+      > web-scraping
+      > automation
     (title) Scrappy.js
     (size) 1
     (repo_link) https://github.com/fezcode/scrappy
@@ -751,6 +945,10 @@
 
   > (project)
     (slug) boxer
+    (tags)
+      > cli
+      > archiving
+      > developer-tools
     (title) Boxer
     (size) 2
     (repo_link) https://github.com/fezcode/boxer
@@ -769,6 +967,10 @@
 
   > (project)
     (slug) firefox-themes
+    (tags)
+      > browser-extension
+      > design
+      > themes
     (title) Firefox Themes
     (size) 1
     (demo_link) https://addons.mozilla.org/en-US/firefox/user/17269481/

@@ -11,6 +11,8 @@
       > first-person-shooter
       > alternate-history
       > story-rich
+      > action
+      > wolfenstein
     (title) Wolfenstein: The New Order
     (image) /images/discovery/covers/game/wolfenstein-the-new-order.webp
     (imageSource)
@@ -34,6 +36,8 @@
       > first-person-shooter
       > alternate-history
       > horror
+      > action
+      > wolfenstein
     (title) Wolfenstein: The Old Blood
     (image) /images/discovery/covers/game/wolfenstein-the-old-blood.webp
     (imageSource)
@@ -57,6 +61,8 @@
       > first-person-shooter
       > alternate-history
       > story-rich
+      > action
+      > wolfenstein
     (title) Wolfenstein II: The New Colossus
     (image) /images/discovery/covers/game/wolfenstein-ii-the-new-colossus.webp
     (imageSource)
@@ -77,7 +83,9 @@
     (slug) age-of-empires-ii-definitive-edition
     (tags)
       > real-time-strategy
-      > historical
+      > history
+      > strategy
+      > age-of-empires
     (title) Age of Empires II: Definitive Edition
     (image) /images/discovery/covers/game/age-of-empires-ii-definitive-edition.webp
     (imageSource)
@@ -98,7 +106,9 @@
     (slug) age-of-empires-iii-definitive-edition
     (tags)
       > real-time-strategy
-      > historical
+      > history
+      > strategy
+      > age-of-empires
     (title) Age of Empires III: Definitive Edition
     (image) /images/discovery/covers/game/age-of-empires-iii-definitive-edition.webp
     (imageSource)
@@ -119,7 +129,9 @@
     (slug) age-of-empires-iv
     (tags)
       > real-time-strategy
-      > historical
+      > history
+      > strategy
+      > age-of-empires
     (title) Age of Empires IV
     (image) /images/discovery/covers/game/age-of-empires-iv.webp
     (imageSource)
@@ -141,6 +153,9 @@
     (tags)
       > real-time-strategy
       > mythology
+      > strategy
+      > fantasy
+      > age-of-empires
     (title) Age of Mythology
     (image) /images/discovery/covers/game/age-of-mythology.webp
     (imageSource)
@@ -163,6 +178,7 @@
       > action
       > third-person-shooter
       > movement
+      > gears-of-war
     (title) Gears of War: E-Day
     (image) /images/discovery/covers/game/gears-of-war-e-day.webp
     (imageSource)
@@ -184,7 +200,9 @@
     (tags)
       > action
       > open-world
-      > fps
+      > first-person-shooter
+      > survival
+      > far-cry
     (title) Far Cry Primal
     (image) /images/discovery/covers/game/far-cry-primal.webp
     (imageSource)
@@ -205,8 +223,10 @@
     (slug) alan-wake-2
     (tags)
       > horror
-      > story
+      > story-rich
       > single-player
+      > mystery
+      > psychological
     (title) Alan Wake 2
     (image) /images/discovery/covers/game/alan-wake-2.webp
     (imageSource)
@@ -246,6 +266,12 @@
     (platform) PC, PlayStation 5, Xbox Series X/S
     (rating) 5
     (slug) resident-evil-requiem
+    (tags)
+      > horror
+      > survival
+      > action
+      > stealth
+      > resident-evil
     (title) Resident Evil Requiem
     (image) /images/discovery/covers/game/resident-evil-requiem.webp
     (imageSource)
@@ -264,6 +290,11 @@
     (platform) PC, PlayStation 5, Xbox Series X/S, Nintendo Switch 2
     (rating) 4
     (slug) 007-first-light
+    (tags)
+      > action
+      > stealth
+      > espionage
+      > james-bond
     (title) 007 First Light
     (image) /images/discovery/covers/game/007-first-light.webp
     (imageSource)
@@ -282,6 +313,12 @@
     (platform) PC, PlayStation 5, Xbox Series X/S, Nintendo Switch
     (rating) 4
     (slug) lego-batman-legacy-of-the-dark-knight
+    (tags)
+      > adventure
+      > open-world
+      > superhero
+      > dc-comics
+      > batman
     (title) LEGO Batman: Legacy of the Dark Knight
     (image) /images/discovery/covers/game/lego-batman-legacy-of-the-dark-knight.webp
     (imageSource)
@@ -300,6 +337,12 @@
     (platform) PC, PS3, Xbox 360, PS4, Xbox One
     (rating) 5
     (slug) mafia-2
+    (tags)
+      > crime
+      > story-rich
+      > open-world
+      > action
+      > mafia
     (title) Mafia II
     (image) /images/discovery/covers/game/mafia-2.webp
     (imageSource)
@@ -318,6 +361,10 @@
     (platform) PC (Itch.io)
     (rating) 5
     (slug) swat-god
+    (tags)
+      > action
+      > tactical
+      > indie
     (title) Swat God
     (image) /images/discovery/covers/game/swat-god.webp
     (imageSource)
@@ -338,6 +385,11 @@
     (platform) PC, iOS, Android, PS4, Switch
     (rating) 4
     (slug) downwell
+    (tags)
+      > roguelike
+      > platformer
+      > indie
+      > action
     (title) Downwell
     (image) /images/discovery/covers/game/downwell.webp
     (imageSource)
@@ -356,6 +408,11 @@
     (platform) PC, PS4, Xbox One, Nintendo Switch
     (rating) 4
     (slug) saints-row-the-third
+    (tags)
+      > open-world
+      > action
+      > comedy
+      > crime
     (title) Saints Row: The Third
     (image) /images/discovery/covers/game/saints-row-the-third.webp
     (imageSource)
@@ -374,6 +431,11 @@
     (platform) PC, PS4, Xbox One
     (rating) 5
     (slug) mirrors-edge-catalyst
+    (tags)
+      > parkour
+      > open-world
+      > action
+      > dystopia
     (title) Mirror's Edge Catalyst
     (image) /images/discovery/covers/game/mirrors-edge-catalyst.webp
     (imageSource)
@@ -392,6 +454,12 @@
     (platform) PC (Steam)
     (rating) 4
     (slug) ball-x-pit
+    (tags)
+      > roguelike
+      > indie
+      > fantasy
+      > action
+      > city-building
     (title) Ball x Pit
     (image) /images/discovery/covers/game/ball-x-pit.webp
     (imageSource)
@@ -410,6 +478,11 @@
     (platform) Steam
     (rating) 4
     (slug) age-of-wonders-4
+    (tags)
+      > turn-based
+      > strategy
+      > fantasy
+      > 4x
     (title) Age of Wonders 4
     (image) /images/discovery/covers/game/age-of-wonders-4.webp
     (imageSource)
@@ -428,9 +501,11 @@
     (rating) 4
     (slug) bloodlines-2
     (tags)
-      > story
+      > story-rich
       > single-player
-      > fps
+      > first-person
+      > rpg
+      > vampires
     (title) Vampire: The Masquerade - Bloodlines 2
     (image) /images/discovery/covers/game/bloodlines-2.webp
     (imageSource)
@@ -449,6 +524,12 @@
     (platform) Nintendo Switch
     (rating) 5
     (slug) the-legend-of-zelda-breath-of-the-wild
+    (tags)
+      > open-world
+      > adventure
+      > fantasy
+      > action
+      > zelda
     (title) The Legend of Zelda: Breath of the Wild
     (image) /images/discovery/covers/game/the-legend-of-zelda-breath-of-the-wild.webp
     (imageSource)
@@ -467,8 +548,10 @@
     (rating) 4
     (slug) openfront-io
     (tags)
-      > rts
+      > real-time-strategy
       > multiplayer
+      > strategy
+      > browser
     (title) OpenFront.io
     (image) /images/discovery/covers/game/openfront-io.webp
     (imageSource)
@@ -487,6 +570,12 @@
     (platform) PC (Steam), PlayStation 4, Xbox One
     (rating) 5
     (slug) prey-2017
+    (tags)
+      > immersive-sim
+      > science-fiction
+      > space
+      > first-person-shooter
+      > psychological
     (title) Prey (2017)
     (image) /images/discovery/covers/game/prey-2017.webp
     (imageSource)
@@ -505,6 +594,12 @@
     (platform) PC
     (rating) 5
     (slug) max-payne-trilogy
+    (tags)
+      > third-person-shooter
+      > noir
+      > revenge
+      > action
+      > story-rich
     (title) Max Payne Trilogy
     (image) /images/discovery/covers/game/max-payne-trilogy.webp
     (imageSource)
@@ -523,6 +618,11 @@
     (platform) PC (Steam), PlayStation, Xbox
     (rating) 5
     (slug) resident-evil-4-remake
+    (tags)
+      > horror
+      > survival
+      > action
+      > resident-evil
     (title) Resident Evil 4: Remake
     (image) /images/discovery/covers/game/resident-evil-4-remake.webp
     (imageSource)
@@ -541,6 +641,12 @@
     (platform) PC (Steam), PlayStation 4, Xbox One
     (rating) 4
     (slug) fallout-4
+    (tags)
+      > rpg
+      > post-apocalyptic
+      > open-world
+      > action
+      > fallout
     (title) Fallout 4
     (image) /images/discovery/covers/game/fallout-4.webp
     (imageSource)
@@ -559,6 +665,12 @@
     (platform) PC (Steam)
     (rating) 5
     (slug) dying-light
+    (tags)
+      > zombies
+      > survival
+      > horror
+      > parkour
+      > open-world
     (title) Dying Light
     (image) /images/discovery/covers/game/dying-light.webp
     (imageSource)
@@ -577,6 +689,11 @@
     (platform) PC
     (rating) 4
     (slug) kingdoms-of-amalur-reckoning
+    (tags)
+      > rpg
+      > fantasy
+      > action
+      > open-world
     (title) Kingdoms of Amalur: Reckoning
     (image) /images/discovery/covers/game/kingdoms-of-amalur-reckoning.webp
     (imageSource)
@@ -595,6 +712,12 @@
     (platform) PC (Steam), PlayStation, Xbox
     (rating) 4
     (slug) resident-evil-3-remake
+    (tags)
+      > horror
+      > survival
+      > zombies
+      > action
+      > resident-evil
     (title) Resident Evil 3: Remake
     (image) /images/discovery/covers/game/resident-evil-3-remake.webp
     (imageSource)
@@ -613,6 +736,12 @@
     (platform) PC (Steam), PlayStation
     (rating) 5
     (slug) nier-automata-and-replicant
+    (tags)
+      > rpg
+      > action
+      > philosophy
+      > story-rich
+      > post-apocalyptic
     (title) Nier Automata & Nier Replicant
     (image) /images/discovery/covers/game/nier-automata-and-replicant.webp
     (imageSource)
@@ -631,6 +760,11 @@
     (platform) PC (Steam), PlayStation 4, Xbox One, Nintendo Switch
     (rating) 4
     (slug) the-outer-worlds
+    (tags)
+      > rpg
+      > science-fiction
+      > satire
+      > space
     (title) The Outer Worlds
     (image) /images/discovery/covers/game/the-outer-worlds.webp
     (imageSource)
@@ -649,6 +783,11 @@
     (platform) PC (Steam)
     (rating) 5
     (slug) loop-hero
+    (tags)
+      > roguelike
+      > strategy
+      > indie
+      > deck-building
     (title) Loop Hero
     (image) /images/discovery/covers/game/loop-hero.webp
     (imageSource)
@@ -667,6 +806,12 @@
     (platform) PC (Steam)
     (rating) 4
     (slug) deus-ex-mankind-divided
+    (tags)
+      > cyberpunk
+      > rpg
+      > stealth
+      > immersive-sim
+      > deus-ex
     (title) Deus Ex: Mankind Divided
     (image) /images/discovery/covers/game/deus-ex-mankind-divided.webp
     (imageSource)
@@ -685,6 +830,11 @@
     (platform) PC (Steam), PlayStation, Xbox
     (rating) 5
     (slug) resident-evil-2-remake
+    (tags)
+      > horror
+      > survival
+      > zombies
+      > resident-evil
     (title) Resident Evil 2: Remake
     (image) /images/discovery/covers/game/resident-evil-2-remake.webp
     (imageSource)
@@ -703,6 +853,11 @@
     (platform) PC (Steam), PlayStation 3, Xbox 360, iOS, Android
     (rating) 5
     (slug) xcom-enemy-unknown
+    (tags)
+      > turn-based
+      > strategy
+      > science-fiction
+      > aliens
     (title) XCOM: Enemy Unknown
     (image) /images/discovery/covers/game/xcom-enemy-unknown.webp
     (imageSource)
@@ -721,6 +876,11 @@
     (platform) PC (Steam)
     (rating) 5
     (slug) hotline-miami
+    (tags)
+      > action
+      > indie
+      > psychological
+      > top-down
     (title) Hotline Miami
     (image) /images/discovery/covers/game/hotline-miami.webp
     (imageSource)
@@ -739,6 +899,12 @@
     (platform) PC (Steam)
     (rating) 5
     (slug) deus-ex-human-revolution
+    (tags)
+      > cyberpunk
+      > rpg
+      > stealth
+      > immersive-sim
+      > deus-ex
     (title) Deus Ex: Human Revolution
     (image) /images/discovery/covers/game/deus-ex-human-revolution.webp
     (imageSource)

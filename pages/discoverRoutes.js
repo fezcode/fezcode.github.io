@@ -92,7 +92,8 @@ function storyBookRoutes() {
       if (bookMatch) {
         currentBook = bookMatch[1];
         bookIds.add(currentBook);
-        if (!bookEpisodes.has(currentBook)) bookEpisodes.set(currentBook, new Set());
+        if (!bookEpisodes.has(currentBook))
+          bookEpisodes.set(currentBook, new Set());
         continue;
       }
       const epMatch = line.match(/^\s*\(id\)\s*(\S+)/);
@@ -201,6 +202,19 @@ function wordupRoutes() {
     .map((word) => `/wordup/${word.slug}`);
 }
 
+// Tag pages come from the generated index. Only tags shared by a few items are
+// prerendered: one-off tags would add hundreds of near-empty pages to every
+// build for no reader. The rest still work, rendered in the browser.
+const TAG_PRERENDER_MIN = 3;
+function tagRoutes() {
+  const file = join(PUBLIC, 'tags', 'index.piml');
+  if (!existsSync(file)) return [];
+  const { tags = [] } = piml.parse(readFileSync(file, 'utf8'));
+  return tags
+    .filter((tag) => tag.slug && Number(tag.count) >= TAG_PRERENDER_MIN)
+    .map((tag) => `/tags/${tag.slug}`);
+}
+
 export function discoverAllRoutes() {
   const all = new Set(staticRoutes);
   for (const r of appRoutes()) all.add(r);
@@ -212,5 +226,6 @@ export function discoverAllRoutes() {
   for (const r of demystifyRoutes()) all.add(r);
   for (const r of vocabRoutes()) all.add(r);
   for (const r of wordupRoutes()) all.add(r);
+  for (const r of tagRoutes()) all.add(r);
   return Array.from(all);
 }

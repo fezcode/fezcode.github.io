@@ -7,6 +7,11 @@
     (platform) HBO Max
     (rating) 2
     (slug) furia-tv-series
+    (tags)
+      > dark-comedy
+      > satire
+      > revenge
+      > spanish
     (title) Furia (TV Series)
     (year) 2025
     (image) /images/discovery/covers/series/furia-tv-series.webp
@@ -23,6 +28,12 @@
     (platform) Prime Video
     (rating) 5
     (slug) fallout-tv-series
+    (tags)
+      > post-apocalyptic
+      > science-fiction
+      > dark-comedy
+      > fallout
+      > video-game-adaptation
     (title) Fallout (TV Series)
     (year) 2024
     (image) /images/discovery/covers/series/fallout-tv-series.webp
@@ -39,6 +50,12 @@
     (platform) Disney+
     (rating) 5
     (slug) andor-tv-series
+    (tags)
+      > science-fiction
+      > space
+      > espionage
+      > drama
+      > star-wars
     (title) Andor (TV Series)
     (year) 2022
     (image) /images/discovery/covers/series/andor-tv-series.webp
@@ -55,6 +72,10 @@
     (platform) GAİN
     (rating) 4
     (slug) ayak-isleri-tv-series
+    (tags)
+      > comedy
+      > turkish
+      > philosophy
     (title) Ayak İşleri (TV Series)
     (year) 2021
     (image) /images/discovery/covers/series/ayak-isleri-tv-series.webp
@@ -71,6 +92,12 @@
     (platform) Apple TV
     (rating) 4
     (slug) severance-tv-series
+    (tags)
+      > science-fiction
+      > thriller
+      > mystery
+      > psychological
+      > dystopia
     (title) Severance (TV Series)
     (year) 2022
     (image) /images/discovery/covers/series/severance-tv-series.webp
@@ -87,6 +114,12 @@
     (platform) HBO Max
     (rating) 4
     (slug) peacemaker-tv-series
+    (tags)
+      > superhero
+      > action
+      > dark-comedy
+      > dc-comics
+      > james-gunn
     (title) Peacemaker (TV Series)
     (year) 2022
     (image) /images/discovery/covers/series/peacemaker-tv-series.webp
@@ -103,6 +136,11 @@
     (platform) HBO Max
     (rating) 4
     (slug) barry-tv-series
+    (tags)
+      > dark-comedy
+      > crime
+      > drama
+      > hitman
     (title) Barry (TV Series)
     (year) 2018
     (image) /images/discovery/covers/series/barry-tv-series.webp
@@ -119,6 +157,11 @@
     (platform) Syfy
     (rating) 4
     (slug) happy-tv-series
+    (tags)
+      > dark-comedy
+      > crime
+      > action
+      > hitman
     (title) Happy! (TV Series)
     (year) 2017
     (image) /images/discovery/covers/series/happy-tv-series.webp
@@ -135,6 +178,11 @@
     (platform) Cartoon Network
     (rating) 3
     (slug) infinity-train-tv-series
+    (tags)
+      > animation
+      > fantasy
+      > mystery
+      > coming-of-age
     (title) Infinity Train (Book One)
     (year) 2019
     (image) /images/discovery/covers/series/infinity-train-tv-series.webp
@@ -151,6 +199,11 @@
     (platform) HBO Max
     (rating) 5
     (slug) the-penguin-tv-series
+    (tags)
+      > crime
+      > drama
+      > dc-comics
+      > batman
     (title) The Penguin (Miniseries)
     (year) 2024
     (image) /images/discovery/covers/series/the-penguin-tv-series.webp
@@ -167,6 +220,11 @@
     (platform) HBO Max
     (rating) 5
     (slug) the-night-of-tv-series
+    (tags)
+      > crime
+      > drama
+      > mystery
+      > courtroom
     (title) The Night Of (Miniseries)
     (year) 2016
     (image) /images/discovery/covers/series/the-night-of-tv-series.webp
@@ -183,6 +241,11 @@
     (platform) HBO Max
     (rating) 4
     (slug) lanterns-tv-series
+    (tags)
+      > superhero
+      > mystery
+      > noir
+      > dc-comics
     (title) Lanterns (TV Series)
     (year) 2026
     (image) /images/discovery/covers/series/lanterns-tv-series.webp
@@ -199,6 +262,12 @@
     (platform) HBO Max
     (rating) 5
     (slug) true-detective-tv-series
+    (tags)
+      > crime
+      > mystery
+      > anthology
+      > drama
+      > philosophy
     (title) True Detective (Season 1)
     (year) 2014
     (image) /images/discovery/covers/series/true-detective-tv-series.webp
@@ -215,6 +284,10 @@
     (platform) HBO Max
     (rating) 5
     (slug) sifir-bir-tv-series
+    (tags)
+      > crime
+      > drama
+      > turkish
     (title) Sıfır Bir (TV Series)
     (image) /images/discovery/covers/series/sifir-bir-tv-series.webp
     (imageSource)
@@ -230,6 +303,10 @@
     (platform) HBO Max
     (rating) 2
     (slug) rooster-tv-series
+    (tags)
+      > comedy
+      > drama
+      > academia
     (title) Rooster (TV Series)
     (image) /images/discovery/covers/series/rooster-tv-series.webp
     (imageSource)
@@ -245,6 +322,11 @@
     (platform) BBC One
     (rating) 5
     (slug) luther-tv-series
+    (tags)
+      > crime
+      > psychological
+      > drama
+      > british
     (title) Luther (TV Series)
     (image) /images/discovery/covers/series/luther-tv-series.webp
     (imageSource)
@@ -260,6 +342,12 @@
     (platform) Amazon Prime Video
     (rating) 5
     (slug) the-grand-tour
+    (tags)
+      > adventure
+      > comedy
+      > cars
+      > travel
+      > british
     (title) The Grand Tour
     (image) /images/discovery/covers/series/the-grand-tour.webp
     (imageSource)
@@ -275,6 +363,11 @@
     (platform) Prime Video, MGM+
     (rating) 4
     (slug) spider-noir-tv-series
+    (tags)
+      > superhero
+      > noir
+      > marvel
+      > spider-man
     (title) Spider-Noir (TV Series)
     (image) /images/discovery/covers/series/spider-noir-tv-series.webp
     (imageSource)
@@ -288,6 +381,10 @@
     (link) 
     (rating) 5
     (slug) only-murders-in-the-building
+    (tags)
+      > comedy
+      > mystery
+      > crime
     (title) Only Murders in the Building
     (image) /images/discovery/covers/series/only-murders-in-the-building.webp
     (imageSource)
@@ -302,6 +399,10 @@
     (link) https://www.imdb.com/title/tt14824792/
     (rating) 4
     (slug) ted-2024-series
+    (tags)
+      > comedy
+      > sitcom
+      > seth-macfarlane
     (title) Ted
     (by) Seth MacFarlane
     (image) /images/discovery/covers/series/ted-2024-series.webp
@@ -316,6 +417,12 @@
     (link) 
     (rating) 5
     (slug) 11-22-63
+    (tags)
+      > science-fiction
+      > time-travel
+      > alternate-history
+      > thriller
+      > stephen-king
     (title) 11.22.63
     (image) /images/discovery/covers/series/11-22-63.webp
     (imageSource)
@@ -331,6 +438,12 @@
     (platform) Netflix
     (rating) 3
     (slug) splinter-cell-deathwatch
+    (tags)
+      > animation
+      > espionage
+      > action
+      > stealth
+      > splinter-cell
     (title) Splinter Cell: Deathwatch
     (image) /images/discovery/covers/series/splinter-cell-deathwatch.webp
     (imageSource)
@@ -346,6 +459,11 @@
     (platform) Max
     (rating) 4
     (slug) harley-quinn-tv-series
+    (tags)
+      > animation
+      > superhero
+      > dark-comedy
+      > dc-comics
     (title) Harley Quinn (TV Series)
     (image) /images/discovery/covers/series/harley-quinn-tv-series.webp
     (imageSource)
@@ -360,6 +478,11 @@
     (platform) Hulu, Disney+
     (rating) 5
     (slug) firefly-tv-series
+    (tags)
+      > science-fiction
+      > space
+      > western
+      > drama
     (title) Firefly (TV Series)
     (image) /images/discovery/covers/series/firefly-tv-series.webp
     (imageSource)
@@ -374,6 +497,11 @@
     (platform) Adult Swim
     (rating) 4
     (slug) common-side-effects
+    (tags)
+      > animation
+      > science-fiction
+      > comedy
+      > conspiracy
     (title) Common Side Effects (TV Series)
     (image) /images/discovery/covers/series/common-side-effects.webp
     (imageSource)
@@ -388,6 +516,11 @@
     (platform) Apple TV+
     (rating) 4
     (slug) pluribus-tv-series
+    (tags)
+      > science-fiction
+      > post-apocalyptic
+      > drama
+      > vince-gilligan
     (title) Pluribus (TV Series)
     (image) /images/discovery/covers/series/pluribus-tv-series.webp
     (imageSource)
@@ -402,6 +535,12 @@
     (platform) Netflix
     (rating) 4
     (slug) 1670-tv-series
+    (tags)
+      > comedy
+      > satire
+      > mockumentary
+      > history
+      > polish
     (title) 1670 (TV Series)
     (image) /images/discovery/covers/series/1670-tv-series.webp
     (imageSource)
@@ -416,6 +555,10 @@
     (platform) AMC+
     (rating) 5
     (slug) halt-and-catch-fire-tv-series
+    (tags)
+      > drama
+      > technology
+      > history
     (title) Halt and Catch Fire (TV Series)
     (image) /images/discovery/covers/series/halt-and-catch-fire-tv-series.webp
     (imageSource)
@@ -430,6 +573,12 @@
     (platform) Max
     (rating) 5
     (slug) person-of-interest-tv-series
+    (tags)
+      > science-fiction
+      > crime
+      > ai
+      > thriller
+      > jonathan-nolan
     (title) Person of Interest (TV Series)
     (image) /images/discovery/covers/series/person-of-interest-tv-series.webp
     (imageSource)
@@ -444,6 +593,10 @@
     (platform) Netflix, Hulu
     (rating) 5
     (slug) community-tv-series
+    (tags)
+      > sitcom
+      > comedy
+      > parody
     (title) Community (TV Series)
     (image) /images/discovery/covers/series/community-tv-series.webp
     (imageSource)
@@ -458,6 +611,11 @@
     (platform) Apple TV+
     (rating) 5
     (slug) black-bird-tv-series
+    (tags)
+      > crime
+      > true-crime
+      > psychological
+      > drama
     (title) Black Bird (TV Series)
     (image) /images/discovery/covers/series/black-bird-tv-series.webp
     (imageSource)
@@ -472,6 +630,11 @@
     (platform) Disney+
     (rating) 4
     (slug) marvels-the-punisher-tv-series
+    (tags)
+      > action
+      > crime
+      > revenge
+      > marvel
     (title) Marvel's The Punisher (TV Series)
     (image) /images/discovery/covers/series/marvels-the-punisher-tv-series.webp
     (imageSource)
@@ -486,6 +649,11 @@
     (platform) Max
     (rating) 5
     (slug) justice-league-unlimited-tv-series
+    (tags)
+      > animation
+      > superhero
+      > action
+      > dc-comics
     (title) Justice League Unlimited (TV Series)
     (image) /images/discovery/covers/series/justice-league-unlimited-tv-series.webp
     (imageSource)
@@ -500,6 +668,12 @@
     (platform) Hulu, Disney+
     (rating) 5
     (slug) the-orville-tv-series
+    (tags)
+      > science-fiction
+      > space
+      > comedy
+      > drama
+      > seth-macfarlane
     (title) The Orville (TV Series)
     (image) /images/discovery/covers/series/the-orville-tv-series.webp
     (imageSource)
@@ -514,6 +688,11 @@
     (platform) Amazon Prime Video
     (rating) 5
     (slug) invincible-tv-series
+    (tags)
+      > animation
+      > superhero
+      > action
+      > drama
     (title) Invincible (TV Series)
     (image) /images/discovery/covers/series/invincible-tv-series.webp
     (imageSource)
@@ -528,6 +707,11 @@
     (platform) HBO Max
     (rating) 4
     (slug) tokyo-vice-tv-series
+    (tags)
+      > crime
+      > drama
+      > japanese
+      > yakuza
     (title) Tokyo Vice (TV Series)
     (image) /images/discovery/covers/series/tokyo-vice-tv-series.webp
     (imageSource)
@@ -542,6 +726,10 @@
     (platform) TV (FX, Hulu)
     (rating) 5
     (slug) shogun-tv-series
+    (tags)
+      > history
+      > drama
+      > japanese
     (title) Shogun (TV Series)
     (image) /images/discovery/covers/series/shogun-tv-series.webp
     (imageSource)
@@ -556,6 +744,10 @@
     (link) https://www.imdb.com/title/tt14452776/
     (rating) 5
     (slug) the-bear
+    (tags)
+      > drama
+      > comedy
+      > cooking
     (title) The Bear
     (updated) 2025-10-25
     (image) /images/discovery/covers/series/the-bear.webp
@@ -571,6 +763,12 @@
     (platform) Netflix
     (rating) 4
     (slug) midnight-mass-tv-series
+    (tags)
+      > horror
+      > drama
+      > religion
+      > philosophy
+      > mike-flanagan
     (title) Midnight Mass (TV Series)
     (image) /images/discovery/covers/series/midnight-mass-tv-series.webp
     (imageSource)
@@ -585,6 +783,11 @@
     (platform) HBO Max
     (rating) 5
     (slug) smiling-friends-tv-series
+    (tags)
+      > animation
+      > comedy
+      > dark-comedy
+      > surreal
     (title) Smiling Friends (TV Series)
     (image) /images/discovery/covers/series/smiling-friends-tv-series.webp
     (imageSource)
@@ -599,6 +802,11 @@
     (platform) Amazon Prime Video
     (rating) 5
     (slug) the-expanse-tv-series
+    (tags)
+      > science-fiction
+      > space
+      > drama
+      > mystery
     (title) The Expanse (TV Series)
     (image) /images/discovery/covers/series/the-expanse-tv-series.webp
     (imageSource)
@@ -613,6 +821,10 @@
     (platform) Fox
     (rating) 3
     (slug) last-man-on-earth-tv-series
+    (tags)
+      > comedy
+      > post-apocalyptic
+      > dark-comedy
     (title) Last Man on Earth (TV Series)
     (image) /images/discovery/covers/series/last-man-on-earth-tv-series.webp
     (imageSource)
@@ -627,6 +839,10 @@
     (platform) FXX (FX Network)
     (rating) 4
     (slug) man-seeking-woman-tv-series
+    (tags)
+      > comedy
+      > romance
+      > surreal
     (title) Man Seeking Woman (TV Series)
     (image) /images/discovery/covers/series/man-seeking-woman-tv-series.webp
     (imageSource)
@@ -641,6 +857,12 @@
     (platform) Disney+
     (rating) 4
     (slug) gravity-falls
+    (tags)
+      > animation
+      > mystery
+      > comedy
+      > fantasy
+      > coming-of-age
     (title) Gravity Falls
     (creator) Alex Hirsch
     (image) /images/discovery/covers/series/gravity-falls.webp

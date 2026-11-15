@@ -5,6 +5,10 @@
     (link) https://www.youtube.com/watch?v=mXC13gtc8Js
     (rating) 4
     (slug) akbabalar-cagi-tum-bolumler
+    (tags)
+      > turkish
+      > comedy
+      > internet-culture
     (title) Akbabalar Çağı - Tüm Bölümler
     (image) /images/discovery/covers/video/akbabalar-cagi-tum-bolumler.webp
     (imageSource)
@@ -21,6 +25,11 @@
     (link) https://www.youtube.com/watch?v=7zV2_wwwF_4
     (rating) 5
     (slug) i-selled-my-wife-for-internet-connection
+    (tags)
+      > gaming
+      > memes
+      > internet-culture
+      > counter-strike
     (title) Anomaly - I selled my wife for internet connection
     (image) /images/discovery/covers/video/i-selled-my-wife-for-internet-connection.webp
     (imageSource)
@@ -37,6 +46,10 @@
     (link) https://www.youtube.com/watch?v=zhUnEg0he4A
     (rating) 5
     (slug) wu-tang-financial
+    (tags)
+      > comedy
+      > hip-hop
+      > wu-tang-clan
     (title) Chappelle's Show - Wu-Tang Financial (ft. RZA and GZA) - Uncensored
     (image) /images/discovery/covers/video/wu-tang-financial.webp
     (imageSource)
@@ -53,6 +66,9 @@
     (link) https://www.youtube.com/watch?v=hIGNaDk9eIA
     (rating) 5
     (slug) most-iconic-hip-hop-samples
+    (tags)
+      > hip-hop
+      > history
     (title) Sample Breakdown: The Most Iconic Hip-Hop Sample of Every Year (1973-2023)
     (image) /images/discovery/covers/video/most-iconic-hip-hop-samples.webp
     (imageSource)
@@ -69,6 +85,10 @@
     (link) https://www.youtube.com/watch?v=N9qYF9DZPdw
     (rating) 5
     (slug) white-and-nerdy
+    (tags)
+      > comedy
+      > satire
+      > weird-al
     (title) "Weird Al" Yankovic - White & Nerdy
     (image) /images/discovery/covers/video/white-and-nerdy.webp
     (imageSource)
@@ -85,6 +105,9 @@
     (link) https://www.youtube.com/watch?v=BK1ilhnSUtg
     (rating) 5
     (slug) had-to-be-me-mordin-solus
+    (tags)
+      > gaming
+      > mass-effect
     (title) Had to be me. Someone else might have gotten it wrong - Mordin Solus
     (image) /images/discovery/covers/video/had-to-be-me-mordin-solus.webp
     (imageSource)
@@ -101,6 +124,9 @@
     (link) https://www.youtube.com/watch?v=l0K4XPu3Qhg
     (rating) 5
     (slug) what-sam-altman-doesnt-want-you-to-know
+    (tags)
+      > ai
+      > openai
     (title) What Sam Altman Doesn't Want You To Know
     (image) /images/discovery/covers/video/what-sam-altman-doesnt-want-you-to-know.webp
     (imageSource)
@@ -117,6 +143,10 @@
     (link) https://www.youtube.com/watch?v=Mc6VA7Q1vXQ
     (rating) 5
     (slug) can-you-solve-the-pirate-riddle
+    (tags)
+      > math
+      > logic
+      > learning
     (title) Can you solve the pirate riddle? - Alex Gendler
     (image) /images/discovery/covers/video/can-you-solve-the-pirate-riddle.webp
     (imageSource)
@@ -133,6 +163,10 @@
     (link) https://www.youtube.com/watch?v=k_i6Ewj1cLk
     (rating) 5
     (slug) will-you-comply
+    (tags)
+      > gaming
+      > memes
+      > fallout
     (title) WILL YOU COMPLY?
     (image) /images/discovery/covers/video/will-you-comply.webp
     (imageSource)
@@ -149,6 +183,11 @@
     (link) https://www.youtube.com/watch?v=w-RoEBcYCTE
     (rating) 5
     (slug) deep-house-party-dj-mahmut
+    (tags)
+      > turkish
+      > comedy
+      > electronic
+      > memes
     (title) Deep House Party - DJ Mahmut
     (image) /images/discovery/covers/video/deep-house-party-dj-mahmut.webp
     (imageSource)
@@ -165,6 +204,9 @@
     (link) https://www.youtube.com/@DontTellComedy
     (rating) 5
     (slug) dont-tell-comedy
+    (tags)
+      > comedy
+      > stand-up
     (title) Don't Tell Comedy
     (description) The best of live stand-up comedy from unique locations across the world.
 
@@ -174,6 +216,10 @@
     (link) https://www.youtube.com/watch?v=qhQDX21YCZ0
     (rating) 5
     (slug) mickey-never-came-back
+    (tags)
+      > animation
+      > art
+      > history
     (title) Mickey Never Came Back
     (image) /images/discovery/covers/video/mickey-never-came-back.webp
     (imageSource)
@@ -190,6 +236,10 @@
     (link) https://www.youtube.com/watch?v=AJoOaM3UJdA
     (rating) 4
     (slug) solving-reddits-cylinder-problem-with-science
+    (tags)
+      > science
+      > internet-culture
+      > comedy
     (title) Solving Reddit's Cylinder Problem with Science
     (image) /images/discovery/covers/video/solving-reddits-cylinder-problem-with-science.webp
     (imageSource)

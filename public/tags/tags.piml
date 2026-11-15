@@ -1,0 +1,191 @@
+# Tag registry: the one place tags get a display label, a description, or
+# aliases. Posts, logs and projects may use any tag; tags not listed here are
+# still indexed (shown by their slug). List a tag here when it needs a proper
+# label (AI, C++), a description for its /tags page, or when other spellings
+# should fold into it (golang -> go). After editing, `npm run generate-tags`.
+#
+# Slugs are lowercase kebab-case. Every tag written anywhere is normalized the
+# same way (lowercased, spaces and punctuation to hyphens) before aliases are
+# applied, so "Turkish Cuisine", "turkish cuisine" and "turkish-cuisine" are
+# already the same tag without an alias.
+
+(tags)
+  > (tag)
+    (slug) ai
+    (label) AI
+    (description) Artificial intelligence: models, agents, and what they mean for the people using them.
+    (aliases)
+      > artificial-intelligence
+  > (tag)
+    (slug) llm
+    (label) LLM
+    (aliases)
+      > llms
+      > large-language-models
+  > (tag)
+    (slug) mcp
+    (label) MCP
+  > (tag)
+    (slug) go
+    (label) Go
+    (aliases)
+      > golang
+  > (tag)
+    (slug) cpp
+    (label) C++
+    (aliases)
+      > cplusplus
+      > c-plus-plus
+  > (tag)
+    (slug) csharp
+    (label) C#
+  > (tag)
+    (slug) dotnet
+    (label) .NET
+    (aliases)
+      > dotnet-6
+      > dotnet-7
+      > dotnet-8
+      > dotnet-9
+      > dotnet-10
+  > (tag)
+    (slug) asp-net-core
+    (label) ASP.NET Core
+  > (tag)
+    (slug) avalonia-ui
+    (label) Avalonia UI
+    (aliases)
+      > avalonia
+  > (tag)
+    (slug) javascript
+    (label) JavaScript
+    (aliases)
+      > js
+  > (tag)
+    (slug) typescript
+    (label) TypeScript
+    (aliases)
+      > ts
+  > (tag)
+    (slug) react
+    (label) React
+    (aliases)
+      > reactjs
+      > react-js
+  > (tag)
+    (slug) threejs
+    (label) Three.js
+    (aliases)
+      > three-js
+  > (tag)
+    (slug) css
+    (label) CSS
+  > (tag)
+    (slug) seo
+    (label) SEO
+  > (tag)
+    (slug) ssg
+    (label) SSG
+  > (tag)
+    (slug) sql
+    (label) SQL
+  > (tag)
+    (slug) http
+    (label) HTTP
+  > (tag)
+    (slug) api
+    (label) API
+  > (tag)
+    (slug) jwt
+    (label) JWT
+  > (tag)
+    (slug) cqrs
+    (label) CQRS
+  > (tag)
+    (slug) rpg
+    (label) RPG
+  > (tag)
+    (slug) ui-ux
+    (label) UI/UX
+  > (tag)
+    (slug) piml
+    (label) PIML
+  > (tag)
+    (slug) webdev
+    (label) Web dev
+    (aliases)
+      > web-dev
+      > web-development
+  > (tag)
+    (slug) math
+    (label) Math
+    (aliases)
+      > mathematics
+      > maths
+  > (tag)
+    (slug) gaming
+    (label) Gaming
+    (aliases)
+      > games
+      > video-games
+  > (tag)
+    (slug) game-dev
+    (label) Game dev
+    (aliases)
+      > gamedev
+      > game-development
+  > (tag)
+    (slug) science-fiction
+    (label) Science fiction
+    (aliases)
+      > sci-fi
+      > scifi
+  > (tag)
+    (slug) first-person-shooter
+    (label) First-person shooter
+    (aliases)
+      > fps
+  > (tag)
+    (slug) real-time-strategy
+    (label) Real-time strategy
+    (aliases)
+      > rts
+  > (tag)
+    (slug) hip-hop
+    (label) Hip-hop
+    (aliases)
+      > hiphop
+      > rap
+  > (tag)
+    (slug) philosophy
+    (label) Philosophy
+    (description) Essays, thinkers and the books, shows and games that made me think.
+  > (tag)
+    (slug) history
+    (label) History
+  > (tag)
+    (slug) turkish
+    (label) Turkish
+  > (tag)
+    (slug) turkish-cuisine
+    (label) Turkish cuisine
+  > (tag)
+    (slug) data-science
+    (label) Data science
+  > (tag)
+    (slug) critical-thinking
+    (label) Critical thinking
+  > (tag)
+    (slug) code-review
+    (label) Code review
+  > (tag)
+    (slug) developer-tools
+    (label) Developer tools
+    (aliases)
+      > dev-tools
+      > devtools
+  > (tag)
+    (slug) open-source
+    (label) Open source
+    (aliases)
+      > oss

@@ -4,6 +4,10 @@
     (date) 2026-08-23
     (link) https://openlogi.org/
     (slug) openlogi
+    (tags)
+      > open-source
+      > productivity
+      > rust
     (title) OpenLogi
     (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
     (description) A native, local-first alternative to Logitech Options+ written in Rust. Remap buttons, drive DPI, and configure SmartShift over HID++ with zero telemetry.
@@ -14,6 +18,10 @@
     (date) 2026-02-07
     (link) https://github.com/originalankur/maptoposter
     (slug) maptoposter
+    (tags)
+      > maps
+      > design
+      > open-source
     (title) MapToPoster
     (description) Transform your favorite cities into beautiful, minimalist designs with code.
     (rating) 5
@@ -23,6 +31,10 @@
     (date) 2026-01-13
     (link) https://posthog.com/
     (slug) posthog
+    (tags)
+      > developer-tools
+      > webdev
+      > analytics
     (title) PostHog
     (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
     (description) The all-in-one platform for product analytics, feature flags, session replays, and more.
@@ -32,6 +44,10 @@
     (date) 2026-01-12
     (link) https://www.aseprite.org/
     (slug) aseprite
+    (tags)
+      > pixel-art
+      > game-dev
+      > art
     (title) Aseprite
     (image) /images/discovery/covers/tools/aseprite.webp
     (description) The industry standard for creating pixel art and animations.
@@ -42,6 +58,11 @@
     (link) https://mastra.ai/
     (rating) 5
     (slug) tool-mastra-ai
+    (tags)
+      > ai
+      > llm
+      > open-source
+      > developer-tools
     (title) Mastra AI
     (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
     (description) Mastra AI is an open-source AI Agent Framework for TypeScript. A demo and its GitHub repository are available, showcasing its capabilities.

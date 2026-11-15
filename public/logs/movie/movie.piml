@@ -5,6 +5,11 @@
     (link) https://www.imdb.com/title/tt35538033/
     (rating) 4
     (slug) resident-evil-2026
+    (tags)
+      > horror
+      > survival
+      > zombies
+      > resident-evil
     (title) Resident Evil (2026)
     (image) /images/discovery/covers/movie/resident-evil-2026.webp
     (imageSource)
@@ -22,6 +27,11 @@
     (link) https://www.imdb.com/title/tt17009710/
     (rating) 3
     (slug) anatomy-of-a-fall-2023
+    (tags)
+      > drama
+      > mystery
+      > courtroom
+      > french
     (title) Anatomy of a Fall (2023)
     (image) /images/discovery/covers/movie/anatomy-of-a-fall-2023.webp
     (imageSource)
@@ -36,6 +46,11 @@
     (link) https://www.imdb.com/title/tt30144839/
     (rating) 3
     (slug) one-battle-after-another-2025
+    (tags)
+      > action
+      > thriller
+      > dark-comedy
+      > paul-thomas-anderson
     (title) One Battle After Another (2025)
     (image) /images/discovery/covers/movie/one-battle-after-another-2025.webp
     (imageSource)
@@ -50,6 +65,12 @@
     (link) https://www.imdb.com/title/tt6334354/
     (rating) 3
     (slug) the-suicide-squad-2021
+    (tags)
+      > superhero
+      > action
+      > dark-comedy
+      > dc-comics
+      > james-gunn
     (title) The Suicide Squad (2021)
     (image) /images/discovery/covers/movie/the-suicide-squad-2021.webp
     (imageSource)
@@ -64,6 +85,10 @@
     (link) https://www.imdb.com/title/tt27131358/
     (rating) 3
     (slug) we-live-in-time
+    (tags)
+      > romance
+      > drama
+      > british
     (title) We Live in Time (2024)
     (image) /images/discovery/covers/movie/we-live-in-time.webp
     (imageSource)
@@ -78,6 +103,11 @@
     (link) https://www.imdb.com/title/tt0258463/
     (rating) 5
     (slug) the-jason-bourne-series
+    (tags)
+      > action
+      > espionage
+      > thriller
+      > jason-bourne
     (title) The Jason Bourne Series (2002–2007)
     (image) /images/discovery/covers/movie/the-jason-bourne-series.webp
     (imageSource)
@@ -92,6 +122,10 @@
     (link) https://www.imdb.com/title/tt32565993/
     (rating) 3
     (slug) the-sheep-detectives
+    (tags)
+      > mystery
+      > comedy
+      > whodunit
     (title) The Sheep Detectives (2026)
     (image) /images/discovery/covers/movie/the-sheep-detectives.webp
     (imageSource)
@@ -106,6 +140,11 @@
     (link)
     (rating) 5
     (slug) batman-mask-of-the-phantasm
+    (tags)
+      > animation
+      > superhero
+      > dc-comics
+      > batman
     (title) Batman: Mask of the Phantasm (1993)
     (image) /images/discovery/covers/movie/batman-mask-of-the-phantasm.webp
     (imageSource)
@@ -120,6 +159,11 @@
     (link)
     (rating) 4
     (slug) black-dynamite-2009
+    (tags)
+      > comedy
+      > action
+      > parody
+      > blaxploitation
     (title) Black Dynamite
     (image) /images/discovery/covers/movie/black-dynamite-2009.webp
     (imageSource)
@@ -134,6 +178,11 @@
     (link) 
     (rating) 4
     (slug) project-hail-mary-2026
+    (tags)
+      > science-fiction
+      > space
+      > survival
+      > adventure
     (title) Project Hail Mary (2026)
     (image) /images/discovery/covers/movie/project-hail-mary-2026.webp
     (imageSource)
@@ -148,6 +197,11 @@
     (link) 
     (rating) 3
     (slug) vanilla-sky
+    (tags)
+      > psychological
+      > thriller
+      > mind-bending
+      > science-fiction
     (title) Vanilla Sky
     (image) /images/discovery/covers/movie/vanilla-sky.webp
     (imageSource)
@@ -162,6 +216,10 @@
     (link) 
     (rating) 5
     (slug) die-hard
+    (tags)
+      > action
+      > thriller
+      > john-mctiernan
     (title) Die Hard
     (image) /images/discovery/covers/movie/die-hard.webp
     (imageSource)
@@ -176,6 +234,12 @@
     (link) 
     (rating) 4
     (slug) the-hunt-for-red-october
+    (tags)
+      > thriller
+      > espionage
+      > submarine
+      > cold-war
+      > john-mctiernan
     (title) The Hunt for Red October
     (image) /images/discovery/covers/movie/the-hunt-for-red-october.webp
     (imageSource)
@@ -190,6 +254,10 @@
     (link) https://www.imdb.com/title/tt31322753/
     (rating) 4
     (slug) twinless-2025
+    (tags)
+      > dark-comedy
+      > drama
+      > grief
     (title) Twinless
     (image) /images/discovery/covers/movie/twinless-2025.webp
     (imageSource)
@@ -204,6 +272,11 @@
     (link) https://www.imdb.com/title/tt0086935/
     (rating) 3
     (slug) balkanski-spijun-1984
+    (tags)
+      > dark-comedy
+      > satire
+      > paranoia
+      > yugoslav
     (title) Balkanski špijun (1984)
     (image) /images/discovery/covers/movie/balkanski-spijun-1984.webp
     (imageSource)
@@ -219,6 +292,11 @@
     (director) Joel Coen, Ethan Coen
     (rating) 3
     (slug) the-big-lebowski
+    (tags)
+      > comedy
+      > crime
+      > noir
+      > coen-brothers
     (title) The Big Lebowski (1998)
     (image) /images/discovery/covers/movie/the-big-lebowski.webp
     (imageSource)
@@ -233,6 +311,11 @@
     (director) Michel Gondry
     (rating) 4
     (slug) eternal-sunshine-of-the-spotless-mind-2004
+    (tags)
+      > romance
+      > science-fiction
+      > drama
+      > mind-bending
     (title) Eternal Sunshine of the Spotless Mind (2004)
     (image) /images/discovery/covers/movie/eternal-sunshine-of-the-spotless-mind-2004.webp
     (imageSource)
@@ -247,6 +330,10 @@
     (director) Paul Haggis
     (rating) 4
     (slug) crash-2004
+    (tags)
+      > drama
+      > crime
+      > ensemble
     (title) Crash (2004)
     (image) /images/discovery/covers/movie/crash-2004.webp
     (imageSource)
@@ -261,6 +348,11 @@
     (director) Alfonso Cuarón
     (rating) 5
     (slug) children-of-men-2006
+    (tags)
+      > dystopia
+      > science-fiction
+      > thriller
+      > drama
     (title) Children of Men (2006)
     (image) /images/discovery/covers/movie/children-of-men-2006.webp
     (imageSource)
@@ -277,6 +369,11 @@
     (director) Louis Leterrier
     (rating) 3
     (slug) unleashed-2005
+    (tags)
+      > action
+      > martial-arts
+      > crime
+      > drama
     (title) Unleashed (2005)
     (image) /images/discovery/covers/movie/unleashed-2005.webp
     (imageSource)
@@ -291,6 +388,11 @@
     (director) Doug Liman
     (rating) 4
     (slug) mr-and-mrs-smith-2005
+    (tags)
+      > action
+      > comedy
+      > romance
+      > hitman
     (title) Mr. & Mrs. Smith (2005)
     (image) /images/discovery/covers/movie/mr-and-mrs-smith-2005.webp
     (imageSource)
@@ -305,6 +407,10 @@
     (director) Martin Brest
     (rating) 2
     (slug) meet-joe-black-movie
+    (tags)
+      > romance
+      > fantasy
+      > drama
     (title) Meet Joe Black (1998)
     (image) /images/discovery/covers/movie/meet-joe-black-movie.webp
     (imageSource)
@@ -319,6 +425,11 @@
     (director) Cameron Crowe
     (rating) 3
     (slug) jerry-maguire-movie
+    (tags)
+      > romance
+      > comedy
+      > drama
+      > sports
     (title) Jerry Maguire (1996)
     (image) /images/discovery/covers/movie/jerry-maguire-movie.webp
     (imageSource)
@@ -333,6 +444,11 @@
     (director) Eli Craig
     (rating) 4
     (slug) tucker-and-dale-vs-evil-2010
+    (tags)
+      > horror
+      > comedy
+      > slasher
+      > parody
     (title) Tucker & Dale vs. Evil (2010)
     (image) /images/discovery/covers/movie/tucker-and-dale-vs-evil-2010.webp
     (imageSource)
@@ -347,6 +463,12 @@
     (director) Martin Scorsese
     (rating) 3
     (slug) taxi-driver-1976
+    (tags)
+      > psychological
+      > crime
+      > drama
+      > noir
+      > martin-scorsese
     (title) Taxi Driver (1976)
     (image) /images/discovery/covers/movie/taxi-driver-1976.webp
     (imageSource)
@@ -360,6 +482,11 @@
     (director) Darren Aronofsky
     (rating) 4
     (slug) caught-stealing-2025
+    (tags)
+      > crime
+      > thriller
+      > dark-comedy
+      > darren-aronofsky
     (title) Caught Stealing (2025)
     (image) /images/discovery/covers/movie/caught-stealing-2025.webp
     (imageSource)
@@ -376,6 +503,11 @@
     (director) Paul McGuigan
     (rating) 5
     (slug) lucky-number-slevin-movie
+    (tags)
+      > crime
+      > thriller
+      > noir
+      > hitman
     (title) Lucky Number Slevin (2006)
     (image) /images/discovery/covers/movie/lucky-number-slevin-movie.webp
     (imageSource)
@@ -390,6 +522,12 @@
     (director) Guy Ritchie
     (rating) 4
     (slug) lock-stock-and-two-smoking-barrels-movie
+    (tags)
+      > crime
+      > comedy
+      > heist
+      > british
+      > guy-ritchie
     (title) Lock, Stock and Two Smoking Barrels (1998)
     (image) /images/discovery/covers/movie/lock-stock-and-two-smoking-barrels-movie.webp
     (imageSource)
@@ -406,6 +544,12 @@
     (director) Chad Stahelski
     (rating) 4
     (slug) john-wick-chapter-4-movie
+    (tags)
+      > action
+      > thriller
+      > hitman
+      > martial-arts
+      > john-wick
     (title) John Wick: Chapter 4 (2023)
     (image) /images/discovery/covers/movie/john-wick-chapter-4-movie.webp
     (imageSource)
@@ -420,6 +564,12 @@
     (director) Chad Stahelski
     (rating) 3
     (slug) john-wick-chapter-3-parabellum-movie
+    (tags)
+      > action
+      > thriller
+      > hitman
+      > martial-arts
+      > john-wick
     (title) John Wick: Chapter 3 – Parabellum (2019)
     (image) /images/discovery/covers/movie/john-wick-chapter-3-parabellum-movie.webp
     (imageSource)
@@ -434,6 +584,12 @@
     (director) Chad Stahelski
     (rating) 3
     (slug) john-wick-chapter-2-movie
+    (tags)
+      > action
+      > thriller
+      > hitman
+      > martial-arts
+      > john-wick
     (title) John Wick: Chapter 2 (2017)
     (image) /images/discovery/covers/movie/john-wick-chapter-2-movie.webp
     (imageSource)
@@ -448,6 +604,12 @@
     (director) Chad Stahelski, David Leitch (uncredited)
     (rating) 5
     (slug) john-wick-chapter-1-movie
+    (tags)
+      > action
+      > thriller
+      > revenge
+      > hitman
+      > john-wick
     (title) John Wick: Chapter 1 (2014)
     (image) /images/discovery/covers/movie/john-wick-chapter-1-movie.webp
     (imageSource)
@@ -462,6 +624,12 @@
     (director) Michael Mann
     (rating) 5
     (slug) heat-1995-movie
+    (tags)
+      > crime
+      > heist
+      > thriller
+      > drama
+      > michael-mann
     (title) Heat (1995)
     (image) /images/discovery/covers/movie/heat-1995-movie.webp
     (imageSource)
@@ -478,6 +646,12 @@
     (director) Park Chan-wook
     (rating) 5
     (slug) decision-to-leave-2022-movie
+    (tags)
+      > romance
+      > mystery
+      > thriller
+      > korean
+      > park-chan-wook
     (title) Decision to Leave (2022)
     (image) /images/discovery/covers/movie/decision-to-leave-2022-movie.webp
     (imageSource)
@@ -492,6 +666,12 @@
     (director) Stephen Norrington
     (rating) 4
     (slug) blade-1998-movie
+    (tags)
+      > superhero
+      > horror
+      > action
+      > marvel
+      > vampires
     (title) Blade (1998)
     (image) /images/discovery/covers/movie/blade-1998-movie.webp
     (imageSource)
@@ -506,6 +686,11 @@
     (director) Juan Carlos Fresnadillo
     (rating) 4
     (slug) 28-weeks-later-movie
+    (tags)
+      > horror
+      > zombies
+      > post-apocalyptic
+      > british
     (title) 28 Weeks Later (2007)
     (image) /images/discovery/covers/movie/28-weeks-later-movie.webp
     (imageSource)
@@ -522,6 +707,10 @@
     (director) Kenneth Lonergan
     (rating) 4
     (slug) manchester-by-the-sea-movie
+    (tags)
+      > drama
+      > grief
+      > family
     (title) Manchester By The Sea (2016)
     (image) /images/discovery/covers/movie/manchester-by-the-sea-movie.webp
     (imageSource)
@@ -536,6 +725,12 @@
     (director) Danny Boyle
     (rating) 4
     (slug) 28-days-later-movie
+    (tags)
+      > horror
+      > zombies
+      > post-apocalyptic
+      > british
+      > danny-boyle
     (title) 28 Days Later (2002)
     (image) /images/discovery/covers/movie/28-days-later-movie.webp
     (imageSource)
@@ -552,6 +747,10 @@
     (director) Phil Lord, Christopher Miller
     (rating) 4
     (slug) 22-jump-street-movie
+    (tags)
+      > action
+      > comedy
+      > buddy-cop
     (title) 22 Jump Street (2014)
     (image) /images/discovery/covers/movie/22-jump-street-movie.webp
     (imageSource)
@@ -568,6 +767,10 @@
     (director) Phil Lord, Christopher Miller
     (rating) 4
     (slug) 21-jump-street-movie
+    (tags)
+      > action
+      > comedy
+      > buddy-cop
     (title) 21 Jump Street (2012)
     (image) /images/discovery/covers/movie/21-jump-street-movie.webp
     (imageSource)
@@ -584,6 +787,11 @@
     (director) Joel Coen, Ethan Coen
     (rating) 5
     (slug) no-country-for-old-men-movie
+    (tags)
+      > crime
+      > thriller
+      > western
+      > coen-brothers
     (title) No Country for Old Men
     (image) /images/discovery/covers/movie/no-country-for-old-men-movie.webp
     (imageSource)
@@ -600,6 +808,12 @@
     (director) Michael Mann
     (rating) 5
     (slug) collateral-2004-movie
+    (tags)
+      > crime
+      > thriller
+      > noir
+      > hitman
+      > michael-mann
     (title) Collateral (2004)
     (image) /images/discovery/covers/movie/collateral-2004-movie.webp
     (imageSource)
@@ -616,6 +830,10 @@
     (link) https://www.imdb.com/title/tt11539996/
     (rating) 4
     (slug) relay-2024
+    (tags)
+      > thriller
+      > crime
+      > conspiracy
     (title) Relay
     (image) /images/discovery/covers/movie/relay-2024.webp
     (imageSource)

@@ -146,6 +146,7 @@ export const staticRoutes = [
   '/terminal',
   '/the-vague',
   '/timeline',
+  '/tags',
   '/vocab',
   '/welcome',
   '/wordup',

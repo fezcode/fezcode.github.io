@@ -103,6 +103,25 @@ const generateSitemap = async () => {
     console.error('Error reading projects.piml:', error);
   }
 
+  // Tag pages, matching the ones the build prerenders (3+ items).
+  try {
+    const tagIndex = piml.parse(
+      fs.readFileSync(path.join(publicDirectory, 'tags', 'index.piml'), 'utf-8'),
+    );
+    (tagIndex.tags || [])
+      .filter((tag) => tag.slug && Number(tag.count) >= 3)
+      .forEach((tag) => {
+        urls.push({
+          loc: `${baseUrl}/tags/${tag.slug}`,
+          lastmod: new Date().toISOString(),
+          changefreq: 'weekly',
+          priority: '0.5',
+        });
+      });
+  } catch (error) {
+    console.error('Error reading tags/index.piml:', error);
+  }
+
   // Add every app. Only probability-cabinet used to be listed, so 110 app
   // pages were absent from the sitemap entirely.
   try {

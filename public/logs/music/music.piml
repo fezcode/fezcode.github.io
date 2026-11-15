@@ -6,6 +6,10 @@
     (link) https://www.youtube.com/watch?v=LBjMJ_AIi3E
     (rating) 5
     (slug) common-pete-rock-all-kind-of-ideas
+    (tags)
+      > hip-hop
+      > common
+      > pete-rock
     (title) All Kind Of Ideas
     (album) The Auditorium Vol. 1
     (image) /images/discovery/covers/music/common-pete-rock-all-kind-of-ideas.webp
@@ -20,6 +24,10 @@
     (link) https://www.youtube.com/watch?v=bWPOLL_Rr8U
     (rating) 5
     (slug) hooverphonic-eden
+    (tags)
+      > trip-hop
+      > electronic
+      > hooverphonic
     (title) Eden
     (album) Blue Wonder Power Milk
     (image) /images/discovery/covers/music/hooverphonic-eden.webp
@@ -34,6 +42,11 @@
     (link) https://open.spotify.com/search/Dawn%20FM%20The%20Weeknd
     (rating) 5
     (slug) the-weeknd-dawn-fm
+    (tags)
+      > synth-pop
+      > pop
+      > electronic
+      > the-weeknd
     (title) Dawn FM (Album)
     (artist) The Weeknd
     (album) Dawn FM
@@ -60,6 +73,11 @@
     (link) https://open.spotify.com/album/1A4oBX00tNGOO7k4jC5HEt
     (rating) 5
     (slug) adamlar-ruyalarda-burusmusuz
+    (tags)
+      > turkish
+      > rock
+      > indie
+      > adamlar
     (title) Rüyalarda Buruşmuşuz (Album)
     (artist) Adamlar
     (album) Rüyalarda Buruşmuşuz
@@ -75,6 +93,10 @@
     (link) https://www.youtube.com/watch?v=nbhD-qeAXOI
     (rating) 5
     (slug) porcupine-tree-trains
+    (tags)
+      > progressive-rock
+      > rock
+      > porcupine-tree
     (title) Trains
     (artist) Porcupine Tree
     (album) In Absentia
@@ -90,6 +112,11 @@
     (link) https://www.youtube.com/watch?v=Ulg7bUbvLZU
     (rating) 5
     (slug) rococco-kansai-midnight-club-ii
+    (tags)
+      > electronic
+      > video-game-music
+      > trance
+      > gaming
     (title) Rococco
     (artist) Kansai
     (image) /images/discovery/covers/music/rococco-kansai-midnight-club-ii.webp
@@ -104,6 +131,10 @@
     (link)
     (rating) 4
     (slug) born-to-die-lana-del-rey
+    (tags)
+      > pop
+      > indie
+      > lana-del-rey
     (title) Born To Die (Album)
     (artist) Lana Del Rey
     (image) /images/discovery/covers/music/born-to-die-lana-del-rey.webp
@@ -118,6 +149,10 @@
     (link)
     (rating) 5
     (slug) dying-light-ost
+    (tags)
+      > soundtrack
+      > video-game-music
+      > gaming
     (title) Dying Light Original Soundtrack
     (image) /images/discovery/covers/music/dying-light-ost.webp
     (imageSource)
@@ -136,6 +171,10 @@
     (link) https://www.youtube.com/watch?v=eyW7VfPofDU
     (rating) 5
     (slug) pogo-digitalism
+    (tags)
+      > electronic
+      > indie
+      > video-game-music
     (title) Pogo
     (album) Idealism
     (image) /images/discovery/covers/music/pogo-digitalism.webp
@@ -151,6 +190,11 @@
     (link) https://www.youtube.com/playlist?list=OLAK5uy_mXmI-0R2M9m8fO_j3I0R4-L6O8z2_0x3I
     (rating) 5
     (slug) madvillainy
+    (tags)
+      > hip-hop
+      > underground-hip-hop
+      > mf-doom
+      > madlib
     (title) Madvillainy
     (album) Madvillainy
     (image) /images/discovery/covers/music/madvillainy.webp
@@ -166,6 +210,11 @@
     (link) https://www.youtube.com/playlist?list=OLAK5uy_m-15C039z_59G7F506rU4619u0R_G2pI4
     (rating) 5
     (slug) dreamed-at-dawn
+    (tags)
+      > turkish
+      > indie
+      > shoegaze
+      > dream-pop
     (title) Dreamed at Dawn
     (album) Dreamed at Dawn
     (image) /images/discovery/covers/music/dreamed-at-dawn.webp
@@ -181,6 +230,10 @@
     (link) https://www.youtube.com/watch?v=nhPaWIeULKk
     (rating) 5
     (slug) gorillaz-stylo
+    (tags)
+      > electronic
+      > hip-hop
+      > gorillaz
     (title) Stylo
     (album) Plastic Beach
     (image) /images/discovery/covers/music/gorillaz-stylo.webp
@@ -196,6 +249,10 @@
     (link) https://www.youtube.com/watch?v=SJlRgrF-9H0&list=PL657B57BE3ED8F951&index=4
     (rating) 5
     (slug) knights-of-honor-soundtrack
+    (tags)
+      > soundtrack
+      > video-game-music
+      > gaming
     (title) Knights of Honor Soundtrack
     (album) Knights of Honor Soundtrack
     (image) /images/discovery/covers/music/knights-of-honor-soundtrack.webp
@@ -211,6 +268,10 @@
     (link) https://www.youtube.com/watch?v=jZ2P4G5J6BY
     (rating) 5
     (slug) stick-war-ost
+    (tags)
+      > soundtrack
+      > video-game-music
+      > gaming
     (title) Stick War Original Soundtrack
     (album) Stick War OST
     (image) /images/discovery/covers/music/stick-war-ost.webp
@@ -228,6 +289,10 @@
     (link) https://www.youtube.com/watch?v=-eEvowIOZvk&list=PLDRHxhYQRFj6e-ejJLvL6NNxV9iyJNmw-
     (rating) 5
     (slug) kingdom-two-crowns-norse-lands-soundtrack-extended
+    (tags)
+      > soundtrack
+      > video-game-music
+      > gaming
     (title) Kingdom Two Crowns: Norse Lands Soundtrack (Extended)
     (album) Kingdom Two Crowns: Norse Lands Soundtrack (Extended)
     (image) /images/discovery/covers/music/kingdom-two-crowns-norse-lands-soundtrack-extended.webp
@@ -245,6 +310,10 @@
     (link) https://www.youtube.com/playlist?list=PLLBJrClJPlWJScARaoX_LIw1n3LiPoZZQ
     (rating) 5
     (slug) kids-see-ghosts
+    (tags)
+      > hip-hop
+      > kanye-west
+      > kid-cudi
     (title) KIDS SEE GHOSTS (album)
     (album) KIDS SEE GHOSTS
     (image) /images/discovery/covers/music/kids-see-ghosts.webp
@@ -262,6 +331,10 @@
     (link) https://www.youtube.com/watch?v=klZNvJArVSE
     (rating) 5
     (slug) johnny-ps-caddy
+    (tags)
+      > hip-hop
+      > j-cole
+      > the-alchemist
     (title) Johnny P's Caddy
     (album) Tana Talk 4
     (image) /images/discovery/covers/music/johnny-ps-caddy.webp
@@ -277,6 +350,11 @@
     (link) https://www.youtube.com/watch?v=TScsSJ6gyKg
     (rating) 5
     (slug) fifa-99-ost
+    (tags)
+      > soundtrack
+      > video-game-music
+      > football
+      > electronic
     (title) Music from FIFA 99
     (album) FIFA 99 (Soundtrack)
     (image) /images/discovery/covers/music/fifa-99-ost.webp
@@ -291,6 +369,10 @@
     (link) https://www.youtube.com/watch?v=spK_F8zsttI
     (rating) 5
     (slug) maxs-choice-duty-vs-passion
+    (tags)
+      > soundtrack
+      > video-game-music
+      > gaming
     (title) Max's Choice: Duty vs. Passion
     (album) Max Payne 2: The Fall of Max Payne (Soundtrack)
     (image) /images/discovery/covers/music/maxs-choice-duty-vs-passion.webp
@@ -306,6 +388,10 @@
     (link) https://www.youtube.com/watch?v=Ja168gMpb3o
     (rating) 5
     (slug) dhanush-why-this-kolaveri-di
+    (tags)
+      > indian
+      > soundtrack
+      > internet-culture
     (title) Why This Kolaveri Di
     (album) 3 (Soundtrack)
     (releaseDate) 2011-11-16
@@ -324,6 +410,9 @@
     (link) https://www.youtube.com/watch?v=esCNvfKV9Rc
     (rating) 5
     (slug) yoo-se-yoon-dont-skip-the-interlude
+    (tags)
+      > korean
+      > comedy
     (title) Don't Skip the Interlude
     (album) Don't Skip the Interlude
     (releaseDate) 2025-08-29
@@ -342,6 +431,10 @@
     (link) https://www.youtube.com/watch?v=PCp2iXA1uLE
     (rating) 5
     (slug) frederic-oddloop
+    (tags)
+      > japanese
+      > rock
+      > indie
     (title) oddloop
     (album) Oddloop
     (releaseDate) 2014-09-23
@@ -360,6 +453,10 @@
     (link) https://www.youtube.com/watch?v=27lPAUdE1ys
     (rating) 5
     (slug) morcheeba-easier-said-than-done
+    (tags)
+      > trip-hop
+      > electronic
+      > morcheeba
     (title) Easier Said Than Done
     (image) /images/discovery/covers/music/morcheeba-easier-said-than-done.webp
     (imageSource)
@@ -374,6 +471,10 @@
     (link) https://www.youtube.com/watch?v=0_5qaeIAl5E
     (rating) 5
     (slug) in-the-aeroplane-over-the-sea
+    (tags)
+      > indie
+      > rock
+      > neutral-milk-hotel
     (title) In the Aeroplane Over the Sea
     (image) /images/discovery/covers/music/in-the-aeroplane-over-the-sea.webp
     (imageSource)
@@ -388,6 +489,9 @@
     (link) https://www.youtube.com/watch?v=hB9z_O_Xw40
     (rating) 5
     (slug) special-ed-neva-go-back
+    (tags)
+      > hip-hop
+      > east-coast-hip-hop
     (title) Neva Go Back
     (album) Revelations
     (image) /images/discovery/covers/music/special-ed-neva-go-back.webp
@@ -403,6 +507,9 @@
     (link) https://www.youtube.com/watch?v=radJQyaC5kY
     (rating) 5
     (slug) de-la-soul-stakes-is-high
+    (tags)
+      > hip-hop
+      > de-la-soul
     (title) Stakes Is High
     (album) Stakes Is High
     (image) /images/discovery/covers/music/de-la-soul-stakes-is-high.webp
