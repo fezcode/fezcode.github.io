@@ -13,13 +13,6 @@ import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import DiscoveryPage from './DiscoveryPage';
 import { fetchDiscoveryEntries, loadDiscoveryBody } from './discoveryData';
 
-vi.mock('./PhysicalCover', () => ({
-  default: ({ entry, open }) => (
-    <div data-testid="physical-cover" data-open={open}>
-      {entry.title}
-    </div>
-  ),
-}));
 vi.mock('./discoveryData', async (importOriginal) => ({
   ...(await importOriginal()),
   fetchDiscoveryEntries: vi.fn(),
@@ -822,15 +815,12 @@ describe('opening and returning to the shelf', () => {
       within(dialog).getByRole('button', { name: 'Close the cover' }),
     ).toHaveAttribute('aria-pressed', 'true');
   });
-  it('keeps the original music sleeve and booklet instead of the physical case renderer', async () => {
+  it('keeps the original music sleeve and booklet', async () => {
     mountPage('/discovery/music/entry-02');
     const dialog = await screen.findByRole('dialog', { name: 'Discovery 02' });
     expect(within(dialog).getByText(/Some things/)).toHaveTextContent(
       /Some things\s*are worth\s*keeping\./,
     );
-    expect(
-      within(dialog).queryByTestId('physical-cover'),
-    ).not.toBeInTheDocument();
     const closeCover = await within(dialog).findByRole('button', {
       name: 'Close the cover',
     });
@@ -844,9 +834,6 @@ describe('opening and returning to the shelf', () => {
     expect(
       within(dialog).getByRole('button', { name: 'Close the cover' }),
     ).toHaveAttribute('aria-pressed', 'true');
-    expect(
-      within(dialog).queryByTestId('physical-cover'),
-    ).not.toBeInTheDocument();
   });
   it('contains focus in the modal and restores the original body scrolling style on Escape', async () => {
     document.body.style.overflow = 'clip';

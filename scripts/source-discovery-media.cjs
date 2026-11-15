@@ -9,7 +9,7 @@ const { setLogArtwork } = require('./lib/log-artwork.cjs');
 const ROOT = path.resolve(__dirname, '..');
 const PUBLIC = path.join(ROOT, 'public');
 const OUT = path.join(PUBLIC, 'images/discovery');
-const ART = path.join(OUT, 'art');
+const ART = path.join(OUT, 'covers');
 const CATEGORIES = ['movie', 'series', 'music', 'book'];
 const logFile = (category) =>
   path.join(PUBLIC, `logs/${category}/${category}.piml`);
@@ -161,7 +161,7 @@ async function download(
     // Fully decode the written asset before making it discoverable.
     await sharp(file).raw().toBuffer();
     setLogArtwork(logFile(entry.category), entry.slug, {
-      image: `/images/discovery/art/${entry.category}/${entry.slug}.webp`,
+      image: `/images/discovery/covers/${entry.category}/${entry.slug}.webp`,
       imageSource: {
         ...existingSource,
         provider,

@@ -6,7 +6,7 @@
     (rating) 5
     (slug) weather-com-retro
     (title) The Weather Channel Retro
-    (image) /images/logs/website/weather-com-retro.webp
+    (image) /images/discovery/covers/websites/weather-com-retro.webp
     (description) The Weather Channel's retro mode, rendering your live local forecast as a 90s cable TV "Local on the 8s" broadcast.
   > (item)
     (category) Websites
@@ -57,7 +57,7 @@
     (link) https://lospec.com/
     (slug) lospec
     (title) Lospec
-    (image) /images/logs/website/pixel-art.webp
+    (image) /images/discovery/covers/websites/lospec.webp
     (description) A hub for pixel art palettes, tools, and tutorials.
     (rating) 5
   > (item)
@@ -66,7 +66,7 @@
     (link) https://itch.io/game-assets/free/tag-pixel-art
     (slug) itch-io-pixel-art
     (title) itch.io - Pixel Art Assets
-    (image) /images/logs/website/pixel-art.webp
+    (image) /images/discovery/covers/websites/itch-io-pixel-art.webp
     (description) A massive marketplace for free and premium pixel art game assets.
     (rating) 5
   > (item)

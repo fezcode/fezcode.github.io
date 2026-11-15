@@ -700,6 +700,11 @@ html:has(.dc-root) {
   transform-style: preserve-3d;
   box-shadow: 12px 20px 30px #0005;
 }
+/* Albums are square, so music keeps a square jewel-case sleeve. */
+.dc-case-scene[data-medium='music'] .dc-case {
+  width: min(78%, 340px);
+  aspect-ratio: 1;
+}
 .dc-case-content {
   position: absolute;
   inset: 0;
@@ -790,9 +795,23 @@ html:has(.dc-root) {
   background: #151719;
 }
 .dc-case-lid-front .dc-artwork img {
-  object-fit: contain;
+  /* Local covers are sourced at the case's own shape, so fill edge to edge. */
+  object-fit: cover;
   object-position: center;
   background: #151719;
+}
+.dc-case-lid-front .dc-artwork[data-backdrop] img {
+  object-fit: contain;
+  background: transparent;
+}
+.dc-case-lid-front .dc-artwork img.dc-artwork-backdrop {
+  position: absolute;
+  inset: -12%;
+  width: 124%;
+  height: 124%;
+  max-width: none;
+  object-fit: cover;
+  filter: blur(18px) saturate(1.15) brightness(0.62);
 }
 .dc-case-lid-front .dc-artwork:has(img) .dc-artwork-fallback {
   visibility: hidden;

@@ -11,7 +11,7 @@ import { isPortraitArtwork, steamPortraitUrls } from './lib/steam-artwork.mjs';
 const { setLogArtwork } = artwork;
 
 const publicRoot = join(dirname(fileURLToPath(import.meta.url)), '../public');
-const outputRoot = join(publicRoot, 'images/discovery/art/game');
+const outputRoot = join(publicRoot, 'images/discovery/covers/game');
 const logPath = join(publicRoot, 'logs/game/game.piml');
 const entries = piml.parse(readFileSync(logPath, 'utf8')).logs;
 const steamIds = {
@@ -85,7 +85,7 @@ async function saveImage(entry, url, sourcePage, sourceTitle, existingSource) {
   // Decode the completed asset before exposing it through the log metadata.
   await sharp(join(outputRoot, file)).raw().toBuffer();
   setLogArtwork(logPath, entry.slug, {
-    image: `/images/discovery/art/game/${file}`,
+    image: `/images/discovery/covers/game/${file}`,
     imageSource: {
       ...existingSource,
       provider: existingSource?.provider || providerFor(sourcePage),
@@ -131,7 +131,7 @@ async function loadEntry(entry) {
     existsSync(join(publicRoot, existing.slice(1))) &&
     !(
       refreshLandscape &&
-      existing.startsWith('/images/discovery/art/game/') &&
+      existing.startsWith('/images/discovery/covers/game/') &&
       entry.imageSource?.width > entry.imageSource?.height
     )
   )

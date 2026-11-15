@@ -4,8 +4,6 @@ import React, {
   useMemo,
   useRef,
   useState,
-  lazy,
-  Suspense,
 } from 'react';
 import {
   Link,
@@ -42,8 +40,6 @@ import CategoryImprint from './CategoryImprint';
 import CategoryFilter from './CategoryFilter';
 import { GameTray, GameLidInsert } from './GameCaseInterior';
 import './discovery.css';
-
-const PhysicalCover = lazy(() => import('./PhysicalCover'));
 
 const PAGE_SIZE = 24;
 const COVER_TRANSITION = { type: 'spring', stiffness: 180, damping: 26 };
@@ -95,26 +91,63 @@ function Rating({ value }) {
   );
 }
 
-function Artwork({ entry, eager = false, className = '', spine = false }) {
+// Artwork whose shape is far from its frame (a 16:9 video still in a
+// portrait case) sits whole over a blurred copy instead of beside blank bars.
+const BACKDROP_MISMATCH = 0.2;
+
+function Artwork({
+  entry,
+  eager = false,
+  className = '',
+  spine = false,
+  adaptive = false,
+}) {
   const primary =
     (spine && entry.spineImage) || entry.cover || entry.fallbackCover;
   const [source, setSource] = useState(primary);
   const [failed, setFailed] = useState(false);
+  const [backdrop, setBackdrop] = useState(false);
   useEffect(() => {
     setSource(primary);
     setFailed(false);
+    setBackdrop(false);
   }, [entry.id, primary]);
+  const measure = (event) => {
+    if (!adaptive) return;
+    const image = event.currentTarget;
+    const frame = image.parentElement;
+    if (!image.naturalWidth || !frame?.clientWidth || !frame.clientHeight)
+      return;
+    const mismatch = Math.abs(
+      Math.log(
+        image.naturalHeight /
+          image.naturalWidth /
+          (frame.clientHeight / frame.clientWidth),
+      ),
+    );
+    setBackdrop(mismatch > BACKDROP_MISMATCH);
+  };
   return (
     <div
       className={`dc-artwork ${className}`}
       data-original={source !== entry.fallbackCover}
+      data-backdrop={backdrop || undefined}
     >
       <div className="dc-artwork-fallback" aria-hidden="true">
         <span>{entry.categoryLabel}</span>
         <strong>{entry.title}</strong>
       </div>
+      {!failed && backdrop && (
+        <img
+          className="dc-artwork-backdrop"
+          src={source}
+          alt=""
+          aria-hidden="true"
+        />
+      )}
       {!failed && (
         <img
+          onLoad={measure}
           src={source}
           alt=""
           width="640"
@@ -357,7 +390,7 @@ function OpenCase({ entry, origin, open, reducedMotion }) {
           }
         >
           <div className="dc-case-lid-front">
-            <Artwork entry={entry} eager />
+            <Artwork entry={entry} eager adaptive />
             <span className="dc-case-edge" />
           </div>
           <div className="dc-case-lid-back">
@@ -547,39 +580,12 @@ function Showcase({
             <span className="dc-stage-word" aria-hidden="true">
               {entry.categoryLabel}
             </span>
-            {entry.category === 'music' ? (
-              <OpenCase
-                entry={entry}
-                origin={origin}
-                open={caseOpen}
-                reducedMotion={reducedMotion}
-              />
-            ) : (
-              <Suspense
-                fallback={
-                  <OpenCase
-                    entry={entry}
-                    origin={origin}
-                    open={caseOpen}
-                    reducedMotion={reducedMotion}
-                  />
-                }
-              >
-                <PhysicalCover
-                  entry={entry}
-                  open={caseOpen}
-                  reducedMotion={reducedMotion}
-                  fallback={
-                    <OpenCase
-                      entry={entry}
-                      origin={origin}
-                      open={caseOpen}
-                      reducedMotion={reducedMotion}
-                    />
-                  }
-                />
-              </Suspense>
-            )}
+            <OpenCase
+              entry={entry}
+              origin={origin}
+              open={caseOpen}
+              reducedMotion={reducedMotion}
+            />
             <button
               className="dc-cover-control"
               onClick={() => setCaseOpen((value) => !value)}

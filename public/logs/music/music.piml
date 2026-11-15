@@ -8,7 +8,7 @@
     (slug) common-pete-rock-all-kind-of-ideas
     (title) All Kind Of Ideas
     (album) The Auditorium Vol. 1
-    (image) /images/discovery/art/music/common-pete-rock-all-kind-of-ideas.jpg
+    (image) /images/discovery/covers/music/common-pete-rock-all-kind-of-ideas.webp
     (imageSource)
       (provider) User-provided Beatport artwork
       (url) https://geo-media.beatport.com/image_size/900x900/fdc4a8b8-562a-4c9b-9698-08df52893d3f.jpg
@@ -22,7 +22,7 @@
     (slug) hooverphonic-eden
     (title) Eden
     (album) Blue Wonder Power Milk
-    (image) /images/discovery/art/music/hooverphonic-eden.webp
+    (image) /images/discovery/covers/music/hooverphonic-eden.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/us/album/blue-wonder-power-milk/429357998?uo=4
@@ -34,12 +34,10 @@
     (link) https://open.spotify.com/search/Dawn%20FM%20The%20Weeknd
     (rating) 5
     (slug) the-weeknd-dawn-fm
-    (coverAspect) 9 / 16
-    (coverFit) cover
     (title) Dawn FM (Album)
     (artist) The Weeknd
     (album) Dawn FM
-    (image) /images/discovery/art/music/the-weeknd-dawn-fm-original.webp
+    (image) /images/discovery/covers/music/the-weeknd-dawn-fm.webp
     (imageSource)
       (provider) Apple Music — original album artwork
       (page) https://music.apple.com/us/album/dawn-fm/1603164027
@@ -48,7 +46,7 @@
       (width) 1200
       (height) 1200
       (alternative)
-        (image) /images/discovery/art/music/the-weeknd-dawn-fm-collectors-02.webp
+        (image) /images/discovery/covers/music/the-weeknd-dawn-fm-collectors-02.webp
         (provider) Cover Art Archive — official Collector’s Edition 02 artwork
         (page) https://www.republicrecords.com/products/the-weeknd-dawn-fm-collectors-02-2lp
         (url) https://coverartarchive.org/release/eb46aefa-86ab-4e5b-8d17-e2f081629795/front-1200
@@ -65,7 +63,7 @@
     (title) Rüyalarda Buruşmuşuz (Album)
     (artist) Adamlar
     (album) Rüyalarda Buruşmuşuz
-    (image) /images/discovery/art/music/adamlar-ruyalarda-burusmusuz.webp
+    (image) /images/discovery/covers/music/adamlar-ruyalarda-burusmusuz.webp
     (imageSource)
       (provider) Authored album artwork URL
       (page) https://open.spotify.com/album/1A4oBX00tNGOO7k4jC5HEt
@@ -80,7 +78,7 @@
     (title) Trains
     (artist) Porcupine Tree
     (album) In Absentia
-    (image) /images/discovery/art/music/porcupine-tree-trains.webp
+    (image) /images/discovery/covers/music/porcupine-tree-trains.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/us/album/in-absentia/1770062036?uo=4
@@ -94,7 +92,7 @@
     (slug) rococco-kansai-midnight-club-ii
     (title) Rococco
     (artist) Kansai
-    (image) /images/discovery/art/music/rococco-kansai-midnight-club-ii.webp
+    (image) /images/discovery/covers/music/rococco-kansai-midnight-club-ii.webp
     (imageSource)
       (provider) Authored YouTube video artwork
       (page) https://www.youtube.com/watch?v=Ulg7bUbvLZU
@@ -108,7 +106,7 @@
     (slug) born-to-die-lana-del-rey
     (title) Born To Die (Album)
     (artist) Lana Del Rey
-    (image) /images/discovery/art/music/born-to-die-lana-del-rey.webp
+    (image) /images/discovery/covers/music/born-to-die-lana-del-rey.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/us/album/born-to-die/1779781213?uo=4
@@ -121,11 +119,13 @@
     (rating) 5
     (slug) dying-light-ost
     (title) Dying Light Original Soundtrack
-    (image) /images/discovery/art/music/dying-light-ost.webp
+    (image) /images/discovery/covers/music/dying-light-ost.webp
     (imageSource)
-      (provider) Wikipedia article artwork
-      (page) https://en.wikipedia.org/wiki/Dying_Light
-      (url) https://upload.wikimedia.org/wikipedia/en/c/c0/Dying_Light_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
+      (provider) Apple Music
+      (page) https://music.apple.com/
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/46/a1/9f/46a19fa1-ed57-ecfe-cba9-8be4b96ea34d/859733913213_cover.jpg/1000x1000bb.jpg
+      (width) 800
+      (height) 800
     (description) An atmospheric and melancholic survival horror OST by Pawel Blaszczak, drawing inspiration from 70s and 80s cinema.
     (album) Dying Light OST
     (artist) Pawel Blaszczak
@@ -138,7 +138,7 @@
     (slug) pogo-digitalism
     (title) Pogo
     (album) Idealism
-    (image) /images/discovery/art/music/pogo-digitalism.webp
+    (image) /images/discovery/covers/music/pogo-digitalism.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/us/album/idealism/1732993959?uo=4
@@ -153,7 +153,7 @@
     (slug) madvillainy
     (title) Madvillainy
     (album) Madvillainy
-    (image) /images/discovery/art/music/madvillainy.webp
+    (image) /images/discovery/covers/music/madvillainy.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/us/album/madvillainy-instrumentals/41655332?uo=4
@@ -168,7 +168,7 @@
     (slug) dreamed-at-dawn
     (title) Dreamed at Dawn
     (album) Dreamed at Dawn
-    (image) /images/discovery/art/music/dreamed-at-dawn.webp
+    (image) /images/discovery/covers/music/dreamed-at-dawn.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/tr/album/dreamed-at-dawn/1183752753?uo=4
@@ -183,7 +183,7 @@
     (slug) gorillaz-stylo
     (title) Stylo
     (album) Plastic Beach
-    (image) /images/discovery/art/music/gorillaz-stylo.webp
+    (image) /images/discovery/covers/music/gorillaz-stylo.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/us/album/plastic-beach-deluxe-version/859841880?uo=4
@@ -198,7 +198,7 @@
     (slug) knights-of-honor-soundtrack
     (title) Knights of Honor Soundtrack
     (album) Knights of Honor Soundtrack
-    (image) /images/discovery/art/music/knights-of-honor-soundtrack.webp
+    (image) /images/discovery/covers/music/knights-of-honor-soundtrack.webp
     (imageSource)
       (provider) Authored YouTube video artwork
       (page) https://www.youtube.com/watch?v=SJlRgrF-9H0&list=PL657B57BE3ED8F951&index=4
@@ -213,11 +213,13 @@
     (slug) stick-war-ost
     (title) Stick War Original Soundtrack
     (album) Stick War OST
-    (image) /images/discovery/art/music/stick-war-ost.webp
+    (image) /images/discovery/covers/music/stick-war-ost.webp
     (imageSource)
-      (provider) Authored YouTube video artwork
-      (page) https://www.youtube.com/watch?v=jZ2P4G5J6BY
-      (url) https://i.ytimg.com/vi/jZ2P4G5J6BY/hqdefault.jpg
+      (provider) Apple Music
+      (page) https://music.apple.com/
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/1f/cb/48/1fcb480a-a30d-c427-9332-2b0a60d80aa8/199999148920.png/1000x1000bb.jpg
+      (width) 800
+      (height) 800
     (description) The complete original soundtrack for the legendary 2009 Flash game Stick War, featuring iconic tracks by Chris Haigh, Waterflame, and Denny Schneidemesser.
   > (item)
     (artist) Kalandra
@@ -228,10 +230,13 @@
     (slug) kingdom-two-crowns-norse-lands-soundtrack-extended
     (title) Kingdom Two Crowns: Norse Lands Soundtrack (Extended)
     (album) Kingdom Two Crowns: Norse Lands Soundtrack (Extended)
-    (image) /images/logs/music/kingdom-two-crowns-norse-lands-soundtrack-extended-cover.png
+    (image) /images/discovery/covers/music/kingdom-two-crowns-norse-lands-soundtrack-extended.webp
     (imageSource)
-      (provider) Existing authored image
-      (url) /images/logs/music/kingdom-two-crowns-norse-lands-soundtrack-extended-cover.png
+      (provider) Apple Music
+      (page) https://music.apple.com/
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/ae/02/a9/ae02a95e-4921-5c34-6317-e4bcc376dd55/cover.jpg/1000x1000bb.jpg
+      (width) 800
+      (height) 800
     (description) The official soundtrack for the "Norse Lands" DLC of the critically acclaimed strategy game, Kingdom Two Crowns.
   > (item)
     (artist) KIDS SEE GHOSTS (Kanye West & Kid Cudi)
@@ -242,10 +247,13 @@
     (slug) kids-see-ghosts
     (title) KIDS SEE GHOSTS (album)
     (album) KIDS SEE GHOSTS
-    (image) /images/logs/music/kids-see-ghosts-cover.png
+    (image) /images/discovery/covers/music/kids-see-ghosts.webp
     (imageSource)
-      (provider) Existing authored image
-      (url) /images/logs/music/kids-see-ghosts-cover.png
+      (provider) Apple Music
+      (page) https://music.apple.com/
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/3f/2e/d3/3f2ed3b1-d260-4e92-816b-4beac102c676/00602567794318.rgb.jpg/1000x1000bb.jpg
+      (width) 800
+      (height) 800
     (description) KIDS SEE GHOSTS is the eponymous debut studio album by American hip hop super-duo Kids See Ghosts, composed of Kanye West and Kid Cudi. Released on June 8, 2018, by G.O.O.D. Music and Def Jam Recordings.
   > (item)
     (artist) Benny the Butcher & J. Cole
@@ -256,7 +264,7 @@
     (slug) johnny-ps-caddy
     (title) Johnny P's Caddy
     (album) Tana Talk 4
-    (image) /images/discovery/art/music/johnny-ps-caddy.webp
+    (image) /images/discovery/covers/music/johnny-ps-caddy.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/us/album/tana-talk-4/1613877272?uo=4
@@ -271,7 +279,7 @@
     (slug) fifa-99-ost
     (title) Music from FIFA 99
     (album) FIFA 99 (Soundtrack)
-    (image) /images/logs/games/fifa99.jpg
+    (image) /images/discovery/covers/music/fifa-99-ost.webp
     (imageSource)
       (provider) Existing authored image
       (url) /images/logs/games/fifa99.jpg
@@ -285,7 +293,7 @@
     (slug) maxs-choice-duty-vs-passion
     (title) Max's Choice: Duty vs. Passion
     (album) Max Payne 2: The Fall of Max Payne (Soundtrack)
-    (image) /images/discovery/art/music/maxs-choice-duty-vs-passion.webp
+    (image) /images/discovery/covers/music/maxs-choice-duty-vs-passion.webp
     (imageSource)
       (provider) Authored YouTube video artwork
       (page) https://www.youtube.com/watch?v=spK_F8zsttI
@@ -301,11 +309,13 @@
     (title) Why This Kolaveri Di
     (album) 3 (Soundtrack)
     (releaseDate) 2011-11-16
-    (image) /images/discovery/art/music/dhanush-why-this-kolaveri-di.webp
+    (image) /images/discovery/covers/music/dhanush-why-this-kolaveri-di.webp
     (imageSource)
-      (provider) Authored YouTube video artwork
-      (page) https://www.youtube.com/watch?v=Ja168gMpb3o
-      (url) https://i.ytimg.com/vi/Ja168gMpb3o/hqdefault.jpg
+      (provider) Apple Music
+      (page) https://music.apple.com/
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/c6/88/c0/c688c0fa-2186-93f1-621d-bb082bc7d41d/886443301979.jpg/1000x1000bb.jpg
+      (width) 800
+      (height) 800
     (description) "Why This Kolaveri Di" is a Tamil-English (Tanglish) song by Dhanush about a heartbroken man's unrequited love. It became an internet sensation due2 to its catchy tune, relatable lyrics, and viral spread through social media, with Dhanush's unpolished vocals adding to its charm.
   > (item)
     (artist) Yoo Se Yoon
@@ -317,10 +327,13 @@
     (title) Don't Skip the Interlude
     (album) Don't Skip the Interlude
     (releaseDate) 2025-08-29
-    (image) /images/logs/music/dont-skip-the-interlude.png
+    (image) /images/discovery/covers/music/yoo-se-yoon-dont-skip-the-interlude.webp
     (imageSource)
-      (provider) Existing authored image
-      (url) /images/logs/music/dont-skip-the-interlude.png
+      (provider) Apple Music
+      (page) https://music.apple.com/
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/0d/0a/10/0d0a1039-ac13-2f2b-cc38-0242232d1b58/888272159745.jpg/1000x1000bb.jpg
+      (width) 800
+      (height) 800
     (description) "Don't Skip the Interlude" by Yoo Se Yoon is a comedic musical track that cleverly contrasts heartfelt lyrics about love with a deliberately long and humorous instrumental interlude. Known for its comedic intent and visual gags during performances, the song's prolonged interlude is central to its entertaining and funny experience.
   > (item)
     (artist) frederic
@@ -332,11 +345,13 @@
     (title) oddloop
     (album) Oddloop
     (releaseDate) 2014-09-23
-    (image) /images/discovery/art/music/frederic-oddloop.webp
+    (image) /images/discovery/covers/music/frederic-oddloop.webp
     (imageSource)
-      (provider) Authored YouTube video artwork
-      (page) https://www.youtube.com/watch?v=PCp2iXA1uLE
-      (url) https://i.ytimg.com/vi/PCp2iXA1uLE/hqdefault.jpg
+      (provider) Apple Music
+      (page) https://music.apple.com/
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b9/ba/09/b9ba092b-03b4-d3c0-a818-13f1ff8c714d/25UMGIM92926.rgb.jpg/1000x1000bb.jpg
+      (width) 800
+      (height) 800
     (description) "Oddloop" is a popular song by Japanese rock band frederic, formed by twin brothers Kenji and Koji Mihara. Known for its upbeat, disco-funk inspired style and a music video with over 100 million views, the song's title combines "dance" (odoru) with "odd loop." It was released as an EP in 2014, marking their major debut, and was featured as the ending theme for the *Yamada-kun and the Seven Witches* OVA.
   > (item)
     (artist) Morcheeba
@@ -346,7 +361,7 @@
     (rating) 5
     (slug) morcheeba-easier-said-than-done
     (title) Easier Said Than Done
-    (image) /images/discovery/art/music/morcheeba-easier-said-than-done.webp
+    (image) /images/discovery/covers/music/morcheeba-easier-said-than-done.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/us/album/head-up-high/1444319074?uo=4
@@ -360,7 +375,7 @@
     (rating) 5
     (slug) in-the-aeroplane-over-the-sea
     (title) In the Aeroplane Over the Sea
-    (image) /images/discovery/art/music/in-the-aeroplane-over-the-sea.webp
+    (image) /images/discovery/covers/music/in-the-aeroplane-over-the-sea.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/us/album/in-the-aeroplane-over-the-sea/1839077554?uo=4
@@ -375,7 +390,7 @@
     (slug) special-ed-neva-go-back
     (title) Neva Go Back
     (album) Revelations
-    (image) /images/discovery/art/music/special-ed-neva-go-back.webp
+    (image) /images/discovery/covers/music/special-ed-neva-go-back.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/us/album/revelations/1239560635?uo=4
@@ -390,7 +405,7 @@
     (slug) de-la-soul-stakes-is-high
     (title) Stakes Is High
     (album) Stakes Is High
-    (image) /images/discovery/art/music/de-la-soul-stakes-is-high.webp
+    (image) /images/discovery/covers/music/de-la-soul-stakes-is-high.webp
     (imageSource)
       (provider) Apple Music album artwork
       (page) https://music.apple.com/us/album/stakes-is-high/1674203676?uo=4

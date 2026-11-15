@@ -12,7 +12,7 @@
       > alternate-history
       > story-rich
     (title) Wolfenstein: The New Order
-    (image) /images/discovery/art/game/wolfenstein-the-new-order.webp
+    (image) /images/discovery/covers/game/wolfenstein-the-new-order.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/201810/
@@ -35,7 +35,7 @@
       > alternate-history
       > horror
     (title) Wolfenstein: The Old Blood
-    (image) /images/discovery/art/game/wolfenstein-the-old-blood.webp
+    (image) /images/discovery/covers/game/wolfenstein-the-old-blood.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/350080/
@@ -58,7 +58,7 @@
       > alternate-history
       > story-rich
     (title) Wolfenstein II: The New Colossus
-    (image) /images/discovery/art/game/wolfenstein-ii-the-new-colossus.webp
+    (image) /images/discovery/covers/game/wolfenstein-ii-the-new-colossus.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/612880/
@@ -79,7 +79,7 @@
       > real-time-strategy
       > historical
     (title) Age of Empires II: Definitive Edition
-    (image) /images/discovery/art/game/age-of-empires-ii-definitive-edition.webp
+    (image) /images/discovery/covers/game/age-of-empires-ii-definitive-edition.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/813780/
@@ -100,7 +100,7 @@
       > real-time-strategy
       > historical
     (title) Age of Empires III: Definitive Edition
-    (image) /images/discovery/art/game/age-of-empires-iii-definitive-edition.webp
+    (image) /images/discovery/covers/game/age-of-empires-iii-definitive-edition.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/933110/
@@ -121,7 +121,7 @@
       > real-time-strategy
       > historical
     (title) Age of Empires IV
-    (image) /images/discovery/art/game/age-of-empires-iv.webp
+    (image) /images/discovery/covers/game/age-of-empires-iv.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/1466860/
@@ -142,7 +142,7 @@
       > real-time-strategy
       > mythology
     (title) Age of Mythology
-    (image) /images/discovery/art/game/age-of-mythology.webp
+    (image) /images/discovery/covers/game/age-of-mythology.webp
     (imageSource)
       (provider) Wikipedia original box artwork
       (page) https://en.wikipedia.org/wiki/Age_of_Mythology
@@ -164,7 +164,7 @@
       > third-person-shooter
       > movement
     (title) Gears of War: E-Day
-    (image) /images/discovery/art/game/gears-of-war-e-day.webp
+    (image) /images/discovery/covers/game/gears-of-war-e-day.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/3010850/Gears_of_War_E-Day/
@@ -186,7 +186,7 @@
       > open-world
       > fps
     (title) Far Cry Primal
-    (image) /images/discovery/art/game/far-cry-primal.webp
+    (image) /images/discovery/covers/game/far-cry-primal.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/371660/
@@ -208,14 +208,13 @@
       > story
       > single-player
     (title) Alan Wake 2
-    (image) /images/discovery/art/game/alan-wake-2.webp
+    (image) /images/discovery/covers/game/alan-wake-2.webp
     (imageSource)
-      (provider) Publisher artwork
-      (page) https://www.alanwake.com/
-      (url) https://www.alanwake.com/wp-content/uploads/2023/05/aw2-standard.png
-      (title) Alan Wake 2
-      (width) 1236
-      (height) 624
+      (provider) Wikipedia
+      (page) https://en.wikipedia.org/wiki/Alan_Wake_2
+      (url) https://upload.wikimedia.org/wikipedia/en/e/ed/Alan_Wake_2_box_art.jpg
+      (width) 273
+      (height) 365
     (description) Alan Wake 2 is Remedy's survival horror sequel, splitting its campaign between writer Alan Wake escaping the Dark Place and FBI agent Saga Anderson investigating ritual murders in Bright Falls. The mid-game pacing sags, but the bookends are confident, gorgeous horror — and the whole thing kinda made me miss Alan Wake 1. A 5/5.
 
   > (item)
@@ -230,7 +229,7 @@
       > daily
       > puzzle
     (title) Bandle
-    (image) /images/discovery/art/game/bandle.webp
+    (image) /images/discovery/covers/game/bandle.webp
     (imageSource)
       (provider) Publisher artwork
       (page) https://bandle.app/
@@ -248,7 +247,7 @@
     (rating) 5
     (slug) resident-evil-requiem
     (title) Resident Evil Requiem
-    (image) /images/discovery/art/game/resident-evil-requiem.webp
+    (image) /images/discovery/covers/game/resident-evil-requiem.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/3764200/
@@ -266,7 +265,7 @@
     (rating) 4
     (slug) 007-first-light
     (title) 007 First Light
-    (image) /images/discovery/art/game/007-first-light.webp
+    (image) /images/discovery/covers/game/007-first-light.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/3768760/
@@ -284,7 +283,7 @@
     (rating) 4
     (slug) lego-batman-legacy-of-the-dark-knight
     (title) LEGO Batman: Legacy of the Dark Knight
-    (image) /images/discovery/art/game/lego-batman-legacy-of-the-dark-knight.webp
+    (image) /images/discovery/covers/game/lego-batman-legacy-of-the-dark-knight.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/2215200/
@@ -302,7 +301,7 @@
     (rating) 5
     (slug) mafia-2
     (title) Mafia II
-    (image) /images/discovery/art/game/mafia-2.webp
+    (image) /images/discovery/covers/game/mafia-2.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/50130/
@@ -320,7 +319,7 @@
     (rating) 5
     (slug) swat-god
     (title) Swat God
-    (image) /images/discovery/art/game/swat-god.webp
+    (image) /images/discovery/covers/game/swat-god.webp
     (imageSource)
       (provider) Publisher artwork
       (page) https://stranger.itch.io/swat-god
@@ -340,7 +339,7 @@
     (rating) 4
     (slug) downwell
     (title) Downwell
-    (image) /images/discovery/art/game/downwell.webp
+    (image) /images/discovery/covers/game/downwell.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/360740/
@@ -358,7 +357,7 @@
     (rating) 4
     (slug) saints-row-the-third
     (title) Saints Row: The Third
-    (image) /images/discovery/art/game/saints-row-the-third.webp
+    (image) /images/discovery/covers/game/saints-row-the-third.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/55230/
@@ -376,7 +375,7 @@
     (rating) 5
     (slug) mirrors-edge-catalyst
     (title) Mirror's Edge Catalyst
-    (image) /images/discovery/art/game/mirrors-edge-catalyst.webp
+    (image) /images/discovery/covers/game/mirrors-edge-catalyst.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/1233570/
@@ -394,7 +393,7 @@
     (rating) 4
     (slug) ball-x-pit
     (title) Ball x Pit
-    (image) /images/discovery/art/game/ball-x-pit.webp
+    (image) /images/discovery/covers/game/ball-x-pit.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/2062430/
@@ -412,18 +411,13 @@
     (rating) 4
     (slug) age-of-wonders-4
     (title) Age of Wonders 4
-    (image) /images/logs/games/age-of-wonders-4.webp
+    (image) /images/discovery/covers/game/age-of-wonders-4.webp
     (imageSource)
-      (provider) Existing authored image
-      (url) /images/logs/games/age-of-wonders-4.webp
-      (alternative)
-        (image) /images/discovery/art/game/age-of-wonders-4.webp
-        (provider) Steam store artwork
-        (page) https://store.steampowered.com/app/1669000/
-        (url) https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1669000/library_600x900.jpg
-        (title) Age of Wonders 4
-        (width) 300
-        (height) 450
+      (provider) Steam
+      (page) https://store.steampowered.com/app/1669000/Age_of_Wonders_4/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1669000/library_600x900_2x.jpg
+      (width) 600
+      (height) 900
     (description) Age of Wonders 4 is a captivating 4X turn-based strategy game that immerses players in a vibrant high fantasy universe. As a ruler of a customizable fantasy realm, you embark on an epic journey to explore new magical realms, expand your empire, and engage in thrilling turn-based tactical combat.
 
   > (item)
@@ -438,7 +432,7 @@
       > single-player
       > fps
     (title) Vampire: The Masquerade - Bloodlines 2
-    (image) /images/discovery/art/game/bloodlines-2.webp
+    (image) /images/discovery/covers/game/bloodlines-2.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/532790/
@@ -456,14 +450,13 @@
     (rating) 5
     (slug) the-legend-of-zelda-breath-of-the-wild
     (title) The Legend of Zelda: Breath of the Wild
-    (image) /images/discovery/art/game/the-legend-of-zelda-breath-of-the-wild.webp
+    (image) /images/discovery/covers/game/the-legend-of-zelda-breath-of-the-wild.webp
     (imageSource)
-      (provider) Publisher artwork
-      (page) https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/
-      (url) https://assets.nintendo.com/image/upload/store/software/switch/70010000000025/7137262b5a64d921e193653f8aa0b722925abc5680380ca0e18a5cfd91697f58
-      (title) The Legend of Zelda: Breath of the Wild
-      (width) 1920
-      (height) 1080
+      (provider) Wikipedia
+      (page) https://en.wikipedia.org/wiki/The_Legend_of_Zelda:_Breath_of_the_Wild
+      (url) https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg
+      (width) 273
+      (height) 365
     (description) "The Legend of Zelda: Breath of the Wild" is a highly-rated Nintendo Switch game.
 
   > (item)
@@ -477,7 +470,7 @@
       > rts
       > multiplayer
     (title) OpenFront.io
-    (image) /images/discovery/art/game/openfront-io.webp
+    (image) /images/discovery/covers/game/openfront-io.webp
     (imageSource)
       (provider) Publisher artwork
       (page) https://github.com/openfrontio/OpenFrontIO
@@ -495,7 +488,7 @@
     (rating) 5
     (slug) prey-2017
     (title) Prey (2017)
-    (image) /images/discovery/art/game/prey-2017.webp
+    (image) /images/discovery/covers/game/prey-2017.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/480490/
@@ -513,7 +506,7 @@
     (rating) 5
     (slug) max-payne-trilogy
     (title) Max Payne Trilogy
-    (image) /images/discovery/art/game/max-payne-trilogy.webp
+    (image) /images/discovery/covers/game/max-payne-trilogy.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/12140/
@@ -531,7 +524,7 @@
     (rating) 5
     (slug) resident-evil-4-remake
     (title) Resident Evil 4: Remake
-    (image) /images/discovery/art/game/resident-evil-4-remake.webp
+    (image) /images/discovery/covers/game/resident-evil-4-remake.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/2050650/
@@ -549,7 +542,7 @@
     (rating) 4
     (slug) fallout-4
     (title) Fallout 4
-    (image) /images/discovery/art/game/fallout-4.webp
+    (image) /images/discovery/covers/game/fallout-4.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/377160/
@@ -567,7 +560,7 @@
     (rating) 5
     (slug) dying-light
     (title) Dying Light
-    (image) /images/discovery/art/game/dying-light.webp
+    (image) /images/discovery/covers/game/dying-light.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/239140/
@@ -585,7 +578,7 @@
     (rating) 4
     (slug) kingdoms-of-amalur-reckoning
     (title) Kingdoms of Amalur: Reckoning
-    (image) /images/discovery/art/game/kingdoms-of-amalur-reckoning.webp
+    (image) /images/discovery/covers/game/kingdoms-of-amalur-reckoning.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/102500/
@@ -603,7 +596,7 @@
     (rating) 4
     (slug) resident-evil-3-remake
     (title) Resident Evil 3: Remake
-    (image) /images/discovery/art/game/resident-evil-3-remake.webp
+    (image) /images/discovery/covers/game/resident-evil-3-remake.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/952060/
@@ -621,7 +614,7 @@
     (rating) 5
     (slug) nier-automata-and-replicant
     (title) Nier Automata & Nier Replicant
-    (image) /images/discovery/art/game/nier-automata-and-replicant.webp
+    (image) /images/discovery/covers/game/nier-automata-and-replicant.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/524220/
@@ -639,7 +632,7 @@
     (rating) 4
     (slug) the-outer-worlds
     (title) The Outer Worlds
-    (image) /images/discovery/art/game/the-outer-worlds.webp
+    (image) /images/discovery/covers/game/the-outer-worlds.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/578650/
@@ -657,7 +650,7 @@
     (rating) 5
     (slug) loop-hero
     (title) Loop Hero
-    (image) /images/discovery/art/game/loop-hero.webp
+    (image) /images/discovery/covers/game/loop-hero.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/1282730/
@@ -675,7 +668,7 @@
     (rating) 4
     (slug) deus-ex-mankind-divided
     (title) Deus Ex: Mankind Divided
-    (image) /images/discovery/art/game/deus-ex-mankind-divided.webp
+    (image) /images/discovery/covers/game/deus-ex-mankind-divided.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/337000/
@@ -693,7 +686,7 @@
     (rating) 5
     (slug) resident-evil-2-remake
     (title) Resident Evil 2: Remake
-    (image) /images/discovery/art/game/resident-evil-2-remake.webp
+    (image) /images/discovery/covers/game/resident-evil-2-remake.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/883710/
@@ -711,7 +704,7 @@
     (rating) 5
     (slug) xcom-enemy-unknown
     (title) XCOM: Enemy Unknown
-    (image) /images/discovery/art/game/xcom-enemy-unknown.webp
+    (image) /images/discovery/covers/game/xcom-enemy-unknown.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/200510/
@@ -729,7 +722,7 @@
     (rating) 5
     (slug) hotline-miami
     (title) Hotline Miami
-    (image) /images/discovery/art/game/hotline-miami.webp
+    (image) /images/discovery/covers/game/hotline-miami.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/219150/
@@ -747,7 +740,7 @@
     (rating) 5
     (slug) deus-ex-human-revolution
     (title) Deus Ex: Human Revolution
-    (image) /images/discovery/art/game/deus-ex-human-revolution.webp
+    (image) /images/discovery/covers/game/deus-ex-human-revolution.webp
     (imageSource)
       (provider) Steam store artwork
       (page) https://store.steampowered.com/app/238010/

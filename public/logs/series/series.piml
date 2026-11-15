@@ -9,7 +9,7 @@
     (slug) furia-tv-series
     (title) Furia (TV Series)
     (year) 2025
-    (image) /images/discovery/art/series/furia-tv-series.webp
+    (image) /images/discovery/covers/series/furia-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/85376/furia
@@ -25,7 +25,7 @@
     (slug) fallout-tv-series
     (title) Fallout (TV Series)
     (year) 2024
-    (image) /images/discovery/art/series/fallout-tv-series.webp
+    (image) /images/discovery/covers/series/fallout-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/49041/fallout
@@ -41,7 +41,7 @@
     (slug) andor-tv-series
     (title) Andor (TV Series)
     (year) 2022
-    (image) /images/discovery/art/series/andor-tv-series.webp
+    (image) /images/discovery/covers/series/andor-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/52341/andor
@@ -57,7 +57,7 @@
     (slug) ayak-isleri-tv-series
     (title) Ayak İşleri (TV Series)
     (year) 2021
-    (image) /images/discovery/art/series/ayak-isleri-tv-series.webp
+    (image) /images/discovery/covers/series/ayak-isleri-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/55623/ayak-isleri
@@ -73,7 +73,7 @@
     (slug) severance-tv-series
     (title) Severance (TV Series)
     (year) 2022
-    (image) /images/discovery/art/series/severance-tv-series.webp
+    (image) /images/discovery/covers/series/severance-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/44933/severance
@@ -89,7 +89,7 @@
     (slug) peacemaker-tv-series
     (title) Peacemaker (TV Series)
     (year) 2022
-    (image) /images/discovery/art/series/peacemaker-tv-series.webp
+    (image) /images/discovery/covers/series/peacemaker-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/50603/peacemaker
@@ -105,7 +105,7 @@
     (slug) barry-tv-series
     (title) Barry (TV Series)
     (year) 2018
-    (image) /images/discovery/art/series/barry-tv-series.webp
+    (image) /images/discovery/covers/series/barry-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/11538/barry
@@ -121,7 +121,7 @@
     (slug) happy-tv-series
     (title) Happy! (TV Series)
     (year) 2017
-    (image) /images/discovery/art/series/happy-tv-series.webp
+    (image) /images/discovery/covers/series/happy-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/21216/happy
@@ -137,7 +137,7 @@
     (slug) infinity-train-tv-series
     (title) Infinity Train (Book One)
     (year) 2019
-    (image) /images/discovery/art/series/infinity-train-tv-series.webp
+    (image) /images/discovery/covers/series/infinity-train-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/39945/infinity-train
@@ -153,7 +153,7 @@
     (slug) the-penguin-tv-series
     (title) The Penguin (Miniseries)
     (year) 2024
-    (image) /images/discovery/art/series/the-penguin-tv-series.webp
+    (image) /images/discovery/covers/series/the-penguin-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/60920/the-penguin
@@ -169,7 +169,7 @@
     (slug) the-night-of-tv-series
     (title) The Night Of (Miniseries)
     (year) 2016
-    (image) /images/discovery/art/series/the-night-of-tv-series.webp
+    (image) /images/discovery/covers/series/the-night-of-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/14157/the-night-of
@@ -185,7 +185,7 @@
     (slug) lanterns-tv-series
     (title) Lanterns (TV Series)
     (year) 2026
-    (image) /images/discovery/art/series/lanterns-tv-series.webp
+    (image) /images/discovery/covers/series/lanterns-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/44776/lanterns
@@ -201,7 +201,7 @@
     (slug) true-detective-tv-series
     (title) True Detective (Season 1)
     (year) 2014
-    (image) /images/discovery/art/series/true-detective-tv-series.webp
+    (image) /images/discovery/covers/series/true-detective-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/5/true-detective
@@ -216,7 +216,7 @@
     (rating) 5
     (slug) sifir-bir-tv-series
     (title) Sıfır Bir (TV Series)
-    (image) /images/discovery/art/series/sifir-bir-tv-series.webp
+    (image) /images/discovery/covers/series/sifir-bir-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/35062/sifir-bir
@@ -231,7 +231,7 @@
     (rating) 2
     (slug) rooster-tv-series
     (title) Rooster (TV Series)
-    (image) /images/discovery/art/series/rooster-tv-series.webp
+    (image) /images/discovery/covers/series/rooster-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/88862/rooster
@@ -246,7 +246,7 @@
     (rating) 5
     (slug) luther-tv-series
     (title) Luther (TV Series)
-    (image) /images/discovery/art/series/luther-tv-series.webp
+    (image) /images/discovery/covers/series/luther-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/670/luther
@@ -261,7 +261,7 @@
     (rating) 5
     (slug) the-grand-tour
     (title) The Grand Tour
-    (image) /images/discovery/art/series/the-grand-tour.webp
+    (image) /images/discovery/covers/series/the-grand-tour.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/17078/the-grand-tour
@@ -276,7 +276,7 @@
     (rating) 4
     (slug) spider-noir-tv-series
     (title) Spider-Noir (TV Series)
-    (image) /images/discovery/art/series/spider-noir-tv-series.webp
+    (image) /images/discovery/covers/series/spider-noir-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/77003/spider-noir
@@ -289,7 +289,7 @@
     (rating) 5
     (slug) only-murders-in-the-building
     (title) Only Murders in the Building
-    (image) /images/discovery/art/series/only-murders-in-the-building.webp
+    (image) /images/discovery/covers/series/only-murders-in-the-building.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/48830/only-murders-in-the-building
@@ -304,7 +304,7 @@
     (slug) ted-2024-series
     (title) Ted
     (by) Seth MacFarlane
-    (image) /images/discovery/art/series/ted-2024-series.webp
+    (image) /images/discovery/covers/series/ted-2024-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/55832/ted
@@ -317,7 +317,7 @@
     (rating) 5
     (slug) 11-22-63
     (title) 11.22.63
-    (image) /images/discovery/art/series/11-22-63.webp
+    (image) /images/discovery/covers/series/11-22-63.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/5529/112263
@@ -332,7 +332,7 @@
     (rating) 3
     (slug) splinter-cell-deathwatch
     (title) Splinter Cell: Deathwatch
-    (image) /images/discovery/art/series/splinter-cell-deathwatch.webp
+    (image) /images/discovery/covers/series/splinter-cell-deathwatch.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/49424/tom-clancys-splinter-cell-deathwatch
@@ -347,7 +347,7 @@
     (rating) 4
     (slug) harley-quinn-tv-series
     (title) Harley Quinn (TV Series)
-    (image) /images/discovery/art/series/harley-quinn-tv-series.webp
+    (image) /images/discovery/covers/series/harley-quinn-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/33452/harley-quinn
@@ -361,7 +361,7 @@
     (rating) 5
     (slug) firefly-tv-series
     (title) Firefly (TV Series)
-    (image) /images/discovery/art/series/firefly-tv-series.webp
+    (image) /images/discovery/covers/series/firefly-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/180/firefly
@@ -375,7 +375,7 @@
     (rating) 4
     (slug) common-side-effects
     (title) Common Side Effects (TV Series)
-    (image) /images/discovery/art/series/common-side-effects.webp
+    (image) /images/discovery/covers/series/common-side-effects.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/69327/common-side-effects
@@ -389,7 +389,7 @@
     (rating) 4
     (slug) pluribus-tv-series
     (title) Pluribus (TV Series)
-    (image) /images/discovery/art/series/pluribus-tv-series.webp
+    (image) /images/discovery/covers/series/pluribus-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/86175/pluribus
@@ -403,7 +403,7 @@
     (rating) 4
     (slug) 1670-tv-series
     (title) 1670 (TV Series)
-    (image) /images/discovery/art/series/1670-tv-series.webp
+    (image) /images/discovery/covers/series/1670-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/72655/1670
@@ -417,7 +417,7 @@
     (rating) 5
     (slug) halt-and-catch-fire-tv-series
     (title) Halt and Catch Fire (TV Series)
-    (image) /images/discovery/art/series/halt-and-catch-fire-tv-series.webp
+    (image) /images/discovery/covers/series/halt-and-catch-fire-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/191/halt-and-catch-fire
@@ -431,7 +431,7 @@
     (rating) 5
     (slug) person-of-interest-tv-series
     (title) Person of Interest (TV Series)
-    (image) /images/discovery/art/series/person-of-interest-tv-series.webp
+    (image) /images/discovery/covers/series/person-of-interest-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/2/person-of-interest
@@ -445,7 +445,7 @@
     (rating) 5
     (slug) community-tv-series
     (title) Community (TV Series)
-    (image) /images/discovery/art/series/community-tv-series.webp
+    (image) /images/discovery/covers/series/community-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/318/community
@@ -459,7 +459,7 @@
     (rating) 5
     (slug) black-bird-tv-series
     (title) Black Bird (TV Series)
-    (image) /images/discovery/art/series/black-bird-tv-series.webp
+    (image) /images/discovery/covers/series/black-bird-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/53147/black-bird
@@ -473,7 +473,7 @@
     (rating) 4
     (slug) marvels-the-punisher-tv-series
     (title) Marvel's The Punisher (TV Series)
-    (image) /images/discovery/art/series/marvels-the-punisher-tv-series.webp
+    (image) /images/discovery/covers/series/marvels-the-punisher-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/16544/marvels-the-punisher
@@ -487,7 +487,7 @@
     (rating) 5
     (slug) justice-league-unlimited-tv-series
     (title) Justice League Unlimited (TV Series)
-    (image) /images/discovery/art/series/justice-league-unlimited-tv-series.webp
+    (image) /images/discovery/covers/series/justice-league-unlimited-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/505/justice-league-unlimited
@@ -501,7 +501,7 @@
     (rating) 5
     (slug) the-orville-tv-series
     (title) The Orville (TV Series)
-    (image) /images/discovery/art/series/the-orville-tv-series.webp
+    (image) /images/discovery/covers/series/the-orville-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/20263/the-orville
@@ -515,7 +515,7 @@
     (rating) 5
     (slug) invincible-tv-series
     (title) Invincible (TV Series)
-    (image) /images/discovery/art/series/invincible-tv-series.webp
+    (image) /images/discovery/covers/series/invincible-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/37196/invincible
@@ -529,7 +529,7 @@
     (rating) 4
     (slug) tokyo-vice-tv-series
     (title) Tokyo Vice (TV Series)
-    (image) /images/discovery/art/series/tokyo-vice-tv-series.webp
+    (image) /images/discovery/covers/series/tokyo-vice-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/42847/tokyo-vice
@@ -543,7 +543,7 @@
     (rating) 5
     (slug) shogun-tv-series
     (title) Shogun (TV Series)
-    (image) /images/discovery/art/series/shogun-tv-series.webp
+    (image) /images/discovery/covers/series/shogun-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/37336/shogun
@@ -558,7 +558,7 @@
     (slug) the-bear
     (title) The Bear
     (updated) 2025-10-25
-    (image) /images/discovery/art/series/the-bear.webp
+    (image) /images/discovery/covers/series/the-bear.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/54198/the-bear
@@ -572,7 +572,7 @@
     (rating) 4
     (slug) midnight-mass-tv-series
     (title) Midnight Mass (TV Series)
-    (image) /images/discovery/art/series/midnight-mass-tv-series.webp
+    (image) /images/discovery/covers/series/midnight-mass-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/42840/midnight-mass
@@ -586,7 +586,7 @@
     (rating) 5
     (slug) smiling-friends-tv-series
     (title) Smiling Friends (TV Series)
-    (image) /images/discovery/art/series/smiling-friends-tv-series.webp
+    (image) /images/discovery/covers/series/smiling-friends-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/47182/smiling-friends
@@ -600,7 +600,7 @@
     (rating) 5
     (slug) the-expanse-tv-series
     (title) The Expanse (TV Series)
-    (image) /images/discovery/art/series/the-expanse-tv-series.webp
+    (image) /images/discovery/covers/series/the-expanse-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/1825/the-expanse
@@ -614,7 +614,7 @@
     (rating) 3
     (slug) last-man-on-earth-tv-series
     (title) Last Man on Earth (TV Series)
-    (image) /images/discovery/art/series/last-man-on-earth-tv-series.webp
+    (image) /images/discovery/covers/series/last-man-on-earth-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/620/the-last-man-on-earth
@@ -628,7 +628,7 @@
     (rating) 4
     (slug) man-seeking-woman-tv-series
     (title) Man Seeking Woman (TV Series)
-    (image) /images/discovery/art/series/man-seeking-woman-tv-series.webp
+    (image) /images/discovery/covers/series/man-seeking-woman-tv-series.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/1365/man-seeking-woman
@@ -643,7 +643,7 @@
     (slug) gravity-falls
     (title) Gravity Falls
     (creator) Alex Hirsch
-    (image) /images/discovery/art/series/gravity-falls.webp
+    (image) /images/discovery/covers/series/gravity-falls.webp
     (imageSource)
       (provider) TVmaze show poster
       (page) https://www.tvmaze.com/shows/396/gravity-falls
