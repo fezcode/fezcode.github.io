@@ -337,7 +337,7 @@ const Layout = ({
 
   return (
     <>
-      {!isSnfAny && !isImmersiveShowcase && !isWordupPage && <Banner />}
+      {!isSnfAny && !isImmersiveShowcase && !isWordupPage && !isGraphPage && <Banner />}
       {!isSnfAny && <FalloutOverlay />}
       {isGarden && !hideLayout && <DigitalFlowers />}
       {isAutumn && !hideLayout && <DigitalLeaves />}
@@ -351,7 +351,7 @@ const Layout = ({
       />
       {!hideLayout && <SidePanel />}
       {mainContent}
-      {!isSnfAny && !isImmersiveShowcase && !isWordupPage && <SyntaxSprite />}
+      {!isSnfAny && !isImmersiveShowcase && !isWordupPage && !isGraphPage && <SyntaxSprite />}
     </>
   );
 };
