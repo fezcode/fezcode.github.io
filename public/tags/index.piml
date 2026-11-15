@@ -2013,6 +2013,11 @@
     (count) 1
     (posts) 1
   > (item)
+    (slug) folk
+    (label) Folk
+    (count) 1
+    (logs) 1
+  > (item)
     (slug) font
     (label) Font
     (count) 1
@@ -2242,6 +2247,11 @@
     (label) Intro
     (count) 1
     (posts) 1
+  > (item)
+    (slug) irish
+    (label) Irish
+    (count) 1
+    (logs) 1
   > (item)
     (slug) islamic-golden-age
     (label) Islamic golden age
@@ -2983,6 +2993,11 @@
     (count) 1
     (posts) 1
   > (item)
+    (slug) singer-songwriter
+    (label) Singer songwriter
+    (count) 1
+    (logs) 1
+  > (item)
     (slug) sitcoms
     (label) Sitcoms
     (count) 1
@@ -3232,6 +3247,11 @@
     (label) Time
     (count) 1
     (projects) 1
+  > (item)
+    (slug) tir-na-nog
+    (label) Tir na nog
+    (count) 1
+    (logs) 1
   > (item)
     (slug) tokens
     (label) Tokens
@@ -3656,6 +3676,19 @@
       > survival
       > zombies
       > resident-evil
+  > (item)
+    (id) log/music/tir-na-nog-1971
+    (type) log
+    (title) Tír Na NÓg (2012 Remaster)
+    (path) /logs/music/tir-na-nog-1971
+    (date) 2026-11-15
+    (category) music
+    (description) The 1971 debut album of Irish folk duo Tír na nÓg, Leo O'Kelly and Sonny Condell, in its 2012 remaster: 15 songs, 51 minutes, from Time Is Like a Promise to Dante, with two bonus…
+    (tags)
+      > folk
+      > singer-songwriter
+      > irish
+      > tir-na-nog
   > (item)
     (id) log/game/age-of-empires-ii-definitive-edition
     (type) log
