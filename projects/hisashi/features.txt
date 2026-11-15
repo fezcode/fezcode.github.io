@@ -1,0 +1,35 @@
+:::feature
+icon: Monitor
+title: Per-Monitor Bars
+description: Every display gets its own bar with its own widget stack, theme and behavior. Three zones — left, center, right — each freely orderable, in four width modes.
+:::
+
+:::feature
+icon: EyeSlash
+title: Three Display Modes
+description: Pinned, auto-hide, or fullscreen-only. Auto-hide reveals the bar through a 10-pixel peek zone at the top edge and gets out of the way the moment you leave.
+:::
+
+:::feature
+icon: PuzzlePiece
+title: 24 Bundled Plugins
+description: Clock, system stats, battery, weather, media controls, volume mixer, IP info, pomodoro, clipboard history, app dock, Docker, an AI agent bridge, a dev toolbox and more.
+:::
+
+:::feature
+icon: Palette
+title: 20 Contrast-Checked Themes
+description: Every foreground token is checked against the painted bar background and nudged along its own hue until it clears WCAG 4.5:1 — an accent ramp can never produce unreadable text.
+:::
+
+:::feature
+icon: Bell
+title: Host-Rendered Toasts
+description: Plugins raise themed, click-to-open notifications that stack under the bar, play the system sound, and never steal focus from what you were doing.
+:::
+
+:::feature
+icon: Stack
+title: OS Window Layer
+description: Any app, in any language, can publish its menus to Hisashi over a named pipe. The Menubar widget renders them macOS-style behind a Windows-logo menu — a dozen lines with the single-header C client.
+:::

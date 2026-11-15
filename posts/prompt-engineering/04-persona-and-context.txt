@@ -1,0 +1,70 @@
+# Persona & Context: Role-Playing and The Art of Context Management
+
+Welcome to Module 4. We've covered structure and reasoning. Now, we dive into **Persona & Context**. This module is about *who* the model is pretending to be and *what* information it has access to.
+
+## 1. The Power of Persona
+
+Assigning a persona to an LLM changes its default behavior significantly. It shifts the probability distribution of tokens towards a specific domain, tone, or expertise level.
+
+### Why Use Personas?
+-   **Tone:** "Explain like I'm 5" vs "Explain like a PhD Physics Professor".
+-   **Expertise:** "Act as a Senior React Developer" vs "Act as a Junior Python Developer".
+-   **Style:** "Write in the style of Shakespeare" vs "Write in the style of a technical manual".
+
+**Prompt:**
+> You are a world-class copywriter for a luxury brand. Write a product description for a simple white t-shirt.
+**Output:**
+> "Elevate your everyday with the purity of organic cotton. Meticulously crafted for an effortless silhouette..."
+
+**Prompt:**
+> You are a chaotic goblin. Describe a white t-shirt.
+**Output:**
+> "Shiny white cloth! Soft! Good for hiding crumbs! Want!"
+
+### "Limit Scope" Instruction
+Often, models hallucinate or bring in outside knowledge when they shouldn't. The best way to combat this is to limit their scope within the persona.
+
+**Prompt:**
+> You are a customer support agent for Acme Corp. Answer ONLY based on the provided FAQ. If the answer is not in the FAQ, say "I don't know". Do not use outside knowledge.
+
+## 2. Context Management: RAG and The Needle within the Haystack
+
+When working with large documents or retrieved information (RAG - Retrieval Augmented Generation), context management becomes critical.
+
+### The "Lost in the Middle" Phenomenon
+LLMs are great at remembering the beginning and the end of a long prompt but tend to "forget" details in the middle.
+
+**Strategy:**
+-   **Put Key Instructions at the Start:** Tell the model *what* to do with the context before giving it the context.
+-   **Put the Question/Task at the End:** Remind the model of the specific question *after* the context block.
+
+**Bad Prompt Structure:**
+> [Huge context dump...]
+> Summarize this.
+
+**Good Prompt Structure:**
+> You are a summarization assistant. Your task is to extract key dates from the text below.
+>
+> Text:
+> """
+> [Huge context dump...]
+> """
+>
+> Task: Extract all dates from the text above.
+
+### Context Stuffing vs. RAG
+-   **Stuffing:** Pasting the entire document into the prompt.
+-   **RAG:** Using a database to find only the relevant chunks of text and pasting *those* into the prompt.
+
+For massive contexts (books, codebases), RAG is essential. But for shorter contexts (articles, emails), stuffing is often better because the model sees the full picture.
+
+## Summary
+
+| Technique | Description | Best Use Case |
+| :--- | :--- | :--- |
+| **Persona** | "Act as..." | Changing Tone/Style. |
+| **Limit Scope** | "Answer only based on..." | Preventing Hallucinations. |
+| **Context Placement** | Instructions first, Task last. | Long Documents. |
+| **RAG** | Searching external data. | Knowledge Bases. |
+
+In the next module, we will explore **Evaluation & Optimization**, learning how to measure if our prompts are actually working.

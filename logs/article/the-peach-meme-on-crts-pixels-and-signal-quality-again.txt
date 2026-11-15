@@ -1,0 +1,28 @@
+# The Peach meme: On CRTs, pixels and signal quality (again)
+
+- **Category:** Article
+- **Source:** datagubbe
+- **Date:** 2025-10-18
+- **Rating:** x/5
+- **Link:** [datagubbe](https://datagubbe.se/crt2)
+
+## Summary
+
+The article "THE PEACH MEME: ON CRTS, PIXELS AND SIGNAL QUALITY (AGAIN)" by Carl Svensson discusses the effects of CRT screens on pixel art, challenging common misconceptions.
+
+The author's main points are:
+*   Contemporary pixel art often lacks classical techniques, making it appear blocky.
+*   CRTs (especially PAL or NTSC) blend and smooth pixel art, enhancing dithering and anti-aliasing.
+*   Claims that CRTs completely erase visible pixels are false.
+*   **Signal quality is crucial.**
+
+Svensson criticizes the popular "Peach meme" (comparing a pixelated sprite to a blurry CRT photo) for being a poor illustration due to out-of-focus photography, unrealistic viewing distance, and lack of signal information (often S-Video or composite, not RGB).
+
+Through various comparisons using an Amiga 1200 on different displays (LCD, Commodore 1084S CRT, Philips flatscreen TV) and connections (VGA, composite, RGB), the author demonstrates:
+*   **Composite signals** introduce significant blurring, color bleeding, poor fidelity, and noise, making details like Peach's shoe disappear.
+*   **RGB connections** on CRTs allow individual pixels to be discerned and maintain higher color fidelity.
+*   The "Sonic Waterfalls" effect, often attributed to CRT magic, is primarily a result of **poor composite signal quality**, not inherent CRT properties.
+
+The article also highlights the historical use of pixel art techniques like dithering and anti-aliasing on platforms like the Game Boy, demonstrating their effectiveness even on non-CRT screens. Artists of the era often targeted specific display hardware, adapting their techniques to its limitations and characteristics.
+
+In conclusion, while CRTs do affect the viewing experience, they don't magically smooth away all pixels. Signal quality (e.g., composite vs. RGB) plays a much larger role in perceived image quality than the display type itself. Pixel art techniques remain vital for graphics quality across all screen types. The author emphasizes that the true CRT experience is hard to convey through photos and must be experienced in person.

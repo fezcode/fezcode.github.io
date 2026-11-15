@@ -1,0 +1,42 @@
+This is a simple and flexible Go library for creating and managing single-elimination tournament brackets. It also includes a fully interactive command-line application to run a tournament from start to finish.
+
+## Key Components:
+
+*   **Go Library:** Provides data models and functions for programmatic tournament logic, correctly calculating rounds, match-ups, and byes for any number of participants.
+*   **Interactive CLI:** A runnable application that uses the library to offer a step-by-step command-line interface. Users can input participant names, generate a bracket, and determine match winners until a champion is crowned.
+
+## Features:
+
+*   **Single-Elimination Brackets:** Generates standard single-elimination tournament structures.
+*   **Automatic Bye Handling:** Manages byes for participant numbers that are not powers of two.
+*   **Interactive CLI:** Real-time tournament management through a terminal application.
+*   **ASCII Bracket Display:** Visualizes the current bracket state in the console.
+*   **Simple and Extensible:** Designed with clear data models for easy extension.
+
+## Usage:
+
+**As a Library:** Install with `go get github.com/fezcode/go-tournament-brackets`.
+
+- Here is an example usage:
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/fezcode/go-tournament-brackets"
+)
+
+func main() {
+	participants := []string{"Team Alpha", "Team Bravo", "Team Charlie", "Team Delta", "Team Echo"}
+	// Create a new tournament
+	tourney, err := tournament.NewTournament("My Cup", tournament.SingleElimination, participants, nil)
+	if err != nil {
+		panic(err)
+	}
+	// Print the initial bracket state
+	tourney.PrintAscii()
+	// From here, you can programmatically set winners and advance them
+	// For example, to set Team Alpha (ID: 1) as the winner of their first match:
+	// tourney.SetWinner(roundIndex, matchIndex, 1)
+}
+```

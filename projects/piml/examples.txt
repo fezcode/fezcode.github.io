@@ -1,0 +1,51 @@
+LABEL: Examples
+SUBTEXT: Comparative Exhibition
+
+Compare the elegance of PIML against traditional formats. Notice how the vertical flow of PIML reduces cognitive load compared to the nested brackets of JSON.
+
+### PIML Schema
+```piml
+# Spec v1.2.0
+(project)
+  (name) piml
+  (version) 1.2.0
+  (description) Parenthesis Intended Markup Language
+  (author)
+    (name) fezcode
+    (github) https://github.com/fezcode   # a glued # stays literal
+  (tags)
+    > markup
+    > data-serialization
+    > minimalist
+  (isActive) true
+  (build) "0080"                          # quoted, so it stays a string
+  (spec)
+    (version) 1.2.0
+    (status) stable
+```
+
+### JSON Legacy
+```json
+{
+  "project": {
+    "name": "piml",
+    "version": "1.2.0",
+    "description": "Parenthesis Intended Markup Language",
+    "author": {
+      "name": "fezcode",
+      "github": "https://github.com/fezcode"
+    },
+    "tags": [
+      "markup",
+      "data-serialization",
+      "minimalist"
+    ],
+    "isActive": true,
+    "build": "0080",
+    "spec": {
+      "version": "1.2.0",
+      "status": "stable"
+    }
+  }
+}
+```

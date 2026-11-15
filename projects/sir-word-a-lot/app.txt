@@ -1,0 +1,91 @@
+{
+  "name": "Sir Word-a-lot",
+  "version": "0.1.6",
+  "tagline": "Meet a word. Make it yours.",
+  "subtitle": "A vocabulary and thesaurus trainer for words worth remembering. Keep the sentence, follow the connections, and return until it stays.",
+  "repo": "https://github.com/fezcode/SirWordALot",
+  "download": "https://github.com/fezcode/SirWordALot/releases/latest",
+  "platforms": ["Windows installer", "macOS / Linux source builds"],
+  "stack": ["C#", ".NET 10", "Avalonia 11.3", "SQLite"],
+  "lexicon": [
+    {
+      "word": "lucid",
+      "part": "adjective",
+      "definition": "Expressed clearly; easy to understand.",
+      "sentence": "A lucid explanation can turn a difficult idea into an invitation.",
+      "relations": ["clear", "intelligible", "coherent", "articulate"]
+    },
+    {
+      "word": "clear",
+      "part": "adjective",
+      "definition": "Easy to perceive, follow, or understand.",
+      "sentence": "The distinction became clear when she found the right example.",
+      "relations": ["lucid", "intelligible", "coherent", "expressive"]
+    },
+    {
+      "word": "intelligible",
+      "part": "adjective",
+      "definition": "Able to be understood.",
+      "sentence": "The unfamiliar notation became intelligible with practice.",
+      "relations": ["clear", "lucid", "coherent", "articulate"]
+    },
+    {
+      "word": "coherent",
+      "part": "adjective",
+      "definition": "Logical, consistent, and connected as a whole.",
+      "sentence": "Separate observations gradually formed a coherent account.",
+      "relations": ["lucid", "clear", "intelligible", "articulate"]
+    },
+    {
+      "word": "articulate",
+      "part": "adjective",
+      "definition": "Able to express ideas fluently and clearly.",
+      "sentence": "An articulate question can be the beginning of a discovery.",
+      "relations": ["eloquent", "fluent", "expressive", "lucid"]
+    },
+    {
+      "word": "eloquent",
+      "part": "adjective",
+      "definition": "Fluent, persuasive, or moving in expression.",
+      "sentence": "Her brief silence was more eloquent than a long reply.",
+      "relations": ["articulate", "expressive", "fluent", "lucid"]
+    },
+    {
+      "word": "expressive",
+      "part": "adjective",
+      "definition": "Effectively conveying a feeling or thought.",
+      "sentence": "A single expressive detail gave the whole scene its character.",
+      "relations": ["eloquent", "articulate", "fluent", "clear"]
+    },
+    {
+      "word": "fluent",
+      "part": "adjective",
+      "definition": "Expressed smoothly, easily, and readily.",
+      "sentence": "The words became fluent only after many imperfect attempts.",
+      "relations": ["articulate", "eloquent", "expressive", "coherent"]
+    }
+  ],
+  "recall": [
+    {
+      "word": "ineffable",
+      "pronunciation": "/ɪnˈɛfəbəl/",
+      "part": "adjective",
+      "definition": "Too great or intense to be expressed in words.",
+      "sentence": "For a moment, the view filled her with an ineffable sense of wonder."
+    },
+    {
+      "word": "liminal",
+      "pronunciation": "/ˈlɪmɪnəl/",
+      "part": "adjective",
+      "definition": "At a threshold; occupying a transitional or intermediate state.",
+      "sentence": "The station at dawn felt like a liminal place between one life and the next."
+    },
+    {
+      "word": "serendipity",
+      "pronunciation": "/ˌsɛrənˈdɪpɪti/",
+      "part": "noun",
+      "definition": "The occurrence of a fortunate discovery by chance.",
+      "sentence": "Finding the book she needed on an unfamiliar shelf was pure serendipity."
+    }
+  ]
+}

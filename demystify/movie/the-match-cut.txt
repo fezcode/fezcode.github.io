@@ -1,0 +1,42 @@
+id: the-match-cut
+rank: 07
+name: THE MATCH CUT
+family: Cut
+years: 1962 → present
+sub: Two unrelated shots joined on a shared shape, so the cut itself makes the argument
+
+ascii:
+┌────────────────────────────────────────┐
+│   ( ◯ )  ──── cut ────▶  ( ◯ )         │
+│   shape held, meaning swapped          │
+│   bone to satellite, eye to drain      │
+└────────────────────────────────────────┘
+
+what:
+ A cut between two shots that share a shape, a movement or a composition, so the eye reads continuity where the story has none. Lean on it and the transition stops being plumbing and starts being a sentence: these two things rhyme, and the rhyme is the point. The graphic match is the visual version; the sound match does the same trick with a noise carried across the join.
+
+artists:
+ Kubrick made the canonical one and everyone since has been answering it. Edgar Wright uses match cuts as comic compression, collapsing a whole evening into four frames that rhyme. Park Chan-wook matches on objects to bind scenes that are decades apart in *The Handmaiden*. Denis Villeneuve matches on faces in *Prisoners* so that two fathers become interchangeable.
+
+trivia:
+ The match cut is one of the few techniques audiences consciously notice and still enjoy. Most editing works by being invisible, but a good graphic match invites you to admire it and the film survives the attention, which is why it clusters at act transitions where a moment of showmanship costs nothing.
+
+sonic:
+ It produces a small click of recognition, and recognition feels like understanding even when nothing has been explained. Because your eye tracked the shape across the cut, your brain accepts the leap in time or place without protest. It is the cheapest way to move a story a year forward without a caption.
+
+gear:
+ Storyboards and previsualisation, because the match has to be planned into both shots: framing, lens and movement matched on days that may be weeks apart. This is one of the few editing devices that cannot be discovered in the cutting room unless the coverage happens to allow it.
+
+prod:
+ Nearly free, but brittle. A match that is almost right reads as a continuity error rather than a flourish, and audiences forgive a rough cut long before they forgive a near miss. It also dates fast, because a device this visible carries the fingerprints of whoever used it last.
+
+examples:
+ - The Handmaiden | objects matched across two tellings
+ - Prisoners | one father cut into another
+ - Hot Fuzz | an evening compressed into rhyming frames
+ - Eternal Sunshine of the Spotless Mind | rooms bleeding into rooms
+ - Everything Everywhere All at Once | the same gesture across universes
+ - Wreck-It Ralph | worlds joined on a matching silhouette
+ - Inside Out | memory spheres matched to the world outside
+ - Decision to Leave | a watcher matched into the watched
+ - Soul | the fall between worlds, matched

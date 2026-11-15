@@ -1,0 +1,4 @@
+# Close the window.
+# Keep the shell.
+
+clockt is a terminal emulator and multiplexer for Windows. Sessions live in a background daemon, so a closed window never kills your shell. Workspaces, tabs and splits, developer panels and a plugin-driven status bar sit on top — built on .NET 9, Avalonia and ConPTY, in the architecture and visual language of Hisashi.

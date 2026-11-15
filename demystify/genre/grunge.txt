@@ -1,0 +1,31 @@
+id: grunge
+rank: 14
+name: GRUNGE
+family: Rock & Metal
+years: 1988 → 1996
+sub: Seattle's loud-quiet-loud answer to hair metal — played through a Big Muff, sung like an apology
+spec: 72,84,88,80,70,72,78,82,84,80,74,72,74,76,72,62,54,46,38,32
+synthType: square
+freqs: 68.94, 86.41, 335.14
+
+what:
+ Grunge was a local Seattle scene — Sub Pop, the Melvins, cheap fuzz pedals and Black Sabbath records — until *Nevermind* displaced Michael Jackson at the top of the Billboard chart in January 1992 and the major labels emptied the city. The window was short: by 1994 Kurt Cobain was dead, by 1996 the term was a marketing category, and the bands that survived spent the rest of the decade refusing to be it.
+
+artists:
+ Nirvana, *Pearl Jam*, Soundgarden and *Alice In Chains* as the four that broke out; Mudhoney, Screaming Trees, Melvins and the wider Sub Pop roster underneath them; Hole and L7 in the adjacent scene. Producers Jack Endino and Butch Vig shaped the sound on either side of the commercial break.
+
+trivia:
+ Pearl Jam spent 1994 to 1998 refusing to sell tickets through *Ticketmaster*, testifying before a US congressional subcommittee about its fees and booking their own tours into venues without a contract — it cost them enormous money and changed nothing at the time. "Alive" was written as the first part of a three-song story Eddie Vedder called _Mamasan_; audiences read the chorus as triumphant, which Vedder has said inverts its meaning entirely.
+
+sonic:
+ The loud-quiet-loud dynamic taken from the Pixies: a clean, often single-note verse, then everything at once. Guitars are tuned down a half or whole step with woolly, mid-heavy fuzz rather than tight metal gain. Alice In Chains are the outlier — their signature is Layne Staley and Jerry Cantrell singing in close, sour harmony throughout, which no other band in the scene attempted.
+
+gear:
+ Fender Mustangs, Jaguars and Gibson SGs into Mesa and Marshall combos; the *Electro-Harmonix Big Muff* and Boss DS-1 for the fuzz; Ludwig and Tama kits recorded loud in real rooms. Deliberately cheap and second-hand instruments were part of the scene's self-image, at least until the advances arrived.
+
+prod:
+ Jack Endino's Sub Pop records were cut fast and nearly live for very little money, which is the sound the bands actually wanted. Butch Vig then applied pop craft to the same material — double-tracked vocals, layered guitars, real editing — and that tension between grubbiness and polish is what the genre argued about for its entire commercial life. Masters from the era are still reasonably dynamic; the loudness war arrived just after it ended.
+
+tracks:
+ - Nutshell | Alice In Chains
+ - Alive | Pearl Jam

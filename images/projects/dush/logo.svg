@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e94560"/>
+      <stop offset="100%" style="stop-color:#ff6b6b"/>
+    </linearGradient>
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#e0e0e0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect x="16" y="16" width="480" height="480" rx="80" ry="80" fill="url(#bg)"/>
+
+  <!-- Terminal window frame -->
+  <rect x="56" y="72" width="400" height="300" rx="16" ry="16" fill="#0f0f23" stroke="#2a2a4a" stroke-width="2"/>
+
+  <!-- Title bar -->
+  <rect x="56" y="72" width="400" height="36" rx="16" ry="16" fill="#1e1e3a"/>
+  <rect x="56" y="92" width="400" height="16" fill="#1e1e3a"/>
+
+  <!-- Traffic lights -->
+  <circle cx="82" cy="90" r="7" fill="#ff5f57"/>
+  <circle cx="104" cy="90" r="7" fill="#ffbd2e"/>
+  <circle cx="126" cy="90" r="7" fill="#28c840"/>
+
+  <!-- Terminal content: @ sigil prominently -->
+  <text x="80" y="152" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#6a6a8a">$</text>
+  <text x="100" y="152" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#e94560" font-weight="bold">@</text>
+  <text x="118" y="152" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#a8d8ea">name</text>
+  <text x="180" y="152" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#6a6a8a">=</text>
+  <text x="200" y="152" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#98c379">"dush"</text>
+
+  <text x="80" y="188" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#6a6a8a">$</text>
+  <text x="100" y="188" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#c678dd">echo</text>
+  <text x="156" y="188" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#98c379">"hello </text>
+  <text x="258" y="188" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#e94560" font-weight="bold">@</text>
+  <text x="276" y="188" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#a8d8ea">name</text>
+  <text x="338" y="188" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#98c379">"</text>
+
+  <text x="80" y="224" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#56b6c2">hello dush</text>
+
+  <text x="80" y="264" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#6a6a8a">$</text>
+  <text x="100" y="264" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#e94560" font-weight="bold">@</text>
+  <text x="118" y="264" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#a8d8ea">name</text>
+  <text x="174" y="264" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#6a6a8a">.</text>
+  <text x="186" y="264" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#e5c07b">upper</text>
+  <text x="258" y="264" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#6a6a8a">()</text>
+
+  <text x="80" y="300" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="24" fill="#56b6c2">DUSH</text>
+
+  <!-- Blinking cursor -->
+  <rect x="80" y="316" width="14" height="24" fill="#e94560" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0;0.8" dur="1.2s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- "dush" text at bottom -->
+  <text x="256" y="440" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="72" font-weight="bold" fill="url(#text-grad)" text-anchor="middle" letter-spacing="8">dush</text>
+
+  <!-- Subtitle -->
+  <text x="256" y="468" font-family="'Cascadia Code', 'JetBrains Mono', 'Fira Code', monospace" font-size="16" fill="#6a6a8a" text-anchor="middle">a shell that makes sense</text>
+</svg>

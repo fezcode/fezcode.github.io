@@ -1,0 +1,32 @@
+Pixel art is a beautiful and nostalgic medium that has seen a massive resurgence in recent years, especially within the indie game development scene. Whether you're a seasoned artist or just starting, having the right tools and resources can make a world of difference.
+
+In this post, we'll explore some of the best resources for pixel art, inspired by the excellent guide by JuniperDev.
+
+### The Ultimate Video Guide
+First and foremost, if you haven't seen it yet, check out this comprehensive video:
+[The ONLY Pixel Art Guide You Need (Beginner to Advanced)](https://www.youtube.com/watch?v=DKmrBUpd0yw)
+
+### Essential Software: Aseprite
+When it comes to creating pixel art, **Aseprite** is widely considered the industry standard. It's not just a drawing tool; it's a specialized environment for sprites and animation.
+- **Why it's great:** Pixel-perfect drawing mode, specialized animation timeline, easy sprite sheet exporting, and a very active community.
+- **Where to get it:** [aseprite.org](https://www.aseprite.org/)
+
+### Mastering Color: Lospec
+Color is everything in pixel art. Since you're often working with a limited palette, choosing the right colors is crucial. **Lospec** is the go-to resource for this.
+- **Palette Database:** Thousands of pre-made palettes that you can filter by color count.
+- **Tools:** They also offer web-based tools for checking contrast and creating your own palettes.
+- **Link:** [lospec.com](https://lospec.com/)
+
+### Assets and Inspiration: itch.io
+Sometimes you need a head start, or you just want to see how other artists tackle specific challenges. **itch.io** is a goldmine for pixel art assets.
+- **What you'll find:** Character sprites, tilesets, UI elements, and full environmental packs.
+- **Learning from others:** Analyzing high-quality asset packs is one of the best ways to learn techniques like dithering, sub-pixeling, and cluster management.
+- **Link:** [itch.io/game-assets/free/tag-pixel-art](https://itch.io/game-assets/free/tag-pixel-art)
+
+### Quick Tips for Beginners
+1. **Start Small:** Don't try to draw a massive 256x256 piece right away. Start with 16x16 or 32x32.
+2. **Limit Your Palette:** Using too many colors can make your art look messy. Stick to 4-8 colors initially.
+3. **Study Real Life:** Even though it's stylized, good pixel art is often grounded in real-world lighting and anatomy.
+4. **Practice Your Lines:** Learn about "jaggies" and how to avoid them to keep your lines looking clean and intentional.
+
+Pixel art is as much about what you leave out as what you put in. Happy pixeling!

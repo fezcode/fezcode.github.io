@@ -1,0 +1,1 @@
+Lospec is a comprehensive resource for pixel artists, most famous for its extensive palette database. It allows artists to find and download color palettes restricted by color count, helping maintain the classic pixel art aesthetic. It also features tools for contrast checking and a variety of tutorials.

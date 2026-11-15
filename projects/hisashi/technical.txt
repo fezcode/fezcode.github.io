@@ -1,0 +1,27 @@
+# Tech Stack & Architecture
+
+A self-contained single-file binary — no .NET runtime install required on the target machine.
+
+:::tech
+**Host:** Avalonia on .NET 9 — bars, zones, settings, theming, notifications, tray and the plugin loader.
+:::
+
+:::tech
+**Platform:** A platform-abstraction layer with Win32 implementations — AppBar strut reservation, HWND subclassing, SMTC, icon extraction, autostart.
+:::
+
+:::tech
+**SDK:** `Hisashi.Sdk` — `IHisashiPlugin`, `IWidget`, manifests and the permission model, published for third-party widgets.
+:::
+
+:::tech
+**Isolation:** Each `.hsh` bundle loads into its own `AssemblyLoadContext` behind a permission gate declared in its manifest.
+:::
+
+:::tech
+**OS Window Layer:** A named pipe (`hoswl`) with a single-header C client — ~12 lines in C, ~15 in Node, Python or C#.
+:::
+
+:::tech
+**Resilience:** Crash logs to `%AppData%\Hisashi\crash.log`, a safe-mode startup handler, and contract + host unit tests over the plugin loader, theming and config.
+:::

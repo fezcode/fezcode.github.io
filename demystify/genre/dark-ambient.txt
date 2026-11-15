@@ -1,0 +1,33 @@
+id: dark-ambient
+rank: 52
+name: DARK AMBIENT & POST-BLACK ELECTRONICA
+family: Score & Ambient
+years: 1984 → present
+sub: Atmosphere as the entire composition — plus the Norwegian black metal band that abandoned metal for it
+spec: 86,78,60,44,38,40,44,48,52,54,56,58,60,62,64,66,64,58,50,42
+synthType: sine
+freqs: 55, 68.94, 86.41
+
+what:
+ Dark ambient descends from Brian Eno's ambient concept by way of industrial music — Lustmord's *Heresy* (1990) is the foundational record, and labels like Cold Meat Industry and, since 2012, *Cryo Chamber* have carried it. *Ulver* arrive from a completely different direction: a Norwegian black metal band from the 1990s (Bergtatt, Nattens Madrigal) who renounced metal entirely and have since worked through electronica, chamber music and, on *Flowers of Evil* (2020), outright 1980s synth-pop.
+
+artists:
+ Lustmord, Atrium Carceri, Kammarheit, Desiderii Marginis and the Cryo Chamber roster — *Black Chamber* belongs to this orbit. Ulver, led by Kristoffer Rygg, plus Sunn O))), Tim Hecker and Ben Frost as adjacent territory.
+
+trivia:
+ Ulver's transformation is one of the most complete in music: the band that recorded *Nattens Madrigal* (1997) — deliberately mixed to sound like it was recorded in a forest on the worst equipment available, with a label-funding story the band has told several conflicting versions of — is the same band that released a Frankie Goes to Hollywood-adjacent synth-pop album in 2020. Lustmord's field recordings, some made in caves and crypts, have ended up in Hollywood sound design for decades.
+
+sonic:
+ Dark ambient: no beat, no clear pitch centre, extreme low-frequency drones under processed field recordings, structure measured in minutes rather than bars. Ulver's current sound is the opposite in surface and the same in intent — gated 80s drums, arpeggiated analogue synths, Rygg's clean baritone — with the dread relocated from the texture into the harmony and lyrics.
+
+gear:
+ Field recorders (Zoom/Sound Devices) and contact mics; granular processing in Max/MSP, GRM Tools, Paulstretch; convolution reverbs built from impulse responses of real spaces. Ulver's synth-pop era runs on vintage polysynths — Prophet, Juno, DX7 — LinnDrum/DMX drum machines, and heavy analogue outboard.
+
+prod:
+ Dark ambient is *mastered quiet on purpose*: the genre needs 20+ dB of dynamic range for a drone to feel like it's approaching from a distance, so loudness normalisation actively harms it — headphones and a quiet room are the intended playback system. Ulver went the other way and had Flowers of Evil mixed with period-accurate gated-reverb drum treatment, which is a production quotation as much as a sound choice.
+
+tracks:
+ - Machine Guns and Peacock Feathers | Ulver
+ - Teleology | Black Chamber
+ - Together | Nine Inch Nails
+ - Hope We Can Again | Nine Inch Nails

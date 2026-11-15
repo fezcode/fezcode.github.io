@@ -1,0 +1,81 @@
+> **⚠️ Warning: Objects in Mirror Are Less Perfect Than They Appear**
+>
+> If you think this blog post is genius just because the font is nice and the layout is clean, you are currently being blinded by the very thing I'm about to roast.
+> Welcome to the glow.
+
+# The Halo Effect: Why We Trust Idiots with Good Hair
+
+**Imagine you are at a tech conference.**
+
+A speaker walks onto the stage. They are wearing a perfectly fitted black turtleneck. Their slides are minimalist, high-contrast, and look like they were designed by Jony Ive himself. They speak with a calm, authoritative bass.
+
+They tell you that the future of software engineering is "quantum-resilient blockchain-native micro-frontends."
+
+**You nod.** You think, "Wow, this person is a visionary. I should rewrite my entire stack."
+
+**Wait.** Did you actually evaluate the technical feasibility of what they said? No. You just liked their presentation style, so you assumed their architecture wasn't a steaming pile of hype.
+
+This is the **Halo Effect**.
+
+---
+
+## 1. The Bias
+
+The Halo Effect is a cognitive bias where our overall impression of a person (or thing) influences how we feel and think about their character or capabilities in specific areas.
+
+In simpler terms: **If they are good at X, we assume they are good at Y, Z, and probably world peace.**
+
+It’s the reason why we think tall people are better leaders, why we think attractive people are more trustworthy, and why we think a developer who can write a **[custom regex](/vocab/regex)** in their sleep must also be a great person to lead a team. (Spoilers: They usually aren't.)
+
+---
+
+## 2. The Evidence: The Engineering "Glow"
+
+In software development, the Halo Effect is a silent killer of technical debt and team morale. Here are three cases where "the glow" blinds us to reality.
+
+### Case A: The "Code Aesthetic" Trap
+
+I have seen pull requests with absolute garbage logic—O(n^3) complexity, race conditions, and zero error handling—get approved in minutes.
+
+**The Reason:** The code was *beautifully* formatted. The variable names were poetic. The comments were helpful and well-punctuated.
+The reviewer saw "clean code" and their brain automatically filled in "bug-free logic."
+We mistake *neatness* for *correctness*.
+
+### Case B: The "Rockstar" Architect
+
+We all know the "Rockstar." They built the core engine. They saved the company in 2018. They can debug a kernel panic while eating a burrito.
+
+Because they are a technical god, the company lets them make decisions about... everything else. Product roadmap? Let the Rockstar decide. Hiring strategy? Rockstar’s call. Office culture? Whatever the Rockstar wants.
+
+**The Result:** You end up with a high-performance engine running a product nobody wants, managed by a team that's burnt out because "being good at C++" does not equal "being good at human empathy."
+
+### Case C: The "Big Tech" Pedigree
+
+"We just hired an ex-Googler! Everything they say is gospel now!"
+
+We assume that because someone worked at a trillion-dollar company, every opinion they have on your 5-person startup's architecture is 100% correct.
+We ignore the fact that at Big Tech, they had a 200-person infra team to wipe their nose. Here, they're trying to build a distributed system for a CRUD app that has 10 users.
+The "Google Halo" makes us ignore the lack of context.
+
+---
+
+## 3. The Survival Guide
+
+The Halo Effect is hardwired into our lizard brains. We *want* to believe that good things come in good packages.
+
+**So, how do we fight the glow?**
+
+1.  **Deconstruct the Impression:** When you meet a "genius," ask yourself: "What exactly are they a genius at?" If it's "distributed systems," stop asking them for advice on UI design or team management.
+2.  **Blind Code Reviews:** (Or at least, anonymous-ish). Try to look at the logic without looking at the author. Does the code still look "clean" if you don't know it was written by the CTO?
+3.  **The "Ugly Truth" Test:** If a homeless man gave you this exact same technical advice, would you still think it's a good idea? If the answer is "no," you're chasing the halo, not the truth.
+
+## Conclusion
+
+The next time you find yourself agreeing with someone just because they’re charismatic, or trust a library just because it has a 10/10 landing page, take a breath.
+
+**The halo is an optical illusion.**
+
+Just because the sun is shining doesn't mean the water isn't full of sharks.
+And just because a dev uses a mechanical keyboard with custom keycaps doesn't mean their `if` statements aren't a disaster.
+
+> **Lesson:** A shiny coat of paint can hide a lot of rust. Inspect the engine anyway.

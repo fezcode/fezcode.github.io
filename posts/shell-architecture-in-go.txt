@@ -1,0 +1,49 @@
+# Shell Architecture in Go: From Lexer to Execution
+
+Building a shell is often seen as a rite of passage for systems engineers. While most start with a simple loop and `execvp`, **Dush** takes a more architectural approach. In this post, we'll dive into the internal plumbing of Dush and see how a string of text becomes a running process.
+
+## The High-Level Flow
+
+Dush follows a classic compiler/interpreter pipeline, but optimized for the immediate nature of a shell:
+
+1. **REPL / Script Reader**: Captures raw input.
+2. **Lexer**: Breaks the input into tokens (keywords, sigils, commands, arguments).
+3. **Parser (AST)**: Builds an Abstract Syntax Tree using a Pratt Parser.
+4. **Evaluator**: Walks the tree and executes Go code or spawns external processes.
+5. **Environment**: Manages scopes, variables, and exported environment variables.
+
+## 1. The Lexer: Understanding `@`
+
+The lexer is responsible for recognizing the difference between a shell command and a language expression. When it sees an `@`, it switches modes to handle variable names, numbers, or string literals. This unambiguous start is what makes Dush's syntax so much cleaner than Bash.
+
+## 2. The Pratt Parser: Handling Complexity
+
+For the parser, I chose a **Pratt Parser**. Unlike traditional recursive descent, Pratt parsers are exceptional at handling operator precedence and infix expressions. This allows Dush to support complex math and method chaining:
+
+```bash
+@result = (10 + 5) * 2
+echo @text.trim().lower()
+```
+
+Each token has an associated "parsing function" for both prefix and infix positions. It's elegant, fast, and very easy to extend with new language features.
+
+## 3. The Evaluator: Tree Walking
+
+The evaluator is a tree-walking interpreter. It takes an AST node and returns an `Object` (Dush's internal type system). 
+
+If the node is a `CommandExpression`, the evaluator:
+- Resolves all arguments (expanding globs like `*.go` and tildes like `~`).
+- Checks if the command is a **Built-in** (like `cd` or `exit`).
+- If not, it uses `os/exec` to spawn an external process.
+
+## 4. The Environment: Scoped State
+
+Dush uses a linked-list style environment for scoping. When you enter a `proc` (procedure) or an `if` block, a new environment is created that points back to its parent. This provides native support for closures and local variables without leaking state into the global shell.
+
+## 5. Job Control and Pipes
+
+The architecture is designed for concurrency. Pipelines (`cmd1 | cmd2`) are implemented by connecting the `Stdout` of one command's `exec.Cmd` to the `Stdin` of the next via `io.Pipe`. Background jobs (`cmd &`) are managed by a global `JobManager` that tracks PIDs and handles signal forwarding.
+
+Building Dush has been a masterclass in Go's systems capabilities.
+
+Explore the source code: [https://github.com/fezcode/dush](https://github.com/fezcode/dush)

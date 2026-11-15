@@ -1,0 +1,9 @@
+{
+  "title": "Castarook",
+  "subtitle": "RPG CHESS",
+  "description": "An immersive 3D chess game built with React and Three.js that integrates D&D-inspired RPG mechanics like health points and dice-based combat.",
+  "backgroundImage": "/images/projects/castarook/rabbit.webp",
+  "playLink": "https://fezcode.com/castarook/",
+  "repoLink": "https://github.com/fezcode/castarook",
+  "overlayOpacity": 0.5
+}

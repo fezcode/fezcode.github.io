@@ -1,0 +1,848 @@
+{
+  "name": "Hisashi",
+  "windowTitle": "hisashi.exe",
+  "mark": "庇",
+  "tagline": "A bar at the top of every monitor you own.",
+  "subtitle": "Hisashi (庇) is Japanese for eaves — the protruding edge of a roof, the strip at the top of a structure. It is a plugin-driven top bar for Windows, and every display gets its own with its own widgets, theme and behaviour.",
+  "accent": "#F472B6",
+  "accent2": "#A78BFA",
+  "version": "0.6.19",
+  "platforms": [
+    "Windows 10",
+    "Windows 11"
+  ],
+  "stack": [
+    ".NET 9",
+    "Avalonia"
+  ],
+  "download": "https://github.com/fezcode/hisashi/releases",
+  "downloadLabel": "Download installer",
+  "repo": "https://github.com/fezcode/hisashi",
+  "summary": [
+    "Windows gives you one taskbar, at one edge, on terms decided in 1995. Hisashi takes the other strip and hands it back: every monitor independently configured, with a widget stack you arrange yourself across three zones.",
+    "Plugins ship as .hsh bundles and load into isolated contexts behind a permission gate, so a widget only reaches what its manifest asked for. Twenty-two themes ship in the box, and every foreground token is contrast-checked against the painted bar until it clears 4.5:1 — an accent ramp can never produce unreadable text."
+  ],
+  "panelsHeading": "Three zones, twenty-five widgets",
+  "panelsWindowTitle": "hisashi — zones",
+  "panels": [
+    {
+      "title": "Per-monitor bars",
+      "body": "Every display gets its own bar with its own widget stack, theme and behaviour, in four width modes and three zones."
+    },
+    {
+      "title": "Pinned, auto-hide, fullscreen-only",
+      "body": "Auto-hide reveals the bar through a 10-pixel peek zone at the top edge and leaves the moment you do."
+    },
+    {
+      "title": "Twenty-five bundled plugins",
+      "body": "Clock, system stats, battery, weather, media controls, volume mixer, pomodoro, clipboard history, app dock, Docker, dev toolbox and more."
+    },
+    {
+      "title": "Contrast-checked themes",
+      "body": "Twenty-two themes, from Pulse and Aether through Fluent Accent to Phosphor CRT and Newsprint. Selectable globally or per bar."
+    },
+    {
+      "title": "Toasts that never steal focus",
+      "body": "Plugins raise themed, click-to-open notifications that stack under the bar and play the system sound."
+    },
+    {
+      "title": "The OS Window Layer",
+      "body": "Any app, in any language, can publish its menus over a named pipe. The Menubar widget renders them macOS-style behind a Windows-logo menu."
+    }
+  ],
+  "terminalHeading": "Build it yourself",
+  "terminal": {
+    "caption": "PowerShell — .NET 9 SDK",
+    "lines": [
+      "git clone https://github.com/fezcode/hisashi.git",
+      "dotnet build",
+      ".\\build.ps1 -Rid win-x64 -Config Release",
+      ".\\dist\\win-x64\\hisashi.exe"
+    ]
+  },
+  "notesTitle": "Writing a widget",
+  "notes": "Implement `IHisashiPlugin` and `IWidget` against `Hisashi.Sdk`, drop in a `manifest.json`, and pack it with `hsh-pack`. The plugin context hands you themed controls, per-plugin storage, config, logging, and an `INotifier` for host-rendered toasts.\n\nPermissions are declared in the manifest and granted at load: `storage`, `network`, `shell.exec`, `clipboard`, `media.session`, `notifications`, `filesystem.read`.",
+  "colophon": [
+    [
+      "Config",
+      "%AppData%\\Hisashi"
+    ],
+    [
+      "Plugins",
+      ".hsh bundles"
+    ],
+    [
+      "Themes",
+      "22 bundled"
+    ],
+    [
+      "Binary",
+      "self-contained, single file"
+    ],
+    [
+      "Crash log",
+      "%AppData%\\Hisashi\\crash.log"
+    ]
+  ],
+  "shots": [
+    {
+      "src": "/images/projects/hisashi/bar-left.png",
+      "caption": "Left zone — the Windows menu, the active app's menus over hoswl, and the app dock with running counts"
+    },
+    {
+      "src": "/images/projects/hisashi/bar-right.png",
+      "caption": "Right zone — CPU, RAM, disk, weather, now playing, volume and power"
+    }
+  ],
+  "shotsHeading": "The real bar, at native size",
+  "flow": {
+    "announcement": {
+      "text": "Hisashi 0.6.19: the menubar's window menu can now maximize, change screens and tile.",
+      "cta": "See the release",
+      "href": "https://github.com/fezcode/hisashi/releases/latest"
+    },
+    "ctaLabel": "Get it for Windows",
+    "nav": {
+      "tabs": [
+        {
+          "label": "Bar",
+          "href": "#top"
+        },
+        {
+          "label": "Themes",
+          "href": "#themes"
+        }
+      ],
+      "links": [
+        {
+          "label": "How it works",
+          "href": "#how"
+        },
+        {
+          "label": "Apps",
+          "href": "#apps"
+        },
+        {
+          "label": "FAQ",
+          "href": "#faq"
+        }
+      ]
+    },
+    "hero": {
+      "eyebrow": "Hisashi 庇 · a top bar for Windows",
+      "line1": "Don’t hunt for it,",
+      "line2": "just look up.",
+      "subtitle": "The plugin-driven top bar that puts your menus, widgets and system stats at the top of every monitor you own.",
+      "note": "Free and open source, for Windows 10 and Windows 11",
+      "messy": "where did that tray icon go… alt-tab, alt-tab, alt-tab… is Docker even running… which window had the File menu… what time is it on the second screen… mute that tab… how full is the disk… ",
+      "clean": "Timp — File  Playback  Audio  View  Help   ·   CPU 26%   RAM 52%   D: 107 GB free   ·   17°C   ·   Now playing   ·   Volume 42%   ·   "
+    },
+    "logos": {
+      "label": "Built with",
+      "items": [
+        ".NET 9",
+        "Avalonia",
+        "Win32",
+        "SMTC",
+        "Open-Meteo",
+        "Meteocons",
+        "Geist",
+        "Phosphor"
+      ]
+    },
+    "speed": {
+      "title": "One bar",
+      "italic": "on every screen",
+      "body": "Windows gives you one taskbar, at one edge, on terms decided in 1995. Hisashi takes the other strip — the eaves — and gives every monitor its own bar, its own widgets and its own theme.",
+      "before": {
+        "label": "Taskbar",
+        "value": "1 edge"
+      },
+      "after": {
+        "label": "Hisashi",
+        "value": "every monitor"
+      },
+      "image": "/images/bg/tim_simon.jpg"
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "Everything you reach for, at the top of",
+      "italic": "every screen.",
+      "steps": [
+        {
+          "nav": "Pin it or hide it",
+          "title": "Pinned, auto-hide or fullscreen-only",
+          "body": "Pin the bar and Windows reserves its strip, so maximized windows stop below it. Or let it auto-hide behind a 10-pixel peek zone at the top edge that lets go the moment you leave.",
+          "demo": "peek",
+          "image": "/images/bg/nik.jpg"
+        },
+        {
+          "nav": "Stack your widgets",
+          "title": "Three zones, your order",
+          "body": "Left, center and right each hold a freely orderable widget stack, in four width modes: full width, or sized to its contents at the center, left or right.",
+          "demo": "zones",
+          "image": "/images/bg/emre.jpg"
+        },
+        {
+          "nav": "Menus from any app",
+          "title": "Menus from any app",
+          "body": "Over the OS Window Layer, any app in any language publishes its menus into the bar. The Menubar widget renders them macOS-style behind a Windows-logo menu.",
+          "demo": "menu",
+          "image": "/images/bg/3.webp"
+        },
+        {
+          "nav": "Toasts, not interruptions",
+          "title": "Toasts that never steal focus",
+          "body": "Plugins raise themed, click-to-open notifications that stack under the bar and play the system sound, without pulling focus from what you were doing.",
+          "demo": "toast",
+          "image": "/images/bg/tim_simon.jpg"
+        }
+      ]
+    },
+    "themesSection": {
+      "eyebrow": "Hisashi makes it easy",
+      "before": "Built around",
+      "italic": "how you work,",
+      "after": "not how Windows thinks you should.",
+      "note": "Every bar here is drawn with the real colour tokens from Hisashi's theme files."
+    },
+    "features": [
+      {
+        "title": "22 themes, one click",
+        "body": "From Pulse Dark and Aether to Clay, Phosphor CRT and Newsprint. Choose one for every bar, or a different one for each monitor.",
+        "demo": "themes"
+      },
+      {
+        "title": "Contrast that can’t go wrong",
+        "body": "Every foreground token is checked against the painted bar and nudged lighter or darker along its own hue until it clears WCAG 4.5:1. An accent ramp can never produce unreadable text.",
+        "demo": "contrast"
+      },
+      {
+        "title": "25 bundled plugins",
+        "body": "Clock, system stats, battery, weather, media controls, volume mixer, IP info, pomodoro, clipboard history, app dock, Docker, an AI agent bridge, a dev toolbox and more.",
+        "demo": "plugins"
+      },
+      {
+        "title": "Write your own widget",
+        "body": "Implement IHisashiPlugin and IWidget against Hisashi.Sdk, declare its permissions in manifest.json and pack it with hsh-pack. Drop the .hsh into your plugins folder.",
+        "demo": "code"
+      }
+    ],
+    "plugins": [
+      "Clock",
+      "Separator",
+      "System Stats",
+      "Battery",
+      "Weather",
+      "Media Controls",
+      "Volume Mixer",
+      "IP Info",
+      "Pomodoro",
+      "Calculator",
+      "Clipboard History",
+      "Power",
+      "App Dock",
+      "Command Runner",
+      "Quick Notes",
+      "Todo",
+      "Docker",
+      "AI Agent",
+      "Games",
+      "Dev Toolbox",
+      "Workspaces",
+      "Color Picker",
+      "Task Killer",
+      "Menubar",
+      "Show Desktop"
+    ],
+    "privacy": {
+      "title": "Your desktop",
+      "italic": "stays yours.",
+      "body": "Each .hsh plugin loads into its own isolated AssemblyLoadContext behind a permission gate, so a widget reaches only what its manifest asked for and you approved.",
+      "link": {
+        "label": "Read the plugin contract",
+        "href": "https://github.com/fezcode/hisashi#plugin-system"
+      },
+      "badges": [
+        {
+          "top": "Isolated",
+          "bottom": "load context"
+        },
+        {
+          "top": "7",
+          "bottom": "permissions"
+        },
+        {
+          "top": "4.5:1",
+          "bottom": "WCAG"
+        }
+      ]
+    },
+    "wall": {
+      "eyebrow": "Apps that speak hoswl",
+      "title": "From the apps",
+      "italic": "already up there.",
+      "cards": [
+        {
+          "kind": "feature",
+          "color": "#F0D7FF",
+          "name": "Timp",
+          "role": "Music player",
+          "quote": "File, Playback, Audio, View and Help move into the bar, with live checkmarks for shuffle, repeat and always-on-top.",
+          "image": "/images/projects/timp/main.png",
+          "stats": [
+            {
+              "value": "5",
+              "label": "menus in the bar"
+            },
+            {
+              "value": "3",
+              "label": "live checkmarks"
+            }
+          ],
+          "href": "/projects/timp"
+        },
+        {
+          "kind": "quote",
+          "color": "#FFFFEB",
+          "quote": "Two fixes found by running the bar and measuring pixels rather than trusting the tests.",
+          "name": "Hisashi 0.6.17",
+          "role": "Release notes",
+          "badge": "0.6.17"
+        },
+        {
+          "kind": "quote",
+          "color": "#E4E2D0",
+          "quote": "The Weather widget now draws Meteocons, on the bar and in the forecast. Nights get the moon.",
+          "name": "Hisashi 0.6.18",
+          "role": "Release notes",
+          "badge": "0.6.18"
+        },
+        {
+          "kind": "feature",
+          "color": "#34D399",
+          "name": "tivi",
+          "role": "Video player",
+          "quote": "Playback, audio and subtitle menus — including the file's own audio and subtitle tracks as submenus.",
+          "image": "/images/projects/tivi/hero.png",
+          "href": "/projects/tivi",
+          "flip": true
+        },
+        {
+          "kind": "feature",
+          "color": "#FF7A50",
+          "name": "Descry",
+          "role": "Markdown editor",
+          "quote": "File, Edit, View and Help move into the bar, and the editor's own menu strip hides itself while it's connected.",
+          "image": "/images/projects/descry/preview.png",
+          "href": "/projects/descry"
+        },
+        {
+          "kind": "feature",
+          "color": "#FFA940",
+          "name": "Typewriter",
+          "role": "Text editor, written in C",
+          "quote": "A C app with the single-header client: a dozen lines to publish File, Edit, View and Help.",
+          "image": "/images/projects/typewriter/example.png",
+          "href": "/projects/typewriter",
+          "flip": true
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": "FAQs",
+      "title": "Good",
+      "italic": "questions.",
+      "items": [
+        {
+          "q": "Does Hisashi replace the Windows taskbar?",
+          "a": "No. Your taskbar stays where it is. Hisashi takes the strip at the top of the screen, and in pinned mode it reserves that space as an app bar, so maximized windows stop just below it."
+        },
+        {
+          "q": "Does it work with more than one monitor?",
+          "a": "That's the point. Every display gets its own bar with its own widget stack, theme and display mode, and each one is configured independently in Settings."
+        },
+        {
+          "q": "Do I need to install .NET first?",
+          "a": "No. Hisashi ships as a self-contained, single-file binary with the runtime inside. Install it and run it."
+        },
+        {
+          "q": "Which versions of Windows does it support?",
+          "a": "Windows 10 (version 1809 or later) and Windows 11."
+        },
+        {
+          "q": "How do other apps put their menus in the bar?",
+          "a": "Through the OS Window Layer, hoswl: a named pipe and a handful of JSON messages. It's about a dozen lines with the single-header C client, and around fifteen in Node, Python or C#. Timp, tivi, Descry, pidi, Atelier and Typewriter already speak it."
+        },
+        {
+          "q": "Can I write my own widget?",
+          "a": "Yes. Implement IHisashiPlugin and IWidget against Hisashi.Sdk, add a manifest.json and pack it with hsh-pack. The plugin context gives you themed controls, per-plugin storage, config, logging and an INotifier for toasts."
+        },
+        {
+          "q": "What can a plugin reach?",
+          "a": "Only what its manifest declares and you approve: storage, network, shell.exec, clipboard, media.session, notifications and filesystem.read. Each bundle loads into its own isolated AssemblyLoadContext."
+        },
+        {
+          "q": "Where are my settings kept?",
+          "a": "In %AppData%\\Hisashi: config.json, your own plugins and themes, runtime state and logs. The in-app Settings UI edits all of it, so you never have to touch the JSON."
+        },
+        {
+          "q": "What happens if something crashes?",
+          "a": "Failures are written to %AppData%\\Hisashi\\crash.log, and a safe-mode startup handler keeps a bad plugin from taking the bar down with it."
+        },
+        {
+          "q": "Is Hisashi free?",
+          "a": "Yes. It's MIT licensed and the source is on GitHub. You can also install it, and keep it up to date, from Airlift's catalog."
+        }
+      ]
+    },
+    "closing": {
+      "title": "You have more than one screen.",
+      "italic": "Now, more than one bar.",
+      "body": "Grab the installer, or clone the repository and pack your own widget.",
+      "image": "/images/bg/3.webp"
+    },
+    "footer": {
+      "products": [
+        {
+          "name": "Hisashi",
+          "body": "A plugin-driven top bar for every monitor on Windows.",
+          "cta": "Download free",
+          "href": "https://github.com/fezcode/hisashi/releases/latest",
+          "art": "bar"
+        },
+        {
+          "name": "Airlift",
+          "badge": "Also",
+          "body": "Install Hisashi, and keep it current, from Airlift's catalog of independent apps.",
+          "cta": "See Airlift",
+          "href": "/projects/airlift",
+          "art": "airlift"
+        }
+      ],
+      "columns": [
+        {
+          "title": "Get started",
+          "links": [
+            {
+              "label": "Download",
+              "href": "https://github.com/fezcode/hisashi/releases/latest"
+            },
+            {
+              "label": "All releases",
+              "href": "https://github.com/fezcode/hisashi/releases"
+            },
+            {
+              "label": "Source code",
+              "href": "https://github.com/fezcode/hisashi"
+            },
+            {
+              "label": "hoswl protocol",
+              "href": "https://github.com/fezcode/hisashi/blob/main/docs/hoswl-protocol.md"
+            }
+          ]
+        },
+        {
+          "title": "Speaks hoswl",
+          "links": [
+            {
+              "label": "Timp",
+              "href": "/projects/timp"
+            },
+            {
+              "label": "tivi",
+              "href": "/projects/tivi"
+            },
+            {
+              "label": "Descry",
+              "href": "/projects/descry"
+            },
+            {
+              "label": "pidi",
+              "href": "/projects/pidi"
+            },
+            {
+              "label": "Atelier",
+              "href": "/projects/atelier"
+            },
+            {
+              "label": "Typewriter",
+              "href": "/projects/typewriter"
+            }
+          ]
+        },
+        {
+          "title": "Fezcodex",
+          "links": [
+            {
+              "label": "Projects",
+              "href": "/projects"
+            },
+            {
+              "label": "Blog",
+              "href": "/blog"
+            },
+            {
+              "label": "About",
+              "href": "/about"
+            }
+          ]
+        }
+      ]
+    },
+    "themes": [
+      {
+        "id": "pulse-dark",
+        "name": "Pulse Dark",
+        "group": "Core",
+        "dark": true,
+        "bg": "linear-gradient(180deg, #181a29, #15172a)",
+        "fg": "#e8e6ff",
+        "border": "#23253f",
+        "sep": "#2a2c46",
+        "accent": "#a5b4ff",
+        "muted": "#cdd3da",
+        "icon": "#e8e6ff",
+        "chip": "rgba(255,255,255,0.05)",
+        "radius": "999",
+        "font": "Geist"
+      },
+      {
+        "id": "pulse-light",
+        "name": "Pulse Light",
+        "group": "Core",
+        "dark": false,
+        "bg": "linear-gradient(180deg, #f5f5fb, #ebebf3)",
+        "fg": "#1c1d2e",
+        "border": "#d8d8e4",
+        "sep": "#cfcfdc",
+        "accent": "#5b6ee8",
+        "muted": "#2a2d3e",
+        "icon": "#1c1d2e",
+        "chip": "rgba(0,0,0,0.05)",
+        "radius": "999",
+        "font": "Geist"
+      },
+      {
+        "id": "aether-dark",
+        "name": "Aether Dark",
+        "group": "Core",
+        "dark": true,
+        "bg": "#1a1d22",
+        "fg": "#e7eaf0",
+        "border": "rgba(255,255,255,0.06)",
+        "sep": "rgba(255,255,255,0.08)",
+        "accent": "#a9d3ff",
+        "muted": "#cdd3da",
+        "icon": "#e7eaf0",
+        "chip": "rgba(255,255,255,0.025)",
+        "radius": "7",
+        "font": "Geist"
+      },
+      {
+        "id": "aether-light",
+        "name": "Aether Light",
+        "group": "Core",
+        "dark": false,
+        "bg": "#f4f5f7",
+        "fg": "#1f232a",
+        "border": "rgba(0,0,0,0.08)",
+        "sep": "rgba(0,0,0,0.10)",
+        "accent": "#1f6feb",
+        "muted": "#2a2d3e",
+        "icon": "#1f232a",
+        "chip": "rgba(0,0,0,0.025)",
+        "radius": "7",
+        "font": "Geist"
+      },
+      {
+        "id": "geist-dark",
+        "name": "Geist Dark",
+        "group": "Core",
+        "dark": true,
+        "bg": "#0c0c0d",
+        "fg": "#e6e6e8",
+        "border": "#1a1a1d",
+        "sep": "#26262a",
+        "accent": "#7cf6c0",
+        "muted": "#9c9ca3",
+        "icon": "#e6e6e8",
+        "chip": null,
+        "radius": "0",
+        "font": "Geist"
+      },
+      {
+        "id": "geist-light",
+        "name": "Geist Light",
+        "group": "Core",
+        "dark": false,
+        "bg": "#fafafa",
+        "fg": "#0c0c0d",
+        "border": "#e6e6e8",
+        "sep": "#e6e6e8",
+        "accent": "#0a8a5d",
+        "muted": "#3a3a40",
+        "icon": "#0c0c0d",
+        "chip": null,
+        "radius": "0",
+        "font": "Geist"
+      },
+      {
+        "id": "fluent-dark",
+        "name": "Fluent Dark",
+        "group": "Fluent",
+        "dark": true,
+        "bg": "rgba(32,32,32,0.88)",
+        "fg": "#f0f0f0",
+        "border": "#101010",
+        "sep": "rgba(255,255,255,0.08)",
+        "accent": "#60CDFF",
+        "muted": "#c8c8c8",
+        "icon": "#f0f0f0",
+        "chip": null,
+        "radius": "6",
+        "font": "Segoe UI"
+      },
+      {
+        "id": "fluent-accent",
+        "name": "Fluent Accent",
+        "group": "Fluent",
+        "dark": true,
+        "bg": "rgba(0,62,146,0.92)",
+        "fg": "#ffffff",
+        "border": "system.accent.dark3",
+        "sep": "system.accent.dark1@0.6",
+        "accent": "#60CDFF",
+        "muted": "system.accent.light3",
+        "icon": "#ffffff",
+        "chip": null,
+        "radius": "6",
+        "font": "Segoe UI"
+      },
+      {
+        "id": "aero-glass",
+        "name": "Aero Glass",
+        "group": "Fluent",
+        "dark": true,
+        "bg": "linear-gradient(180deg, rgba(120,170,225,0.55) 0%, rgba(70,120,185,0.50) 12%, rgba(40,80,140,0.55) 50%, rgba(20,45,90,0.65) 100%)",
+        "fg": "#f4f9ff",
+        "border": "rgba(190,220,255,0.40)",
+        "sep": "rgba(190,220,255,0.25)",
+        "accent": "#7cc7ff",
+        "muted": "#dcecff",
+        "icon": "#f4f9ff",
+        "chip": "linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 100%)",
+        "radius": "10",
+        "font": "Segoe UI"
+      },
+      {
+        "id": "macos",
+        "name": "macOS",
+        "group": "Fluent",
+        "dark": false,
+        "bg": "rgba(252,251,248,0.65)",
+        "fg": "#1d1d1f",
+        "border": "rgba(0,0,0,0.10)",
+        "sep": "rgba(0,0,0,0.08)",
+        "accent": "#0071e3",
+        "muted": "#515154",
+        "icon": "#1d1d1f",
+        "chip": "rgba(0,0,0,0.00)",
+        "radius": "5",
+        "font": "Inter"
+      },
+      {
+        "id": "solarized-dark",
+        "name": "Solarized Dark",
+        "group": "Classic",
+        "dark": true,
+        "bg": "#002b36",
+        "fg": "#839496",
+        "border": "#073642",
+        "sep": "#0a4250",
+        "accent": "#b58900",
+        "muted": "#93a1a1",
+        "icon": "#93a1a1",
+        "chip": null,
+        "radius": "3",
+        "font": "Geist"
+      },
+      {
+        "id": "solarized-light",
+        "name": "Solarized Light",
+        "group": "Classic",
+        "dark": false,
+        "bg": "#fdf6e3",
+        "fg": "#657b83",
+        "border": "#eee8d5",
+        "sep": "#dcd5b8",
+        "accent": "#b58900",
+        "muted": "#586e75",
+        "icon": "#586e75",
+        "chip": null,
+        "radius": "3",
+        "font": "Geist"
+      },
+      {
+        "id": "sakura-dark",
+        "name": "Sakura Dark",
+        "group": "Classic",
+        "dark": true,
+        "bg": "linear-gradient(180deg, #2a1a2e, #1e1429)",
+        "fg": "#fce4ec",
+        "border": "#3a2640",
+        "sep": "#4a3050",
+        "accent": "#ffb7c5",
+        "muted": "#e0c8d4",
+        "icon": "#fce4ec",
+        "chip": "rgba(255,183,197,0.06)",
+        "radius": "999",
+        "font": "Geist"
+      },
+      {
+        "id": "sakura-light",
+        "name": "Sakura Light",
+        "group": "Classic",
+        "dark": false,
+        "bg": "linear-gradient(180deg, #fff5f7, #ffe8ef)",
+        "fg": "#3a1f2e",
+        "border": "rgba(180,90,120,0.18)",
+        "sep": "rgba(180,90,120,0.22)",
+        "accent": "#d04a78",
+        "muted": "#5a2f48",
+        "icon": "#3a1f2e",
+        "chip": "rgba(208,74,120,0.05)",
+        "radius": "999",
+        "font": "Geist"
+      },
+      {
+        "id": "clay",
+        "name": "Clay",
+        "group": "Neumorphic",
+        "dark": false,
+        "bg": "#eae4da",
+        "fg": "#3f3b36",
+        "border": "#dcd4c6",
+        "sep": "#d5cdbe",
+        "accent": "#a04c0c",
+        "muted": "#5c574f",
+        "icon": "#57514a",
+        "chip": "linear-gradient(145deg, #f4f0e8, #e4ded2)",
+        "radius": "11",
+        "font": "Geist"
+      },
+      {
+        "id": "clay-dark",
+        "name": "Clay Dark",
+        "group": "Neumorphic",
+        "dark": true,
+        "bg": "#2b2825",
+        "fg": "#ece7de",
+        "border": "#211f1d",
+        "sep": "#3a3733",
+        "accent": "#e8955c",
+        "muted": "#c3bcb0",
+        "icon": "#d9d3c8",
+        "chip": "linear-gradient(145deg, #37332f, #2c2926)",
+        "radius": "11",
+        "font": "Geist"
+      },
+      {
+        "id": "aurora",
+        "name": "Aurora",
+        "group": "Stylized",
+        "dark": true,
+        "bg": "linear-gradient(135deg, #0d1530 0%, #1a2548 35%, #1e3a5c 70%, #2a1e4c 100%)",
+        "fg": "#e6f0ff",
+        "border": "rgba(140,200,255,0.20)",
+        "sep": "rgba(140,200,255,0.15)",
+        "accent": "#6effd1",
+        "muted": "#c0d4f0",
+        "icon": "#a8e8ff",
+        "chip": "rgba(255,255,255,0.05)",
+        "radius": "999",
+        "font": "Geist"
+      },
+      {
+        "id": "cinema",
+        "name": "Cinema",
+        "group": "Stylized",
+        "dark": true,
+        "bg": "#0c0c10",
+        "fg": "#e8e4dc",
+        "border": "#1a1a22",
+        "sep": "#22222c",
+        "accent": "#d4a04a",
+        "muted": "#b0b0b8",
+        "icon": "#e8e4dc",
+        "chip": null,
+        "radius": "2",
+        "font": "Cambria"
+      },
+      {
+        "id": "neon-tokyo",
+        "name": "Neon Tokyo",
+        "group": "Stylized",
+        "dark": true,
+        "bg": "linear-gradient(180deg, #0a0a1f, #150a28)",
+        "fg": "#e8f0ff",
+        "border": "#2a1a44",
+        "sep": "#3a2058",
+        "accent": "#ff2e92",
+        "muted": "#b8c0d8",
+        "icon": "#19fbf1",
+        "chip": "rgba(181,55,242,0.10)",
+        "radius": "999",
+        "font": "Geist Mono"
+      },
+      {
+        "id": "newsprint",
+        "name": "Newsprint",
+        "group": "Stylized",
+        "dark": false,
+        "bg": "#f4ecd8",
+        "fg": "#1a1612",
+        "border": "#c8bea0",
+        "sep": "#b8ae90",
+        "accent": "#a82820",
+        "muted": "#3a3228",
+        "icon": "#1a1612",
+        "chip": null,
+        "radius": "2",
+        "font": "Geist"
+      },
+      {
+        "id": "phosphor-crt",
+        "name": "Phosphor CRT",
+        "group": "Stylized",
+        "dark": true,
+        "bg": "#020a04",
+        "fg": "#66ff66",
+        "border": "#0a2810",
+        "sep": "#0e3818",
+        "accent": "#39ff14",
+        "muted": "#88ff88",
+        "icon": "#66ff66",
+        "chip": null,
+        "radius": "0",
+        "font": "Geist Mono"
+      },
+      {
+        "id": "vintage",
+        "name": "Vintage",
+        "group": "Stylized",
+        "dark": false,
+        "bg": "#e8dcc0",
+        "fg": "#3a2818",
+        "border": "#c9b890",
+        "sep": "#b8a572",
+        "accent": "#a04a28",
+        "muted": "#5a4030",
+        "icon": "#3a2818",
+        "chip": null,
+        "radius": "3",
+        "font": "Georgia"
+      }
+    ]
+  }
+}

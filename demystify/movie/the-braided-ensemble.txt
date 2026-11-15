@@ -1,0 +1,49 @@
+id: the-braided-ensemble
+rank: 18
+name: THE BRAIDED ENSEMBLE
+family: Structure
+years: 1993 → present
+sub: Several unrelated lives cut together until an accident of contact makes them one story
+
+ascii:
+┌────────────────────────────────────────┐
+│  A ───────╮                            │
+│  B ────╮  ├──── collision ──── resolve │
+│  C ────┴──╯                            │
+│  strangers held apart, then not        │
+└────────────────────────────────────────┘
+
+what:
+ Following several separate storylines with distinct casts, cutting between them, and letting them intersect late or glancingly. Unlike cross-cutting, which promises a collision, the braid promises only proximity: the argument is that these lives are adjacent, and adjacency in a city is itself the subject. The form ranges from warm to punishing depending on how cruel the intersections are allowed to be.
+
+artists:
+ Richard Curtis made the benign version canonical with *Love Actually*, where the connections are mostly affectionate. Paul Haggis made the hostile version in *Crash*, where contact between strangers is almost always damage. Rian Johnson uses a compressed household variant in *Knives Out*, and Chris Morris braids four incompetent plots into one in *Four Lions*.
+
+trivia:
+ The form has a built-in scoring problem: audiences rank the strands against each other and remember the weakest one. Filmmakers know this, which is why so many ensembles are cut to keep the strongest thread last, and why the form is more common in films assembled around a holiday or a city than in adaptations with a fixed plot.
+
+sonic:
+ It produces a specific pleasure, which is pattern recognition at feature length. You spend the film holding several incomplete things and assembling a shape the characters cannot see, which flatters the audience and makes coincidence feel like design rather than laziness. The failure mode is arithmetic: eight strands in two hours gives each fifteen minutes, and fifteen minutes is not enough to earn an ending.
+
+gear:
+ Scheduling more than kit. Ensemble films are shot around cast availability, so scenes are grouped by actor rather than by story, and the edit becomes where the film is actually written. Sound and score usually carry the through-line, because the picture keeps abandoning its characters.
+
+prod:
+ Expensive in cast and cheap in locations, which is why the form recurs in ensemble comedy. The structural cost is an ending: every strand needs a landing, and films of this kind typically run long and finish three times. Test audiences reliably ask for the weakest thread to go, and cutting it reliably breaks the pattern the rest depends on.
+
+examples:
+ - Love Actually | the benign version, connections as comfort
+ - Crash | the hostile version, contact as damage
+ - Knives Out | one household, a braid of accounts
+ - Four Lions | four plots, one catastrophe
+ - Movie 43 | the form pushed to its absurd limit
+ - Everything Everywhere All at Once | the braid across universes
+ - The Death of Stalin | an ensemble with no protagonist
+ - Game Night | one night, several couples, one plot
+ - The Big Sick | two families braided around a bed
+ - Three Billboards Outside Ebbing, Missouri | a town as the ensemble
+ - In Bruges | the two-hander that keeps widening
+ - Much Ado About Nothing | the ensemble as the form
+ - The Breakfast Club | one room, five threads
+ - Crazy, Stupid, Love | couples braided and collided
+ - Intouchables | two lives braided by contract

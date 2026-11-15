@@ -1,0 +1,13 @@
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> dush
+  <span class="text-[#fabd2f]">dush></span> echo "Hello from Dush"
+  Hello from Dush
+  <span class="text-[#fabd2f]">dush></span> ls -l
+  -rw-r--r-- 1 user group 1234 Jan 12 10:00 main.go
+  -rw-r--r-- 1 user group  567 Jan 12 10:00 go.mod
+  <span class="text-[#fabd2f]">dush></span> help
+  Available commands:
+    cd      Change directory
+    exit    Exit the shell
+    help    Show this help message
+    ...     Any system command
+  <span class="text-[#fabd2f]">dush></span> _

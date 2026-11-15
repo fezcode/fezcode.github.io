@@ -1,0 +1,11 @@
+{
+  "name": "Gitland",
+  "version": "0.14.4",
+  "tagline": "A clear view of your code.",
+  "subtitle": "A native Git client for Windows built around readable diffs, three-way review, an editable merge result, and a workspace for many repositories.",
+  "repo": "https://github.com/fezcode/gitland",
+  "download": "https://github.com/fezcode/gitland/releases/latest",
+  "platforms": ["Windows x64"],
+  "stack": ["C#", ".NET 10", "Avalonia UI", "Git"],
+  "image": "/images/projects/gitland/atlas.svg"
+}

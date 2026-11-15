@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Airlift — folded wings rising into an A</title>
+  <rect x="1" y="1" width="62" height="62" rx="16" fill="#20291C" stroke="#465638" stroke-width="1"/>
+  <polygon points="11,48 29,13 34,13 39,23 26,48" fill="#D7F59A"/>
+  <polygon points="34,34 41,20 54,48 41,48" fill="#9DBE73"/>
+</svg>

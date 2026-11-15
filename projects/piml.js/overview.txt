@@ -1,0 +1,56 @@
+# piml.js
+
+**Spec version**: v1.1.0
+
+`piml.js` is the definitive JavaScript implementation of the PIML (Parenthesis Intended Markup Language) specification. Designed for the modern web, it provides a lightweight, zero-dependency solution for parsing and stringifying PIML data. 
+
+PIML was born from a desire to bridge the gap between the strictness of JSON and the verbosity of XML. By utilizing a unique parenthesis-based key structure and indentation-sensitive nesting, PIML offers a "human-first" data format that is as easy to write as it is to read.
+
+## Design Philosophy
+
+- **Human-Centric**: Writing configuration should feel like writing a document, not a math equation.
+- **Structural Clarity**: Parentheses clearly define the start of a key-value pair, while indentation handles the hierarchy.
+- **Zero Ambiguity**: Unlike YAML, PIML avoids complex edge cases in its indentation logic, making it predictable for both humans and machines.
+
+## Extended Format Example
+
+```piml
+(site_name) PIML Ecosystem
+(port) 8080
+(is_production) false
+
+(database)
+  (adapter) postgresql
+  (host) 127.0.0.1
+  (pool_size) 25
+
+(admins)
+  > (User)
+    (id) 1
+    (name) Alice
+    (roles)
+      > superuser
+      > developer
+  > (User)
+    (id) 2
+    (name) Bob
+    (roles)
+      > analyst
+
+(content_blocks)
+  (hero)
+    This is a multi-line block of text
+    that maintains its formatting perfectly.
+    
+    Indentation is respected within blocks.
+
+(metadata)
+  (tags)
+    > javascript
+    > parser
+    > markup
+```
+
+## Why piml.js?
+
+In a world of bloated configuration libraries, `piml.js` stands out for its simplicity. It is perfect for local configuration, static site metadata, or any scenario where readability is paramount.

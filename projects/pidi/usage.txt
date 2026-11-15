@@ -1,0 +1,29 @@
+LABEL: Usage
+SUBTEXT: AT THE KEYBOARD
+
+- **Open**: drag a PDF onto the window, click **`+`** at the top-left, or press `Ctrl+O`.
+- **Select text**: drag with the **select** tool; **right-click** for Copy, Highlight, Underline, Strike out or Search.
+- **Annotate**: pick the **highlight**, **pen** or **note** tool from the bottom bar.
+- **Fill a form**: click a field — text fields open an entry box, checkboxes toggle.
+- **Save** your edits with `Ctrl+S`, or `Ctrl+Shift+S` for a copy.
+
+| Key | Action | Key | Action |
+| --- | --- | --- | --- |
+| Ctrl+O | Open | Ctrl+F | Find |
+| Ctrl++ / Ctrl+− | Zoom in / out | F3 / Shift+F3 | Next / prev match |
+| Ctrl+0 | Fit page | Ctrl+C | Copy selection |
+| Ctrl+1 | Actual size | Ctrl+S / Ctrl+Shift+S | Save / Save as |
+| Ctrl+2 | Fit width | Ctrl+P | Print |
+| PgUp / PgDn | Prev / next page | Home / End | First / last page |
+| ↑ / ↓ · Space | Scroll | Ctrl+L / F11 | Fullscreen |
+| V / H | Select / hand tool | O / T | Outline / thumbnails |
+| Ctrl+W | Close document | Esc | Back / close |
+
+### Command line
+
+```text
+pidi [files...]      Open a PDF
+pidi -h | --help     Show help
+pidi -v | --version  Show version
+pidi --probe FILE    Print page count / title / size (diagnostic)
+```

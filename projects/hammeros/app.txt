@@ -1,0 +1,54 @@
+{
+  "name": "HammerOS",
+  "version": "0.3.7",
+  "tagline": "Your work has a new world.",
+  "subtitle": "A native, full-screen retro workspace for Windows. Real files, real PowerShell, borrowed app windows, and a wonderfully strange Department to work inside.",
+  "repo": "https://github.com/fezcode/hammeros",
+  "download": "https://github.com/fezcode/hammeros/releases/latest",
+  "platforms": ["Windows", "x64"],
+  "stack": ["C#", ".NET 10", "Avalonia 11.3", "ConPTY", "WebView2"],
+  "tools": [
+    {
+      "code": "01 / HOST",
+      "title": "A terminal with a real connection.",
+      "body": "Independent, unelevated PowerShell and CMD sessions run through Windows ConPTY, with a VT engine from Clockt. Tabs have their own processes, names, and working directories.",
+      "note": "Closing Terminal ends its sessions. Minimizing preserves them."
+    },
+    {
+      "code": "02 / RECORDS",
+      "title": "The files are your files.",
+      "body": "Browse actual drives alongside the fictional Department drive. Folder tabs, previews, UTF-8 editing, copy and move queues, recycling, and Terminal here keep everyday work close.",
+      "note": "Your Windows files stay on your Windows filesystem."
+    },
+    {
+      "code": "03 / WINDOWS",
+      "title": "Bring your applications inside.",
+      "body": "The tiled workspace can launch or attach compatible Windows application windows. Arrange them in grids, rows, columns, or a focused view. Detach returns them to Windows.",
+      "note": "Compatibility depends on the application. HammerOS remains a Windows app."
+    },
+    {
+      "code": "04 / CONTINUITY",
+      "title": "A place for every line of work.",
+      "body": "Create up to nine desktops, move windows between them, and save workspace profiles. Session restoration remembers layouts, folders, browser tabs, and unsaved text drafts.",
+      "note": "Shell processes start fresh; commands are never replayed on restart."
+    }
+  ],
+  "department": [
+    {
+      "name": "Refinement",
+      "description": "Number clusters, five bins, and the quiet satisfaction of orderly progress."
+    },
+    {
+      "name": "The Intranet",
+      "description": "Company pages, memoranda, employee handbooks, and a simulated connection to somewhere."
+    },
+    {
+      "name": "After hours",
+      "description": "Sudoku, Hacker Lab, a guided breathing session, and a little room to wander."
+    },
+    {
+      "name": "Personal effects",
+      "description": "Wireframe wallpapers, colour palettes, CRT texture, and an employee designation of your own."
+    }
+  ]
+}

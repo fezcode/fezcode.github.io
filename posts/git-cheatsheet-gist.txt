@@ -1,0 +1,107 @@
+# Git Cheatsheet: From Basics to Time Travel
+
+A collection of essential Git commands, from daily workflows to digging through the depths of your repository's history.
+
+## 🔍 Searching History
+
+### Find when a file existed (even if deleted)
+```bash
+git log --all -- [path]
+```
+
+### Search for content changes (Pickaxe)
+Find commits where a specific string was added or removed:
+```bash
+git log -S "your_search_string"
+```
+
+### Search content with Regex
+```bash
+git log -G "your_regex"
+```
+
+### Find a file in any commit/branch
+```bash
+git rev-list --all | xargs git grep -l "filename"
+```
+
+### See the history of a specific function/method
+```bash
+git log -L :function_name:file_path
+```
+
+---
+
+## 🚀 Daily Workflow
+
+### Stage and Commit
+```bash
+git add .
+git commit -m "feat: descriptive message"
+```
+
+### Undo last commit (keep changes)
+```bash
+git reset --soft HEAD~1
+```
+
+### Fix the last commit message
+```bash
+git commit --amend -m "new message"
+```
+
+---
+
+## 🌿 Branching & Merging
+
+### Switch to a new branch
+```bash
+git checkout -b feature/cool-stuff
+# or the newer way:
+git switch -c feature/cool-stuff
+```
+
+### List all branches (including remote)
+```bash
+git branch -a
+```
+
+### Safely delete a branch
+```bash
+git branch -d branch_name
+```
+
+---
+
+## 🛠️ Cleanup & Maintenance
+
+### Discard all local changes
+```bash
+git reset --hard HEAD
+```
+
+### Clean untracked files
+```bash
+git clean -fd
+```
+
+### Stash changes for later
+```bash
+git stash save "Work in progress"
+git stash list
+git stash pop
+```
+
+---
+
+## 📤 Remote Operations
+
+### Update local with remote and rebase
+```bash
+git pull --rebase origin main
+```
+
+### Prune old remote tracking branches
+```bash
+git fetch -p
+```

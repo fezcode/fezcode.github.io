@@ -1,0 +1,7 @@
+# The Weather Channel Retro
+
+The Weather Channel's retro mode turns your local forecast into a 90s cable TV broadcast — chunky fonts, gradient bars, blocky icons, and that unmistakable "Local on the 8s" look, all driven by live data.
+
+![The Weather Channel Retro](/images/logs/website/weather-com-retro.webp)
+
+Rating: 5/5

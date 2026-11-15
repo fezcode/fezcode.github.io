@@ -1,0 +1,100 @@
+There is a small, quiet problem with having a brain, and it is that you only ever get to live inside one of them.
+
+Every thought you have ever had, every joke you have ever laughed at, every piece of common sense you trust — all of it happened in the same room. You have never spent five minutes inside someone else's head to see how the furniture is arranged. Because of that, you use your own mind as the measuring stick for everybody else's.
+
+Psychologists have two different names for what goes wrong when you do this, depending on whether you are dealing with a **fact** or an **opinion**. When it is a fact, they call it the **Curse of Knowledge**. When it is an opinion, they call it the **False Consensus Effect**.
+
+Really, though, they are the same mistake wearing two different coats.
+
+```mermaid
+flowchart TD
+    Root["Living inside one head"]
+    Root -->|"About a FACT"| CoK["Curse of Knowledge"]
+    Root -->|"About an OPINION"| FCE["False Consensus Effect"]
+    CoK --> CoKSay["'I know it, so it is obvious.'"]
+    FCE --> FCESay["'I feel it, so everyone does.'"]
+```
+
+---
+
+## 1. The Song in Your Head (The Curse of Knowledge)
+
+In 1990, a Stanford graduate student named Elizabeth Newton ran an experiment that sounds like a party game.
+
+She split people into two groups: **tappers** and **listeners**. Each tapper was given a list of twenty-five famous songs — things like *"Happy Birthday"* and *"The Star-Spangled Banner"* — and asked to pick one and tap the rhythm on a table for a listener sitting across from them. The listener's job was simply to guess the song.
+
+Before the listeners guessed, Newton asked the tappers a simple question: *what are the odds this person gets it right?*
+
+The tappers guessed **50 percent**. Half the time. Not every time — they knew tapping on a table was clumsy — but surely, for *"Happy Birthday"*, a person would get it one time out of two.
+
+Out of 120 songs tapped, the listeners got **3**.
+
+Not 30 percent. **Three songs.** Two and a half percent.
+
+The reason is almost funny once you see it. While the tapper is knocking on the wood, they are hearing the entire song in their head. They hear the melody, the words, the brass section, the key change. It is *impossible* for them not to hear it. And meanwhile, the poor listener across the table is just watching a stranger hit a desk like a broken telegraph: *thump, thump-thump, thump, thump, thump.*
+
+That is the **Curse of Knowledge**. Once you know something, you cannot un-know it. You literally cannot remember what the world looked like five minutes before you understood it.
+
+You see this everywhere once you have a name for it:
+
+- A senior programmer tries to explain a bug to a junior, skips four steps because those steps feel like breathing, and then wonders why the junior is staring at the wall.
+- Someone gives you directions in a town they grew up in — *"take the left after the old bakery"* — forgetting that the bakery closed in 2014 and you do not know where it used to be.
+- You write a sentence that makes complete sense to you, because you already know what you meant before you wrote it. The reader only gets the words on the page.
+
+The cruel part of the curse is that knowing a thing well actually makes you *worse* at explaining it, unless you slow down and remind yourself that the other person cannot hear the tune in your head.
+
+---
+
+## 2. The Sign on Your Chest (The False Consensus Effect)
+
+Now swap facts for opinions.
+
+In 1977, Lee Ross and his colleagues at Stanford asked students a weird favour: *would you walk around campus for thirty minutes wearing a giant sandwich board that says **"EAT AT JOE'S"**?*
+
+Some students said yes. Some said no. That wasn't the experiment.
+
+The experiment was the next question: *what percentage of the other students do you think made the same choice you just made?*
+
+- The students who agreed to wear the sign figured **62 percent** of their peers would also agree. After all, it's harmless, it's for a study, why be uptight about it?
+- The students who refused figured **67 percent** of their peers would also refuse. After all, nobody with any self-respect walks around dressed like a billboard.
+
+Both sides were sure they were in the majority. And more than that, both sides thought the people who chose the other way were a bit strange.
+
+That is the **False Consensus Effect**. We don't just have preferences, habits, and beliefs — we quietly assume our preferences are the factory default for a normal human being.
+
+When you speed a little on the highway, you assume everyone speeds a little, and the guy going the limit is a menace. When you drive the limit, you assume sensible people obey the signs, and the guy passing you is a maniac. If you check work messages at midnight, you think that's just how people who care about their jobs behave. If you mute your phone at 6 p.m., you think anyone answering at midnight has lost their mind.
+
+Why do we do it? Two plain reasons:
+
+1. **You hang out with people like you.** Most of your friends, family, and feeds share a lot of your tastes and habits. When you look around the room to check what "normal" is, the sample is rigged before you start.
+2. **It feels good to be normal.** Nobody wants to walk around all day thinking *"my opinions are odd and most people would disagree with me."* Assuming the crowd is behind you is a cheap way to feel right without checking.
+
+---
+
+## 3. How They Work Together
+
+On their own, each of these is a minor annoyance. Together, they are the reason half of all arguments happen.
+
+Think about the last time you watched two people talk past each other at work or at dinner:
+
+1. First, the **Curse of Knowledge** shows up. Person A explains their point badly because half the context is locked inside their own head, humming along like *"Happy Birthday"*. They think they have been crystal clear. All Person B heard was knocking on a table.
+2. Then, when Person B isn't convinced, the **False Consensus Effect** walks in to finish the job. Because Person A assumes any reasonable person shares their view, Person B's confusion doesn't look like an honest misunderstanding. It looks like stubbornness, or stupidity, or bad faith.
+
+*"It's obvious"* is the Curse of Knowledge talking.
+*"Everyone knows this"* is the False Consensus Effect talking.
+Usually, neither sentence is true.
+
+---
+
+## What to Do About It
+
+You cannot turn either of these off. You are stuck in your own head for the rest of your life, and your brain is not going to stop taking shortcuts just because you read a blog post about two Stanford studies from the seventies and nineties.
+
+What you *can* do is catch yourself on the two telltale sentences:
+
+- Whenever you catch yourself thinking **"how do they not get this?"**, stop and ask what music is playing in your head that you never actually said out loud. Spell out the step that feels too basic to mention. It is almost never too basic.
+- Whenever you catch yourself thinking **"everyone agrees that..."** or **"nobody actually likes..."**, treat it as a warning light. Usually "everyone" just means you and the three people you talked to last week.
+
+Other people are not broken versions of you who happen to be missing a few obvious facts. They are sitting on the other side of the table, without the song in their head, wondering why you are knocking on the wood.
+
+> **Lesson:** What is obvious to you is only obvious because it is already in your head — and what feels "normal" to you is often just a mirror with a crowd painted on it.

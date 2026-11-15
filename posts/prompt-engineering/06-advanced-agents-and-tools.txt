@@ -1,0 +1,82 @@
+# Advanced Agents & Tools: From Chatbots to Problem Solvers
+
+Welcome to the final module of our Prompt Engineering course. This is the **Advanced** tier. We're moving beyond simple Q&A into the world of **Agents**—models that can use tools, make plans, and execute complex workflows.
+
+## 1. The ReAct Pattern
+
+ReAct stands for **Reasoning + Acting**. It's a prompting framework that allows LLMs to interact with the external world.
+
+### The Loop
+1.  **Thought:** The model reasons about the current state. ("I need to find the population of France.")
+2.  **Action:** The model decides to use a tool. ("Search: Population of France")
+3.  **Observation:** The tool executes and returns the result. ("67 million")
+4.  **Thought:** The model processes the new information. ("Okay, 67 million. Now I need to find the population of Germany.")
+5.  **Action:** ("Search: Population of Germany")
+...
+6.  **Final Answer:** "Germany has a larger population than France."
+
+**Prompt Template:**
+> You have access to the following tools:
+> - Search: Use this to search Google.
+> - Calculator: Use this for math.
+>
+> Use the following format:
+> Question: the input question you must answer
+> Thought: you should always think about what to do
+> Action: the action to take, should be one of [Search, Calculator]
+> Action Input: the input to the action
+> Observation: the result of the action
+> ... (this Thought/Action/Observation can repeat N times)
+> Thought: I now know the final answer
+> Final Answer: the final answer to the original input question
+
+## 2. Tool Use (Function Calling)
+
+Modern models (Gemini, GPT-4) have native support for "Function Calling". Instead of parsing text like "Action: Search", you define a JSON schema for your functions, and the model outputs structured arguments for those functions.
+
+**Schema:**
+```json
+{
+  "name": "get_weather",
+  "description": "Get the current weather in a given location",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "location": {"type": "string"},
+      "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}
+    },
+    "required": ["location"]
+  }
+}
+```
+
+**Model Output:**
+`get_weather(location="Tokyo", unit="celsius")`
+
+This makes building reliable agents much easier because the model is guaranteed to output valid arguments.
+
+## 3. Planning Agents
+
+For multi-step tasks (e.g., "Plan a trip to Paris"), simple ReAct loops can get stuck. Planning agents first generate a high-level plan and then execute it step-by-step.
+
+**Prompt:**
+> You are a travel agent. Create a detailed itinerary for a 3-day trip to Paris.
+> 1. List the top 3 attractions.
+> 2. Create a day-by-day schedule.
+> 3. Suggest restaurants near each attraction.
+>
+> Plan:
+> [Model generates plan]
+>
+> Execution:
+> [Model executes plan using tools]
+
+## Summary
+
+| Concept | Description | Best For |
+| :--- | :--- | :--- |
+| **ReAct** | Reason -> Act -> Observe Loop. | Dynamic Problem Solving. |
+| **Function Calling** | Structured Tool Use. | Integrating APIs (Weather, Stock, DB). |
+| **Planning** | Generating a roadmap first. | Complex, Multi-step Tasks. |
+
+Congratulations! You have completed the **Prompt Engineering University Course**. From zero-shot basics to building autonomous agents, you now have the tools to master LLMs. Go build something amazing!

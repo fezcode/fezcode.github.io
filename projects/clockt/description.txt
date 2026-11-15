@@ -1,0 +1,31 @@
+## Sessions outlive windows
+
+Published builds run shells in a separate session host, outside the installation folder. Close a window and the shells keep running; update clockt and the new UI reattaches to the sessions the old one left behind. `window.closeAction` decides what a close actually means — ask, detach, or kill.
+
+`ctrl+shift+alt+d` detaches the whole window on purpose. `clockt attach build` picks it up from any console, tmux-style, and `Ctrl+\` lets go again.
+
+## A real emulator, not a wrapper
+
+The VT100/xterm state machine handles 24-bit color, mode 2026 synchronized output, OSC 8 hyperlinks, OSC 133 prompt marks, OSC 7 working directory, OSC 9/777 notifications, ConEmu progress (OSC 9;4), bracketed paste, xterm/SGR/urxvt mouse, kitty-style key encoding, and scrollback reflow on resize.
+
+Hover an HTTP(S), `www.` or OSC 8 link and it underlines with a tooltip that follows the pointer; **Ctrl + left-click** opens it. Soft-wrapped URLs across line breaks are stitched back together.
+
+## Workspaces, tabs, splits
+
+Group tabs into named workspaces in the sidebar — collapse, rename inline, drag tabs between them. Split right or down from the title bar, the tab menu, the pane menu or the keyboard; focus and resize with `alt` + arrows, zoom with `ctrl+shift+z`, and get the whole layout, workspaces included, restored on the next launch.
+
+Vertical sidebar tabs are the default and show each shell's working directory, git branch, listening ports and latest notification with an unread badge.
+
+## Developer panels
+
+`ctrl+alt+j` opens project tasks for CMake/Ninja, Go, .NET, Maven/Gradle and JavaScript/TypeScript, alongside a command timeline, a compiler Problems panel and an agent dashboard.
+
+## Themes that reach the terminal
+
+Fourteen themes where the ANSI palette, cursor, selection, tab pills and pane borders are all tokens — not just the chrome around a terminal that stayed black. The settings window and every plugin popover follow along live, over an Acrylic/Mica sidebar with bundled IBM Plex Sans and Lucide icons.
+
+## Plugins and automation
+
+Status bar plugins are `.ckt` bundles loaded into isolated `AssemblyLoadContext`s behind a permission gate; four ship in the box — sessions, working directory, git and clock. Implement `IClocktPlugin` and `IStatusWidget` against `Clockt.Sdk` and pack with `tools/ckt-pack`.
+
+For scripts and agents, `clockt ls --json | read | send | rename | cmd | browser` drives sessions and windows from the outside, including screenshots and workspace creation.

@@ -1,0 +1,128 @@
+{
+  "name": "osXos",
+  "version": "0.2.6",
+  "tagline": "Know the operation. Then make the change.",
+  "subtitle": "A considered maintenance toolkit that explains the operation, shows the evidence, and accounts for the result.",
+  "repo": "https://github.com/fezcode/osXos",
+  "download": "https://github.com/fezcode/osXos/releases/latest",
+  "platforms": ["Windows", "macOS", "Linux"],
+  "stack": ["C#", ".NET 8", "Avalonia 11.1"],
+  "demoTools": [
+    {
+      "id": "icons",
+      "name": "Clear icon cache",
+      "category": "Explorer / maintenance",
+      "scope": "Current user",
+      "description": "Give stale, blank, or wrong icons a clean slate. Windows rebuilds the cache from the original applications.",
+      "steps": [
+        "Close Windows Explorer to release the databases it holds open.",
+        "Delete the icon and thumbnail cache databases in the current user's profile.",
+        "Start Explorer again and wait for the shell to return."
+      ],
+      "review": [
+        {
+          "path": "%LocalAppData%\\Microsoft\\Windows\\Explorer\\iconcache_32.db",
+          "value": "2.8 MB"
+        },
+        {
+          "path": "%LocalAppData%\\Microsoft\\Windows\\Explorer\\thumbcache_256.db",
+          "value": "14.6 MB"
+        }
+      ],
+      "command": "Stop Explorer → remove reviewed cache files → restart Explorer",
+      "notice": "Explorer restarts. The desktop, taskbar, and open folder windows close temporarily.",
+      "result": [
+        "Explorer stopped; cache handles released.",
+        "The two sample cache databases were removed.",
+        "Explorer restarted. Windows will rebuild icons as they are needed."
+      ],
+      "resultLabel": "Shell restored"
+    },
+    {
+      "id": "browser",
+      "name": "Clear browser caches",
+      "category": "Privacy / maintenance",
+      "scope": "Current user",
+      "description": "Clear the disposable parts of supported browser profiles while keeping the things that make a browser yours.",
+      "steps": [
+        "Locate supported browser profiles and their disk, script, GPU, and service-worker caches.",
+        "Review the exact cache paths and their sizes.",
+        "Remove the reviewed files and report anything still in use."
+      ],
+      "review": [
+        {
+          "path": "%LocalAppData%\\Google\\Chrome\\User Data\\Default\\Cache",
+          "value": "186 MB"
+        },
+        {
+          "path": "%LocalAppData%\\Mozilla\\Firefox\\Profiles\\sample.default\\cache2",
+          "value": "62 MB"
+        }
+      ],
+      "command": "Remove reviewed cache contents; skip and report files in use",
+      "notice": "Cookies, passwords, browsing history, and bookmarks are outside this operation.",
+      "result": [
+        "Reviewed cache contents cleared.",
+        "One sample file was in use and was skipped.",
+        "Cookies, passwords, history, and bookmarks were left alone."
+      ],
+      "resultLabel": "Accounted for"
+    },
+    {
+      "id": "path",
+      "name": "PATH health check",
+      "category": "Developer / report",
+      "scope": "Read-only",
+      "description": "See the dead, duplicated, and empty entries hiding in your PATH. A report you can read without changing a thing.",
+      "steps": [
+        "Read the PATH entries visible to the current user.",
+        "Check for empty entries, repeated paths, and folders that no longer exist.",
+        "Present the findings. This tool makes no edits."
+      ],
+      "review": [
+        { "path": "C:\\Tools\\retired\\bin", "value": "Missing" },
+        { "path": "C:\\Program Files\\Git\\cmd", "value": "Repeated" }
+      ],
+      "command": "Read PATH → compare entries → report findings",
+      "notice": "This is a read-only tool. It does not rewrite PATH or request administrator rights.",
+      "result": [
+        "The sample PATH was inspected.",
+        "One missing folder and one duplicate entry were reported.",
+        "No environment variables were changed."
+      ],
+      "resultLabel": "Read-only report"
+    }
+  ],
+  "categories": [
+    {
+      "number": "01",
+      "name": "Maintenance",
+      "detail": "Caches, temporary files, crash reports. The familiar jobs, made legible."
+    },
+    {
+      "number": "02",
+      "name": "Explorer & shell",
+      "detail": "Icon repairs, file associations, and deliberate changes to your desktop."
+    },
+    {
+      "number": "03",
+      "name": "System & network",
+      "detail": "DNS, startup reports, OS settings. Every command visible before it runs."
+    },
+    {
+      "number": "04",
+      "name": "Privacy",
+      "detail": "Browser caches, recent files, and shell history with exact boundaries."
+    },
+    {
+      "number": "05",
+      "name": "Developer",
+      "detail": "Package-manager caches and read-only reports for a working machine."
+    },
+    {
+      "number": "06",
+      "name": "AI assistants",
+      "detail": "Scratchpads, caches, transcripts, and leftovers, each with its own scope."
+    }
+  ]
+}

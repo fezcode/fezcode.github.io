@@ -1,0 +1,234 @@
+Wave Function Collapse (WFC) is one of those algorithms that feels like magic when you first see it in action. Originally popularized by Maxim Gumin, it’s a powerful tool for procedural generation that can create complex, non-repeating patterns from a small set of example tiles and adjacency rules.
+
+Despite the name—which is borrowed from quantum mechanics—the algorithm itself is purely combinatorial and constraint-based.
+
+## The Core Intuition
+
+Imagine you are trying to fill a grid with tiles. Each tile has specific rules about what can be next to it (e.g., a "Coast" tile can be next to "Sea" or "Land", but "Sea" cannot be directly next to "Land").
+
+WFC approaches this by maintaining a state of **superposition** for every cell in your grid. Initially, every cell could be *any* of the available tiles. As we make decisions, we "collapse" these possibilities until only one remains for each cell.
+
+### Key Terms
+
+1.  **Superposition**: A state where a cell has multiple possible tiles it could be.
+2.  **Entropy**: A measure of uncertainty. In WFC, cells with fewer possible tiles have lower entropy.
+3.  **Collapse**: The act of picking a single tile for a cell from its list of possibilities.
+4.  **Propagation**: The process of updating the possibilities of neighboring cells based on a newly collapsed cell.
+
+## The Algorithm Loop
+
+The WFC algorithm follows a simple but effective loop:
+
+```mermaid
+graph TD
+    A[Start] --> B[Initialize Grid: All tiles possible everywhere]
+    B --> C{Any uncollapsed cells?}
+    C -- Yes --> D[Select cell with Lowest Entropy]
+    D --> E[Collapse cell: Pick 1 possible tile]
+    E --> F[Propagate Constraints to Neighbors]
+    F --> G{Contradiction?}
+    G -- No --> C
+    G -- Yes --> H[Backtrack or Restart]
+    C -- No --> I[Finished!]
+```
+
+1.  **Observation**: Find the cell with the lowest non-zero entropy (the one with the fewest possible tiles left). If there's a tie, pick one randomly.
+2.  **Collapse**: Pick one of the remaining possible tiles for that cell (often weighted by frequency).
+3.  **Propagation**: Since that cell is now fixed, its neighbors might have fewer valid options. Update them. If their options change, update *their* neighbors, and so on.
+
+---
+
+## Visualizing Propagation
+
+Imagine a 3-tile system: **Land (L)**, **Coast (C)**, and **Sea (S)**.
+
+Rules:
+- **L** can touch **L** or **C**.
+- **C** can touch **L**, **C**, or **S**.
+- **S** can touch **C** or **S**.
+
+If we collapse a cell to **Sea (S)**:
+1.  Look at its neighbors.
+2.  The neighbors originally could be {L, C, S}.
+3.  Because they are next to **S**, and **L** cannot touch **S**, we remove **L** from their possibilities.
+4.  The neighbors are now {C, S}. Their entropy has decreased.
+
+---
+
+## Implementation: JavaScript
+
+Here is a simplified 1D implementation to demonstrate the logic. In a 1D world, "neighbors" are just left and right.
+
+```javascript
+const TILES = ['LAND', 'COAST', 'SEA'];
+const RULES = {
+  LAND: ['LAND', 'COAST'],
+  COAST: ['LAND', 'COAST', 'SEA'],
+  SEA: ['COAST', 'SEA'],
+};
+
+function wfc1D(size) {
+  // Initialize grid with all possibilities
+  let grid = Array(size).fill(null).map(() => [...TILES]);
+
+  while (grid.some(cell => cell.length > 1)) {
+    // 1. Find cell with lowest entropy (minimal length > 1)
+    let minEntropy = Infinity;
+    let candidates = [];
+
+    grid.forEach((cell, i) => {
+      if (cell.length > 1 && cell.length < minEntropy) {
+        minEntropy = cell.length;
+        candidates = [i];
+      } else if (cell.length === minEntropy) {
+        candidates.push(i);
+      }
+    });
+
+    if (candidates.length === 0) break;
+
+    // 2. Collapse
+    const index = candidates[Math.floor(Math.random() * candidates.length)];
+    const pick = grid[index][Math.floor(Math.random() * grid[index].length)];
+    grid[index] = [pick];
+
+    // 3. Propagate (Simplified 1D propagation)
+    for (let i = 0; i < size; i++) {
+      if (i > 0) {
+        // Update current based on left neighbor
+        grid[i] = grid[i].filter(t => 
+          grid[i-1].some(prevT => RULES[prevT].includes(t))
+        );
+      }
+      if (i < size - 1) {
+        // Update current based on right neighbor (requires a second pass usually)
+        // For simplicity, we just loop a few times or use a stack
+      }
+    }
+  }
+  return grid.map(c => c[0]);
+}
+
+console.log(wfc1D(10).join(' -> '));
+```
+
+---
+
+## Implementation: Golang
+
+In Go, we can take a more structured approach, which is better for performance and 2D grids.
+
+```go
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+type Tile string
+
+const (
+	Land  Tile = "L"
+	Coast Tile = "C"
+	Sea   Tile = "S"
+)
+
+var Rules = map[Tile][]Tile{
+	Land:  {Land, Coast},
+	Coast: {Land, Coast, Sea},
+	Sea:   {Coast, Sea},
+}
+
+type Cell struct {
+	Possible []Tile
+	Collapsed bool
+}
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+	size := 10
+	grid := make([]Cell, size)
+
+	// Initialize
+	for i := range grid {
+		grid[i] = Cell{Possible: []Tile{Land, Coast, Sea}}
+	}
+
+	for {
+		// Find lowest entropy
+		minIdx := -1
+		minEntropy := 100
+		for i, cell := range grid {
+			if !cell.Collapsed && len(cell.Possible) < minEntropy {
+				minEntropy = len(cell.Possible)
+				minIdx = i
+			}
+		}
+
+		if minIdx == -1 {
+			break // All collapsed
+		}
+
+		// Collapse
+		c := &grid[minIdx]
+		c.Collapsed = true
+		pick := c.Possible[rand.Intn(len(c.Possible))]
+		c.Possible = []Tile{pick}
+
+		// Propagate (1D Simple)
+		propagate(grid)
+	}
+
+	for _, c := range grid {
+		fmt.Printf("%s ", c.Possible[0])
+	}
+	fmt.Println()
+}
+
+func propagate(grid []Cell) {
+	for i := 0; i < len(grid); i++ {
+		if i > 0 {
+			grid[i].Possible = filter(grid[i].Possible, grid[i-1].Possible)
+		}
+		if i < len(grid)-1 {
+			// In a real WFC, this would be a stack-based propagation
+			// that ripples through the whole grid.
+		}
+	}
+}
+
+func filter(current []Tile, neighborPossibilities []Tile) []Tile {
+	var next []Tile
+	for _, t := range current {
+		valid := false
+		for _, nt := range neighborPossibilities {
+			for _, allowed := range Rules[nt] {
+				if t == allowed {
+					valid = true
+					break
+				}
+			}
+		}
+		if valid {
+			next = append(next, t)
+		}
+	}
+	return next
+}
+```
+
+## Challenges: The Contradiction
+
+The hardest part of WFC is the **Contradiction**. This happens when propagation removes *all* possibilities from a cell. If a cell has 0 possible tiles, the algorithm has failed.
+
+There are two main ways to handle this:
+1.  **Restart**: Throw away the progress and start from scratch (easy but slow).
+2.  **Backtracking**: Undo the last few collapses and try different choices (complex but robust).
+
+## Conclusion
+
+Wave Function Collapse is a beautiful marriage of logic and creativity. While the implementation can get tricky with 2D/3D grids and complex rotation/symmetry rules, the core principle remains: **listen to your neighbors and reduce your options until the world reveals itself.**
+
+Try implementing it for a 2D dungeon generator—you might be surprised how "designed" your random levels start to look!

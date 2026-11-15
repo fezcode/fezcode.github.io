@@ -1,0 +1,11 @@
+LABEL: Powerful Logic
+SUBTEXT: FEATURES
+
+- **Intuitive Syntax:** Easy-to-read key-value pairs, supporting nested structures.
+- **Go-like Tagging:** Uses `piml:"tag"` struct tags for flexible field mapping.
+- **Primitive Types:** Supports strings, integers, floats, and booleans.
+- **Complex Types:** Handles structs, slices (arrays), and maps.
+- **Nil Handling:** Explicitly represents `nil` for pointers, empty slices, and empty maps.
+- **Multi-line Strings:** Supports multi-line string values with indentation.
+- **Comments:** Allows single-line comments using `#` (only lines starting with `#` are treated as comments).
+- **Time Support:** Marshals and unmarshals `time.Time` values using RFC3339Nano format.

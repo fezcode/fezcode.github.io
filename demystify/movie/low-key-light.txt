@@ -1,0 +1,45 @@
+id: low-key-light
+rank: 05
+name: LOW-KEY LIGHT
+family: Light
+years: 1941 → present
+sub: Lighting for the shadow instead of the face — most of the frame given up on purpose
+
+ascii:
+┌────────────────────────────────────────┐
+│ ████████████░░░▒▒▓██████████████████   │
+│ ████████░░ ·KEY· ░▒▓████████████████   │
+│ ██████████░░░▒▒▓████████████████████   │
+│ high ratio — one source, no fill       │
+└────────────────────────────────────────┘
+
+what:
+ A lighting scheme with a high key-to-fill ratio: one dominant source, little or nothing lifting the shadows, and large parts of the frame allowed to fall to black. It is the visual grammar of film noir, inherited from German Expressionism and hardened by the cheap stages of 1940s Hollywood, where darkness was also a way to avoid building a set. The modern version is less about menace than about restraint — trusting an audience to read a face that is two-thirds hidden.
+
+artists:
+ Gregg Toland set the template on *Citizen Kane*, lighting for depth and shadow at the same time. Michael Chapman shot *Taxi Driver* so that neon is effectively the only source that matters. Michael Mann and Dion Beebe went digital on *Collateral* specifically to hold detail in a real Los Angeles night. Greig Fraser lit *The Batman* around sources visible in frame, and Rodriguez pushed contrast in *Sin City* until only silhouette survives.
+
+trivia:
+ *Collateral* was shot largely on the Thomson Viper because film stock of the era could not hold the city's ambient night without heavy lighting — and heavy lighting was exactly what Mann did not want. The digital sensor let downtown Los Angeles register as itself, which is why the film looks like a documentary of a night that happens to contain a hitman.
+
+sonic:
+ Darkness makes an audience work, and work reads as attention. When half a face is gone you lean in to read the half that remains, and you assume the withheld half is meaningful even when it is not. It also changes the moral temperature of a room without a line of dialogue, because a character lit from below or from one side has been characterised before speaking.
+
+gear:
+ Fewer units, not more: a key, a negative fill to deepen the shadow side, and flags to keep spill off the walls. Practical sources inside the frame — lamps, signage, a phone screen — do the motivating work. Modern low-light sensors changed what is possible, but the discipline is subtractive: the skill is deciding what not to light and holding your nerve in the grade.
+
+prod:
+ Cheap in units and expensive in time, because precision replaces coverage and every reposition means relighting. The real risk is downstream: a beautifully dark image collapses on a phone screen in daylight, and streaming compression turns gradients in the shadows into blocky mud. Plenty of contemporary complaints about films being "too dark" are actually complaints about bitrate.
+
+examples:
+ - Collateral | Los Angeles at night, shot digital to keep it
+ - The Batman | practicals in frame, nothing filled
+ - Sin City | contrast pushed until only the shape survives
+ - Taxi Driver | neon as the only source that matters
+ - Citizen Kane | ceilings, shadow and depth at once
+ - Blade | the blood rave, lit by strobe
+ - The Girl with the Dragon Tattoo | Swedish winter, underexposed
+ - Nocturnal Animals | two stories separated by light
+ - Prisoners | rain, headlights and nothing else
+ - Eastern Promises | the bathhouse, tiled and unforgiving
+ - Relay | surveillance light as the palette

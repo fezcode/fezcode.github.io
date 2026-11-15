@@ -1,0 +1,1 @@
+import{r as s,j as e}from"../entries/pages.zoUWL8sw.js";import{s as n}from"./chunk--VOkWuXo.js";function o(t){const a=s.lazy(t.loader);return e.jsx(s.Suspense,{fallback:e.jsx("div",{className:"flex items-center justify-center p-8",children:e.jsx(n,{size:32,className:"animate-spin text-gray-400"})}),children:e.jsx(a,{})})}export{o as v};

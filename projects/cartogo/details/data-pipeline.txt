@@ -1,0 +1,8 @@
+# OpenStreetMap Data Pipeline
+
+Fetching map data is handled by a specialized Overpass QL query engine.
+
+## Pipeline Steps
+1. **Query Building**: Dynamic BBox queries for roads, water, and greenery.
+2. **Fetch & Retry**: Robust handling of API timeouts and server load.
+3. **Relation Processing**: Complex multipolygon reconstruction for parks and lakes.

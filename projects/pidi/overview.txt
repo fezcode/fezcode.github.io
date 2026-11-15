@@ -1,0 +1,11 @@
+# pidi
+
+A small, native, **resizable** PDF reader written in C with [raylib](https://www.raylib.com/) — styled after [tivi](/projects/tivi) and [Timp](/projects/timp), powered by [PDFium](https://pdfium.googlesource.com/pdfium/) (BSD) for parsing, rendering, text, search, forms and annotations.
+
+Adobe-Reader-class features wrapped in a borderless, warm Hi-Fi interface — and a single `pidi.exe` beside one `pdfium.dll`.
+
+## Why another reader
+
+The two ends of the PDF spectrum are both unpleasant: a 600 MB suite that wants an account, or a browser tab that cannot fill a form or save a highlight. pidi sits in the middle — it renders everything PDFium renders, writes markup and form data back into the file, and starts instantly because there is nothing to start.
+
+Everything it persists goes to `config.ini` in `%APPDATA%\fezcode\pidi\`: window geometry, recent files, layout mode, fit mode, page shadow, always-on-top, and the Hisashi-menubar switch.

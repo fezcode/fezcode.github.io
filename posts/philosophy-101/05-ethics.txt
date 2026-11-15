@@ -1,0 +1,50 @@
+# Philosophy 101: Ethics - What Should We Do?
+
+## The Trolley Problem
+
+You knew this was coming. A trolley is barreling down a track towards 5 people. You can pull a lever to switch it to a track with 1 person.
+*   **Do you pull the lever?** (Kill 1 to save 5).
+*   **Do you do nothing?** (Let 5 die to avoid "killing" anyone directly).
+
+Welcome to **Ethics**.
+
+## The Big Three Frameworks
+
+Most moral arguments boil down to one of these three heavyweights:
+
+**1. Utilitarianism (Outcomes)**
+*   **The Vibe:** "The needs of the many outweigh the needs of the few."
+*   **Key Concept:** Maximize happiness, minimize suffering. It's math.
+*   **The Trap:** If killing one innocent person saves 100 people, a strict [Utilitarian](/vocab/utilitarianism) says "Do it." Most people find this horrifying.
+
+**2. Deontology (Duty/Rules)**
+*   **The Vibe:** "Some things are just wrong, period."
+*   **Key Figure:** Immanuel Kant.
+*   **The Categorical Imperative:** Act only according to that maxim whereby you can, at the same time, will that it should become a universal law. (Translation: Don't do it if you wouldn't want *everyone* to do it).
+*   **The Trap:** Lying is wrong. Therefore, if a murderer asks where your friend is hiding, you can't lie.
+
+**3. Virtue Ethics (Character)**
+*   **The Vibe:** "Don't ask 'what should I do?', ask 'what kind of person should I be?'"
+*   **Key Figure:** Aristotle.
+*   **Focus:** Courage, Temperance, Wisdom. It's about building habits of character so that you naturally do the right thing.
+
+## Moral Relativism vs. Realism
+
+*   **Relativism:** "Morality is just cultural taste, like preferring tea over coffee."
+*   **Realism:** "Torturing babies is objectively wrong, regardless of what your culture thinks."
+
+## Graduation
+
+You have now completed **Philosophy 101**. You have the tools (Logic), you know the limits of what you can know (Epistemology), you've questioned reality (Metaphysics), and you've struggled with how to live (Ethics).
+
+You are now officially qualified to be annoying at parties. _Go forth and think._
+
+## Recommended Resources
+
+**1. The Website:**
+[The Good Place (TV Show)](https://www.imdb.com/title/tt4955642/)
+*   Surprisingly accurate and deeply funny crash course in moral philosophy.
+
+**2. The Book:**
+*   **"Justice: What's the Right Thing to Do?" by Michael Sandel**.
+*   A classic for a reason. Accessible and challenging.

@@ -1,0 +1,32 @@
+id: neoclassical
+rank: 53
+name: NEOCLASSICAL & CHAMBER
+family: Score & Ambient
+years: 1980 → present
+sub: Written music for small forces — minimalism's descendants, recorded like folk records
+spec: 52,62,70,72,70,72,78,82,84,84,80,78,80,84,80,72,62,52,44,36
+synthType: sine
+freqs: 267.37, 335.14, 420.08
+
+what:
+ The strand that runs from minimalism through Arvo Pärt's tintinnabuli into the current wave of solo-piano and small-ensemble composers, whose records are made and marketed like indie albums rather than classical ones. Italy's Rondò Veneziano sit apart as a deliberate 1980s hybrid — baroque repertoire arranged with synthesizers and a drum machine, which sold in the millions across Europe.
+
+artists:
+ *Joep Beving*, Ólafur Arnalds, Nils Frahm, Max Richter and Hania Rani in the current wave; *Rondò Veneziano* as the synth-baroque outlier; Norway's *Váli* at the acoustic neofolk edge; and Malcolm Robinson's orchestral arrangements of game music as the crossover case.
+
+trivia:
+ Joep Beving was a 6'10" advertising executive who bought a second-hand upright piano, recorded an album on it at home in one week, and uploaded it — *Solipsism* has since passed hundreds of millions of streams and he left the industry entirely. Rondò Veneziano's founder Gian Piero Reverberi came from producing Italian pop and applied its studio techniques to Vivaldi, which purists loathed and audiences did not.
+
+sonic:
+ Solo piano or a small string ensemble, close-mic'd so that mechanical noise — hammers, pedals, breath, bow — is audible and intentional. Harmony is consonant and slow-moving, structures are repetitive and additive rather than developmental, and dynamic range is preserved rather than compressed.
+
+gear:
+ Felted or prepared upright pianos, close pairs of small-diaphragm condensers plus a distant room pair, and minimal outboard. Rondò Veneziano's exception used Yamaha and Roland synthesizers alongside a real string section. The contemporary wing frequently records at home, which is part of the aesthetic rather than a compromise.
+
+prod:
+ The production philosophy is proximity: the microphone is close enough that the instrument's mechanism becomes part of the music. Very little compression, no pitch correction, and mastering that leaves 20 dB or more of range. These records are made for headphones and a quiet room, and they are among the clearest beneficiaries of streaming loudness normalisation.
+
+tracks:
+ - La Serenissima | Rondò Veneziano
+ - Naar Vinden Graater | Váli
+ - Ab Ovo | Joep Beving

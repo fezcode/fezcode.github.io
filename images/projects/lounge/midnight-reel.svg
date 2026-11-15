@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1120" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="900" y1="0" x2="900" y2="1120" gradientUnits="userSpaceOnUse"><stop stop-color="#120d28"/><stop offset=".47" stop-color="#4d2e64"/><stop offset=".75" stop-color="#b488aa"/><stop offset="1" stop-color="#160f28"/></linearGradient>
+    <radialGradient id="planet"><stop stop-color="#efe1c0"/><stop offset=".65" stop-color="#dfbfd0"/><stop offset="1" stop-color="#8d6495"/></radialGradient>
+    <linearGradient id="ridge" x1="900" y1="510" x2="900" y2="1120"><stop stop-color="#6c476c"/><stop offset="1" stop-color="#110c1f"/></linearGradient>
+    <linearGradient id="water" x1="900" y1="740" x2="900" y2="1120"><stop stop-color="#9f739c"/><stop offset="1" stop-color="#171128"/></linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="45"/></filter>
+    <pattern id="grain" width="11" height="13" patternUnits="userSpaceOnUse"><circle cx="2" cy="4" r=".5" fill="#fff" opacity=".08"/><circle cx="7" cy="9" r=".4" fill="#fff" opacity=".05"/></pattern>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h1800v1120H0z"/>
+  <ellipse cx="1080" cy="480" rx="480" ry="250" fill="#b584be" opacity=".13" filter="url(#blur)"/>
+  <circle cx="1250" cy="330" r="196" fill="url(#planet)"/>
+  <path d="M1088 219c100 38 236 51 332 8m-359 45c107 34 260 49 381 9m-387 42c113 37 272 46 390 13m-378 48c96 25 241 32 362 4m-332 55c93 15 184 12 275-3" stroke="#6b477d" stroke-width="4" opacity=".16"/>
+  <ellipse cx="1250" cy="330" rx="340" ry="54" transform="rotate(-24 1250 330)" stroke="#e4c8c4" stroke-width="3" opacity=".6"/>
+  <ellipse cx="1250" cy="330" rx="354" ry="61" transform="rotate(-24 1250 330)" stroke="#c7a7bb" opacity=".35"/>
+  <path d="M0 700 180 573l103 70 148-192 120 185 121-62 142 164 143-97 180 116 116-61 109 74 151-129 187 87v392H0Z" fill="#3e294c"/>
+  <path d="m0 817 160-72 174 17 170-87 143 130 111-22 154 85 190-30 194-123 168 79 130-18 206 102v242H0Z" fill="url(#ridge)"/>
+  <path d="M760 835 950 807l167 313H571Z" fill="url(#water)"/>
+  <path d="m801 868 140-9m-172 36 190-8m-220 40 231-6m-270 44 299-5m-339 51 375-4m-421 58 462-4" stroke="#d9b7c6" stroke-opacity=".25"/>
+  <path d="M0 1000 170 909l200 22 215-76 95 96-129 169H0Zm1800-44-173-103-181 70-149-54-103 124 89 127h517Z" fill="#140e24"/>
+  <g fill="#f8e9d8" opacity=".8"><circle cx="115" cy="125" r="1.4"/><circle cx="311" cy="241" r="1.2"/><circle cx="502" cy="103" r="1.8"/><circle cx="726" cy="228" r="1"/><circle cx="858" cy="91" r="1.2"/><circle cx="1051" cy="154" r="1.2"/><circle cx="1523" cy="103" r="1.5"/><circle cx="1670" cy="297" r="1.2"/><circle cx="1490" cy="440" r="1.5"/><circle cx="176" cy="440" r="1"/><circle cx="615" cy="331" r="1.4"/></g>
+  <path d="M0 0h1800v1120H0z" fill="url(#grain)"/>
+</svg>

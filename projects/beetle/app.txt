@@ -1,0 +1,61 @@
+{
+  "name": "Beetle",
+  "version": "0.1.2",
+  "tagline": "Light, with a life of its own.",
+  "subtitle": "Your ELK-BLEDOM strip, in tune with your screen, your music, and your mood. A native Bluetooth light controller for Windows.",
+  "repo": "https://github.com/fezcode/Beetle",
+  "download": "https://github.com/fezcode/Beetle/releases/latest",
+  "platforms": ["Windows 10", "Windows 11"],
+  "stack": ["C#", ".NET 10", "Avalonia 12", "Bluetooth LE"],
+  "modes": [
+    {
+      "id": "colour",
+      "number": "01",
+      "name": "Colour",
+      "verb": "A colour. An entire feeling.",
+      "body": "Pick a hue, find the exact shade, or start with a preset. Colour streams to the strip as you drag; hardware brightness is its own control.",
+      "detail": "Saturation / value · hex input · twelve presets"
+    },
+    {
+      "id": "ambient",
+      "number": "02",
+      "name": "Ambient",
+      "verb": "Let the picture leave the screen.",
+      "body": "Beetle samples an area of your primary monitor and eases the strip toward its colour. Average follows the whole image; Selective lets colourful details stand out against black, white, and grey.",
+      "detail": "Full screen, centre, edges, or a custom area"
+    },
+    {
+      "id": "rainbow",
+      "number": "03",
+      "name": "Rainbow",
+      "verb": "Take the long way round.",
+      "body": "One colour gives way to the next, all the way around the spectrum. Set a complete cycle anywhere from three seconds to a full minute.",
+      "detail": "A smooth, single-zone colour cycle"
+    },
+    {
+      "id": "music",
+      "number": "04",
+      "name": "Music",
+      "verb": "Feel what you hear.",
+      "body": "The audio your PC is playing becomes brightness and colour. Loudness shapes the glow; bass hits move through the colour wheel or a sequence of colours you choose.",
+      "detail": "PC audio output · adjustable sensitivity · beat colours"
+    }
+  ],
+  "shots": [
+    {
+      "label": "Colour",
+      "src": "/images/projects/beetle/colour.webp",
+      "caption": "Carapace: connection, power, and the colour controls."
+    },
+    {
+      "label": "Ambient",
+      "src": "/images/projects/beetle/ambient.webp",
+      "caption": "Choose the sample area, analysis mode, and colour boost."
+    },
+    {
+      "label": "Scarab",
+      "src": "/images/projects/beetle/theme.webp",
+      "caption": "The Scarab theme. The same controls, a different atmosphere."
+    }
+  ]
+}

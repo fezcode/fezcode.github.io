@@ -1,0 +1,21 @@
+# How the library is built
+
+Cogas never asks a launcher to tell it what you own. It reads what each one already wrote to disk.
+
+1. **Registry and manifests** — Steam's KeyValues `libraryfolders.vdf` and per-app manifests, GOG Galaxy's registry entries, Ubisoft Connect and Battle.net install keys, EA's registration.
+2. **Epic** — the `.item` JSON files the launcher drops for every installed title.
+3. **MSIX and Game Pass** — Game Pass installs carry a `MicrosoftGame.config`; every other package is classified against Microsoft's storefront catalog, because the package manifest alone cannot tell a game from a calculator.
+4. **Merge** — the same game found on several platforms collapses into one entry that carries each platform's mark, instead of three near-identical tiles.
+5. **Enrich** — cover art is cached locally, and Metacritic aggregates are pulled from Steam where available and Wikidata where not.
+
+# Release discipline
+
+The version lives in two files — `Cogas.csproj` and `forge.toml` — across six places between them. `version.ps1` keeps them in lockstep so a build can never advertise one version and install another.
+
+*   **`.\version.ps1`** — report every location and whether they agree.
+*   **`.\version.ps1 -RequireBuild`** — also check the published binary under `dist/`, which is the version the About panel actually reports.
+*   **`.\version.ps1 -Bump patch`** — bump everywhere, then verify.
+*   **`.\build.ps1`** — run the tests, then publish a self-contained single-file exe to `dist/win-x64`.
+*   **`.\installer.ps1`** — build, version-check, then Forge into `dist/installer/Cogas-Setup-<version>.exe`.
+
+`installer.ps1` refuses to package a mismatched version, and checks the finished Setup.exe is a GUI-subsystem binary so it never flashes a console window at users.

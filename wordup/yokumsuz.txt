@@ -1,0 +1,27 @@
+## Anlamı
+
+**Yokumsuz**, ölçülemeyecek, gösterilemeyecek kadar küçük olan, ama hiçbir zaman tamamen yok olmayanı anlatır. İngilizcedeki **infinitesimal** sözcüğünün karşılığı olarak önerilmiştir: akla gelebilecek her sonlu miktardan küçüktür, yine de sıfır değildir.
+
+## Ayırt edici yanı
+
+Kelimenin ağırlığı küçüklükten çok **yok olmamakta**dır. Sözcük *yok-um-suz* diye okunduğunda “yokluğu olmayan”, yani “hiç değil, ama hiçliğe en yakın” bir şeyi anlatır. Bir şey ne kadar küçülürse küçülsün, yokumsuz kaldıkça hâlâ oradadır.
+
+Bu yüzden “çok küçük”, “minnacık” ya da “zerre kadar” demekten farklıdır. Bunlar sonlu bir küçüklüğü anlatır; yokumsuz ise ölçünün bittiği yerde bile kalan izi.
+
+## Cümle içinde
+
+> “İki ölçüm arasındaki fark yokumsuz; ama sıfır değil.”
+
+> “Işık yokumsuzca titredi, fark etmesem hiç olmamış sayacaktım.”
+
+> “Umudu yokumsuzdu, ama vazgeçmesine yetmedi.”
+
+## Kullanımı
+
+**Yokumsuz** bir sıfattır: _yokumsuz bir fark_, _yokumsuz bir değişim_. Zarf olarak **yokumsuzca** önerilir: _yokumsuzca kıpırdadı_, _yokumsuzca yaklaştı_. Niteliğin kendisi için **yokumsuzluk** kullanılabilir. Bunlar bu yeni sözcük için önerilen kullanımlardır.
+
+## Türkçedeki yakın karşılıklar
+
+Matematikte *infinitesimal* genellikle **sonsuz küçük** diye karşılanır (*sonsuz küçükler hesabı*); teknik metinlerde **infinitezimal** de geçer. Gündelik dilde **zerre**, **nebze**, **zerrecik** gibi sözcükler yakın düşer, ama hiçbiri “sıfırdan büyük, her ölçüden küçük” anlamını tek başına taşımaz.
+
+16 Kasım 2026 tarihli sınırlı taramada, **yokumsuz** yazımıyla bu anlamda yerleşik bir kullanıma rastlanmadı. Bu, sözcüğün hiçbir metinde geçmediğini kanıtlamaz.

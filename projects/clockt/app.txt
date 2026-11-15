@@ -1,0 +1,140 @@
+{
+  "name": "clockt",
+  "windowTitle": "clockt",
+  "tagline": "Close the window. Keep the shell.",
+  "subtitle": "A terminal emulator and multiplexer for Windows. Sessions live in a background daemon, so closing a window never kills what was running in it.",
+  "accent": "#6472E8",
+  "accent2": "#A5B4FF",
+  "version": "0.5.11",
+  "platforms": [
+    "Windows 10",
+    "Windows 11"
+  ],
+  "stack": [
+    ".NET 9",
+    "Avalonia",
+    "ConPTY"
+  ],
+  "download": "https://github.com/fezcode/clockt/releases",
+  "downloadLabel": "Download installer",
+  "repo": "https://github.com/fezcode/clockt",
+  "summary": [
+    "Published builds run shells in a separate session host, outside the installation folder. Close a window and the shells keep running; update clockt and the new UI reattaches to the sessions the old one left behind.",
+    "Underneath is a real emulator, not a wrapper: a VT100/xterm state machine with 24-bit colour, synchronized output, OSC 8 hyperlinks, prompt marks, bracketed paste, mouse reporting and scrollback reflow on resize."
+  ],
+  "panelsHeading": "What sits on top",
+  "panelsWindowTitle": "clockt — workspace",
+  "panels": [
+    {
+      "title": "Detachable sessions",
+      "body": "window.closeAction decides what closing means: ask, detach, or kill. Detach the whole window deliberately and pick it up from any console.",
+      "keys": "ctrl+shift+alt+d"
+    },
+    {
+      "title": "Workspaces",
+      "body": "Group tabs into named workspaces in the sidebar — collapse, rename inline, drag tabs between them.",
+      "keys": "ctrl+shift+g"
+    },
+    {
+      "title": "Tabs and splits",
+      "body": "Split right or down, focus and resize with alt and the arrows, zoom a pane, and get the whole layout back on the next launch.",
+      "keys": "ctrl+shift+d"
+    },
+    {
+      "title": "Developer panels",
+      "body": "Project tasks for CMake/Ninja, Go, .NET, Maven/Gradle and JS/TS, plus a command timeline, a Problems panel and an agent dashboard.",
+      "keys": "ctrl+alt+j"
+    },
+    {
+      "title": "Browser pane",
+      "body": "An embedded WebView2 beside your shells, scriptable with navigate, js and dom."
+    },
+    {
+      "title": "Fourteen themes",
+      "body": "The ANSI palette, cursor, selection, tab pills and pane borders are all tokens — the terminal is themed, not just the chrome around it."
+    }
+  ],
+  "keysHeading": "From the keyboard",
+  "keysWindowTitle": "clockt — keys",
+  "keys": [
+    {
+      "k": "ctrl+shift+t",
+      "a": "New tab"
+    },
+    {
+      "k": "ctrl+shift+d",
+      "a": "Split right"
+    },
+    {
+      "k": "ctrl+shift+e",
+      "a": "Split down"
+    },
+    {
+      "k": "alt+arrows",
+      "a": "Focus a pane"
+    },
+    {
+      "k": "ctrl+shift+z",
+      "a": "Zoom the active pane"
+    },
+    {
+      "k": "ctrl+shift+g",
+      "a": "New workspace"
+    },
+    {
+      "k": "ctrl+shift+f",
+      "a": "Find in scrollback"
+    },
+    {
+      "k": "ctrl+shift+p",
+      "a": "Command palette"
+    },
+    {
+      "k": "ctrl+shift+alt+d",
+      "a": "Detach the window, sessions keep running"
+    }
+  ],
+  "terminalHeading": "Drive it from anywhere",
+  "terminal": {
+    "caption": "clockt — CLI",
+    "lines": [
+      "clockt new -n build          # create a session and attach",
+      "clockt ls                    # list daemon sessions",
+      "clockt send build \"npm test\" # type into a session",
+      "clockt read build            # print its screen",
+      "clockt cmd pane.split.right  # drive the window from a script",
+      "clockt ssh dev               # hosts from ~\\.ssh\\config"
+    ]
+  },
+  "notesTitle": "Plugins",
+  "notes": "Status bar plugins are `.ckt` bundles loaded into isolated `AssemblyLoadContext`s behind a permission gate; four ship in the box — sessions, working directory, git and clock. Implement `IClocktPlugin` and `IStatusWidget` against `Clockt.Sdk` and pack with `tools/ckt-pack`.\n\nFor scripts and agents, `clockt ls --json | read | send | rename | cmd | browser` drives sessions and windows from the outside, including screenshots and workspace creation.",
+  "colophon": [
+    [
+      "Config",
+      "%AppData%\\fezcode\\clockt"
+    ],
+    [
+      "Plugins",
+      ".ckt bundles"
+    ],
+    [
+      "Themes",
+      "14, terminal included"
+    ],
+    [
+      "Emulator",
+      "VT100 / xterm, 24-bit"
+    ],
+    [
+      "Shell integration",
+      "PowerShell, bash, zsh"
+    ]
+  ],
+  "shots": [
+    {
+      "src": "/images/projects/clockt/terminal.png",
+      "caption": "clockt — a workspace, git output in 24-bit colour, status bar"
+    }
+  ],
+  "shotsHeading": "On screen"
+}

@@ -1,0 +1,21 @@
+LABEL: Technical
+SUBTEXT: Stack
+IMAGE: /images/projects/typewriter/banner.png
+
+A deliberately small program: one C file, SDL2 for the window and input, SDL2_ttf and FreeType for the type.
+
+- **Language**: C
+- **Window & input**: SDL2
+- **Text rendering**: SDL2_ttf + FreeType
+- **Audio**: recorded key strikes compiled into the binary as headers — `snd_keypress.h`, `snd_clack.h`, `snd_click.h`, `snd_space.h`, `snd_backspace.h`, `snd_bell.h`
+- **Font**: `typewriter.ttf`, embedded via `font_embed.h`
+- **Menu bridge**: `hoswl.h`, the single-header client for the [Hisashi](/projects/hisashi) menu bar
+- **Build**: Make — `mingw32-make` on Windows, `make` on macOS and Linux
+
+### Self-contained build
+
+`make STATIC=1` links SDL2, SDL2_ttf and FreeType into the executable, so it runs on a machine with nothing else installed. On Windows the MSYS2 packages already carry the static libraries:
+
+```sh
+mingw32-make STATIC=1
+```

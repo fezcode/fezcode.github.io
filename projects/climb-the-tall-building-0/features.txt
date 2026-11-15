@@ -1,0 +1,12 @@
+LABEL: Features
+SUBTEXT: Mechanics
+IMAGE: /images/projects/climb-the-tall-building-0/2.png
+
+- **Deck-Building Combat**: Draw, play, and strategize with 18+ unique cards.
+- **Turn-Based Battles**: Play attack, skill, and power cards using energy each turn.
+- **Status Effects**: Utilize Vulnerable, Weak, Strength, Thorns, and Metallicize mechanics.
+- **Branching Map**: Pick your path through combat, elite, rest, event, and boss nodes.
+- **13 Unique Enemies**: Face challenges ranging from Jaw Worms and Cultists to elite Gremlin Nobs and bosses like The Guardian.
+- **Card Upgrades**: Rest at campfires to heal or upgrade a card.
+- **Post-Combat Rewards**: Choose from 3 new cards after each victory.
+- **Premium Dark UI**: Immersive design with Cinzel serif title font, glowing cards, and animated intents.

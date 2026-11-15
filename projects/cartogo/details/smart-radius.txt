@@ -1,0 +1,6 @@
+# Intelligent Radius Scaling
+
+Maps aren't just squares. CartoGo implements dynamic radius compensation to ensure perfect framing.
+
+## The Compensation Algorithm
+Calculates an optimal bounding box based on the physical aspect ratio (Width/Height) to ensure the city center peninsula or arterial roads aren't cropped awkwardly.

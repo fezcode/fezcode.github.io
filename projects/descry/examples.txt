@@ -1,0 +1,29 @@
+LABEL: Rendering
+SUBTEXT: Preview Mode
+IMAGE: /images/projects/descry/tags-and-lists.png
+
+Preview is not a second-class view. Tags, lists and mid-line styling all render in place, and find/replace searches the rendered text in preview and the raw source in edit mode — so the highlights line up either way.
+
+## Images in the preview pane
+
+Image files in the vault sidebar open straight into the preview, and embeds render inline alongside the prose.
+
+![Image embeds in preview](/images/projects/descry/images.png)
+
+## Typographic math
+
+Inline `$…$` and display `$$…$$` spans render as real Unicode glyphs — Greek letters, operators, `\frac{a}{b}`, roots, and simple super/subscripts:
+
+```text
+$\sum_{i=1}^{n} x_i^2$   →   ∑ᵢ₌₁ⁿ xᵢ²
+```
+
+This is a typographic pass, not a full TeX engine — which is the honest trade for a native binary that starts instantly.
+
+## Everything reachable from the keyboard
+
+- **Quick switcher** (`Ctrl+P`) — recents-first, fuzzy match.
+- **Command palette** (`Ctrl+Shift+P`) — every action plus every Lua-registered plugin action, with a category chip and its bound shortcut.
+- **Outline panel** auto-generated from headings, pinned or modal.
+- **Vault-wide search** across every note with a results overlay.
+- **Go menu** — Go to File, Line, Heading and Tag, plus "Last edit" to hop back to where you were typing.

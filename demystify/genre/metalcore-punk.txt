@@ -1,0 +1,34 @@
+id: metalcore-punk
+rank: 11
+name: MELODIC HARDCORE & PUNK
+family: Rock & Metal
+years: 1980 → present
+sub: Punk speed with metal precision and a conscience — songs about politics, guilt and getting out
+spec: 74,84,88,80,72,74,80,84,84,80,76,76,80,84,80,72,62,52,44,36
+synthType: square
+freqs: 68.94, 86.41, 267.37
+
+what:
+ American hardcore split in the 1990s: one branch went heavier and became metalcore, another kept the melody and the politics and became melodic hardcore. Rise Against, out of Chicago, are the clearest example of the second — Fat Wreck Chords punk structure with a metal rhythm section and lyrics about labour, war and animal rights. Thrice took the same starting point toward post-hardcore experiment.
+
+artists:
+ Minor Threat and Bad Religion as ancestors; *Rise Against*, *Thrice*, Strike Anywhere, Comeback Kid and Defeater in the melodic wing; the horror-punk tradition of Misfits continues through acts like *Harley Poe*.
+
+trivia:
+ Rise Against have been straight edge and vegan for most of their career and have repeatedly turned down licensing that conflicted with it — an unusually literal case of a band's lyrics constraining its business. Thrice self-financed and self-produced *The Alchemy Index*, four EPs themed on fire, water, air and earth, each recorded with a deliberately different production approach; the band paid for it after their label declined.
+
+sonic:
+ Fast palm-muted downstrokes, a snare on every offbeat, and octave chords instead of power chords for the melodic passages. Vocals alternate between shouted and sung, often in the same phrase, and gang vocals carry the hook. Tempos sit at 160–200 BPM with an obligatory half-time breakdown, and the whole thing is mixed for maximum midrange aggression.
+
+gear:
+ Gibson Les Pauls and Fender Telecasters into Mesa Dual Rectifier and Orange heads; the guitar tone is high-gain but far less scooped than metal, keeping the mids that make the chords legible. Kits are tuned high with a very bright snare, and bass is usually distorted in parallel to fill the low mids.
+
+prod:
+ Drums are heavily edited to the grid and frequently sample-reinforced, because the tempos leave no room for drift. Guitars are quad-tracked. Vocals are comped tightly and layered with gang tracks recorded by whoever was in the building. Masters are loud and aggressively limited — this is music built for a small loud room and it is mixed to sound like one.
+
+tracks:
+ - Red Sky | Thrice
+ - Behind Closed Doors | Rise Against
+ - Ouija | Harley Poe
+ - Bridges Burned | Tattoo the Scars
+ - 21 Guns | Green Day
