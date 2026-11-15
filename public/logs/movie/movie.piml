@@ -1,6 +1,23 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-11-15
+    (link) https://www.imdb.com/title/tt35538033/
+    (rating) 4
+    (slug) resident-evil-2026
+    (title) Resident Evil (2026)
+    (image) /images/discovery/art/movie/resident-evil-2026.webp
+    (imageSource)
+      (provider) IMDb poster artwork
+      (page) https://www.imdb.com/title/tt35538033/
+      (url) https://m.media-amazon.com/images/M/MV5BOGZjZWI1NTItOGUwZC00YWZkLWIxZWEtNzE2ZTIxODdjNmZmXkEyXkFqcGc@._V1_FMjpg_UY2964_.jpg
+      (title) Resident Evil (2026)
+      (width) 2000
+      (height) 2964
+    (description) Zach Cregger's Raccoon City survival-horror reboot feels like a faithful adaptation of the original Resident Evil game: old houses, dark corners, looting and searching, terrible dogs, green herbs, and ammo management, all kept lean and fun around 90 minutes without stretching its welcome. Really liked it. 4/5.
+    (director) Zach Cregger
+  > (item)
+    (category) Movie
     (date) 2026-11-14
     (link) https://www.imdb.com/title/tt17009710/
     (rating) 3
