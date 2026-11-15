@@ -4,6 +4,7 @@ import { useProjects } from '../../utils/projectParser';
 import { useAchievements } from '../../context/AchievementContext';
 import OrbitProjectCard from '../../components/orbit/OrbitProjectCard';
 import { OrbitNotice } from '../../components/orbit';
+import TagLink from '../../components/TagLink';
 import '../../styles/Orbit.css';
 
 const OrbitProjectsPage = () => {
@@ -79,7 +80,21 @@ const OrbitProjectsPage = () => {
             {filtered.length ? (
               <div className="orb-project-grid">
                 {filtered.map((project) => (
-                  <OrbitProjectCard key={project.slug} project={project} />
+                  <div
+                    key={project.slug}
+                    className="flex flex-col gap-2 [&>.orb-project-card]:flex-1"
+                  >
+                    <OrbitProjectCard project={project} />
+                    {project.tags?.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tags.slice(0, 4).map((t) => (
+                          <TagLink key={t} tag={t} className="orb-chip">
+                            #{t}
+                          </TagLink>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             ) : (

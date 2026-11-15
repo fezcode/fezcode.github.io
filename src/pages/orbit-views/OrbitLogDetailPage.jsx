@@ -4,6 +4,7 @@ import piml from 'piml';
 import Seo from '../../components/Seo';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
+import TagLink from '../../components/TagLink';
 import { OrbitNotice, OrbitRule } from '../../components/orbit';
 import '../../styles/Orbit.css';
 
@@ -118,6 +119,11 @@ const OrbitLogDetailPage = () => {
     attributes.studio;
   const rating = Number(attributes.rating) || 0;
   const { prev, next } = neighbours;
+  const tags = Array.isArray(attributes.tags)
+    ? attributes.tags
+    : attributes.tags
+      ? [attributes.tags]
+      : [];
 
   return (
     <div className="orb-root">
@@ -205,18 +211,14 @@ const OrbitLogDetailPage = () => {
           </div>
         </section>
 
-        {attributes.tags && attributes.tags.length > 0 && (
+        {tags.length > 0 && (
           <section className="mt-8">
             <OrbitRule label="CROSS-REFERENCED UNDER" className="mb-3" />
             <div className="flex flex-wrap gap-1.5">
-              {attributes.tags.map((t) => (
-                <span
-                  key={t}
-                  className="orb-chip"
-                  style={{ cursor: 'default' }}
-                >
+              {tags.map((t) => (
+                <TagLink key={t} tag={t} className="orb-chip">
                   #{String(t).toUpperCase()}
-                </span>
+                </TagLink>
               ))}
             </div>
           </section>

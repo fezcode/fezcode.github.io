@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon } from '@phosphor-icons/react';
+import TagLink from './TagLink';
 
 const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
   const content = (
@@ -23,16 +24,32 @@ const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
           {String(index + 1).padStart(2, '0')}
         </span>
 
-        {/* Title */}
-        <h3
-          className={`text-3xl font-light uppercase tracking-tight transition-all duration-300 md:text-5xl break-words leading-[1.1] ${
-            isActive
-              ? 'translate-x-2 text-white font-medium'
-              : 'text-gray-500 group-hover:text-gray-300'
-          }`}
-        >
-          {project.title}
-        </h3>
+        <div className="min-w-0">
+          {/* Title */}
+          <h3
+            className={`text-3xl font-light uppercase tracking-tight transition-all duration-300 md:text-5xl break-words leading-[1.1] ${
+              isActive
+                ? 'translate-x-2 text-white font-medium'
+                : 'text-gray-500 group-hover:text-gray-300'
+            }`}
+          >
+            {project.title}
+          </h3>
+          {project.tags?.length > 0 && (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {project.tags.slice(0, 4).map((tag) => (
+                <TagLink
+                  key={tag}
+                  tag={tag}
+                  nested
+                  className="font-mono text-[10px] uppercase tracking-widest text-gray-600 border border-white/10 px-2 py-0.5 hover:text-emerald-400 hover:border-emerald-400/50 transition-colors cursor-pointer"
+                >
+                  #{tag}
+                </TagLink>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Arrow Interaction */}

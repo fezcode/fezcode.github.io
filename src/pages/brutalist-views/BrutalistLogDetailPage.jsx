@@ -12,6 +12,7 @@ import {
 } from '@phosphor-icons/react';
 import GenerativeArt from '../../components/GenerativeArt';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import piml from 'piml';
 import MarkdownLink from '../../components/MarkdownLink';
 import colors from '../../config/colors';
@@ -98,6 +99,11 @@ const BrutalistLogDetailPage = () => {
   }
 
   const { attributes, body } = log;
+  const logTags = Array.isArray(attributes.tags)
+    ? attributes.tags
+    : attributes.tags
+      ? [attributes.tags]
+      : [];
   const accentColor = colors[category.toLowerCase()] || colors.primary[400];
 
   const MetadataRow = ({ label, value, icon: Icon }) => {
@@ -258,16 +264,17 @@ const BrutalistLogDetailPage = () => {
             </article>
 
             {/* Tags Section */}
-            {attributes.tags && attributes.tags.length > 0 && (
+            {logTags.length > 0 && (
               <div className="mt-20 pt-12 border-t border-white/10">
                 <div className="flex flex-wrap gap-2">
-                  {attributes.tags.map((tag) => (
-                    <span
+                  {logTags.map((tag) => (
+                    <TagLink
                       key={tag}
-                      className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.08] text-[10px] font-mono text-gray-500 uppercase tracking-widest hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-colors cursor-default"
+                      tag={tag}
+                      className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.08] text-[10px] font-mono text-gray-500 uppercase tracking-widest hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-colors"
                     >
                       #{tag}
-                    </span>
+                    </TagLink>
                   ))}
                 </div>
               </div>

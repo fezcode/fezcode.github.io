@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Label from '../Label';
+import TagLink from '../TagLink';
 import { ArrowUpIcon, ArrowDownIcon } from '@phosphor-icons/react';
 
 const getCategoryStyles = (category) => {
@@ -146,12 +147,13 @@ const PostMetadata = ({
               </Label>
               <div className="flex flex-wrap gap-2 mt-2">
                 {metadata.tags.map((tag) => (
-                  <span
+                  <TagLink
                     key={tag}
-                    className="bg-cyan-900/20 text-cyan-300 border border-cyan-900/50 text-xs font-mono px-2 py-1 rounded hover:bg-cyan-900/40 transition-colors cursor-default"
+                    tag={tag}
+                    className="bg-cyan-900/20 text-cyan-300 border border-cyan-900/50 text-xs font-mono px-2 py-1 rounded hover:bg-cyan-900/40 transition-colors"
                   >
                     #{tag}
-                  </span>
+                  </TagLink>
                 ))}
               </div>
             </div>

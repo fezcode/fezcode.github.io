@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import BrutalistPostItem from '../../components/BrutalistPostItem';
 import GenerativeArt from '../../components/GenerativeArt';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import {
   ArrowLeft,
@@ -279,12 +280,13 @@ const BrutalistBlogPage = () => {
                 {activePost.tags && activePost.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 max-w-xl">
                     {activePost.tags.map((tag) => (
-                      <span
+                      <TagLink
                         key={tag}
-                        className="inline-flex items-center gap-1 text-[9px] font-mono font-bold uppercase tracking-wider text-gray-400 bg-black/40 px-2 py-1 rounded-sm border border-white/5"
+                        tag={tag}
+                        className="inline-flex items-center gap-1 text-[9px] font-mono font-bold uppercase tracking-wider text-gray-400 bg-black/40 px-2 py-1 rounded-sm border border-white/5 hover:text-emerald-400 hover:border-emerald-500/30 transition-colors"
                       >
                         <Hash size={10} /> {tag}
-                      </span>
+                      </TagLink>
                     ))}
                   </div>
                 )}

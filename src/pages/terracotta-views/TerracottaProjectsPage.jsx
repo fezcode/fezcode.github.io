@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import { useProjects } from '../../utils/projectParser';
 import { useAchievements } from '../../context/AchievementContext';
 import {
@@ -60,7 +61,9 @@ const ProjectRow = ({ project, index }) => (
         {project.shortDescription && (
           <p
             className="mt-2 font-fraunces italic text-[15px] md:text-[17px] leading-[1.5] text-[#2E2620] max-w-[60ch]"
-            style={{ fontVariationSettings: '"opsz" 18, "SOFT" 100, "wght" 360' }}
+            style={{
+              fontVariationSettings: '"opsz" 18, "SOFT" 100, "wght" 360',
+            }}
           >
             {project.shortDescription}
           </p>
@@ -69,6 +72,20 @@ const ProjectRow = ({ project, index }) => (
           <div className="mt-3 font-ibm-plex-mono text-[10px] tracking-[0.22em] uppercase text-[#2E2620]/60">
             {formatDate(project.date)}
             {project.status ? ` · ${project.status.toLowerCase()}` : ''}
+          </div>
+        )}
+        {Array.isArray(project.tags) && project.tags.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {project.tags.slice(0, 4).map((t) => (
+              <TagLink
+                key={t}
+                tag={t}
+                nested
+                className="font-ibm-plex-mono text-[9.5px] tracking-[0.14em] uppercase px-1.5 py-0.5 border border-[#1A161320] text-[#2E2620] hover:border-[#9E4A2F] hover:text-[#9E4A2F] transition-colors"
+              >
+                #{t}
+              </TagLink>
+            ))}
           </div>
         )}
       </div>
@@ -198,7 +215,10 @@ const TerracottaProjectsPage = () => {
             <div>
               <div className="font-ibm-plex-mono text-[11px] tracking-[0.2em] uppercase text-[#9E4A2F] mb-6 flex items-center gap-3">
                 <span>Codex entry · §</span>
-                <span aria-hidden="true" className="h-px flex-1 max-w-[80px] bg-[#9E4A2F]/50" />
+                <span
+                  aria-hidden="true"
+                  className="h-px flex-1 max-w-[80px] bg-[#9E4A2F]/50"
+                />
                 <span>II</span>
               </div>
               <h1
@@ -208,7 +228,8 @@ const TerracottaProjectsPage = () => {
                     '"opsz" 144, "SOFT" 30, "WONK" 1, "wght" 460',
                 }}
               >
-                The<br />
+                The
+                <br />
                 <ChapterEm>archive</ChapterEm>
                 <span
                   aria-hidden="true"
@@ -240,7 +261,10 @@ const TerracottaProjectsPage = () => {
                 — deployed, maintained, and returned to.
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#1A161320]">
-                <TerracottaSpec label="Total" value={`${(projects || []).length}`} />
+                <TerracottaSpec
+                  label="Total"
+                  value={`${(projects || []).length}`}
+                />
                 <TerracottaSpec label="Scope" value="Selected only" />
                 <TerracottaSpec label="Ordered by" value="Gravity" />
                 <TerracottaSpec label="Status" value="Load-bearing" />
@@ -313,8 +337,7 @@ const TerracottaProjectsPage = () => {
                 {
                   label: 'Form',
                   value:
-                    first.shortDescription ||
-                    'A deployed build, in daily use.',
+                    first.shortDescription || 'A deployed build, in daily use.',
                 },
                 {
                   label: 'Stack',
@@ -447,7 +470,10 @@ const TerracottaProjectsPage = () => {
           signature={
             <>
               <span>© {new Date().getFullYear()} · Fezcode / A. S. Bulbul</span>
-              <span>Archive · folio {String((projects || []).length).padStart(3, '0')}</span>
+              <span>
+                Archive · folio{' '}
+                {String((projects || []).length).padStart(3, '0')}
+              </span>
             </>
           }
         />

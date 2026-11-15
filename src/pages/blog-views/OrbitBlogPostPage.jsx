@@ -15,6 +15,7 @@ import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
 import MermaidDiagram from '../../components/MermaidDiagram';
 import CodeModal from '../../components/CodeModal';
+import TagLink from '../../components/TagLink';
 import { OrbitNotice } from '../../components/orbit';
 import { orbitDate } from '../../components/orbit/useOrbitContent';
 import { useToast } from '../../hooks/useToast';
@@ -219,8 +220,8 @@ const OrbitBlogPostPage = () => {
               >
                 {post.category || 'Writing'}
               </span>{' '}
-              · {orbitDate(post.date)} · {calculateReadingTime(post.content)} min
-              read
+              · {orbitDate(post.date)} · {calculateReadingTime(post.content)}{' '}
+              min read
             </p>
             <h1 className="orb-reader-heading">{post.title}</h1>
             {post.description && (
@@ -240,13 +241,9 @@ const OrbitBlogPostPage = () => {
           {post.tags?.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-10">
               {post.tags.map((tag) => (
-                <Link
-                  key={tag}
-                  to={`/blog?search=${encodeURIComponent(tag)}`}
-                  className="orb-chip"
-                >
+                <TagLink key={tag} tag={tag} className="orb-chip">
                   {tag}
-                </Link>
+                </TagLink>
               ))}
             </div>
           )}

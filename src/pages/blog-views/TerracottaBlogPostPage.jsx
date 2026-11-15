@@ -13,6 +13,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../../utils/customTheme';
 import CodeModal from '../../components/CodeModal';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import TerracottaGenerativeArt from '../../components/TerracottaGenerativeArt';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
@@ -58,7 +59,9 @@ const TerracottaBlogPostPage = () => {
       try {
         const { allPostsData, processedPosts } = await fetchAllBlogPosts();
 
-        const postMetadata = processedPosts.find((item) => item.slug === currentSlug);
+        const postMetadata = processedPosts.find(
+          (item) => item.slug === currentSlug,
+        );
         if (!postMetadata) {
           navigate('/404');
           return;
@@ -89,7 +92,8 @@ const TerracottaBlogPostPage = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
       const totalHeight = scrollHeight - clientHeight;
       setReadingProgress((scrollTop / totalHeight) * 100);
     };
@@ -137,7 +141,9 @@ const TerracottaBlogPostPage = () => {
           <div className="relative group my-8">
             <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
               <button
-                onClick={() => openModal(String(children).replace(/\n$/, ''), match[1])}
+                onClick={() =>
+                  openModal(String(children).replace(/\n$/, ''), match[1])
+                }
                 className="bg-[#1A1613] border border-[#F3ECE0]/10 px-2 py-1 text-[10px] uppercase font-mono font-bold tracking-widest text-[#F3ECE0]/70 hover:text-[#F3ECE0] hover:bg-[#C96442] hover:border-[#C96442] transition-all rounded-sm"
                 title="Expand"
               >
@@ -170,7 +176,11 @@ const TerracottaBlogPostPage = () => {
                   background: 'transparent',
                 }}
                 {...props}
-                codeTagProps={{ style: { fontFamily: "'IBM Plex Mono', 'JetBrains Mono', monospace" } }}
+                codeTagProps={{
+                  style: {
+                    fontFamily: "'IBM Plex Mono', 'JetBrains Mono', monospace",
+                  },
+                }}
               >
                 {String(children).replace(/\n$/, '')}
               </SyntaxHighlighter>
@@ -192,7 +202,8 @@ const TerracottaBlogPostPage = () => {
     return {
       a: (p) => {
         const isVocab =
-          p.href && (p.href.startsWith('/vocab/') || p.href.includes('/#/vocab/'));
+          p.href &&
+          (p.href.startsWith('/vocab/') || p.href.includes('/#/vocab/'));
         return (
           <MarkdownLink
             {...p}
@@ -224,9 +235,13 @@ const TerracottaBlogPostPage = () => {
     post.attributes.category,
   );
 
-  const currentPostIndex = post.seriesPosts?.findIndex((item) => item.slug === currentSlug);
+  const currentPostIndex = post.seriesPosts?.findIndex(
+    (item) => item.slug === currentSlug,
+  );
   const prevPost = post.seriesPosts?.[currentPostIndex - 1];
   const nextPost = post.seriesPosts?.[currentPostIndex + 1];
+  const rawTags = post.attributes.tags;
+  const postTags = Array.isArray(rawTags) ? rawTags : rawTags ? [rawTags] : [];
 
   return (
     <div className="min-h-screen bg-[#F3ECE0] text-[#1A1613] selection:bg-[#C96442]/25 pb-32 relative">
@@ -267,7 +282,9 @@ const TerracottaBlogPostPage = () => {
               className="inline-flex items-center gap-2 rounded-full border border-[#1A161320] bg-[#F3ECE0]/80 px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-[#1A1613] backdrop-blur-md transition-colors hover:bg-[#1A1613] hover:text-[#F3ECE0]"
             >
               <ArrowLeft weight="bold" />
-              <span>{post.attributes.series ? 'Back to Series' : 'Back to Intel'}</span>
+              <span>
+                {post.attributes.series ? 'Back to Series' : 'Back to Intel'}
+              </span>
             </Link>
             <span
               className="font-mono text-[10px] uppercase tracking-widest border px-2 py-1.5 rounded-full backdrop-blur-sm"
@@ -316,7 +333,9 @@ const TerracottaBlogPostPage = () => {
                   <span className="block font-mono text-[10px] uppercase text-[#2E2620]/60 mb-2">
                     Previous Intel
                   </span>
-                  <span className="text-xl font-fraunces italic">{prevPost.title}</span>
+                  <span className="text-xl font-fraunces italic">
+                    {prevPost.title}
+                  </span>
                 </Link>
               ) : (
                 <div />
@@ -333,7 +352,9 @@ const TerracottaBlogPostPage = () => {
                   <span className="block font-mono text-[10px] uppercase text-[#2E2620]/60 mb-2">
                     Next Intel
                   </span>
-                  <span className="text-xl font-fraunces italic">{nextPost.title}</span>
+                  <span className="text-xl font-fraunces italic">
+                    {nextPost.title}
+                  </span>
                 </Link>
               )}
             </div>
@@ -350,9 +371,15 @@ const TerracottaBlogPostPage = () => {
                 <SpecItem
                   icon={Calendar}
                   label="Dated"
-                  value={new Date(post.attributes.date).toLocaleDateString('en-GB')}
+                  value={new Date(post.attributes.date).toLocaleDateString(
+                    'en-GB',
+                  )}
                 />
-                <SpecItem icon={Clock} label="Reading Time" value={`${estimatedReadingTime} Min`} />
+                <SpecItem
+                  icon={Clock}
+                  label="Reading Time"
+                  value={`${estimatedReadingTime} Min`}
+                />
                 <SpecItem
                   icon={Tag}
                   label="Category"
@@ -362,6 +389,25 @@ const TerracottaBlogPostPage = () => {
                 />
               </div>
             </div>
+
+            {postTags.length > 0 && (
+              <div>
+                <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-[#2E2620]/60">
+                  {'//'} CROSS_REFERENCES
+                </h3>
+                <div className="flex flex-wrap gap-1.5 border-l border-[#1A161320] pl-6">
+                  {postTags.map((t) => (
+                    <TagLink
+                      key={t}
+                      tag={t}
+                      className="font-mono text-[9.5px] tracking-[0.14em] uppercase px-1.5 py-0.5 border border-[#1A161320] text-[#2E2620] hover:border-[#9E4A2F] hover:text-[#9E4A2F] transition-colors"
+                    >
+                      #{t}
+                    </TagLink>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {post.seriesPosts && (
               <div>
@@ -383,8 +429,12 @@ const TerracottaBlogPostPage = () => {
                           : 'border-[#1A161320] hover:border-[#1A1613] text-[#2E2620] hover:text-[#1A1613]'
                       }`}
                     >
-                      <span className="font-mono text-[10px]">{String(i + 1).padStart(2, '0')}</span>
-                      <span className="text-xs font-bold uppercase truncate">{p.title}</span>
+                      <span className="font-mono text-[10px]">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-xs font-bold uppercase truncate">
+                        {p.title}
+                      </span>
                     </Link>
                   ))}
                 </div>

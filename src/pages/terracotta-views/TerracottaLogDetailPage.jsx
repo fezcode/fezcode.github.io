@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { StarIcon, ArrowUpRightIcon } from '@phosphor-icons/react';
 import piml from 'piml';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
 import {
@@ -125,6 +126,11 @@ const TerracottaLogDetailPage = () => {
     attributes.by ||
     attributes.studio;
   const rating = Number(attributes.rating) || 0;
+  const logTags = Array.isArray(attributes.tags)
+    ? attributes.tags
+    : attributes.tags
+      ? [attributes.tags]
+      : [];
 
   return (
     <div
@@ -214,8 +220,7 @@ const TerracottaLogDetailPage = () => {
               <div
                 className="mt-4 font-fraunces italic text-[20px] md:text-[24px] text-[#2E2620]"
                 style={{
-                  fontVariationSettings:
-                    '"opsz" 28, "SOFT" 100, "wght" 360',
+                  fontVariationSettings: '"opsz" 28, "SOFT" 100, "wght" 360',
                 }}
               >
                 by {creator}
@@ -282,11 +287,12 @@ const TerracottaLogDetailPage = () => {
               </h3>
               <div className="flex flex-col gap-4">
                 <TerracottaSpec label="Category" value={attributes.category} />
-                {creator && (
-                  <TerracottaSpec label="Creator" value={creator} />
-                )}
+                {creator && <TerracottaSpec label="Creator" value={creator} />}
                 {attributes.platform && (
-                  <TerracottaSpec label="Platform" value={attributes.platform} />
+                  <TerracottaSpec
+                    label="Platform"
+                    value={attributes.platform}
+                  />
                 )}
                 {attributes.source && !attributes.platform && (
                   <TerracottaSpec label="Source" value={attributes.source} />
@@ -315,7 +321,9 @@ const TerracottaLogDetailPage = () => {
                               key={i}
                               size={11}
                               weight={i < rating ? 'fill' : 'regular'}
-                              style={{ color: i < rating ? '#B88532' : '#1A161325' }}
+                              style={{
+                                color: i < rating ? '#B88532' : '#1A161325',
+                              }}
                             />
                           ))}
                         </span>
@@ -344,19 +352,20 @@ const TerracottaLogDetailPage = () => {
               )}
             </div>
 
-            {attributes.tags && attributes.tags.length > 0 && (
+            {logTags.length > 0 && (
               <div className="border border-dashed border-[#1A161320] p-6">
                 <h4 className="font-ibm-plex-mono text-[10px] tracking-[0.24em] uppercase text-[#2E2620]/80 mb-3">
                   Cross-references
                 </h4>
                 <div className="flex flex-wrap gap-1.5">
-                  {attributes.tags.map((t) => (
-                    <span
+                  {logTags.map((t) => (
+                    <TagLink
                       key={t}
-                      className="font-ibm-plex-mono text-[9.5px] tracking-[0.14em] uppercase px-1.5 py-0.5 border border-[#1A161320] text-[#2E2620]"
+                      tag={t}
+                      className="font-ibm-plex-mono text-[9.5px] tracking-[0.14em] uppercase px-1.5 py-0.5 border border-[#1A161320] text-[#2E2620] hover:border-[#9E4A2F] hover:text-[#9E4A2F] transition-colors"
                     >
                       #{t}
-                    </span>
+                    </TagLink>
                   ))}
                 </div>
               </div>

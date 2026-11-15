@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import { useProjects } from '../../utils/projectParser';
 import { useAchievements } from '../../context/AchievementContext';
-import {
-  LedgerFolio,
-  LedgerNotice,
-  LedgerRule,
-} from '../../components/ledger';
+import { LedgerFolio, LedgerNotice, LedgerRule } from '../../components/ledger';
 import '../../styles/Ledger.css';
 
 /**
@@ -42,6 +39,15 @@ const ProjectRow = ({ project, index }) => (
             style={{ fontSize: '0.76rem', letterSpacing: 0 }}
           >
             {project.shortDescription}
+          </span>
+        )}
+        {Array.isArray(project.tags) && project.tags.length > 0 && (
+          <span className="flex flex-wrap gap-1 mt-1">
+            {project.tags.slice(0, 4).map((t) => (
+              <TagLink key={t} tag={t} nested className="ldg-badge">
+                #{t}
+              </TagLink>
+            ))}
           </span>
         )}
       </span>
@@ -131,9 +137,7 @@ const LedgerProjectsPage = () => {
         {loading && <LedgerNotice>OPENING THE REGISTER…</LedgerNotice>}
 
         {error && (
-          <LedgerNotice error>
-            COULD NOT READ THE PROJECT REGISTER
-          </LedgerNotice>
+          <LedgerNotice error>COULD NOT READ THE PROJECT REGISTER</LedgerNotice>
         )}
 
         {!loading && !error && (

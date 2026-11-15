@@ -13,6 +13,7 @@ import {
 import Seo from '../../components/Seo';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
+import TagLink from '../../components/TagLink';
 import {
   BlissWindow,
   BlissIcon,
@@ -114,7 +115,9 @@ const BlissLogDetailPage = () => {
             tone="red"
             headingLevel={1}
           >
-            <BlissNotice error>404 — no such entry in this collection.</BlissNotice>
+            <BlissNotice error>
+              404 — no such entry in this collection.
+            </BlissNotice>
             <Link to="/logs" className="bl-btn mt-4">
               <ArrowLeftIcon size={16} weight="bold" aria-hidden="true" />
               Back to discovery logs
@@ -135,6 +138,11 @@ const BlissLogDetailPage = () => {
     attributes.studio;
   const rating = Number(attributes.rating) || 0;
   const { prev, next } = neighbours;
+  const logTags = Array.isArray(attributes.tags)
+    ? attributes.tags
+    : attributes.tags
+      ? [attributes.tags]
+      : [];
   const categoryName = attributes.category || category;
   const { icon: categoryIcon, tone: categoryTone } = logCategoryIcon(category);
 
@@ -171,7 +179,9 @@ const BlissLogDetailPage = () => {
               <p className="bl-display mt-1 mb-0" aria-hidden="true">
                 {attributes.title}
               </p>
-              {creator && <p className="mt-2 mb-0 font-semibold">by {creator}</p>}
+              {creator && (
+                <p className="mt-2 mb-0 font-semibold">by {creator}</p>
+              )}
             </div>
           </div>
 
@@ -242,7 +252,7 @@ const BlissLogDetailPage = () => {
           />
         </BlissWindow>
 
-        {attributes.tags && attributes.tags.length > 0 && (
+        {logTags.length > 0 && (
           <BlissWindow
             title="Cross-referenced under"
             icon={TagIcon}
@@ -250,9 +260,11 @@ const BlissLogDetailPage = () => {
             inactive
           >
             <ul className="flex flex-wrap gap-2 list-none m-0 p-0">
-              {attributes.tags.map((t) => (
-                <li key={t} className="bl-tag cursor-default">
-                  #{t}
+              {logTags.map((t) => (
+                <li key={t}>
+                  <TagLink tag={t} className="bl-tag">
+                    #{t}
+                  </TagLink>
                 </li>
               ))}
             </ul>

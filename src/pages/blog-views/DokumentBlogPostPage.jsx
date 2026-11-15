@@ -27,6 +27,7 @@ import { useToast } from '../../hooks/useToast';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import { getCategoryColor } from '../../utils/categoryColors';
 import MermaidDiagram from '../../components/MermaidDiagram';
+import TagLink from '../../components/TagLink';
 
 const dokumentCodeTheme = {
   'code[class*="language-"]': {
@@ -455,6 +456,24 @@ const DokumentBlogPostPage = () => {
                   value={currentSlug.substring(0, 8).toUpperCase()}
                   isAccent
                 />
+                {post.attributes.tags?.length > 0 && (
+                  <div className="flex flex-col gap-1">
+                    <span className="font-mono text-[9px] font-bold uppercase text-gray-400 tracking-widest">
+                      Tags
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {post.attributes.tags.map((t) => (
+                        <TagLink
+                          key={t}
+                          tag={t}
+                          className="font-mono text-[10px] font-black uppercase border border-black px-2 py-0.5 text-black hover:bg-black hover:text-white transition-colors"
+                        >
+                          #{t}
+                        </TagLink>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="mt-12 flex items-center gap-3 border-t pt-6 border-gray-100">

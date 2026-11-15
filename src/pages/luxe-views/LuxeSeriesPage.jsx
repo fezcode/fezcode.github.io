@@ -8,6 +8,7 @@ import {
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import LuxeArt from '../../components/LuxeArt';
+import TagLink from '../../components/TagLink';
 
 const LuxeSeriesPage = () => {
   const { seriesSlug } = useParams();
@@ -120,7 +121,15 @@ const LuxeSeriesPage = () => {
                         <CalendarIcon size={12} />{' '}
                         {new Date(post.date).toLocaleDateString()}
                       </span>
-                      {post.tags && <span>#{post.tags[0]}</span>}
+                      {post.tags && (
+                        <TagLink
+                          tag={post.tags[0]}
+                          nested
+                          className="hover:text-[#8D4004] transition-colors"
+                        >
+                          #{post.tags[0]}
+                        </TagLink>
+                      )}
                     </div>
                   </div>
                 </div>

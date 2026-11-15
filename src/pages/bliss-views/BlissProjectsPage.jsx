@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CubeIcon, FolderOpenIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import { useProjects } from '../../utils/projectParser';
 import { useAchievements } from '../../context/AchievementContext';
 import {
@@ -106,9 +107,25 @@ const BlissProjectsPage = () => {
             </BlissNotice>
           ) : filtered.length ? (
             <div className="bl-grid">
-              {filtered.map((project) => (
-                <BlissProjectCard key={project.slug} project={project} />
-              ))}
+              {filtered.map((project) => {
+                const projectTags = (project.tags || []).slice(0, 4);
+                return projectTags.length ? (
+                  <div key={project.slug} className="flex flex-col gap-2">
+                    <div className="flex-1 flex flex-col">
+                      <BlissProjectCard project={project} />
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {projectTags.map((t) => (
+                        <TagLink key={t} tag={t} className="bl-tag">
+                          #{t}
+                        </TagLink>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <BlissProjectCard key={project.slug} project={project} />
+                );
+              })}
             </div>
           ) : (
             <BlissNotice>

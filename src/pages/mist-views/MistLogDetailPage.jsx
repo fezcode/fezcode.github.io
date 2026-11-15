@@ -6,6 +6,7 @@ import piml from 'piml';
 import Seo from '../../components/Seo';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
+import TagLink from '../../components/TagLink';
 import {
   MistVeil,
   MistOrb,
@@ -129,6 +130,11 @@ const MistLogDetailPage = () => {
     attributes.by ||
     attributes.studio;
   const rating = Number(attributes.rating) || 0;
+  const tags = Array.isArray(attributes.tags)
+    ? attributes.tags
+    : attributes.tags
+      ? [attributes.tags]
+      : [];
 
   return (
     <div
@@ -327,19 +333,20 @@ const MistLogDetailPage = () => {
               )}
             </div>
 
-            {attributes.tags && attributes.tags.length > 0 && (
+            {tags.length > 0 && (
               <div className="rounded-2xl bg-white/30 backdrop-blur-sm p-6">
                 <h4 className="font-ibm-plex-mono text-[10px] tracking-[0.24em] lowercase text-[#8A9894] mb-3">
                   drifts alongside
                 </h4>
                 <div className="flex flex-wrap gap-1.5">
-                  {attributes.tags.map((t) => (
-                    <span
+                  {tags.map((t) => (
+                    <TagLink
                       key={t}
-                      className="font-ibm-plex-mono text-[9.5px] tracking-[0.14em] lowercase px-2 py-0.5 rounded-full bg-white/50 text-[#5C6B67]"
+                      tag={t}
+                      className="font-ibm-plex-mono text-[9.5px] tracking-[0.14em] lowercase px-2 py-0.5 rounded-full bg-white/50 text-[#5C6B67] hover:text-[#5F837B] transition-colors duration-[250ms]"
                     >
                       #{String(t).toLowerCase()}
-                    </span>
+                    </TagLink>
                   ))}
                 </div>
               </div>

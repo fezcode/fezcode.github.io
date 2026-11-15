@@ -25,6 +25,7 @@ import ImageModal from '../../components/ImageModal';
 import { useToast } from '../../hooks/useToast';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import MermaidDiagram from '../../components/MermaidDiagram';
+import TagLink from '../../components/TagLink';
 
 const dossierCodeTheme = {
   'code[class*="language-"]': {
@@ -451,10 +452,7 @@ const DossierBlogPostPage = () => {
               <span
                 className="font-bold"
                 style={{
-                  color: getCategoryColor(
-                    'dossier',
-                    post.attributes.category,
-                  ),
+                  color: getCategoryColor('dossier', post.attributes.category),
                 }}
               >
                 {post.attributes.category}
@@ -468,6 +466,22 @@ const DossierBlogPostPage = () => {
                 {calculateReadingTime(post.body)} min
               </span>
             </div>
+            {post.attributes.tags?.length > 0 && (
+              <div className="md:col-span-2">
+                <span className="text-gray-400 block mb-1">Tags</span>
+                <span className="flex flex-wrap gap-x-3 gap-y-1">
+                  {post.attributes.tags.map((t) => (
+                    <TagLink
+                      key={t}
+                      tag={t}
+                      className="text-black hover:bg-black hover:text-white transition-colors"
+                    >
+                      #{t}
+                    </TagLink>
+                  ))}
+                </span>
+              </div>
+            )}
           </div>
         </header>
 

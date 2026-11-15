@@ -21,6 +21,7 @@ import { useToast } from '../../hooks/useToast';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
 import MermaidDiagram from '../../components/MermaidDiagram';
+import TagLink from '../../components/TagLink';
 
 const LuxeBlogPostPage = () => {
   const { slug, episodeSlug } = useParams();
@@ -274,12 +275,13 @@ const LuxeBlogPostPage = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex flex-wrap gap-2">
               {post.attributes.tags?.map((tag) => (
-                <span
+                <TagLink
                   key={tag}
-                  className="bg-[#EBEBEB] px-3 py-1 rounded-sm font-outfit text-xs text-[#1A1A1A]/60"
+                  tag={tag}
+                  className="bg-[#EBEBEB] px-3 py-1 rounded-sm font-outfit text-xs text-[#1A1A1A]/60 hover:text-[#8D4004] transition-colors"
                 >
                   #{tag}
-                </span>
+                </TagLink>
               ))}
             </div>
 

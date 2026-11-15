@@ -17,6 +17,7 @@ import { getCategoryColor } from '../../utils/categoryColors';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
 import MermaidDiagram from '../../components/MermaidDiagram';
+import TagLink from '../../components/TagLink';
 import TerracottaGenerativeArt from '../../components/TerracottaGenerativeArt';
 
 /*
@@ -29,8 +30,27 @@ import TerracottaGenerativeArt from '../../components/TerracottaGenerativeArt';
 const PAPER_GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.07 0 0 0 0 0.05 0 0 0 0.24 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")`;
 
 const ROMAN = [
-  '', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X',
-  'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX',
+  '',
+  'I',
+  'II',
+  'III',
+  'IV',
+  'V',
+  'VI',
+  'VII',
+  'VIII',
+  'IX',
+  'X',
+  'XI',
+  'XII',
+  'XIII',
+  'XIV',
+  'XV',
+  'XVI',
+  'XVII',
+  'XVIII',
+  'XIX',
+  'XX',
 ];
 
 const toRoman = (n) => ROMAN[n] || String(n);
@@ -41,9 +61,30 @@ const RegistrationCross = ({ className = '' }) => (
     aria-hidden="true"
     className={`pointer-events-none ${className}`}
   >
-    <circle cx="12" cy="12" r="5.5" fill="none" stroke="currentColor" strokeWidth="0.6" />
-    <line x1="12" y1="0" x2="12" y2="24" stroke="currentColor" strokeWidth="0.6" />
-    <line x1="0" y1="12" x2="24" y2="12" stroke="currentColor" strokeWidth="0.6" />
+    <circle
+      cx="12"
+      cy="12"
+      r="5.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="0.6"
+    />
+    <line
+      x1="12"
+      y1="0"
+      x2="12"
+      y2="24"
+      stroke="currentColor"
+      strokeWidth="0.6"
+    />
+    <line
+      x1="0"
+      y1="12"
+      x2="24"
+      y2="12"
+      stroke="currentColor"
+      strokeWidth="0.6"
+    />
   </svg>
 );
 
@@ -93,7 +134,9 @@ const GalleyBlogPostPage = () => {
       setLoading(true);
       try {
         const { allPostsData, processedPosts } = await fetchAllBlogPosts();
-        const postMetadata = processedPosts.find((item) => item.slug === currentSlug);
+        const postMetadata = processedPosts.find(
+          (item) => item.slug === currentSlug,
+        );
         if (!postMetadata) {
           navigate('/404');
           return;
@@ -124,7 +167,8 @@ const GalleyBlogPostPage = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
       const totalHeight = scrollHeight - clientHeight;
       setReadingProgress(totalHeight > 0 ? (scrollTop / totalHeight) * 100 : 0);
     };
@@ -172,11 +216,17 @@ const GalleyBlogPostPage = () => {
           <div className="relative group my-10 -mx-4 md:-mx-8">
             <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
               <button
-                onClick={() => openModal(String(children).replace(/\n$/, ''), match[1])}
+                onClick={() =>
+                  openModal(String(children).replace(/\n$/, ''), match[1])
+                }
                 className="bg-[#F3ECE0] border border-[#1A161340] px-2 py-1 text-[9px] uppercase font-ibm-plex-mono tracking-[0.22em] text-[#1A1613] hover:bg-[#1A1613] hover:text-[#F3ECE0] transition-colors"
                 title="Expand"
               >
-                <ArrowsOutSimple size={11} weight="bold" className="inline mr-1" />
+                <ArrowsOutSimple
+                  size={11}
+                  weight="bold"
+                  className="inline mr-1"
+                />
                 Expand
               </button>
               <button
@@ -184,7 +234,11 @@ const GalleyBlogPostPage = () => {
                 className="bg-[#F3ECE0] border border-[#1A161340] px-2 py-1 text-[9px] uppercase font-ibm-plex-mono tracking-[0.22em] text-[#1A1613] hover:bg-[#1A1613] hover:text-[#F3ECE0] transition-colors"
                 title="Lift"
               >
-                <ClipboardText size={11} weight="bold" className="inline mr-1" />
+                <ClipboardText
+                  size={11}
+                  weight="bold"
+                  className="inline mr-1"
+                />
                 Lift
               </button>
             </div>
@@ -210,7 +264,9 @@ const GalleyBlogPostPage = () => {
                   background: '#EDE3D2',
                 }}
                 {...props}
-                codeTagProps={{ style: { fontFamily: "'IBM Plex Mono', monospace" } }}
+                codeTagProps={{
+                  style: { fontFamily: "'IBM Plex Mono', monospace" },
+                }}
               >
                 {String(children).replace(/\n$/, '')}
               </SyntaxHighlighter>
@@ -232,7 +288,8 @@ const GalleyBlogPostPage = () => {
     return {
       a: (p) => {
         const isVocab =
-          p.href && (p.href.startsWith('/vocab/') || p.href.includes('/#/vocab/'));
+          p.href &&
+          (p.href.startsWith('/vocab/') || p.href.includes('/#/vocab/'));
         return (
           <MarkdownLink
             {...p}
@@ -259,18 +316,26 @@ const GalleyBlogPostPage = () => {
 
   if (!post) return null;
 
-  const currentPostIndex = post.seriesPosts?.findIndex((item) => item.slug === currentSlug);
+  const currentPostIndex = post.seriesPosts?.findIndex(
+    (item) => item.slug === currentSlug,
+  );
   const prevPost = post.seriesPosts?.[currentPostIndex - 1];
   const nextPost = post.seriesPosts?.[currentPostIndex + 1];
 
   const dateObj = new Date(post.attributes.date);
-  const dateMDMY = dateObj.toLocaleDateString('en-GB', {
-    year: 'numeric', month: 'short', day: '2-digit',
-  }).toUpperCase();
+  const dateMDMY = dateObj
+    .toLocaleDateString('en-GB', {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit',
+    })
+    .toUpperCase();
   const year = dateObj.getFullYear();
 
   const galleyNo = toRoman(((currentSlug || '').length % 20) + 1);
-  const signature = String.fromCharCode(65 + (((currentSlug || '').length * 3) % 26));
+  const signature = String.fromCharCode(
+    65 + (((currentSlug || '').length * 3) % 26),
+  );
   const proofNo = String(((currentSlug || '').length % 9) + 1).padStart(2, '0');
 
   return (
@@ -344,7 +409,9 @@ const GalleyBlogPostPage = () => {
           >
             <ArrowLeft size={11} weight="bold" />
             <span className="border-b border-[#1A161340]">
-              {post.attributes.series ? 'Back to signature' : 'Back to the stone'}
+              {post.attributes.series
+                ? 'Back to signature'
+                : 'Back to the stone'}
             </span>
           </Link>
         </div>
@@ -379,6 +446,20 @@ const GalleyBlogPostPage = () => {
               {estimatedReadingTime}′ read · stet ✓
             </span>
           </div>
+          {post.attributes.tags?.length > 0 && (
+            <div className="border-t border-dashed border-[#1A161320] px-5 py-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-ibm-plex-mono text-[9px] tracking-[0.28em] uppercase text-[#2E2620]/60">
+              <span>Tags ·</span>
+              {post.attributes.tags.map((t) => (
+                <TagLink
+                  key={t}
+                  tag={t}
+                  className="text-[#1A1613] hover:text-[#9E4A2F] transition-colors"
+                >
+                  #{t}
+                </TagLink>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* generative plate — a small woodcut keyed to the title */}
@@ -387,7 +468,10 @@ const GalleyBlogPostPage = () => {
             Plate
           </div>
           <div className="w-full aspect-[16/5]">
-            <TerracottaGenerativeArt seed={post.attributes.title} className="w-full h-full" />
+            <TerracottaGenerativeArt
+              seed={post.attributes.title}
+              className="w-full h-full"
+            />
           </div>
         </div>
 
@@ -411,7 +495,8 @@ const GalleyBlogPostPage = () => {
           </h1>
           <div className="mt-5 flex items-end justify-between gap-6 border-t border-[#1A161320] pt-4">
             <span className="font-ibm-plex-mono text-[10px] tracking-[0.28em] uppercase text-[#2E2620]/70">
-              {dateMDMY} · folio one of {Math.max(1, Math.ceil((post.body?.length || 0) / 2400))}
+              {dateMDMY} · folio one of{' '}
+              {Math.max(1, Math.ceil((post.body?.length || 0) / 2400))}
             </span>
             <span className="font-fraunces italic text-[13px] text-[#2E2620]/70">
               — set from the stone, read in order.

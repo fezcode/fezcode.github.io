@@ -18,6 +18,7 @@ import {
 import { useProjects } from '../../utils/projectParser';
 import Seo from '../../components/Seo';
 import LuxeArt from '../../components/LuxeArt';
+import TagLink from '../../components/TagLink';
 
 const StackedCard = ({ project, index, scrollProgress, total }) => {
   const step = 1 / total;
@@ -97,6 +98,7 @@ const StackedCard = ({ project, index, scrollProgress, total }) => {
                 <p className="font-outfit text-white/80 leading-relaxed max-w-xl text-sm md:text-lg line-clamp-3 italic">
                   {project.shortDescription}
                 </p>
+                <ProjectTags tags={project.tags} className="mt-6" />
               </div>
             </div>
           </a>
@@ -127,12 +129,32 @@ const StackedCard = ({ project, index, scrollProgress, total }) => {
                 <p className="font-outfit text-white/80 leading-relaxed max-w-xl text-sm md:text-lg line-clamp-3 italic">
                   {project.shortDescription}
                 </p>
+                <ProjectTags tags={project.tags} className="mt-6" />
               </div>
             </div>
           </Link>
         )}
       </div>
     </motion.div>
+  );
+};
+
+const ProjectTags = ({ tags, className = '' }) => {
+  const list = (Array.isArray(tags) ? tags : tags ? [tags] : []).slice(0, 4);
+  if (!list.length) return null;
+  return (
+    <div className={`flex flex-wrap gap-2 ${className}`}>
+      {list.map((t) => (
+        <TagLink
+          key={t}
+          tag={t}
+          nested
+          className="font-outfit text-[10px] uppercase tracking-widest border border-white/20 px-2 py-1 rounded-full backdrop-blur-md text-white/80 hover:bg-white hover:text-black transition-colors"
+        >
+          #{t}
+        </TagLink>
+      ))}
+    </div>
   );
 };
 
@@ -152,6 +174,7 @@ const GridCard = ({ project, index }) => {
         <p className="font-outfit text-xs text-white/70 line-clamp-2">
           {project.shortDescription}
         </p>
+        <ProjectTags tags={project.tags} className="mt-4" />
       </div>
     </div>
   );

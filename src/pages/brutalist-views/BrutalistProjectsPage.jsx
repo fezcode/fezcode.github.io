@@ -5,6 +5,7 @@ import ProjectCard from '../../components/ProjectCard';
 import GenerativeArt from '../../components/GenerativeArt';
 import { useProjects } from '../../utils/projectParser';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import { CpuIcon, ArrowLeftIcon } from '@phosphor-icons/react'; // Fixed import
 import { useAchievements } from '../../context/AchievementContext';
 
@@ -162,6 +163,22 @@ const BrutalistProjectsPage = () => {
                     </span>
                   ))}
                 </div>
+
+                {/* Topic Tags */}
+                {Array.isArray(activeProject.tags) &&
+                  activeProject.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {activeProject.tags.slice(0, 4).map((tag) => (
+                        <TagLink
+                          key={tag}
+                          tag={tag}
+                          className="px-3 py-1 bg-black/40 border border-white/10 rounded-full text-xs font-mono text-gray-400 uppercase tracking-wider hover:text-emerald-400 hover:border-emerald-500/30 transition-colors"
+                        >
+                          #{tag}
+                        </TagLink>
+                      ))}
+                    </div>
+                  )}
 
                 {/* External Link Button (Optional) */}
                 {(activeProject.redirect_url ||

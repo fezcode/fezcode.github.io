@@ -14,6 +14,7 @@ import Seo from '../../components/Seo';
 import LuxeArt from '../../components/LuxeArt';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
+import TagLink from '../../components/TagLink';
 import piml from 'piml';
 import colors from '../../config/colors';
 
@@ -79,6 +80,11 @@ const LuxeLogDetailPage = () => {
 
   const { attributes, body } = log;
   const accentColor = colors[category.toLowerCase()] || colors.primary[400];
+  const logTags = Array.isArray(attributes.tags)
+    ? attributes.tags
+    : attributes.tags
+      ? [attributes.tags]
+      : [];
 
   return (
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] selection:bg-[#C0B298] selection:text-black">
@@ -175,6 +181,20 @@ const LuxeLogDetailPage = () => {
 
         {/* Footer / Meta */}
         <div className="mt-20 pt-12 border-t border-[#1A1A1A]/10 flex flex-col items-center gap-8">
+          {logTags.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-2">
+              {logTags.map((tag) => (
+                <TagLink
+                  key={tag}
+                  tag={tag}
+                  className="bg-[#EBEBEB] px-3 py-1 rounded-sm font-outfit text-xs text-[#1A1A1A]/60 hover:text-[#8D4004] transition-colors"
+                >
+                  #{tag}
+                </TagLink>
+              ))}
+            </div>
+          )}
+
           {attributes.link && (
             <a
               href={attributes.link}

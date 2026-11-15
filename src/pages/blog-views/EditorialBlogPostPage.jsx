@@ -16,6 +16,7 @@ import { useToast } from '../../hooks/useToast';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
 import MermaidDiagram from '../../components/MermaidDiagram';
+import TagLink from '../../components/TagLink';
 
 const EditorialBlogPostPage = () => {
   const { slug, episodeSlug } = useParams();
@@ -450,6 +451,22 @@ const EditorialBlogPostPage = () => {
                     </>
                   )}
                 </div>
+
+                {post.attributes.tags?.length > 0 && (
+                  <div
+                    className={`flex flex-wrap justify-center gap-4 font-instr-sans uppercase tracking-[0.2em] text-[10px] ${isInvert ? 'text-white/60' : 'text-black/60'}`}
+                  >
+                    {post.attributes.tags.map((t) => (
+                      <TagLink
+                        key={t}
+                        tag={t}
+                        className="hover:underline underline-offset-4"
+                      >
+                        #{t}
+                      </TagLink>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>

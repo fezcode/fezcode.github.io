@@ -5,6 +5,7 @@ import { useProjects } from '../../utils/projectParser';
 import { useProjectContent } from '../../hooks/useProjectContent';
 import Seo from '../../components/Seo';
 import LuxeArt from '../../components/LuxeArt';
+import TagLink from '../../components/TagLink';
 import {
   ArrowLeftIcon,
   ArrowUpRightIcon,
@@ -123,6 +124,15 @@ const LuxeProjectDetailPage = () => {
             >
               {tech}
             </span>
+          ))}
+          {(fullProject.tags || []).map((t) => (
+            <TagLink
+              key={`tag-${t}`}
+              tag={t}
+              className="bg-[#EBEBEB] px-3 py-1 rounded-sm font-outfit text-xs text-[#1A1A1A]/60 hover:text-[#8D4004] transition-colors"
+            >
+              #{t}
+            </TagLink>
           ))}
         </div>
 

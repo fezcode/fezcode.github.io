@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import piml from 'piml';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
 import {
@@ -101,7 +102,12 @@ const KnitLogDetailPage = () => {
           <KnitNotice error>404 — no such entry in this collection.</KnitNotice>
           <Link to="/logs" className="knt-btn mt-4">
             <KnitIcon name="arrowLeft" fg={YARN.gold} />
-            <KnitText text="Back to discovery logs" size="small" fg={YARN.cream} fit />
+            <KnitText
+              text="Back to discovery logs"
+              size="small"
+              fg={YARN.cream}
+              fit
+            />
           </Link>
         </div>
       </div>
@@ -127,9 +133,7 @@ const KnitLogDetailPage = () => {
         image={attributes.image}
       />
       <header className="knt-wool-denim">
-        <KnitBand
-          pattern={['peerie', ['snow', { bg: '#3d5a80' }], 'peerie']}
-        />
+        <KnitBand pattern={['peerie', ['snow', { bg: '#3d5a80' }], 'peerie']} />
         <div className="knt-page knt-reader !pb-8">
           <Link to="/logs" className="knt-btn">
             <KnitIcon name="arrowLeft" fg={YARN.gold} />
@@ -141,7 +145,12 @@ const KnitLogDetailPage = () => {
             fg={YARN.wheat}
             className="mt-8"
           />
-          <KnitText as="h1" text={attributes.title} fg={YARN.cream} className="mt-4" />
+          <KnitText
+            as="h1"
+            text={attributes.title}
+            fg={YARN.cream}
+            className="mt-4"
+          />
           {creator && (
             <KnitText
               text={`by ${creator}`}
@@ -171,7 +180,9 @@ const KnitLogDetailPage = () => {
       <div className="knt-page">
         <article className="knt-reader">
           <dl className="knt-patch knt-patch-tight knt-meta">
-            <MetaRow label="Category">{attributes.category || category}</MetaRow>
+            <MetaRow label="Category">
+              {attributes.category || category}
+            </MetaRow>
             <MetaRow label="Creator">{creator}</MetaRow>
             <MetaRow label="Platform">{attributes.platform}</MetaRow>
             {!attributes.platform && (
@@ -194,7 +205,12 @@ const KnitLogDetailPage = () => {
           </dl>
 
           <section className="mt-8">
-            <KnitText as="h2" text="The discovery" fg={YARN.gold} className="mb-4" />
+            <KnitText
+              as="h2"
+              text="The discovery"
+              fg={YARN.gold}
+              className="mb-4"
+            />
             <div className="knt-patch knt-reader-patch">
               <MarkdownContent
                 content={body}
@@ -206,7 +222,12 @@ const KnitLogDetailPage = () => {
             </div>
           </section>
 
-          {attributes.tags && attributes.tags.length > 0 && (
+          {(Array.isArray(attributes.tags)
+            ? attributes.tags
+            : attributes.tags
+              ? [attributes.tags]
+              : []
+          ).length > 0 && (
             <section className="mt-8">
               <KnitText
                 text="Cross-referenced under"
@@ -215,23 +236,38 @@ const KnitLogDetailPage = () => {
                 className="mb-3"
               />
               <div className="flex flex-wrap gap-2">
-                {attributes.tags.map((t) => (
-                  <span key={t} className="knt-tag">
+                {(Array.isArray(attributes.tags)
+                  ? attributes.tags
+                  : [attributes.tags]
+                ).map((t) => (
+                  <TagLink key={t} tag={t} className="knt-tag">
                     #{t}
-                  </span>
+                  </TagLink>
                 ))}
               </div>
             </section>
           )}
 
           {(prev || next) && (
-            <nav className="grid gap-3 sm:grid-cols-2 mt-10" aria-label="Adjacent entries">
+            <nav
+              className="grid gap-3 sm:grid-cols-2 mt-10"
+              aria-label="Adjacent entries"
+            >
               {prev ? (
                 <Link to={`/logs/${category}/${prev.slug}`} className="knt-row">
                   <KnitIcon name="arrowLeft" fg={YARN.gold} />
                   <div className="knt-row-body">
-                    <KnitText text="Previous entry" size="small" fg={YARN.wheat} />
-                    <KnitText text={prev.title} fg={YARN.cream} maxLines={2} className="mt-2" />
+                    <KnitText
+                      text="Previous entry"
+                      size="small"
+                      fg={YARN.wheat}
+                    />
+                    <KnitText
+                      text={prev.title}
+                      fg={YARN.cream}
+                      maxLines={2}
+                      className="mt-2"
+                    />
                   </div>
                 </Link>
               ) : (
@@ -241,7 +277,12 @@ const KnitLogDetailPage = () => {
                 <Link to={`/logs/${category}/${next.slug}`} className="knt-row">
                   <div className="knt-row-body">
                     <KnitText text="Next entry" size="small" fg={YARN.wheat} />
-                    <KnitText text={next.title} fg={YARN.cream} maxLines={2} className="mt-2" />
+                    <KnitText
+                      text={next.title}
+                      fg={YARN.cream}
+                      maxLines={2}
+                      className="mt-2"
+                    />
                   </div>
                   <KnitIcon name="arrowRight" fg={YARN.gold} />
                 </Link>

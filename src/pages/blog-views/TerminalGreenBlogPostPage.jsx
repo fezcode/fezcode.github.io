@@ -13,6 +13,7 @@ import MarkdownLink from '../../components/MarkdownLink';
 import CodeModal from '../../components/CodeModal';
 import ImageModal from '../../components/ImageModal';
 import MermaidDiagram from '../../components/MermaidDiagram';
+import TagLink from '../../components/TagLink';
 
 const emeraldTerminalTheme = {
   'code[class*="language-"]': {
@@ -245,6 +246,21 @@ const TerminalGreenBlogPostPage = () => {
               {'//'} PROCESS_TIME: {estimatedReadingTime} MIN_READ
             </span>
             <span>{'//'} TERM: SESSION_01</span>
+            {post.attributes.tags?.length > 0 && (
+              <span>
+                {'//'} TAGS:{' '}
+                {post.attributes.tags.map((t) => (
+                  <React.Fragment key={t}>
+                    <TagLink
+                      tag={t}
+                      className="hover:text-emerald-300 hover:underline"
+                    >
+                      [{t}]
+                    </TagLink>{' '}
+                  </React.Fragment>
+                ))}
+              </span>
+            )}
           </div>
         </div>
       </div>

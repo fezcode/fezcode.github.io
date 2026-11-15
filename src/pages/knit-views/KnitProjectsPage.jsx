@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import { useProjects } from '../../utils/projectParser';
 import { useAchievements } from '../../context/AchievementContext';
 import {
@@ -69,7 +70,9 @@ const KnitProjectsPage = () => {
         {loading ? (
           <KnitNotice>Casting on the collection…</KnitNotice>
         ) : error ? (
-          <KnitNotice error>The project collection could not be loaded.</KnitNotice>
+          <KnitNotice error>
+            The project collection could not be loaded.
+          </KnitNotice>
         ) : (
           <>
             <p className="knt-label mb-5" role="status">
@@ -77,9 +80,32 @@ const KnitProjectsPage = () => {
             </p>
             {filtered.length ? (
               <div className="knt-grid">
-                {filtered.map((project) => (
-                  <KnitProjectCard key={project.slug} project={project} />
-                ))}
+                {filtered.map((project) => {
+                  const topics = (
+                    Array.isArray(project.tags)
+                      ? project.tags
+                      : project.tags
+                        ? [project.tags]
+                        : []
+                  ).slice(0, 4);
+                  return (
+                    <div
+                      key={project.slug}
+                      className="flex flex-col gap-3 [&>.knt-card]:flex-1"
+                    >
+                      <KnitProjectCard project={project} />
+                      {topics.length > 0 && (
+                        <div className="flex flex-wrap gap-2 px-1">
+                          {topics.map((t) => (
+                            <TagLink key={t} tag={t} className="knt-tag">
+                              #{t}
+                            </TagLink>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             ) : (
               <KnitNotice>

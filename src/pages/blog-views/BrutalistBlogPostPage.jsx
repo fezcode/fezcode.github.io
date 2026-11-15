@@ -13,6 +13,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../../utils/customTheme';
 import CodeModal from '../../components/CodeModal';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import GenerativeArt from '../../components/GenerativeArt';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
@@ -213,16 +214,15 @@ const BrutalistBlogPostPage = () => {
 
   if (!post) return null;
 
-  const categoryColor = getCategoryColor(
-    'brutalist',
-    post.attributes.category,
-  );
+  const categoryColor = getCategoryColor('brutalist', post.attributes.category);
 
   const currentPostIndex = post.seriesPosts?.findIndex(
     (item) => item.slug === currentSlug,
   );
   const prevPost = post.seriesPosts?.[currentPostIndex - 1];
   const nextPost = post.seriesPosts?.[currentPostIndex + 1];
+  const rawTags = post.attributes?.tags;
+  const postTags = Array.isArray(rawTags) ? rawTags : rawTags ? [rawTags] : [];
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 pb-32 relative">
@@ -374,6 +374,25 @@ const BrutalistBlogPostPage = () => {
                 />
               </div>
             </div>
+
+            {postTags.length > 0 && (
+              <div>
+                <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">
+                  {'//'} TAGS
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {postTags.map((t) => (
+                    <TagLink
+                      key={t}
+                      tag={t}
+                      className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.08] text-[10px] font-mono text-gray-500 uppercase tracking-widest hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-colors"
+                    >
+                      #{t}
+                    </TagLink>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {post.seriesPosts && (
               <div>

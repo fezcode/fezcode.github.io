@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import { useProjects } from '../../utils/projectParser';
 import { useAchievements } from '../../context/AchievementContext';
 import {
@@ -61,6 +62,20 @@ const ProjectRow = ({ project, index }) => (
           <div className="mt-3 font-ibm-plex-mono text-[10px] tracking-[0.22em] lowercase text-[#8A9894]">
             {formatDate(project.date)}
             {project.status ? ` · ${project.status.toLowerCase()}` : ''}
+          </div>
+        )}
+        {Array.isArray(project.tags) && project.tags.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {project.tags.slice(0, 4).map((t) => (
+              <TagLink
+                key={t}
+                tag={t}
+                nested
+                className="font-ibm-plex-mono text-[9.5px] tracking-[0.14em] lowercase px-2 py-0.5 rounded-full bg-white/40 backdrop-blur-sm text-[#5C6B67] hover:text-[#5F837B] transition-colors duration-[250ms] cursor-pointer"
+              >
+                #{String(t).toLowerCase()}
+              </TagLink>
+            ))}
           </div>
         )}
       </div>
@@ -216,7 +231,10 @@ const MistProjectsPage = () => {
               <div className="pt-4">
                 <MistHorizon />
                 <div className="grid grid-cols-2 gap-4 pt-4">
-                  <MistSpec label="total" value={`${(projects || []).length}`} />
+                  <MistSpec
+                    label="total"
+                    value={`${(projects || []).length}`}
+                  />
                   <MistSpec label="scope" value="what surfaced" />
                   <MistSpec label="ordered by" value="recall" />
                   <MistSpec label="visibility" value="low — proceed gently" />
@@ -337,7 +355,9 @@ const MistProjectsPage = () => {
                     />
                     <MistSpec
                       label="status"
-                      value={(first.status || 'live — still drifting').toLowerCase()}
+                      value={(
+                        first.status || 'live — still drifting'
+                      ).toLowerCase()}
                     />
                   </div>
                   <div className="mt-8">

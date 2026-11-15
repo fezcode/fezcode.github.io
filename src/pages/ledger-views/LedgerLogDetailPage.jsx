@@ -4,6 +4,7 @@ import piml from 'piml';
 import Seo from '../../components/Seo';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
+import TagLink from '../../components/TagLink';
 import { LedgerNotice, LedgerRule } from '../../components/ledger';
 import '../../styles/Ledger.css';
 
@@ -124,6 +125,8 @@ const LedgerLogDetailPage = () => {
     attributes.studio;
   const rating = Number(attributes.rating) || 0;
   const { prev, next } = neighbours;
+  const rawTags = attributes.tags;
+  const tags = Array.isArray(rawTags) ? rawTags : rawTags ? [rawTags] : [];
 
   return (
     <div className="ldg-root">
@@ -141,7 +144,10 @@ const LedgerLogDetailPage = () => {
           [← THE DAYBOOK]
         </Link>
 
-        <header className="pb-4" style={{ borderBottom: '1px solid var(--ldg-rule)' }}>
+        <header
+          className="pb-4"
+          style={{ borderBottom: '1px solid var(--ldg-rule)' }}
+        >
           <div className="flex flex-wrap items-baseline gap-2 mb-2">
             <span className="ldg-badge">{category}</span>
             {attributes.updated && (
@@ -208,14 +214,14 @@ const LedgerLogDetailPage = () => {
           </div>
         </section>
 
-        {attributes.tags && attributes.tags.length > 0 && (
+        {tags.length > 0 && (
           <section className="mt-8">
             <LedgerRule label="CROSS-REFERENCED UNDER" className="mb-3" />
             <div className="flex flex-wrap gap-1.5">
-              {attributes.tags.map((t) => (
-                <span key={t} className="ldg-chip" style={{ cursor: 'default' }}>
+              {tags.map((t) => (
+                <TagLink key={t} tag={t} className="ldg-chip no-underline">
                   #{String(t).toUpperCase()}
-                </span>
+                </TagLink>
               ))}
             </div>
           </section>

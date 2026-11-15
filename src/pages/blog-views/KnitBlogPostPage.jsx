@@ -6,6 +6,7 @@ import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { getCategoryColor } from '../../utils/categoryColors';
 import Seo from '../../components/Seo';
+import TagLink from '../../components/TagLink';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
 import MermaidDiagram from '../../components/MermaidDiagram';
@@ -201,7 +202,11 @@ const KnitBlogPostPage = () => {
       />
       <header className="knt-wool-moss">
         <KnitBand
-          pattern={['peerie', ['snow', { bg: YARN.moss, fg: YARN.cream }], 'peerie']}
+          pattern={[
+            'peerie',
+            ['snow', { bg: YARN.moss, fg: YARN.cream }],
+            'peerie',
+          ]}
         />
         <div className="knt-page knt-reader !pb-8">
           <Link
@@ -223,7 +228,12 @@ const KnitBlogPostPage = () => {
             fg={getCategoryColor('knit', post.category)}
             className="mt-8"
           />
-          <KnitText as="h1" text={post.title} fg={YARN.cream} className="mt-4" />
+          <KnitText
+            as="h1"
+            text={post.title}
+            fg={YARN.cream}
+            className="mt-4"
+          />
           {post.updated && post.updated !== post.date && (
             <KnitText
               text={`Updated ${knitDate(post.updated)}`}
@@ -250,13 +260,9 @@ const KnitBlogPostPage = () => {
           {post.tags?.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-8">
               {post.tags.map((tag) => (
-                <Link
-                  key={tag}
-                  to={`/blog?search=${encodeURIComponent(tag)}`}
-                  className="knt-tag"
-                >
-                  {tag}
-                </Link>
+                <TagLink key={tag} tag={tag} className="knt-tag">
+                  #{tag}
+                </TagLink>
               ))}
             </div>
           )}

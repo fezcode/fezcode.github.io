@@ -43,6 +43,11 @@ export const useProjects = (fetchPinnedOnly = false) => {
               ? project.technologies.split(',').map((t) => t.trim())
               : project.technologies
             : [],
+          tags: Array.isArray(project.tags)
+            ? project.tags
+            : project.tags
+              ? [project.tags]
+              : [],
         }));
         if (fetchPinnedOnly) {
           projectList = projectList.filter((p) => p.pinned);

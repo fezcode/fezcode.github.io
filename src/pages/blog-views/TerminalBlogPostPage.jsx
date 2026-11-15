@@ -19,6 +19,7 @@ import ImageModal from '../../components/ImageModal';
 import { useToast } from '../../hooks/useToast';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import MermaidDiagram from '../../components/MermaidDiagram';
+import TagLink from '../../components/TagLink';
 
 const terminalCodeTheme = {
   'code[class*="language-"]': {
@@ -420,6 +421,21 @@ const TerminalBlogPostPage = () => {
           <p className="text-sm text-orange-400 mb-4">
             {'//'} LAST UPDATE:{' '}
             {new Date(post.attributes.updated).toLocaleDateString()}
+          </p>
+        )}
+        {post.attributes.tags?.length > 0 && (
+          <p className="text-sm text-orange-400 mb-4">
+            {'//'} TAGS:{' '}
+            {post.attributes.tags.map((t) => (
+              <React.Fragment key={t}>
+                <TagLink
+                  tag={t}
+                  className="hover:text-orange-200 hover:underline"
+                >
+                  [{t}]
+                </TagLink>{' '}
+              </React.Fragment>
+            ))}
           </p>
         )}
         <hr className="border-orange-500/50 mb-8" />

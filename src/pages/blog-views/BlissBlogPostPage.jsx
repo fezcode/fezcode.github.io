@@ -18,6 +18,7 @@ import { getCategoryColor } from '../../utils/categoryColors';
 import Seo from '../../components/Seo';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
+import TagLink from '../../components/TagLink';
 import MermaidDiagram from '../../components/MermaidDiagram';
 import CodeModal from '../../components/CodeModal';
 import { useToast } from '../../hooks/useToast';
@@ -348,13 +349,9 @@ const BlissBlogPostPage = () => {
                   <span className="bl-groupbox-label">Tags</span>
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag) => (
-                      <Link
-                        key={tag}
-                        to={`/blog?search=${encodeURIComponent(tag)}`}
-                        className="bl-tag"
-                      >
+                      <TagLink key={tag} tag={tag} className="bl-tag">
                         {tag}
-                      </Link>
+                      </TagLink>
                     ))}
                   </div>
                 </div>
@@ -405,7 +402,10 @@ const BlissBlogPostPage = () => {
             tone="purple"
             titleId="bl-post-series-nav"
           >
-            <nav className="grid gap-3 sm:grid-cols-2" aria-label="Series chapters">
+            <nav
+              className="grid gap-3 sm:grid-cols-2"
+              aria-label="Series chapters"
+            >
               {previous ? (
                 <Link
                   className="bl-row bg-white !border !border-solid !border-[var(--bl-line)] !min-h-[64px]"
