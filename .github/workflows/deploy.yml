@@ -46,6 +46,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # generate-og-images draws titles in Georgia (system font on Windows).
+      # Install it so CI cards match local ones, and fail rather than ship
+      # cards in a fallback font.
+      - name: Install Georgia for OG images
+        run: |
+          echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ttf-mscorefonts-installer > /dev/null
+          sudo fc-cache -f > /dev/null
+          fc-list | grep -qi 'georgia' || { echo "Georgia not installed"; exit 1; }
+          fc-list | grep -i 'georgia' | head -4
+
       - name: Build (no prerender)
         if: ${{ !inputs.prerender }}
         run: npm run build:lite
