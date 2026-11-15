@@ -13,7 +13,14 @@ const steps = [
     cmd: 'node',
     args: ['scripts/generate-wordup-og.mjs'],
   },
-  { name: 'vite build', cmd: 'vite', args: ['build'] },
+  // Call Vite's own entry file, not the node_modules/.bin/vite shim: Vike only
+  // auto-runs its HTML prerender when process.argv[1] is inside vite/, and on
+  // Linux the .bin symlink path fails that check, so no index.html is written.
+  {
+    name: 'vite build',
+    cmd: 'node',
+    args: ['node_modules/vite/bin/vite.js', 'build'],
+  },
   { name: 'post-build', cmd: 'node', args: ['scripts/post-build.mjs'] },
 ];
 if (!FAST) {
