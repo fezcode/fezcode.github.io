@@ -22,7 +22,6 @@ import {
   BookOpenIcon,
   CaretDownIcon,
   CircleNotchIcon,
-  FunnelIcon,
   StarIcon,
   XIcon,
 } from '@phosphor-icons/react';
@@ -40,6 +39,7 @@ import {
 } from './discoveryData';
 import useShelfWindow from './useShelfWindow';
 import CategoryImprint from './CategoryImprint';
+import CategoryFilter from './CategoryFilter';
 import { GameTray, GameLidInsert } from './GameCaseInterior';
 import './discovery.css';
 
@@ -754,6 +754,14 @@ export default function DiscoveryPage() {
     () => filterDiscoveryEntries(data.entries, { sort: 'newest' }),
     [data.entries],
   );
+  const categoryCounts = useMemo(
+    () =>
+      allEntries.reduce((counts, entry) => {
+        counts[entry.category] = (counts[entry.category] || 0) + 1;
+        return counts;
+      }, {}),
+    [allEntries],
+  );
   const availableCategories = useMemo(
     () =>
       [...new Set(allEntries.map((entry) => entry.category))].sort((a, b) =>
@@ -784,8 +792,7 @@ export default function DiscoveryPage() {
     returnPosition.current = null;
     returnFocus.current = null;
   }, [categoryFilter]);
-  const chooseCategory = (event) => {
-    const nextCategory = event.target.value;
+  const chooseCategory = (nextCategory) => {
     setLimit(PAGE_SIZE);
     if (shelfRef.current) shelfRef.current.scrollLeft = 0;
     setSearchParams(
@@ -958,29 +965,14 @@ export default function DiscoveryPage() {
           inert={hasSelection ? true : undefined}
         >
           <h1 className="sr-only">Discovery shelf</h1>
-          <label
-            className="dc-category-filter"
-            style={{
-              '--filter-accent': getCategoryTheme(categoryFilter).accent,
-            }}
-          >
-            <FunnelIcon size={17} aria-hidden="true" />
-            <span className="sr-only">Filter by category</span>
-            <select
-              value={categoryFilter}
-              onChange={chooseCategory}
-              disabled={loading || !availableCategories.length}
-              aria-controls="discovery-shelf-scroll"
-            >
-              <option value="all">All categories</option>
-              {availableCategories.map((key) => (
-                <option key={key} value={key}>
-                  {getCategoryTheme(key).label}
-                </option>
-              ))}
-            </select>
-            <CaretDownIcon size={13} aria-hidden="true" />
-          </label>
+          <CategoryFilter
+            categories={availableCategories}
+            counts={categoryCounts}
+            total={allEntries.length}
+            value={categoryFilter}
+            onChange={chooseCategory}
+            disabled={loading || !availableCategories.length}
+          />
           <Link
             className="dc-shelf-close"
             to="/"

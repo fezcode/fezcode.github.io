@@ -3,6 +3,7 @@ import React, { memo } from 'react';
 // Drawn as small printing devices: squared terminals, open counters and one
 // consistent ink weight. Each mark borrows a letterform from its medium.
 const SYMBOLS = {
+  all: <path d="M3 4H7V20H3ZM10 4H14V20H10ZM17 4H21V20H17Z" />,
   game: <path d="M19 7L16 4H8L4 8V16L8 20H16L20 16V12H12" />,
   movie: <path d="M3 20V4L12 13L21 4V20M3 8H6M18 8H21M3 16H6M18 16H21" />,
   music: <path d="M6 18V7L19 4V16M6 11L19 8M3 18H7M16 16H20" />,
@@ -17,6 +18,24 @@ const SYMBOLS = {
   event: <path d="M18 4H5V20H18M5 12H15M18 3V7M18 17V21" />,
 };
 
+export function CategorySymbol({ category, className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.6"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {SYMBOLS[category] || SYMBOLS.article}
+    </svg>
+  );
+}
+
 export const CategoryImprint = memo(function CategoryImprint({
   category,
   label,
@@ -28,19 +47,7 @@ export const CategoryImprint = memo(function CategoryImprint({
   return (
     <span className="dc-spine-category">
       <span className="dc-category-imprint" aria-hidden="true">
-        <svg
-          className="dc-category-symbol"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.6"
-          strokeLinecap="square"
-          strokeLinejoin="miter"
-          aria-hidden="true"
-          focusable="false"
-        >
-          {SYMBOLS[category] || SYMBOLS.article}
-        </svg>
+        <CategorySymbol category={category} className="dc-category-symbol" />
         <span className="dc-category-name">{visibleLabel}</span>
       </span>
       <span className="sr-only">{fullLabel}</span>

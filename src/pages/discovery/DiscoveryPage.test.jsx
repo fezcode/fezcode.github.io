@@ -176,11 +176,14 @@ const openEntry = (title) =>
       exact: true,
     }),
   );
-const waitForShelf = () =>
-  screen.findByRole('link', {
+const waitForShelf = async () => {
+  const firstSpine = await screen.findByRole('link', {
     name: 'Open Discovery 01 from the shelf',
     exact: true,
   });
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  return firstSpine;
+};
 const closeDialog = async () => {
   fireEvent.click(
     screen.getByRole('button', { name: 'Close showcase', exact: true }),
@@ -270,8 +273,10 @@ describe('the shelf-only discovery page', () => {
     ).toBeNull();
     expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
     expect(
-      screen.getByRole('combobox', { name: 'Filter by category' }),
-    ).toHaveValue('all');
+      within(
+        screen.getByRole('radiogroup', { name: 'Filter by category' }),
+      ).getByRole('radio', { name: 'All categories', checked: true }),
+    ).toBeInTheDocument();
     expect(
       screen.getByRole('heading', { name: 'Discovery shelf' }),
     ).toHaveClass('sr-only');
@@ -440,7 +445,10 @@ describe('the shelf-only discovery page', () => {
     });
     Object.defineProperty(HTMLElement.prototype, 'scrollBy', {
       configurable: true,
-      value: scrollBy,
+      value: function (options) {
+        if (this.classList.contains('dc-shelf-scroll'))
+          scrollBy.call(this, options);
+      },
     });
     mountPage();
     await waitForShelf();
@@ -472,9 +480,25 @@ describe('the shelf-only discovery page', () => {
 
 describe('single-category shelf filtering', () => {
   const filter = () =>
-    screen.getByRole('combobox', { name: 'Filter by category' });
-  const chooseCategory = (value) =>
-    fireEvent.change(filter(), { target: { value } });
+    screen.getByRole('radiogroup', { name: 'Filter by category' });
+  const categoryLabels = {
+    all: 'All categories',
+    book: 'Book',
+    game: 'Game',
+    music: 'Music',
+  };
+  const categoryChoice = (value) =>
+    within(filter()).getByRole('radio', {
+      name: categoryLabels[value],
+      exact: true,
+    });
+  const chooseCategory = (value) => fireEvent.click(categoryChoice(value));
+  const expectActiveCategory = (value) => {
+    expect(categoryChoice(value)).toBeChecked();
+    expect(
+      within(filter()).getAllByRole('radio', { checked: true }),
+    ).toHaveLength(1);
+  };
   const expectCategory = (category) => {
     expect(
       new Set(spines().map((spine) => spine.getAttribute('data-category'))),
@@ -484,10 +508,10 @@ describe('single-category shelf filtering', () => {
   it('replaces the active category and lets All restore the mixed shelf without losing other query parameters', async () => {
     mountPage('/logs?source=bookmark');
     await waitForShelf();
-    expect(within(filter()).getAllByRole('option')).toHaveLength(4);
+    expect(within(filter()).getAllByRole('radio')).toHaveLength(4);
 
     chooseCategory('game');
-    expect(filter()).toHaveValue('game');
+    expectActiveCategory('game');
     expectCategory('game');
     expect(spines()).toHaveLength(19);
     expect(
@@ -502,13 +526,13 @@ describe('single-category shelf filtering', () => {
     expect(route()).toBe('/logs?source=bookmark&category=game');
 
     chooseCategory('music');
-    expect(filter()).toHaveValue('music');
+    expectActiveCategory('music');
     expectCategory('music');
     expect(spines()).toHaveLength(18);
     expect(route()).toBe('/logs?source=bookmark&category=music');
 
     chooseCategory('all');
-    expect(filter()).toHaveValue('all');
+    expectActiveCategory('all');
     expect(spines()).toHaveLength(24);
     expect(route()).toBe('/logs?source=bookmark');
     expect(fetchDiscoveryEntries).toHaveBeenCalledTimes(1);
@@ -520,7 +544,7 @@ describe('single-category shelf filtering', () => {
       name: 'Open Discovery 02 from the shelf',
       exact: true,
     });
-    expect(filter()).toHaveValue('music');
+    expectActiveCategory('music');
     expectCategory('music');
     expect(spines()).toHaveLength(18);
     expect(spines()[0]).toHaveAccessibleName(
@@ -531,11 +555,79 @@ describe('single-category shelf filtering', () => {
   it('falls back to All for an unknown category rather than showing an empty shelf', async () => {
     mountPage('/discovery?category=unknown-category');
     await waitForShelf();
-    expect(filter()).toHaveValue('all');
+    expectActiveCategory('all');
     expect(spines()).toHaveLength(24);
     expect(
       new Set(spines().map((spine) => spine.getAttribute('data-category'))),
     ).toEqual(new Set(['game', 'music', 'book']));
+  });
+
+  it('moves focus and the single selection with arrow, Home, and End keys', async () => {
+    mountPage('/logs');
+    await waitForShelf();
+    const choices = within(filter()).getAllByRole('radio');
+    const [all, firstCategory, secondCategory] = choices;
+    const lastCategory = choices.at(-1);
+    const expectFocusedChoice = (choice) => {
+      expect(choice).toHaveFocus();
+      expect(choice).toBeChecked();
+      expect(within(filter()).getAllByRole('radio', { checked: true })).toEqual(
+        [choice],
+      );
+      expect(choice).toHaveAttribute('tabindex', '0');
+      expectCategory(choice.getAttribute('aria-label').toLowerCase());
+    };
+    all.focus();
+    expect(all).toHaveAttribute('tabindex', '0');
+    expect(firstCategory).toHaveAttribute('tabindex', '-1');
+
+    fireEvent.keyDown(all, { key: 'ArrowRight' });
+    expectFocusedChoice(firstCategory);
+
+    fireEvent.keyDown(firstCategory, { key: 'ArrowRight' });
+    expectFocusedChoice(secondCategory);
+    expect(all).toHaveAttribute('tabindex', '-1');
+
+    fireEvent.keyDown(secondCategory, { key: 'End' });
+    expectFocusedChoice(lastCategory);
+
+    fireEvent.keyDown(lastCategory, { key: 'Home' });
+    expect(all).toHaveFocus();
+    expectActiveCategory('all');
+    expect(route()).toBe('/logs');
+
+    fireEvent.keyDown(all, { key: 'ArrowLeft' });
+    expectFocusedChoice(lastCategory);
+  });
+
+  it('scrolls an overflowing category rail horizontally with vertical mouse wheel events', async () => {
+    mountPage('/logs');
+    await waitForShelf();
+    const rail = filter();
+    Object.defineProperty(rail, 'clientWidth', {
+      configurable: true,
+      value: 280,
+    });
+    Object.defineProperty(rail, 'scrollWidth', {
+      configurable: true,
+      value: 960,
+    });
+    fireEvent(rail, new Event('scroll'));
+    expect(
+      screen.getByRole('button', { name: 'More categories' }),
+    ).toBeInTheDocument();
+
+    const wheelEvent = new WheelEvent('wheel', {
+      deltaY: 120,
+      bubbles: true,
+      cancelable: true,
+    });
+    const notPrevented = fireEvent(rail, wheelEvent);
+    expect(notPrevented).toBe(false);
+    expect(rail.scrollLeft).toBe(120);
+    expect(
+      screen.getByRole('button', { name: 'Previous categories' }),
+    ).toBeInTheDocument();
   });
 
   it('starts each category at its newest segment and scroll position while paginating only that category', async () => {
@@ -568,6 +660,9 @@ describe('single-category shelf filtering', () => {
       screen.queryByRole('button', { name: 'Load more discoveries' }),
     ).not.toBeInTheDocument();
     shelf().scrollLeft = 640;
+    chooseCategory('game');
+    expect(spines()).toHaveLength(28);
+    expect(shelf().scrollLeft).toBe(640);
 
     chooseCategory('book');
     expectCategory('book');
@@ -620,7 +715,7 @@ describe('single-category shelf filtering', () => {
 
     await closeDialog();
     expect(route()).toBe('/logs?category=game');
-    expect(filter()).toHaveValue('game');
+    expectActiveCategory('game');
     expectCategory('game');
     expect(spines()).toHaveLength(28);
     await waitFor(() => expect(region.scrollLeft).toBe(640));
@@ -632,7 +727,7 @@ describe('single-category shelf filtering', () => {
     await screen.findByRole('dialog', { name: 'Discovery 02' });
     await closeDialog();
     expect(route()).toBe('/logs?category=game');
-    expect(filter()).toHaveValue('game');
+    expectActiveCategory('game');
     expectCategory('game');
   });
 });
@@ -775,7 +870,7 @@ describe('opening and returning to the shelf', () => {
     await waitFor(() =>
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument(),
     );
-    expect(document.body.style.overflow).toBe('clip');
+    await waitFor(() => expect(document.body.style.overflow).toBe('clip'));
   });
   it('handles missing direct entries with initial focus, a Tab trap, and Escape back to the shelf', async () => {
     mountPage('/discovery/game/missing-entry');
