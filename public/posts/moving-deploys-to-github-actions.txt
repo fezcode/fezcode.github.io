@@ -1,0 +1,52 @@
+# From 12 Minutes to 2: Moving Fezcodex Deploys to GitHub Actions
+
+As of **v0.63.0**, Fezcodex is no longer deployed from my laptop. Every push to `main` is built and published by GitHub Actions, and this post is the first one to ship that way.
+
+## Why
+
+A release used to look like this: lint, push, build locally, then let the `gh-pages` package commit the whole site to a `gh-pages` branch and push it. On the last release of the old setup, that took **11 minutes 52 seconds**:
+
+| Step | Time |
+| --- | --- |
+| Lint, push, regenerate RSS, sitemap and tags | ~51s |
+| Build | 1m 18s |
+| Publish with `gh-pages` | **~9m 43s** |
+
+Two things were slow.
+
+**The prerender crawl.** After the build, a headless Chrome opened all ~1,100 pages one by one and saved their HTML. That alone took about 7 minutes, and it bought very little. The browser throws the snapshot away and renders fresh as soon as the JavaScript loads, and the snapshot always shows the default theme, so anyone using another theme saw a flash of the wrong one. Link previews never needed it either: titles, descriptions and OG images come from a separate step that reads the content files directly. So `npm run prod` now skips the crawl. It's still available as `npm run prod:full` for when I want it.
+
+**The publish.** The site is 3,334 files and 158 MB, mostly images. `gh-pages` copies all of it into a fresh commit on every release (with `--no-history`, because without it the branch broke production twice), so git re-stages everything from scratch, which is painfully slow on Windows. This package has also been a source of trouble before: I once had to [install it straight from GitHub](/blog/gh-pages-enametoolong-fix) to get around an `ENAMETOOLONG` error.
+
+## What changed
+
+GitHub Pages can publish straight from an Actions workflow, with no branch involved. The build output is uploaded as a single bundle, and Pages serves it.
+
+```mermaid
+flowchart LR
+    A[npm run prod] --> B[lint + git push]
+    B --> C[GitHub Actions: npm ci + build:lite]
+    C --> D[upload-pages-artifact]
+    D --> E[deploy-pages]
+    E --> F[fezcode.com]
+```
+
+- `npm run prod` is now just `lint && git push`.
+- `.github/workflows/deploy.yml` runs on every push to `main`: install, build, upload, deploy.
+- The workflow can also be started by hand, with switches for running the prerender crawl or building without deploying.
+- The repo's Pages source is now **GitHub Actions** instead of the `gh-pages` branch. The custom domain and HTTPS settings carried over untouched.
+
+## What the test runs caught
+
+I didn't flip the switch until a build on GitHub matched my local one file for file. The first test runs caught two problems that would otherwise have gone live:
+
+1. **No HTML at all.** Vike writes one `index.html` per route, but only when it detects it was started by the `vite` command. On Linux, the build script reached Vite through the `node_modules/.bin/vite` symlink, which fails that check, so Vike quietly wrote nothing. Windows never uses that path, so it had always worked locally. The fix was one line: call `node_modules/vite/bin/vite.js` directly.
+2. **The wrong font on OG images.** The share-image generator draws titles in Georgia, a Windows system font. The Linux runner doesn't have it, so the titles fell back to a plain sans-serif. The workflow now installs Microsoft's core fonts and fails the build if Georgia is missing, so a card in the wrong font can't slip out unnoticed.
+
+After that, the GitHub build produced the same 3,334 files as my local one, and the cards looked identical.
+
+## Result
+
+The first real deploy took **1 minute 50 seconds** from start to live: 1m 28s to build and 12 seconds to publish. On my side, a release is now just lint and a push. If a build ever fails, the site keeps serving the last good deploy.
+
+This post is the first test: it's going out with `npm run prod` on v0.63.0, with no version bump.

@@ -1,5 +1,24 @@
 [
   {
+    "slug": "moving-deploys-to-github-actions",
+    "title": "From 12 Minutes to 2: Moving Fezcodex Deploys to GitHub Actions",
+    "date": "2026-11-16",
+    "updated": "2026-11-16",
+    "description": "Why v0.63.0 dropped the gh-pages package and the prerender crawl for GitHub Actions, what the test runs caught on Linux, and how a release went from 11m 52s to 1m 50s.",
+    "tags": [
+      "github-actions",
+      "devops",
+      "ssg",
+      "performance",
+      "vite"
+    ],
+    "category": "dev",
+    "filename": "moving-deploys-to-github-actions.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "the-knife-stays-in-the-kitchen",
     "title": "The Knife Stays in the Kitchen: Why Turkish Food Never Asks for One",
     "date": "2026-11-14",

@@ -21,26 +21,10 @@ Imagine you have a giant digital toy box. Inside, you keep the cool things you'v
 - **Frontend**: React 19, Tailwind CSS, and Framer Motion for smooth animations.
 - **3D & Graphics**: Three.js and react-force-graph-3d for the knowledge graph.
 - **Content**: Markdown and **PIML** (Plain Old Markup Language) for structured content.
-- **Build Tools**: Vite + Vike for the SPA build and shell generation; a Puppeteer-based crawler hydrates dynamic routes into static HTML for GitHub Pages.
+- **Build Tools**: Vite + Vike for the SPA build and one HTML shell per route; GitHub Actions builds and deploys to GitHub Pages. An optional Puppeteer crawler can prerender page content (`npm run prod:full`).
 - **Persistence**: Local Storage for settings, achievements, and persistent state.
-- **AI Tooling**: **Model Context Protocol (MCP)** server for automated content management.
 
 ---
-
-## Model Context Protocol (MCP)
-Fezcodex includes a custom MCP server to assist AI agents (like Gemini) in managing content.
-
-### Tools Provided:
-- `create_blog_post`: Automates the creation of blog posts, including file generation, metadata registry updates, and RSS/Sitemap regeneration.
-
-### Integration with Gemini CLI:
-To use this server with your Gemini CLI, run:
-```bash
-gemini mcp add fezcodex-blog-writer --command "node scripts/mcp-server/index.mjs"
-# or
-gemini mcp add --scope project fezcodex npm run mcp
-```
-Once added, the AI can create blog posts directly through its toolset.
 
 ## Project Structure
 - `src/app/`: Domain logic, core features, and views (Achievements, OS, Command Palette, etc.).
@@ -146,18 +130,17 @@ Every core component should be **Theme-Aware**:
 - Use `VisualSettingsContext.jsx` for any UI state that needs to survive a page refresh (Invert mode, Theme selection, etc.).
 - Use `usePersistentState` hook to automatically sync your context variables with `localStorage`.
 
-### 5. AI-Assisted Content Creation (MCP)
-If you are using an AI agent with MCP support:
-- **Blog Posts:** Use the `create_blog_post` tool provided by the local MCP server. It handles file creation, metadata indexing, and build script execution in one step.
-- **Verification:** Always run `npm run lint` after AI-generated changes to ensure style compliance.
+### 5. Adding Content
+- **Blog posts:** write `public/posts/<slug>.txt` and add an entry at the top of `public/posts/posts.json` (slug, title, date, updated, description, tags, category, filename, authors).
+- **Discovery logs:** add an `(item)` to `public/logs/<type>/<type>.piml` and an optional `<slug>.txt` beside it.
+- Every post, log and project needs tags; run `npm run generate-tags` afterwards, then `npm run lint`.
 
 ---
 
 ## Github Pages Configuration
 
-1. Deploy from a branch.
-2. Select the `gh-pages` branch
-3. Add `fezcode.com` as the custom domain.
+1. Settings → Pages → Source: **GitHub Actions** (the workflow is `.github/workflows/deploy.yml`).
+2. Custom domain: `fezcode.com`, with HTTPS enforced.
 
 ---
 

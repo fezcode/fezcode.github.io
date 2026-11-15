@@ -713,6 +713,11 @@
     (posts) 1
     (logs) 2
   > (item)
+    (slug) devops
+    (label) Devops
+    (count) 3
+    (posts) 3
+  > (item)
     (slug) dystopia
     (label) Dystopia
     (count) 3
@@ -813,6 +818,12 @@
     (count) 3
     (logs) 3
   > (item)
+    (slug) performance
+    (label) Performance
+    (count) 3
+    (posts) 2
+    (logs) 1
+  > (item)
     (slug) recipe
     (label) Recipe
     (count) 3
@@ -844,6 +855,11 @@
     (label) Sqlite
     (count) 3
     (projects) 3
+  > (item)
+    (slug) ssg
+    (label) SSG
+    (count) 3
+    (posts) 3
   > (item)
     (slug) threejs
     (label) Three.js
@@ -969,11 +985,6 @@
     (label) Deus ex
     (count) 2
     (logs) 2
-  > (item)
-    (slug) devops
-    (label) Devops
-    (count) 2
-    (posts) 2
   > (item)
     (slug) distributed-systems
     (label) Distributed systems
@@ -1132,12 +1143,6 @@
     (count) 2
     (logs) 2
   > (item)
-    (slug) performance
-    (label) Performance
-    (count) 2
-    (posts) 1
-    (logs) 1
-  > (item)
     (slug) physics
     (label) Physics
     (count) 2
@@ -1214,11 +1219,6 @@
     (count) 2
     (posts) 2
   > (item)
-    (slug) ssg
-    (label) SSG
-    (count) 2
-    (posts) 2
-  > (item)
     (slug) star-wars
     (label) Star wars
     (count) 2
@@ -1286,6 +1286,11 @@
     (label) Vampires
     (count) 2
     (logs) 2
+  > (item)
+    (slug) vite
+    (label) Vite
+    (count) 2
+    (posts) 2
   > (item)
     (slug) vocabulary
     (label) Vocabulary
@@ -2097,6 +2102,11 @@
     (label) Gg library
     (count) 1
     (projects) 1
+  > (item)
+    (slug) github-actions
+    (label) Github actions
+    (count) 1
+    (posts) 1
   > (item)
     (slug) glitch
     (label) Glitch
@@ -3418,11 +3428,6 @@
     (count) 1
     (projects) 1
   > (item)
-    (slug) vite
-    (label) Vite
-    (count) 1
-    (posts) 1
-  > (item)
     (slug) vlc
     (label) Vlc
     (count) 1
@@ -3621,6 +3626,20 @@
     (alias) web-development
     (tag) webdev
 (items)
+  > (item)
+    (id) post/moving-deploys-to-github-actions
+    (type) post
+    (title) From 12 Minutes to 2: Moving Fezcodex Deploys to GitHub Actions
+    (path) /blog/moving-deploys-to-github-actions
+    (date) 2026-11-16
+    (category) dev
+    (description) Why v0.63.0 dropped the gh-pages package and the prerender crawl for GitHub Actions, what the test runs caught on Linux, and how a release went from 11m 52s to 1m 50s.
+    (tags)
+      > github-actions
+      > devops
+      > ssg
+      > performance
+      > vite
   > (item)
     (id) log/game/wolfenstein-ii-the-new-colossus
     (type) log
