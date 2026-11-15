@@ -92,15 +92,18 @@ This project uses `BrowserRouter` for clean URLs. To support this on static host
 Tune the crawler via env vars: `PRERENDER_CONCURRENCY=6` (default `6`; use `3` if the crawl stalls), `PRERENDER_RETRY=1` (same as `--retry`).
 
 ### Deployment
+The site is built and published by GitHub Actions (`.github/workflows/deploy.yml`), using the official Pages actions: the repo's Pages source is **GitHub Actions**, not a branch.
+
 ```bash
-npm run deploy           # build (full crawl) + push dist/client to gh-pages
-npm run prod             # lint + git push + deploy:lite (no crawl, ~2 min) — the default release
-npm run prod:full        # lint + git push + deploy (full crawl, ~9 min)
-npm run deploy:lite      # build:lite + push dist/client to gh-pages
-npm run deploy:fast      # shell-only build + push (skipped routes become SPA-only)
-npm run deploy:retry     # full crawl with retry pass + push
+npm run prod             # lint + git push; the push to main builds (build:lite) and deploys on GitHub
+npm run prod:full        # the same, plus a second run that includes the prerender crawl
 ```
-`gh-pages` publishes the contents of `dist/client/` to the `gh-pages` branch of the repo.
+
+- Every push to `main` deploys. Follow a run with `gh run watch` or in the repo's Actions tab.
+- **Run workflow** in the Actions tab has two switches: `prerender` (full build with the crawl) and `deploy` (untick to test a build without publishing).
+- A newer push cancels a run still in progress. If a build fails, the site keeps serving the last good deploy.
+
+**Rollback (legacy local deploy):** the old `gh-pages` scripts still exist (`npm run deploy`, `deploy:lite`, `deploy:fast`, `deploy:retry`). They push `dist/client` to the `gh-pages` branch, which only goes live if the Pages source is switched back to "Deploy from a branch: gh-pages" in the repo settings.
 
 ### Content Syncing
 Stories are managed via git subtrees. Because subtree remotes are not tracked by git, you must initialize the remote once after cloning:

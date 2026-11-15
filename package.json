@@ -1,6 +1,6 @@
 {
   "name": "fezcodex",
-  "version": "0.62.1",
+  "version": "0.63.0",
   "private": true,
   "homepage": "https://fezcode.com",
   "dependencies": {
@@ -66,8 +66,8 @@
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist/client -b gh-pages --no-history",
-    "prod": "npm run lint && git push && npm run deploy:lite",
-    "prod:full": "npm run lint && git push && npm run deploy",
+    "prod": "npm run lint && git push",
+    "prod:full": "npm run lint && git push && gh workflow run deploy.yml -f prerender=true",
     "prepare": "git config core.hooksPath git-hooks"
   },
   "browserslist": {

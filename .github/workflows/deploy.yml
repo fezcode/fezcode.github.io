@@ -1,0 +1,78 @@
+name: Deploy to GitHub Pages
+
+# Builds the site on GitHub and publishes dist/client with the official Pages
+# actions: no gh-pages branch, no history, nothing large pushed from a laptop.
+#
+# - Every push to main deploys a build without the prerender crawl (build:lite).
+# - "Run workflow" (or `npm run prod:full`) can add the prerender crawl, or
+#   build without deploying to test a change.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      prerender:
+        description: 'Run the prerender crawl (full build, ~10 min)'
+        type: boolean
+        default: false
+      deploy:
+        description: 'Deploy the result (untick to only test the build)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; a newer push supersedes a queued or running one.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (no prerender)
+        if: ${{ !inputs.prerender }}
+        run: npm run build:lite
+
+      - name: Build (with prerender)
+        if: ${{ inputs.prerender }}
+        env:
+          PRERENDER_CONCURRENCY: '3'
+        run: npm run build
+
+      - name: Check the build output
+        run: |
+          test -f dist/client/index.html
+          test -f dist/client/CNAME
+          echo "files: $(find dist/client -type f | wc -l), size: $(du -sh dist/client | cut -f1)"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/client
+
+  deploy:
+    needs: build
+    if: ${{ github.event_name == 'push' || inputs.deploy }}
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
