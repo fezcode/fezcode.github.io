@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, MotionConfig } from 'framer-motion';
 import Seo from '../../components/Seo';
 import { tagPath } from '../../utils/tagIndex';
 import { TAG_TYPES, typeByKey, formatDate } from '../tags/tagTypes';
@@ -9,19 +9,18 @@ import {
   MistOrb,
   MistHorizon,
   MistStrip,
-  MistChapter,
-  ChapterEm,
-  MistSpec,
   MistColophon,
 } from '../../components/mist';
+import './mist-tags.css';
 
 const FOG_GRADIENT =
   'radial-gradient(1100px 600px at 80% -10%, #FFFFFF 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #D2DBD8 0%, transparent 50%), radial-gradient(700px 500px at 95% 90%, #E5EBE9 0%, transparent 45%)';
 
+/* Eucalyptus for posts, sky for logs, slate for projects. */
 const TYPE_TINT = {
   post: '#5F837B',
-  log: '#8FA8BC',
-  project: '#7C8FA0',
+  log: '#6F8FAA',
+  project: '#66788A',
 };
 
 const ROOT_CLASS =
@@ -31,7 +30,9 @@ const ROOT_STYLE = { background: '#EEF2F1', backgroundImage: FOG_GRADIENT };
 const BACK_CLASS =
   'inline-flex items-center gap-2 font-ibm-plex-mono text-[10.5px] tracking-[0.22em] lowercase text-[#8A9894] hover:text-[#5F837B] transition-colors duration-[250ms]';
 
-const Dot = ({ tint, size = 5 }) => (
+const UNDATED = 'undated';
+
+const Dot = ({ tint, size = 6 }) => (
   <span
     aria-hidden="true"
     className="inline-block rounded-full shrink-0"
@@ -54,96 +55,137 @@ const FogState = ({ children }) => (
   </div>
 );
 
-/** One tagged entry: a row on the horizon, like the logs list. */
-const ItemRow = ({ item, index, view }) => {
+/** Group items by year (newest first); undated items settle at the end. */
+const useYearGroups = (items) =>
+  useMemo(() => {
+    const groups = new Map();
+    items.forEach((item) => {
+      const d = item.date ? new Date(item.date) : null;
+      const year =
+        d && !Number.isNaN(d.getTime()) ? String(d.getFullYear()) : UNDATED;
+      if (!groups.has(year)) groups.set(year, []);
+      groups.get(year).push(item);
+    });
+    return [...groups.entries()].sort(([a], [b]) => {
+      if (a === UNDATED) return 1;
+      if (b === UNDATED) return -1;
+      return Number(b) - Number(a);
+    });
+  }, [items]);
+
+/** One entry: a soft card drifting off the line. */
+const DriftCard = ({ item, side, view }) => {
   const type = typeByKey[item.type];
   const tint = TYPE_TINT[item.type] || '#5C6B67';
   const date = item.date ? formatDate(item.date) : '';
+  const left = side === 'left';
 
   return (
     <motion.li
-      initial={{ opacity: 0, y: 10, filter: 'blur(6px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      initial={{ opacity: 0, x: left ? -14 : 14, filter: 'blur(6px)' }}
+      whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.7, delay: Math.min(index, 12) * 0.06 }}
-      className="group py-7 border-b border-[#3C4845]/10"
+      transition={{ duration: 0.8 }}
+      className={`relative pl-10 md:w-1/2 ${
+        left ? 'md:pl-0 md:pr-10 md:mr-auto' : 'md:pl-10 md:ml-auto'
+      }`}
     >
-      <div className="flex items-center gap-2.5 flex-wrap font-ibm-plex-mono text-[9.5px] tracking-[0.18em] lowercase">
-        <span
-          className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full backdrop-blur-sm"
-          style={{ color: tint, backgroundColor: `${tint}1A` }}
-        >
-          <Dot tint={tint} />
-          {type ? type.one : item.type}
-          {item.category && (
-            <>
-              <span className="opacity-50">·</span>
-              {item.category}
-            </>
-          )}
-        </span>
-        {date && (
-          <time dateTime={item.date} className="text-[#8A9894]">
-            {date}
-          </time>
-        )}
-      </div>
+      {/* where the card touches the line */}
+      <span
+        aria-hidden="true"
+        className={`absolute top-8 left-4 -translate-x-1/2 w-2.5 h-2.5 rounded-full ring-4 ring-[#EEF2F1] ${
+          left
+            ? 'md:left-auto md:right-0 md:translate-x-1/2'
+            : 'md:left-0 md:-translate-x-1/2'
+        }`}
+        style={{ backgroundColor: tint, boxShadow: `0 0 12px 2px ${tint}55` }}
+      />
+      <span
+        aria-hidden="true"
+        className={`absolute top-[37px] h-px w-5 left-5 ${
+          left ? 'md:left-auto md:right-1.5' : 'md:left-1.5'
+        }`}
+        style={{
+          background: `linear-gradient(${left ? '270deg' : '90deg'}, ${tint}80, transparent)`,
+        }}
+      />
 
-      <h3 className="mt-3 font-instr-serif font-normal text-[22px] md:text-[30px] leading-[1.12] tracking-[-0.01em] break-words">
-        <Link
-          to={item.path}
-          className="text-[#3C4845] hover:text-[#5F837B] group-hover:text-[#5F837B] transition-colors duration-[250ms]"
-        >
-          {item.title}
+      <article className="group rounded-[22px] bg-white/45 backdrop-blur-sm border border-white/70 shadow-[0_12px_36px_rgba(60,72,69,0.08)] hover:bg-white/65 hover:shadow-[0_16px_44px_rgba(95,131,123,0.16)] transition-all duration-[250ms] p-5 md:p-6">
+        <div className="flex items-center gap-2.5 flex-wrap font-ibm-plex-mono text-[9.5px] tracking-[0.16em] lowercase">
           <span
-            aria-hidden="true"
-            className="inline-block ml-3 font-ibm-plex-mono text-sm text-[#5F837B] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-[250ms]"
+            className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full max-w-full"
+            style={{ color: tint, backgroundColor: `${tint}1A` }}
           >
-            →
+            <Dot tint={tint} size={5} />
+            <span className="break-words min-w-0">
+              {type ? type.one.toLowerCase() : item.type}
+              {item.category && (
+                <>
+                  <span className="opacity-50"> · </span>
+                  {item.category}
+                </>
+              )}
+            </span>
           </span>
-        </Link>
-      </h3>
+          {date && (
+            <time dateTime={item.date} className="text-[#8A9894]">
+              {date}
+            </time>
+          )}
+        </div>
 
-      {item.series && (
-        <p className="mt-1 font-instr-serif italic text-[15px] text-[#5C6B67]">
-          Part of {item.series}
-        </p>
-      )}
+        <h3 className="mt-3 font-instr-serif font-normal text-[22px] md:text-[26px] leading-[1.15] tracking-[-0.01em] break-words">
+          <Link
+            to={item.path}
+            className="text-[#3C4845] hover:text-[#5F837B] group-hover:text-[#5F837B] focus:outline-none focus-visible:underline transition-colors duration-[250ms]"
+          >
+            {item.title}
+          </Link>
+        </h3>
 
-      {item.description && (
-        <p className="mt-2 font-outfit font-light text-[13.5px] leading-[1.65] text-[#5C6B67] max-w-[64ch]">
-          {item.description}
-        </p>
-      )}
+        {item.series && (
+          <p className="mt-1 font-instr-serif italic text-[15px] text-[#6F8FAA]">
+            part of {item.series}
+          </p>
+        )}
 
-      {item.tags.length > 0 && (
-        <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Tags">
-          {item.tags.map((tag) => {
-            const on = view.active.includes(tag);
-            return (
-              <li key={tag} className="max-w-full">
-                <Link
-                  to={tagPath(tag)}
-                  aria-current={on ? 'true' : undefined}
-                  className={`inline-block max-w-full break-words font-ibm-plex-mono text-[9.5px] tracking-[0.14em] lowercase px-2 py-0.5 rounded-full transition-colors duration-[250ms] ${
-                    on
-                      ? 'bg-[#5F837B]/15 text-[#5F837B]'
-                      : 'bg-white/50 text-[#5C6B67] hover:text-[#5F837B]'
-                  }`}
-                >
-                  {view.labelOf(tag)}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+        {item.description && (
+          <p className="mt-2 font-outfit font-light text-[13.5px] leading-[1.65] text-[#5C6B67] break-words">
+            {item.description}
+          </p>
+        )}
+
+        {item.tags.length > 0 && (
+          <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Tags">
+            {item.tags.map((tag) => {
+              const on = view.active.includes(tag);
+              return (
+                <li key={tag} className="max-w-full">
+                  <Link
+                    to={tagPath(tag)}
+                    aria-current={on ? 'true' : undefined}
+                    className={`inline-block max-w-full break-words font-ibm-plex-mono text-[9.5px] tracking-[0.12em] lowercase px-2 py-0.5 rounded-full transition-colors duration-[250ms] ${
+                      on
+                        ? 'bg-[#5F837B] text-[#EEF2F1]'
+                        : 'bg-[#8FA8BC]/15 text-[#5C6B67] hover:text-[#5F837B] hover:bg-[#5F837B]/15'
+                    }`}
+                  >
+                    {view.labelOf(tag)}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </article>
     </motion.li>
   );
 };
 
-/** MIST /tags/:tag: everything filed under one thread. */
+/** MIST /tags/:tag: everything under one tag, drifting along a timeline. */
 export default function MistTagPage({ view }) {
+  const groups = useYearGroups(view.items || []);
+
   if (view.status === 'error')
     return (
       <FogState>
@@ -195,96 +237,118 @@ export default function MistTagPage({ view }) {
 
   const { meta } = view;
   const counts = TAG_TYPES.filter((t) => meta[t.plural] > 0);
+  let cardIndex = 0;
 
   return (
-    <div className={ROOT_CLASS} style={ROOT_STYLE}>
-      <Seo
-        title={`${view.title} | Tags | Fezcodex`}
-        description={
-          meta.description ||
-          `Posts, logs and projects tagged ${meta.label} on Fezcodex.`
-        }
-        canonicalPath={tagPath(view.slug)}
-      />
-      <MistVeil />
-
-      <div className="relative z-10 mx-auto max-w-[1200px] px-6 md:px-14 pb-[120px]">
-        <MistStrip
-          left="drift ix · a thread"
-          center="everything tied to one word"
-          right={`${view.items.length} of ${view.typeCounts.all} surfaced`}
+    <MotionConfig reducedMotion="user">
+      <div className={ROOT_CLASS} style={ROOT_STYLE}>
+        <Seo
+          title={`${view.title} | Tags | Fezcodex`}
+          description={
+            meta.description ||
+            `Posts, logs and projects tagged ${meta.label} on Fezcodex.`
+          }
+          canonicalPath={tagPath(view.slug)}
         />
+        <MistVeil />
 
-        {/* hero */}
-        <section className="pt-16 md:pt-24 pb-10">
-          <Link to="/tags" className={`${BACK_CLASS} mb-10`}>
-            ← all tags
-          </Link>
+        <div className="relative z-10 mx-auto max-w-[1100px] px-5 sm:px-8 md:px-14 pb-[120px]">
+          <MistStrip
+            left="drift ix · a thread"
+            center="everything tied to one word"
+            right={`${view.items.length} of ${view.typeCounts.all} surfaced`}
+          />
 
-          <div className="grid grid-cols-1 md:grid-cols-[1.35fr_1fr] gap-10 md:gap-20 items-end">
-            <div className="min-w-0">
-              <div className="font-ibm-plex-mono text-[10.5px] tracking-[0.22em] lowercase text-[#5F837B] mb-6 flex items-center gap-3">
-                <MistOrb size={20} />
-                <span>tagged</span>
-              </div>
-              <motion.h1
-                initial={{ opacity: 0, y: 10, filter: 'blur(6px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{ duration: 0.9 }}
-                className="font-instr-serif font-normal text-[52px] sm:text-[64px] md:text-[104px] leading-[0.95] tracking-[-0.02em] text-[#3C4845] break-words"
-              >
-                {meta.label}
-              </motion.h1>
-              {meta.description && (
-                <p className="mt-6 font-instr-serif text-[20px] leading-[1.45] text-[#3C4845] max-w-[40ch]">
-                  {meta.description}
-                </p>
-              )}
-            </div>
-            <motion.aside
-              initial={{ opacity: 0, y: 10, filter: 'blur(6px)' }}
+          {/* the tag, centred and light */}
+          <header className="pt-14 md:pt-20 mx-auto max-w-[760px] flex flex-col items-center text-center">
+            <Link to="/tags" className={BACK_CLASS}>
+              ← all tags
+            </Link>
+            <span className="mt-10 font-ibm-plex-mono text-[10.5px] tracking-[0.22em] lowercase text-[#5F837B] inline-flex items-center gap-2.5">
+              <MistOrb size={18} />
+              tagged
+            </span>
+            <motion.h1
+              initial={{ opacity: 0, y: 8, filter: 'blur(6px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.9, delay: 0.12 }}
-              className="flex flex-col gap-5"
+              transition={{ duration: 1.1 }}
+              className="mt-4 font-instr-serif font-normal text-[46px] sm:text-[64px] md:text-[88px] leading-[0.98] tracking-[-0.02em] text-[#3C4845] break-words max-w-full"
             >
-              <MistHorizon />
-              <div className="grid grid-cols-2 gap-5">
-                {counts.map((t) => (
-                  <MistSpec
-                    key={t.key}
-                    label={
-                      <span className="inline-flex items-center gap-2">
-                        <Dot tint={TYPE_TINT[t.key]} />
-                        {t.plural}
-                      </span>
-                    }
-                    value={`${meta[t.plural]} ${
-                      meta[t.plural] === 1 ? t.one.toLowerCase() : t.plural
-                    }`}
-                  />
-                ))}
-                <MistSpec label="in all" value={`${meta.count}`} />
-              </div>
-            </motion.aside>
-          </div>
-        </section>
+              {meta.label}
+            </motion.h1>
+            {meta.description && (
+              <motion.p
+                initial={{ opacity: 0, filter: 'blur(6px)' }}
+                animate={{ opacity: 1, filter: 'blur(0px)' }}
+                transition={{ duration: 1.1, delay: 0.15 }}
+                className="mt-5 font-instr-serif italic text-[18px] md:text-[21px] leading-[1.5] text-[#5C6B67] max-w-[44ch]"
+              >
+                {meta.description}
+              </motion.p>
+            )}
 
-        {/* active filters + type tabs */}
-        <section className="py-2">
-          <MistHorizon />
-          <div className="py-5 flex flex-col gap-4">
+            {/* meta counts */}
+            <p className="mt-6 flex items-center justify-center gap-x-4 gap-y-1.5 flex-wrap font-ibm-plex-mono text-[10px] tracking-[0.16em] lowercase text-[#5C6B67]">
+              {counts.map((t) => (
+                <span key={t.key} className="inline-flex items-center gap-1.5">
+                  <Dot tint={TYPE_TINT[t.key]} size={5} />
+                  {meta[t.plural]}{' '}
+                  {meta[t.plural] === 1 ? t.one.toLowerCase() : t.plural}
+                </span>
+              ))}
+              <span className="text-[#8A9894]">{meta.count} in all</span>
+            </p>
+
+            {/* type filters */}
+            <div
+              className="mt-7 flex items-center justify-center gap-1.5 flex-wrap"
+              role="group"
+              aria-label="Content type"
+            >
+              {view.types.map((t) => {
+                const active = view.type === t.key;
+                const disabled =
+                  t.key !== 'all' && view.typeCounts[t.key] === 0;
+                const tint = TYPE_TINT[t.key] || '#5F837B';
+                return (
+                  <button
+                    key={t.key}
+                    type="button"
+                    aria-pressed={active}
+                    disabled={disabled}
+                    onClick={() => view.setType(t.key)}
+                    className={`inline-flex items-center gap-1.5 font-ibm-plex-mono text-[9.5px] tracking-[0.16em] lowercase px-3 py-1 rounded-full transition-colors duration-[250ms] disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-1 focus-visible:ring-[#5F837B]/60 ${
+                      active
+                        ? 'text-[#EEF2F1] shadow-[0_4px_14px_rgba(95,131,123,0.30)]'
+                        : 'bg-white/45 text-[#5C6B67] enabled:hover:bg-white/75'
+                    }`}
+                    style={active ? { backgroundColor: tint } : undefined}
+                  >
+                    {t.key !== 'all' && (
+                      <Dot tint={active ? '#EEF2F1' : tint} size={5} />
+                    )}
+                    {t.label.toLowerCase()}
+                    <span className={active ? 'opacity-80' : 'text-[#8A9894]'}>
+                      {view.typeCounts[t.key]}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* active filters */}
             {view.extra.length > 0 && (
               <div
-                className="flex items-center gap-1.5 flex-wrap"
+                className="mt-4 flex items-center justify-center gap-1.5 flex-wrap"
                 aria-label="Active tag filters"
               >
-                <span className="font-ibm-plex-mono text-[10px] tracking-[0.18em] lowercase text-[#8A9894] mr-1">
-                  filtered by
+                <span className="font-instr-serif italic text-[14px] text-[#8A9894] mr-1">
+                  held together by
                 </span>
                 {view.active.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center gap-1.5 max-w-full font-ibm-plex-mono text-[9.5px] tracking-[0.18em] lowercase pl-2.5 pr-1 py-0.5 rounded-full bg-[#5F837B]/15 text-[#5F837B]"
+                    className="inline-flex items-center gap-1 max-w-full font-ibm-plex-mono text-[9.5px] tracking-[0.14em] lowercase pl-3 pr-1 py-0.5 rounded-full bg-[#5F837B]/15 text-[#4E6F68] backdrop-blur-sm"
                   >
                     <span className="break-words min-w-0">
                       {view.labelOf(tag)}
@@ -300,64 +364,54 @@ export default function MistTagPage({ view }) {
                 ))}
               </div>
             )}
+          </header>
 
-            <div
-              className="flex items-center gap-1.5 flex-wrap"
-              role="group"
-              aria-label="Content type"
+          {/* narrow by: one gentle row */}
+          {view.related.length > 0 && (
+            <nav
+              className="mt-10 mx-auto max-w-[880px]"
+              aria-label="Narrow by another tag"
             >
-              <span className="font-ibm-plex-mono text-[10px] tracking-[0.18em] lowercase text-[#8A9894] mr-1">
-                sift
-              </span>
-              {view.types.map((t) => {
-                const active = view.type === t.key;
-                const disabled =
-                  t.key !== 'all' && view.typeCounts[t.key] === 0;
-                const tint = TYPE_TINT[t.key];
-                return (
-                  <button
-                    key={t.key}
-                    type="button"
-                    aria-pressed={active}
-                    disabled={disabled}
-                    onClick={() => view.setType(t.key)}
-                    className={`inline-flex items-center gap-2 font-ibm-plex-mono text-[9.5px] tracking-[0.18em] lowercase px-2.5 py-1 rounded-full transition-colors duration-[250ms] disabled:opacity-40 disabled:cursor-not-allowed ${
-                      active
-                        ? 'bg-[#5F837B] text-[#EEF2F1] shadow-[0_4px_14px_rgba(95,131,123,0.35)]'
-                        : 'bg-white/40 backdrop-blur-sm text-[#5C6B67] enabled:hover:text-[#5F837B]'
-                    }`}
-                  >
-                    {tint && <Dot tint={active ? '#EEF2F1' : tint} />}
-                    {t.label.toLowerCase()}
-                    <span className={active ? 'opacity-80' : 'text-[#8A9894]'}>
-                      {view.typeCounts[t.key]}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-          <MistHorizon />
-        </section>
+              <MistHorizon tint="rgba(95,131,123,0.28)" />
+              <div className="py-3 flex items-baseline gap-3">
+                <h2 className="shrink-0 font-instr-serif italic text-[15px] text-[#5F837B]">
+                  drift towards…
+                </h2>
+                <ul className="mt-drift-row min-w-0 flex-1 flex items-baseline gap-4 overflow-x-auto whitespace-nowrap px-6 py-1">
+                  {view.related.map(([tag, count]) => (
+                    <li key={tag} className="shrink-0">
+                      <Link
+                        to={view.addHref(tag)}
+                        aria-label={`Narrow by ${view.labelOf(tag)}, ${count} ${
+                          count === 1 ? 'entry' : 'entries'
+                        }`}
+                        className="group inline-flex items-baseline gap-1 font-outfit font-light text-[13.5px] text-[#5C6B67]/85 hover:text-[#5F837B] transition-colors duration-[250ms]"
+                      >
+                        <span className="text-[#8FA8BC] group-hover:text-[#5F837B]">
+                          +
+                        </span>
+                        {view.labelOf(tag)}
+                        <span className="font-ibm-plex-mono text-[9px] text-[#8A9894]">
+                          {count}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <MistHorizon tint="rgba(143,168,188,0.28)" />
+            </nav>
+          )}
 
-        {/* results + narrow by */}
-        <div className="pt-16 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 lg:gap-16">
-          <section className="min-w-0" aria-label="Tagged items">
-            <MistChapter
-              numeral="i"
-              label="what it ties"
-              title={
-                <>
-                  filed <ChapterEm>under.</ChapterEm>
-                </>
-              }
-              blurb="posts, logs and projects carrying every active tag."
-            />
-
+          {/* the drift timeline */}
+          <section
+            className="mt-16 md:mt-20 mx-auto max-w-[880px]"
+            aria-label="Tagged items"
+          >
             {view.items.length === 0 ? (
-              <div className="py-24 flex flex-col items-center gap-6 text-center">
-                <MistOrb size={64} />
-                <p className="font-instr-serif italic text-[22px] text-[#5C6B67]">
+              <div className="py-20 flex flex-col items-center gap-5 text-center">
+                <MistOrb size={56} />
+                <p className="font-instr-serif italic text-[20px] md:text-[22px] text-[#5C6B67]">
                   nothing here carries all of these tags.
                 </p>
                 {view.extra.length > 0 && (
@@ -370,65 +424,61 @@ export default function MistTagPage({ view }) {
                 )}
               </div>
             ) : (
-              <>
-                <MistHorizon />
-                <ol>
-                  {view.items.map((item, i) => (
-                    <ItemRow key={item.id} item={item} index={i} view={view} />
+              <div className="relative">
+                <span
+                  aria-hidden="true"
+                  className="mt-line absolute top-0 bottom-0 left-4 md:left-1/2 w-px -translate-x-1/2"
+                />
+                <ol className="relative">
+                  {groups.map(([year, list]) => (
+                    <li key={year} className="pb-6">
+                      <h2 className="relative flex md:justify-center py-6">
+                        <span className="inline-flex items-center gap-2 rounded-full bg-[#EEF2F1]/90 backdrop-blur-sm border border-white/80 shadow-[0_6px_20px_rgba(95,131,123,0.14)] px-3.5 py-1 font-instr-serif text-[20px] md:text-[22px] leading-none text-[#5F837B]">
+                          <Dot tint="#8FA8BC" size={6} />
+                          {year === UNDATED ? (
+                            <em className="italic text-[#6F8FAA]">undated</em>
+                          ) : (
+                            year
+                          )}
+                          <span className="font-ibm-plex-mono text-[9px] tracking-[0.14em] text-[#8A9894]">
+                            {list.length}
+                          </span>
+                        </span>
+                      </h2>
+                      <ol className="flex flex-col gap-6 md:gap-4">
+                        {list.map((item) => {
+                          const side = cardIndex % 2 === 0 ? 'left' : 'right';
+                          cardIndex += 1;
+                          return (
+                            <DriftCard
+                              key={item.id}
+                              item={item}
+                              side={side}
+                              view={view}
+                            />
+                          );
+                        })}
+                      </ol>
+                    </li>
                   ))}
                 </ol>
-              </>
+              </div>
             )}
           </section>
 
-          {view.related.length > 0 && (
-            <aside
-              className="lg:sticky lg:top-24 self-start w-full"
-              aria-label="Narrow by another tag"
-            >
-              <div className="rounded-2xl bg-white/30 backdrop-blur-sm p-6">
-                <h2 className="font-ibm-plex-mono text-[10px] tracking-[0.24em] lowercase text-[#5F837B] mb-2">
-                  narrow by
-                </h2>
-                <p className="font-instr-serif italic text-[15px] leading-[1.45] text-[#5C6B67] mb-4">
-                  Tags that appear alongside {view.title}. Each one narrows the
-                  list.
-                </p>
-                <MistHorizon tint="rgba(60,72,69,0.14)" />
-                <ul className="pt-4 flex flex-wrap gap-1.5">
-                  {view.related.map(([tag, count]) => (
-                    <li key={tag} className="max-w-full">
-                      <Link
-                        to={view.addHref(tag)}
-                        className="group inline-flex items-baseline gap-1.5 max-w-full font-ibm-plex-mono text-[9.5px] tracking-[0.14em] lowercase px-2 py-0.5 rounded-full bg-white/50 text-[#5C6B67] hover:text-[#5F837B] hover:bg-white/80 transition-colors duration-[250ms]"
-                      >
-                        <span className="break-words min-w-0">
-                          + {view.labelOf(tag)}
-                        </span>
-                        <span className="text-[#8A9894] group-hover:text-[#5F837B]">
-                          {count}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </aside>
-          )}
+          <MistColophon
+            signature={
+              <>
+                <span>© {new Date().getFullYear()} · fezcode</span>
+                <span>
+                  tags · {meta.label.toLowerCase()} · {view.typeCounts.all}{' '}
+                  {view.typeCounts.all === 1 ? 'entry' : 'entries'} kept
+                </span>
+              </>
+            }
+          />
         </div>
-
-        <MistColophon
-          signature={
-            <>
-              <span>© {new Date().getFullYear()} · fezcode</span>
-              <span>
-                tags · {meta.label.toLowerCase()} · {view.typeCounts.all}{' '}
-                {view.typeCounts.all === 1 ? 'entry' : 'entries'} kept
-              </span>
-            </>
-          }
-        />
       </div>
-    </div>
+    </MotionConfig>
   );
 }

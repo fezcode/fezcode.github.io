@@ -1,30 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  CalendarBlank,
-  Hash,
-  Plus,
-  Tag,
-  X,
-} from '@phosphor-icons/react';
+import { ArrowLeft, ArrowUpRight, X } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { tagPath } from '../../utils/tagIndex';
 import { TAG_TYPES, typeByKey, formatDate } from '../tags/tagTypes';
 
-// Accent per content type, echoing the theme's emerald / amber / sky palette.
-const TYPE_ACCENT = {
-  post: {
-    dot: 'bg-emerald-500',
-    text: 'text-emerald-400',
-    bar: 'bg-emerald-500',
-  },
-  log: { dot: 'bg-amber-500', text: 'text-amber-400', bar: 'bg-amber-500' },
-  project: { dot: 'bg-sky-500', text: 'text-sky-400', bar: 'bg-sky-500' },
+// Square marker per content type, echoing the theme's emerald / amber / sky palette.
+const TYPE_DOT = {
+  post: 'bg-emerald-500',
+  log: 'bg-amber-500',
+  project: 'bg-sky-500',
 };
-const accentOf = (type) =>
-  TYPE_ACCENT[type] || { dot: 'bg-white', text: 'text-white', bar: 'bg-white' };
+const TYPE_TEXT = {
+  post: 'text-emerald-400',
+  log: 'text-amber-400',
+  project: 'text-sky-400',
+};
+
+const pad = (n, width) => String(n).padStart(width, '0');
 
 const BackLink = () => (
   <Link
@@ -47,13 +40,23 @@ const Shell = ({ children }) => (
   </div>
 );
 
-/** BRUTALIST /tags/:tag. */
+// Block-list heading inside the sticky column.
+const BlockHead = ({ children, id }) => (
+  <h2
+    id={id}
+    className="bg-white px-3 py-1.5 font-mono text-[10px] font-black uppercase tracking-widest text-black"
+  >
+    {children}
+  </h2>
+);
+
+/** BRUTALIST /tags/:tag: sticky label column on the left, numbered index on the right. */
 export default function BrutalistTagPage({ view }) {
   if (view.status === 'error')
     return (
       <Shell>
         <BackLink />
-        <div className="py-12 px-4 text-center border border-dashed border-red-500/30 rounded-sm">
+        <div className="border-2 border-red-500 p-6">
           <p className="font-mono text-xs text-red-400 uppercase tracking-widest break-words">
             {'//'} ERROR: {view.error}
           </p>
@@ -83,14 +86,14 @@ export default function BrutalistTagPage({ view }) {
         <p className="mb-4 font-mono text-[10px] text-red-400 uppercase tracking-[0.2em]">
           404 {'//'} Tag Not Found
         </p>
-        <h1 className="text-4xl sm:text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-8 break-words">
+        <h1 className="mb-8 border-b-4 border-white pb-6 text-5xl sm:text-7xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85] break-words [overflow-wrap:anywhere]">
           No tag “{view.rawTag}”
         </h1>
         <p className="font-mono text-sm text-gray-400 uppercase tracking-widest">
           Nothing is filed under that tag.{' '}
           <Link
             to="/tags"
-            className="text-emerald-400 hover:text-white underline decoration-emerald-500/30 underline-offset-4 transition-colors"
+            className="text-emerald-400 hover:bg-emerald-500 hover:text-black underline decoration-emerald-500/40 underline-offset-4 transition-colors"
           >
             Browse all tags
           </Link>
@@ -100,6 +103,8 @@ export default function BrutalistTagPage({ view }) {
     );
 
   const { meta } = view;
+  const counts = TAG_TYPES.filter((t) => meta[t.plural] > 0);
+  const digits = Math.max(2, String(view.items.length).length);
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans overflow-x-hidden">
@@ -112,257 +117,278 @@ export default function BrutalistTagPage({ view }) {
         canonicalPath={tagPath(view.slug)}
       />
 
-      {/* HEADER */}
-      <section className="border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-24 pb-16 md:px-12">
-          <BackLink />
+      <div className="mx-auto grid max-w-[1600px] grid-cols-1 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        {/* LEFT: sticky label column */}
+        <aside
+          className="min-w-0 border-b-4 border-white lg:border-b-0 lg:border-r-4 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto"
+          aria-label="Tag details"
+        >
+          <div className="px-4 sm:px-6 md:px-10 pt-24 pb-10">
+            <BackLink />
 
-          <div className="flex flex-wrap items-center gap-4 mb-8">
-            <span className="inline-flex items-center gap-2 px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest border text-emerald-400 border-emerald-500/20 bg-emerald-500/5">
-              <Tag weight="fill" aria-hidden="true" />
-              Tagged
-            </span>
-          </div>
-
-          <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-8 max-w-5xl break-words">
-            {meta.label}
-          </h1>
-
-          {meta.description && (
-            <p className="text-lg text-gray-300 font-syne leading-relaxed max-w-2xl mb-8">
-              {meta.description}
+            <p className="mb-4 inline-flex items-center gap-2 bg-emerald-500 px-2 py-1 font-mono text-[10px] font-black uppercase tracking-widest text-black">
+              Tagged {'//'}
             </p>
-          )}
 
-          <p className="flex flex-wrap items-center gap-x-8 gap-y-3 text-gray-400 font-mono text-[10px] uppercase tracking-[0.2em]">
-            {TAG_TYPES.filter((t) => meta[t.plural] > 0).map((t) => (
-              <span key={t.key} className="inline-flex items-center gap-2">
-                <i
-                  className={`inline-block h-2 w-2 ${accentOf(t.key).dot}`}
-                  aria-hidden="true"
-                />
-                <span className="text-white">{meta[t.plural]}</span>
-                {meta[t.plural] === 1 ? t.one.toLowerCase() : t.plural}
-              </span>
-            ))}
-          </p>
-        </div>
-      </section>
+            <h1 className="font-black uppercase tracking-tighter leading-[0.8] text-[clamp(3rem,12vw,12rem)] lg:text-[clamp(3rem,6.5vw,9rem)] break-words [overflow-wrap:anywhere] hyphens-auto">
+              {meta.label}
+            </h1>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 md:px-12">
-        {/* Active filters */}
-        {view.extra.length > 0 && (
-          <div
-            className="mb-12 flex flex-wrap items-center gap-2"
-            aria-label="Active tag filters"
-          >
-            <span className="mr-2 font-mono text-xs text-gray-600 uppercase tracking-widest">
-              Filtered by
-            </span>
-            {view.active.map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex max-w-full items-center gap-2 rounded-sm border border-emerald-500/40 bg-emerald-500/10 pl-3 font-mono text-[10px] font-bold uppercase tracking-widest text-emerald-400"
-              >
-                <span className="break-all py-1">#{view.labelOf(tag)}</span>
-                <Link
-                  to={view.removeHref(tag)}
-                  aria-label={`Remove ${view.labelOf(tag)}`}
-                  className="self-stretch flex items-center px-2 border-l border-emerald-500/30 hover:bg-red-500 hover:text-black transition-colors"
-                >
-                  <X size={12} weight="bold" aria-hidden="true" />
-                </Link>
-              </span>
-            ))}
-          </div>
-        )}
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-          {/* RESULTS */}
-          <section className="lg:col-span-8 min-w-0" aria-label="Tagged items">
-            <div
-              className="mb-10 flex flex-wrap gap-2 border-b border-white/10 pb-8"
-              role="group"
-              aria-label="Content type"
-            >
-              {view.types.map((t) => {
-                const on = view.type === t.key;
-                const disabled =
-                  t.key !== 'all' && view.typeCounts[t.key] === 0;
-                return (
-                  <button
-                    key={t.key}
-                    type="button"
-                    aria-pressed={on}
-                    disabled={disabled}
-                    onClick={() => view.setType(t.key)}
-                    className={`inline-flex items-center gap-2 rounded-sm px-3 py-1 text-[10px] font-bold uppercase tracking-widest transition-all disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 ${
-                      on
-                        ? 'bg-emerald-500 text-black shadow-lg shadow-emerald-500/20'
-                        : 'bg-white/5 text-gray-500 border border-white/5 enabled:hover:text-white enabled:hover:bg-white/10'
-                    }`}
-                  >
-                    {t.key !== 'all' && (
-                      <i
-                        className={`inline-block h-2 w-2 ${accentOf(t.key).dot}`}
-                        aria-hidden="true"
-                      />
-                    )}
-                    {t.label}
-                    <span
-                      className={`font-mono ${on ? 'text-black/60' : 'text-gray-600'}`}
-                    >
-                      {view.typeCounts[t.key]}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {view.items.length === 0 ? (
-              <div className="py-12 px-4 text-center border border-dashed border-white/10 rounded-sm">
-                <p className="font-mono text-xs text-gray-500 uppercase tracking-widest">
-                  Nothing here carries all of these tags.
-                </p>
-              </div>
-            ) : (
-              <ol className="flex flex-col border-t border-white/10">
-                {view.items.map((item) => {
-                  const accent = accentOf(item.type);
-                  return (
-                    <li
-                      key={item.id}
-                      className="group relative border-b border-white/10 py-8 pl-5 pr-2 hover:bg-white/[0.02] transition-colors"
-                    >
-                      <span
-                        className={`absolute left-0 top-0 h-0 w-1 group-hover:h-full transition-all duration-500 ${accent.bar}`}
-                        aria-hidden="true"
-                      />
-                      <div className="mb-3 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-widest">
-                        <span className={`font-bold ${accent.text}`}>
-                          {typeByKey[item.type].one}
-                          {item.category && (
-                            <span className="text-gray-500">
-                              {' '}
-                              {'//'} {item.category}
-                            </span>
-                          )}
-                        </span>
-                        {item.date && (
-                          <span className="inline-flex items-center gap-2 text-gray-500">
-                            <CalendarBlank size={12} aria-hidden="true" />
-                            <time dateTime={item.date}>
-                              {formatDate(item.date)}
-                            </time>
-                          </span>
-                        )}
-                      </div>
-
-                      <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-none break-words">
-                        <Link
-                          to={item.path}
-                          className="inline-flex items-start gap-2 text-white hover:text-emerald-400 transition-colors"
-                        >
-                          <span>{item.title}</span>
-                          <ArrowUpRight
-                            size={20}
-                            weight="bold"
-                            aria-hidden="true"
-                            className="mt-1 shrink-0 text-gray-600 group-hover:text-emerald-400 transition-colors"
-                          />
-                        </Link>
-                      </h2>
-
-                      {item.series && (
-                        <p className="mt-3 font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest">
-                          {'//'} Part of {item.series}
-                        </p>
-                      )}
-
-                      {item.description && (
-                        <p className="mt-4 text-gray-400 leading-relaxed max-w-2xl">
-                          {item.description}
-                        </p>
-                      )}
-
-                      <ul
-                        className="mt-5 flex flex-wrap gap-2"
-                        aria-label="Tags"
-                      >
-                        {item.tags.map((tag) => {
-                          const isActive = view.active.includes(tag);
-                          return (
-                            <li key={tag} className="max-w-full">
-                              <Link
-                                to={tagPath(tag)}
-                                aria-current={isActive ? 'true' : undefined}
-                                className={`inline-flex max-w-full items-center gap-1 rounded-sm border px-2 py-1 font-mono text-[9px] font-bold uppercase tracking-wider transition-colors break-all ${
-                                  isActive
-                                    ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-400'
-                                    : 'border-white/5 bg-white/[0.03] text-gray-500 hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-emerald-500/5'
-                                }`}
-                              >
-                                <Hash size={10} aria-hidden="true" />
-                                {view.labelOf(tag)}
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </li>
-                  );
-                })}
-              </ol>
+            {meta.description && (
+              <p className="mt-6 max-w-xl text-base sm:text-lg text-gray-300 font-syne leading-relaxed">
+                {meta.description}
+              </p>
             )}
-          </section>
 
-          {/* NARROW BY */}
-          {view.related.length > 0 && (
-            <aside
-              className="lg:col-span-4 min-w-0"
-              aria-label="Narrow by another tag"
-            >
-              <div className="lg:sticky lg:top-24 border border-white/[0.08] p-6 sm:p-8 bg-white/[0.015] backdrop-blur-sm relative overflow-hidden group">
-                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-emerald-500/40 via-transparent to-transparent" />
-                <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500/60 transition-all duration-500" />
-                <h2 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <Tag weight="fill" aria-hidden="true" />
-                  Narrow by
+            {/* Meta counts as stacked numerals */}
+            <dl className="mt-10 border-t-2 border-white/20">
+              {counts.map((t) => (
+                <div
+                  key={t.key}
+                  className="flex items-baseline justify-between gap-4 border-b-2 border-white/10 py-2"
+                >
+                  <dt className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">
+                    <i
+                      className={`inline-block h-2 w-2 ${TYPE_DOT[t.key] || 'bg-white'}`}
+                      aria-hidden="true"
+                    />
+                    {meta[t.plural] === 1 ? t.one : t.label}
+                  </dt>
+                  <dd className="font-mono text-5xl sm:text-6xl font-black leading-none tabular-nums text-white">
+                    {meta[t.plural]}
+                  </dd>
+                </div>
+              ))}
+              {counts.length > 1 && (
+                <div className="flex items-baseline justify-between gap-4 border-b-2 border-white/10 py-2">
+                  <dt className="font-mono text-[10px] font-bold uppercase tracking-widest text-emerald-500">
+                    Total
+                  </dt>
+                  <dd className="font-mono text-5xl sm:text-6xl font-black leading-none tabular-nums text-emerald-400">
+                    {meta.count}
+                  </dd>
+                </div>
+              )}
+            </dl>
+
+            {/* Active filters */}
+            {view.extra.length > 0 && (
+              <section
+                className="mt-10 border-2 border-emerald-500"
+                aria-labelledby="bt-active"
+              >
+                <h2
+                  id="bt-active"
+                  className="bg-emerald-500 px-3 py-1.5 font-mono text-[10px] font-black uppercase tracking-widest text-black"
+                >
+                  Filtered by ({view.active.length})
                 </h2>
-                <p className="mb-6 font-mono text-[10px] text-gray-500 uppercase tracking-widest leading-relaxed">
+                <ul aria-label="Active tag filters">
+                  {view.active.map((tag) => (
+                    <li
+                      key={tag}
+                      className="flex items-stretch justify-between border-t-2 border-emerald-500/30 first:border-t-0"
+                    >
+                      <span className="min-w-0 px-3 py-2 font-mono text-xs font-bold uppercase tracking-widest text-emerald-400 break-all">
+                        #{view.labelOf(tag)}
+                      </span>
+                      <Link
+                        to={view.removeHref(tag)}
+                        aria-label={`Remove ${view.labelOf(tag)}`}
+                        className="flex shrink-0 items-center border-l-2 border-emerald-500/30 px-3 text-emerald-400 hover:bg-red-500 hover:text-black focus:outline-none focus-visible:bg-red-500 focus-visible:text-black transition-colors"
+                      >
+                        <X size={14} weight="bold" aria-hidden="true" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {/* Narrow by */}
+            {view.related.length > 0 && (
+              <section
+                className="mt-10 border-2 border-white/20"
+                aria-labelledby="bt-narrow"
+              >
+                <BlockHead id="bt-narrow">Narrow by</BlockHead>
+                <p className="px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-gray-500 leading-relaxed">
                   Tags that appear alongside {view.title}. Each one narrows the
                   list.
                 </p>
-                <ul className="flex flex-col">
+                <ul className="max-h-72 overflow-y-auto lg:max-h-none border-t-2 border-white/10">
                   {view.related.map(([tag, count]) => (
                     <li
                       key={tag}
-                      className="border-b border-white/5 last:border-b-0"
+                      className="border-b border-white/10 last:border-b-0"
                     >
                       <Link
                         to={view.addHref(tag)}
-                        className="group/rel flex items-center justify-between gap-4 py-3 font-mono text-xs uppercase tracking-widest text-gray-300 hover:text-emerald-400 transition-colors"
+                        className="group flex items-center justify-between gap-3 px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-wider text-gray-300 hover:bg-emerald-500 hover:text-black focus:outline-none focus-visible:bg-emerald-500 focus-visible:text-black transition-colors"
                       >
-                        <span className="inline-flex min-w-0 items-center gap-2">
-                          <Plus
-                            size={12}
-                            weight="bold"
+                        <span className="min-w-0 break-all">
+                          <span
+                            className="mr-2 text-emerald-500 group-hover:text-black"
                             aria-hidden="true"
-                            className="shrink-0 text-gray-600 group-hover/rel:text-emerald-400 transition-colors"
-                          />
-                          <span className="break-all">{view.labelOf(tag)}</span>
+                          >
+                            +
+                          </span>
+                          {view.labelOf(tag)}
                         </span>
-                        <span className="shrink-0 text-[10px] text-gray-600 group-hover/rel:text-emerald-400">
+                        <span className="shrink-0 tabular-nums text-gray-600 group-hover:text-black">
                           {count}
                         </span>
                       </Link>
                     </li>
                   ))}
                 </ul>
-              </div>
-            </aside>
+              </section>
+            )}
+          </div>
+        </aside>
+
+        {/* RIGHT: numbered index */}
+        <section
+          className="min-w-0 px-4 sm:px-6 md:px-10 pt-10 lg:pt-24 pb-24"
+          aria-label="Tagged items"
+        >
+          <div
+            className="sticky top-0 z-20 grid grid-cols-2 sm:grid-cols-4 gap-[2px] border-2 border-white bg-white"
+            role="group"
+            aria-label="Content type"
+          >
+            {view.types.map((t) => {
+              const on = view.type === t.key;
+              const disabled = t.key !== 'all' && view.typeCounts[t.key] === 0;
+              return (
+                <button
+                  key={t.key}
+                  type="button"
+                  aria-pressed={on}
+                  disabled={disabled}
+                  onClick={() => view.setType(t.key)}
+                  className={`flex min-w-0 items-center justify-between gap-2 px-3 py-3 font-mono text-[11px] font-black uppercase tracking-widest transition-colors disabled:cursor-not-allowed disabled:text-gray-700 focus:outline-none focus-visible:relative focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-emerald-400 ${
+                    on
+                      ? 'bg-emerald-500 text-black'
+                      : 'bg-[#050505] text-gray-400 enabled:hover:bg-white enabled:hover:text-black'
+                  }`}
+                >
+                  <span className="inline-flex min-w-0 items-center gap-2">
+                    {t.key !== 'all' && (
+                      <i
+                        className={`inline-block h-2 w-2 shrink-0 ${
+                          on ? 'bg-black' : TYPE_DOT[t.key] || 'bg-white'
+                        }`}
+                        aria-hidden="true"
+                      />
+                    )}
+                    <span className="truncate">{t.label}</span>
+                  </span>
+                  <span className="tabular-nums">{view.typeCounts[t.key]}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          <p className="mt-4 mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-gray-600">
+            {'//'} INDEX: {view.items.length}{' '}
+            {view.items.length === 1 ? 'ENTRY' : 'ENTRIES'}
+          </p>
+
+          {view.items.length === 0 ? (
+            <div className="border-2 border-dashed border-white/20 p-6">
+              <p className="font-mono text-xs text-gray-500 uppercase tracking-widest">
+                {'//'} Nothing here carries all of these tags.
+              </p>
+            </div>
+          ) : (
+            <ol className="border-t-4 border-white">
+              {view.items.map((item, i) => (
+                <li
+                  key={item.id}
+                  className="group grid grid-cols-[3rem_minmax(0,1fr)] sm:grid-cols-[4.5rem_minmax(0,1fr)] border-b-2 border-white/10 hover:bg-white/[0.03] transition-colors"
+                >
+                  <span className="pt-6 font-mono text-sm sm:text-base font-black tabular-nums text-gray-600 group-hover:text-emerald-400 transition-colors">
+                    [{pad(i + 1, digits)}]
+                  </span>
+
+                  <div className="min-w-0 border-l-2 border-white/10 py-6 pl-4 sm:pl-6">
+                    <p className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">
+                      <span className={TYPE_TEXT[item.type] || 'text-white'}>
+                        {typeByKey[item.type]?.one || item.type}
+                      </span>
+                      {item.category && (
+                        <>
+                          <span aria-hidden="true">·</span>
+                          <span className="break-all">{item.category}</span>
+                        </>
+                      )}
+                      {item.date && (
+                        <>
+                          <span aria-hidden="true">·</span>
+                          <time dateTime={item.date}>
+                            {formatDate(item.date)}
+                          </time>
+                        </>
+                      )}
+                    </p>
+
+                    <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-black uppercase tracking-tighter leading-[0.9] break-words [overflow-wrap:anywhere]">
+                      <Link
+                        to={item.path}
+                        className="box-decoration-clone text-white group-hover:text-emerald-400 hover:bg-emerald-500 hover:!text-black focus:outline-none focus-visible:bg-emerald-500 focus-visible:!text-black transition-colors"
+                      >
+                        {item.title}
+                        <ArrowUpRight
+                          size={22}
+                          weight="bold"
+                          aria-hidden="true"
+                          className="ml-1 inline-block align-top"
+                        />
+                      </Link>
+                    </h2>
+
+                    {item.series && (
+                      <p className="mt-3 font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest">
+                        {'//'} Part of {item.series}
+                      </p>
+                    )}
+
+                    {item.description && (
+                      <p className="mt-3 max-w-2xl text-gray-400 leading-relaxed">
+                        {item.description}
+                      </p>
+                    )}
+
+                    <ul
+                      className="mt-4 flex flex-wrap gap-[2px]"
+                      aria-label="Tags"
+                    >
+                      {item.tags.map((tag) => {
+                        const isActive = view.active.includes(tag);
+                        return (
+                          <li key={tag} className="max-w-full">
+                            <Link
+                              to={tagPath(tag)}
+                              aria-current={isActive ? 'true' : undefined}
+                              className={`inline-block max-w-full px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-wider break-all transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 ${
+                                isActive
+                                  ? 'bg-emerald-500 text-black'
+                                  : 'bg-white/[0.06] text-gray-400 hover:bg-white hover:text-black'
+                              }`}
+                            >
+                              #{view.labelOf(tag)}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </li>
+              ))}
+            </ol>
           )}
-        </div>
+        </section>
       </div>
     </div>
   );

@@ -1,0 +1,137 @@
+/* MIST tag pages: soft bubbles, slow float, the drift line. */
+
+/* A tag bubble: blurred-edge radial pill sitting behind the label. */
+.mt-bubble {
+  --mt-rgb: 95, 131, 123;
+  --mt-a: 0.2;
+  position: relative;
+  isolation: isolate;
+}
+
+.mt-bubble::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 9999px;
+  background:
+    radial-gradient(
+      ellipse at 50% 30%,
+      rgba(255, 255, 255, 0.75) 0%,
+      rgba(255, 255, 255, 0) 60%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(var(--mt-rgb), var(--mt-a)) 0%,
+      rgba(var(--mt-rgb), calc(var(--mt-a) * 0.55)) 58%,
+      rgba(var(--mt-rgb), 0) 100%
+    );
+  filter: blur(4px);
+  transition:
+    filter 250ms ease,
+    transform 250ms ease,
+    background 250ms ease;
+}
+
+.mt-bubble[data-weight='1'] {
+  --mt-a: 0.14;
+}
+.mt-bubble[data-weight='2'] {
+  --mt-a: 0.22;
+}
+.mt-bubble[data-weight='3'] {
+  --mt-a: 0.32;
+}
+.mt-bubble[data-weight='4'] {
+  --mt-a: 0.46;
+}
+
+.mt-bubble:hover::before,
+.mt-bubble:focus-visible::before {
+  --mt-a: 0.55;
+  filter: blur(2px);
+  transform: scale(1.04);
+}
+
+/* Slow drift; each bubble gets its own delay and duration inline. */
+@keyframes mt-float {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(1.5px, -5px, 0);
+  }
+  100% {
+    transform: translate3d(-1px, 2px, 0);
+  }
+}
+
+.mt-float {
+  animation: mt-float var(--mt-dur, 9s) ease-in-out var(--mt-delay, 0s) infinite
+    alternate;
+  will-change: transform;
+}
+
+/* Long-tail tags fade in when opened. */
+@keyframes mt-fade-in {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.mt-fade-in {
+  animation: mt-fade-in 900ms ease-out both;
+}
+
+/* The vertical drift line on the tag page. */
+.mt-line {
+  background: linear-gradient(
+    180deg,
+    rgba(95, 131, 123, 0) 0%,
+    rgba(95, 131, 123, 0.45) 6%,
+    rgba(143, 168, 188, 0.45) 60%,
+    rgba(124, 143, 160, 0) 100%
+  );
+}
+
+/* The narrow-by row scrolls sideways and dissolves at both edges. */
+.mt-drift-row {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 24px,
+    #000 calc(100% - 24px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 24px,
+    #000 calc(100% - 24px),
+    transparent 100%
+  );
+  scrollbar-width: thin;
+  scrollbar-color: rgba(95, 131, 123, 0.3) transparent;
+}
+
+.mt-summary {
+  list-style: none;
+}
+.mt-summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mt-float,
+  .mt-fade-in {
+    animation: none;
+  }
+  .mt-bubble::before {
+    transition: none;
+  }
+}

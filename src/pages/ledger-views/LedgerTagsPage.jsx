@@ -1,32 +1,113 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../../components/Seo';
-import { tagPath } from '../../utils/tagIndex';
+import { TAG_TYPES } from '../tags/tagTypes';
 import { LedgerFolio, LedgerNotice, LedgerRule } from '../../components/ledger';
 import '../../styles/Ledger.css';
+import './ledger-tags.css';
 
-// Emphasis steps for view.sizeFor(): heavier ink for the busier headings.
+// Emphasis steps for view.sizeFor(): heavier ink for the busier accounts.
 const NAME_INK = {
-  4: 'font-bold ldg-highlight text-[0.98rem]',
+  4: 'font-bold ldg-highlight',
   3: 'font-bold',
   2: '',
-  1: 'ldg-muted text-[0.84rem]',
+  1: 'ldg-muted',
 };
 
 const pad = (n, width = 3) => String(n).padStart(width, '0');
 
+/** A ledger figure: right-aligned by the cell, a dash for nil. */
+const Amount = ({ value }) =>
+  value > 0 ? value : <span className="ldg-tg-nil">—</span>;
+
+/** Three stacked segments: the posts / logs / projects split of one account. */
+const ShareBar = ({ tag }) => {
+  const total = TAG_TYPES.reduce((sum, t) => sum + (tag[t.plural] || 0), 0);
+  const label = TAG_TYPES.map((t) => `${t.plural} ${tag[t.plural] || 0}`).join(
+    ', ',
+  );
+  return (
+    <div className="ldg-tg-bar" role="img" aria-label={`Split: ${label}`}>
+      {total > 0 &&
+        TAG_TYPES.map((t) =>
+          tag[t.plural] > 0 ? (
+            <span
+              key={t.key}
+              className={`ldg-tg-seg-${t.key}`}
+              style={{ width: `${(tag[t.plural] / total) * 100}%` }}
+            />
+          ) : null,
+        )}
+    </div>
+  );
+};
+
+/** A column head that sorts, or plain text when the column cannot sort. */
+const SortHead = ({ label, sortKey, dir, view, className = '' }) => {
+  const sortable = Boolean(sortKey);
+  const active = sortable && view.sort === sortKey;
+  return (
+    <th
+      scope="col"
+      className={`${className}${sortable ? ' is-sortable' : ''}`}
+      aria-sort={sortable ? (active ? dir : 'none') : undefined}
+    >
+      {sortable ? (
+        <button
+          type="button"
+          className="ldg-tg-sort"
+          onClick={() => view.setSort(sortKey)}
+          aria-pressed={active}
+        >
+          {label}
+          <span className="ldg-tg-arrow" aria-hidden="true">
+            {dir === 'ascending' ? '▲' : '▼'}
+          </span>
+          <span className="sr-only">
+            {dir === 'ascending' ? ', sort A to Z' : ', sort by most used'}
+          </span>
+        </button>
+      ) : (
+        label
+      )}
+    </th>
+  );
+};
+
 /**
- * Ledger view of /tags — the INDEX at the back of the book. Every shared tag
- * is an index heading: name, dotted leader, the number of entries filed under
- * it, set in columns like a printed index. Heavier headings take heavier ink.
- * One-off headings are bound in a folded appendix.
+ * Ledger view of /tags — the ACCOUNT TABLE. Every tag is an account on a
+ * green-ruled sheet: its postings split into posts, logs and projects, a
+ * total, and a share bar. The column heads sort the sheet; the foot carries
+ * the balance. Single-entry accounts are bound in a SUNDRY sub-table.
  */
 const LedgerTagsPage = ({ view }) => {
   const ready = view.status === 'ready';
   const shown = view.shared.length + view.single.length;
+  const filtered = view.type !== 'all';
+
+  const totals = useMemo(() => {
+    const sums = { shown: 0 };
+    TAG_TYPES.forEach((t) => {
+      sums[t.plural] = 0;
+    });
+    view.shared.forEach((tag) => {
+      sums.shown += tag.shown;
+      TAG_TYPES.forEach((t) => {
+        sums[t.plural] += tag[t.plural] || 0;
+      });
+    });
+    return sums;
+  }, [view.shared]);
+
+  const sundryTotal = useMemo(
+    () => view.single.reduce((sum, tag) => sum + tag.shown, 0),
+    [view.single],
+  );
+
+  const dimFor = (t) => (filtered && view.type !== t.key ? ' is-dim' : '');
 
   return (
-    <div className="ldg-root">
+    <div className="ldg-root ldg-tg">
       <Seo
         title="Tags | Fezcodex"
         description="Every tag across Fezcodex posts, logs and projects."
@@ -34,160 +115,235 @@ const LedgerTagsPage = ({ view }) => {
       />
       <div className="ldg-page">
         <LedgerFolio
-          folio="THE INDEX — CROSS-REFERENCES"
+          folio="GENERAL LEDGER — CHART OF ACCOUNTS"
           title="TAGS"
-          sub="EVERY HEADING IN THE BOOK, WITH ITS ENTRIES COUNTED"
+          sub="EVERY TAG AN ACCOUNT, EVERY POST, LOG AND PROJECT A POSTING"
         >
           {ready && (
             <p className="ldg-stats mt-3">
               <span>
-                <strong>{pad(view.totalTags)}</strong> HEADINGS
+                <strong>{pad(view.totalTags)}</strong> ACCOUNTS
               </span>
               <span>
                 <strong>{pad(view.totalItems)}</strong> POSTS, LOGS &amp;
                 PROJECTS
               </span>
               <span>
-                <strong>{pad(shown)}</strong> SHOWN
+                <strong>{pad(shown)}</strong> ON THIS SHEET
               </span>
             </p>
           )}
         </LedgerFolio>
 
-        {/* finding aid */}
-        <div
-          className="flex flex-col gap-3 mb-6 pb-4"
-          style={{ borderBottom: '1px solid var(--ldg-rule)' }}
-        >
+        <div className="mb-5">
           <input
             type="search"
             className="ldg-input"
             value={view.query}
             onChange={(event) => view.setQuery(event.target.value)}
-            placeholder="SEARCH THE INDEX…"
+            placeholder="LOOK UP AN ACCOUNT…"
             aria-label="Search tags"
           />
-          <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
-            <div
-              className="flex flex-wrap items-baseline gap-1.5"
-              role="group"
-              aria-label="Content type"
+        </div>
+
+        <div className="ldg-tg-tabs" role="group" aria-label="Content type">
+          {view.types.map((t) => (
+            <button
+              key={t.key}
+              type="button"
+              className="ldg-tg-tab"
+              aria-pressed={view.type === t.key}
+              onClick={() => view.setType(t.key)}
             >
-              <span className="ldg-label mr-1" aria-hidden="true">
-                TYPE
-              </span>
-              {view.types.map((t) => (
-                <button
-                  key={t.key}
-                  type="button"
-                  className="ldg-chip"
-                  aria-pressed={view.type === t.key}
-                  onClick={() => view.setType(t.key)}
-                >
-                  {t.label}
-                </button>
-              ))}
-            </div>
-            <div
-              className="flex flex-wrap items-baseline gap-1.5"
-              role="group"
-              aria-label="Sort tags"
-            >
-              <span className="ldg-label mr-1" aria-hidden="true">
-                SORT
-              </span>
-              <button
-                type="button"
-                className="ldg-chip"
-                aria-pressed={view.sort === 'count'}
-                onClick={() => view.setSort('count')}
-              >
-                Most used
-              </button>
-              <button
-                type="button"
-                className="ldg-chip"
-                aria-pressed={view.sort === 'az'}
-                onClick={() => view.setSort('az')}
-              >
-                A–Z
-              </button>
-            </div>
-          </div>
+              {t.label}
+            </button>
+          ))}
         </div>
 
         {view.status === 'error' && (
-          <LedgerNotice error>{view.error}</LedgerNotice>
+          <LedgerNotice error className="mt-4">
+            {view.error}
+          </LedgerNotice>
         )}
         {view.status === 'loading' && (
-          <LedgerNotice>OPENING THE INDEX…</LedgerNotice>
+          <LedgerNotice className="mt-4">OPENING THE LEDGER…</LedgerNotice>
         )}
         {ready && shown === 0 && (
-          <LedgerNotice>
-            NO HEADING MATCHES “{view.query}” — THE INDEX STAYS BLANK
+          <LedgerNotice className="mt-4">
+            NO ACCOUNT MATCHES “{view.query}” — NOTHING TO POST
           </LedgerNotice>
         )}
 
         {view.shared.length > 0 && (
-          <section aria-label="Tags">
-            <LedgerRule
-              label={`${view.query ? 'MATCHES' : 'HEADINGS'} · ${pad(
-                view.shared.length,
-              )} FILED`}
-              className="mb-2"
-            />
-            <ul className="list-none m-0 p-0 columns-1 sm:columns-2 lg:columns-3 gap-x-6">
-              {view.shared.map((tag) => {
-                const size = view.sizeFor(tag.shown);
-                return (
-                  <li key={tag.slug} className="break-inside-avoid mb-[2px]">
-                    <Link
-                      to={view.hrefFor(tag)}
-                      className="ldg-row-link"
-                      style={{ gap: '0.6ch', padding: '0.4rem 0.5rem' }}
-                    >
-                      <span className={`truncate min-w-0 ${NAME_INK[size]}`}>
-                        {tag.label}
-                      </span>
-                      <span className="ldg-leader" aria-hidden="true" />
-                      <span
-                        className={`shrink-0 ${
-                          size >= 3 ? 'ldg-accent font-bold' : 'ldg-muted'
+          <>
+            <p className="ldg-label mt-3 mb-2 flex flex-wrap gap-x-4 gap-y-1">
+              <span aria-hidden="true">SHARE KEY:</span>
+              {TAG_TYPES.map((t) => (
+                <span key={t.key} aria-hidden="true">
+                  <i className={`ldg-tg-key ldg-tg-seg-${t.key}`} />
+                  {t.label}
+                </span>
+              ))}
+            </p>
+            <table className="ldg-tg-sheet">
+              <caption className="sr-only">
+                Tag accounts{view.query ? ` matching ${view.query}` : ''}, with
+                posts, logs, projects and totals.{' '}
+                {view.sort === 'az' ? 'Sorted A to Z.' : 'Sorted by most used.'}
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col" className="c-no">
+                    №
+                  </th>
+                  <SortHead
+                    label="Account"
+                    sortKey="az"
+                    dir="ascending"
+                    view={view}
+                    className="c-acct"
+                  />
+                  {TAG_TYPES.map((t) => (
+                    <th key={t.key} scope="col" className={`c-num${dimFor(t)}`}>
+                      {t.label}
+                    </th>
+                  ))}
+                  <SortHead
+                    label="Total"
+                    sortKey="count"
+                    dir="descending"
+                    view={view}
+                    className="c-total"
+                  />
+                  <th scope="col" className="c-share">
+                    Share
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {view.shared.map((tag, i) => (
+                  <tr key={tag.slug}>
+                    <td className="c-no">{pad(i + 1)}</td>
+                    <th scope="row" className="c-acct">
+                      <Link
+                        to={view.hrefFor(tag)}
+                        className={`ldg-tg-acct ${
+                          NAME_INK[view.sizeFor(tag.shown)]
                         }`}
-                        style={{
-                          fontSize: '0.78rem',
-                          fontVariantNumeric: 'tabular-nums',
-                        }}
                       >
-                        <span className="sr-only">, </span>
-                        {pad(tag.shown)}
-                        <span className="sr-only"> entries</span>
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
+                        {tag.label}
+                      </Link>
+                    </th>
+                    {TAG_TYPES.map((t, col) => (
+                      <td
+                        key={t.key}
+                        className={`c-num${col === 1 ? ' is-col2' : ''}${dimFor(
+                          t,
+                        )}`}
+                        data-label={t.label.toUpperCase()}
+                      >
+                        <Amount value={tag[t.plural]} />
+                      </td>
+                    ))}
+                    <td className="c-total" data-label="TOTAL">
+                      {tag.shown}
+                    </td>
+                    <td className="c-share">
+                      <ShareBar tag={tag} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row" colSpan={2} className="c-label text-left">
+                    Balance carried
+                    <span className="ldg-muted font-normal">
+                      {' '}
+                      · {pad(view.shared.length)} ACCOUNTS
+                    </span>
+                  </th>
+                  {TAG_TYPES.map((t, col) => (
+                    <td
+                      key={t.key}
+                      className={`c-num${col === 1 ? ' is-col2' : ''}${dimFor(
+                        t,
+                      )}`}
+                      data-label={t.label.toUpperCase()}
+                    >
+                      {totals[t.plural]}
+                    </td>
+                  ))}
+                  <td className="c-total" data-label="TOTAL">
+                    {totals.shown}
+                  </td>
+                  <td className="c-share" aria-hidden="true" />
+                </tr>
+              </tfoot>
+            </table>
+          </>
         )}
 
         {view.single.length > 0 && (
           <details className="mt-10">
             <summary className="ldg-summary">
-              Used once ({view.single.length})
+              Sundry accounts ({view.single.length})
             </summary>
-            <ul className="list-none m-0 p-0 mt-3 flex flex-wrap gap-1.5">
-              {view.single.map((tag) => (
-                <li key={tag.slug}>
-                  <Link
-                    to={tagPath(tag.slug)}
-                    className="ldg-chip no-underline inline-block"
-                  >
-                    {tag.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <p className="ldg-label mt-2 mb-3">
+              ACCOUNTS WITH A SINGLE POSTING, KEPT OFF THE MAIN SHEET.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="ldg-tg-sundry">
+                <caption className="sr-only">
+                  Sundry accounts: tags used once
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" className="c-no">
+                      №
+                    </th>
+                    <th scope="col">Account</th>
+                    <th scope="col" className="hidden sm:table-cell">
+                      Posted under
+                    </th>
+                    <th scope="col" className="c-num">
+                      Total
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {view.single.map((tag, i) => (
+                    <tr key={tag.slug}>
+                      <td className="c-no">{pad(i + 1)}</td>
+                      <th scope="row" className="c-acct font-normal">
+                        <Link to={view.hrefFor(tag)} className="ldg-tg-acct">
+                          {tag.label}
+                        </Link>
+                      </th>
+                      <td className="ldg-muted hidden sm:table-cell uppercase text-[0.72rem] tracking-[1px]">
+                        {TAG_TYPES.filter((t) => tag[t.plural] > 0)
+                          .map((t) => t.one)
+                          .join(' · ')}
+                      </td>
+                      <td className="c-num">{tag.shown}</td>
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th
+                      scope="row"
+                      colSpan={2}
+                      className="text-left ldg-label font-bold"
+                    >
+                      Sundry total
+                    </th>
+                    <td className="hidden sm:table-cell" />
+                    <td className="c-num font-bold">{sundryTotal}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </details>
         )}
 
@@ -195,8 +351,12 @@ const LedgerTagsPage = ({ view }) => {
           <footer className="mt-12">
             <LedgerRule className="mb-4" />
             <span className="ldg-label">
-              INDEX · {pad(view.totalTags)} HEADINGS ON RECORD ·{' '}
+              CHART OF ACCOUNTS · {pad(view.totalTags)} ON RECORD ·{' '}
               {view.sort === 'az' ? 'SORTED A→Z' : 'HEAVIEST FIRST'}
+              {filtered &&
+                ` · ${view.types
+                  .find((t) => t.key === view.type)
+                  ?.label.toUpperCase()} ONLY`}
             </span>
           </footer>
         )}

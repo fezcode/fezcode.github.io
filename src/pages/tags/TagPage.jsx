@@ -1,19 +1,27 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
 import { useTagView } from './useTagData';
-import ClassicTagView from './ClassicTagView';
+import BrutalistTagPage from '../brutalist-views/BrutalistTagPage';
+import LuxeTagPage from '../luxe-views/LuxeTagPage';
+import TerracottaTagPage from '../terracotta-views/TerracottaTagPage';
+import MistTagPage from '../mist-views/MistTagPage';
+import LedgerTagPage from '../ledger-views/LedgerTagPage';
+import OrbitTagPage from '../orbit-views/OrbitTagPage';
+import KnitTagPage from '../knit-views/KnitTagPage';
+import BlissTagPage from '../bliss-views/BlissTagPage';
 
 // Each theme renders /tags/:tag in its own language from the same view model.
+// Imported directly, not lazily, so the themed page is the first paint.
 const VIEWS = {
-  brutalist: lazy(() => import('../brutalist-views/BrutalistTagPage')),
-  luxe: lazy(() => import('../luxe-views/LuxeTagPage')),
-  terracotta: lazy(() => import('../terracotta-views/TerracottaTagPage')),
-  mist: lazy(() => import('../mist-views/MistTagPage')),
-  ledger: lazy(() => import('../ledger-views/LedgerTagPage')),
-  orbit: lazy(() => import('../orbit-views/OrbitTagPage')),
-  knit: lazy(() => import('../knit-views/KnitTagPage')),
-  bliss: lazy(() => import('../bliss-views/BlissTagPage')),
+  brutalist: BrutalistTagPage,
+  luxe: LuxeTagPage,
+  terracotta: TerracottaTagPage,
+  mist: MistTagPage,
+  ledger: LedgerTagPage,
+  orbit: OrbitTagPage,
+  knit: KnitTagPage,
+  bliss: BlissTagPage,
 };
 
 export default function TagPage() {
@@ -22,9 +30,5 @@ export default function TagPage() {
   if (view.status === 'redirect')
     return <Navigate to={view.redirectTo} replace />;
   const View = VIEWS[fezcodexTheme] || VIEWS.brutalist;
-  return (
-    <Suspense fallback={<ClassicTagView view={view} />}>
-      <View view={view} />
-    </Suspense>
-  );
+  return <View view={view} />;
 }

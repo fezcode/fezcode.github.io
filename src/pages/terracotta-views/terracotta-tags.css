@@ -1,0 +1,119 @@
+/* Terracotta tag pages: a letterpress catalogue / folio.
+   Typesetting details Tailwind cannot express cleanly: old-style figures,
+   small caps, dotted leaders, two-column catalogue with hanging indents. */
+
+.tc-onum {
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-feature-settings: 'onum', 'pnum', 'kern';
+}
+
+.tc-smcp {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+}
+
+/* Catalogue body: one column on phones, two from md up. */
+.tc-catalogue {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  column-count: 1;
+  column-gap: 3.5rem;
+  column-rule: 1px solid rgba(26, 22, 19, 0.1);
+}
+@media (min-width: 768px) {
+  .tc-catalogue {
+    column-count: 2;
+  }
+}
+.tc-catalogue > li {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+
+/* An appendix sets tighter: three columns on wide screens. */
+@media (min-width: 1024px) {
+  .tc-catalogue--appendix {
+    column-count: 3;
+    column-gap: 2.5rem;
+  }
+}
+
+/* A catalogue entry: number | name (hangs) | leader | count. */
+.tc-entry {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  color: #1a1613;
+  text-decoration: none;
+  outline: none;
+}
+.tc-entry-no {
+  flex: 0 0 2.25rem;
+  text-align: right;
+  color: rgba(158, 74, 47, 0.8);
+}
+.tc-entry-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-style: italic;
+  transition: color 160ms ease;
+}
+.tc-leader {
+  flex: 1 1 1rem;
+  min-width: 1rem;
+  border-bottom: 1.5px dotted rgba(26, 22, 19, 0.3);
+  transform: translateY(-0.28em);
+}
+.tc-entry-count {
+  flex: 0 0 auto;
+  color: #2e2620;
+}
+.tc-entry:hover .tc-entry-name,
+.tc-entry:focus-visible .tc-entry-name {
+  color: #9e4a2f;
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 100, 66, 0.5);
+  text-underline-offset: 3px;
+}
+.tc-entry:hover .tc-leader,
+.tc-entry:focus-visible .tc-leader {
+  border-bottom-color: rgba(201, 100, 66, 0.6);
+}
+.tc-entry:focus-visible {
+  background: rgba(201, 100, 66, 0.08);
+}
+.tc-entry:disabled:hover .tc-entry-name {
+  color: inherit;
+  text-decoration: none;
+}
+.tc-entry:disabled:hover .tc-leader {
+  border-bottom-color: rgba(26, 22, 19, 0.3);
+}
+
+/* The book index of related threads. */
+.tc-index {
+  column-count: 1;
+  column-gap: 2.5rem;
+}
+@media (min-width: 640px) {
+  .tc-index {
+    column-count: 2;
+  }
+}
+@media (min-width: 1024px) {
+  .tc-index {
+    column-count: 3;
+  }
+}
+.tc-index-group {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 1.25rem;
+}
+/* Hanging indent for wrapped index lines. */
+.tc-index-entry {
+  padding-left: 1.25em;
+  text-indent: -1.25em;
+}

@@ -1,35 +1,115 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
-import { tagPath } from '../../utils/tagIndex';
+import { TAG_TYPES } from '../tags/tagTypes';
 
-// Emphasis by usage: sizeFor() returns 1..4.
-const SIZE_CLASS = {
-  1: 'text-lg md:text-xl text-[#1A1A1A]/60',
-  2: 'text-xl md:text-2xl text-[#1A1A1A]/75',
-  3: 'text-2xl md:text-3xl text-[#1A1A1A]/90',
-  4: 'text-3xl md:text-4xl text-[#1A1A1A]',
+// Typeset weight by usage: sizeFor() returns 1..4; 0 marks a tag used once.
+const RUN_CLASS = {
+  0: 'text-[15px] italic text-[#1A1A1A]/45',
+  1: 'text-base text-[#1A1A1A]/75',
+  2: 'text-lg text-[#1A1A1A]/90',
+  3: 'text-xl font-semibold text-[#1A1A1A]',
+  4: 'text-2xl font-bold text-[#1A1A1A]',
 };
 
-const pill = (active) =>
-  `px-4 py-2 rounded-full font-outfit text-xs uppercase tracking-widest whitespace-nowrap transition-all ${
+const RANK_CLASS = {
+  1: 'text-xl md:text-2xl',
+  2: 'text-2xl md:text-[1.7rem]',
+  3: 'text-2xl md:text-3xl',
+  4: 'text-3xl md:text-4xl',
+};
+
+const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+// Small-caps control: understated, an underline marks the active choice.
+const smallCap = (active) =>
+  `font-outfit text-[11px] uppercase tracking-[0.25em] pb-1 border-b transition-colors whitespace-nowrap ${
     active
-      ? 'bg-[#1A1A1A] text-white shadow-lg shadow-black/10'
-      : 'border border-[#1A1A1A]/10 hover:border-[#1A1A1A] text-[#1A1A1A]/60'
+      ? 'text-[#1A1A1A] border-[#8D4004]'
+      : 'text-[#1A1A1A]/40 border-transparent hover:text-[#8D4004]'
   }`;
 
-const toggle = (active) =>
-  `px-3 py-1.5 rounded-full font-outfit text-[10px] uppercase tracking-widest whitespace-nowrap transition-all ${
-    active
-      ? 'bg-[#1A1A1A] text-white shadow-md'
-      : 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]'
-  }`;
+const letterOf = (label) => {
+  const first = (label || '').trim().charAt(0);
+  const folded = first.normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase();
+  if (/^[A-Z]$/.test(folded)) return folded;
+  if (/\p{L}/u.test(first)) return first.toUpperCase();
+  return '#';
+};
 
-/** LUXE /tags: an editorial index of every tag. */
+const anchorFor = (letter) => `tags-letter-${letter === '#' ? 'num' : letter}`;
+
+const pad = (n) => String(n).padStart(2, '0');
+
+const Dot = () => (
+  <span aria-hidden="true" className="mx-2 text-[#1A1A1A]/20 not-italic">
+    ·
+  </span>
+);
+
+/** A run of tags set as flowing text in newspaper columns. */
+function TagRun({ tags, view, light = false, label }) {
+  return (
+    <ul
+      aria-label={label}
+      className="columns-1 sm:columns-2 lg:columns-3 gap-x-12 [column-rule:1px_solid_rgba(26,26,26,0.08)] font-playfairDisplay leading-[2.1] text-left"
+    >
+      {tags.map((tag, i) => {
+        const size = light || tag.shown === 1 ? 0 : view.sizeFor(tag.shown);
+        return (
+          <li key={tag.slug} className="inline">
+            <Link
+              to={view.hrefFor(tag)}
+              className={`group break-words hover:italic hover:text-[#8D4004] transition-colors ${
+                RUN_CLASS[size] || RUN_CLASS[1]
+              }`}
+            >
+              {tag.label}
+              <span className="ml-1 font-outfit not-italic font-normal text-[10px] tracking-widest tabular-nums text-[#1A1A1A]/35 group-hover:text-[#8D4004]">
+                {tag.shown}
+              </span>
+            </Link>
+            {i < tags.length - 1 && <Dot />}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+/** LUXE /tags: the A–Z index at the back of a fine magazine. */
 export default function LuxeTagsPage({ view }) {
-  const noMatches =
-    view.status === 'ready' && view.shared.length + view.single.length === 0;
+  const ready = view.status === 'ready';
+  const az = view.sort === 'az';
+  const noMatches = ready && view.shared.length + view.single.length === 0;
+
+  // Every tag (shared and single) grouped under its first letter.
+  const sections = useMemo(() => {
+    if (!az) return [];
+    const groups = new Map();
+    [...view.shared, ...view.single]
+      .sort((a, b) => a.label.localeCompare(b.label))
+      .forEach((tag) => {
+        const letter = letterOf(tag.label);
+        if (!groups.has(letter)) groups.set(letter, []);
+        groups.get(letter).push(tag);
+      });
+    return [...groups.entries()].sort(([a], [b]) =>
+      a === '#' ? 1 : b === '#' ? -1 : a.localeCompare(b),
+    );
+  }, [az, view.shared, view.single]);
+
+  const present = useMemo(
+    () => new Set(sections.map(([letter]) => letter)),
+    [sections],
+  );
+  const rail = useMemo(() => {
+    const extras = sections
+      .map(([letter]) => letter)
+      .filter((l) => l !== '#' && !ALPHABET.includes(l));
+    return [...ALPHABET, ...extras, ...(present.has('#') ? ['#'] : [])];
+  }, [sections, present]);
 
   return (
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black pt-24 pb-20">
@@ -40,45 +120,47 @@ export default function LuxeTagsPage({ view }) {
       />
 
       <main className="max-w-[1400px] mx-auto px-6 md:px-12">
-        <header className="mb-16 pt-12 border-b border-[#1A1A1A]/10 pb-12">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 mb-8 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 hover:text-[#8D4004] transition-colors"
-          >
-            <ArrowLeftIcon aria-hidden="true" /> Home
-          </Link>
+        {/* Masthead */}
+        <header className="pt-12 mb-10">
+          <div className="flex items-center justify-between gap-4 border-b border-[#1A1A1A]/10 pb-4 mb-10">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 hover:text-[#8D4004] transition-colors"
+            >
+              <ArrowLeftIcon aria-hidden="true" /> Home
+            </Link>
+            <span className="font-outfit text-[10px] uppercase tracking-[0.3em] text-[#1A1A1A]/40">
+              Back Matter
+            </span>
+          </div>
+
           <span className="block font-outfit text-[10px] uppercase tracking-[0.3em] text-[#8D4004] mb-4">
             Index
           </span>
-          <h1 className="font-playfairDisplay text-6xl sm:text-7xl md:text-9xl text-[#1A1A1A] mb-6">
+          <h1 className="font-playfairDisplay text-6xl sm:text-7xl md:text-9xl text-[#1A1A1A] leading-none mb-8">
             Tags
           </h1>
-          <div className="flex flex-col md:flex-row justify-between md:items-end gap-8">
-            <p className="font-outfit text-sm text-[#1A1A1A]/60 max-w-lg leading-relaxed">
-              {view.status === 'ready' ? (
+
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)] gap-8 lg:gap-16 items-end border-b-2 border-[#1A1A1A] pb-8">
+            <p className="font-playfairDisplay italic text-lg md:text-xl text-[#1A1A1A]/70 max-w-2xl leading-relaxed">
+              {ready ? (
                 <>
-                  <span className="font-playfairDisplay italic text-lg text-[#1A1A1A]">
-                    {view.totalTags}
-                  </span>{' '}
-                  tags across{' '}
-                  <span className="font-playfairDisplay italic text-lg text-[#1A1A1A]">
-                    {view.totalItems}
-                  </span>{' '}
-                  posts, logs and projects. Pick one to see everything filed
-                  under it.
+                  {view.totalTags} subjects filed across {view.totalItems}{' '}
+                  posts, logs and projects. Find a subject below and turn to
+                  everything written under it.
                 </>
               ) : (
                 'A catalogue of every subject filed across the codex.'
               )}
             </p>
 
-            <label className="relative group border-b border-[#1A1A1A]/20 focus-within:border-[#1A1A1A] transition-colors w-full md:w-auto md:min-w-[300px]">
+            <label className="relative block border-b border-[#1A1A1A]/25 focus-within:border-[#1A1A1A] transition-colors w-full">
               <span className="sr-only">Search tags</span>
               <input
                 type="search"
                 value={view.query}
                 onChange={(event) => view.setQuery(event.target.value)}
-                placeholder="Search tags..."
+                placeholder="Search the index..."
                 className="w-full bg-transparent py-2 pr-6 outline-none font-outfit text-sm placeholder-[#1A1A1A]/30"
               />
               <MagnifyingGlassIcon
@@ -88,9 +170,9 @@ export default function LuxeTagsPage({ view }) {
             </label>
           </div>
 
-          <div className="mt-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div
-              className="flex flex-wrap gap-2"
+              className="flex flex-wrap items-center gap-x-5 gap-y-2"
               role="group"
               aria-label="Content type"
             >
@@ -100,32 +182,38 @@ export default function LuxeTagsPage({ view }) {
                   type="button"
                   aria-pressed={view.type === t.key}
                   onClick={() => view.setType(t.key)}
-                  className={pill(view.type === t.key)}
+                  className={smallCap(view.type === t.key)}
                 >
                   {t.label}
                 </button>
               ))}
             </div>
             <div
-              className="flex self-start lg:self-auto bg-white rounded-full p-1 border border-[#1A1A1A]/5 shadow-sm"
+              className="flex items-center gap-x-5"
               role="group"
               aria-label="Sort tags"
             >
+              <span
+                aria-hidden="true"
+                className="font-playfairDisplay italic text-sm text-[#1A1A1A]/40"
+              >
+                Arrange by
+              </span>
               <button
                 type="button"
-                aria-pressed={view.sort === 'count'}
-                onClick={() => view.setSort('count')}
-                className={toggle(view.sort === 'count')}
+                aria-pressed={az}
+                onClick={() => view.setSort('az')}
+                className={smallCap(az)}
               >
-                Most used
+                A–Z
               </button>
               <button
                 type="button"
-                aria-pressed={view.sort === 'az'}
-                onClick={() => view.setSort('az')}
-                className={toggle(view.sort === 'az')}
+                aria-pressed={!az}
+                onClick={() => view.setSort('count')}
+                className={smallCap(!az)}
               >
-                A–Z
+                Most used
               </button>
             </div>
           </div>
@@ -146,51 +234,144 @@ export default function LuxeTagsPage({ view }) {
         {noMatches && (
           <div className="py-32 text-center">
             <p className="font-playfairDisplay italic text-2xl text-[#1A1A1A]/40 break-words">
-              No tags match “{view.query}”
+              No entries match “{view.query}”
             </p>
           </div>
         )}
 
-        {view.shared.length > 0 && (
-          <ul
-            className="flex flex-wrap items-baseline gap-x-6 gap-y-4 md:gap-x-10 md:gap-y-6 animate-fade-in"
-            aria-label="Tags"
-          >
-            {view.shared.map((tag) => (
-              <li key={tag.slug} className="min-w-0">
-                <Link
-                  to={view.hrefFor(tag)}
-                  className={`group inline-flex items-baseline gap-1.5 font-playfairDisplay leading-tight break-words hover:italic hover:text-[#8D4004] transition-all ${
-                    SIZE_CLASS[view.sizeFor(tag.shown)] || SIZE_CLASS[1]
-                  }`}
+        {/* A–Z: letter rail and lettered sections */}
+        {az && sections.length > 0 && (
+          <>
+            <nav
+              aria-label="Jump to letter"
+              className="sticky top-24 z-20 mb-12 -mx-6 md:mx-0 px-6 md:px-0 py-3 bg-[#F5F5F0]/90 backdrop-blur-md border-y border-[#1A1A1A]/10"
+            >
+              <ul className="flex md:flex-wrap md:justify-between gap-x-3 overflow-x-auto md:overflow-visible">
+                {rail.map((letter) => (
+                  <li key={letter} className="shrink-0">
+                    {present.has(letter) ? (
+                      <a
+                        href={`#${anchorFor(letter)}`}
+                        className="block px-1 py-1 font-playfairDisplay text-base text-[#1A1A1A]/80 hover:text-[#8D4004] hover:italic transition-colors"
+                      >
+                        {letter}
+                      </a>
+                    ) : (
+                      <span
+                        aria-hidden="true"
+                        className="block px-1 py-1 font-playfairDisplay text-base text-[#1A1A1A]/15 select-none"
+                      >
+                        {letter}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <div className="animate-fade-in">
+              {sections.map(([letter, tags]) => (
+                <section
+                  key={letter}
+                  id={anchorFor(letter)}
+                  aria-labelledby={`${anchorFor(letter)}-h`}
+                  className="scroll-mt-44 grid grid-cols-1 md:grid-cols-[120px_minmax(0,1fr)] gap-4 md:gap-10 py-10 border-b border-[#1A1A1A]/10"
                 >
-                  {tag.label}
-                  <sup className="font-outfit not-italic text-[10px] tracking-widest text-[#1A1A1A]/30 group-hover:text-[#8D4004] transition-colors">
-                    {tag.shown}
-                  </sup>
-                </Link>
-              </li>
-            ))}
-          </ul>
+                  <div className="flex md:block items-baseline gap-4 border-b md:border-b-0 border-[#1A1A1A]/10 pb-3 md:pb-0">
+                    <h2
+                      id={`${anchorFor(letter)}-h`}
+                      className="font-playfairDisplay text-7xl md:text-8xl leading-[0.8] text-[#8D4004]"
+                    >
+                      {letter}
+                    </h2>
+                    <p className="md:mt-4 font-outfit text-[10px] uppercase tracking-[0.25em] text-[#1A1A1A]/35">
+                      {tags.length} {tags.length === 1 ? 'entry' : 'entries'}
+                    </p>
+                  </div>
+                  <TagRun
+                    tags={tags}
+                    view={view}
+                    label={`Tags under ${letter}`}
+                  />
+                </section>
+              ))}
+            </div>
+          </>
         )}
 
-        {view.single.length > 0 && (
-          <details className="mt-20 border-t border-[#1A1A1A]/10 pt-8 group">
-            <summary className="cursor-pointer font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/50 hover:text-[#8D4004] transition-colors">
-              Used once ({view.single.length})
-            </summary>
-            <ul className="mt-8 flex flex-wrap gap-2">
-              {view.single.map((tag) => (
-                <li key={tag.slug} className="min-w-0">
+        {/* Most used: a ranked editorial list */}
+        {!az && view.shared.length > 0 && (
+          <section aria-labelledby="luxe-most-read" className="animate-fade-in">
+            <div className="flex items-baseline justify-between gap-4 mb-8">
+              <h2
+                id="luxe-most-read"
+                className="font-playfairDisplay text-4xl md:text-5xl text-[#1A1A1A]"
+              >
+                Most read
+              </h2>
+              <span className="font-outfit text-[10px] uppercase tracking-[0.25em] text-[#1A1A1A]/40 text-right">
+                Ranked by entries filed
+              </span>
+            </div>
+            <ol className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 border-t border-[#1A1A1A]">
+              {view.shared.map((tag, i) => (
+                <li
+                  key={tag.slug}
+                  className="border-b border-[#1A1A1A]/10 min-w-0"
+                >
                   <Link
-                    to={tagPath(tag.slug)}
-                    className="inline-block bg-[#EBEBEB] px-3 py-1 rounded-sm font-outfit text-xs text-[#1A1A1A]/60 hover:text-[#8D4004] transition-colors break-words"
+                    to={view.hrefFor(tag)}
+                    className="group flex items-baseline gap-4 sm:gap-6 py-5"
                   >
-                    #{tag.label}
+                    <span
+                      aria-hidden="true"
+                      className="w-12 sm:w-16 shrink-0 font-playfairDisplay italic text-4xl sm:text-5xl leading-none tabular-nums text-[#1A1A1A]/20 group-hover:text-[#8D4004] transition-colors"
+                    >
+                      {pad(i + 1)}
+                    </span>
+                    <span className="flex-1 min-w-0">
+                      <span
+                        className={`block font-playfairDisplay leading-tight text-[#1A1A1A] break-words group-hover:italic group-hover:text-[#8D4004] transition-colors ${
+                          RANK_CLASS[view.sizeFor(tag.shown)] || RANK_CLASS[1]
+                        }`}
+                      >
+                        {tag.label}
+                      </span>
+                      <span className="block mt-1 font-outfit text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]/40">
+                        {TAG_TYPES.filter((t) => tag[t.plural] > 0)
+                          .map(
+                            (t) =>
+                              `${tag[t.plural]} ${
+                                tag[t.plural] === 1 ? t.one : t.label
+                              }`,
+                          )
+                          .join(' · ')}
+                      </span>
+                    </span>
+                    <span className="shrink-0 font-playfairDisplay text-2xl tabular-nums text-[#1A1A1A]/70">
+                      {tag.shown}
+                      <span className="sr-only"> entries</span>
+                    </span>
                   </Link>
                 </li>
               ))}
-            </ul>
+            </ol>
+          </section>
+        )}
+
+        {!az && view.single.length > 0 && (
+          <details className="mt-16 border-t border-[#1A1A1A]/10 pt-8">
+            <summary className="cursor-pointer font-outfit text-[11px] uppercase tracking-[0.25em] text-[#1A1A1A]/50 hover:text-[#8D4004] transition-colors">
+              Used once ({view.single.length})
+            </summary>
+            <div className="mt-8">
+              <TagRun
+                tags={view.single}
+                view={view}
+                light
+                label="Tags used once"
+              />
+            </div>
           </details>
         )}
       </main>

@@ -13,8 +13,26 @@ import { TAG_TYPES, typeByKey, formatDate } from '../tags/tagTypes';
 import '../../styles/Knit.css';
 import './knit-tags.css';
 
-// Each content type keeps its own yarn across stats, tabs and rows.
-const TYPE_YARN = { post: YARN.peach, log: YARN.gold, project: YARN.lemon };
+// The same yarns as the swatch chart on /tags.
+const TYPE_WOOL = {
+  post: { wool: 'knt-wool-poppy', yarn: YARN.poppy },
+  log: { wool: 'knt-wool-teal', yarn: YARN.teal },
+  project: { wool: 'knt-wool-gold', yarn: YARN.gold },
+};
+
+// Related tags are wound as balls in a rotating set of yarns.
+const BALLS = [
+  'knt-wool-gold',
+  'knt-wool-teal',
+  'knt-wool-poppy',
+  'knt-wool-plum',
+  'knt-wool-moss',
+  'knt-wool-denim',
+  'knt-wool-rust',
+];
+
+// Pattern rows alternate between two shades, like a striped chart.
+const STRIPES = ['knt-wool-bark', 'knt-wool-peat'];
 
 const BackLink = () => (
   <Link to="/tags" className="knt-btn">
@@ -29,7 +47,14 @@ const Shell = ({ children }) => (
   </div>
 );
 
-/** Knit /tags/:tag: everything filed under one tag, narrowed by more. */
+const MetaRow = ({ label, children }) => (
+  <div className="knt-meta-row">
+    <dt className="knt-label">{label}</dt>
+    <dd>{children}</dd>
+  </div>
+);
+
+/** Knit /tags/:tag: a felt pattern card, its items written as pattern rows. */
 export default function KnitTagPage({ view }) {
   if (view.status === 'error')
     return (
@@ -41,7 +66,7 @@ export default function KnitTagPage({ view }) {
   if (view.status === 'loading')
     return (
       <Shell>
-        <KnitNotice>Unwinding the tag…</KnitNotice>
+        <KnitNotice>Finding the pattern card…</KnitNotice>
       </Shell>
     );
   if (view.status === 'missing')
@@ -49,23 +74,28 @@ export default function KnitTagPage({ view }) {
       <Shell>
         <Seo title="Tag not found | Fezcodex" />
         <BackLink />
-        <KnitText
-          as="h1"
-          text={`No tag “${view.rawTag}”`}
-          fg={YARN.cream}
-          className="mt-8"
-        />
-        <p className="knt-patch mt-6 max-w-2xl text-lg">
-          Nothing is sewn under that tag.{' '}
-          <Link to="/tags" className="knt-link">
-            Browse all tags
-          </Link>
-          .
-        </p>
+        <div className="knt-patch mt-8 max-w-2xl">
+          <span className="knt-label">Pattern card missing</span>
+          <KnitText
+            as="h1"
+            text={`No tag “${view.rawTag}”`}
+            fg={YARN.rust}
+            className="mt-3"
+          />
+          <p className="mt-4 text-lg">
+            Nothing is knitted under that tag.{' '}
+            <Link to="/tags" className="knt-link">
+              Browse all tags
+            </Link>
+            .
+          </p>
+        </div>
       </Shell>
     );
 
   const { meta } = view;
+  const gauge = TAG_TYPES.filter((t) => meta[t.plural] > 0);
+
   return (
     <div className="knt-root">
       <Seo
@@ -76,76 +106,126 @@ export default function KnitTagPage({ view }) {
         }
         canonicalPath={tagPath(view.slug)}
       />
-      <header className="knt-wool-plum">
-        <KnitBand
-          pattern={['peerie', ['flowers', { bg: YARN.plum }], 'peerie']}
-        />
-        <div className="knt-page !pb-8">
-          <BackLink />
-          <KnitText
-            text="Tagged"
-            size="small"
-            fg={YARN.wheat}
-            className="mt-8"
-          />
-          <KnitText
-            as="h1"
-            text={meta.label}
-            scale={2}
-            fg={YARN.cream}
-            className="mt-4"
-          />
-          {meta.description && (
-            <p className="knt-patch mt-6 max-w-2xl text-lg">
-              {meta.description}
-            </p>
-          )}
-          <ul className="list-none m-0 p-0 mt-6 flex flex-wrap gap-x-5 gap-y-2">
-            {TAG_TYPES.filter((t) => meta[t.plural] > 0).map((t) => (
-              <li key={t.key}>
-                <KnitText
-                  text={`${meta[t.plural]} ${
-                    meta[t.plural] === 1 ? t.one.toLowerCase() : t.plural
-                  }`}
-                  size="small"
-                  fg={TYPE_YARN[t.key]}
-                  fit
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <KnitBand pattern="peerie" />
-      </header>
 
       <div className="knt-page">
-        {view.extra.length > 0 && (
-          <div
-            className="knt-patch-dark knt-patch-tight mb-6 flex flex-wrap items-center gap-2"
-            aria-label="Active tag filters"
-          >
-            <span className="knt-label mr-1">Filtered by</span>
-            {view.active.map((tag) => (
-              <span key={tag} className="knt-tag knt-tg-on">
-                {view.labelOf(tag)}
-                <Link
-                  to={view.removeHref(tag)}
-                  className="knt-tg-remove"
-                  aria-label={`Remove ${view.labelOf(tag)}`}
-                >
-                  ×
-                </Link>
-              </span>
-            ))}
-          </div>
-        )}
+        <BackLink />
 
-        <div className="grid gap-8 lg:grid-cols-3">
-          <section className="min-w-0 lg:col-span-2" aria-label="Tagged items">
+        <article className="knt-tg-card mt-6 max-w-5xl">
+          <KnitBand
+            pattern={['peerie', ['checks', { a: YARN.cream, b: YARN.rust }]]}
+          />
+
+          {/* ---- the felt card: name, notes, gauge, combinations ---- */}
+          <header className="knt-patch">
+            <span className="knt-label">Pattern card · Fezcodex tags</span>
+            <h1 className="mt-3">
+              <span className="sr-only">Pattern: {meta.label}</span>
+              <span aria-hidden="true" className="block">
+                <KnitText
+                  text={`Pattern: ${meta.label}`}
+                  fg={YARN.rust}
+                  maxLines={3}
+                />
+              </span>
+            </h1>
+
+            <dl className="knt-meta mt-5 max-w-3xl">
+              {meta.description && (
+                <MetaRow label="Notes">
+                  <span
+                    className="font-normal"
+                    style={{ fontFamily: 'Literata, Georgia, serif' }}
+                  >
+                    {meta.description}
+                  </span>
+                </MetaRow>
+              )}
+              <MetaRow label="Gauge">
+                <span className="flex flex-wrap gap-x-4 gap-y-1">
+                  {gauge.map((t) => (
+                    <span
+                      key={t.key}
+                      className="inline-flex items-center gap-2"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className={`knt-tg-yarn !w-3 !h-3 ${TYPE_WOOL[t.key].wool}`}
+                      />
+                      {meta[t.plural]}{' '}
+                      {meta[t.plural] === 1 ? t.one.toLowerCase() : t.plural}
+                    </span>
+                  ))}
+                </span>
+              </MetaRow>
+              <MetaRow label="Rows">
+                {view.items.length} {view.items.length === 1 ? 'row' : 'rows'}{' '}
+                in this view
+              </MetaRow>
+            </dl>
+
+            {view.extra.length > 0 && (
+              <div
+                className="mt-5 flex flex-wrap items-center gap-2"
+                aria-label="Active tag filters"
+              >
+                <span className="knt-label mr-1">Knitted together with:</span>
+                {view.active.map((tag) => (
+                  <span key={tag} className="knt-tag knt-tg-on">
+                    {view.labelOf(tag)}
+                    <Link
+                      to={view.removeHref(tag)}
+                      className="knt-tg-remove"
+                      aria-label={`Remove ${view.labelOf(tag)}`}
+                    >
+                      ×
+                    </Link>
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {view.related.length > 0 && (
+              <section className="mt-5" aria-labelledby="knt-tg-combine">
+                <h2 id="knt-tg-combine" className="knt-label">
+                  Combine with…
+                </h2>
+                <p className="knt-muted text-sm mt-1">
+                  Tags that appear alongside {view.title}. Each one narrows the
+                  rows.
+                </p>
+                <ul className="list-none m-0 p-0 mt-3 flex flex-wrap gap-2">
+                  {view.related.map(([tag, count], i) => (
+                    <li key={tag}>
+                      <Link
+                        to={view.addHref(tag)}
+                        className="knt-tag knt-tg-chip"
+                        aria-label={`Combine with ${view.labelOf(tag)}, ${count} ${
+                          count === 1 ? 'item' : 'items'
+                        }`}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className={`knt-tg-ball ${BALLS[i % BALLS.length]}`}
+                        />
+                        {view.labelOf(tag)}
+                        <span className="knt-tg-count">{count}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+          </header>
+
+          {/* ---- work in: the type tabs ---- */}
+          <div className="knt-wool-walnut px-4 py-3 sm:px-6 flex flex-wrap items-center gap-2">
+            <span className="knt-label mr-1" id="knt-tg-work-label">
+              Work in
+            </span>
             <div
-              className="flex flex-wrap gap-2 mb-5"
+              className="flex flex-wrap gap-2"
               role="group"
-              aria-label="Content type"
+              aria-labelledby="knt-tg-work-label"
             >
               {view.types.map((t) => (
                 <button
@@ -157,41 +237,63 @@ export default function KnitTagPage({ view }) {
                   onClick={() => view.setType(t.key)}
                 >
                   {t.key !== 'all' && (
-                    <span aria-hidden="true" className="inline-flex">
-                      <KnitIcon name="dot" fg={TYPE_YARN[t.key]} />
-                    </span>
+                    <span
+                      aria-hidden="true"
+                      className={`knt-tg-yarn !w-3 !h-3 ${TYPE_WOOL[t.key].wool}`}
+                    />
                   )}
                   {t.label}
                   <span className="knt-tg-count">{view.typeCounts[t.key]}</span>
                 </button>
               ))}
             </div>
+          </div>
 
-            {view.items.length === 0 ? (
-              <KnitNotice>
-                Nothing here carries all of these tags — the swatch stays blank.
+          {/* ---- the pattern rows ---- */}
+          {view.items.length === 0 ? (
+            <div className="knt-wool-bark px-5 py-8 sm:px-8">
+              <KnitNotice className="!py-0">
+                Nothing here carries all of these tags, so there is nothing to
+                knit.
               </KnitNotice>
-            ) : (
-              <ol className="list-none m-0 p-0">
-                {view.items.map((item) => (
-                  <li key={item.id} className="knt-row knt-tg-item">
-                    <div className="knt-row-body">
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                        <KnitText
-                          text={`${typeByKey[item.type].one}${
-                            item.category ? ` · ${item.category}` : ''
-                          }`}
-                          size="small"
-                          fg={TYPE_YARN[item.type] || YARN.wheat}
-                          fit
-                        />
-                        {item.date && (
-                          <time className="knt-label" dateTime={item.date}>
-                            {formatDate(item.date)}
-                          </time>
+              {view.extra.length > 0 && (
+                <Link to={view.hrefFor([view.slug])} className="knt-link mt-3">
+                  Unpick the extra tags
+                </Link>
+              )}
+            </div>
+          ) : (
+            <ol className="list-none m-0 p-0" aria-label="Tagged items">
+              {view.items.map((item, i) => {
+                const type = typeByKey[item.type];
+                const line = [
+                  `Row ${i + 1}`,
+                  type ? type.one : item.type,
+                  item.category,
+                ].filter(Boolean);
+                const date = item.date ? formatDate(item.date) : '';
+                return (
+                  <li
+                    key={item.id}
+                    className={`knt-tg-prow ${STRIPES[i % 2]}`}
+                    style={{
+                      '--tg-yarn': (TYPE_WOOL[item.type] || {}).yarn,
+                    }}
+                  >
+                    <span className="knt-tg-rownum" aria-hidden="true">
+                      {i + 1}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="knt-label !text-[color:var(--knt-wheat)]">
+                        {line.join(' · ')}
+                        {date && (
+                          <>
+                            {' · '}
+                            <time dateTime={item.date}>{date}</time>
+                          </>
                         )}
-                      </div>
-                      <h2 className="mt-3">
+                      </p>
+                      <h2 className="mt-2">
                         <Link to={item.path} className="knt-tg-title">
                           <KnitText
                             text={item.title}
@@ -206,72 +308,52 @@ export default function KnitTagPage({ view }) {
                         </p>
                       )}
                       {item.description && (
-                        <p className="knt-patch knt-patch-tight mt-3 max-w-3xl text-base">
+                        <p className="knt-tg-desc mt-2 max-w-3xl">
                           {item.description}
                         </p>
                       )}
-                      <ul
-                        className="list-none m-0 p-0 mt-3 flex flex-wrap gap-1.5"
-                        aria-label="Tags"
-                      >
-                        {item.tags.map((tag) => (
-                          <li key={tag}>
-                            <Link
-                              to={tagPath(tag)}
-                              className={`knt-tag knt-tg-chip${
-                                view.active.includes(tag) ? ' knt-tg-on' : ''
-                              }`}
-                            >
-                              #{view.labelOf(tag)}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                      {item.tags.length > 0 && (
+                        <ul
+                          className="list-none m-0 p-0 mt-3 flex flex-wrap gap-1.5"
+                          aria-label="Tags"
+                        >
+                          {item.tags.map((tag) => (
+                            <li key={tag}>
+                              <Link
+                                to={tagPath(tag)}
+                                className={`knt-tag knt-tg-chip${
+                                  view.active.includes(tag) ? ' knt-tg-on' : ''
+                                }`}
+                                aria-current={
+                                  view.active.includes(tag) ? 'true' : undefined
+                                }
+                              >
+                                {view.labelOf(tag)}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
-                    <span aria-hidden="true" className="hidden sm:inline-flex">
-                      <KnitIcon name="arrowUpRight" fg={YARN.gold} />
-                    </span>
                   </li>
-                ))}
-              </ol>
-            )}
-          </section>
-
-          {view.related.length > 0 && (
-            <aside className="min-w-0" aria-label="Narrow by another tag">
-              <div className="knt-patch-dark">
-                <KnitText as="h2" text="Narrow by" fg={YARN.gold} />
-                <p className="knt-muted text-sm mt-3">
-                  Tags that appear alongside {view.title}. Each one narrows the
-                  list.
-                </p>
-                <ul className="list-none m-0 p-0 mt-4 flex flex-wrap gap-2">
-                  {view.related.map(([tag, count]) => (
-                    <li key={tag}>
-                      <Link
-                        to={view.addHref(tag)}
-                        className="knt-tag knt-tg-chip"
-                        data-size={0}
-                      >
-                        + {view.labelOf(tag)}
-                        <span className="knt-tg-count">{count}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </aside>
+                );
+              })}
+            </ol>
           )}
-        </div>
 
-        {view.items.length > 0 && (
-          <p className="knt-label mt-8">
-            {view.items.length} {view.items.length === 1 ? 'item' : 'items'}{' '}
-            under {view.title}
-          </p>
-        )}
+          <div className="knt-wool-walnut px-4 py-3 sm:px-6">
+            <p className="knt-label">
+              {view.items.length > 0
+                ? `Cast off · ${view.items.length} ${
+                    view.items.length === 1 ? 'item' : 'items'
+                  } under ${view.title}`
+                : `Cast off · ${view.title}`}
+            </p>
+          </div>
+          <KnitBand pattern={[['checks', { a: YARN.cream, b: YARN.rust }]]} />
+        </article>
       </div>
-      <KnitBand pattern={['peerie', 'hearts', 'peerie']} className="mt-8" />
+      <KnitBand pattern={['peerie', 'checks', 'peerie']} className="mt-8" />
     </div>
   );
 }

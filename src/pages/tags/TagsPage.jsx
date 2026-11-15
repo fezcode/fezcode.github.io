@@ -1,27 +1,31 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
 import { useTagsIndexView } from './useTagData';
-import ClassicTagsView from './ClassicTagsView';
+import BrutalistTagsPage from '../brutalist-views/BrutalistTagsPage';
+import LuxeTagsPage from '../luxe-views/LuxeTagsPage';
+import TerracottaTagsPage from '../terracotta-views/TerracottaTagsPage';
+import MistTagsPage from '../mist-views/MistTagsPage';
+import LedgerTagsPage from '../ledger-views/LedgerTagsPage';
+import OrbitTagsPage from '../orbit-views/OrbitTagsPage';
+import KnitTagsPage from '../knit-views/KnitTagsPage';
+import BlissTagsPage from '../bliss-views/BlissTagsPage';
 
 // Each theme renders /tags in its own language from the same view model.
+// Imported directly, not lazily, so the themed page is the first paint.
 const VIEWS = {
-  brutalist: lazy(() => import('../brutalist-views/BrutalistTagsPage')),
-  luxe: lazy(() => import('../luxe-views/LuxeTagsPage')),
-  terracotta: lazy(() => import('../terracotta-views/TerracottaTagsPage')),
-  mist: lazy(() => import('../mist-views/MistTagsPage')),
-  ledger: lazy(() => import('../ledger-views/LedgerTagsPage')),
-  orbit: lazy(() => import('../orbit-views/OrbitTagsPage')),
-  knit: lazy(() => import('../knit-views/KnitTagsPage')),
-  bliss: lazy(() => import('../bliss-views/BlissTagsPage')),
+  brutalist: BrutalistTagsPage,
+  luxe: LuxeTagsPage,
+  terracotta: TerracottaTagsPage,
+  mist: MistTagsPage,
+  ledger: LedgerTagsPage,
+  orbit: OrbitTagsPage,
+  knit: KnitTagsPage,
+  bliss: BlissTagsPage,
 };
 
 export default function TagsPage() {
   const { fezcodexTheme } = useVisualSettings();
   const view = useTagsIndexView();
   const View = VIEWS[fezcodexTheme] || VIEWS.brutalist;
-  return (
-    <Suspense fallback={<ClassicTagsView view={view} />}>
-      <View view={view} />
-    </Suspense>
-  );
+  return <View view={view} />;
 }

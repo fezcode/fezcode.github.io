@@ -1,71 +1,303 @@
-/* Knit /tags and /tags/:tag: felt tags in stepped sizes, stitched onto the wool. */
+/*
+ * Knit /tags and /tags/:tag.
+ * /tags is a knitting chart: every shared tag a square swatch worked in the
+ * yarn of its main content type. /tags/:tag is a felt pattern card whose
+ * items are written out as numbered, striped pattern rows.
+ */
 
-.knt-tg-chip {
-  gap: 6px;
+/* ------------------------------------------------------------ chart */
+
+/* the chart frame: dark wool with the cells set into it */
+.knt-tg-frame {
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow:
+    inset 0 0 0 2px rgba(0, 0, 0, 0.35),
+    0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* the container the cell size is measured against */
+.knt-tg-chart-wrap {
+  container-type: inline-size;
+}
+
+.knt-tg-chart {
+  --tg-cols: 4;
+  --tg-gap: 5px;
+  display: grid;
+  gap: var(--tg-gap);
+  grid-template-columns: repeat(var(--tg-cols), minmax(0, 1fr));
+  /* square cells: a row is exactly as tall as a column is wide */
+  grid-auto-rows: calc(
+    (100cqw - (var(--tg-cols) - 1) * var(--tg-gap)) / var(--tg-cols)
+  );
+  grid-auto-flow: row dense;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 480px) {
+  .knt-tg-chart {
+    --tg-cols: 5;
+  }
+}
+@media (min-width: 640px) {
+  .knt-tg-chart {
+    --tg-cols: 6;
+    --tg-gap: 6px;
+  }
+}
+@media (min-width: 768px) {
+  .knt-tg-chart {
+    --tg-cols: 8;
+  }
+}
+@media (min-width: 1024px) {
+  .knt-tg-chart {
+    --tg-cols: 10;
+  }
+}
+@media (min-width: 1280px) {
+  .knt-tg-chart {
+    --tg-cols: 12;
+  }
+}
+
+/* one swatch: the whole tile is the link */
+.knt-tg-swatch {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4px;
+  width: 100%;
+  height: 100%;
+  padding: 7px;
+  border-radius: 5px;
+  overflow: hidden;
+  color: var(--knt-fg);
   text-decoration: none;
+  box-shadow:
+    inset 0 0 0 2px rgba(0, 0, 0, 0.3),
+    inset 0 -6px 10px rgba(0, 0, 0, 0.25),
+    0 3px 0 rgba(0, 0, 0, 0.4);
   transition:
     filter 0.12s ease,
-    transform 0.12s ease,
-    background-color 0.12s ease;
+    transform 0.12s ease;
+}
+.knt-tg-swatch:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+.knt-tg-swatch[data-ink] {
+  color: var(--knt-ink);
+}
+.knt-tg-swatch[data-span='wide'],
+.knt-tg-swatch[data-span='big'] {
+  padding: 10px;
+}
+
+/* the tag name on small swatches, set in the theme's label face */
+.knt-tg-name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  font:
+    800 11px/1.25 'Nunito',
+    sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+}
+.knt-tg-swatch[data-ink] .knt-tg-name {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.knt-tg-swatch[data-span='wide'] .knt-tg-name,
+.knt-tg-swatch[data-span='big'] .knt-tg-name {
+  font-size: 13px;
+  -webkit-line-clamp: 2;
+}
+
+/* the stitch count, a felt tab sewn on the corner */
+.knt-tg-sts {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--knt-felt);
+  color: var(--knt-ink);
+  font:
+    800 10px/1.4 'Nunito',
+    sans-serif;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+.knt-tg-swatch[data-span='big'] .knt-tg-sts {
+  font-size: 12px;
+  padding: 2px 8px;
+}
+
+/* the yarn mix of a big swatch */
+.knt-tg-mix {
+  display: flex;
+  height: 7px;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1.5px var(--knt-felt);
+}
+.knt-tg-mix > span {
+  display: block;
+  height: 100%;
+}
+
+/* a little square of yarn used in the legend and on buttons */
+.knt-tg-yarn {
+  display: inline-block;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(0, 0, 0, 0.35),
+    0 1px 0 rgba(0, 0, 0, 0.4);
+}
+/* a ball of yarn: the same, wound round */
+.knt-tg-ball {
+  display: inline-block;
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  box-shadow:
+    inset -2px -2px 0 rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+/* ------------------------------------------------------------ loose ends */
+
+.knt-tg-loose > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  cursor: pointer;
+  font:
+    800 13px/1.4 'Nunito',
+    sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.knt-tg-loose > summary::-webkit-details-marker {
+  display: none;
+}
+.knt-tg-caret {
+  display: inline-flex;
+  transition: transform 0.15s ease;
+}
+.knt-tg-loose[open] .knt-tg-caret {
+  transform: rotate(90deg);
+}
+
+/* ------------------------------------------------------------ tags */
+
+.knt-tg-chip {
+  text-decoration: none;
+  transition:
+    background-color 0.12s ease,
+    transform 0.12s ease;
 }
 .knt-tg-chip:hover {
   background: var(--knt-wheat);
   transform: translateY(-1px);
 }
-.knt-tg-chip[data-size='0'] {
-  font-size: 10px;
-}
-.knt-tg-chip[data-size='2'] {
-  font-size: 13px;
-  padding: 4px 11px;
-}
-.knt-tg-chip[data-size='3'] {
-  font-size: 15px;
-  padding: 5px 13px;
-  outline-width: 2px;
-}
-.knt-tg-chip[data-size='4'] {
-  font-size: 18px;
-  padding: 6px 15px;
-  outline-width: 2px;
-  outline-offset: -5px;
-  background: var(--knt-gold);
-}
-.knt-tg-chip[data-size='4']:hover {
-  background: var(--knt-wheat);
-}
-
 .knt-tg-count {
   display: inline-flex;
   align-items: center;
-  padding: 2px 6px;
+  padding: 1px 6px;
   border-radius: 999px;
   background: var(--knt-peat);
   color: var(--knt-felt);
   font:
-    800 10px/1.2 'Nunito',
+    800 10px/1.3 'Nunito',
     sans-serif;
   letter-spacing: 0.04em;
 }
-.knt-tg-chip[data-size='3'] .knt-tg-count,
-.knt-tg-chip[data-size='4'] .knt-tg-count {
-  font-size: 12px;
-}
-
 /* a tag that is part of the current filter */
 .knt-tg-on {
   background: var(--knt-wheat);
   outline-color: var(--knt-ink);
   outline-style: solid;
 }
-
-/* an item row holds several links, so it does not lift as one */
-.knt-tg-item {
-  align-items: flex-start;
+.knt-tg-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: -4px;
+  border-radius: 999px;
+  background: var(--knt-poppy);
+  color: var(--knt-felt);
+  font-size: 14px;
+  line-height: 1;
+  text-decoration: none;
 }
-.knt-tg-item:hover {
-  filter: none;
-  transform: none;
+.knt-tg-remove:hover {
+  filter: brightness(1.2);
+}
+
+/* ------------------------------------------------------------ pattern card */
+
+.knt-tg-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 0 2px rgba(0, 0, 0, 0.3),
+    0 10px 22px rgba(0, 0, 0, 0.45);
+}
+.knt-tg-card > .knt-patch {
+  border-radius: 0;
+  box-shadow: none;
+}
+@media (max-width: 479px) {
+  .knt-tg-card > .knt-patch {
+    padding: 20px 18px;
+  }
+}
+
+/* a pattern row: striped wool with the type's yarn down the edge */
+.knt-tg-prow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  padding: 16px 16px 16px 12px;
+  border-left: 6px solid var(--tg-yarn, var(--knt-gold));
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+}
+@media (min-width: 640px) {
+  .knt-tg-prow {
+    gap: 20px;
+    padding: 18px 22px 18px 16px;
+  }
+}
+.knt-tg-rownum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--knt-felt);
+  color: var(--knt-ink);
+  font:
+    800 13px/1 'Nunito',
+    sans-serif;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
 }
 .knt-tg-title {
   display: block;
@@ -75,37 +307,10 @@
 .knt-tg-title:hover {
   filter: brightness(1.3) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.45));
 }
-
-/* the "used once" fold */
-.knt-tg-details > summary {
-  list-style: none;
-  width: fit-content;
-}
-.knt-tg-details > summary::-webkit-details-marker {
-  display: none;
-}
-.knt-tg-caret {
-  display: inline-flex;
-  transition: transform 0.15s ease;
-}
-.knt-tg-details[open] .knt-tg-caret {
-  transform: rotate(90deg);
-}
-
-/* remove button inside an active filter chip */
-.knt-tg-remove {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  margin-right: -5px;
-  border-radius: 999px;
-  background: var(--knt-poppy);
-  color: var(--knt-felt);
-  font-size: 14px;
-  line-height: 1;
-}
-.knt-tg-remove:hover {
-  filter: brightness(1.2);
+.knt-tg-desc {
+  color: var(--knt-fg);
+  font-family: 'Literata', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.92;
 }
