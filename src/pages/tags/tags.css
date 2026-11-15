@@ -243,7 +243,10 @@
   font-size: 14px;
   font-weight: 600;
 }
-.tg-active-chip button {
+.tg-active-chip a {
+  display: inline-grid;
+  place-items: center;
+  text-decoration: none;
   width: 22px;
   height: 22px;
   border: 0;

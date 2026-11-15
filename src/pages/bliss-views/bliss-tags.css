@@ -1,0 +1,137 @@
+/*
+ * Bliss /tags and /tags/:tag. Builds on Bliss.css: tags are .bl-tag pills,
+ * stepped in weight by use; the one-off tail folds into an Explorer-style
+ * disclosure; tagged items are white list rows inside a window.
+ */
+
+/* Tag pills, stepped by use (data-size 0..4). */
+.blt-chip[data-size='0'] {
+  min-height: 24px;
+  padding: 0 9px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.blt-chip[data-size='2'] {
+  min-height: 30px;
+  font-size: 14px;
+}
+.blt-chip[data-size='3'] {
+  min-height: 34px;
+  padding: 0 13px;
+  border-radius: 17px;
+  font-size: 16px;
+  font-weight: 700;
+  border-color: var(--bl-select);
+}
+.blt-chip[data-size='4'] {
+  min-height: 40px;
+  padding: 0 15px 0 6px;
+  border-radius: 20px;
+  font: 700 18px/1 var(--bl-font-title);
+  border: 1px solid #1d4fa8;
+  background: linear-gradient(180deg, #ffffff, #e3ecff);
+  color: var(--bl-heading);
+}
+.blt-chip[data-size='4']:hover {
+  background: #eef3ff;
+}
+
+/* Count badge inside a pill. */
+.blt-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: #e3e9f8;
+  font: 700 11px/1 var(--bl-font);
+  color: #12398e;
+}
+.blt-chip[data-size='4'] .blt-count {
+  background: var(--bl-select);
+  color: #fff;
+}
+
+/* Small pills on item rows. */
+.blt-mini {
+  min-height: 22px;
+  padding: 0 8px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.blt-mini.bl-tag-active {
+  font-weight: 700;
+}
+
+/* Disabled toggle pills. */
+.bl-tag.blt-toggle:disabled {
+  color: #8a8676;
+  border-color: #c9c4ad;
+  background: #f4f3ee;
+  cursor: not-allowed;
+}
+
+/* Active-filter pill with its remove link. */
+.blt-active-chip {
+  padding-right: 4px;
+}
+.blt-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+.blt-remove:hover {
+  background: var(--bl-close);
+  color: #fff;
+}
+
+/* "Used once" disclosure, styled as a task-pane toggle. */
+.blt-longtail > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 6px 12px;
+  cursor: pointer;
+  list-style: none;
+  font: 700 14px/1.2 var(--bl-font);
+  color: var(--bl-pane-head);
+  background: linear-gradient(90deg, #ffffff, #c6d3f7);
+  border-top: 1px solid #d5d1bd;
+}
+.blt-longtail > summary::-webkit-details-marker {
+  display: none;
+}
+.blt-longtail > summary:hover {
+  color: var(--bl-link-hover);
+}
+.blt-longtail .blt-caret {
+  transition: transform 0.15s ease;
+}
+.blt-longtail[open] .blt-caret {
+  transform: rotate(90deg);
+}
+
+/* Item row title link. */
+.blt-title-link {
+  color: var(--bl-heading);
+  text-decoration: none;
+}
+.blt-title-link:hover {
+  color: var(--bl-link-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blt-longtail .blt-caret {
+    transition: none;
+  }
+}

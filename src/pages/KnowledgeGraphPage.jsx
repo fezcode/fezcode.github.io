@@ -603,8 +603,8 @@ const GraphSwitcher = ({ value, onChange, variant }) => (
 );
 
 const KnowledgeGraphPage = () => {
-  const [view, setView] = usePersistentState('fezcodex-graph-view', 'space');
-  const current = VIEWS.some((v) => v.id === view) ? view : 'space';
+  const [view, setView] = usePersistentState('fezcodex-graph-view', 'paper');
+  const current = VIEWS.some((v) => v.id === view) ? view : 'paper';
   const switcher = (
     <GraphSwitcher value={current} onChange={setView} variant={current} />
   );

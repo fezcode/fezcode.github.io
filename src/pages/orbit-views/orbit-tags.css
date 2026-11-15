@@ -1,0 +1,115 @@
+/* ORBIT /tags and /tags/:tag — additions on top of styles/Orbit.css. */
+
+/* type inks: posts in accent blue, logs in copper, projects in green */
+.orb-tg-type-post {
+  --orb-tg-ink: var(--orb-accent);
+}
+.orb-tg-type-log {
+  --orb-tg-ink: var(--orb-copper);
+}
+.orb-tg-type-project {
+  --orb-tg-ink: var(--orb-cat-ai);
+}
+.orb-tg-ink {
+  color: var(--orb-tg-ink, var(--orb-muted));
+}
+.orb-tg-pip {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orb-tg-ink, var(--orb-muted));
+}
+
+/* chips: disabled state and the count figure */
+.orb-root .orb-chip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.orb-tg-count {
+  font:
+    500 11px/1.5 'IBM Plex Mono',
+    monospace;
+  color: var(--orb-muted);
+}
+.orb-chip[aria-pressed='true'] .orb-tg-count,
+.orb-chip:hover .orb-tg-count {
+  color: inherit;
+}
+
+/* emphasis steps for the tag field (view.sizeFor -> 1..4) */
+.orb-tg-tag[data-size='0'] {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.orb-tg-tag[data-size='2'] {
+  font-size: 14px;
+}
+.orb-tg-tag[data-size='3'] {
+  font-size: 16px;
+  padding: 9px 15px;
+  color: var(--orb-highlight);
+}
+.orb-tg-tag[data-size='4'] {
+  font-size: 19px;
+  padding: 10px 17px;
+  color: var(--orb-highlight);
+  border-color: var(--orb-accent);
+  letter-spacing: -0.02em;
+}
+
+/* item tags on /tags/:tag; the active ones carry the accent */
+.orb-tg-itemtag {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px solid var(--orb-rule);
+  border-radius: 4px;
+  color: var(--orb-muted);
+  font:
+    12px/1.6 'IBM Plex Mono',
+    monospace;
+  text-decoration: none;
+  transition:
+    color 0.18s,
+    border-color 0.18s;
+}
+.orb-tg-itemtag:hover {
+  color: var(--orb-accent);
+  border-color: var(--orb-accent);
+}
+.orb-tg-itemtag[data-active] {
+  color: var(--orb-accent);
+  background: var(--orb-accent-soft);
+  border-color: var(--orb-accent);
+}
+
+/* list title link */
+.orb-tg-title {
+  color: var(--orb-highlight);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.orb-tg-title:hover {
+  color: var(--orb-accent);
+}
+
+/* active filter chip with its remove control */
+.orb-tg-active {
+  padding-right: 4px;
+}
+.orb-tg-remove {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1;
+}
+.orb-tg-remove:hover {
+  background: var(--orb-accent);
+  color: var(--orb-bg);
+}

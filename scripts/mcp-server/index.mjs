@@ -94,7 +94,7 @@ async function createPost(args) {
 }
 
 async function createDiscoveryLog(args) {
-  const { type, title, slug, rating, description, content, date, link, image, ...otherFields } = args;
+  const { type, title, slug, rating, description, content, date, link, image, tags, ...otherFields } = args;
 
   // Validate slug
   if (!/^[a-z0-9-]+$/.test(slug)) {
@@ -139,6 +139,10 @@ async function createDiscoveryLog(args) {
     slug,
     title,
     image: image || '',
+    // Topic tags feed /tags and the knowledge graph (see public/tags/tags.piml).
+    tags: (Array.isArray(tags) ? tags : String(tags || '').split(','))
+      .map((t) => t.trim().toLowerCase().replace(/\s+/g, '-'))
+      .filter(Boolean),
     description,
     ...otherFields
   };
@@ -221,7 +225,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
               description: "Optional URL/path to a cover image",
             }
           },
-          required: ["title", "slug", "description", "content"],
+          required: ["title", "slug", "description", "content", "tags"],
         },
       },
       {
@@ -274,8 +278,12 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             director: { type: "string", description: "Director name (for movies/series)" },
             platform: { type: "string", description: "Platform name (for games/tools)" },
             album: { type: "string", description: "Album name (for music)" },
+            tags: {
+              type: "string",
+              description: "Comma-separated topic tags, 2-5, lowercase kebab-case (e.g. 'crime, heist, thriller'). Reuse existing tags from public/tags/index.piml; don't repeat the category itself.",
+            },
           },
-          required: ["type", "title", "slug", "rating", "description"],
+          required: ["type", "title", "slug", "rating", "description", "tags"],
         },
       },
     ],

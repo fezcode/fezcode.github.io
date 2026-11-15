@@ -1,0 +1,111 @@
+/* Knit /tags and /tags/:tag: felt tags in stepped sizes, stitched onto the wool. */
+
+.knt-tg-chip {
+  gap: 6px;
+  text-decoration: none;
+  transition:
+    filter 0.12s ease,
+    transform 0.12s ease,
+    background-color 0.12s ease;
+}
+.knt-tg-chip:hover {
+  background: var(--knt-wheat);
+  transform: translateY(-1px);
+}
+.knt-tg-chip[data-size='0'] {
+  font-size: 10px;
+}
+.knt-tg-chip[data-size='2'] {
+  font-size: 13px;
+  padding: 4px 11px;
+}
+.knt-tg-chip[data-size='3'] {
+  font-size: 15px;
+  padding: 5px 13px;
+  outline-width: 2px;
+}
+.knt-tg-chip[data-size='4'] {
+  font-size: 18px;
+  padding: 6px 15px;
+  outline-width: 2px;
+  outline-offset: -5px;
+  background: var(--knt-gold);
+}
+.knt-tg-chip[data-size='4']:hover {
+  background: var(--knt-wheat);
+}
+
+.knt-tg-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: var(--knt-peat);
+  color: var(--knt-felt);
+  font:
+    800 10px/1.2 'Nunito',
+    sans-serif;
+  letter-spacing: 0.04em;
+}
+.knt-tg-chip[data-size='3'] .knt-tg-count,
+.knt-tg-chip[data-size='4'] .knt-tg-count {
+  font-size: 12px;
+}
+
+/* a tag that is part of the current filter */
+.knt-tg-on {
+  background: var(--knt-wheat);
+  outline-color: var(--knt-ink);
+  outline-style: solid;
+}
+
+/* an item row holds several links, so it does not lift as one */
+.knt-tg-item {
+  align-items: flex-start;
+}
+.knt-tg-item:hover {
+  filter: none;
+  transform: none;
+}
+.knt-tg-title {
+  display: block;
+  border-radius: 4px;
+  transition: filter 0.12s ease;
+}
+.knt-tg-title:hover {
+  filter: brightness(1.3) drop-shadow(0 2px 0 rgba(0, 0, 0, 0.45));
+}
+
+/* the "used once" fold */
+.knt-tg-details > summary {
+  list-style: none;
+  width: fit-content;
+}
+.knt-tg-details > summary::-webkit-details-marker {
+  display: none;
+}
+.knt-tg-caret {
+  display: inline-flex;
+  transition: transform 0.15s ease;
+}
+.knt-tg-details[open] .knt-tg-caret {
+  transform: rotate(90deg);
+}
+
+/* remove button inside an active filter chip */
+.knt-tg-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-right: -5px;
+  border-radius: 999px;
+  background: var(--knt-poppy);
+  color: var(--knt-felt);
+  font-size: 14px;
+  line-height: 1;
+}
+.knt-tg-remove:hover {
+  filter: brightness(1.2);
+}
