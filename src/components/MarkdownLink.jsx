@@ -1,7 +1,8 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { useSidePanel } from '../context/SidePanelContext';
 import { vocabulary } from '../data/vocabulary';
-import { ArrowSquareOut, CircleNotch } from '@phosphor-icons/react';
+import { ArrowSquareOut } from '@phosphor-icons/react';
+import vocabPanelContent from './vocabPanelContent';
 
 const MarkdownLink = ({ href, children, width = 450, className, ...props }) => {
   const { openSidePanel } = useSidePanel();
@@ -20,23 +21,7 @@ const MarkdownLink = ({ href, children, width = 450, className, ...props }) => {
         onClick={(e) => {
           e.preventDefault();
           if (entry && entry.loader) {
-            const LazyVocabComponent = lazy(entry.loader);
-            openSidePanel(
-              entry.title,
-              <Suspense
-                fallback={
-                  <div className="flex items-center justify-center p-8">
-                    <CircleNotch
-                      size={32}
-                      className="animate-spin text-gray-400"
-                    />
-                  </div>
-                }
-              >
-                <LazyVocabComponent />
-              </Suspense>,
-              width,
-            );
+            openSidePanel(entry.title, vocabPanelContent(entry), width);
           } else {
             console.warn(`Vocabulary term or loader not found: ${term}`);
           }

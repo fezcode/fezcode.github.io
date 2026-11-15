@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useState } from 'react';
 
 const SidePanelContext = createContext();
 
@@ -12,17 +12,18 @@ export const SidePanelProvider = ({ children }) => {
   const [panelTitle, setPanelTitle] = useState('');
   const [panelWidth, setPanelWidth] = useState(450);
 
-  const openSidePanel = (title, content, width = 450) => {
+  // Stable identities: effects that open the panel (the /vocab/:term route)
+  // list these as dependencies and would otherwise re-run on every render.
+  const openSidePanel = useCallback((title, content, width = 450) => {
     setPanelTitle(title);
     setPanelContent(content);
     setPanelWidth(width);
     setIsOpen(true);
-  };
+  }, []);
 
-  const closeSidePanel = () => {
+  const closeSidePanel = useCallback(() => {
     setIsOpen(false);
-    // Optional: clear content after animation, but keeping it simple for now
-  };
+  }, []);
 
   return (
     <SidePanelContext.Provider
