@@ -105,6 +105,8 @@
   flex: none;
 }
 .knt-text {
+  /* contains the sr-only label that sits beside the knitted canvas */
+  position: relative;
   display: block;
   margin: 0;
   min-width: 0;

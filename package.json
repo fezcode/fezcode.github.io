@@ -1,6 +1,6 @@
 {
   "name": "fezcodex",
-  "version": "0.63.0",
+  "version": "0.64.0",
   "private": true,
   "homepage": "https://fezcode.com",
   "dependencies": {
@@ -62,6 +62,7 @@
     "deploy:lite": "npm run build:lite && gh-pages -d dist/client -b gh-pages --no-history",
     "preview": "vite preview",
     "test": "vitest",
+    "test:scripts": "node --test scripts/lib/log-artwork.test.cjs scripts/lib/steam-artwork.test.mjs",
     "lint": "eslint \"src/**/*.{js,jsx}\" \"scripts/**/*.{js,mjs}\" --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "predeploy": "npm run build",

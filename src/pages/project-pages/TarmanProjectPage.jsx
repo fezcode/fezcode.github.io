@@ -1,380 +1,340 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import {
-  useAppConfig,
-  useThemeFonts,
-  AppSeo,
-  AppLoading,
-  AppMissing,
-} from './app-shell';
+  ArrowLeftIcon,
+  ArrowUpIcon,
+  ArrowUpRightIcon,
+  CaretRightIcon,
+  ClockCounterClockwiseIcon,
+  CpuIcon,
+  DownloadSimpleIcon,
+  GithubLogoIcon,
+  GraphicsCardIcon,
+  HardDrivesIcon,
+  MemoryIcon,
+  ShieldCheckIcon,
+  ThermometerIcon,
+  TreeStructureIcon,
+  WifiHighIcon,
+} from '@phosphor-icons/react';
+import { useAppConfig, AppSeo, AppLoading, AppMissing } from './app-shell';
+import AsciiField from './tarman/AsciiField';
+import MonitorPanel from './tarman/MonitorPanel';
+import Recorder from './tarman/Recorder';
 import '../../styles/project-showcases/TarmanShowcase.css';
 
-const FONTS =
-  'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap';
-const CHANNELS = [
-  { id: 'cpu', name: 'CPU', unit: '%', max: 100 },
-  { id: 'memory', name: 'MEMORY', unit: 'GB', max: 32 },
-  { id: 'disk', name: 'DISK I/O', unit: 'MB/s', max: 200 },
-  { id: 'gpu', name: 'GPU', unit: '%', max: 100 },
-];
-const RECORD = Array.from({ length: 61 }, (_, index) => {
-  const spike = Math.exp(-Math.pow((index - 37) / 3.2, 2));
-  return {
-    cpu: Math.round(16 + 8 * Math.abs(Math.sin(index * 0.53)) + spike * 67),
-    memory: Math.round((9.2 + index * 0.046 + spike * 3.1) * 10) / 10,
-    disk: Math.round(3 + 12 * Math.abs(Math.sin(index * 0.8)) + spike * 166),
-    gpu: Math.round(8 + 12 * Math.abs(Math.cos(index * 0.28)) + spike * 34),
-  };
-});
-const pad = (value) => String(value).padStart(2, '0');
-const sampleTime = (index) =>
-  '14:' + pad(32 + Math.floor(index / 6)) + ':' + pad((index % 6) * 10);
+const ext = { target: '_blank', rel: 'noopener noreferrer' };
 
-const RecorderGraphic = () => (
-  <div className="tm-instrument" aria-hidden="true">
-    <div className="tm-instrument-coordinate tm-coordinate-top">
-      REC / 600.000 S
-    </div>
-    <svg viewBox="0 0 600 600" className="tm-polar">
-      <defs>
-        <linearGradient id="tm-trace-glow" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#ff733f" stopOpacity=".1" />
-          <stop offset="100%" stopColor="#ff733f" />
-        </linearGradient>
-        <radialGradient id="tm-center-glow">
-          <stop offset="0%" stopColor="#ff6c33" stopOpacity=".13" />
-          <stop offset="100%" stopColor="#ff6c33" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      <circle cx="300" cy="300" r="275" fill="url(#tm-center-glow)" />
-      {[100, 150, 200, 250, 275].map((radius) => (
-        <circle
-          key={radius}
-          cx="300"
-          cy="300"
-          r={radius}
-          className="tm-orbit"
-        />
-      ))}
-      <circle cx="300" cy="300" r="261" className="tm-orbit-ticks" />
-      <path
-        d="M25 300h550M300 25v550M105 105l390 390M105 495l390-390"
-        className="tm-axis"
-      />
-      <path d="M300 50a250 250 0 0 1 227 354" className="tm-orbit-highlight" />
-      <path
-        d="M57 350 99 331 122 345 158 316 177 321 194 302 211 324 230 314 246 326 263 210 274 358 286 281 302 308 318 288 337 310 352 303 366 320 392 299 405 309 423 292 438 302 465 275 489 290 523 270 544 281"
-        className="tm-hero-trace"
-      />
-      <circle cx="263" cy="210" r="5" fill="#ff733f" />
-      <path d="M263 210v-60h70" className="tm-callout" />
-      <text x="343" y="154" className="tm-svg-note">
-        EVENT CAPTURED
-      </text>
-      {[0, 1, 2, 3].map((i) => (
-        <text
-          key={i}
-          x={[300, 565, 300, 25][i]}
-          y={[17, 305, 590, 305][i]}
-          textAnchor="middle"
-          className="tm-svg-coordinate"
-        >
-          {['000', '150', '300', '450'][i]}
-        </text>
-      ))}
-    </svg>
-    <div className="tm-instrument-core">
-      <span>THE MOVING WINDOW</span>
-      <strong>
-        10<span>:</span>00
-      </strong>
-      <span>EVERY SECOND / EVERY PROCESS</span>
-    </div>
-    <div className="tm-instrument-coordinate tm-coordinate-bottom">
-      <span className="tm-led" /> BLACK BOX: ONLINE
-    </div>
-  </div>
-);
-
-const Timeline = () => {
-  const [index, setIndex] = useState(37);
-  const [channelId, setChannelId] = useState('cpu');
-  const channel = CHANNELS.find((item) => item.id === channelId);
-  const sample = RECORD[index];
-  const chartY = (value) => 237 - (value / channel.max) * 211;
-  const points = RECORD.map(
-    (item, i) => (i / 60) * 1000 + ',' + chartY(item[channel.id]),
-  ).join(' ');
-  const cursor = (index / 60) * 1000;
-  const processNames =
-    index >= 34 && index <= 41
-      ? ['compiler.exe', 'renderer.exe', 'browser.exe']
-      : ['browser.exe', 'editor.exe', 'system'];
-  const processRatios = [0.61, 0.23, 0.11];
+const Reveal = ({ children, className = '', delay = 0, as = 'div' }) => {
+  const reduce = useReducedMotion();
+  const Tag = motion[as] || motion.div;
   return (
-    <div className="tm-recorder">
-      <div className="tm-recorder-toolbar">
-        <span>
-          <span className="tm-led" /> ILLUSTRATIVE RECORDING
-        </span>
-        <span>14:32:00 — 14:42:00</span>
-      </div>
-      <div className="tm-recorder-grid">
-        <div className="tm-timeline">
-          <div className="tm-channel-tabs" aria-label="Choose a sample metric">
-            {CHANNELS.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                aria-pressed={item.id === channelId}
-                onClick={() => setChannelId(item.id)}
-              >
-                {item.name}
-              </button>
-            ))}
-          </div>
-          <div className="tm-chart">
-            <svg
-              viewBox="0 0 1000 260"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <defs>
-                <linearGradient id="tm-chart-fill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#ff733f" stopOpacity=".3" />
-                  <stop offset="100%" stopColor="#ff733f" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              {[26, 79, 132, 185, 237].map((y) => (
-                <path
-                  key={y}
-                  d={'M0 ' + y + 'H1000'}
-                  className="tm-chart-grid"
-                />
-              ))}
-              {[0, 200, 400, 600, 800, 1000].map((x) => (
-                <path
-                  key={x}
-                  d={'M' + x + ' 0V260'}
-                  className="tm-chart-grid"
-                />
-              ))}
-              <polygon
-                points={'0,260 ' + points + ' 1000,260'}
-                fill="url(#tm-chart-fill)"
-              />
-              <polyline points={points} className="tm-chart-line" />
-              <path d={'M' + cursor + ' 0V260'} className="tm-chart-cursor" />
-              <circle
-                cx={cursor}
-                cy={chartY(sample[channel.id])}
-                r="5"
-                className="tm-chart-point"
-              />
-            </svg>
-            <span className="tm-chart-unit">
-              {channel.max} {channel.unit}
-            </span>
-            <span className="tm-chart-stamp">{sampleTime(index)}</span>
-          </div>
-          <label className="tm-slider-label" htmlFor="tm-history-scrubber">
-            SCRUB THE TEN-MINUTE WINDOW <span>← MOVE THROUGH TIME →</span>
-          </label>
-          <input
-            id="tm-history-scrubber"
-            className="tm-scrubber"
-            type="range"
-            min="0"
-            max="60"
-            step="1"
-            value={index}
-            onChange={(event) => setIndex(Number(event.target.value))}
-            aria-valuetext={
-              sampleTime(index) +
-              ', ' +
-              channel.name +
-              ' ' +
-              sample[channel.id] +
-              channel.unit
-            }
-          />
-          <div className="tm-time-axis">
-            <span>−10:00</span>
-            <span>−05:00</span>
-            <span>NOW</span>
-          </div>
-        </div>
-        <div className="tm-sample-detail" aria-live="polite" aria-atomic="true">
-          <div className="tm-detail-head">
-            <span>CURSOR / {sampleTime(index)}</span>
-            <button type="button" onClick={() => setIndex(60)}>
-              LATEST ↗
-            </button>
-          </div>
-          <strong className="tm-big-metric">
-            {sample[channel.id]}
-            <span>{channel.unit}</span>
-          </strong>
-          <span className="tm-metric-caption">
-            {channel.name} AT THIS MOMENT
-          </span>
-          <div className="tm-process-list">
-            <div className="tm-process-table-head">
-              <span>TOP PROCESSES</span>
-              <span>{channel.unit}</span>
-            </div>
-            {processNames.map((name, i) => (
-              <div className="tm-process-row" key={name}>
-                <span>
-                  <i />
-                  {name}
-                </span>
-                <strong>
-                  {(sample[channel.id] * processRatios[i]).toFixed(1)}
-                </strong>
-              </div>
-            ))}
-          </div>
-          <p>
-            Sample data, designed to explore the interaction. No device
-            telemetry is collected.
-          </p>
-        </div>
-      </div>
-      <div className="tm-recorder-footer">
-        <span>ONE SHARED SAMPLE CLOCK</span>
-        <span>ILLUSTRATIVE VIEW · 10 S INTERVALS</span>
-        <span>TARMAN RECORDS ONCE PER SECOND</span>
-      </div>
-    </div>
+    <Tag
+      className={className}
+      initial={reduce ? false : { opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '0px 0px -12% 0px' }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay }}
+    >
+      {children}
+    </Tag>
   );
 };
 
+const Eyebrow = ({ children }) => (
+  <p className="trm-eyebrow">
+    <i className="trm-dot" aria-hidden="true" />
+    {children}
+  </p>
+);
+
+const LEFT_TILES = [
+  { Icon: CpuIcon, label: 'Per-core CPU' },
+  { Icon: MemoryIcon, label: 'Physical memory' },
+  { Icon: HardDrivesIcon, label: 'Every disk' },
+];
+const RIGHT_TILES = [
+  { Icon: WifiHighIcon, label: 'Each adapter' },
+  { Icon: GraphicsCardIcon, label: 'GPU engines' },
+  { Icon: ThermometerIcon, label: 'Temperatures' },
+];
+
+const FEATURES = [
+  {
+    Icon: TreeStructureIcon,
+    tag: 'A / 01',
+    title: ['Not just', 'what’s running.'],
+    body: 'Process trees. Per-process sparklines. Loaded modules. Average and peak CPU, memory growth, total I/O, and lifetimes — including processes that exited during the window.',
+    foot: 'Process history / window summary',
+  },
+  {
+    Icon: CpuIcon,
+    tag: 'B / 02',
+    title: ['Follow', 'the pressure.'],
+    body: 'Per-core CPU, physical memory, each disk and adapter. GPU engines, dedicated and shared memory, and driver-reported temperatures. See which resource carried the load.',
+    foot: 'CPU / memory / disk / network / GPU',
+  },
+  {
+    Icon: ShieldCheckIcon,
+    tag: 'C / 03',
+    title: ['Below', 'the surface.'],
+    body: 'Explore Windows event channels, process starts and exits, and your own activity log. Inspect firmware, Secure Boot, TPM and SMBIOS data in a read-only view.',
+    foot: 'Events / firmware / activity',
+  },
+];
+
+const Tile = ({ Icon, label, tone }) => (
+  <li className={`trm-tile trm-tile--${tone}`}>
+    <span className="trm-tile-box">
+      <Icon size={26} weight="duotone" aria-hidden="true" />
+    </span>
+    <span className="trm-tile-label">{label}</span>
+  </li>
+);
+
 const TarmanProjectPage = () => {
   const { cfg, project, loading, failed } = useAppConfig();
-  useThemeFonts(FONTS, 'tarman-blackbox');
   if (loading) return <AppLoading />;
   if (failed || !cfg)
-    return <AppMissing background="#090b0c" color="#ece9e1" />;
+    return <AppMissing background="#efeeec" color="#1c1b19" />;
   const version = project?.version || cfg.version;
+  const stack = cfg.stack || ['C11', 'raylib', 'Win32'];
+
   return (
-    <div className="tarman-showcase" id="tarman-top">
+    <div className="trm-root" id="trm-top">
       <AppSeo cfg={cfg} project={project} />
-      <a href="#tm-main" className="tm-skip">
+      <a href="#trm-main" className="trm-skip">
         Skip to content
       </a>
-      <header className="tm-nav tm-shell">
-        <Link to="/projects" className="tm-brand">
-          <span className="tm-brand-mark">T/</span>
-          <span>
-            TARMAN<span className="tm-brand-sub">SYSTEM OBSERVATORY</span>
-          </span>
-        </Link>
-        <nav aria-label="Tarman navigation">
-          <a href="#tm-recorder">The recorder</a>
-          <a href="#tm-system">The system</a>
-          <a href={cfg.repo} target="_blank" rel="noopener noreferrer">
-            Source ↗
-          </a>
-        </nav>
-        <a
-          className="tm-nav-download"
-          href={cfg.download}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GET TARMAN <span>↗</span>
-        </a>
-      </header>
-      <main id="tm-main">
-        <section className="tm-hero">
-          <div className="tm-hero-grid" aria-hidden="true" />
-          <div className="tm-shell tm-hero-overline">
-            <span>
-              <span className="tm-led" /> WINDOWS SYSTEM FLIGHT RECORDER
+      <div className="trm-frame">
+        <header className="trm-nav trm-shell">
+          <a href="#trm-top" className="trm-brand">
+            <span className="trm-brand-mark" aria-hidden="true">
+              T/
             </span>
-            <span>C11 / RAYLIB / WIN32</span>
-          </div>
-          <h1 className="tm-monument" aria-label="Tarman">
-            TARMAN<span aria-hidden="true">01</span>
-          </h1>
-          <div className="tm-shell tm-hero-lower">
-            <div className="tm-hero-copy">
-              <p className="tm-index">SIGNAL 001 / THE MOMENT BEFORE</p>
-              <h2>
-                THE SPIKE IS GONE.
-                <br />
-                <em>THE EVIDENCE ISN’T.</em>
-              </h2>
-              <p>
-                Your machine has a story. Tarman keeps the last ten minutes — so
-                you can find the process behind the moment.
-              </p>
-              <a href="#tm-recorder" className="tm-enter">
-                ENTER THE RECORD <span>↓</span>
-              </a>
-              <span className="tm-hero-version">
-                NATIVE WINDOWS APP / V{version} / MIT LICENSE
-              </span>
-            </div>
-            <RecorderGraphic />
-          </div>
-          <div className="tm-shell tm-hero-caption">
-            <span>NO RUNTIME. NO GUESSWORK.</span>
-            <span>PROCESS / PERFORMANCE / HISTORY</span>
-            <span>SCROLL TO RECONSTRUCT ↓</span>
-          </div>
-        </section>
-        <section id="tm-recorder" className="tm-section tm-shell">
-          <div className="tm-section-top">
-            <p className="tm-index">01 / TEMPORAL ANALYSIS</p>
-            <span className="tm-fine">600 SECONDS OF CONTEXT</span>
-          </div>
-          <div className="tm-section-intro">
-            <h2>
-              GO BACK.
-              <br />
-              <em>KNOW WHY.</em>
-            </h2>
-            <p>
-              One cursor. Every graph. System and process histories share a
-              clock, so the CPU spike, disk burst, and process that already
-              exited all meet at the same second.
-            </p>
-          </div>
-          <Timeline />
-          <div className="tm-explainer">
-            <span>THE REAL APP</span>
-            <p>
-              Hover a graph to scrub every metric. Click to pin a moment. Zoom
-              between one, five, and ten minutes while recording continues.
-            </p>
+            <span>Tarman</span>
+          </a>
+          <nav className="trm-nav-links" aria-label="Tarman sections">
+            <a href="#trm-recorder">Recorder</a>
+            <a href="#trm-features">Features</a>
+            <a href="#trm-gallery">Gallery</a>
+            <a href="#trm-stack">Stack</a>
+          </nav>
+          <div className="trm-nav-actions">
+            <Link to="/projects" className="trm-btn trm-btn--light trm-btn--sm">
+              <ArrowLeftIcon size={13} aria-hidden="true" />
+              Projects
+            </Link>
             <a
-              href={cfg.repo + '#the-10-minute-window'}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={cfg.download}
+              {...ext}
+              className="trm-btn trm-btn--dark trm-btn--sm"
             >
-              READ THE FIELD MANUAL ↗
+              Download
             </a>
           </div>
-        </section>
-        <section className="tm-screen-section" id="tm-system">
-          <div className="tm-shell">
-            <div className="tm-section-top">
-              <p className="tm-index">02 / THE OBSERVATION DECK</p>
-              <span className="tm-fine">
-                ACTUAL APPLICATION / DEMONSTRATION MACHINE
-              </span>
+        </header>
+
+        <main id="trm-main">
+          {/* ---------------- HERO ---------------- */}
+          <section className="trm-hero">
+            <AsciiField variant="hero" className="trm-ascii--hero" />
+            <div className="trm-hero-main trm-shell">
+              <a href={cfg.download} {...ext} className="trm-badge">
+                <span className="trm-badge-chip">New</span>
+                <span className="trm-badge-text">
+                  v{version} · Native Windows system monitor
+                </span>
+                <CaretRightIcon size={13} weight="bold" aria-hidden="true" />
+              </a>
+              <h1 className="trm-display trm-hero-title">
+                <span>The spike is gone.</span> <span>The evidence isn’t.</span>
+              </h1>
+              <p className="trm-hero-sub">{cfg.subtitle}</p>
+              <div className="trm-hero-ctas">
+                <a
+                  href={cfg.download}
+                  {...ext}
+                  className="trm-btn trm-btn--dark"
+                >
+                  <DownloadSimpleIcon size={15} aria-hidden="true" />
+                  Download for Windows
+                  <CaretRightIcon size={12} weight="bold" aria-hidden="true" />
+                </a>
+                <a href={cfg.repo} {...ext} className="trm-btn trm-btn--light">
+                  <GithubLogoIcon size={15} aria-hidden="true" />
+                  View on GitHub
+                </a>
+              </div>
+              <ul className="trm-marks" aria-label="Built with">
+                {[...stack, 'MIT license', 'No runtime'].map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <div className="trm-hero-object">
+                <MonitorPanel version={version} />
+                <span className="trm-hero-note">
+                  Illustrative readout · no device telemetry
+                </span>
+              </div>
             </div>
-            <h2>
-              EVERY SIGNAL.
-              <br />
-              <span>ONE FIELD OF VIEW.</span>
-            </h2>
-            <figure className="tm-main-shot">
-              <div className="tm-shot-rail">
-                <span>ANALYSIS / ALL CHANNELS</span>
-                <span>↗ TARMAN.EXE</span>
+          </section>
+
+          {/* ---------------- TEN-MINUTE MEMORY ---------------- */}
+          <section className="trm-section trm-memory">
+            <AsciiField variant="map" className="trm-ascii--section" />
+            <div className="trm-shell">
+              <Reveal>
+                <Eyebrow>Ten-minute moving history</Eyebrow>
+              </Reveal>
+              <div className="trm-split">
+                <Reveal as="h2" className="trm-display trm-h2">
+                  Go back ten minutes
+                  <br />
+                  and know why.
+                </Reveal>
+                <Reveal as="p" className="trm-lede" delay={0.08}>
+                  Your machine has a story. Tarman keeps the last ten minutes —
+                  every second, every process — so you can find what was behind
+                  the moment after it has passed.
+                </Reveal>
+              </div>
+              <div className="trm-stage">
+                <ul className="trm-tiles trm-tiles--left">
+                  {LEFT_TILES.map((t, i) => (
+                    <Tile
+                      key={t.label}
+                      {...t}
+                      tone={['sand', 'stone', 'clay'][i]}
+                    />
+                  ))}
+                </ul>
+                <Reveal className="trm-stack" delay={0.1}>
+                  <span className="trm-stack-ghost trm-stack-ghost--back" />
+                  <span className="trm-stack-ghost trm-stack-ghost--mid" />
+                  <MonitorPanel version={version} mode="window" />
+                </Reveal>
+                <ul className="trm-tiles trm-tiles--right">
+                  {RIGHT_TILES.map((t, i) => (
+                    <Tile
+                      key={t.label}
+                      {...t}
+                      tone={['clay', 'stone', 'sand'][i]}
+                    />
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* ---------------- RECORDER ---------------- */}
+          <section id="trm-recorder" className="trm-section trm-shell">
+            <Reveal>
+              <Eyebrow>Temporal analysis</Eyebrow>
+            </Reveal>
+            <div className="trm-split">
+              <Reveal as="h2" className="trm-display trm-h2">
+                One cursor.
+                <br />
+                Every graph.
+              </Reveal>
+              <Reveal as="p" className="trm-lede" delay={0.08}>
+                System and process histories share a clock, so the CPU spike,
+                the disk burst, and the process that already exited all meet at
+                the same second.
+              </Reveal>
+            </div>
+            <Reveal>
+              <Recorder />
+            </Reveal>
+            <div className="trm-explainer">
+              <span className="trm-eyebrow-inline">
+                <ClockCounterClockwiseIcon size={14} aria-hidden="true" /> The
+                real app
+              </span>
+              <p>
+                Hover a graph to scrub every metric. Click to pin a moment. Zoom
+                between one, five, and ten minutes while recording continues.
+              </p>
+              <a
+                href={cfg.repo + '#the-10-minute-window'}
+                {...ext}
+                className="trm-textlink"
+              >
+                Read the field manual{' '}
+                <ArrowUpRightIcon size={12} aria-hidden="true" />
+              </a>
+            </div>
+          </section>
+
+          {/* ---------------- FEATURES ---------------- */}
+          <section id="trm-features" className="trm-section trm-shell">
+            <Reveal>
+              <Eyebrow>Total system visibility</Eyebrow>
+            </Reveal>
+            <div className="trm-split">
+              <Reveal as="h2" className="trm-display trm-h2">
+                From the process
+                <br />
+                to the firmware.
+              </Reveal>
+              <Reveal as="p" className="trm-lede" delay={0.08}>
+                A task manager, a resource monitor, and an event viewer that all
+                look at the same ten minutes.
+              </Reveal>
+            </div>
+            <div className="trm-features">
+              {FEATURES.map((f, i) => (
+                <Reveal
+                  as="article"
+                  key={f.tag}
+                  className="trm-feature"
+                  delay={i * 0.06}
+                >
+                  <div className="trm-feature-top">
+                    <span className="trm-tile-box trm-tile-box--sm">
+                      <f.Icon size={22} weight="duotone" aria-hidden="true" />
+                    </span>
+                    <span className="trm-feature-tag">{f.tag}</span>
+                  </div>
+                  <h3 className="trm-display">
+                    {f.title[0]}
+                    <br />
+                    {f.title[1]}
+                  </h3>
+                  <p>{f.body}</p>
+                  <span className="trm-feature-foot">{f.foot}</span>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+
+          {/* ---------------- GALLERY ---------------- */}
+          <section id="trm-gallery" className="trm-section trm-shell">
+            <Reveal>
+              <Eyebrow>The observation deck</Eyebrow>
+            </Reveal>
+            <div className="trm-split">
+              <Reveal as="h2" className="trm-display trm-h2">
+                Every signal.
+                <br />
+                One field of view.
+              </Reveal>
+              <Reveal as="p" className="trm-lede" delay={0.08}>
+                The actual application, running Tarman’s built-in demo mode on a
+                synthetic machine.
+              </Reveal>
+            </div>
+            <Reveal as="figure" className="trm-shot trm-shot--main">
+              <div className="trm-shot-bar" aria-hidden="true">
+                <span className="trm-shot-dots">
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span>Analysis / all channels</span>
+                <span>tarman.exe</span>
               </div>
               <img
                 src="/images/projects/tarman/analysis.webp"
@@ -387,141 +347,118 @@ const TarmanProjectPage = () => {
                 Synthetic machine rendered by Tarman’s built-in demo mode. Real
                 application interface.
               </figcaption>
-            </figure>
-          </div>
-        </section>
-        <section className="tm-shell tm-section tm-capabilities">
-          <div className="tm-section-top">
-            <p className="tm-index">03 / TOTAL SYSTEM VISIBILITY</p>
-            <span className="tm-fine">FROM THE PROCESS TO THE FIRMWARE</span>
-          </div>
-          <div className="tm-capability-grid">
-            <article>
-              <span className="tm-feature-number">A / 01</span>
-              <h3>
-                NOT JUST
-                <br />
-                WHAT’S RUNNING.
-              </h3>
-              <p>
-                Process trees. Per-process sparklines. Loaded modules. Average
-                and peak CPU, memory growth, total I/O, and lifetimes —
-                including processes that exited during the window.
-              </p>
-              <span className="tm-feature-foot">
-                PROCESS HISTORY / WINDOW SUMMARY
-              </span>
-            </article>
-            <article>
-              <span className="tm-feature-number">B / 02</span>
-              <h3>
-                FOLLOW
-                <br />
-                THE PRESSURE.
-              </h3>
-              <p>
-                Per-core CPU, physical memory, each disk and adapter. GPU
-                engines, dedicated and shared memory, and driver-reported
-                temperatures. See which resource carried the load.
-              </p>
-              <span className="tm-feature-foot">
-                CPU / MEMORY / DISK / NETWORK / GPU
-              </span>
-            </article>
-            <article>
-              <span className="tm-feature-number">C / 03</span>
-              <h3>
-                BELOW
-                <br />
-                THE SURFACE.
-              </h3>
-              <p>
-                Explore Windows event channels, process starts and exits, and
-                your own activity log. Inspect firmware, Secure Boot, TPM and
-                SMBIOS data in a read-only view.
-              </p>
-              <span className="tm-feature-foot">
-                EVENTS / FIRMWARE / ACTIVITY
-              </span>
-            </article>
-          </div>
-          <div className="tm-secondary-shot">
-            <figure>
-              <img
-                src="/images/projects/tarman/processes.webp"
-                width="1600"
-                height="991"
-                loading="lazy"
-                alt="Tarman process list, with load indicators and individual CPU history graphs, using a synthetic demo machine."
-              />
-              <figcaption>PROCESS TREE / SYNTHETIC DEMO MACHINE</figcaption>
-            </figure>
-            <div>
-              <p className="tm-index">BUILT CLOSE TO THE METAL</p>
-              <h3>
-                LESS BETWEEN
-                <br />
-                YOU AND
-                <br />
-                <em>THE MACHINE.</em>
-              </h3>
-              <p>
-                Native C11 and raylib, with a dedicated Win32 sampler. A
-                self-contained Windows installer. Dark and light themes,
-                adjustable interface scale, and a frame rate that settles down
-                when you do.
-              </p>
-              <a
-                href={cfg.repo + '#how-it-is-put-together'}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                INSPECT THE ARCHITECTURE ↗
-              </a>
+            </Reveal>
+            <div className="trm-shot-pair">
+              <Reveal as="figure" className="trm-shot">
+                <img
+                  src="/images/projects/tarman/processes.webp"
+                  width="1600"
+                  height="991"
+                  loading="lazy"
+                  alt="Tarman process list, with load indicators and individual CPU history graphs, using a synthetic demo machine."
+                />
+                <figcaption>Process tree / synthetic demo machine</figcaption>
+              </Reveal>
+              <Reveal as="figure" className="trm-shot" delay={0.08}>
+                <img
+                  src="/images/projects/tarman/performance.webp"
+                  width="1600"
+                  height="991"
+                  loading="lazy"
+                  alt="Tarman Performance page with a CPU utilisation graph over sixty seconds, a list of resources with sparklines, and live CPU, memory, disk and network meters."
+                />
+                <figcaption>Performance / CPU over sixty seconds</figcaption>
+              </Reveal>
             </div>
-          </div>
-        </section>
-        <section className="tm-install">
-          <div className="tm-install-cross" aria-hidden="true">
-            +
-          </div>
-          <div className="tm-shell tm-install-grid">
-            <div>
-              <p className="tm-index">YOUR NEXT SPIKE IS ALREADY ON ITS WAY.</p>
-              <h2>
-                KEEP
+          </section>
+
+          {/* ---------------- STACK ---------------- */}
+          <section id="trm-stack" className="trm-section trm-shell">
+            <Reveal>
+              <Eyebrow>Built close to the metal</Eyebrow>
+            </Reveal>
+            <div className="trm-split">
+              <Reveal as="h2" className="trm-display trm-h2">
+                Less between you
                 <br />
-                <em>THE RECORD.</em>
-              </h2>
+                and the machine.
+              </Reveal>
+              <div className="trm-stack-copy">
+                <Reveal as="p" className="trm-lede" delay={0.08}>
+                  Native C11 and raylib, with a dedicated Win32 sampler. A
+                  self-contained Windows installer. Dark and light themes,
+                  adjustable interface scale, and a frame rate that settles down
+                  when you do.
+                </Reveal>
+                <a
+                  href={cfg.repo + '#how-it-is-put-together'}
+                  {...ext}
+                  className="trm-textlink"
+                >
+                  Inspect the architecture{' '}
+                  <ArrowUpRightIcon size={12} aria-hidden="true" />
+                </a>
+              </div>
             </div>
-            <div className="tm-install-actions">
-              <p>
+            <ul className="trm-specs">
+              {stack.map((item, i) => (
+                <li key={item}>
+                  <span>{String(i + 1).padStart(2, '0')}</span>
+                  <strong className="trm-display">{item}</strong>
+                </li>
+              ))}
+              <li>
+                <span>{String(stack.length + 1).padStart(2, '0')}</span>
+                <strong className="trm-display">
+                  {(cfg.platforms || ['Windows']).join(' / ')}
+                </strong>
+              </li>
+            </ul>
+          </section>
+
+          {/* ---------------- CTA ---------------- */}
+          <section className="trm-cta">
+            <AsciiField variant="wash" className="trm-ascii--cta" />
+            <div className="trm-shell trm-cta-inner">
+              <Eyebrow>Your next spike is already on its way</Eyebrow>
+              <h2 className="trm-display trm-cta-title">Keep the record.</h2>
+              <p className="trm-hero-sub">
                 Install Tarman. Let the next ten minutes tell you something.
               </p>
-              <a
-                href={cfg.download}
-                className="tm-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                DOWNLOAD FOR WINDOWS <span>↗</span>
-              </a>
-              <div className="tm-install-meta">
-                <span>V{version} / WINDOWS</span>
-                <span>PER-USER INSTALL / NO RUNTIME</span>
+              <div className="trm-hero-ctas">
+                <a
+                  href={cfg.download}
+                  {...ext}
+                  className="trm-btn trm-btn--dark"
+                >
+                  <DownloadSimpleIcon size={15} aria-hidden="true" />
+                  Download for Windows
+                  <CaretRightIcon size={12} weight="bold" aria-hidden="true" />
+                </a>
+                <a href={cfg.repo} {...ext} className="trm-btn trm-btn--light">
+                  <GithubLogoIcon size={15} aria-hidden="true" />
+                  MIT licensed source
+                </a>
               </div>
-              <a href={cfg.repo} target="_blank" rel="noopener noreferrer">
-                MIT LICENSED. OPEN TO INSPECTION. ↗
-              </a>
+              <ul className="trm-marks trm-marks--cta">
+                <li>v{version} / Windows</li>
+                <li>Per-user install</li>
+                <li>No runtime</li>
+              </ul>
             </div>
-          </div>
-        </section>
-      </main>
-      <footer className="tm-shell tm-footer">
-        <span>TARMAN / A FEZCODE INSTRUMENT</span>
-        <Link to="/projects">← ALL PROJECTS</Link>
-        <a href="#tarman-top">RETURN TO SURFACE ↑</a>
-      </footer>
+          </section>
+        </main>
+
+        <footer className="trm-footer trm-shell">
+          <span>Tarman / a fezcode instrument</span>
+          <Link to="/projects" className="trm-textlink">
+            <ArrowLeftIcon size={12} aria-hidden="true" /> All projects
+          </Link>
+          <a href="#trm-top" className="trm-textlink">
+            Back to top <ArrowUpIcon size={12} aria-hidden="true" />
+          </a>
+        </footer>
+      </div>
     </div>
   );
 };

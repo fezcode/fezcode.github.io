@@ -400,12 +400,13 @@ describe('GenreCollectionPage — index', () => {
       '/demystify/genre/trip-hop',
     );
 
-    // 3 genres, 2 tracks, 2 families, span derived from the years fields.
+    // 3 genres, 2 tracks, 2 families; the span runs to "present" because the
+    // genres are still active.
     expect(screen.getByText('GENRES')).toBeInTheDocument();
     expect(screen.getByText('3')).toBeInTheDocument();
     expect(screen.getByText('TRACKS')).toBeInTheDocument();
     expect(screen.getByText('FAMILIES')).toBeInTheDocument();
-    expect(screen.getByText('1967–1991')).toBeInTheDocument();
+    expect(screen.getByText('1967–present')).toBeInTheDocument();
   });
 
   it('filters by family when a chip is pressed', async () => {

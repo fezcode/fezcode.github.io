@@ -28,13 +28,21 @@ const haystack = (entry) =>
     .join(' ')
     .toLowerCase();
 
-/** Earliest and latest four-digit years mentioned across the collection. */
+// A range that is still running: "1990 → present", or one left open, such as
+// "1994 → 2008 (revived 2019 →)".
+const isOngoing = (years) => /present|→\s*\)?\s*$/i.test(years.trim());
+
+/**
+ * Earliest four-digit year across the collection, through the latest one, or
+ * through "present" when any genre is still running.
+ */
 const yearSpan = (entries) => {
   const years = entries
     .flatMap((entry) => entry.years.match(/\d{4}/g) || [])
     .map(Number);
   if (!years.length) return '';
   const from = Math.min(...years);
+  if (entries.some((entry) => isOngoing(entry.years))) return `${from}–present`;
   const to = Math.max(...years);
   return from === to ? `${from}` : `${from}–${to}`;
 };

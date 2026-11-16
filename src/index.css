@@ -8,7 +8,13 @@ body {
   overflow-x: hidden;
 }
 
+/* html and body both clip horizontally, which makes body the page's scroll
+   box. Positioning it keeps absolutely positioned descendants (sr-only labels,
+   tooltips) inside that box; otherwise they extend <html> instead, html starts
+   scrolling too, and on mobile it drags body's one-screen box off screen,
+   leaving the rest of the page unpainted. */
 body {
+  position: relative;
   margin: 0;
   background-color: #050505; /* Real Brutalist Background Color */
   font-family: 'Space Mono', 'JetBrains Mono', monospace, sans-serif;
