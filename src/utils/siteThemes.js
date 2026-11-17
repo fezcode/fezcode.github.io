@@ -56,6 +56,14 @@ export const SITE_THEMES = [
     accent: '#c9952b',
   },
   {
+    id: 'kilim',
+    name: 'Kilim',
+    description: 'Flat-woven madder, pass by pass',
+    background: '#570e13',
+    foreground: '#efe5cf',
+    accent: '#dca420',
+  },
+  {
     id: 'bliss',
     name: 'Bliss',
     description: 'Blue sky, green hill, glossy windows',

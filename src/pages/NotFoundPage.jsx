@@ -9,6 +9,7 @@ import { MistOrb } from '../components/mist';
 import { LedgerFolio } from '../components/ledger';
 import { OrbitFolio } from '../components/orbit';
 import { KnitHero } from '../components/knit';
+import { KilimRug } from '../components/kilim';
 import { BlissWindow } from '../components/bliss';
 
 const BrutalistNotFound = () => (
@@ -221,6 +222,27 @@ const KnitNotFound = ({ path }) => (
   </div>
 );
 
+const KilimNotFound = ({ path }) => (
+  <div className="klm-root min-h-screen">
+    <div className="klm-page">
+      <KilimRug
+        eyebrow="Error 404"
+        title="A broken warp"
+        intro="No pass was ever woven at this address. The pattern has a gap here."
+        seed="not-found"
+      />
+      <p className="klm-notice max-w-2xl break-all m-0">
+        Requested: <code>{path}</code>
+      </p>
+      <div className="mt-8">
+        <Link to="/" className="klm-btn klm-btn-ivory">
+          Back to the first pass
+        </Link>
+      </div>
+    </div>
+  </div>
+);
+
 const BlissNotFound = ({ path }) => (
   <div className="bl-root">
     <div className="bl-page items-center justify-center min-h-[70vh]">
@@ -265,6 +287,7 @@ const VIEWS = {
   ledger: LedgerNotFound,
   orbit: OrbitNotFound,
   knit: KnitNotFound,
+  kilim: KilimNotFound,
   bliss: BlissNotFound,
 };
 

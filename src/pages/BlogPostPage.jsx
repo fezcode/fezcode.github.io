@@ -13,6 +13,7 @@ import TerracottaBlogPostPage from './blog-views/TerracottaBlogPostPage';
 import GalleyBlogPostPage from './blog-views/GalleyBlogPostPage';
 import OrbitBlogPostPage from './blog-views/OrbitBlogPostPage';
 import KnitBlogPostPage from './blog-views/KnitBlogPostPage';
+import KilimBlogPostPage from './blog-views/KilimBlogPostPage';
 import BlissBlogPostPage from './blog-views/BlissBlogPostPage';
 
 const BlogPostPage = () => {
@@ -36,6 +37,7 @@ const BlogPostPage = () => {
         'galley',
         'orbit',
         'knit',
+        'kilim',
         'bliss',
       ].includes(themeParam)
     ) {
@@ -50,6 +52,7 @@ const BlogPostPage = () => {
     if (fezcodexTheme === 'terracotta') return 'terracotta';
     if (fezcodexTheme === 'orbit') return 'orbit';
     if (fezcodexTheme === 'knit') return 'knit';
+    if (fezcodexTheme === 'kilim') return 'kilim';
     if (fezcodexTheme === 'bliss') return 'bliss';
 
     return 'brutalist';
@@ -60,6 +63,7 @@ const BlogPostPage = () => {
   if (effectiveViewMode === 'galley') return <GalleyBlogPostPage />;
   if (effectiveViewMode === 'orbit') return <OrbitBlogPostPage />;
   if (effectiveViewMode === 'knit') return <KnitBlogPostPage />;
+  if (effectiveViewMode === 'kilim') return <KilimBlogPostPage />;
   if (effectiveViewMode === 'bliss') return <BlissBlogPostPage />;
   if (effectiveViewMode === 'old') return <OldBlogPostPage />;
   if (effectiveViewMode === 'dossier') return <DossierBlogPostPage />;

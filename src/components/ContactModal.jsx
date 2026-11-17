@@ -12,6 +12,8 @@ import GenericModal from './GenericModal';
 import { useSiteConfig } from '../context/SiteConfigContext';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import { KnitIcon, YARN } from './knit';
+import { KilimIcon, WOOL } from './kilim';
+import '../styles/kilim-chrome.css';
 
 const socialIcons = {
   GithubLogo: GithubLogoIcon,
@@ -64,6 +66,39 @@ const ContactModal = ({ isOpen, onClose }) => {
                   {link.label}
                 </span>
                 <KnitIcon name="arrowUpRight" fg={YARN.gold} />
+              </a>
+            );
+          })}
+        </div>
+      </GenericModal>
+    );
+  }
+
+  if (fezcodexTheme === 'kilim') {
+    return (
+      <GenericModal isOpen={isOpen} onClose={onClose} title="Say hello">
+        <p className="m-0 mb-4" style={{ color: 'var(--klm-ivory-dim)' }}>
+          A few ways to find Samil.
+        </p>
+        <div className="flex flex-col gap-2">
+          {(config?.socials || []).map((link) => {
+            const Icon = socialIcons[link.icon] || GlobeIcon;
+            return (
+              <a
+                key={link.id}
+                href={link.url}
+                className="klm-row klm-contact-row"
+                target={link.url.startsWith('mailto:') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+              >
+                <Icon
+                  size={20}
+                  weight="bold"
+                  className="shrink-0"
+                  style={{ color: 'var(--klm-saffron)' }}
+                />
+                <span className="klm-row-title min-w-0">{link.label}</span>
+                <KilimIcon name="arrowUpRight" fg={WOOL.saffron} />
               </a>
             );
           })}

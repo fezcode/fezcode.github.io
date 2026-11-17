@@ -7,6 +7,7 @@ import MistHomePage from './mist-views/MistHomePage';
 import LedgerHomePage from './ledger-views/LedgerHomePage';
 import OrbitHomePage from './orbit-views/OrbitHomePage';
 import KnitHomePage from './knit-views/KnitHomePage';
+import KilimHomePage from './kilim-views/KilimHomePage';
 import BlissHomePage from './bliss-views/BlissHomePage';
 
 const HomePage = () => {
@@ -18,6 +19,7 @@ const HomePage = () => {
   if (fezcodexTheme === 'ledger') return <LedgerHomePage />;
   if (fezcodexTheme === 'orbit') return <OrbitHomePage />;
   if (fezcodexTheme === 'knit') return <KnitHomePage />;
+  if (fezcodexTheme === 'kilim') return <KilimHomePage />;
   if (fezcodexTheme === 'bliss') return <BlissHomePage />;
   return <BrutalistHomePage />;
 };

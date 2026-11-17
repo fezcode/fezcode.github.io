@@ -23,6 +23,11 @@ import KnitNavbar from './KnitNavbar';
 import KnitFooter from './KnitFooter';
 import { useKnitTextures } from './knit';
 import '../styles/Knit.css';
+import KilimSidebar from './KilimSidebar';
+import KilimNavbar from './KilimNavbar';
+import KilimFooter from './KilimFooter';
+import { useKilimTextures } from './kilim';
+import '../styles/Kilim.css';
 import BlissSidebar from './BlissSidebar';
 import BlissNavbar from './BlissNavbar';
 import BlissFooter from './BlissFooter';
@@ -72,6 +77,7 @@ const Layout = ({
     fezcodexTheme,
   } = useVisualSettings();
   useKnitTextures(fezcodexTheme === 'knit');
+  useKilimTextures(fezcodexTheme === 'kilim');
   const location = useLocation();
   const { projects } = useProjects();
 
@@ -80,7 +86,7 @@ const Layout = ({
   const isAboutPage = location.pathname.startsWith('/about');
   // These themes keep their sidebar on their own About view.
   const isOrbitAboutPage =
-    ['orbit', 'knit', 'bliss'].includes(fezcodexTheme) &&
+    ['orbit', 'knit', 'bliss', 'kilim'].includes(fezcodexTheme) &&
     [
       '/about',
       '/about/',
@@ -177,6 +183,8 @@ const Layout = ({
                   ? `orb-appframe ${reduceMotion ? 'orb-reduce-motion' : ''}`
                   : fezcodexTheme === 'knit'
                     ? 'knt-appframe'
+                    : fezcodexTheme === 'kilim'
+                    ? 'klm-appframe'
                     : fezcodexTheme === 'bliss'
                       ? 'bl-appframe'
                       : 'bg-[#050505]'
@@ -219,6 +227,13 @@ const Layout = ({
             toggleModal={toggleModal}
             setIsPaletteOpen={setIsPaletteOpen}
           />
+        ) : fezcodexTheme === 'kilim' ? (
+          <KilimSidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            toggleModal={toggleModal}
+            setIsPaletteOpen={setIsPaletteOpen}
+          />
         ) : fezcodexTheme === 'knit' ? (
           <KnitSidebar
             isOpen={isSidebarOpen}
@@ -242,7 +257,7 @@ const Layout = ({
           />
         ))}
       <div
-        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? (fezcodexTheme === 'orbit' ? 'orb-content-open' : fezcodexTheme === 'knit' ? 'knt-content-open' : fezcodexTheme === 'bliss' ? 'bl-content-open' : 'md:ml-72') : 'md:ml-0'}`}
+        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? (fezcodexTheme === 'orbit' ? 'orb-content-open' : fezcodexTheme === 'knit' ? 'knt-content-open' : fezcodexTheme === 'kilim' ? 'klm-content-open' : fezcodexTheme === 'bliss' ? 'bl-content-open' : 'md:ml-72') : 'md:ml-0'}`}
       >
         {!hideLayout &&
           (fezcodexTheme === 'terracotta' ? (
@@ -275,6 +290,13 @@ const Layout = ({
             />
           ) : fezcodexTheme === 'bliss' ? (
             <BlissNavbar
+              toggleSidebar={toggleSidebar}
+              isSidebarOpen={isSidebarOpen}
+              isSearchVisible={isSearchVisible}
+              toggleSearch={toggleSearch}
+            />
+          ) : fezcodexTheme === 'kilim' ? (
+            <KilimNavbar
               toggleSidebar={toggleSidebar}
               isSidebarOpen={isSidebarOpen}
               isSearchVisible={isSearchVisible}
@@ -321,6 +343,8 @@ const Layout = ({
             <LedgerFooter />
           ) : fezcodexTheme === 'bliss' ? (
             <BlissFooter />
+          ) : fezcodexTheme === 'kilim' ? (
+            <KilimFooter />
           ) : fezcodexTheme === 'knit' ? (
             <KnitFooter />
           ) : fezcodexTheme === 'orbit' ? (

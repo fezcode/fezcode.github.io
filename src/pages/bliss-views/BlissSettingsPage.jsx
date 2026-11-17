@@ -44,6 +44,7 @@ const THEME_OPTIONS = [
   { label: 'LEDGER', value: 'ledger' },
   { label: 'ORBIT', value: 'orbit' },
   { label: 'KNIT', value: 'knit' },
+  { label: 'KILIM', value: 'kilim' },
   { label: 'BLISS', value: 'bliss' },
 ];
 
@@ -61,6 +62,7 @@ const READER_OPTIONS = [
   { label: 'GALLEY', value: 'galley' },
   { label: 'ORBIT', value: 'orbit' },
   { label: 'KNIT', value: 'knit' },
+  { label: 'KILIM', value: 'kilim' },
   { label: 'BLISS', value: 'bliss' },
 ];
 

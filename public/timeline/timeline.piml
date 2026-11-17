@@ -1,5 +1,13 @@
 (timeline)
   > (item)
+    (date) 2026-11-17
+    (title) Fezkilim: The Flat-Woven Codex
+    (description) Deployed 'Kilim', a design language that weaves the whole codex as a flat-woven Anatolian rug. Every surface is drawn pass by pass on canvas: weft pips laid like brickwork, slits where two colours meet, abrash bands drifting down the madder ground, and a loom that weaves each piece bottom-up. Titles are woven into hooked-diamond medallion fields, section headings at double gauge, and diamond-chain and sawtooth bands divide each page between fringed ends. Every view has its own rug idea: a dyer's daybook of log runners, skeins of tags on a drying rod, a stack of care tags for settings, and a dowry chest of achievements. Sidebar, navbar, footer, Search, Command Palette, Side Panel, Toasts, Modals and the banner are all woven, plus a woven göl for Syntax. Released as v0.65.0.
+    (type) feature
+    (icon) PaletteIcon
+    (link) /settings#interface
+
+  > (item)
     (date) 2026-11-15
     (title) Wordup: Sharing and Lighter Sculptures
     (description) Added püfre to the lexicon and a sharing dialog for copying each word's link or existing sculpture card. Live sculptures now initialize on first view, render at up to 30 fps, and pause offscreen, in hidden tabs, and behind the sharing dialog. Existing sharing artwork is preserved. Released as v0.57.0.

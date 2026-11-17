@@ -238,3 +238,13 @@
     (isActive) true
     (link) https://fezcode.com/settings?fezTheme=knit&fezBlogMode=knit#interface
     (linkText) Enable Knit
+
+  > (banner)
+    (id) fezkilim-launch
+    (type) info
+    (from) 2026-11-17T00:00:00+03:00
+    (to) 2027-02-28T23:59:59+03:00
+    (text) KILIM IS ONLINE: THE CODEX AS A FLAT-WOVEN RUG — MADDER, INDIGO AND SAFFRON WEFT, TITLES WOVEN INTO MEDALLIONS, FRINGE AT BOTH ENDS. ENABLE VIA SETTINGS OR COMMAND PALETTE.
+    (isActive) true
+    (link) https://fezcode.com/settings?fezTheme=kilim&fezBlogMode=kilim#interface
+    (linkText) Enable Kilim

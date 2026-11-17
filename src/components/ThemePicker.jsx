@@ -32,6 +32,8 @@ const ThemePicker = ({ currentTheme, onSelect }) => {
                 ? '◎'
                 : theme.id === 'knit'
                   ? '♥'
+                  : theme.id === 'kilim'
+                  ? '◆'
                   : theme.id === 'bliss'
                     ? '☁'
                     : 'Aa'}

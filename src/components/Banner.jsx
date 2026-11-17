@@ -11,6 +11,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import { KnitText, KnitIcon, KnitBand, YARN } from './knit';
+import { KilimIcon, KilimBand, WOOL } from './kilim';
 
 const DISMISSED_BANNERS_KEY = 'dismissed-banners';
 
@@ -32,6 +33,8 @@ const Banner = () => {
         ? '--knt-banner-offset'
         : fezcodexTheme === 'bliss'
           ? '--bl-banner-offset'
+          : fezcodexTheme === 'kilim'
+          ? '--klm-banner-offset'
           : null;
   useEffect(() => {
     if (!offsetVar || !banner || !isVisible) return undefined;
@@ -166,6 +169,36 @@ const Banner = () => {
       </Link>
     );
   };
+
+  if (fezcodexTheme === 'kilim') {
+    const action = { className: 'klm-btn klm-btn-small shrink-0', onClick: handleDismiss };
+    const label = banner.linkText || 'View details';
+    return (
+      <div ref={orbitBannerRef} className="klm-chrome klm-wool-madder relative z-[100]">
+        <KilimBand pattern="end" />
+        <div className="max-w-[1800px] mx-auto px-4 py-3 flex items-center gap-4">
+          <KilimIcon name={bannerType === 'info' ? 'star' : 'bell'} fg={WOOL.saffron} />
+          <div className="flex-1 min-w-0 flex flex-col md:flex-row md:items-center gap-3">
+            <p className="flex-1 m-0 text-[16px] tracking-wide" style={{ fontFamily: 'var(--klm-ui)' }}>{banner.text}</p>
+            {banner.link &&
+              (isExternalLink ? (
+                <a href={banner.link} {...action}>
+                  {label}
+                </a>
+              ) : (
+                <Link to={banner.link} {...action}>
+                  {label}
+                </Link>
+              ))}
+          </div>
+          <button type="button" onClick={handleDismiss} className="klm-btn klm-btn-icon shrink-0" aria-label="Dismiss banner">
+            <KilimIcon name="close" fg={WOOL.walnut} />
+          </button>
+        </div>
+        <KilimBand pattern="end" />
+      </div>
+    );
+  }
 
   if (fezcodexTheme === 'knit') {
     const caption = (

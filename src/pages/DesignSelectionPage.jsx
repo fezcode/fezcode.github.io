@@ -21,6 +21,7 @@ import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
 import LuxeArt from '../components/LuxeArt';
 import { KnitText, KnitBand } from '../components/knit';
+import { KilimText, KilimBand } from '../components/kilim';
 import '../styles/Bliss.css';
 
 const DesignSelectionPage = () => {
@@ -46,7 +47,7 @@ const DesignSelectionPage = () => {
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black flex flex-col">
       <Seo
         title="Design System | Fezcodex"
-        description="Explore eight Fezcodex themes, from Brutalist to Bliss."
+        description="Explore nine Fezcodex themes, from Brutalist to Bliss."
       />
 
       <div className="w-full min-w-0 max-w-[1400px] mx-auto px-6 md:px-12 py-24 flex-1 flex flex-col">
@@ -387,6 +388,49 @@ const DesignSelectionPage = () => {
                 </span>
                 <ArrowRightIcon
                   className="text-[#D2B26A] group-hover:text-[#E8C51A] group-hover:translate-x-2 transition-all"
+                  size={24}
+                />
+              </div>
+            </motion.div>
+          </button>
+
+          {/* KILIM CARD */}
+          <button
+            id="kilim"
+            aria-label="Activate Kilim theme"
+            type="button"
+            onClick={() => {
+              setFezcodexTheme('kilim');
+              navigate('/');
+            }}
+            className="group block relative text-left"
+            style={{ fontFamily: "var(--klm-ui, 'Courier New'), monospace" }}
+          >
+            <motion.div
+              whileHover={{ y: -10 }}
+              className="h-full bg-[#570E13] text-[#EFE5CF] p-6 sm:p-12 flex flex-col justify-between overflow-hidden border-[3px] border-[#2E1910] shadow-[8px_8px_0_#2E1910] transition-all duration-500 relative"
+            >
+              <KilimBand
+                pattern={['end', 'chain']}
+                className="absolute top-0 left-0 right-0"
+              />
+              <div className="space-y-8 relative z-10 pt-24">
+                <KilimText text="KILIM" fg="#efe5cf" fit as="h2" />
+                <p
+                  className="text-sm leading-relaxed text-[#EAD2B4]"
+                  style={{ fontFamily: "'Bitter', Georgia, serif" }}
+                >
+                  The codex as a flat-woven Anatolian rug. Dark madder ground,
+                  an indigo sidebar, hooked göl medallions, and titles woven
+                  pass by pass into the weft.
+                </p>
+              </div>
+              <div className="mt-12 pt-8 border-t-2 border-dashed border-[#DCA420]/50 flex justify-between items-center relative z-10">
+                <span className="text-[13px] uppercase tracking-[0.05em] text-[#DCA420] group-hover:text-[#EFE5CF] transition-colors">
+                  Use Kilim
+                </span>
+                <ArrowRightIcon
+                  className="text-[#DCA420] group-hover:text-[#EFE5CF] group-hover:translate-x-2 transition-all"
                   size={24}
                 />
               </div>

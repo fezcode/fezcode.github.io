@@ -7,6 +7,7 @@ import MistLogsPage from './mist-views/MistLogsPage';
 import LedgerLogsPage from './ledger-views/LedgerLogsPage';
 import OrbitLogsPage from './orbit-views/OrbitLogsPage';
 import KnitLogsPage from './knit-views/KnitLogsPage';
+import KilimLogsPage from './kilim-views/KilimLogsPage';
 import BlissLogsPage from './bliss-views/BlissLogsPage';
 import LogViewSwitch from '../components/LogViewSwitch';
 
@@ -17,6 +18,7 @@ const CLASSIC_VIEWS = {
   ledger: LedgerLogsPage,
   orbit: OrbitLogsPage,
   knit: KnitLogsPage,
+  kilim: KilimLogsPage,
   bliss: BlissLogsPage,
 };
 

@@ -12,7 +12,10 @@ import { Link } from 'react-router-dom';
 import '../styles/Orbit.css';
 import '../styles/Knit.css';
 import '../styles/Bliss.css';
+import '../styles/Kilim.css';
+import '../styles/kilim-chrome.css';
 import { KnitText, KnitIcon, YARN } from './knit';
+import { KilimIcon, KilimStripe, WOOL } from './kilim';
 
 const Toast = ({
   id,
@@ -222,6 +225,87 @@ const Toast = ({
             aria-label="Dismiss notification"
           >
             <KnitIcon name="close" fg={YARN.cream} />
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (theme === 'kilim') {
+    const kilimIcon =
+      type === 'error'
+        ? 'close'
+        : type === 'gold'
+          ? 'trophy'
+          : type === 'techno'
+            ? 'terminal'
+            : 'star';
+    const kilimLink = 'klm-btn klm-btn-ivory klm-btn-small';
+    return (
+      <div
+        className="klm-toast klm-wool-indigo w-80 md:w-96 max-w-[calc(100vw-2rem)] mb-4"
+        role={type === 'error' ? 'alert' : 'status'}
+      >
+        <KilimStripe
+          a={type === 'error' ? WOOL.madder : WOOL.ivory}
+          mid={type === 'error' ? WOOL.ivory : WOOL.saffron}
+        />
+        <div className="klm-toast-body">
+          <KilimIcon
+            name={kilimIcon}
+            fg={type === 'error' ? WOOL.rose : WOOL.saffron}
+            className="mt-1"
+          />
+          <div className="min-w-0 flex-1">
+            <h4 className="klm-toast-title">{title}</h4>
+            <p className="klm-toast-message">{message}</p>
+            {links?.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-3">
+                {links.map((link, i) =>
+                  link.to ? (
+                    <Link
+                      key={i}
+                      to={link.to}
+                      className={kilimLink}
+                      onClick={() => removeToast(id)}
+                    >
+                      {link.label}
+                    </Link>
+                  ) : link.href ? (
+                    <a
+                      key={i}
+                      href={link.href}
+                      className={kilimLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => removeToast(id)}
+                    >
+                      {link.label}
+                    </a>
+                  ) : link.onClick ? (
+                    <button
+                      key={i}
+                      type="button"
+                      className={kilimLink}
+                      onClick={() => {
+                        link.onClick();
+                        removeToast(id);
+                      }}
+                    >
+                      {link.label}
+                    </button>
+                  ) : null,
+                )}
+              </div>
+            )}
+          </div>
+          <button
+            type="button"
+            className="klm-toast-close"
+            onClick={() => removeToast(id)}
+            aria-label="Dismiss notification"
+          >
+            <KilimIcon name="close" fg={WOOL.ivory} />
           </button>
         </div>
       </div>

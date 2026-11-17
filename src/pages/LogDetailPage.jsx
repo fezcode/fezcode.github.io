@@ -7,6 +7,7 @@ import MistLogDetailPage from './mist-views/MistLogDetailPage';
 import LedgerLogDetailPage from './ledger-views/LedgerLogDetailPage';
 import OrbitLogDetailPage from './orbit-views/OrbitLogDetailPage';
 import KnitLogDetailPage from './knit-views/KnitLogDetailPage';
+import KilimLogDetailPage from './kilim-views/KilimLogDetailPage';
 import BlissLogDetailPage from './bliss-views/BlissLogDetailPage';
 
 const LogDetailPage = () => {
@@ -18,6 +19,7 @@ const LogDetailPage = () => {
   if (fezcodexTheme === 'ledger') return <LedgerLogDetailPage />;
   if (fezcodexTheme === 'orbit') return <OrbitLogDetailPage />;
   if (fezcodexTheme === 'knit') return <KnitLogDetailPage />;
+  if (fezcodexTheme === 'kilim') return <KilimLogDetailPage />;
   if (fezcodexTheme === 'bliss') return <BlissLogDetailPage />;
   return <BrutalistLogDetailPage />;
 };

@@ -83,6 +83,13 @@
   --classic-view-fg: var(--knt-fg, #f0e6d3);
   --classic-view-border: var(--knt-muted, #cbb99b);
 }
+.logs-view-page[data-theme='kilim'] {
+  --classic-view-bg: var(--klm-madder-deep, #570e13);
+  --classic-view-fg: var(--klm-ivory, #efe5cf);
+  --classic-view-border: var(--klm-ivory-dim, #ead2b4);
+  /* let the woven ground of the app frame show through */
+  background: transparent;
+}
 .logs-view-page[data-theme='bliss'] {
   --classic-view-bg: var(--bl-window, #ece9d8);
   --classic-view-fg: var(--bl-ink, #1a1a1a);

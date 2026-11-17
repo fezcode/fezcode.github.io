@@ -130,6 +130,20 @@ export const CATEGORY_PALETTES = {
     default: '#d2b26a',
   },
 
+  // Wools woven onto dark madder and indigo — fixed hex because the canvas
+  // needs it. Full-strength dyes, lifted where the ground would swallow them.
+  kilim: {
+    dev: '#7fa83f',
+    rant: '#e07a3c',
+    ai: '#2fa3a1',
+    feat: '#c26aa0',
+    gist: '#dca420',
+    essay: '#6f8fe0',
+    series: '#e0708a',
+    'd&d': '#f04a4a',
+    default: '#efe5cf',
+  },
+
   // Cream window bodies and white list views — saturated 700-strength inks.
   bliss: {
     dev: '#047857',

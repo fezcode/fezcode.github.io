@@ -7,6 +7,7 @@ import MistSearch from './MistSearch';
 import LedgerSearch from './LedgerSearch';
 import OrbitSearch from './OrbitSearch';
 import KnitSearch from './KnitSearch';
+import KilimSearch from './KilimSearch';
 import BlissSearch from './BlissSearch';
 
 const Search = (props) => {
@@ -18,6 +19,7 @@ const Search = (props) => {
   if (fezcodexTheme === 'ledger') return <LedgerSearch {...props} />;
   if (fezcodexTheme === 'orbit') return <OrbitSearch {...props} />;
   if (fezcodexTheme === 'knit') return <KnitSearch {...props} />;
+  if (fezcodexTheme === 'kilim') return <KilimSearch {...props} />;
   if (fezcodexTheme === 'bliss') return <BlissSearch {...props} />;
   return <BrutalistSearch {...props} />;
 };

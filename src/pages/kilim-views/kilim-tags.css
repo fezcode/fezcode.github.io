@@ -1,0 +1,548 @@
+/*
+ * Kilim /tags and /tags/:tag.
+ * /tags is the dye house's chart: each tag a hank of yarn hung on a rod,
+ * its length grown with use and its plies dyed by content type (posts
+ * madder, logs teal, projects saffron), grouped into dye lots by weight.
+ * One-off tags are the thrums, the loose warp ends left on the loom.
+ * /tags/:tag is a bolt of cloth: a ticket pinned to its end, then lengths
+ * unrolled down the cloth, measured off against a tape along the selvedge.
+ * Everything below is CSS weave; no canvas per hank or length.
+ */
+
+/* the same plain weave as the logs, in any dye */
+.klm-tags-dot,
+.klm-tags-ply {
+  background-color: var(--dye, var(--klm-saffron));
+  background-image:
+    repeating-linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.22) 0 1px,
+      rgba(255, 255, 255, 0.08) 1px 2px,
+      transparent 2px 4px
+    ),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.14) 0 1px, transparent 1px 5px);
+}
+
+/* a small square of dyed yarn, for keys, chips and meta */
+.klm-tags-dot {
+  display: inline-block;
+  flex: none;
+  width: 14px;
+  height: 12px;
+  border: 2px solid var(--klm-walnut);
+}
+
+.klm-tags-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 5px;
+  font-family: var(--klm-ui);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--klm-walnut);
+  background: var(--klm-saffron);
+}
+.klm-chip[aria-pressed='true'] .klm-tags-count {
+  background: var(--klm-walnut);
+  color: var(--klm-ivory);
+}
+.klm-tags .klm-chip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ------------------------------------------------------------ controls */
+
+.klm-tags-controls {
+  display: grid;
+  gap: 18px;
+  margin-top: -6px;
+  padding: 16px;
+  background: var(--klm-indigo) var(--klm-tex-indigo, none);
+  background-size: var(--klm-tex-size);
+  border: 3px solid var(--klm-walnut);
+  box-shadow: 5px 5px 0 var(--klm-walnut);
+}
+@media (min-width: 1024px) {
+  .klm-tags-controls {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: end;
+  }
+}
+
+/* ------------------------------------------------------------ the chart */
+
+.klm-tags-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  font-family: var(--klm-ui);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.klm-tags-key > li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.klm-tags-key-note {
+  color: var(--klm-ivory-dim);
+}
+
+.klm-tags-lot {
+  margin-bottom: 30px;
+}
+.klm-tags-lot-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 8px 16px;
+  margin-bottom: 4px;
+}
+
+/* the drying rod the hanks hang from */
+.klm-tags-rod {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr));
+  gap: 4px 18px;
+  list-style: none;
+  margin: 0;
+  padding: 14px 0 0;
+  border-top: 6px solid var(--klm-walnut);
+  box-shadow: inset 0 3px 0 rgba(239, 229, 207, 0.12);
+}
+
+/* one hank: name and count on a line, the yarn hanging below */
+.klm-tags-hank {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 10px;
+  padding: 6px 8px 9px;
+  color: var(--klm-ivory);
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition:
+    background-color 0.12s,
+    border-color 0.12s;
+}
+.klm-tags-hank:hover {
+  background: rgba(20, 8, 4, 0.4);
+  border-color: var(--klm-walnut);
+}
+.klm-tags-hank-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--klm-ui);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+.klm-tags-hank:hover .klm-tags-hank-name {
+  color: var(--klm-saffron);
+}
+.klm-tags-hank-count {
+  font-family: var(--klm-ui);
+  font-size: 14px;
+  color: var(--klm-ivory-dim);
+}
+.klm-tags-yarn {
+  grid-column: 1 / -1;
+  display: flex;
+  height: 10px;
+  border: 2px solid var(--klm-walnut);
+  box-shadow: 0 2px 0 rgba(20, 8, 4, 0.5);
+  transform-origin: left center;
+  transition: transform 0.15s;
+}
+.klm-tags-hank:hover .klm-tags-yarn {
+  transform: scaleY(1.3);
+}
+.klm-tags-ply {
+  flex: 1 1 0;
+  min-width: 3px;
+}
+.klm-tags-ply + .klm-tags-ply {
+  border-left: 1px solid var(--klm-walnut);
+}
+
+/* ------------------------------------------------------------ thrums */
+
+.klm-tags-thrums {
+  max-width: 64rem;
+  margin-top: 40px;
+  padding: 14px 16px;
+  background: var(--klm-walnut) var(--klm-tex-walnut, none);
+  background-size: var(--klm-tex-size);
+  border: 3px solid #1a0d07;
+  box-shadow: 5px 5px 0 rgba(20, 8, 4, 0.6);
+}
+.klm-tags-thrums > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  list-style: none;
+  cursor: pointer;
+  font-family: var(--klm-ui);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--klm-saffron);
+}
+.klm-tags-thrums > summary::-webkit-details-marker {
+  display: none;
+}
+.klm-tags-thrums-note {
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  color: var(--klm-ivory-dim);
+}
+.klm-tags-caret {
+  display: inline-block;
+  transition: transform 0.15s;
+}
+.klm-tags-thrums[open] .klm-tags-caret {
+  transform: rotate(90deg);
+}
+.klm-tags-thrum-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+/* a loose end: a short thread with a frayed tail */
+.klm-tags-thrum {
+  display: inline-block;
+  padding: 2px 14px 2px 8px;
+  font-family: var(--klm-ui);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: var(--klm-ivory);
+  text-decoration: none;
+  border-left: 4px solid var(--klm-ivory-dim);
+  background:
+    repeating-linear-gradient(
+        180deg,
+        var(--klm-ivory-dim) 0 1px,
+        transparent 1px 4px
+      )
+      right / 8px 100% no-repeat,
+    rgba(239, 229, 207, 0.06);
+}
+.klm-tags-thrum:hover {
+  color: var(--klm-saffron);
+  border-left-color: var(--klm-saffron);
+}
+
+/* ------------------------------------------------------------ the bolt */
+
+.klm-tags-bolt {
+  max-width: 64rem;
+  margin-top: 24px;
+  border-inline: 10px solid var(--selvedge, var(--klm-saffron));
+  box-shadow:
+    inset 3px 0 0 var(--klm-walnut),
+    inset -3px 0 0 var(--klm-walnut),
+    0 10px 0 rgba(20, 8, 4, 0.5);
+  outline: 3px solid var(--klm-walnut);
+  background: var(--klm-indigo) var(--klm-tex-indigo, none);
+  background-size: var(--klm-tex-size);
+}
+
+/* the ticket: flat ivory with a dashed madder stitch */
+.klm-tags-ticket {
+  position: relative;
+  margin: 18px clamp(10px, 3vw, 28px) 20px;
+  padding: 26px clamp(16px, 3vw, 30px) 24px;
+  color: var(--klm-walnut);
+  background: var(--klm-ivory);
+  border: 3px solid var(--klm-walnut);
+  outline: 2px dashed var(--klm-madder);
+  outline-offset: -10px;
+  box-shadow: 5px 5px 0 rgba(20, 8, 4, 0.6);
+}
+/* the pin that holds it to the cloth */
+.klm-tags-ticket::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: var(--klm-saffron);
+  box-shadow:
+    0 0 0 3px var(--klm-walnut),
+    2px 3px 0 3px rgba(20, 8, 4, 0.4);
+}
+.klm-tags-ticket-lone {
+  max-width: 40rem;
+  margin-inline: 0;
+}
+.klm-tags-ticket-eyebrow {
+  margin: 0;
+  font-family: var(--klm-ui);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #6b4a3a;
+}
+.klm-tags-ticket-text {
+  font-family: var(--klm-text);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.klm-tags-ticket-small {
+  font-size: 14px;
+  color: #6b4a3a;
+}
+.klm-tags-ticket-link {
+  color: var(--klm-madder);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.klm-tags-ticket-list {
+  display: grid;
+  gap: 8px;
+  max-width: 46rem;
+  margin: 18px 0 0;
+}
+.klm-tags-ticket-row {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(46, 25, 16, 0.3);
+  font-family: var(--klm-ui);
+  font-size: 15px;
+}
+.klm-tags-ticket-row dt {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b4a3a;
+}
+.klm-tags-ticket-row dd {
+  margin: 0;
+}
+@media (max-width: 479px) {
+  .klm-tags-ticket-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+
+/* tag chips on the ticket: plied threads */
+.klm-tags-ply-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 8px;
+  font-family: var(--klm-ui);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: var(--klm-walnut);
+  text-decoration: none;
+  background: rgba(46, 25, 16, 0.07);
+  border: 2px solid var(--klm-walnut);
+  transition: background-color 0.12s;
+}
+a.klm-tags-ply-chip:hover {
+  background: var(--klm-saffron);
+}
+.klm-tags-ply-chip.is-on {
+  background: var(--klm-saffron);
+}
+.klm-tags-unply {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: -3px;
+  color: var(--klm-ivory);
+  background: var(--klm-madder);
+  font-size: 15px;
+  line-height: 1;
+  text-decoration: none;
+}
+.klm-tags-unply:hover {
+  background: var(--klm-walnut);
+}
+
+/* a plain walnut strip: type tabs and the bolt's end note */
+.klm-tags-cut {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  padding: 12px clamp(12px, 3vw, 24px);
+  background: var(--klm-walnut) var(--klm-tex-walnut, none);
+  background-size: var(--klm-tex-size);
+}
+
+/* ------------------------------------------------------------ lengths */
+
+.klm-tags-cloth {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.klm-tags-cloth-empty {
+  padding: 28px clamp(14px, 3vw, 30px);
+}
+
+/* one length of cloth: a tape mark at the selvedge, the item beside it,
+   a dyed weft stripe where the next length is cut */
+.klm-tags-length {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  border-bottom: 6px solid transparent;
+  border-image: repeating-linear-gradient(
+      90deg,
+      var(--dye) 0 10px,
+      var(--klm-walnut) 10px 12px,
+      var(--klm-ivory) 12px 22px,
+      var(--klm-walnut) 22px 24px
+    )
+    6;
+}
+.klm-tags-length:last-child {
+  border-bottom: 0;
+}
+@media (min-width: 640px) {
+  .klm-tags-length {
+    grid-template-columns: 58px minmax(0, 1fr);
+  }
+}
+
+/* the measuring tape down the selvedge side */
+.klm-tags-tape {
+  position: relative;
+  background-color: var(--klm-ivory);
+  background-image: repeating-linear-gradient(
+    180deg,
+    var(--klm-walnut) 0 2px,
+    transparent 2px 12px
+  );
+  background-size: 9px 100%;
+  background-repeat: no-repeat;
+  background-position: right top;
+  border-right: 3px solid var(--klm-walnut);
+}
+.klm-tags-tape-mark {
+  position: absolute;
+  top: 16px;
+  left: 4px;
+  right: 12px;
+  font-family: var(--klm-ui);
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  color: var(--klm-madder);
+}
+
+.klm-tags-length-body {
+  min-width: 0;
+  padding: 16px clamp(14px, 3vw, 26px) 18px;
+}
+.klm-tags-length:nth-child(even) .klm-tags-length-body {
+  background: rgba(20, 8, 4, 0.18);
+}
+.klm-tags-length-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin: 0;
+  font-family: var(--klm-ui);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--klm-ivory-dim);
+}
+.klm-tags-length-title {
+  margin: 6px 0 0;
+  font-family: var(--klm-ui);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+}
+.klm-tags-length-title a {
+  color: var(--klm-ivory);
+  text-decoration: none;
+}
+.klm-tags-length-title a:hover {
+  color: var(--klm-saffron);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.klm-tags-length-series {
+  margin: 4px 0 0;
+  font-family: var(--klm-text);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--klm-ivory-dim);
+}
+.klm-tags-length-desc {
+  max-width: 46rem;
+  margin: 8px 0 0;
+  font-family: var(--klm-text);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--klm-ivory);
+  opacity: 0.92;
+}
+
+/* an item's tags: short threads */
+.klm-tags-thread {
+  display: inline-block;
+  padding: 1px 7px;
+  font-family: var(--klm-ui);
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--klm-ivory);
+  text-decoration: none;
+  background: rgba(20, 8, 4, 0.45);
+  border: 2px solid var(--klm-walnut);
+}
+.klm-tags-thread:hover {
+  color: var(--klm-walnut);
+  background: var(--klm-saffron);
+}
+.klm-tags-thread.is-on {
+  color: var(--klm-walnut);
+  background: var(--klm-ivory);
+  outline: 1.5px dashed var(--klm-madder);
+  outline-offset: -5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .klm-tags-hank,
+  .klm-tags-yarn,
+  .klm-tags-caret,
+  .klm-tags-ply-chip {
+    transition: none;
+  }
+  .klm-tags-hank:hover .klm-tags-yarn {
+    transform: none;
+  }
+}

@@ -1,0 +1,549 @@
+/*
+ * Kilim /logs and /logs/:category/:slug.
+ * /logs is a dyer's daybook: a dye card of category swatches at the side,
+ * and the entries as a stack of narrow woven runners, each with fringed
+ * ends dyed in its category (--dye), baled by month.
+ * A log entry is one woven label sewn onto a runner of its dye, with the
+ * metadata hung beside the prose as a care label.
+ * Grounds here are CSS weaves (no canvas per row), so hundreds of runners
+ * stay cheap.
+ */
+
+/* a plain weave in any colour: weft rows over a brick of pips */
+.klm-logs-dyed,
+.klm-logs-end,
+.klm-logs-swatch,
+.klm-logs-sewn {
+  background-color: var(--dye, var(--klm-madder));
+  background-image:
+    repeating-linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.22) 0 1px,
+      rgba(255, 255, 255, 0.07) 1px 2px,
+      transparent 2px 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.12) 0 1px,
+      transparent 1px 5px
+    );
+}
+
+/* ------------------------------------------------------------ layout */
+
+.klm-logs-layout {
+  display: grid;
+  gap: 28px;
+  padding-top: 8px;
+}
+@media (min-width: 1024px) {
+  .klm-logs-layout {
+    grid-template-columns: 270px minmax(0, 1fr);
+    align-items: start;
+    gap: 36px;
+  }
+}
+
+/* ------------------------------------------------------------ dye card */
+
+.klm-logs-dyecard {
+  position: relative;
+  padding: 18px 16px 20px;
+  background: var(--klm-indigo) var(--klm-tex-indigo, none);
+  background-size: var(--klm-tex-size);
+  border: 3px solid var(--klm-walnut);
+  box-shadow: 5px 5px 0 var(--klm-walnut);
+}
+@media (min-width: 1024px) {
+  .klm-logs-dyecard {
+    position: sticky;
+    top: 88px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+  }
+}
+.klm-logs-dyecard-head {
+  margin: -18px -16px 16px;
+  padding: 8px 16px;
+  font-family: var(--klm-ui);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--klm-walnut);
+  background: var(--klm-ivory);
+  border-bottom: 3px solid var(--klm-walnut);
+  outline: 2px dashed var(--klm-madder);
+  outline-offset: -6px;
+}
+
+.klm-logs-lots {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 480px) and (max-width: 1023px) {
+  .klm-logs-lots {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  }
+}
+.klm-logs-lot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 5px 8px 5px 5px;
+  font-family: var(--klm-ui);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--klm-ivory);
+  background: rgba(20, 8, 4, 0.35);
+  border: 2px solid var(--klm-walnut);
+  cursor: pointer;
+  transition: background-color 0.12s;
+}
+.klm-logs-lot:hover {
+  background: rgba(20, 8, 4, 0.6);
+}
+.klm-logs-lot[aria-pressed='true'] {
+  color: var(--klm-walnut);
+  background: var(--klm-ivory);
+  outline: 1.5px dashed var(--klm-madder);
+  outline-offset: -5px;
+}
+.klm-logs-swatch {
+  flex: none;
+  width: 26px;
+  height: 20px;
+  border: 2px solid var(--klm-walnut);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+.klm-logs-lot-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.klm-logs-lot-count {
+  flex: none;
+  min-width: 28px;
+  padding: 0 5px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--klm-walnut);
+  background: var(--klm-saffron);
+}
+
+.klm-logs-tally {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin: 18px 0 0;
+}
+.klm-logs-tally > div {
+  padding: 6px 4px;
+  text-align: center;
+  background: rgba(20, 8, 4, 0.4);
+  border: 2px solid var(--klm-walnut);
+}
+.klm-logs-tally dt {
+  font-family: var(--klm-ui);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--klm-ivory-dim);
+}
+.klm-logs-tally dd {
+  margin: 0;
+  font-family: var(--klm-ui);
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--klm-saffron);
+}
+
+/* ------------------------------------------------------------ runners */
+
+.klm-logs-bale {
+  margin-bottom: 36px;
+}
+.klm-logs-bale-band {
+  margin-top: 14px;
+}
+
+.klm-logs-runners {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  /* room for the fringe at both ends */
+  padding: 0 14px;
+}
+
+/* one runner: dyed woven ends, a dark woven body, warp fringe beyond */
+.klm-logs-runner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 64px;
+  padding-right: 0;
+  color: var(--klm-ivory);
+  text-decoration: none;
+  background: var(--klm-walnut) var(--klm-tex-walnut, none);
+  background-size: var(--klm-tex-size);
+  border-block: 3px solid #1a0d07;
+  box-shadow: 0 4px 0 rgba(20, 8, 4, 0.55);
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s;
+}
+.klm-logs-runner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(20, 8, 4, 0.55);
+}
+/* warp threads left loose at each end */
+.klm-logs-runner::before,
+.klm-logs-runner::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  width: 12px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--klm-ivory-dim) 0 2px,
+    transparent 2px 5px
+  );
+  opacity: 0.9;
+}
+.klm-logs-runner::before {
+  left: -12px;
+}
+.klm-logs-runner::after {
+  right: -12px;
+}
+
+/* the plain-woven end in the category's dye, with teeth biting inwards */
+.klm-logs-end {
+  flex: none;
+  align-self: stretch;
+  width: 22px;
+  position: relative;
+  border-right: 2px solid var(--klm-walnut);
+}
+.klm-logs-end::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -9px;
+  width: 8px;
+  background:
+    linear-gradient(135deg, var(--dye) 0 50%, transparent 50%) 0 0 / 8px 8px
+      repeat-y;
+}
+.klm-logs-end-r {
+  border-right: 0;
+  border-left: 2px solid var(--klm-walnut);
+}
+.klm-logs-end-r::after {
+  right: auto;
+  left: -9px;
+  background:
+    linear-gradient(225deg, var(--dye) 0 50%, transparent 50%) 0 0 / 8px 8px
+      repeat-y;
+}
+.klm-logs-runner .klm-date {
+  flex: none;
+  margin-left: 4px;
+}
+
+.klm-logs-runner-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  padding-block: 9px;
+}
+.klm-logs-runner-cat {
+  font-family: var(--klm-ui);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  /* the dye is on the ends; dark dyes would not read as text on walnut */
+  color: var(--klm-ivory-dim);
+}
+.klm-logs-runner-title {
+  margin: 2px 0 0;
+  font-family: var(--klm-ui);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.klm-logs-runner:hover .klm-logs-runner-title {
+  color: var(--klm-saffron);
+}
+.klm-logs-runner-by {
+  margin-top: 2px;
+  font-family: var(--klm-text);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--klm-ivory-dim);
+}
+
+/* rating: five weft pips */
+.klm-logs-pips {
+  display: inline-flex;
+  flex: none;
+  gap: 3px;
+}
+.klm-logs-pip {
+  width: 10px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(239, 229, 207, 0.16);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+}
+.klm-logs-pip[data-on] {
+  background: linear-gradient(180deg, #f0c24a, var(--klm-saffron) 60%, #a87a10);
+}
+.klm-logs-pips-ink .klm-logs-pip {
+  background: rgba(46, 25, 16, 0.18);
+}
+.klm-logs-pips-ink .klm-logs-pip[data-on] {
+  background: linear-gradient(180deg, #c8403f, var(--klm-madder) 60%, #6e1518);
+}
+.klm-modal .klm-logs-pips,
+.klm-logs-runner .klm-logs-pips {
+  margin-right: 2px;
+}
+
+@media (max-width: 559px) {
+  .klm-logs-runner {
+    gap: 10px;
+  }
+  .klm-logs-runner .klm-date {
+    display: none;
+  }
+  .klm-logs-runner .klm-logs-pips {
+    display: none;
+  }
+  .klm-logs-runner-body {
+    padding-left: 6px;
+  }
+}
+
+/* ------------------------------------------------------------ detail */
+
+/* the runner the label is sewn onto: full width, in the log's dye */
+.klm-logs-sewn {
+  position: relative;
+  margin: 28px 12px 0;
+  padding: 26px clamp(14px, 4vw, 48px);
+  border-block: 4px solid var(--klm-walnut);
+  box-shadow: 0 6px 0 rgba(20, 8, 4, 0.55);
+}
+.klm-logs-sewn::before,
+.klm-logs-sewn::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  width: 14px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--klm-ivory-dim) 0 2px,
+    transparent 2px 5px
+  );
+}
+.klm-logs-sewn::before {
+  left: -14px;
+}
+.klm-logs-sewn::after {
+  right: -14px;
+}
+
+/* the label: flat ivory, a dashed madder stitch all round */
+.klm-logs-label {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: 22px clamp(16px, 3vw, 32px) 24px;
+  color: var(--klm-walnut);
+  background: var(--klm-ivory);
+  border: 3px solid var(--klm-walnut);
+  outline: 2px dashed var(--klm-madder);
+  outline-offset: -10px;
+  box-shadow: 5px 5px 0 rgba(20, 8, 4, 0.6);
+}
+.klm-logs-label-eyebrow {
+  margin: 0;
+  font-family: var(--klm-ui);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #6b4a3a;
+}
+.klm-logs-label-by {
+  margin: 10px 0 0;
+  font-family: var(--klm-text);
+  font-style: italic;
+  font-size: 17px;
+}
+.klm-logs-label-note {
+  font-family: var(--klm-ui);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6b4a3a;
+}
+
+.klm-logs-detail-grid {
+  display: grid;
+  gap: 32px;
+  margin-top: 40px;
+}
+@media (min-width: 1024px) {
+  .klm-logs-detail-grid {
+    grid-template-columns: minmax(0, 1fr) 260px;
+    grid-template-areas: 'body care';
+    align-items: start;
+    gap: 44px;
+  }
+  .klm-logs-care {
+    grid-area: care;
+    position: sticky;
+    top: 88px;
+  }
+  .klm-logs-detail-body {
+    grid-area: body;
+  }
+}
+.klm-logs-detail-body {
+  min-width: 0;
+}
+
+/* the care label: a narrow tag with a punched hole */
+.klm-logs-care {
+  position: relative;
+  padding: 30px 16px 18px;
+  max-width: 420px;
+  background: var(--klm-indigo) var(--klm-tex-indigo, none);
+  background-size: var(--klm-tex-size);
+  border: 3px solid var(--klm-walnut);
+  outline: 2px dashed rgba(239, 229, 207, 0.55);
+  outline-offset: -8px;
+  box-shadow: 5px 5px 0 var(--klm-walnut);
+}
+.klm-logs-care-hole {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: var(--klm-madder-deep);
+  box-shadow: inset 0 0 0 2px var(--klm-walnut);
+}
+.klm-logs-care-head {
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  font-family: var(--klm-ui);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--klm-saffron);
+  border-bottom: 2px dashed rgba(239, 229, 207, 0.4);
+}
+.klm-logs-care dl {
+  margin: 0;
+}
+.klm-logs-care-row {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(239, 229, 207, 0.15);
+}
+.klm-logs-care-row dt {
+  font-family: var(--klm-ui);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--klm-ivory-dim);
+}
+.klm-logs-care-row dd {
+  margin: 1px 0 0;
+  font-family: var(--klm-ui);
+  font-size: 16px;
+  overflow-wrap: anywhere;
+}
+.klm-logs-care-link {
+  color: var(--klm-saffron);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-all;
+}
+.klm-logs-care-tags {
+  margin-top: 14px;
+}
+.klm-logs-care-sub {
+  margin: 0 0 8px;
+  font-family: var(--klm-ui);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--klm-ivory-dim);
+}
+.klm-logs-tag {
+  border: 2px solid var(--klm-walnut);
+  text-decoration: none;
+}
+.klm-logs-tag:hover {
+  background: var(--klm-saffron);
+  color: var(--klm-walnut);
+}
+
+/* previous / next: the runner's two ends */
+.klm-logs-ends {
+  display: grid;
+  gap: 12px;
+  margin-top: 48px;
+  padding: 0 14px;
+}
+@media (min-width: 640px) {
+  .klm-logs-ends {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px;
+  }
+}
+.klm-logs-neighbour .klm-row-arrow {
+  flex: none;
+  padding-inline: 4px;
+}
+.klm-logs-neighbour-next {
+  text-align: right;
+}
+.klm-logs-neighbour-next .klm-logs-runner-body {
+  align-items: flex-end;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .klm-logs-runner,
+  .klm-logs-lot {
+    transition: none;
+  }
+  .klm-logs-runner:hover {
+    transform: none;
+  }
+}

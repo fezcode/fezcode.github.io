@@ -7,6 +7,7 @@ import MistBlogPage from './blog-views/MistBlogPage';
 import LedgerBlogPage from './blog-views/LedgerBlogPage';
 import OrbitBlogPage from './blog-views/OrbitBlogPage';
 import KnitBlogPage from './blog-views/KnitBlogPage';
+import KilimBlogPage from './blog-views/KilimBlogPage';
 import BlissBlogPage from './blog-views/BlissBlogPage';
 
 const BlogPage = () => {
@@ -18,6 +19,7 @@ const BlogPage = () => {
   if (fezcodexTheme === 'ledger') return <LedgerBlogPage />;
   if (fezcodexTheme === 'orbit') return <OrbitBlogPage />;
   if (fezcodexTheme === 'knit') return <KnitBlogPage />;
+  if (fezcodexTheme === 'kilim') return <KilimBlogPage />;
   if (fezcodexTheme === 'bliss') return <BlissBlogPage />;
   return <BrutalistBlogPage />;
 };

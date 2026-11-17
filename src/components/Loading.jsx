@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import { TerracottaMark } from './terracotta';
 import { MistOrb } from './mist';
 import { KnitBand, KnitText, YARN } from './knit';
+import { KilimBand, KilimText, WOOL } from './kilim';
 import { BlissWindow, BlissProgress } from './bliss';
 
 /** Three dots that pulse in turn, coloured by the caller. */
@@ -215,6 +216,36 @@ const KnitLoading = () => (
   </Frame>
 );
 
+const KilimLoading = () => {
+  const reduceMotion = useReducedMotion();
+  return (
+    <Frame className="klm-root">
+      <div className="w-full max-w-2xl px-6 flex flex-col items-center gap-6">
+        <KilimBand pattern="chain" />
+        <motion.div
+          className="w-full"
+          animate={reduceMotion ? undefined : { opacity: [0.55, 1, 0.55] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <KilimText text="ON THE LOOM" fg={WOOL.ivory} align="center" animate />
+        </motion.div>
+        <p
+          className="m-0 text-center"
+          style={{
+            fontFamily: 'var(--klm-ui)',
+            fontSize: 16,
+            letterSpacing: '0.05em',
+            color: 'var(--klm-ivory-dim)',
+          }}
+        >
+          Weaving the next pass…
+        </p>
+        <KilimBand pattern="chain" />
+      </div>
+    </Frame>
+  );
+};
+
 const BlissLoading = () => {
   const [value, setValue] = useState(10);
   useEffect(() => {
@@ -243,6 +274,7 @@ const VIEWS = {
   ledger: LedgerLoading,
   orbit: OrbitLoading,
   knit: KnitLoading,
+  kilim: KilimLoading,
   bliss: BlissLoading,
 };
 

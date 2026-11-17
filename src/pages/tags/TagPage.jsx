@@ -9,6 +9,7 @@ import MistTagPage from '../mist-views/MistTagPage';
 import LedgerTagPage from '../ledger-views/LedgerTagPage';
 import OrbitTagPage from '../orbit-views/OrbitTagPage';
 import KnitTagPage from '../knit-views/KnitTagPage';
+import KilimTagPage from '../kilim-views/KilimTagPage';
 import BlissTagPage from '../bliss-views/BlissTagPage';
 
 // Each theme renders /tags/:tag in its own language from the same view model.
@@ -21,6 +22,7 @@ const VIEWS = {
   ledger: LedgerTagPage,
   orbit: OrbitTagPage,
   knit: KnitTagPage,
+  kilim: KilimTagPage,
   bliss: BlissTagPage,
 };
 

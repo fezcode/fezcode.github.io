@@ -1,0 +1,847 @@
+<title>Fezcodex Kilim</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Bitter:wght@400;500;600&display=swap">
+<style>
+/* Layout: the page is one long rug. Fringe, plain end band, a medallion field
+   with the title woven in, then border bands between each section, fringe. */
+:root {
+  --madder: #a3262a;
+  --madder-deep: #570e13;
+  --indigo: #1f2c5a;
+  --saffron: #dca420;
+  --ivory: #efe5cf;
+  --ivory-dim: #ead2b4;
+  --walnut: #2a160e;
+  --f-body: 'Bitter', Georgia, serif;
+  --f-mono: 'Pixelify Sans', 'Courier New', monospace;
+  --tex-madder: none;
+  --tex-indigo: none;
+  --tex-ivory: none;
+  --tex-size: 240px 192px;
+  --floor: #1a0f0a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background-color: var(--madder-deep);
+  background-image:
+    repeating-linear-gradient(180deg,
+      rgba(0,0,0,0) 0 140px, rgba(0,0,0,.07) 140px 188px,
+      rgba(0,0,0,0) 188px 410px, rgba(255,240,220,.035) 410px 452px,
+      rgba(0,0,0,0) 452px 640px, rgba(0,0,0,.05) 640px 700px, rgba(0,0,0,0) 700px 900px),
+    var(--tex-madder);
+  background-size: auto, var(--tex-size);
+  color: var(--ivory);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.55;
+}
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 3px solid var(--saffron); outline-offset: 3px; }
+canvas { display: block; }
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.fringe { width: 100%; height: 46px; background: var(--floor); }
+.nav, .card { background-size: var(--tex-size); }
+.band { width: 100%; }
+.band-holder { display: flex; justify-content: center; overflow: hidden; }
+
+/* nav: an indigo stripe across the rug */
+.nav {
+  background-color: var(--indigo);
+  background-image: var(--tex-indigo);
+  border-block: 4px solid var(--walnut);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-weight: 700; letter-spacing: .18em; font-size: 15px; }
+.links { display: flex; gap: 6px 20px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 13px; text-transform: uppercase; letter-spacing: .1em; }
+.links a { color: var(--ivory-dim); padding: 2px 0; border-bottom: 2px solid transparent; }
+.links a:hover, .links a[aria-current] { color: var(--saffron); border-color: var(--saffron); }
+
+.hero { padding-block: 34px 44px; }
+.eyebrow { font-family: var(--f-mono); font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--ivory-dim); margin: 0 0 14px; }
+.hero-loom { display: flex; justify-content: center; }
+.lede { max-width: 40rem; font-size: 19px; margin: 26px 0 0; color: var(--ivory); }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-weight: 700; font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+  padding: 13px 18px; border: 3px solid var(--walnut);
+  box-shadow: 4px 4px 0 var(--walnut);
+  transition: transform .12s, box-shadow .12s;
+}
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--walnut); }
+.btn-saffron { background-color: var(--saffron); color: var(--walnut); }
+.btn-ivory { background-color: var(--ivory); color: var(--walnut); outline: 2px dashed var(--madder); outline-offset: -8px; padding-inline: 22px; }
+
+.section { padding-block: 40px 48px; }
+.sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+.sec-head canvas { max-width: 100%; }
+.more { font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--saffron); border-bottom: 2px solid currentColor; padding-bottom: 2px; }
+
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 980px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.card {
+  display: flex; flex-direction: column; min-width: 0;
+  background-color: var(--indigo); background-image: var(--tex-indigo);
+  border: 3px solid var(--walnut); box-shadow: 5px 5px 0 var(--walnut);
+  transition: transform .15s, box-shadow .15s;
+}
+.card:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--walnut); }
+.card .panel { border-bottom: 3px solid var(--walnut); overflow: hidden; display: flex; justify-content: center; background: var(--walnut); }
+.card-body { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.card h3 { margin: 0; font-size: 20px; font-weight: 700; }
+.card p { margin: 0; font-size: 14px; color: var(--ivory-dim); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.tag { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 2px 7px; background: var(--madder); color: var(--ivory); }
+
+.split { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; }
+@media (max-width: 860px) { .split { grid-template-columns: minmax(0, 1fr); } }
+.row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 16px; padding-block: 16px; }
+.row + .stripe { margin: 0; }
+.row h3 { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.3; text-wrap: balance; }
+.row:hover h3 { color: var(--saffron); }
+.row .meta { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ivory-dim); margin-top: 6px; }
+.row .arrow { font-family: var(--f-mono); color: var(--saffron); font-size: 20px; }
+.date { font-family: var(--f-mono); text-align: center; width: 54px; line-height: 1.1; padding: 6px 0; background: var(--ivory); color: var(--walnut); border: 2px solid var(--walnut); outline: 1px dashed var(--madder); outline-offset: -5px; }
+.date b { display: block; font-size: 20px; }
+.date span { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+.stripe { width: 100%; height: 12px; }
+.badge { width: 55px; height: 44px; }
+
+footer { padding-block: 34px 18px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; color: var(--ivory-dim); }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.demo-note { opacity: .8; }
+
+/* titles and links share the pixel face, charted like the woven headings */
+.card h3, .row h3, .side-link { font-family: var(--f-mono); letter-spacing: .02em; }
+.card h3 { font-weight: 600; }
+.row h3, .side-link { font-weight: 500; }
+/* pixel capitals need room: larger sizes, tighter tracking */
+.eyebrow { font-size: 16px; letter-spacing: .07em; }
+.links { font-size: 15px; letter-spacing: .05em; }
+.logo { font-size: 18px; letter-spacing: .08em; }
+.btn { font-size: 15px; letter-spacing: .05em; }
+.more, .row .meta { font-size: 14px; letter-spacing: .05em; }
+.side-group summary { font-size: 14px; letter-spacing: .07em; }
+.tag, .side-btn, .menu-btn { font-size: 13px; letter-spacing: .04em; }
+.side-ver, footer { font-size: 14px; letter-spacing: .04em; }
+
+/* sidebar: an indigo woven panel with a sawtooth band down its edge */
+.side {
+  position: fixed; top: 0; bottom: 0; left: 0; width: 264px; z-index: 30;
+  background-color: var(--indigo); background-image: var(--tex-indigo); background-size: var(--tex-size);
+  border-right: 4px solid var(--walnut); box-shadow: 6px 0 0 rgba(20,8,4,.35);
+  transition: transform .25s ease;
+}
+.side-band { position: absolute; top: 0; right: 0; height: 100%; }
+.side-scroll { height: 100%; overflow-y: auto; padding: 22px 58px 18px 20px; display: flex; flex-direction: column; gap: 14px; }
+.side-head { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.side-head .row-logo { display: flex; align-items: center; gap: 10px; }
+.side-ver { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; color: var(--ivory-dim); }
+.side-group summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--saffron); }
+.side-group summary::-webkit-details-marker { display: none; }
+.side-group summary::after { content: '+'; font-size: 15px; }
+.side-group[open] summary::after { content: '−'; }
+.side-group ul { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+.side-link { display: flex; align-items: center; gap: 10px; padding: 6px 10px; font-size: 15px; font-weight: 500; color: var(--ivory-dim); }
+.side-link::before { content: ''; flex: none; width: 6px; height: 6px; transform: rotate(45deg); background: var(--madder); box-shadow: 0 0 0 1.5px var(--ivory-dim); }
+.side-link:hover { color: var(--saffron); }
+.side-link.active { background: var(--ivory); color: var(--walnut); font-weight: 700; outline: 1.5px dashed var(--madder); outline-offset: -5px; box-shadow: 3px 3px 0 var(--walnut); }
+.side-link.active::before { box-shadow: 0 0 0 1.5px var(--walnut); }
+.side-foot { margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; padding-top: 8px; }
+.side-btn { font-family: var(--f-mono); font-weight: 700; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding: 7px 10px; border: 2px solid var(--walnut); background: var(--saffron); color: var(--walnut); box-shadow: 3px 3px 0 var(--walnut); cursor: pointer; }
+.menu-btn { font-family: var(--f-mono); font-weight: 700; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; padding: 7px 12px; border: 2px solid var(--walnut); background: var(--saffron); color: var(--walnut); cursor: pointer; }
+.scrim { position: fixed; inset: 0; z-index: 25; border: 0; background: rgba(20,6,4,.55); }
+@media (min-width: 900px) { body { padding-left: 264px; } .menu-btn { display: none; } }
+@media (max-width: 899px) { .side { transform: translateX(-104%); } .side.open { transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .card, .side { transition: none; }
+}
+</style>
+
+<aside class="side" id="side" aria-label="Site navigation">
+  <canvas class="side-band" data-sideband aria-hidden="true"></canvas>
+  <div class="side-scroll">
+    <div class="side-head">
+      <a class="row-logo" href="#" aria-label="Fezcodex home"><canvas data-text="FEZCODEX" data-fit="180" aria-hidden="true"></canvas></a>
+      <span class="side-ver">v0.64.0</span>
+    </div>
+    <div><canvas class="stripe" aria-hidden="true"></canvas></div>
+    <details class="side-group" open>
+      <summary>The Codex</summary>
+      <ul>
+        <li><a class="side-link active" href="#" aria-current="page">Overview</a></li>
+        <li><a class="side-link" href="#">Projects</a></li>
+        <li><a class="side-link" href="#">Writing</a></li>
+        <li><a class="side-link" href="#">App collection</a></li>
+        <li><a class="side-link" href="#">Discovery logs</a></li>
+        <li><a class="side-link" href="#">Knowledge graph</a></li>
+        <li><a class="side-link" href="#">Vocabulary</a></li>
+      </ul>
+    </details>
+    <details class="side-group" open>
+      <summary>Main</summary>
+      <ul>
+        <li><a class="side-link" href="#">Terminal</a></li>
+        <li><a class="side-link" href="#">About</a></li>
+        <li><a class="side-link" href="#">Achievements</a></li>
+      </ul>
+    </details>
+    <details class="side-group">
+      <summary>Applications</summary>
+      <ul>
+        <li><a class="side-link" href="#">Castarook</a></li>
+        <li><a class="side-link" href="#">Urban Rogue</a></li>
+        <li><a class="side-link" href="#">Swat Tactics</a></li>
+        <li><a class="side-link" href="#">CTTB-0</a></li>
+        <li><a class="side-link" href="#">Net Run</a></li>
+      </ul>
+    </details>
+    <details class="side-group">
+      <summary>System</summary>
+      <ul>
+        <li><a class="side-link" href="#">Dashboard</a></li>
+        <li><a class="side-link" href="#">Colophon</a></li>
+        <li><a class="side-link" href="#">History</a></li>
+        <li><a class="side-link" href="#">Design System</a></li>
+      </ul>
+    </details>
+    <div class="side-foot">
+      <button class="side-btn" type="button">Search ⌘K</button>
+      <button class="side-btn" type="button">Settings</button>
+    </div>
+  </div>
+</aside>
+<button class="scrim" type="button" aria-label="Close navigation" hidden></button>
+
+<canvas class="fringe" id="fringe-top" aria-hidden="true"></canvas>
+<div class="band-holder"><canvas class="band" data-band="end" aria-hidden="true"></canvas></div>
+
+<header class="nav">
+  <div class="wrap">
+    <button class="menu-btn" type="button" aria-controls="side" aria-expanded="false">Menu</button>
+    <a class="logo" href="#"><canvas class="badge" data-badge="fezcodex" style="width:33px;height:28px" aria-hidden="true"></canvas>FEZCODEX</a>
+    <nav class="links" aria-label="Main">
+      <a href="#" aria-current="page">Home</a>
+      <a href="#">Projects</a>
+      <a href="#">Writing</a>
+      <a href="#">Logs</a>
+      <a href="#">Apps</a>
+      <a href="#">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow">The personal codex of Samil</p>
+    <div class="hero-loom"><canvas id="hero" role="img" aria-label="A mind, in motion."></canvas></div>
+    <p class="lede">Experimental software, field notes, and small instruments for a curious life. Woven pass by pass, like a kilim on the loom.</p>
+    <div class="actions">
+      <a class="btn btn-saffron" href="#">Explore the work <span aria-hidden="true">↗</span></a>
+      <a class="btn btn-ivory" href="#">Meet Samil <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <div class="band-holder"><canvas class="band" data-band="chain" aria-hidden="true"></canvas></div>
+
+  <section class="section wrap">
+    <div class="sec-head">
+      <canvas data-text="SELECTED WORKS" role="img" aria-label="Selected works"></canvas>
+      <a class="more" href="#">The archive ↗</a>
+    </div>
+    <div class="grid">
+      <a class="card" href="#">
+        <div class="panel"><canvas data-panel="piml" aria-hidden="true"></canvas></div>
+        <div class="card-body">
+          <h3>piml</h3>
+          <p>A data format built to be read and written by people. Spec v1.2.0, three official libraries, a tree-sitter grammar and one shared compliance suite.</p>
+          <div class="tags"><span class="tag">Go</span><span class="tag">TS</span><span class="tag">C#</span></div>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="panel"><canvas data-panel="gobake" aria-hidden="true"></canvas></div>
+        <div class="card-body">
+          <h3>gobake</h3>
+          <p>A Go-native build orchestrator. One type-safe Recipe.go replaces Makefiles and shell scripts.</p>
+          <div class="tags"><span class="tag">Go</span><span class="tag">Build</span></div>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="panel"><canvas data-panel="clockt" aria-hidden="true"></canvas></div>
+        <div class="card-body">
+          <h3>clockt</h3>
+          <p>A terminal emulator and multiplexer for Windows. Sessions live in a daemon, so closing a window never kills your shell.</p>
+          <div class="tags"><span class="tag">Rust</span><span class="tag">Terminal</span></div>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="panel"><canvas data-panel="gitland" aria-hidden="true"></canvas></div>
+        <div class="card-body">
+          <h3>Gitland</h3>
+          <p>A native Git client for Windows: readable diffs, hunk staging, three-way review and editable merge results.</p>
+          <div class="tags"><span class="tag">C#</span><span class="tag">Git</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <div class="band-holder"><canvas class="band" data-band="teeth" aria-hidden="true"></canvas></div>
+
+  <div class="section wrap split">
+    <section>
+      <div class="sec-head">
+        <canvas data-text="RECENT WRITING" role="img" aria-label="Recent writing"></canvas>
+        <a class="more" href="#">All writing ↗</a>
+      </div>
+      <a class="row" href="#">
+        <div class="date"><b>16</b><span>Nov</span></div>
+        <div><h3>From 12 Minutes to 2: Moving Fezcodex Deploys to GitHub Actions</h3><div class="meta">Dev · 2026</div></div>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <canvas class="stripe" aria-hidden="true"></canvas>
+      <a class="row" href="#">
+        <div class="date"><b>14</b><span>Nov</span></div>
+        <div><h3>The Knife Stays in the Kitchen: Why Turkish Food Never Asks for One</h3><div class="meta">Essay · 2026</div></div>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <canvas class="stripe" aria-hidden="true"></canvas>
+      <a class="row" href="#">
+        <div class="date"><b>14</b><span>Nov</span></div>
+        <div><h3>Elitism vs. Intellectualism: When Science Mistakes the Gate for the Work</h3><div class="meta">Essay · 2026</div></div>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    </section>
+    <section>
+      <div class="sec-head">
+        <canvas data-text="THE WORKBENCH" role="img" aria-label="The workbench"></canvas>
+        <a class="more" href="#">All apps ↗</a>
+      </div>
+      <a class="row" href="#">
+        <canvas class="badge" data-badge="ebru" aria-hidden="true"></canvas>
+        <div><h3>Ebru</h3><div class="meta">Turkish paper marbling</div></div>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <canvas class="stripe" aria-hidden="true"></canvas>
+      <a class="row" href="#">
+        <canvas class="badge" data-badge="fezynth" aria-hidden="true"></canvas>
+        <div><h3>FeZynth</h3><div class="meta">Web Audio synthesizer</div></div>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+      <canvas class="stripe" aria-hidden="true"></canvas>
+      <a class="row" href="#">
+        <canvas class="badge" data-badge="logic-architect" aria-hidden="true"></canvas>
+        <div><h3>Logic Architect</h3><div class="meta">Logic gate circuits</div></div>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </div>
+
+  <div class="band-holder"><canvas class="band" data-band="chain" aria-hidden="true"></canvas></div>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Fezcodex · Kilim theme</span>
+      <span class="demo-note">Theme demo · hover a card to re-weave it</span>
+    </div>
+  </footer>
+</main>
+<div class="band-holder"><canvas class="band" data-band="end" aria-hidden="true"></canvas></div>
+<canvas class="fringe" id="fringe-bottom" aria-hidden="true" style="transform:scaleY(-1)"></canvas>
+
+<script>
+(() => {
+  // ------------------------------------------------------------ the loom
+  // Every woven surface is a grid of weft-faced passes. A cell is one pip of
+  // weft lying over a warp: wider than tall, rows offset like brickwork, a
+  // slit where two colours meet, and abrash (dye-lot drift) row band by band.
+  const CW = 5, CH = 4;
+  const DPR = Math.min(window.devicePixelRatio || 1, 3);
+  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const Y = {
+    madder: '#a3262a', madderD: '#5a1015', indigo: '#1f2c5a', indigoL: '#3a5196',
+    saffron: '#dca420', ivory: '#efe5cf', walnut: '#2e1910', pist: '#5b7a37',
+    aub: '#5e2546', apricot: '#d8703a', teal: '#1d6a69', rose: '#c7556b',
+  };
+  const rgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+  const shade = (c, f) => f >= 0 ? c.map((v) => v + (255 - v) * f) : c.map((v) => v * (1 + f));
+  const css = (c, a = 1) => `rgba(${c.map((v) => Math.round(v)).join(',')},${a})`;
+  const hash = (a, b) => { const x = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return x - Math.floor(x); };
+  const seedOf = (s) => { let h = 7; for (const ch of s) h = (h * 31 + ch.charCodeAt(0)) % 100003; return h; };
+  const rng = (seed) => () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+
+  const sprites = new Map();
+  function pip(hex, variant, abr) {
+    const key = hex + variant + abr;
+    if (sprites.has(key)) return sprites.get(key);
+    const w = Math.ceil(CW * DPR), h = Math.ceil(CH * DPR);
+    const c = document.createElement('canvas'); c.width = w; c.height = h;
+    const x = c.getContext('2d'); x.scale(DPR, DPR);
+    const base = shade(rgb(hex), abr * 0.045 + (variant - 1.5) * 0.025);
+    const r = CH * 0.46;
+    x.beginPath();
+    x.roundRect ? x.roundRect(0.35, 0.3, CW - 0.7, CH - 0.6, r) : x.rect(0.35, 0.3, CW - 0.7, CH - 0.6);
+    x.fillStyle = css(base); x.fill();
+    const g = x.createLinearGradient(0, 0, 0, CH);
+    g.addColorStop(0, 'rgba(255,248,235,.24)'); g.addColorStop(0.45, 'rgba(255,255,255,0)'); g.addColorStop(1, 'rgba(0,0,0,.34)');
+    x.fillStyle = g; x.fill();
+    // plies twisting across the pip
+    x.strokeStyle = css(shade(base, -0.45), 0.35); x.lineWidth = 0.45;
+    for (let i = 0; i < 3; i++) {
+      const ox = 0.8 + i * 1.5 + (variant % 2) * 0.4;
+      x.beginPath(); x.moveTo(ox, CH - 0.6); x.lineTo(ox + 1.1, 0.6); x.stroke();
+    }
+    sprites.set(key, c);
+    return c;
+  }
+
+  const grid = (cols, rows, fill = null) => Array.from({ length: rows }, () => Array(cols).fill(fill));
+
+  // weave a grid onto a canvas; rows > upTo stay unwoven (loom animation)
+  function weave(canvas, g, { seed = 1, upTo = Infinity } = {}) {
+    const rows = g.length, cols = g[0].length;
+    const W = cols * CW, H = rows * CH;
+    if (canvas.width !== Math.round(W * DPR) || canvas.height !== Math.round(H * DPR)) {
+      canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR);
+      canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    }
+    const x = canvas.getContext('2d');
+    x.setTransform(DPR, 0, 0, DPR, 0, 0);
+    x.clearRect(0, 0, W, H);
+    // a loom weaves from the bottom up
+    for (let r = rows - 1; r >= 0; r--) {
+      if (rows - 1 - r > upTo) break;
+      const band = Math.floor((r + Math.floor(hash(seed, 3) * 9)) / 9);
+      const abr = Math.round((hash(band, seed) - 0.5) * 4);
+      const odd = r % 2 === 1;
+      const y = r * CH;
+      for (let c = 0; c < cols; c++) {
+        const hex = g[r][c];
+        if (!hex) continue;
+        x.fillStyle = css(shade(rgb(hex), -0.74));
+        x.fillRect(c * CW, y, CW, CH);
+      }
+      const start = odd ? 0 : 0;
+      const end = odd ? cols : cols - 1;
+      for (let c = start; c <= end; c++) {
+        const cc = Math.min(c, cols - 1);
+        const hex = g[r][cc];
+        if (!hex) continue;
+        const px = odd ? c * CW - CW / 2 : c * CW;
+        const v = Math.floor(hash(r * 7.1 + seed, c * 3.3) * 4);
+        x.drawImage(pip(hex, v, abr), px, y, CW, CH);
+        // slit: where colours change along a row the weft turns back on itself
+        if (c > 0 && c < cols && g[r][cc - 1] && g[r][cc - 1] !== hex) {
+          x.fillStyle = 'rgba(20,8,4,.55)';
+          x.fillRect(px - 0.4, y + 0.4, 0.8, CH - 0.8);
+        }
+      }
+    }
+  }
+
+  // --------------------------------------------------------- charted type
+  // 5x7 bitmap, one weft pip per dot
+  const F = {
+    A:[14,17,17,31,17,17,17],B:[30,17,17,30,17,17,30],C:[14,17,16,16,16,17,14],D:[30,17,17,17,17,17,30],
+    E:[31,16,16,30,16,16,31],F:[31,16,16,30,16,16,16],G:[14,17,16,23,17,17,15],H:[17,17,17,31,17,17,17],
+    I:[14,4,4,4,4,4,14],J:[7,2,2,2,2,18,12],K:[17,18,20,24,20,18,17],L:[16,16,16,16,16,16,31],
+    M:[17,27,21,21,17,17,17],N:[17,17,25,21,19,17,17],O:[14,17,17,17,17,17,14],P:[30,17,17,30,16,16,16],
+    Q:[14,17,17,17,21,18,13],R:[30,17,17,30,20,18,17],S:[15,16,16,14,1,1,30],T:[31,4,4,4,4,4,4],
+    U:[17,17,17,17,17,17,14],V:[17,17,17,17,17,10,4],W:[17,17,17,21,21,21,10],X:[17,17,10,4,10,17,17],
+    Y:[17,17,10,4,4,4,4],Z:[31,1,2,4,8,16,31],
+    '.':[0,0,0,0,0,12,12],',':[0,0,0,0,12,4,8],"'":[4,4,8,0,0,0,0],'-':[0,0,0,14,0,0,0],
+    ':':[0,12,12,0,12,12,0],'!':[4,4,4,4,4,0,4],'?':[14,17,1,2,4,0,4],' ':[0,0,0,0,0,0,0],
+  };
+  const glyph = (ch) => {
+    const rows = F[ch] || F[' '];
+    if (ch === ' ') return { rows, l: 0, w: 3 };
+    let l = 4, r = 0;
+    rows.forEach((v) => { for (let b = 0; b < 5; b++) if (v & (16 >> b)) { l = Math.min(l, b); r = Math.max(r, b); } });
+    return { rows, l, w: r - l + 1 };
+  };
+  const measure = (t, s = 1) => [...t].reduce((n, ch, i) => n + (glyph(ch).w + (i ? 1 : 0)) * s, 0);
+  function write(g, t, x0, y0, hex, s = 1) {
+    let x = x0;
+    [...t].forEach((ch, i) => {
+      if (i) x += s;
+      const { rows, l, w } = glyph(ch);
+      rows.forEach((v, ry) => {
+        for (let b = l; b < l + w; b++) if (v & (16 >> b))
+          for (let dy = 0; dy < s; dy++) for (let dx = 0; dx < s; dx++) {
+            const R = y0 + ry * s + dy, C = x + (b - l) * s + dx;
+            if (g[R] && C >= 0 && C < g[R].length) g[R][C] = hex;
+          }
+      });
+      x += w * s;
+    });
+  }
+  // a one-pip contour, so woven letters lift off any ground
+  function outline(g, mask, hex) {
+    const rows = g.length, cols = g[0].length;
+    const out = [];
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+      if (mask[r][c]) continue;
+      for (const [dr, dc] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[-1,-1],[1,-1],[-1,1]]) {
+        if (mask[r + dr]?.[c + dc]) { out.push([r, c]); break; }
+      }
+    }
+    out.forEach(([r, c]) => { g[r][c] = hex; });
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) if (mask[r][c]) g[r][c] = mask[r][c];
+  }
+
+  // ------------------------------------------------------------- motifs
+  // hooked diamond (göl): stepped rings, an eye, ram's-horn hooks on the rim
+  function medallion(g, cx, cy, R, pal, { hooks = true } = {}) {
+    const rows = g.length, cols = g[0].length;
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+      const u = Math.abs(c - cx), v = Math.abs(r - cy);
+      const d = u + v;
+      if (d <= R) {
+        if (d === R || d === R - 1) g[r][c] = pal.rim;
+        else if (d <= 1) g[r][c] = pal.eye;
+        else if (d <= 3) g[r][c] = pal.core;
+        else g[r][c] = Math.floor((R - d) / 2) % 2 ? pal.a : pal.b;
+        // inner hooks breaking the rings, in the four quadrants
+        if (d > 4 && d < R - 2 && (u === v || u === v + 1) && (d % 4 === 1)) g[r][c] = pal.rim;
+      } else if (hooks && d <= R + 3) {
+        const t = u - v;
+        const m = ((t % 6) + 6) % 6;
+        if ((d === R + 1 && (m === 0 || m === 1)) || (d === R + 2 && m === 1) || (d === R + 3 && (m === 1 || m === 2))) {
+          if (u > 1 && v > 0) g[r][c] = pal.rim;
+        }
+      }
+    }
+  }
+  // eight-armed star (yıldız) scattered across fields
+  function star(g, cx, cy, hex, core) {
+    const pts = [[0,0],[0,-1],[0,1],[-1,0],[1,0],[0,-2],[0,2],[-2,0],[2,0],[-1,-1],[1,1],[1,-1],[-1,1]];
+    pts.forEach(([dx, dy]) => { if (g[cy + dy] && g[cy + dy][cx + dx] !== undefined) g[cy + dy][cx + dx] = hex; });
+    if (core && g[cy]) g[cy][cx] = core;
+  }
+
+  // ------------------------------------------------------------- bands
+  const BANDS = {
+    // diamond chain between two lines
+    chain(cols) {
+      const g = grid(cols, 15, Y.indigo);
+      for (let c = 0; c < cols; c++) {
+        g[0][c] = Y.walnut; g[14][c] = Y.walnut;
+        g[1][c] = Y.ivory; g[13][c] = Y.ivory;
+        g[2][c] = c % 4 < 2 ? Y.saffron : Y.madder; g[12][c] = c % 4 < 2 ? Y.madder : Y.saffron;
+      }
+      for (let r = 3; r <= 11; r++) for (let c = 0; c < cols; c++) {
+        const x = c % 12, d = Math.abs(x - 6) + Math.abs(r - 7);
+        if (d === 4) g[r][c] = Y.saffron;
+        else if (d === 3) g[r][c] = Y.madder;
+        else if (d === 0) g[r][c] = Y.indigo;
+        else if (d < 3) g[r][c] = Y.ivory;
+        else if (r === 7 && x === 0) g[r][c] = Y.ivory;
+        else if ((r === 4 || r === 10) && (x === 0 || x === 11 || x === 1)) g[r][c] = Y.teal;
+      }
+      return g;
+    },
+    // interlocking sawtooth (dişli), ivory teeth biting into madder
+    teeth(cols) {
+      const g = grid(cols, 12, Y.madder);
+      for (let c = 0; c < cols; c++) {
+        g[0][c] = Y.walnut; g[11][c] = Y.walnut;
+        g[1][c] = Y.saffron; g[10][c] = Y.saffron;
+      }
+      for (let r = 2; r <= 9; r++) for (let c = 0; c < cols; c++) {
+        const k = r - 2, x = c % 8;
+        if (x < k) g[r][c] = Y.ivory;
+        if (x === k && r > 2 && r < 9) g[r][c] = Y.indigo;
+      }
+      return g;
+    },
+    // the plain-woven end of a kilim, just inside the fringe
+    end(cols) {
+      const g = grid(cols, 7, Y.ivory);
+      for (let c = 0; c < cols; c++) {
+        g[2][c] = Y.walnut; g[4][c] = c % 2 ? Y.madder : Y.walnut;
+      }
+      return g;
+    },
+  };
+
+  // ------------------------------------------------------------- layout
+  const colsFor = (px) => Math.max(8, Math.floor(px / CW));
+
+  function heroGrid(widthPx) {
+    const cols = colsFor(widthPx);
+    // pick the largest scale the title fits at
+    const lines = ['A MIND,', 'IN MOTION.'];
+    let s = cols > 300 ? 3 : 2;
+    while (s > 1 && Math.max(...lines.map((l) => measure(l, s))) > cols - 60) s--;
+    const textH = 7 * s * 2 + 4 * s;
+    const B = 13; // border depth in pips
+    const rows = Math.max(textH + B * 2 + 18, 62);
+    const g = grid(cols, rows, Y.madder);
+
+    // border: lines, then a sawtooth all round
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+      const er = Math.min(r, rows - 1 - r), ec = Math.min(c, cols - 1 - c);
+      const depth = Math.min(er, ec);
+      if (depth === 0) g[r][c] = Y.walnut;
+      else if (depth === 1) g[r][c] = Y.saffron;
+      else if (depth === 2) g[r][c] = Y.walnut;
+      else if (depth < B - 2) {
+        // teeth along whichever edge is nearer
+        const along = er <= ec ? c : r;
+        const k = depth - 3, x = along % 8;
+        g[r][c] = x < k ? Y.ivory : Y.indigo;
+        if (x === k) g[r][c] = Y.saffron;
+      } else if (depth === B - 2) g[r][c] = Y.ivory;
+      else if (depth === B - 1) g[r][c] = Y.walnut;
+    }
+
+    // field: half-medallions cut by the side borders, a scatter of stars
+    const fieldTop = B, fieldBot = rows - 1 - B;
+    const cy = Math.round((fieldTop + fieldBot) / 2);
+    const tw = Math.max(...lines.map((l) => measure(l, s)));
+    const tx0 = Math.floor((cols - tw) / 2);
+    let R = Math.min(Math.floor((fieldBot - fieldTop) / 2) - 3, tx0 - B - 6);
+    if (R < 8) R = 0;
+    const sub = grid(cols, rows, null);
+    const pal1 = { rim: Y.ivory, a: Y.indigo, b: Y.teal, core: Y.saffron, eye: Y.madder };
+    if (R) {
+      medallion(sub, B - 1, cy, R, pal1);
+      medallion(sub, cols - B, cy, R, pal1);
+    }
+    const ty0 = Math.floor((rows - textH) / 2);
+    const keepOut = (r, c) => r > ty0 - 4 && r < ty0 + textH + 3 && c > tx0 - 6 && c < tx0 + tw + 6;
+
+    const rand = rng(seedOf('hero'));
+    for (let r = fieldTop + 4; r < fieldBot - 3; r += 7) for (let c = B + 4; c < cols - B - 4; c += 9) {
+      const jr = r + Math.floor(rand() * 3), jc = c + ((r / 7) % 2 ? 4 : 0) + Math.floor(rand() * 2);
+      if (keepOut(jr, jc) || (R && (jc < B + R + 5 || jc > cols - B - R - 6))) continue;
+      const pick = rand();
+      star(sub, jc, jr, pick < 0.45 ? Y.ivory : pick < 0.75 ? Y.saffron : Y.indigo, pick < 0.45 ? Y.madder : null);
+    }
+    for (let r = fieldTop; r <= fieldBot; r++) for (let c = B; c < cols - B; c++) if (sub[r][c]) g[r][c] = sub[r][c];
+
+    // the title, ivory with an indigo contour
+    const mask = grid(cols, rows, null);
+    lines.forEach((l, i) => {
+      const lw = measure(l, s);
+      write(mask, l, Math.floor((cols - lw) / 2), ty0 + i * (7 * s + 4 * s), Y.ivory, s);
+    });
+    outline(g, mask, Y.indigo);
+    return g;
+  }
+
+  const PANEL_PAL = {
+    piml: { ground: Y.ivory, rim: Y.madder, a: Y.indigo, b: Y.saffron, core: Y.teal, eye: Y.ivory, border: Y.indigo },
+    gobake: { ground: Y.indigo, rim: Y.saffron, a: Y.madder, b: Y.ivory, core: Y.teal, eye: Y.saffron, border: Y.madder },
+    clockt: { ground: Y.aub, rim: Y.ivory, a: Y.pist, b: Y.saffron, core: Y.madder, eye: Y.ivory, border: Y.saffron },
+    gitland: { ground: Y.pist, rim: Y.ivory, a: Y.madder, b: Y.indigo, core: Y.saffron, eye: Y.ivory, border: Y.walnut },
+  };
+  function panelGrid(widthPx, key) {
+    const cols = colsFor(widthPx), rows = 40;
+    const p = PANEL_PAL[key];
+    const g = grid(cols, rows, p.ground);
+    for (let c = 0; c < cols; c++) {
+      for (const r of [0, rows - 1]) g[r][c] = Y.walnut;
+      for (const r of [1, rows - 2]) g[r][c] = c % 2 ? p.border : Y.walnut;
+      for (let k = 0; k < 4; k++) {
+        const x = c % 6;
+        g[2 + k][c] = x < k + 1 ? p.border : p.ground;
+        g[rows - 3 - k][c] = x >= 5 - k ? p.border : p.ground;
+      }
+    }
+    const cx = Math.floor(cols / 2), cy = Math.floor(rows / 2);
+    medallion(g, cx, cy, 11, p);
+    // side half-diamonds echo the hero
+    medallion(g, -1, cy, 7, { ...p, rim: p.border, a: p.b, b: p.a }, { hooks: false });
+    medallion(g, cols, cy, 7, { ...p, rim: p.border, a: p.b, b: p.a }, { hooks: false });
+    return g;
+  }
+
+  function badgeGrid(key) {
+    const rand = rng(seedOf(key));
+    const pick = (arr) => arr[Math.floor(rand() * arr.length)];
+    const ground = pick([Y.indigo, Y.ivory, Y.aub, Y.teal]);
+    const rim = ground === Y.ivory ? Y.madder : pick([Y.ivory, Y.saffron]);
+    const g = grid(11, 11, ground);
+    medallion(g, 5, 5, 5, { rim, a: Y.madder, b: pick([Y.saffron, Y.pist, Y.indigoL]), core: pick([Y.saffron, Y.ivory]), eye: Y.walnut }, { hooks: false });
+    for (let i = 0; i < 11; i++) { g[0][i] = g[10][i] = g[i][0] = g[i][10] = Y.walnut; }
+    return g;
+  }
+
+  function textGrid(text) {
+    // double gauge: every stroke is two pips thick, so the letters survive
+    // the brick offset; a one-pip drop shadow instead of a full contour
+    const s = 2;
+    const w = measure(text, s) + 2, rows = 7 * s + 2;
+    const g = grid(w, rows, null);
+    write(g, text, 0, 0, Y.ivory, s);
+    for (let r = rows - 1; r > 0; r--) for (let c = w - 1; c > 0; c--) {
+      if (!g[r][c] && g[r - 1][c - 1] === Y.ivory) g[r][c] = Y.walnut;
+    }
+    // a saffron weft under the heading
+    return g;
+  }
+
+  // the sidebar's edge: a sawtooth band woven top to bottom
+  function sideBand(rows) {
+    const g = grid(8, rows, Y.madder);
+    for (let r = 0; r < rows; r++) for (let c = 0; c < 8; c++) {
+      if (c === 0 || c === 7) g[r][c] = Y.walnut;
+      else if (c === 1 || c === 6) g[r][c] = Y.saffron;
+      else {
+        const k = c - 2, x = r % 6;
+        g[r][c] = x < k ? Y.ivory : x === k ? Y.indigo : Y.madder;
+      }
+    }
+    return g;
+  }
+
+  function stripeGrid(widthPx) {
+    const cols = colsFor(widthPx);
+    const g = grid(cols, 3, Y.walnut);
+    for (let c = 0; c < cols; c++) {
+      g[0][c] = c % 4 < 2 ? Y.ivory : Y.indigo;
+      g[1][c] = Y.saffron;
+      g[2][c] = c % 4 < 2 ? Y.indigo : Y.ivory;
+    }
+    return g;
+  }
+
+  // ------------------------------------------------------------- fringe
+  function fringe(canvas) {
+    const W = canvas.clientWidth, H = canvas.clientHeight;
+    canvas.width = W * DPR; canvas.height = H * DPR;
+    const x = canvas.getContext('2d'); x.setTransform(DPR, 0, 0, DPR, 0, 0);
+    x.clearRect(0, 0, W, H);
+    const step = CW * 1.2;
+    const group = 6;
+    for (let i = 0, k = 0; i * step < W + step; i += group, k++) {
+      const cx = (i + group / 2) * step;
+      for (let j = 0; j < group; j++) {
+        const sx = (i + j) * step + step / 2;
+        const sway = (hash(i + j, 5) - 0.5) * 6;
+        // warp from the weave down to the knot, then loose to the tassel end
+        x.strokeStyle = css(shade(rgb(Y.ivory), -0.1 - hash(j, i) * 0.18));
+        x.lineWidth = 1.6;
+        x.beginPath();
+        x.moveTo(sx, H);
+        x.quadraticCurveTo(sx, H - 10, cx + (j - group / 2) * 1.2, H - 18);
+        x.quadraticCurveTo(cx + (j - group / 2) * 2.2 + sway, H - 30, cx + (j - group / 2) * 3 + sway, 2 + hash(j, i + 1) * 6);
+        x.stroke();
+      }
+      // the knot
+      x.fillStyle = css(shade(rgb(Y.ivory), -0.25));
+      x.beginPath(); x.ellipse(cx, H - 18, 4.2, 3, 0, 0, Math.PI * 2); x.fill();
+      x.fillStyle = 'rgba(40,20,10,.35)';
+      x.fillRect(cx - 4, H - 18, 8, 1);
+    }
+  }
+
+  // ------------------------------------------------------------- mount
+  const jobs = [];
+  function animate(canvas, g, seed) {
+    if (REDUCED) { weave(canvas, g, { seed }); return; }
+    const rows = g.length;
+    const t0 = performance.now(), dur = Math.min(1400, 300 + rows * 14);
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / dur);
+      weave(canvas, g, { seed, upTo: Math.floor(p * rows) });
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function texture(hex, seed) {
+    const c = document.createElement('canvas');
+    weave(c, grid(48, 48, hex), { seed });
+    return `url(${c.toDataURL()})`;
+  }
+
+  function build(first) {
+    const root = document.documentElement.style;
+    if (first) {
+      root.setProperty('--tex-madder', texture(Y.madderD, 11));
+      root.setProperty('--tex-indigo', texture(Y.indigo, 23));
+      root.setProperty('--tex-ivory', texture(Y.ivory, 31));
+    }
+    document.querySelectorAll('.fringe').forEach(fringe);
+
+    const hero = document.getElementById('hero');
+    const hw = hero.parentElement.clientWidth;
+    const hg = heroGrid(hw);
+    first ? animate(hero, hg, 4) : weave(hero, hg, { seed: 4 });
+
+    document.querySelectorAll('[data-band]').forEach((c) => {
+      const w = c.parentElement.clientWidth;
+      weave(c, BANDS[c.dataset.band](colsFor(w) + 1), { seed: seedOf(c.dataset.band) });
+    });
+    document.querySelectorAll('[data-panel]').forEach((c) => {
+      const w = c.closest('.card').clientWidth - 6;
+      const g = panelGrid(w, c.dataset.panel);
+      c._grid = g;
+      first ? animate(c, g, seedOf(c.dataset.panel)) : weave(c, g, { seed: seedOf(c.dataset.panel) });
+    });
+    document.querySelectorAll('[data-badge]').forEach((c) => {
+      const keepW = c.style.width, keepH = c.style.height;
+      weave(c, badgeGrid(c.dataset.badge), { seed: seedOf(c.dataset.badge) });
+      if (keepW) { c.style.width = keepW; c.style.height = keepH; }
+    });
+    document.querySelectorAll('[data-text]').forEach((c) => {
+      weave(c, textGrid(c.dataset.text), { seed: seedOf(c.dataset.text) });
+      // woven at double gauge, shown smaller so long headings fit a column
+      c.style.width = Math.min(parseFloat(c.style.width) * 0.68, +c.dataset.fit || Infinity) + 'px';
+      c.style.height = 'auto';
+    });
+    document.querySelectorAll('.stripe').forEach((c) => {
+      weave(c, stripeGrid(c.parentElement.clientWidth), { seed: 9 });
+    });
+    document.querySelectorAll('[data-sideband]').forEach((c) => {
+      weave(c, sideBand(Math.ceil(c.parentElement.clientHeight / CH) + 2), { seed: 77 });
+      c.style.height = '100%';
+    });
+  }
+
+  // hover a card: cut it off the loom and weave it again
+  document.querySelectorAll('.card').forEach((card) => {
+    let busy = false;
+    card.addEventListener('mouseenter', () => {
+      const c = card.querySelector('[data-panel]');
+      if (busy || !c._grid || REDUCED) return;
+      busy = true;
+      animate(c, c._grid, seedOf(c.dataset.panel));
+      setTimeout(() => { busy = false; }, 900);
+    });
+  });
+
+  // sidebar drawer on narrow screens
+  const side = document.getElementById('side');
+  const scrim = document.querySelector('.scrim');
+  const menuBtn = document.querySelector('.menu-btn');
+  const setOpen = (open) => {
+    side.classList.toggle('open', open);
+    scrim.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+  };
+  menuBtn.addEventListener('click', () => setOpen(!side.classList.contains('open')));
+  scrim.addEventListener('click', () => setOpen(false));
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+
+  build(true);
+  let rt;
+  let lastW = window.innerWidth;
+  window.addEventListener('resize', () => {
+    if (window.innerWidth === lastW) return;
+    lastW = window.innerWidth;
+    clearTimeout(rt); rt = setTimeout(() => build(false), 150);
+  });
+  void jobs;
+})();
+</script>

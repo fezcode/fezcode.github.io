@@ -19,6 +19,48 @@ import { TerracottaMark } from './terracotta';
 import { MistOrb } from './mist';
 import { KnitCanvas, YARN, MOTIFS } from './knit';
 import { makeGrid, stamp } from './knit/engine';
+import { KilimCanvas, WOOL as KILIM_WOOL, FINE, medallion } from './kilim';
+import '../styles/kilim-chrome.css';
+
+/**
+ * Syntax in Kilim: a small hooked göl woven on the loom. Thinking re-dyes
+ * it, a saffron rim and a teal field, and weaves it again.
+ */
+const KILIM_WAYS = {
+  calm: {
+    rim: KILIM_WOOL.ivory,
+    a: KILIM_WOOL.madder,
+    b: KILIM_WOOL.saffron,
+    core: KILIM_WOOL.teal,
+    eye: KILIM_WOOL.ivory,
+  },
+  thinking: {
+    rim: KILIM_WOOL.saffron,
+    a: KILIM_WOOL.teal,
+    b: KILIM_WOOL.ivory,
+    core: KILIM_WOOL.madder,
+    eye: KILIM_WOOL.saffron,
+  },
+};
+// a radius-6 göl: rim, one dyed ring, core and eye, with ram's-horn hooks
+// reaching three pips past the rim (19 × 19 in all)
+const GOL_GAUGE = { w: FINE.w * 0.85, h: FINE.h * 0.85 };
+const KilimGol = ({ thinking }) => (
+  <KilimCanvas
+    cols={19}
+    gauge={GOL_GAUGE}
+    lazy={false}
+    seed="syntax"
+    animate
+    replay={thinking ? 1 : 0}
+    build={() => {
+      const g = makeGrid(19, 19, null);
+      medallion(g, 9, 9, 6, thinking ? KILIM_WAYS.thinking : KILIM_WAYS.calm);
+      return g;
+    }}
+    deps={[thinking]}
+  />
+);
 
 /** Syntax in Knit: the hen from the yoke, its comb turning gold in thought. */
 const KnitHen = ({ thinking }) => (
@@ -431,6 +473,27 @@ const SyntaxSprite = () => {
           style={{ transition: 'transform 0.2s ease' }}
         >
           <KnitHen thinking={state === 'thinking'} />
+        </button>
+      </div>
+    );
+  }
+  /* KILIM COMPANION: Syntax as a small woven göl that re-dyes in thought */
+  if (fezcodexTheme === 'kilim') {
+    return (
+      <div className="klm-chrome fixed bottom-4 right-4 z-[9999] max-w-[calc(100vw-2rem)] flex flex-col items-end">
+        {thought && (
+          <div className="klm-sprite-note klm-wool-indigo" role="status">
+            <p className="klm-label mb-1">Syntax · a passing thought</p>
+            <p className="klm-sprite-note-text">{thought}</p>
+          </div>
+        )}
+        <button
+          type="button"
+          onClick={handleSpriteClick}
+          aria-label="Talk to Syntax, the codex companion"
+          className={`klm-btn klm-btn-indigo klm-btn-icon klm-sprite-btn ${isJumping ? 'is-jumping' : ''}`}
+        >
+          <KilimGol thinking={state === 'thinking'} />
         </button>
       </div>
     );

@@ -14,6 +14,7 @@ import {
   PlanetIcon,
   HeartIcon,
   CloudIcon,
+  DiamondIcon,
 } from '@phosphor-icons/react';
 import NeuromancerHUD from './about-views/NeuromancerHUD';
 import SystemArchitecture from './about-views/SystemArchitecture';
@@ -25,6 +26,7 @@ import LuxeAboutView from './about-views/LuxeAboutView';
 import TerracottaAboutView from './about-views/Terracotta';
 import OrbitAboutView from './about-views/OrbitAboutView';
 import KnitAboutView from './about-views/KnitAboutView';
+import KilimAboutView from './about-views/KilimAboutView';
 import BlissAboutView from './about-views/BlissAboutView';
 import { useAchievements } from '../context/AchievementContext';
 import { useVisualSettings } from '../context/VisualSettingsContext';
@@ -33,6 +35,7 @@ import Seo from '../components/Seo';
 const ViewSwitcher = ({ currentView }) => {
   const views = [
     { id: 'bliss', icon: CloudIcon, label: 'Bliss' },
+    { id: 'kilim', icon: DiamondIcon, label: 'Kilim' },
     { id: 'knit', icon: HeartIcon, label: 'Knit' },
     { id: 'orbit', icon: PlanetIcon, label: 'Orbit' },
     { id: 'terracotta', icon: BookBookmarkIcon, label: 'Terracotta' },
@@ -52,6 +55,24 @@ const ViewSwitcher = ({ currentView }) => {
           <Link
             key={id}
             className={`bl-btn bl-btn-sm ${id === currentView ? 'bl-btn-active' : ''}`}
+            to={`/about/${id}`}
+            aria-current={id === currentView ? 'page' : undefined}
+          >
+            <Icon size={16} />
+            {label}
+          </Link>
+        ))}
+      </nav>
+    );
+  }
+
+  if (currentView === 'kilim') {
+    return (
+      <nav className="flex flex-wrap gap-2" aria-label="About page styles">
+        {views.map(({ id, label, icon: Icon }) => (
+          <Link
+            key={id}
+            className={`klm-chip ${id === currentView ? 'is-active' : ''}`}
             to={`/about/${id}`}
             aria-current={id === currentView ? 'page' : undefined}
           >
@@ -142,6 +163,7 @@ const AboutPage = () => {
   const { fezcodexTheme } = useVisualSettings();
   const validViews = [
     'bliss',
+    'kilim',
     'knit',
     'orbit',
     'terracotta',
@@ -164,7 +186,7 @@ const AboutPage = () => {
     return (
       <Navigate
         to={`/about/${
-          ['orbit', 'knit', 'bliss'].includes(fezcodexTheme)
+          ['orbit', 'knit', 'bliss', 'kilim'].includes(fezcodexTheme)
             ? fezcodexTheme
             : 'terracotta'
         }`}
@@ -180,6 +202,11 @@ const AboutPage = () => {
   if (view === 'bliss')
     return (
       <BlissAboutView viewSwitcher={<ViewSwitcher currentView="bliss" />} />
+    );
+
+  if (view === 'kilim')
+    return (
+      <KilimAboutView viewSwitcher={<ViewSwitcher currentView="kilim" />} />
     );
 
   if (view === 'knit')

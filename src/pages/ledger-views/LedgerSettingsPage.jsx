@@ -490,6 +490,7 @@ const LedgerSettingsPage = () => {
                     { label: 'LEDGER', value: 'ledger' },
                     { label: 'Orbit (Observatory)', value: 'orbit' },
                     { label: 'Knit (Colourwork)', value: 'knit' },
+                    { label: 'Kilim (Weave)', value: 'kilim' },
                     { label: 'Bliss (Desktop)', value: 'bliss' },
                   ]}
                   value={fezcodexTheme}
@@ -598,6 +599,7 @@ const LedgerSettingsPage = () => {
                     { label: 'GALLEY', value: 'galley' },
                     { label: 'Orbit', value: 'orbit' },
                     { label: 'Knit', value: 'knit' },
+                    { label: 'Kilim', value: 'kilim' },
                     { label: 'Bliss', value: 'bliss' },
                   ]}
                   value={blogPostViewMode}

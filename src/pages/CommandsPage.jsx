@@ -7,6 +7,7 @@ import MistCommandsPage from './mist-views/MistCommandsPage';
 import LedgerCommandsPage from './ledger-views/LedgerCommandsPage';
 import OrbitCommandsPage from './orbit-views/OrbitCommandsPage';
 import KnitCommandsPage from './knit-views/KnitCommandsPage';
+import KilimCommandsPage from './kilim-views/KilimCommandsPage';
 import BlissCommandsPage from './bliss-views/BlissCommandsPage';
 
 const CommandsPage = () => {
@@ -18,6 +19,7 @@ const CommandsPage = () => {
   if (fezcodexTheme === 'ledger') return <LedgerCommandsPage />;
   if (fezcodexTheme === 'orbit') return <OrbitCommandsPage />;
   if (fezcodexTheme === 'knit') return <KnitCommandsPage />;
+  if (fezcodexTheme === 'kilim') return <KilimCommandsPage />;
   if (fezcodexTheme === 'bliss') return <BlissCommandsPage />;
   return <BrutalistCommandsPage />;
 };

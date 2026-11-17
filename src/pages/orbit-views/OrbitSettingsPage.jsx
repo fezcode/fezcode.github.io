@@ -477,6 +477,7 @@ const OrbitSettingsPage = () => {
                     { label: 'LEDGER', value: 'ledger' },
                     { label: 'ORBIT', value: 'orbit' },
                     { label: 'KNIT', value: 'knit' },
+                    { label: 'KILIM', value: 'kilim' },
                     { label: 'BLISS', value: 'bliss' },
                   ]}
                   value={fezcodexTheme}
@@ -585,6 +586,7 @@ const OrbitSettingsPage = () => {
                     { label: 'GALLEY', value: 'galley' },
                     { label: 'Orbit', value: 'orbit' },
                     { label: 'KNIT', value: 'knit' },
+                    { label: 'KILIM', value: 'kilim' },
                     { label: 'BLISS', value: 'bliss' },
                   ]}
                   value={blogPostViewMode}
