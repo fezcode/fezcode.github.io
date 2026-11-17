@@ -1,6 +1,7 @@
 (config)
   (kernel)
-    (codename) Purlwright
+    (codename) Weftwright
+    # (codename) Purlwright
     # (codename) Inkwright
     # (codename) Mistwright
     # (codename) StoneSet
@@ -12,6 +13,7 @@
     #   v0.27.x  Mistwright
     #   v0.33.x  Inkwright
     #   v0.50.x  Purlwright
+    #   v0.65.x  Weftwright
 
   (hero)
     (title) Fezcodex
