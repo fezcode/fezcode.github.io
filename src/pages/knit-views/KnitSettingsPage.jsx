@@ -414,6 +414,7 @@ const KnitSettingsPage = () => {
                     { label: 'LEDGER', value: 'ledger' },
                     { label: 'ORBIT', value: 'orbit' },
                     { label: 'KNIT', value: 'knit' },
+                    { label: 'KILIM', value: 'kilim' },
                     { label: 'BLISS', value: 'bliss' },
                   ]}
                   value={fezcodexTheme}
@@ -428,7 +429,7 @@ const KnitSettingsPage = () => {
         <section id="typography">
           <SectionHead
             label="TYPE"
-            blurb="Font choices for long-form reading. Only the brutalist theme answers these picks — luxe, terracotta, mist, ledger, orbit and knit keep their set faces. The selection still saves for when you switch."
+            blurb="Font choices for long-form reading. Only the brutalist theme answers these picks — luxe, terracotta, mist, ledger, orbit, knit, kilim and bliss keep their set faces. The selection still saves for when you switch."
           />
           <ol className="list-none m-0 p-0">
             <SettingRow
@@ -496,6 +497,7 @@ const KnitSettingsPage = () => {
                     { label: 'GALLEY', value: 'galley' },
                     { label: 'ORBIT', value: 'orbit' },
                     { label: 'KNIT', value: 'knit' },
+                    { label: 'KILIM', value: 'kilim' },
                     { label: 'BLISS', value: 'bliss' },
                   ]}
                   value={blogPostViewMode}
