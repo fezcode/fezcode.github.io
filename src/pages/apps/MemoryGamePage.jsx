@@ -317,7 +317,7 @@ const MemoryGamePage = () => {
           'brain game',
           'concentration',
         ]}
-        ogImage="/images/asset/ogtitle.png"
+        ogImage="/images/og/default.png"
       />
 
       <div className="mem__shell">

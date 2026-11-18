@@ -13,13 +13,15 @@ const head = `
   <meta property="og:url" content="https://fezcode.com/" />
   <meta property="og:title" content="Fezcodex - Personal Blog and Projects" />
   <meta property="og:description" content="Discover logs, posts, projects, and stories from Fezcode." />
-  <meta property="og:image" content="/images/asset/ogtitle.png" />
+  <meta property="og:image" content="https://fezcode.com/images/og/default.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://fezcode.com/" />
   <meta name="twitter:title" content="Fezcodex - Personal Blog and Projects" />
   <meta name="twitter:description" content="Discover logs, posts, projects, and stories from Fezcode." />
-  <meta name="twitter:image" content="/images/asset/ogtitle.png" />
+  <meta name="twitter:image" content="https://fezcode.com/images/og/default.png" />
 
   <link rel="apple-touch-icon" href="/logo192.png" />
   <link rel="manifest" href="/manifest.json" />

@@ -13,6 +13,11 @@ const steps = [
     cmd: 'node',
     args: ['scripts/generate-wordup-og.mjs'],
   },
+  {
+    name: 'codex-og-images',
+    cmd: 'node',
+    args: ['scripts/generate-codex-og.mjs'],
+  },
   // Call Vite's own entry file, not the node_modules/.bin/vite shim: Vike only
   // auto-runs its HTML prerender when process.argv[1] is inside vite/, and on
   // Linux the .bin symlink path fails that check, so no index.html is written.
@@ -31,11 +36,6 @@ if (!FAST) {
       args: ['scripts/prerender-crawl.mjs', ...(RETRY ? ['--retry'] : [])],
     });
   }
-  steps.push({
-    name: 'generate-og-images',
-    cmd: 'node',
-    args: ['scripts/generate-og-images.mjs'],
-  });
   steps.push({
     name: 'inject-meta',
     cmd: 'node',

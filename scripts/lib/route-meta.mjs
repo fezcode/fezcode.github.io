@@ -5,7 +5,7 @@ import piml from 'piml';
 export const PUBLIC = 'public';
 export const DIST = 'dist/client';
 export const SITE = 'https://fezcode.com';
-export const DEFAULT_IMAGE = '/images/asset/ogtitle.png';
+export const DEFAULT_IMAGE = '/images/og/default.png';
 export const DEFAULT_DESC = 'codex by fezcode...';
 
 export function readJson(path) {
@@ -34,6 +34,21 @@ export function parsePimlItems(text) {
   return items;
 }
 
+// A post whose `image` points at a local file that doesn't exist would share a
+// broken link; drop it so the build generates a card for that post instead.
+function existingImage(image) {
+  if (!image) return undefined;
+  if (/^https?:\/\//.test(image)) return image;
+  const local = join(PUBLIC, image.replace(/^\//, ''));
+  return existsSync(local) ? image : undefined;
+}
+
+// Share card rendered by scripts/generate-codex-og.mjs, when one exists.
+function codexCard(route) {
+  const file = routeToOgPath(route);
+  return existsSync(join(PUBLIC, file)) ? '/' + file : undefined;
+}
+
 function blogMeta(routeMap, posts) {
   for (const entry of posts) {
     if (!entry?.slug) continue;
@@ -41,7 +56,7 @@ function blogMeta(routeMap, posts) {
       routeMap.set(`/blog/series/${entry.slug}`, {
         title: entry.title,
         description: entry.description,
-        image: entry.image,
+        image: existingImage(entry.image) || codexCard(`/blog/series/${entry.slug}`),
         type: 'article',
       });
       for (const ep of entry.series.posts) {
@@ -49,7 +64,10 @@ function blogMeta(routeMap, posts) {
         routeMap.set(`/blog/series/${entry.slug}/${ep.slug}`, {
           title: ep.title || entry.title,
           description: ep.description || entry.description,
-          image: ep.image || entry.image,
+          image:
+            existingImage(ep.image) ||
+            existingImage(entry.image) ||
+            codexCard(`/blog/series/${entry.slug}/${ep.slug}`),
           type: 'article',
         });
       }
@@ -57,7 +75,7 @@ function blogMeta(routeMap, posts) {
       routeMap.set(`/blog/${entry.slug}`, {
         title: entry.title,
         description: entry.description,
-        image: entry.image,
+        image: existingImage(entry.image) || codexCard(`/blog/${entry.slug}`),
         type: 'article',
       });
     }
@@ -77,7 +95,7 @@ function logsMeta(routeMap) {
       routeMap.set(`/logs/${cat.name}/${it.slug}`, {
         title: it.title?.replace(/^"|"$/g, '') || cat.name,
         description: it.description,
-        image: it.image,
+        image: existingImage(it.image) || codexCard(`/logs/${cat.name}/${it.slug}`),
         type: 'article',
       });
     }

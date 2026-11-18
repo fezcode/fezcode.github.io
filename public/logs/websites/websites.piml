@@ -1,6 +1,20 @@
 (logs)
   > (item)
     (category) Websites
+    (date) 2026-11-18
+    (link) https://dapan.es
+    (rating) 4
+    (slug) dapan-es
+    (tags)
+      > design
+      > pixel-art
+      > personal-website
+      > chess
+    (title) dapan.es
+    (image) /images/discovery/covers/websites/dapan-es.webp
+    (description) A personal portfolio site drawn as a dithered, 1-bit mint-on-black isometric chessboard. It looks awesome; the UX is what costs it a star.
+  > (item)
+    (category) Websites
     (date) 2026-11-08
     (link) https://weather.com/retro/
     (rating) 5

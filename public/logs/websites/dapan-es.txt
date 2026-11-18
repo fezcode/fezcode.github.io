@@ -1,0 +1,9 @@
+# dapan.es
+
+dapan.es is a personal portfolio website, and it just looks awesome. The whole page is dithered 1-bit pixel art in mint green on black: an isometric chessboard with a bishop standing on it, and the navigation ("Socials", "About me", "Rodar") placed right on the board's squares instead of in a regular menu.
+
+![dapan.es](/images/discovery/covers/websites/dapan-es.webp)
+
+The one thing holding it back is the UX. Getting around the site isn't as smooth as it looks, so it loses a star. Still, as a piece of visual design it's one of the coolest portfolios I've come across.
+
+Rating: 4/5

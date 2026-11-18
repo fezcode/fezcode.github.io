@@ -162,6 +162,13 @@
     (count) 11
     (projects) 11
   > (item)
+    (slug) design
+    (label) Design
+    (count) 11
+    (posts) 2
+    (logs) 5
+    (projects) 4
+  > (item)
     (slug) frontend
     (label) Frontend
     (count) 11
@@ -185,13 +192,6 @@
     (count) 11
     (posts) 10
     (logs) 1
-  > (item)
-    (slug) design
-    (label) Design
-    (count) 10
-    (posts) 2
-    (logs) 4
-    (projects) 4
   > (item)
     (slug) javascript
     (label) JavaScript
@@ -345,6 +345,12 @@
     (count) 7
     (logs) 7
   > (item)
+    (slug) pixel-art
+    (label) Pixel art
+    (count) 7
+    (posts) 1
+    (logs) 6
+  > (item)
     (slug) post-apocalyptic
     (label) Post apocalyptic
     (count) 7
@@ -418,12 +424,6 @@
     (count) 6
     (posts) 3
     (projects) 3
-  > (item)
-    (slug) pixel-art
-    (label) Pixel art
-    (count) 6
-    (posts) 1
-    (logs) 5
   > (item)
     (slug) prompt-engineering
     (label) Prompt engineering
@@ -931,6 +931,12 @@
     (posts) 1
     (logs) 1
   > (item)
+    (slug) chess
+    (label) Chess
+    (count) 2
+    (logs) 1
+    (projects) 1
+  > (item)
     (slug) code-review
     (label) Code review
     (count) 2
@@ -1142,6 +1148,12 @@
     (label) Parkour
     (count) 2
     (logs) 2
+  > (item)
+    (slug) personal-website
+    (label) Personal website
+    (count) 2
+    (logs) 1
+    (projects) 1
   > (item)
     (slug) physics
     (label) Physics
@@ -1617,11 +1629,6 @@
     (label) Cheatsheet
     (count) 1
     (posts) 1
-  > (item)
-    (slug) chess
-    (label) Chess
-    (count) 1
-    (projects) 1
   > (item)
     (slug) cinema
     (label) Cinema
@@ -2753,11 +2760,6 @@
     (count) 1
     (posts) 1
   > (item)
-    (slug) personal-website
-    (label) Personal website
-    (count) 1
-    (projects) 1
-  > (item)
     (slug) pessimism
     (label) Pessimism
     (count) 1
@@ -3626,6 +3628,19 @@
     (alias) web-development
     (tag) webdev
 (items)
+  > (item)
+    (id) log/websites/dapan-es
+    (type) log
+    (title) dapan.es
+    (path) /logs/websites/dapan-es
+    (date) 2026-11-18
+    (category) websites
+    (description) A personal portfolio site drawn as a dithered, 1-bit mint-on-black isometric chessboard. It looks awesome; the UX is what costs it a star.
+    (tags)
+      > design
+      > pixel-art
+      > personal-website
+      > chess
   > (item)
     (id) post/moving-deploys-to-github-actions
     (type) post

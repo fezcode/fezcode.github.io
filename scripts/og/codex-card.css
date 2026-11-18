@@ -1,0 +1,333 @@
+@font-face {
+  font-family: 'Stack Sans Headline';
+  src: url('/scripts/og/fonts/StackSansHeadline.ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Stack Sans Text';
+  src: url('/scripts/og/fonts/StackSansText.ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: block;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  width: 1200px;
+  height: 630px;
+  overflow: hidden;
+}
+body {
+  font-family: 'Stack Sans Text', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- palettes: one studio per card kind ---- */
+.card {
+  --ink: #1d1a17;
+  --soft: #6f665c;
+  --faint: #9a9086;
+  --pill-bg: #ffffff9c;
+  --pill-line: #ffffff;
+  --accent: #e2462d;
+  position: relative;
+  isolation: isolate;
+  width: 1200px;
+  height: 630px;
+  overflow: hidden;
+  color: var(--ink);
+  background: radial-gradient(ellipse at 70% 38%, #fffaf3 0%, #f5ede2 40%, #e9ddcd 100%);
+}
+.card--log {
+  --ink: #f3f1f8;
+  --soft: #a9a6b8;
+  --faint: #757287;
+  --pill-bg: #ffffff12;
+  --pill-line: #ffffff22;
+  background: radial-gradient(ellipse at 72% 42%, #2a2c3d 0%, #17181f 52%, #0e0e13 100%);
+}
+.card--default {
+  --ink: #fbf7ff;
+  --soft: #d5c9ef;
+  --faint: #a79cc7;
+  --pill-bg: #ffffff16;
+  --pill-line: #ffffff30;
+  background:
+    radial-gradient(circle at 78% 82%, #ff8a4c 0%, #ff8a4c00 38%),
+    radial-gradient(circle at 92% 12%, #f2459f 0%, #f2459f00 36%),
+    radial-gradient(ellipse at 30% 20%, #3a2bb8 0%, #3a2bb800 60%),
+    linear-gradient(160deg, #1b1446 0%, #2a1663 45%, #521a6b 100%);
+}
+.glow {
+  position: absolute;
+  z-index: 0;
+  width: 560px;
+  height: 560px;
+  left: 640px;
+  top: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 62%);
+  opacity: 0.16;
+  filter: blur(30px);
+}
+.card--default .glow {
+  opacity: 0.28;
+}
+
+/* ---- chrome ---- */
+.masthead {
+  position: absolute;
+  z-index: 3;
+  top: 38px;
+  left: 54px;
+  right: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'Stack Sans Headline', sans-serif;
+  font-size: 29px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+.brand svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+}
+#header-note {
+  color: var(--soft);
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+footer {
+  position: absolute;
+  z-index: 3;
+  bottom: 34px;
+  left: 56px;
+  right: 56px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--faint);
+  font-size: 15px;
+}
+
+/* ---- copy ---- */
+.copy {
+  position: absolute;
+  z-index: 2;
+  top: 150px;
+  left: 56px;
+  width: 610px;
+}
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 22px;
+}
+.pills:empty {
+  display: none;
+}
+.pills span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px;
+  color: var(--soft);
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-line);
+  border-radius: 24px;
+  font-size: 16px;
+}
+.pills .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+h1 {
+  margin: 0;
+  font-family: 'Stack Sans Headline', sans-serif;
+  font-size: 74px;
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+h1 .mark {
+  color: var(--accent);
+}
+.byline {
+  margin: 18px 0 0;
+  color: var(--accent);
+  font-size: 21px;
+  font-weight: 600;
+}
+.byline:empty,
+.desc:empty {
+  display: none;
+}
+.desc {
+  max-width: 540px;
+  margin: 20px 0 0;
+  color: var(--soft);
+  font-size: 22px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.sections {
+  display: none;
+}
+.sections span + span::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-right: 18px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ---- sculpture ---- */
+.sculpture {
+  position: absolute;
+  z-index: 1;
+  width: 660px;
+  height: 610px;
+  top: 14px;
+  left: 590px;
+}
+canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.shadow {
+  position: absolute;
+  width: 300px;
+  height: 36px;
+  top: 500px;
+  left: 190px;
+  border-radius: 50%;
+  background: #00000030;
+  filter: blur(22px);
+}
+.card--log .shadow,
+.card--default .shadow {
+  background: #00000070;
+}
+.error {
+  padding: 60px;
+  font-size: 24px;
+  color: #8c2240;
+}
+
+/* ---- default: brand lockup, emblem + wordmark only ---- */
+.card--default {
+  background:
+    radial-gradient(ellipse 42% 50% at 50% 36%, #7b5cff5c 0%, #7b5cff00 70%),
+    radial-gradient(ellipse 70% 40% at 50% 112%, #ff7a5966 0%, #ff7a5900 70%),
+    linear-gradient(180deg, #0c0920 0%, #150f38 55%, #1d0f33 100%);
+}
+.card--default .glow,
+.card--default .masthead,
+.card--default footer,
+.card--default .desc,
+.card--default .sections,
+.card--default .pills,
+.card--default .byline,
+.card--default .shadow {
+  display: none;
+}
+.card--default .sculpture {
+  width: 760px;
+  height: 360px;
+  top: 40px;
+  left: 220px;
+}
+.card--default .copy {
+  top: 392px;
+  left: 0;
+  width: 1200px;
+  text-align: center;
+}
+.card--default h1 {
+  font-size: 156px;
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+/* ---- log: album-cover poster over a seeded colour field ---- */
+.field {
+  display: none;
+}
+.card--log {
+  --ink: #ffffff;
+  --soft: #ffffffcc;
+  --faint: #ffffffa6;
+  --pill-bg: #ffffff22;
+  --pill-line: #ffffff44;
+  background: #111;
+}
+.card--log .field {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 1200px;
+  height: 630px;
+}
+.card--log .glow,
+.card--log .sculpture {
+  display: none;
+}
+.card--log .brand svg {
+  stroke: #fff;
+}
+.card--log .copy {
+  top: auto;
+  bottom: 92px;
+  left: 56px;
+  width: 1000px;
+}
+.card--log h1 {
+  font-size: 92px;
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  text-shadow: 0 2px 30px #00000026;
+}
+.card--log .byline {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+.card--log .desc {
+  display: none;
+}
+.card--log .pills span {
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+.card--log .pills .dot {
+  background: #fff;
+}

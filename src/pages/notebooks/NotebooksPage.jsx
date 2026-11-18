@@ -51,7 +51,7 @@ const NotebooksPage = () => {
         title="Notebooks | Fezcodex"
         description="Explore a collection of my personal notebooks and thoughts."
         keywords={['Fezcodex', 'notebooks', 'thoughts', 'journal']}
-        ogImage="/images/asset/ogtitle.png"
+        ogImage="/images/og/default.png"
       />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">

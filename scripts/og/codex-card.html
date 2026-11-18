@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Fezcodex — OG preview</title>
+    <link rel="stylesheet" href="/scripts/og/codex-card.css" />
+  </head>
+  <body>
+    <main class="card" id="card">
+      <canvas id="field" class="field" width="1200" height="630" aria-hidden="true"></canvas>
+      <div class="glow" aria-hidden="true"></div>
+      <header class="masthead">
+        <div class="brand">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M6 7.5c4-1.6 7-1.2 10 1.2v17c-3-2.4-6-2.8-10-1.2z" />
+            <path d="M26 7.5c-4-1.6-7-1.2-10 1.2v17c3-2.4 6-2.8 10-1.2z" />
+          </svg>
+          <span>fezcodex</span>
+        </div>
+        <span id="header-note"></span>
+      </header>
+      <section class="copy">
+        <div id="pills" class="pills"></div>
+        <h1 id="title"></h1>
+        <p id="byline" class="byline"></p>
+        <p id="desc" class="desc"></p>
+        <div id="sections" class="sections"></div>
+      </section>
+      <div class="sculpture" aria-hidden="true">
+        <div class="shadow"></div>
+        <canvas id="sculpture"></canvas>
+      </div>
+      <footer>
+        <span id="footer-note"></span>
+        <span id="page-url"></span>
+      </footer>
+    </main>
+    <script type="module" src="/scripts/og/codex-card.js"></script>
+  </body>
+</html>

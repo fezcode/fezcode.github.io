@@ -27,7 +27,7 @@ const Seo = ({
   const isAppPath = location.pathname.startsWith('/apps');
   const defaultImage = isAppPath
     ? '/images/asset/ogtitle-apps.png'
-    : '/images/asset/ogtitle.png';
+    : '/images/og/default.png';
   const rawImage = image || ogImage || twitterImage || defaultImage;
   const finalImage = rawImage.startsWith('http')
     ? rawImage

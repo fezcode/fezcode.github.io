@@ -1,6 +1,6 @@
 {
   "name": "fezcodex",
-  "version": "0.65.0",
+  "version": "0.66.0",
   "private": true,
   "homepage": "https://fezcode.com",
   "dependencies": {
@@ -40,6 +40,7 @@
   "scripts": {
     "generate-rss": "node scripts/generate-rss.js",
     "generate-wordup-og": "node scripts/generate-wordup-og.mjs",
+    "generate-codex-og": "node scripts/generate-codex-og.mjs",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "init-stories": "git remote add fezcodex-stories https://github.com/fezcode/fezcodex.stories",
     "pull-stories": "git subtree pull --prefix public/stories fezcodex-stories main --squash",
@@ -49,7 +50,7 @@
     "generate-discovery-covers": "node scripts/generate-discovery-covers.mjs",
     "generate-tags": "node scripts/generate-tags-index.mjs",
     "mcp": "node scripts/mcp-server/index.mjs",
-    "pregenerate": "npm run generate-logs-manifest && npm run generate-tags && npm run generate-discovery-covers && npm run generate-wallpapers && npm run generate-rss && npm run generate-sitemap && npm run generate-wordup-og",
+    "pregenerate": "npm run generate-logs-manifest && npm run generate-tags && npm run generate-discovery-covers && npm run generate-wallpapers && npm run generate-rss && npm run generate-sitemap && npm run generate-wordup-og && npm run generate-codex-og",
     "prestart": "npm run pregenerate",
     "start": "vite",
     "prebuild": "npm run pregenerate",
@@ -87,7 +88,6 @@
     "@commitlint/cli": "^20.2.0",
     "@commitlint/config-conventional": "^20.2.0",
     "@modelcontextprotocol/sdk": "^1.26.0",
-    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/typography": "^0.5.19",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
