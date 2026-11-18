@@ -82,6 +82,14 @@ function blogMeta(routeMap, posts) {
   }
 }
 
+// Strip quotes that wrap the whole title (some quote titles are ""...""),
+// but keep a title that merely starts with a quoted phrase.
+function unwrapQuotes(title) {
+  let t = title?.trim();
+  while (t && t.length > 1 && t.startsWith('"') && t.endsWith('"')) t = t.slice(1, -1).trim();
+  return t;
+}
+
 function logsMeta(routeMap) {
   const root = join(PUBLIC, 'logs');
   if (!existsSync(root)) return;
@@ -92,12 +100,16 @@ function logsMeta(routeMap) {
     const items = parsePimlItems(readFileSync(pimlPath, 'utf8'));
     for (const it of items) {
       if (!it.slug) continue;
-      routeMap.set(`/logs/${cat.name}/${it.slug}`, {
-        title: it.title?.replace(/^"|"$/g, '') || cat.name,
+      const meta = {
+        title: unwrapQuotes(it.title) || cat.name,
         description: it.description,
-        image: existingImage(it.image) || codexCard(`/logs/${cat.name}/${it.slug}`),
+        // Share the generated card even when the log has its own image.
+        image: codexCard(`/logs/${cat.name}/${it.slug}`) || existingImage(it.image),
         type: 'article',
-      });
+      };
+      routeMap.set(`/logs/${cat.name}/${it.slug}`, meta);
+      // The discovery gallery shows the same entry; share it the same way.
+      routeMap.set(`/discovery/${cat.name}/${it.slug}`, meta);
     }
   }
 }

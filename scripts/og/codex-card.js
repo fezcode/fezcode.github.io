@@ -323,6 +323,19 @@ function fillCopy(data) {
   });
 }
 
+async function showCover(src) {
+  const cover = document.getElementById('cover');
+  cover.src = src;
+  await cover.decode();
+  // fill a 400x430 frame whatever the source size, keeping its shape
+  const scale = Math.min(400 / cover.naturalWidth, 430 / cover.naturalHeight);
+  cover.style.width = Math.round(cover.naturalWidth * scale) + 'px';
+  cover.style.height = Math.round(cover.naturalHeight * scale) + 'px';
+  cover.hidden = false;
+  document.getElementById('card').classList.add('has-cover');
+  fitTitle(); // the copy column is narrower now
+}
+
 function fitTitle() {
   const title = document.getElementById('title');
   const card = document.getElementById('card');
@@ -331,9 +344,13 @@ function fitTitle() {
   const isLog = card.classList.contains('card--log');
   const max = isLog ? 150 : 80;
   const lineH = isLog ? 0.98 : 1.04;
+  const copy = title.parentElement;
+  // logs grow upward from the bottom; their top must stay below the masthead
+  const ceiling = isLog ? 112 : -Infinity;
   for (let size = max; size >= 36; size -= 2) {
     title.style.fontSize = size + 'px';
-    if (title.scrollWidth <= title.clientWidth && title.clientHeight <= size * lineH * 3 + 4) break;
+    const fitsLines = title.scrollWidth <= title.clientWidth && title.clientHeight <= size * lineH * 3 + 4;
+    if (fitsLines && copy.getBoundingClientRect().top >= ceiling) break;
   }
   // Long titles leave less room for the blurb.
   const lines = Math.round(title.clientHeight / (parseFloat(title.style.fontSize) * 1.04));
@@ -347,6 +364,7 @@ async function render() {
   if (!document.fonts.check('500 24px "Stack Sans Headline"')) throw new Error('Stack Sans did not load.');
   fitTitle();
   if (data.kind === 'log') {
+    if (data.cover) await showCover(data.cover);
     paintField(data);
     document.documentElement.dataset.ogReady = 'true';
     return;

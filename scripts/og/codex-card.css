@@ -304,7 +304,7 @@ canvas {
 }
 .card--log .copy {
   top: auto;
-  bottom: 92px;
+  bottom: 88px;
   left: 56px;
   width: 1000px;
 }
@@ -320,6 +320,9 @@ canvas {
   font-size: 24px;
   font-weight: 500;
   opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .card--log .desc {
   display: none;
@@ -330,4 +333,20 @@ canvas {
 }
 .card--log .pills .dot {
   background: #fff;
+}
+
+/* log with its own image: the cover framed on the right of the poster */
+.cover {
+  position: absolute;
+  z-index: 2;
+  right: 72px;
+  top: 50%;
+  border-radius: 6px;
+  box-shadow:
+    0 30px 60px -12px #00000080,
+    0 0 0 1px #ffffff26;
+  transform: translateY(-50%) rotate(2.5deg);
+}
+.card--log.has-cover .copy {
+  width: 620px;
 }

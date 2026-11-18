@@ -52,6 +52,12 @@ function hasImage(image) {
   return existsSync(join(PUBLIC, image.replace(/^\//, '')));
 }
 
+// Local image path usable inside the card page (served from public/).
+function localImage(image) {
+  if (!image || /^https?:\/\//.test(image)) return null;
+  return hasImage(image) ? '/' + image.replace(/^\//, '') : null;
+}
+
 function readMinutes(filename) {
   if (!filename) return null;
   const path = join(PUBLIC, 'posts', filename);
@@ -114,7 +120,8 @@ export function getCodexOgTargets() {
       if (!existsSync(pimlPath)) continue;
       const category = dir.name;
       for (const it of parsePimlItems(readFileSync(pimlPath, 'utf8'))) {
-        if (!SLUG.test(it.slug || '') || hasImage(it.image)) continue;
+        // Every log gets a card; its own image (a cover) is framed inside it.
+        if (!SLUG.test(it.slug || '')) continue;
         const route = `/logs/${category}/${it.slug}`;
         const logged = formatDate(it.date);
         targets.push({
@@ -125,6 +132,7 @@ export function getCodexOgTargets() {
             seed: route,
             title: cleanTitle(it.title, category),
             byline: it.author || it.director || it.artist || it.creator || '',
+            cover: localImage(it.image),
             pills: [category, logged && `logged ${logged}`].filter(Boolean),
             accent: LOG_ACCENTS[category] || '#6366f1',
             header: 'discovery log',
