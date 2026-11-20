@@ -5,8 +5,8 @@
   > (item)
     (slug) action
     (label) Action
-    (count) 41
-    (logs) 41
+    (count) 44
+    (logs) 44
   > (item)
     (slug) philosophy
     (label) Philosophy
@@ -27,9 +27,9 @@
   > (item)
     (slug) crime
     (label) Crime
-    (count) 26
+    (count) 29
     (posts) 1
-    (logs) 25
+    (logs) 28
   > (item)
     (slug) go
     (label) Go
@@ -49,17 +49,17 @@
     (count) 21
     (posts) 21
   > (item)
+    (slug) history
+    (label) History
+    (count) 21
+    (posts) 7
+    (logs) 14
+  > (item)
     (slug) react
     (label) React
     (count) 21
     (posts) 19
     (projects) 2
-  > (item)
-    (slug) history
-    (label) History
-    (count) 20
-    (posts) 7
-    (logs) 13
   > (item)
     (slug) thriller
     (label) Thriller
@@ -193,6 +193,11 @@
     (posts) 10
     (logs) 1
   > (item)
+    (slug) open-world
+    (label) Open world
+    (count) 11
+    (logs) 11
+  > (item)
     (slug) javascript
     (label) JavaScript
     (count) 10
@@ -204,6 +209,11 @@
     (count) 10
     (posts) 7
     (logs) 3
+  > (item)
+    (slug) story-rich
+    (label) Story rich
+    (count) 10
+    (logs) 10
   > (item)
     (slug) superhero
     (label) Superhero
@@ -233,11 +243,6 @@
   > (item)
     (slug) hitman
     (label) Hitman
-    (count) 9
-    (logs) 9
-  > (item)
-    (slug) open-world
-    (label) Open world
     (count) 9
     (logs) 9
   > (item)
@@ -368,11 +373,6 @@
   > (item)
     (slug) space
     (label) Space
-    (count) 7
-    (logs) 7
-  > (item)
-    (slug) story-rich
-    (label) Story rich
     (count) 7
     (logs) 7
   > (item)
@@ -591,6 +591,11 @@
     (label) Library
     (count) 4
     (projects) 4
+  > (item)
+    (slug) mafia
+    (label) Mafia
+    (count) 4
+    (logs) 4
   > (item)
     (slug) maps
     (label) Maps
@@ -2427,11 +2432,6 @@
   > (item)
     (slug) madlib
     (label) Madlib
-    (count) 1
-    (logs) 1
-  > (item)
-    (slug) mafia
-    (label) Mafia
     (count) 1
     (logs) 1
   > (item)
@@ -6386,6 +6386,20 @@
       > indie
       > action
   > (item)
+    (id) log/game/mafia
+    (type) log
+    (title) Mafia
+    (path) /logs/game/mafia
+    (date) 2026-01-21
+    (category) game
+    (description) Mafia follows Tommy Angelo, a cab driver in 1930s Lost Heaven who is pulled into the Salieri crime family during Prohibition. A landmark of the genre, it pairs a gripping, cinemat…
+    (tags)
+      > crime
+      > story-rich
+      > open-world
+      > action
+      > mafia
+  > (item)
     (id) log/game/mafia-2
     (type) log
     (title) Mafia II
@@ -6399,6 +6413,34 @@
       > open-world
       > action
       > mafia
+  > (item)
+    (id) log/game/mafia-3
+    (type) log
+    (title) Mafia III
+    (path) /logs/game/mafia-3
+    (date) 2026-01-21
+    (category) game
+    (description) Mafia III follows Lincoln Clay, a Vietnam veteran who returns to 1968 New Bordeaux and wages war on the Italian mob after his surrogate family is murdered. Framed as a documentary…
+    (tags)
+      > crime
+      > story-rich
+      > open-world
+      > action
+      > mafia
+  > (item)
+    (id) log/game/mafia-the-old-country
+    (type) log
+    (title) Mafia: The Old Country
+    (path) /logs/game/mafia-the-old-country
+    (date) 2026-01-21
+    (category) game
+    (description) Mafia: The Old Country takes the series back to its roots in early 1900s Sicily, following Enzo Favara's journey from the sulfur mines to the heart of the Torrisi family. A focuse…
+    (tags)
+      > crime
+      > story-rich
+      > action
+      > mafia
+      > history
   > (item)
     (id) log/game/mirrors-edge-catalyst
     (type) log

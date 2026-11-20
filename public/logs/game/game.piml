@@ -333,6 +333,54 @@
   > (item)
     (category) Game
     (date) 2026-01-21
+    (link) https://store.steampowered.com/app/1941540/Mafia_The_Old_Country/
+    (platform) PC, PS5, Xbox Series X|S
+    (rating) 5
+    (slug) mafia-the-old-country
+    (tags)
+      > crime
+      > story-rich
+      > action
+      > mafia
+      > history
+    (title) Mafia: The Old Country
+    (image) /images/discovery/covers/game/mafia-the-old-country.webp
+    (imageSource)
+      (provider) Steam store artwork
+      (page) https://store.steampowered.com/app/1941540/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1941540/3c2e4dee10f72e061ed382064be68b9648902534/library_600x900_2x.jpg?t=1788898865
+      (title) Mafia: The Old Country
+      (width) 600
+      (height) 900
+    (description) Mafia: The Old Country takes the series back to its roots in early 1900s Sicily, following Enzo Favara's journey from the sulfur mines to the heart of the Torrisi family. A focused, linear and lavishly detailed crime drama about honor, family and the birth of the mob, told with the cinematic care the series is known for.
+
+  > (item)
+    (category) Game
+    (date) 2026-01-21
+    (link) https://store.steampowered.com/app/1030840/Mafia_Definitive_Edition/
+    (platform) PC, PS2, Xbox, PS4, Xbox One
+    (rating) 5
+    (slug) mafia
+    (tags)
+      > crime
+      > story-rich
+      > open-world
+      > action
+      > mafia
+    (title) Mafia
+    (image) /images/discovery/covers/game/mafia.webp
+    (imageSource)
+      (provider) Original box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:MafiaUSCov.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/b/ba/MafiaUSCov.jpg
+      (title) Mafia
+      (width) 258
+      (height) 387
+    (description) Mafia follows Tommy Angelo, a cab driver in 1930s Lost Heaven who is pulled into the Salieri crime family during Prohibition. A landmark of the genre, it pairs a gripping, cinematic gangster story with a meticulously recreated era of tommy guns, fedoras and rattling sedans, and a finale that still lands.
+
+  > (item)
+    (category) Game
+    (date) 2026-01-21
     (link) https://store.steampowered.com/app/50130/Mafia_II/
     (platform) PC, PS3, Xbox 360, PS4, Xbox One
     (rating) 5
@@ -353,6 +401,30 @@
       (width) 300
       (height) 450
     (description) Mafia II is a beautifully crafted story of Vito Scaletta's rise within the ranks of the Mafia. Set in the fictional Empire Bay, it delivers a rich cinematic experience, memorable characters, and a hauntingly atmospheric 1940s and 50s setting. Mr. Salieri sends his regards.
+
+  > (item)
+    (category) Game
+    (date) 2026-01-21
+    (link) https://store.steampowered.com/app/360430/Mafia_III_Definitive_Edition/
+    (platform) PC, PS4, Xbox One
+    (rating) 5
+    (slug) mafia-3
+    (tags)
+      > crime
+      > story-rich
+      > open-world
+      > action
+      > mafia
+    (title) Mafia III
+    (image) /images/discovery/covers/game/mafia-3.webp
+    (imageSource)
+      (provider) Original box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:Mafia_III_cover_art.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/9/9f/Mafia_III_cover_art.jpg
+      (title) Mafia III
+      (width) 258
+      (height) 387
+    (description) Mafia III follows Lincoln Clay, a Vietnam veteran who returns to 1968 New Bordeaux and wages war on the Italian mob after his surrogate family is murdered. Framed as a documentary, it is a raw revenge story set against the racial tensions of the Deep South, backed by one of the best licensed soundtracks in gaming.
 
   > (item)
     (category) Game
