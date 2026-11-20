@@ -5,8 +5,13 @@
   > (item)
     (slug) action
     (label) Action
-    (count) 44
-    (logs) 44
+    (count) 49
+    (logs) 49
+  > (item)
+    (slug) comedy
+    (label) Comedy
+    (count) 34
+    (logs) 34
   > (item)
     (slug) philosophy
     (label) Philosophy
@@ -15,21 +20,16 @@
     (logs) 10
     (description) Essays, thinkers and the books, shows and games that made me think.
   > (item)
-    (slug) comedy
-    (label) Comedy
+    (slug) crime
+    (label) Crime
     (count) 31
-    (logs) 31
+    (posts) 1
+    (logs) 30
   > (item)
     (slug) drama
     (label) Drama
     (count) 31
     (logs) 31
-  > (item)
-    (slug) crime
-    (label) Crime
-    (count) 29
-    (posts) 1
-    (logs) 28
   > (item)
     (slug) go
     (label) Go
@@ -44,16 +44,16 @@
     (logs) 13
     (projects) 5
   > (item)
+    (slug) history
+    (label) History
+    (count) 22
+    (posts) 7
+    (logs) 15
+  > (item)
     (slug) dev
     (label) Dev
     (count) 21
     (posts) 21
-  > (item)
-    (slug) history
-    (label) History
-    (count) 21
-    (posts) 7
-    (logs) 14
   > (item)
     (slug) react
     (label) React
@@ -71,6 +71,11 @@
     (count) 19
     (projects) 19
   > (item)
+    (slug) science-fiction
+    (label) Science fiction
+    (count) 19
+    (logs) 19
+  > (item)
     (slug) ai
     (label) AI
     (count) 17
@@ -78,10 +83,10 @@
     (logs) 4
     (description) Artificial intelligence: models, agents, and what they mean for the people using them.
   > (item)
-    (slug) science-fiction
-    (label) Science fiction
-    (count) 17
-    (logs) 17
+    (slug) horror
+    (label) Horror
+    (count) 16
+    (logs) 16
   > (item)
     (slug) productivity
     (label) Productivity
@@ -89,6 +94,11 @@
     (posts) 4
     (logs) 4
     (projects) 8
+  > (item)
+    (slug) story-rich
+    (label) Story rich
+    (count) 16
+    (logs) 16
   > (item)
     (slug) developer-tools
     (label) Developer tools
@@ -103,6 +113,11 @@
     (posts) 13
     (projects) 1
   > (item)
+    (slug) open-world
+    (label) Open world
+    (count) 14
+    (logs) 14
+  > (item)
     (slug) rant
     (label) Rant
     (count) 14
@@ -113,8 +128,8 @@
     (count) 13
     (logs) 13
   > (item)
-    (slug) horror
-    (label) Horror
+    (slug) mystery
+    (label) Mystery
     (count) 13
     (logs) 13
   > (item)
@@ -134,8 +149,8 @@
     (count) 12
     (projects) 12
   > (item)
-    (slug) mystery
-    (label) Mystery
+    (slug) indie
+    (label) Indie
     (count) 12
     (logs) 12
   > (item)
@@ -169,17 +184,22 @@
     (logs) 5
     (projects) 4
   > (item)
+    (slug) fantasy
+    (label) Fantasy
+    (count) 11
+    (logs) 11
+  > (item)
+    (slug) first-person-shooter
+    (label) First-person shooter
+    (count) 11
+    (logs) 11
+  > (item)
     (slug) frontend
     (label) Frontend
     (count) 11
     (posts) 8
     (logs) 2
     (projects) 1
-  > (item)
-    (slug) indie
-    (label) Indie
-    (count) 11
-    (logs) 11
   > (item)
     (slug) llm
     (label) LLM
@@ -193,8 +213,27 @@
     (posts) 10
     (logs) 1
   > (item)
-    (slug) open-world
-    (label) Open world
+    (slug) psychological
+    (label) Psychological
+    (count) 11
+    (posts) 1
+    (logs) 10
+  > (item)
+    (slug) rpg
+    (label) RPG
+    (count) 11
+    (posts) 1
+    (logs) 9
+    (projects) 1
+  > (item)
+    (slug) strategy
+    (label) Strategy
+    (count) 11
+    (logs) 10
+    (projects) 1
+  > (item)
+    (slug) superhero
+    (label) Superhero
     (count) 11
     (logs) 11
   > (item)
@@ -209,16 +248,6 @@
     (count) 10
     (posts) 7
     (logs) 3
-  > (item)
-    (slug) story-rich
-    (label) Story rich
-    (count) 10
-    (logs) 10
-  > (item)
-    (slug) superhero
-    (label) Superhero
-    (count) 10
-    (logs) 10
   > (item)
     (slug) tools
     (label) Tools
@@ -236,6 +265,11 @@
     (count) 9
     (projects) 9
   > (item)
+    (slug) dc-comics
+    (label) Dc comics
+    (count) 9
+    (logs) 9
+  > (item)
     (slug) hip-hop
     (label) Hip-hop
     (count) 9
@@ -246,18 +280,11 @@
     (count) 9
     (logs) 9
   > (item)
-    (slug) psychological
-    (label) Psychological
+    (slug) pixel-art
+    (label) Pixel art
     (count) 9
     (posts) 1
     (logs) 8
-  > (item)
-    (slug) rpg
-    (label) RPG
-    (count) 9
-    (posts) 1
-    (logs) 7
-    (projects) 1
   > (item)
     (slug) soundtrack
     (label) Soundtrack
@@ -265,11 +292,10 @@
     (posts) 1
     (logs) 8
   > (item)
-    (slug) strategy
-    (label) Strategy
+    (slug) survival
+    (label) Survival
     (count) 9
-    (logs) 8
-    (projects) 1
+    (logs) 9
   > (item)
     (slug) video-game-music
     (label) Video game music
@@ -282,18 +308,8 @@
     (posts) 5
     (projects) 3
   > (item)
-    (slug) dc-comics
-    (label) Dc comics
-    (count) 8
-    (logs) 8
-  > (item)
     (slug) electronic
     (label) Electronic
-    (count) 8
-    (logs) 8
-  > (item)
-    (slug) fantasy
-    (label) Fantasy
     (count) 8
     (logs) 8
   > (item)
@@ -304,8 +320,20 @@
     (logs) 4
     (projects) 3
   > (item)
-    (slug) survival
-    (label) Survival
+    (slug) music
+    (label) Music
+    (count) 8
+    (posts) 3
+    (logs) 2
+    (projects) 3
+  > (item)
+    (slug) noir
+    (label) Noir
+    (count) 8
+    (logs) 8
+  > (item)
+    (slug) romance
+    (label) Romance
     (count) 8
     (logs) 8
   > (item)
@@ -313,6 +341,12 @@
     (label) Turkish
     (count) 8
     (posts) 2
+    (logs) 6
+  > (item)
+    (slug) adventure
+    (label) Adventure
+    (count) 7
+    (posts) 1
     (logs) 6
   > (item)
     (slug) art
@@ -338,31 +372,13 @@
     (posts) 6
     (logs) 1
   > (item)
-    (slug) music
-    (label) Music
-    (count) 7
-    (posts) 3
-    (logs) 1
-    (projects) 3
-  > (item)
-    (slug) noir
-    (label) Noir
-    (count) 7
-    (logs) 7
-  > (item)
-    (slug) pixel-art
-    (label) Pixel art
-    (count) 7
-    (posts) 1
-    (logs) 6
-  > (item)
     (slug) post-apocalyptic
     (label) Post apocalyptic
     (count) 7
     (logs) 7
   > (item)
-    (slug) romance
-    (label) Romance
+    (slug) real-time-strategy
+    (label) Real-time strategy
     (count) 7
     (logs) 7
   > (item)
@@ -373,6 +389,11 @@
   > (item)
     (slug) space
     (label) Space
+    (count) 7
+    (logs) 7
+  > (item)
+    (slug) stealth
+    (label) Stealth
     (count) 7
     (logs) 7
   > (item)
@@ -441,11 +462,10 @@
     (count) 6
     (logs) 6
   > (item)
-    (slug) adventure
-    (label) Adventure
+    (slug) alternate-history
+    (label) Alternate history
     (count) 5
-    (posts) 1
-    (logs) 4
+    (logs) 5
   > (item)
     (slug) automation
     (label) Automation
@@ -481,11 +501,6 @@
     (posts) 2
     (logs) 3
   > (item)
-    (slug) first-person-shooter
-    (label) First-person shooter
-    (count) 5
-    (logs) 5
-  > (item)
     (slug) fun
     (label) Fun
     (count) 5
@@ -497,32 +512,43 @@
     (posts) 3
     (logs) 2
   > (item)
+    (slug) multiplayer
+    (label) Multiplayer
+    (count) 5
+    (logs) 5
+  > (item)
     (slug) parser
     (label) Parser
     (count) 5
     (posts) 1
     (projects) 4
   > (item)
-    (slug) real-time-strategy
-    (label) Real-time strategy
-    (count) 5
-    (logs) 5
-  > (item)
     (slug) resident-evil
     (label) Resident evil
     (count) 5
     (logs) 5
+  > (item)
+    (slug) retro
+    (label) Retro
+    (count) 5
+    (logs) 5
+  > (item)
+    (slug) rock
+    (label) Rock
+    (count) 5
+    (logs) 5
+  > (item)
+    (slug) roguelike
+    (label) Roguelike
+    (count) 5
+    (logs) 4
+    (projects) 1
   > (item)
     (slug) serialization
     (label) Serialization
     (count) 5
     (posts) 2
     (projects) 3
-  > (item)
-    (slug) stealth
-    (label) Stealth
-    (count) 5
-    (logs) 5
   > (item)
     (slug) writing
     (label) Writing
@@ -535,8 +561,8 @@
     (count) 4
     (logs) 4
   > (item)
-    (slug) alternate-history
-    (label) Alternate history
+    (slug) batman
+    (label) Batman
     (count) 4
     (logs) 4
   > (item)
@@ -549,6 +575,11 @@
     (label) Culture
     (count) 4
     (posts) 4
+  > (item)
+    (slug) dystopia
+    (label) Dystopia
+    (count) 4
+    (logs) 4
   > (item)
     (slug) eli5
     (label) Eli5
@@ -581,6 +612,11 @@
     (label) Interview
     (count) 4
     (posts) 4
+  > (item)
+    (slug) japanese
+    (label) Japanese
+    (count) 4
+    (logs) 4
   > (item)
     (slug) john-wick
     (label) John wick
@@ -628,17 +664,6 @@
     (label) Revenge
     (count) 4
     (logs) 4
-  > (item)
-    (slug) rock
-    (label) Rock
-    (count) 4
-    (logs) 4
-  > (item)
-    (slug) roguelike
-    (label) Roguelike
-    (count) 4
-    (logs) 3
-    (projects) 1
   > (item)
     (slug) science
     (label) Science
@@ -691,11 +716,6 @@
     (logs) 1
     (projects) 2
   > (item)
-    (slug) batman
-    (label) Batman
-    (count) 3
-    (logs) 3
-  > (item)
     (slug) browser-extension
     (label) Browser extension
     (count) 3
@@ -722,11 +742,6 @@
     (label) Devops
     (count) 3
     (posts) 3
-  > (item)
-    (slug) dystopia
-    (label) Dystopia
-    (count) 3
-    (logs) 3
   > (item)
     (slug) editor
     (label) Editor
@@ -770,11 +785,6 @@
     (count) 3
     (logs) 3
   > (item)
-    (slug) japanese
-    (label) Japanese
-    (count) 3
-    (logs) 3
-  > (item)
     (slug) kierkegaard
     (label) Kierkegaard
     (count) 3
@@ -807,6 +817,11 @@
     (count) 3
     (projects) 3
   > (item)
+    (slug) medieval-history
+    (label) Medieval history
+    (count) 3
+    (logs) 3
+  > (item)
     (slug) npm
     (label) Npm
     (count) 3
@@ -818,6 +833,11 @@
     (count) 3
     (posts) 3
   > (item)
+    (slug) parkour
+    (label) Parkour
+    (count) 3
+    (logs) 3
+  > (item)
     (slug) parody
     (label) Parody
     (count) 3
@@ -828,6 +848,11 @@
     (count) 3
     (posts) 2
     (logs) 1
+  > (item)
+    (slug) puzzle
+    (label) Puzzle
+    (count) 3
+    (logs) 3
   > (item)
     (slug) recipe
     (label) Recipe
@@ -866,6 +891,11 @@
     (count) 3
     (posts) 3
   > (item)
+    (slug) third-person-shooter
+    (label) Third person shooter
+    (count) 3
+    (logs) 3
+  > (item)
     (slug) threejs
     (label) Three.js
     (count) 3
@@ -876,6 +906,11 @@
     (label) Tui
     (count) 3
     (projects) 3
+  > (item)
+    (slug) turn-based
+    (label) Turn based
+    (count) 3
+    (logs) 3
   > (item)
     (slug) webextension
     (label) Webextension
@@ -907,6 +942,11 @@
     (label) Ai coding
     (count) 2
     (posts) 2
+  > (item)
+    (slug) aliens
+    (label) Aliens
+    (count) 2
+    (logs) 2
   > (item)
     (slug) backend
     (label) Backend
@@ -1149,11 +1189,6 @@
     (count) 2
     (logs) 2
   > (item)
-    (slug) parkour
-    (label) Parkour
-    (count) 2
-    (logs) 2
-  > (item)
     (slug) personal-website
     (label) Personal website
     (count) 2
@@ -1206,11 +1241,6 @@
     (count) 2
     (posts) 2
   > (item)
-    (slug) retro
-    (label) Retro
-    (count) 2
-    (logs) 2
-  > (item)
     (slug) sdl2
     (label) Sdl2
     (count) 2
@@ -1257,11 +1287,6 @@
     (posts) 1
     (logs) 1
   > (item)
-    (slug) third-person-shooter
-    (label) Third person shooter
-    (count) 2
-    (logs) 2
-  > (item)
     (slug) time-travel
     (label) Time travel
     (count) 2
@@ -1283,11 +1308,6 @@
     (count) 2
     (posts) 1
     (logs) 1
-  > (item)
-    (slug) turn-based
-    (label) Turn based
-    (count) 2
-    (logs) 2
   > (item)
     (slug) update
     (label) Update
@@ -1379,11 +1399,6 @@
     (label) Al ghazali
     (count) 1
     (posts) 1
-  > (item)
-    (slug) aliens
-    (label) Aliens
-    (count) 1
-    (logs) 1
   > (item)
     (slug) analysis
     (label) Analysis
@@ -2460,11 +2475,6 @@
     (count) 1
     (projects) 1
   > (item)
-    (slug) medieval-history
-    (label) Medieval history
-    (count) 1
-    (logs) 1
-  > (item)
     (slug) memory-management
     (label) Memory management
     (count) 1
@@ -2562,11 +2572,6 @@
   > (item)
     (slug) muhammad-ali
     (label) Muhammad ali
-    (count) 1
-    (logs) 1
-  > (item)
-    (slug) multiplayer
-    (label) Multiplayer
     (count) 1
     (logs) 1
   > (item)
@@ -2859,11 +2864,6 @@
     (label) Puppeteer
     (count) 1
     (posts) 1
-  > (item)
-    (slug) puzzle
-    (label) Puzzle
-    (count) 1
-    (logs) 1
   > (item)
     (slug) puzzles
     (label) Puzzles
@@ -3628,6 +3628,254 @@
     (alias) web-development
     (tag) webdev
 (items)
+  > (item)
+    (id) log/game/a-plague-tale-innocence
+    (type) log
+    (title) A Plague Tale: Innocence
+    (path) /logs/game/a-plague-tale-innocence
+    (date) 2026-11-20
+    (category) game
+    (description) A Plague Tale: Innocence follows Amicia de Rune and her little brother Hugo as they flee the Inquisition across plague-stricken 14th-century France. A tense, linear stealth advent…
+    (tags)
+      > adventure
+      > stealth
+      > story-rich
+      > medieval-history
+  > (item)
+    (id) log/game/alien-isolation
+    (type) log
+    (title) Alien: Isolation
+    (path) /logs/game/alien-isolation
+    (date) 2026-11-20
+    (category) game
+    (description) Alien: Isolation puts Amanda Ripley aboard the decaying Sevastopol station fifteen years after the events of Alien, hunted by a single, unkillable Xenomorph. A slow, terrifying su…
+    (tags)
+      > horror
+      > survival
+      > stealth
+      > aliens
+  > (item)
+    (id) log/game/batman-arkham-origins
+    (type) log
+    (title) Batman: Arkham Origins
+    (path) /logs/game/batman-arkham-origins
+    (date) 2026-11-20
+    (category) game
+    (description) Batman: Arkham Origins is a prequel to the Arkham series set on Christmas Eve in a snowbound Gotham, where a young, raw Batman faces eight assassins hired by Black Mask and his fi…
+    (tags)
+      > action
+      > superhero
+      > batman
+      > dc-comics
+      > open-world
+  > (item)
+    (id) log/game/bioshock-infinite
+    (type) log
+    (title) BioShock Infinite
+    (path) /logs/game/bioshock-infinite
+    (date) 2026-11-20
+    (category) game
+    (description) BioShock Infinite sends Booker DeWitt to the floating city of Columbia in 1912 to rescue a mysterious young woman, Elizabeth. A shooter of skylines and vigors that unfolds into a…
+    (tags)
+      > first-person-shooter
+      > story-rich
+      > alternate-history
+      > dystopia
+  > (item)
+    (id) log/game/borderlands-3
+    (type) log
+    (title) Borderlands 3
+    (path) /logs/game/borderlands-3
+    (date) 2026-11-20
+    (category) game
+    (description) Borderlands 3 is Gearbox's looter shooter sequel, sending four new Vault Hunters across Pandora and beyond to stop the Calypso Twins. Billions of guns, chaotic co-op and the serie…
+    (tags)
+      > first-person-shooter
+      > rpg
+      > multiplayer
+      > comedy
+      > science-fiction
+  > (item)
+    (id) log/game/brutal-legend
+    (type) log
+    (title) Brütal Legend
+    (path) /logs/game/brutal-legend
+    (date) 2026-11-20
+    (category) game
+    (description) Brütal Legend stars Jack Black as Eddie Riggs, a roadie transported to a world inspired by heavy metal album covers. A Double Fine love letter to metal that mixes hack-and-slash a…
+    (tags)
+      > action
+      > comedy
+      > music
+      > rock
+      > real-time-strategy
+  > (item)
+    (id) log/game/catherine-classic
+    (type) log
+    (title) Catherine Classic
+    (path) /logs/game/catherine-classic
+    (date) 2026-11-20
+    (category) game
+    (description) Catherine is Atlus's psychological horror puzzle game about Vincent Brooks, a man torn between his longtime girlfriend Katherine and the seductive Catherine. By night he climbs co…
+    (tags)
+      > puzzle
+      > psychological
+      > japanese
+      > romance
+      > story-rich
+  > (item)
+    (id) log/game/chivalry-medieval-warfare
+    (type) log
+    (title) Chivalry: Medieval Warfare
+    (path) /logs/game/chivalry-medieval-warfare
+    (date) 2026-11-20
+    (category) game
+    (description) Chivalry: Medieval Warfare is a first-person multiplayer slasher of large-scale medieval battles, where knights, archers and men-at-arms clash with swords, maces and catapults in…
+    (tags)
+      > multiplayer
+      > action
+      > medieval-history
+  > (item)
+    (id) log/game/dungeon-of-the-endless
+    (type) log
+    (title) Dungeon of the ENDLESS
+    (path) /logs/game/dungeon-of-the-endless
+    (date) 2026-11-20
+    (category) game
+    (description) Dungeon of the ENDLESS is a roguelike dungeon defender from Amplitude Studios. Crash-landed prisoners haul a power crystal up through the floors of an ancient alien ship, opening…
+    (tags)
+      > roguelike
+      > strategy
+      > pixel-art
+      > science-fiction
+  > (item)
+    (id) log/game/fear
+    (type) log
+    (title) F.E.A.R.
+    (path) /logs/game/fear
+    (date) 2026-11-20
+    (category) game
+    (description) F.E.A.R. (First Encounter Assault Recon) follows the Point Man of a paranormal special forces unit hunting a rogue psychic commander, while a little girl named Alma haunts the cor…
+    (tags)
+      > first-person-shooter
+      > horror
+      > psychological
+  > (item)
+    (id) log/game/la-noire
+    (type) log
+    (title) L.A. Noire
+    (path) /logs/game/la-noire
+    (date) 2026-11-20
+    (category) game
+    (description) L.A. Noire puts players in the shoes of Cole Phelps, a war hero turned LAPD detective rising through the ranks in 1947 Los Angeles. Its groundbreaking facial capture turns every i…
+    (tags)
+      > crime
+      > noir
+      > mystery
+      > story-rich
+      > open-world
+  > (item)
+    (id) log/game/project-warlock
+    (type) log
+    (title) Project Warlock
+    (path) /logs/game/project-warlock
+    (date) 2026-11-20
+    (category) game
+    (description) Project Warlock is a retro first-person shooter inspired by Wolfenstein 3D, Doom and Heretic. A warlock blasts through medieval, arctic, Egyptian and industrial worlds with an ars…
+    (tags)
+      > first-person-shooter
+      > retro
+      > indie
+      > fantasy
+  > (item)
+    (id) log/game/quake-live
+    (type) log
+    (title) Quake Live
+    (path) /logs/game/quake-live
+    (date) 2026-11-20
+    (category) game
+    (description) Quake Live is id Software's standalone, free-standing take on Quake III Arena: pure, lightning-fast arena deathmatch with rocket jumps, rail guns and item timing, refined for comp…
+    (tags)
+      > first-person-shooter
+      > multiplayer
+      > retro
+  > (item)
+    (id) log/game/songs-of-conquest
+    (type) log
+    (title) Songs of Conquest
+    (path) /logs/game/songs-of-conquest
+    (date) 2026-11-20
+    (category) game
+    (description) Songs of Conquest is a turn-based strategy adventure inspired by Heroes of Might and Magic III. Powerful Wielders lead armies across beautiful pixel-art maps, building towns, gath…
+    (tags)
+      > strategy
+      > turn-based
+      > fantasy
+      > pixel-art
+  > (item)
+    (id) log/game/spellforce-3-soul-harvest
+    (type) log
+    (title) SpellForce 3: Soul Harvest
+    (path) /logs/game/spellforce-3-soul-harvest
+    (date) 2026-11-20
+    (category) game
+    (description) SpellForce 3: Soul Harvest is a standalone expansion to SpellForce 3 that blends real-time strategy with party-based RPG adventure. Set during a deadly famine in Eo, it introduces…
+    (tags)
+      > real-time-strategy
+      > rpg
+      > fantasy
+  > (item)
+    (id) log/game/streets-of-rage-4
+    (type) log
+    (title) Streets of Rage 4
+    (path) /logs/game/streets-of-rage-4
+    (date) 2026-11-20
+    (category) game
+    (description) Streets of Rage 4 revives SEGA's classic beat 'em up with gorgeous hand-drawn art and a soundtrack from an all-star roster of composers including Yuzo Koshiro and Motohiro Kawashi…
+    (tags)
+      > action
+      > retro
+      > multiplayer
+  > (item)
+    (id) log/game/sunset-overdrive
+    (type) log
+    (title) Sunset Overdrive
+    (path) /logs/game/sunset-overdrive
+    (date) 2026-11-20
+    (category) game
+    (description) Sunset Overdrive is Insomniac's punk-rock, open-world shooter set in Sunset City after an energy drink turns the population into mutants. Grind rails, bounce off cars and wall-run…
+    (tags)
+      > action
+      > open-world
+      > third-person-shooter
+      > comedy
+      > parkour
+  > (item)
+    (id) log/game/the-darkness-ii
+    (type) log
+    (title) The Darkness II
+    (path) /logs/game/the-darkness-ii
+    (date) 2026-11-20
+    (category) game
+    (description) The Darkness II continues the story of Jackie Estacado, now head of a New York crime family, who wields an ancient demonic power. A gory 'quad-wielding' shooter where guns and dem…
+    (tags)
+      > first-person-shooter
+      > horror
+      > crime
+      > story-rich
+  > (item)
+    (id) log/game/valiant-hearts-the-great-war
+    (type) log
+    (title) Valiant Hearts: The Great War
+    (path) /logs/game/valiant-hearts-the-great-war
+    (date) 2026-11-20
+    (category) game
+    (description) Valiant Hearts: The Great War is a hand-drawn puzzle adventure telling the intertwined stories of four strangers and a loyal dog during World War I. Inspired by letters written du…
+    (tags)
+      > adventure
+      > puzzle
+      > history
+      > story-rich
   > (item)
     (id) log/websites/dapan-es
     (type) log

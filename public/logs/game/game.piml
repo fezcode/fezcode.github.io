@@ -1,6 +1,463 @@
 (logs)
   > (item)
     (category) Game
+    (developer) Amplitude Studios
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/249050/
+    (platform) PC, PS4, Xbox One, Switch
+    (rating) 5
+    (slug) dungeon-of-the-endless
+    (tags)
+      > roguelike
+      > strategy
+      > pixel-art
+      > science-fiction
+    (title) Dungeon of the ENDLESS
+    (image) /images/discovery/covers/game/dungeon-of-the-endless.webp
+    (imageSource)
+      (provider) Steam store artwork
+      (page) https://store.steampowered.com/app/249050/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/249050/library_600x900_2x.jpg?t=1789465530
+      (title) Dungeon of the ENDLESS
+      (width) 600
+      (height) 900
+    (description) Dungeon of the ENDLESS is a roguelike dungeon defender from Amplitude Studios. Crash-landed prisoners haul a power crystal up through the floors of an ancient alien ship, opening doors, powering rooms and building defenses against the waves of monsters that pour out of the dark.
+
+  > (item)
+    (category) Game
+    (developer) id Software
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/282440/
+    (platform) PC
+    (rating) 5
+    (slug) quake-live
+    (tags)
+      > first-person-shooter
+      > multiplayer
+      > retro
+    (title) Quake Live
+    (image) /images/discovery/covers/game/quake-live.webp
+    (imageSource)
+      (provider) Steam store artwork
+      (page) https://store.steampowered.com/app/282440/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/282440/library_600x900_2x.jpg?t=1742481724
+      (title) Quake Live
+      (width) 600
+      (height) 900
+    (description) Quake Live is id Software's standalone, free-standing take on Quake III Arena: pure, lightning-fast arena deathmatch with rocket jumps, rail guns and item timing, refined for competitive online play.
+
+  > (item)
+    (category) Game
+    (developer) Asobo Studio
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/752590/
+    (platform) PC, PS4, Xbox One, PS5, Xbox Series X|S, Switch
+    (rating) 5
+    (slug) a-plague-tale-innocence
+    (tags)
+      > adventure
+      > stealth
+      > story-rich
+      > medieval-history
+    (title) A Plague Tale: Innocence
+    (image) /images/discovery/covers/game/a-plague-tale-innocence.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:A_Plague_Tale_cover_art.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/1/1d/A_Plague_Tale_cover_art.jpg
+      (title) A Plague Tale: Innocence
+      (width) 288
+      (height) 344
+    (description) A Plague Tale: Innocence follows Amicia de Rune and her little brother Hugo as they flee the Inquisition across plague-stricken 14th-century France. A tense, linear stealth adventure where light is the only protection against swarms of rats.
+
+  > (item)
+    (category) Game
+    (developer) Creative Assembly
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/214490/
+    (platform) PC, PS3, Xbox 360, PS4, Xbox One, Switch
+    (rating) 5
+    (slug) alien-isolation
+    (tags)
+      > horror
+      > survival
+      > stealth
+      > aliens
+    (title) Alien: Isolation
+    (image) /images/discovery/covers/game/alien-isolation.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:Alien_Isolation.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/6/6e/Alien_Isolation.jpg
+      (title) Alien: Isolation
+      (width) 260
+      (height) 300
+    (description) Alien: Isolation puts Amanda Ripley aboard the decaying Sevastopol station fifteen years after the events of Alien, hunted by a single, unkillable Xenomorph. A slow, terrifying survival horror game that recreates the lo-fi future of the 1979 film in astonishing detail.
+
+  > (item)
+    (category) Game
+    (developer) WB Games Montréal
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/209000/
+    (platform) PC, PS3, Xbox 360, Wii U
+    (rating) 5
+    (slug) batman-arkham-origins
+    (tags)
+      > action
+      > superhero
+      > batman
+      > dc-comics
+      > open-world
+    (title) Batman: Arkham Origins
+    (image) /images/discovery/covers/game/batman-arkham-origins.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:Batman-Arkham-Origins-Box-Art.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/4/4d/Batman-Arkham-Origins-Box-Art.jpg
+      (title) Batman: Arkham Origins
+      (width) 281
+      (height) 355
+    (description) Batman: Arkham Origins is a prequel to the Arkham series set on Christmas Eve in a snowbound Gotham, where a young, raw Batman faces eight assassins hired by Black Mask and his first fateful meeting with the Joker.
+
+  > (item)
+    (category) Game
+    (developer) Irrational Games
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/8870/
+    (platform) PC, PS3, Xbox 360, PS4, Xbox One, Switch
+    (rating) 5
+    (slug) bioshock-infinite
+    (tags)
+      > first-person-shooter
+      > story-rich
+      > alternate-history
+      > dystopia
+    (title) BioShock Infinite
+    (image) /images/discovery/covers/game/bioshock-infinite.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:Official_cover_art_for_Bioshock_Infinite.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/a/a3/Official_cover_art_for_Bioshock_Infinite.jpg
+      (title) BioShock Infinite
+      (width) 249
+      (height) 353
+    (description) BioShock Infinite sends Booker DeWitt to the floating city of Columbia in 1912 to rescue a mysterious young woman, Elizabeth. A shooter of skylines and vigors that unfolds into a mind-bending story about choice, faith and the many worlds of a single decision.
+
+  > (item)
+    (category) Game
+    (developer) Gearbox Software
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/397540/
+    (platform) PC, PS4, Xbox One, PS5, Xbox Series X|S, Switch
+    (rating) 5
+    (slug) borderlands-3
+    (tags)
+      > first-person-shooter
+      > rpg
+      > multiplayer
+      > comedy
+      > science-fiction
+    (title) Borderlands 3
+    (image) /images/discovery/covers/game/borderlands-3.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:Borderlands_3_cover_art.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/2/21/Borderlands_3_cover_art.jpg
+      (title) Borderlands 3
+      (width) 271
+      (height) 368
+    (description) Borderlands 3 is Gearbox's looter shooter sequel, sending four new Vault Hunters across Pandora and beyond to stop the Calypso Twins. Billions of guns, chaotic co-op and the series' unmistakable irreverent humor.
+
+  > (item)
+    (category) Game
+    (developer) Double Fine Productions
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/225260/
+    (platform) PC, PS3, Xbox 360
+    (rating) 5
+    (slug) brutal-legend
+    (tags)
+      > action
+      > comedy
+      > music
+      > rock
+      > real-time-strategy
+    (title) Brütal Legend
+    (image) /images/discovery/covers/game/brutal-legend.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:BrutalLegendCover.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/8/83/BrutalLegendCover.jpg
+      (title) Brütal Legend
+      (width) 258
+      (height) 387
+    (description) Brütal Legend stars Jack Black as Eddie Riggs, a roadie transported to a world inspired by heavy metal album covers. A Double Fine love letter to metal that mixes hack-and-slash action, open-world driving and stage battles, with cameos from Ozzy Osbourne, Lemmy and Rob Halford.
+
+  > (item)
+    (category) Game
+    (developer) Atlus
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/893180/
+    (platform) PC, PS3, Xbox 360
+    (rating) 5
+    (slug) catherine-classic
+    (tags)
+      > puzzle
+      > psychological
+      > japanese
+      > romance
+      > story-rich
+    (title) Catherine Classic
+    (image) /images/discovery/covers/game/catherine-classic.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:Catherine_Cover_Art.png
+      (url) https://upload.wikimedia.org/wikipedia/en/2/20/Catherine_Cover_Art.png
+      (title) Catherine Classic
+      (width) 250
+      (height) 262
+    (description) Catherine is Atlus's psychological horror puzzle game about Vincent Brooks, a man torn between his longtime girlfriend Katherine and the seductive Catherine. By night he climbs collapsing block towers in his nightmares; by day he drinks at the Stray Sheep and lives with the consequences.
+
+  > (item)
+    (category) Game
+    (developer) Torn Banner Studios
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/219640/
+    (platform) PC, PS3, Xbox 360
+    (rating) 5
+    (slug) chivalry-medieval-warfare
+    (tags)
+      > multiplayer
+      > action
+      > medieval-history
+    (title) Chivalry: Medieval Warfare
+    (image) /images/discovery/covers/game/chivalry-medieval-warfare.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:Chivalry_Medieval_Warfare_cover_art.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/5/51/Chivalry_Medieval_Warfare_cover_art.jpg
+      (title) Chivalry: Medieval Warfare
+      (width) 258
+      (height) 387
+    (description) Chivalry: Medieval Warfare is a first-person multiplayer slasher of large-scale medieval battles, where knights, archers and men-at-arms clash with swords, maces and catapults in castle sieges and village raids.
+
+  > (item)
+    (category) Game
+    (developer) Monolith Productions
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/21090/
+    (platform) PC, PS3, Xbox 360
+    (rating) 5
+    (slug) fear
+    (tags)
+      > first-person-shooter
+      > horror
+      > psychological
+    (title) F.E.A.R.
+    (image) /images/discovery/covers/game/fear.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:FEAR_DVD_box_art.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/1/15/FEAR_DVD_box_art.jpg
+      (title) F.E.A.R.
+      (width) 258
+      (height) 361
+    (description) F.E.A.R. (First Encounter Assault Recon) follows the Point Man of a paranormal special forces unit hunting a rogue psychic commander, while a little girl named Alma haunts the corridors. A landmark blend of slow-motion gunplay, superb enemy AI and J-horror dread.
+
+  > (item)
+    (category) Game
+    (developer) Team Bondi
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/110800/
+    (platform) PC, PS3, Xbox 360, PS4, Xbox One, Switch
+    (rating) 5
+    (slug) la-noire
+    (tags)
+      > crime
+      > noir
+      > mystery
+      > story-rich
+      > open-world
+    (title) L.A. Noire
+    (image) /images/discovery/covers/game/la-noire.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:LA-Noire-Box-Art.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/3/3c/LA-Noire-Box-Art.jpg
+      (title) L.A. Noire
+      (width) 273
+      (height) 364
+    (description) L.A. Noire puts players in the shoes of Cole Phelps, a war hero turned LAPD detective rising through the ranks in 1947 Los Angeles. Its groundbreaking facial capture turns every interrogation into a test of reading the truth on a suspect's face.
+
+  > (item)
+    (category) Game
+    (developer) Buckshot Software
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/893680/
+    (platform) PC, PS4, Xbox One, Switch
+    (rating) 5
+    (slug) project-warlock
+    (tags)
+      > first-person-shooter
+      > retro
+      > indie
+      > fantasy
+    (title) Project Warlock
+    (image) /images/discovery/covers/game/project-warlock.webp
+    (imageSource)
+      (provider) Steam store artwork
+      (page) https://store.steampowered.com/app/893680/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/893680/c4e1a172e904edcd9cf467dd699ca40d8703e4e2/library_capsule_2x.jpg?t=1793296786
+      (title) Project Warlock
+      (width) 600
+      (height) 900
+    (description) Project Warlock is a retro first-person shooter inspired by Wolfenstein 3D, Doom and Heretic. A warlock blasts through medieval, arctic, Egyptian and industrial worlds with an arsenal of guns and spells, upgrading between episodes.
+
+  > (item)
+    (category) Game
+    (developer) Lavapotion
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/867210/
+    (platform) PC, PS5, Xbox Series X|S, Switch
+    (rating) 5
+    (slug) songs-of-conquest
+    (tags)
+      > strategy
+      > turn-based
+      > fantasy
+      > pixel-art
+    (title) Songs of Conquest
+    (image) /images/discovery/covers/game/songs-of-conquest.webp
+    (imageSource)
+      (provider) Steam store artwork
+      (page) https://store.steampowered.com/app/867210/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/867210/library_600x900_2x.jpg?t=1793993483
+      (title) Songs of Conquest
+      (width) 600
+      (height) 900
+    (description) Songs of Conquest is a turn-based strategy adventure inspired by Heroes of Might and Magic III. Powerful Wielders lead armies across beautiful pixel-art maps, building towns, gathering resources and fighting tactical battles.
+
+  > (item)
+    (category) Game
+    (developer) Grimlore Games
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/817540/
+    (platform) PC, PS4, Xbox One
+    (rating) 5
+    (slug) spellforce-3-soul-harvest
+    (tags)
+      > real-time-strategy
+      > rpg
+      > fantasy
+    (title) SpellForce 3: Soul Harvest
+    (image) /images/discovery/covers/game/spellforce-3-soul-harvest.webp
+    (imageSource)
+      (provider) Steam store artwork
+      (page) https://store.steampowered.com/app/817540/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/817540/library_600x900_2x.jpg?t=1727857389
+      (title) SpellForce 3: Soul Harvest
+      (width) 600
+      (height) 900
+    (description) SpellForce 3: Soul Harvest is a standalone expansion to SpellForce 3 that blends real-time strategy with party-based RPG adventure. Set during a deadly famine in Eo, it introduces the Dwarf faction and a new story of corruption and survival.
+
+  > (item)
+    (category) Game
+    (developer) Dotemu, Lizardcube, Guard Crush Games
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/985890/
+    (platform) PC, PS4, Xbox One, Switch
+    (rating) 5
+    (slug) streets-of-rage-4
+    (tags)
+      > action
+      > retro
+      > multiplayer
+    (title) Streets of Rage 4
+    (image) /images/discovery/covers/game/streets-of-rage-4.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:Streets_of_Rage_4.png
+      (url) https://upload.wikimedia.org/wikipedia/en/d/d2/Streets_of_Rage_4.png
+      (title) Streets of Rage 4
+      (width) 273
+      (height) 365
+    (description) Streets of Rage 4 revives SEGA's classic beat 'em up with gorgeous hand-drawn art and a soundtrack from an all-star roster of composers including Yuzo Koshiro and Motohiro Kawashima. Axel, Blaze and new allies clean up Wood Oak City from the Y twins.
+
+  > (item)
+    (category) Game
+    (developer) Insomniac Games
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/847370/
+    (platform) PC, Xbox One
+    (rating) 5
+    (slug) sunset-overdrive
+    (tags)
+      > action
+      > open-world
+      > third-person-shooter
+      > comedy
+      > parkour
+    (title) Sunset Overdrive
+    (image) /images/discovery/covers/game/sunset-overdrive.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:Sunset_Overdrive_cover.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/4/46/Sunset_Overdrive_cover.jpg
+      (title) Sunset Overdrive
+      (width) 273
+      (height) 365
+    (description) Sunset Overdrive is Insomniac's punk-rock, open-world shooter set in Sunset City after an energy drink turns the population into mutants. Grind rails, bounce off cars and wall-run through the city with an arsenal of absurd weapons.
+
+  > (item)
+    (category) Game
+    (developer) Digital Extremes
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/67370/
+    (platform) PC, PS3, Xbox 360
+    (rating) 5
+    (slug) the-darkness-ii
+    (tags)
+      > first-person-shooter
+      > horror
+      > crime
+      > story-rich
+    (title) The Darkness II
+    (image) /images/discovery/covers/game/the-darkness-ii.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:The_Darkness_II_cover.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/e/ed/The_Darkness_II_cover.jpg
+      (title) The Darkness II
+      (width) 283
+      (height) 350
+    (description) The Darkness II continues the story of Jackie Estacado, now head of a New York crime family, who wields an ancient demonic power. A gory 'quad-wielding' shooter where guns and demon arms slash, grab and devour enemies.
+
+  > (item)
+    (category) Game
+    (developer) Ubisoft Montpellier
+    (date) 2026-11-20
+    (link) https://store.steampowered.com/app/260230/
+    (platform) PC, PS3, Xbox 360, PS4, Xbox One, Switch
+    (rating) 5
+    (slug) valiant-hearts-the-great-war
+    (tags)
+      > adventure
+      > puzzle
+      > history
+      > story-rich
+    (title) Valiant Hearts: The Great War
+    (image) /images/discovery/covers/game/valiant-hearts-the-great-war.webp
+    (imageSource)
+      (provider) Official box art (Wikipedia)
+      (page) https://en.wikipedia.org/wiki/File:Valiant_Hearts_The_Great_War.jpg
+      (url) https://upload.wikimedia.org/wikipedia/en/e/ea/Valiant_Hearts_The_Great_War.jpg
+      (title) Valiant Hearts: The Great War
+      (width) 276
+      (height) 361
+    (description) Valiant Hearts: The Great War is a hand-drawn puzzle adventure telling the intertwined stories of four strangers and a loyal dog during World War I. Inspired by letters written during the war, it is a moving portrait of ordinary lives caught in the conflict.
+
+  > (item)
+    (category) Game
     (developer) MachineGames
     (date) 2026-11-15
     (link) https://store.steampowered.com/app/201810/
