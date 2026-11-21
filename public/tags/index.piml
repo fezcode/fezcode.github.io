@@ -61,6 +61,11 @@
     (posts) 19
     (projects) 2
   > (item)
+    (slug) science-fiction
+    (label) Science fiction
+    (count) 20
+    (logs) 20
+  > (item)
     (slug) thriller
     (label) Thriller
     (count) 20
@@ -70,11 +75,6 @@
     (label) Desktop app
     (count) 19
     (projects) 19
-  > (item)
-    (slug) science-fiction
-    (label) Science fiction
-    (count) 19
-    (logs) 19
   > (item)
     (slug) ai
     (label) AI
@@ -149,10 +149,22 @@
     (count) 12
     (projects) 12
   > (item)
+    (slug) first-person-shooter
+    (label) First-person shooter
+    (count) 12
+    (logs) 12
+  > (item)
     (slug) indie
     (label) Indie
     (count) 12
     (logs) 12
+  > (item)
+    (slug) rpg
+    (label) RPG
+    (count) 12
+    (posts) 1
+    (logs) 10
+    (projects) 1
   > (item)
     (slug) webdev
     (label) Web dev
@@ -189,11 +201,6 @@
     (count) 11
     (logs) 11
   > (item)
-    (slug) first-person-shooter
-    (label) First-person shooter
-    (count) 11
-    (logs) 11
-  > (item)
     (slug) frontend
     (label) Frontend
     (count) 11
@@ -218,13 +225,6 @@
     (count) 11
     (posts) 1
     (logs) 10
-  > (item)
-    (slug) rpg
-    (label) RPG
-    (count) 11
-    (posts) 1
-    (logs) 9
-    (projects) 1
   > (item)
     (slug) strategy
     (label) Strategy
@@ -337,6 +337,11 @@
     (count) 8
     (logs) 8
   > (item)
+    (slug) space
+    (label) Space
+    (count) 8
+    (logs) 8
+  > (item)
     (slug) turkish
     (label) Turkish
     (count) 8
@@ -384,11 +389,6 @@
   > (item)
     (slug) satire
     (label) Satire
-    (count) 7
-    (logs) 7
-  > (item)
-    (slug) space
-    (label) Space
     (count) 7
     (logs) 7
   > (item)
@@ -3628,6 +3628,19 @@
     (alias) web-development
     (tag) webdev
 (items)
+  > (item)
+    (id) log/game/the-outer-worlds-2
+    (type) log
+    (title) The Outer Worlds 2
+    (path) /logs/game/the-outer-worlds-2
+    (date) 2026-11-21
+    (category) game
+    (description) Obsidian Entertainment's sci-fi RPG sequel feels dated, lifeless, and frustrating to play: stiff movement, repetitive fetch quests, sluggish gunplay, unstable frame rates, and poi…
+    (tags)
+      > rpg
+      > science-fiction
+      > space
+      > first-person-shooter
   > (item)
     (id) log/game/a-plague-tale-innocence
     (type) log

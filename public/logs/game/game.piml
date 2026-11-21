@@ -1,6 +1,30 @@
 (logs)
   > (item)
     (category) Game
+    (developer) Obsidian Entertainment
+    (date) 2026-11-21
+    (link) https://store.steampowered.com/app/1449110/
+    (platform) PC, PS5, Xbox Series X|S
+    (rating) 2
+    (slug) the-outer-worlds-2
+    (tags)
+      > rpg
+      > science-fiction
+      > space
+      > first-person-shooter
+    (title) The Outer Worlds 2
+    (image) /images/discovery/covers/game/the-outer-worlds-2.webp
+    (imageSource)
+      (provider) Steam store artwork
+      (page) https://store.steampowered.com/app/1449110/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1449110/71710d0ac331340ac2b639d1221224c5c6944acb/library_600x900_2x.jpg?t=1794935549
+      (title) The Outer Worlds 2
+      (width) 600
+      (height) 900
+    (description) Obsidian Entertainment's sci-fi RPG sequel feels dated, lifeless, and frustrating to play: stiff movement, repetitive fetch quests, sluggish gunplay, unstable frame rates, and pointless perks. Coasting on Fallout: New Vegas goodwill no longer cuts it.
+
+  > (item)
+    (category) Game
     (developer) Amplitude Studios
     (date) 2026-11-20
     (link) https://store.steampowered.com/app/249050/
