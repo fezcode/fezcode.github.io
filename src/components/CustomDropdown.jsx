@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { CaretDown, Check } from '@phosphor-icons/react';
+import { CaretDownIcon, CheckIcon } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 
 const CustomDropdown = ({
@@ -9,7 +9,9 @@ const CustomDropdown = ({
   onChange,
   icon: Icon,
   label,
+  ariaLabel,
   className = '',
+  menuClassName = '',
   variant = 'default',
   fullWidth = false,
 }) => {
@@ -54,6 +56,7 @@ const CustomDropdown = ({
   const handleSelect = (optionValue) => {
     onChange(optionValue);
     setIsOpen(false);
+    dropdownRef.current?.focus();
   };
 
   const selectedOption = options.find((opt) => opt.value === value);
@@ -64,6 +67,13 @@ const CustomDropdown = ({
     return ReactDOM.createPortal(
       <motion.div
         ref={menuRef}
+        onKeyDown={(event) => {
+          if (event.key === 'Escape') {
+            event.preventDefault();
+            setIsOpen(false);
+            dropdownRef.current?.focus();
+          }
+        }}
         initial={{ opacity: 0, y: -10, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -76,7 +86,7 @@ const CustomDropdown = ({
               : isTerracotta
                 ? 'bg-[#F3ECE0] border border-[#1A161320] shadow-[0_20px_40px_-20px_rgba(26,22,19,0.25)]'
                 : 'bg-gray-800 border border-gray-700 rounded-md shadow-lg'
-        } z-[1000] origin-top-left max-h-80 overflow-y-auto`}
+        } z-[1000] origin-top-left max-h-80 overflow-y-auto ${menuClassName}`}
         style={{
           position: 'absolute',
           top: dropdownMenuPosition.top,
@@ -93,6 +103,7 @@ const CustomDropdown = ({
             return (
               <button
                 key={option.value}
+                aria-pressed={isSelected}
                 onClick={() => handleSelect(option.value)}
                 className={`flex items-center justify-between w-full px-4 py-2 text-left transition-colors ${
                   isBrutalist
@@ -131,7 +142,7 @@ const CustomDropdown = ({
               >
                 <span>{option.label}</span>
                 {isSelected && (
-                  <Check
+                  <CheckIcon
                     size={isBrutalist || isPaper || isTerracotta ? 12 : 16}
                     className={
                       isBrutalist
@@ -160,7 +171,16 @@ const CustomDropdown = ({
       <button
         type="button"
         ref={dropdownRef}
+        aria-label={ariaLabel}
+        aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
+        onKeyDown={(event) => {
+          if (event.key === 'Escape') setIsOpen(false);
+          if (event.key === 'ArrowDown' && isOpen) {
+            event.preventDefault();
+            menuRef.current?.querySelector('button')?.focus();
+          }
+        }}
         className={`flex items-center justify-between w-full gap-2 px-4 py-2 transition-all focus:outline-none ${
           isBrutalist
             ? 'bg-transparent border border-gray-800 rounded-sm text-xs font-mono uppercase tracking-widest text-gray-400 hover:border-gray-600 hover:text-white'
@@ -196,7 +216,7 @@ const CustomDropdown = ({
           )}
           <span>{selectedOption ? selectedOption.label : label}</span>
         </div>
-        <CaretDown
+        <CaretDownIcon
           size={isBrutalist || isPaper || isTerracotta ? 12 : 16}
           className={`ml-2 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''} ${
             isTerracotta ? 'text-[#9E4A2F]' : ''

@@ -3,6 +3,7 @@ const STATUS_COLORS = {
   'In Progress': 'orange',
   Completed: 'green',
   'On Hold': 'red',
+  "Won't Do": 'gray',
 };
 
 const PRIORITY_COLORS = {

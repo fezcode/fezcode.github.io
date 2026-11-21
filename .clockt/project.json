@@ -1,0 +1,20 @@
+{
+  "name": "fezcodex",
+  "tabs": [
+    {
+      "name": "Main",
+      "layout": {
+        "name": "FZCDX",
+        "profile": "dush",
+        "command": "claude --dangerously-skip-permissions --resume abd78ec7-28ff-4843-ba03-e7ffa6ef2f0b"
+      }
+    }
+  ],
+  "monitor": {
+    "strip": true,
+    "column": false,
+    "overview": false
+  },
+  "todos": "todos.md",
+  "instructions": "AGENTS.md"
+}

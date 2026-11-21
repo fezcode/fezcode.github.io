@@ -1,3 +1,4 @@
+import { getStatusLabel } from '../../pages/roadmap/roadmapData';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -7,6 +8,7 @@ import {
   ArrowsClockwiseIcon,
   CheckCircleIcon,
   PauseCircleIcon,
+  XCircleIcon,
   FireIcon,
   EqualsIcon,
   ArrowDownIcon,
@@ -25,6 +27,8 @@ const RoadmapCard = ({ app, index }) => {
         return <ArrowsClockwiseIcon weight="bold" className="animate-spin" />;
       case 'Completed':
         return <CheckCircleIcon weight="bold" />;
+      case "Won't Do":
+        return <XCircleIcon weight="bold" />;
       case 'On Hold':
         return <PauseCircleIcon weight="bold" />;
       default:
@@ -71,7 +75,7 @@ const RoadmapCard = ({ app, index }) => {
                 className={`px-2 py-0.5 inline-flex items-center gap-1.5 text-[9px] font-mono font-black uppercase tracking-widest border rounded-sm ${getStatusClasses(app.status || 'Planned')}`}
               >
                 {getStatusIcon(app.status || 'Planned')}
-                {app.status || 'Planned'}
+                {getStatusLabel(app.status)}
               </span>
               <span
                 className={`px-2 py-0.5 inline-flex items-center gap-1.5 text-[9px] font-mono font-black uppercase tracking-widest border rounded-sm ${getPriorityClasses(app.priority || 'Low')}`}

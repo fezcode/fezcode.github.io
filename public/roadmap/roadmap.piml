@@ -15,7 +15,7 @@
     (description) Integrate a cloud provider and add support for backend for Fezcodex.
     (category) Infrastructure
     (epic) Core Infrastructure
-    (status) On Hold
+    (status) Won't Do
     (priority) Medium
     (assignee) Fezcodex
     (created_at) 2025-11-29T10:00:00+03:00
@@ -38,7 +38,7 @@
     (title) Customizable Morse Code Translator
     (description) Allow users to customize Morse code speed, tone, and character mappings.
     (category) Converters
-    (status) On Hold
+    (status) Won't Do
     (priority) Low
     (assignee) Fezcodex
     (created_at) 2025-11-15T14:00:00+03:00
@@ -210,7 +210,7 @@
       use multiple tools at once—for example, taking notes while playing a game or translating text.
     (category) UI/UX
     (epic) OS Experience
-    (status) On Hold
+    (status) Won't Do
     (priority) Low
     (assignee) Fezcodex
     (created_at) 2025-12-21T18:00:00+03:00
@@ -225,7 +225,7 @@
       (e.g., 'Decrypting_Memory_Bank...', 'Spirit_Found_at_0x004'). It pulses when you click things.
     (category) Atmosphere
     (epic) OS Experience
-    (status) On Hold
+    (status) Won't Do
     (priority) High
     (assignee) Fezcodex
     (created_at) 2025-12-21T18:00:00+03:00
@@ -255,7 +255,7 @@
       in the HTML code for developers to find, leading to secret unlisted pages.
     (category) Mystery
     (epic) Mystery
-    (status) On Hold
+    (status) Won't Do
     (priority) Medium
     (assignee) Fezcodex
     (created_at) 2025-12-21T18:00:00+03:00
@@ -270,7 +270,7 @@
       The background becomes a visual echo of your actions.
     (category) Aesthetic
     (epic) OS Experience
-    (status) On Hold
+    (status) Won't Do
     (priority) Medium
     (assignee) Fezcodex
     (created_at) 2025-12-21T18:00:00+03:00
@@ -392,3 +392,486 @@
     (priority) High
     (assignee) Gemini
     (created_at) 2026-04-19T10:00:00+03:00
+
+  > (issues)
+    (id) FEZ-32
+    (title) Terracotta theme
+    (description) Add the Terracotta design system across site pages, navigation, settings, and shared components.
+    (category) UI/UX
+    (epic) Design Systems
+    (status) Completed
+    (created_at) 2026-04-22T23:31:03+03:00
+    (notes) Backfilled from commit eb084787f. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-33
+    (title) Workbench app controls
+    (description) Add light and dark Workbench styling, a shared color picker, and per-color randomization.
+    (category) UI/UX
+    (epic) App Design
+    (status) Completed
+    (created_at) 2026-04-23T03:52:42+03:00
+    (notes) Backfilled from commit 32bf1a9a6. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-34
+    (title) Fantasy Map atlas redesign
+    (description) Expand the fantasy map generator and present it as a risograph atlas.
+    (category) Apps
+    (epic) Creative Tools
+    (status) Completed
+    (created_at) 2026-05-02T13:38:27+03:00
+    (notes) Backfilled from commit fd641cd25. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-35
+    (title) Chladni Plate
+    (description) Add an interactive resonance visualizer.
+    (category) Apps
+    (epic) Creative Tools
+    (status) Completed
+    (created_at) 2026-05-02T13:39:07+03:00
+    (notes) Backfilled from commit 52309c242. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-36
+    (title) Pillow Book and Letter Press
+    (description) Add the Pillow Book and Letter Press applications.
+    (category) Apps
+    (epic) Creative Tools
+    (status) Completed
+    (created_at) 2026-05-03T22:22:03+03:00
+    (notes) Backfilled from commit ebfc5fab3. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-37
+    (title) Dark Souls banner renderer
+    (description) Add an authentic Dark Souls banner renderer and redesign its controls as a grimoire.
+    (category) Apps
+    (epic) Creative Tools
+    (status) Completed
+    (created_at) 2026-05-04T21:13:46+03:00
+    (notes) Backfilled from commit 0ffd87882. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-38
+    (title) Per-route social images
+    (description) Generate route-specific Open Graph images and inject sharing metadata during the build.
+    (category) Infrastructure
+    (epic) Publishing
+    (status) Completed
+    (created_at) 2026-05-18T23:16:27+03:00
+    (notes) Backfilled from commit 9b755c907. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-39
+    (title) Serfs & Frauds archive terminal
+    (description) Rebuild the campaign archive as a retro-futuristic terminal.
+    (category) UI/UX
+    (epic) Content Browsing
+    (status) Completed
+    (created_at) 2026-06-04T01:37:31+03:00
+    (notes) Backfilled from commit a058780d5. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-40
+    (title) Reading Room bookshelf
+    (description) Add a bookstore-style Reading Room edition of the bookshelf.
+    (category) UI/UX
+    (epic) Content Browsing
+    (status) Completed
+    (created_at) 2026-06-04T03:19:05+03:00
+    (notes) Backfilled from commit e1469c3cd. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-41
+    (title) Thumbnail generator styles
+    (description) Expand thumbnail layouts with object-based styles, including boarding passes, receipts, and editorial designs.
+    (category) Apps
+    (epic) Creative Tools
+    (status) Completed
+    (created_at) 2026-06-04T20:04:01+03:00
+    (notes) Backfilled from commit 17fbb0775. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-42
+    (title) Ebru marbling studio
+    (description) Add a Turkish marbling application.
+    (category) Apps
+    (epic) Creative Tools
+    (status) Completed
+    (created_at) 2026-06-08T01:20:57+03:00
+    (notes) Backfilled from commit 48a8e55dc. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-43
+    (title) Morphogenesis
+    (description) Add a reaction-diffusion visual experiment.
+    (category) Apps
+    (epic) Creative Tools
+    (status) Completed
+    (created_at) 2026-06-08T01:45:22+03:00
+    (notes) Backfilled from commit 570ce6dea. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-44
+    (title) Mist theme
+    (description) Add the Mist site theme.
+    (category) UI/UX
+    (epic) Design Systems
+    (status) Completed
+    (created_at) 2026-06-10T02:07:36+03:00
+    (notes) Backfilled from commit 8bcbf38fa. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-45
+    (title) Vitray glass studio
+    (description) Add a studio for glass effects.
+    (category) Apps
+    (epic) Creative Tools
+    (status) Completed
+    (created_at) 2026-06-11T03:04:20+03:00
+    (notes) Backfilled from commit 288c9b17b. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-46
+    (title) Unified ImageStudio
+    (description) Consolidate image tools into one ImageStudio application.
+    (category) Apps
+    (epic) Creative Tools
+    (status) Completed
+    (created_at) 2026-06-23T01:21:13+03:00
+    (notes) Backfilled from commit 4ca72f616. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-47
+    (title) Procedural Map Builder
+    (description) Add a procedural map-building application.
+    (category) Apps
+    (epic) Creative Tools
+    (status) Completed
+    (created_at) 2026-06-29T00:13:01+03:00
+    (notes) Backfilled from commit 0aa965d40. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-48
+    (title) Hi-fi project pages
+    (description) Introduce a hi-fi project presentation with the Timp music player showcase.
+    (category) UI/UX
+    (epic) Project Showcases
+    (status) Completed
+    (created_at) 2026-07-04T00:33:42+03:00
+    (notes) Backfilled from commit ebaed3106. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-49
+    (title) Demystify genre atlas
+    (description) Ship the music genre atlas, following the hub, deep-linked entries, genre artwork, and track-preview work.
+    (category) Music
+    (epic) Demystify
+    (status) Completed
+    (created_at) 2026-08-08T17:45:17+03:00
+    (notes) Backfilled from commit 7ff8c0135. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-50
+    (title) Story chronology
+    (description) Add a chronology timeline to the story archive.
+    (category) UI/UX
+    (epic) Content Browsing
+    (status) Completed
+    (created_at) 2026-08-13T04:23:27+03:00
+    (notes) Backfilled from commit 9f5f545c4. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-51
+    (title) Ledger theme
+    (description) Add the Ledger site theme.
+    (category) UI/UX
+    (epic) Design Systems
+    (status) Completed
+    (created_at) 2026-08-21T23:11:18+03:00
+    (notes) Backfilled from commit 2b5ecaa54. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-52
+    (title) Dashboard control surface
+    (description) Rebuild the dashboard as the FZX Control Surface and add the Ledger form of Syntax.
+    (category) UI/UX
+    (epic) OS Experience
+    (status) Completed
+    (created_at) 2026-08-22T00:33:54+03:00
+    (notes) Backfilled from commit 0af6f4a15. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-53
+    (title) Project page design system
+    (description) Add eight project page styles on a shared application shell.
+    (category) UI/UX
+    (epic) Project Showcases
+    (status) Completed
+    (created_at) 2026-09-13T20:30:57+03:00
+    (notes) Backfilled from commit 99f48d2d9. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-54
+    (title) Orbit theme
+    (description) Add the Orbit site theme.
+    (category) UI/UX
+    (epic) Design Systems
+    (status) Completed
+    (created_at) 2026-09-13T20:31:47+03:00
+    (notes) Backfilled from commit b34364be6. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-55
+    (title) Probability Cabinet
+    (description) Add a collection of interactive probability experiments.
+    (category) Apps
+    (epic) Interactive Learning
+    (status) Completed
+    (created_at) 2026-09-13T23:44:16+03:00
+    (notes) Backfilled from commit d410f07fd. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-56
+    (title) Embedded blog experiments
+    (description) Allow blog posts to embed probability experiments inline.
+    (category) Feature
+    (epic) Interactive Learning
+    (status) Completed
+    (created_at) 2026-09-13T23:44:29+03:00
+    (notes) Backfilled from commit 0255b8ea0. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-57
+    (title) Shock Generator experiment
+    (description) Add the Shock Generator to the Probability Cabinet.
+    (category) Apps
+    (epic) Interactive Learning
+    (status) Completed
+    (created_at) 2026-09-16T00:50:59+03:00
+    (notes) Backfilled from commit f024d54c9. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-58
+    (title) Physical app interfaces
+    (description) Redesign the metronome, typing, logic, memory, and board-game tools with physical-object interfaces.
+    (category) UI/UX
+    (epic) App Design
+    (status) Completed
+    (created_at) 2026-09-18T00:44:38+03:00
+    (notes) Backfilled from commit 4884c32d3. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-59
+    (title) Demystify film collection
+    (description) Add a collection explaining film techniques.
+    (category) Feature
+    (epic) Demystify
+    (status) Completed
+    (created_at) 2026-09-18T01:59:14+03:00
+    (notes) Backfilled from commit b57d7cd60. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-60
+    (title) Colophon page
+    (description) Add a dedicated colophon presenting facts about the site.
+    (category) Feature
+    (epic) Content Browsing
+    (status) Completed
+    (created_at) 2026-09-18T23:55:06+03:00
+    (notes) Backfilled from commit 3421ce68c. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-61
+    (title) Knit theme
+    (description) Add the Knit site theme.
+    (category) UI/UX
+    (epic) Design Systems
+    (status) Completed
+    (created_at) 2026-10-26T15:01:28+03:00
+    (notes) Backfilled from commit e8b1ea66c. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-62
+    (title) Scheduled default themes
+    (description) Support scheduled default themes.
+    (category) Feature
+    (epic) Design Systems
+    (status) Completed
+    (created_at) 2026-10-29T19:09:53+03:00
+    (notes) Backfilled from commit 0059ca469. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-63
+    (title) Wordup lexicon
+    (description) Launch the Wordup lexicon.
+    (category) Feature
+    (epic) Content Browsing
+    (status) Completed
+    (created_at) 2026-11-14T04:55:35+03:00
+    (notes) Backfilled from commit eaad9581c. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-64
+    (title) Bliss theme
+    (description) Add the Bliss desktop-inspired site theme.
+    (category) UI/UX
+    (epic) Design Systems
+    (status) Completed
+    (created_at) 2026-11-14T06:39:16+03:00
+    (notes) Backfilled from commit b0477fc0c. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-65
+    (title) Theme-aware loading and error pages
+    (description) Add loading and 404 pages tailored to each site theme.
+    (category) UI/UX
+    (epic) Design Systems
+    (status) Completed
+    (created_at) 2026-11-14T17:45:47+03:00
+    (notes) Backfilled from commit dbfd5ad1e. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-66
+    (title) Discovery shelf
+    (description) Add the discovery shelf with physical cover presentations and local cover artwork.
+    (category) Feature
+    (epic) Discovery
+    (status) Completed
+    (created_at) 2026-11-14T20:15:31+03:00
+    (notes) Backfilled from commit 83ff7340a. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-67
+    (title) Coral Bloom
+    (description) Add the Coral Bloom application and custom palette controls.
+    (category) Apps
+    (epic) Creative Tools
+    (status) Completed
+    (created_at) 2026-11-14T20:15:31+03:00
+    (notes) Backfilled from commit 83ff7340a. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-68
+    (title) Wordup sharing
+    (description) Add Wordup sharing and lighter lexical sculptures.
+    (category) Feature
+    (epic) Publishing
+    (status) Completed
+    (created_at) 2026-11-15T00:28:51+03:00
+    (notes) Backfilled from commit 7e9ff0a24. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-69
+    (title) Knowledge graph view redesign
+    (description) Redesign the knowledge graph with Classic, Paper, and Space views.
+    (category) UI/UX
+    (epic) Content Browsing
+    (status) Completed
+    (created_at) 2026-11-15T20:59:50+03:00
+    (notes) Backfilled from commit 1347373af. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-70
+    (title) Site-wide topic tags
+    (description) Add shared tag indexing, linked topic pages, and distinct tag layouts across site themes.
+    (category) Feature
+    (epic) Content Browsing
+    (status) Completed
+    (created_at) 2026-11-15T23:22:21+03:00
+    (notes) Backfilled from commit f11fc747c. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-71
+    (title) GitHub Actions deployment
+    (description) Move building and deployment to GitHub Actions.
+    (category) Infrastructure
+    (epic) Publishing
+    (status) Completed
+    (created_at) 2026-11-16T02:06:42+03:00
+    (notes) Backfilled from commit 0a1850f5b. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-72
+    (title) Tarman page redesign
+    (description) Redesign the Tarman page and improve Knit on mobile.
+    (category) UI/UX
+    (epic) Project Showcases
+    (status) Completed
+    (created_at) 2026-11-17T01:34:31+03:00
+    (notes) Backfilled from commit f83a203d0. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-73
+    (title) Kilim theme
+    (description) Add the Kilim site theme.
+    (category) UI/UX
+    (epic) Design Systems
+    (status) Completed
+    (created_at) 2026-11-17T04:09:41+03:00
+    (notes) Backfilled from commit e6669b33d. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-74
+    (title) Codex social sharing cards
+    (description) Create new sharing-card designs for the codex, blog posts, and discovery logs.
+    (category) Infrastructure
+    (epic) Publishing
+    (status) Completed
+    (created_at) 2026-11-18T23:19:51+03:00
+    (notes) Backfilled from commit da99de24a. Date reflects the implementation commit.
+
+
+  > (issues)
+    (id) FEZ-75
+    (title) Sharing cards for every discovery log
+    (description) Generate a sharing card for every discovery log.
+    (category) Infrastructure
+    (epic) Publishing
+    (status) Completed
+    (created_at) 2026-11-18T23:54:19+03:00
+    (notes) Backfilled from commit b133b4717. Date reflects the implementation commit.

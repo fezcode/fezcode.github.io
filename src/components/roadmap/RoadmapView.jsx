@@ -1,3 +1,4 @@
+import { getStatusLabel } from '../../pages/roadmap/roadmapData';
 import React, { useState, useEffect } from 'react';
 import RoadmapCard from './RoadmapCard';
 import { getStatusClasses } from '../../utils/roadmapHelpers';
@@ -8,7 +9,13 @@ const RoadmapView = ({ issuesData = [] }) => {
   const [hiddenColumns, setHiddenColumns] = useState([]);
   const { unlockAchievement } = useAchievements();
 
-  const statusOrder = ['Planned', 'In Progress', 'Completed', 'On Hold'];
+  const statusOrder = [
+    'Planned',
+    'In Progress',
+    'Completed',
+    'On Hold',
+    "Won't Do",
+  ];
 
   const toggleColumnVisibility = (status) => {
     if (hiddenColumns.includes(status)) {
@@ -40,7 +47,7 @@ const RoadmapView = ({ issuesData = [] }) => {
         const isHidden = hiddenColumns.includes(status);
         return (
           <div
-            key={status}
+            key={getStatusLabel(status)}
             className="bg-white/[0.02] border border-white/10 p-6 rounded-sm space-y-8"
           >
             <h3
@@ -50,7 +57,7 @@ const RoadmapView = ({ issuesData = [] }) => {
                 className={`inline-flex items-center gap-2 text-[10px] font-mono font-black uppercase tracking-[0.2em] ${getStatusClasses(status)}`}
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-current" />
-                {status}
+                {getStatusLabel(status)}
                 <span className="text-gray-600 font-normal">
                   [{groupIssues[status]?.length || 0}]
                 </span>

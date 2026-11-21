@@ -1,16 +1,17 @@
+import { getStatusLabel } from '../../pages/roadmap/roadmapData';
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  X,
-  CalendarBlank,
-  CheckCircle,
-  Circle,
-  CircleDashed,
-  DotsThree,
-  SquareHalfBottom,
-  Tag,
-  User,
-  XCircle,
+  XIcon,
+  CalendarBlankIcon,
+  CheckCircleIcon,
+  CircleIcon,
+  CircleDashedIcon,
+  DotsThreeIcon,
+  SquareHalfBottomIcon,
+  TagIcon,
+  UserIcon,
+  XCircleIcon,
 } from '@phosphor-icons/react';
 import piml from 'piml';
 
@@ -20,26 +21,31 @@ const StatusIcon = ({ status, className = '' }) => {
     case 'completed':
     case 'done':
       return (
-        <CheckCircle weight="fill" className={`text-indigo-400 ${className}`} />
+        <CheckCircleIcon
+          weight="fill"
+          className={`text-indigo-400 ${className}`}
+        />
       );
     case 'in progress':
       return (
-        <SquareHalfBottom
+        <SquareHalfBottomIcon
           weight="fill"
           className={`text-amber-400 ${className}`}
         />
       );
     case 'planned':
     case 'todo':
-      return <Circle className={`text-gray-400 ${className}`} />;
+      return <CircleIcon className={`text-gray-400 ${className}`} />;
     case 'on hold':
     case 'backlog':
-      return <CircleDashed className={`text-gray-500 ${className}`} />;
+      return <CircleDashedIcon className={`text-gray-500 ${className}`} />;
+    case "won't do":
+    case 'won’t do':
     case 'cancelled':
     case 'canceled':
-      return <XCircle className={`text-red-400 ${className}`} />;
+      return <XCircleIcon className={`text-red-400 ${className}`} />;
     default:
-      return <Circle className={`text-gray-600 ${className}`} />;
+      return <CircleIcon className={`text-gray-600 ${className}`} />;
   }
 };
 
@@ -71,7 +77,7 @@ const PriorityIcon = ({ priority, className = '' }) => {
         </div>
       );
     default:
-      return <DotsThree className={`text-gray-600 ${className}`} />;
+      return <DotsThreeIcon className={`text-gray-600 ${className}`} />;
   }
 };
 
@@ -155,7 +161,7 @@ const RoadmapItemModal = ({ issueId, onClose }) => {
             onClick={onClose}
             className="absolute top-4 right-4 p-2 text-gray-500 hover:text-white bg-transparent hover:bg-white/10 rounded-md transition-colors z-20"
           >
-            <X size={18} />
+            <XIcon size={18} />
           </button>
 
           {isLoading ? (
@@ -198,7 +204,7 @@ const RoadmapItemModal = ({ issueId, onClose }) => {
                     </h3>
                     <div className="flex gap-4">
                       <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0 border border-indigo-500/30">
-                        <User size={14} weight="fill" />
+                        <UserIcon size={14} weight="fill" />
                       </div>
                       <div className="bg-[#1a1a1a] rounded-lg p-4 border border-white/[0.04] text-sm text-gray-300 grow relative">
                         {/* Triangle pointer */}
@@ -219,7 +225,7 @@ const RoadmapItemModal = ({ issueId, onClose }) => {
                         status={roadmapItem.status}
                         className="w-3.5 h-3.5"
                       />
-                      <span>{roadmapItem.status || 'Planned'}</span>
+                      <span>{getStatusLabel(roadmapItem.status)}</span>
                     </div>
                   </SidebarItem>
 
@@ -252,7 +258,7 @@ const RoadmapItemModal = ({ issueId, onClose }) => {
                   {roadmapItem.category && (
                     <SidebarItem label="Labels">
                       <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-[4px] bg-white/[0.05] text-gray-400 border border-white/[0.05] text-[11px]">
-                        <Tag size={12} weight="fill" />
+                        <TagIcon size={12} weight="fill" />
                         {roadmapItem.category}
                       </span>
                     </SidebarItem>
@@ -261,7 +267,7 @@ const RoadmapItemModal = ({ issueId, onClose }) => {
                   {roadmapItem.due_date && (
                     <SidebarItem label="Due Date">
                       <span className="flex items-center gap-1.5 text-gray-400 text-xs">
-                        <CalendarBlank size={14} />
+                        <CalendarBlankIcon size={14} />
                         {new Date(roadmapItem.due_date).toLocaleDateString()}
                       </span>
                     </SidebarItem>
