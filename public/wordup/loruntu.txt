@@ -1,0 +1,29 @@
+## Anlamı
+
+**Loruntu**, sürekli küçük düzeltmeler gerektiren şeydir. Tamamen bozulup işi durdurmaz, ama bir kez yapılıp kendi hâline de bırakılamaz; ikide bir ufak bir ayar, yama ya da elden geçirme ister.
+
+Sözcük düzeltme eylemini değil, bu bitmeyen küçük müdahaleleri isteyen **nesneyi, işi, metni ya da düzeneği** doğrudan adlandırır.
+
+## Ayırt edici yanı
+
+Loruntuyu belirleyen iki özellik birlikte bulunur: **düzeltmelerin küçüklüğü** ve **ihtiyacın sürekliliği**. Tek seferde çözülüp kapanan bir kusur loruntu değildir; işi kökten kilitleyen büyük bir yıkım da değildir. Loruntu, her seferinde “beş dakikalık iş” gibi görünen ama toplamda dikkati ve zamanı kemiren uğraş kaynağıdır.
+
+Gündelik eşyalardan yazılım modüllerine, taslak metinlerden ev içi düzeneklere kadar aynı davranışı gösteren her şey için kullanılabilir.
+
+## Cümle içinde
+
+> “Eski yazıcı çalışmasına çalışıyor da tam bir loruntu; her baskıdan önce kağıt tepsisini hizalamak şart.”
+
+> “Bu modülün loruntusu hiç bitmedi; her hafta iki satırlık yeni bir ince ayar çıkarıyor.”
+
+> “Büyük bir sorun değil, yalnızca insanın elini kolunu oyalayan bir loruntu.”
+
+## Kullanımı
+
+**Loruntu** bu öneride bir isimdir: _tam bir loruntu_, _evin loruntuları_, _loruntusu bitmemek_. Bu niteliği taşıyan işleri veya araçları nitelemek için sıfat olarak **loruntulu** biçimi önerilir: _loruntulu bir düzenek_, _loruntulu bir kod tabanı_. Bunlar bu yeni sözcük için önerilen kullanımlardır.
+
+## Türkçedeki yakın karşılıklar
+
+Türkçede **pürüz** ve **aksaklık** tekil sorunları, **rötuş** ve **ince ayar** yapılan düzeltme işini, **angarya** ise bıktırıcı zorunlu uğraşı anlatır. Ancak “sürekli ufak düzeltme isteyen şeyin kendisi” için tek kelimelik yerleşik bir ad bulunmaz; çoğu zaman “sürekli el istiyor” ya da “ufak tefek işi bitmiyor” gibi söz öbeklerine başvurulur.
+
+Biçim bakımından Türkçedeki *-ıntı / -inti / -untu / -üntü* ses kalıbıyla (*kuruntu*, *kırıntı*, *sızıntı*, *takıntı*) uyumludur. 21 Kasım 2026 tarihli sınırlı taramada **loruntu** yazımına TDK Güncel Türkçe Sözlük’te rastlanmadı. Bu, sözcüğün hiçbir metinde ya da ağızda geçmediğini kanıtlamaz.
