@@ -1,11 +1,11 @@
 {
   "name": "Atelier",
   "windowTitle": "Atelier",
-  "tagline": "An image viewer that gets out of the way of the picture.",
-  "subtitle": "High-performance viewing with GPU-accelerated SkiaSharp rendering, infinite zoom on vector graphics, and native HEIC, AVIF and WebP support.",
+  "tagline": "An image viewer. A small creative studio.",
+  "subtitle": "View photographs and vectors, paint and adjust images, inspect content credentials, and export in more than 30 formats.",
   "accent": "#8A2226",
   "accent2": "#4A0205",
-  "version": "0.4.0",
+  "version": "0.7.2",
   "platforms": [
     "Windows"
   ],
@@ -221,15 +221,23 @@
   ],
   "shots": [
     {
-      "src": "/images/projects/atelier/viewer.png",
-      "caption": "Atelier — a 2400×1600 photo, zoom and frame controls"
+      "src": "/images/projects/atelier/current/viewer.webp",
+      "caption": "Atelier 0.7.2 — photograph viewer"
+    },
+    {
+      "src": "/images/projects/atelier/current/vector.webp",
+      "caption": "Native SVG viewing"
+    },
+    {
+      "src": "/images/projects/atelier/current/appearance-controls.webp",
+      "caption": "Material and colour controls"
     }
   ],
   "shotsHeading": "The application itself",
   "announcement": {
-    "badge": "New in 0.4.0",
-    "text": "Photos no longer open on their side — plus rotate, clipboard, rename, Recycle Bin delete and animated GIF/WebP.",
-    "href": "https://github.com/fezcode/Atelier/releases/latest"
+    "badge": "Version 0.7.2",
+    "text": "Paint-style editing, content credentials, 30+ export formats, and a customisable glass workspace.",
+    "href": "https://github.com/fezcode/Atelier/releases"
   },
   "formats": [
     {

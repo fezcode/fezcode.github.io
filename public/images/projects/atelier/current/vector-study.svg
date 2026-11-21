@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <title>Atelier vector study — Look closer</title>
+  <rect width="1600" height="1000" fill="#dce4d9"/>
+  <g fill="none" stroke="#2845ef" stroke-width="26">
+    <ellipse cx="1110" cy="500" rx="360" ry="420"/>
+    <ellipse cx="1110" cy="500" rx="270" ry="420"/>
+    <ellipse cx="1110" cy="500" rx="180" ry="420"/>
+    <ellipse cx="1110" cy="500" rx="90" ry="420"/>
+    <path d="M750 500H1470M1110 80V920"/>
+  </g>
+  <g fill="#2845ef" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="220" letter-spacing="-14">
+    <text x="90" y="430">Look</text><text x="90" y="635">closer.</text>
+  </g>
+  <text x="100" y="900" fill="#2845ef" font-family="Arial, Helvetica, sans-serif" font-size="30">Atelier / A study in vectors</text>
+</svg>

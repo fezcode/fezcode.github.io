@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">gobake — Your build. Written in Go.</title>
+  <desc id="desc">A cream recipe file with code braces and an orange completion mark above a bold navy gobake wordmark on Go blue.</desc>
+  <rect width="1200" height="800" fill="#71d5df"/>
+  <g transform="translate(430 66) rotate(8 160 170)">
+    <path d="M18 28H260L324 92V344Q324 362 306 362H18Q0 362 0 344V46Q0 28 18 28Z" fill="#103943"/>
+    <path d="M18 0H260L324 64V316Q324 334 306 334H18Q0 334 0 316V18Q0 0 18 0Z" fill="#fff8e7" stroke="#103943" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M260 0V64H324" fill="#ed723c" stroke="#103943" stroke-width="5" stroke-linejoin="round"/>
+    <text x="32" y="66" font-family="Consolas, monospace" font-size="32" font-weight="bold" fill="#103943">Recipe.go</text>
+    <path d="M112 117H99Q84 117 84 134V154Q84 172 65 172Q84 172 84 190V210Q84 227 99 227H112M211 117H224Q239 117 239 134V154Q239 172 258 172Q239 172 239 190V210Q239 227 224 227H211" fill="none" stroke="#103943" stroke-width="14" stroke-linecap="round"/>
+    <path d="M178 136L145 208" stroke="#ed723c" stroke-width="13" stroke-linecap="round"/>
+    <path d="M36 278H172M36 296H127" stroke="#103943" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="302" cy="293" r="58" fill="#ed723c" stroke="#103943" stroke-width="5"/>
+    <path d="M277 291L296 309L329 274" fill="none" stroke="#103943" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="585" y="622" text-anchor="middle" fill="#103943" font-family="Arial, Helvetica, sans-serif" font-size="220" font-weight="900" letter-spacing="-13">gobake</text>
+  <text x="600" y="709" text-anchor="middle" fill="#103943" font-family="Arial, Helvetica, sans-serif" font-size="40" letter-spacing="1">Your build. Written in Go.</text>
+</svg>

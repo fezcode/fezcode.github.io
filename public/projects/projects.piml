@@ -63,7 +63,7 @@
       > Automation
     (shortDescription) gobake is a Go-native build orchestrator. It replaces Makefiles and shell scripts with a single, type-safe Recipe.go file. v0.5.0 moves recipe.piml parsing to go-piml v1.3.0, enforcing PIML spec v1.2.0 (strict 2-space indentation, inline comments, quoted strings, duplicate-key errors).
     (date) 2026-04-27
-    (image) /images/projects/gobake/gobake-banner.png
+    (image) /images/projects/gobake/gobake-thumbnail.webp
 
   > (project)
     (slug) atlas-projects
@@ -426,7 +426,7 @@
       > tools
     (title) Atelier
     (style) gallery
-    (version) 0.4.0
+    (version) 0.7.2
     (size) 2
     (repo_link) https://github.com/fezcode/Atelier
     (demo_link) https://github.com/fezcode/Atelier/releases
