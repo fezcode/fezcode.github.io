@@ -257,6 +257,8 @@ const MistSettingsPage = () => {
     setFezcodexTheme,
     blogPostViewMode,
     setBlogPostViewMode,
+    discoveryViewMode,
+    toggleDiscoveryViewMode,
     headerFont,
     setHeaderFont,
     bodyFont,
@@ -616,6 +618,23 @@ const MistSettingsPage = () => {
             />
             <SettingRow
               number={3}
+              heading="discovery logs viewer"
+              description="toggle between the 3d collector's shelf (new) and the classic archive view (old) when opening /logs."
+              control={
+                <MistToggle
+                  id="discovery-view-mode"
+                  label={
+                    discoveryViewMode === 'shelf'
+                      ? '3d shelf (new)'
+                      : 'classic (old)'
+                  }
+                  checked={discoveryViewMode === 'shelf'}
+                  onChange={toggleDiscoveryViewMode}
+                />
+              }
+            />
+            <SettingRow
+              number={4}
               heading="dashboard order"
               description="which chapter surfaces first on the home page — archive or field notes."
               control={
@@ -644,7 +663,7 @@ const MistSettingsPage = () => {
               }
             />
             <SettingRow
-              number={4}
+              number={5}
               heading="app fullscreen"
               description="let the chrome dissolve when running an instrument."
               control={
@@ -684,7 +703,7 @@ const MistSettingsPage = () => {
           <ol>
             <MistHorizon tint="rgba(60,72,69,0.18)" />
             <SettingRow
-              number={5}
+              number={6}
               heading="header font"
               description="used for blog-post headings and titles in reader views."
               control={
@@ -700,7 +719,7 @@ const MistSettingsPage = () => {
               }
             />
             <SettingRow
-              number={6}
+              number={7}
               heading="body font"
               description="running text in reader views."
               control={
@@ -732,7 +751,7 @@ const MistSettingsPage = () => {
           <ol>
             <MistHorizon tint="rgba(60,72,69,0.18)" />
             <SettingRow
-              number={7}
+              number={8}
               heading="reduce motion"
               description="honour device-level motion sensitivity; let the framer animations rest."
               control={
@@ -745,7 +764,7 @@ const MistSettingsPage = () => {
               }
             />
             <SettingRow
-              number={8}
+              number={9}
               heading="splash quotations"
               description="a rotating line beneath the hero on the home page."
               control={
@@ -758,7 +777,7 @@ const MistSettingsPage = () => {
               }
             />
             <SettingRow
-              number={9}
+              number={10}
               heading="syntax · the companion"
               description="a small sprite that walks along the bottom and leaves marginal notes."
               control={
@@ -771,7 +790,7 @@ const MistSettingsPage = () => {
               }
             />
             <SettingRow
-              number={10}
+              number={11}
               heading="honor notices"
               description="surface a whisper-toast each time an achievement is held."
               control={
@@ -802,7 +821,7 @@ const MistSettingsPage = () => {
             {fxToggles.map((t, i) => (
               <SettingRow
                 key={t.id}
-                number={11 + i}
+                number={12 + i}
                 heading={t.label}
                 control={
                   <MistToggle
@@ -819,7 +838,7 @@ const MistSettingsPage = () => {
           <div className="mt-10 rounded-2xl bg-white/40 backdrop-blur-sm shadow-[0_18px_50px_rgba(60,72,69,0.10)] p-6 md:p-8">
             <div className="flex items-center justify-between pb-4 mb-6">
               <div className="flex items-baseline gap-3 font-ibm-plex-mono text-[10px] tracking-[0.22em] lowercase">
-                <span className="text-[#5F837B]">veil 29</span>
+                <span className="text-[#5F837B]">veil 30</span>
                 <span className="text-[#3C4845]">fallout overlay</span>
               </div>
               <MistToggle
@@ -887,7 +906,7 @@ const MistSettingsPage = () => {
           <ol>
             <MistHorizon tint="rgba(60,72,69,0.18)" />
             <SettingRow
-              number={32}
+              number={33}
               heading="lightning strikes"
               description="occasional flashes across the story sheet."
               control={
@@ -900,7 +919,7 @@ const MistSettingsPage = () => {
               }
             />
             <SettingRow
-              number={33}
+              number={34}
               heading="loot discovery"
               description="found objects announce themselves when passed."
               control={
@@ -913,7 +932,7 @@ const MistSettingsPage = () => {
               }
             />
             <SettingRow
-              number={34}
+              number={35}
               heading="fire overlay"
               description="a slow ember halo along the page edges."
               control={
@@ -926,7 +945,7 @@ const MistSettingsPage = () => {
               }
             />
             <SettingRow
-              number={35}
+              number={36}
               heading="fire particles"
               description="rising embers, drifting across the reading area."
               control={
@@ -939,7 +958,7 @@ const MistSettingsPage = () => {
               }
             />
             <SettingRow
-              number={36}
+              number={37}
               heading="viewport frame"
               description="a parchment-style border around the whole page."
               control={

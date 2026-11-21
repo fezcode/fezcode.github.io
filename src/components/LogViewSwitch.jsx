@@ -1,23 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BooksIcon, ListBulletsIcon } from '@phosphor-icons/react';
-import { CLASSIC_LOGS_PATH, SHELF_LOGS_PATH } from '../utils/discoveryMode';
+import {
+  CLASSIC_LOGS_PATH,
+  EXPLICIT_SHELF_LOGS_PATH,
+  SHELF_LOGS_PATH,
+} from '../utils/discoveryMode';
+import { useVisualSettings } from '../context/VisualSettingsContext';
 import './LogViewSwitch.css';
 
-const VIEWS = [
-  {
-    id: 'classic',
-    label: 'Classic',
-    path: CLASSIC_LOGS_PATH,
-    icon: ListBulletsIcon,
-  },
-  { id: 'shelf', label: 'Shelf', path: SHELF_LOGS_PATH, icon: BooksIcon },
-];
-
 export default function LogViewSwitch({ view }) {
+  const discoveryViewMode =
+    useVisualSettings?.()?.discoveryViewMode || 'shelf';
+  const views = [
+    {
+      id: 'classic',
+      label: 'Classic',
+      path: discoveryViewMode === 'classic' ? SHELF_LOGS_PATH : CLASSIC_LOGS_PATH,
+      icon: ListBulletsIcon,
+    },
+    {
+      id: 'shelf',
+      label: 'Shelf',
+      path:
+        discoveryViewMode === 'classic'
+          ? EXPLICIT_SHELF_LOGS_PATH
+          : SHELF_LOGS_PATH,
+      icon: BooksIcon,
+    },
+  ];
+
   return (
     <nav className="log-view-switch" aria-label="Log view">
-      {VIEWS.map(({ id, label, path, icon: Icon }) => (
+      {views.map(({ id, label, path, icon: Icon }) => (
         <Link
           key={id}
           to={path}

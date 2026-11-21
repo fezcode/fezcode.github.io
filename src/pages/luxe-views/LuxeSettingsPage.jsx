@@ -124,6 +124,8 @@ const LuxeSettingsPage = () => {
     setFezcodexTheme,
     blogPostViewMode,
     setBlogPostViewMode,
+    discoveryViewMode,
+    toggleDiscoveryViewMode,
     headerFont,
     setHeaderFont,
     bodyFont,
@@ -344,6 +346,30 @@ const LuxeSettingsPage = () => {
                   icon={ArticleIcon}
                   fullWidth
                 />
+              </div>
+
+              <div className="space-y-6">
+                <h3 className="font-outfit text-[10px] uppercase tracking-[0.3em] text-black/30">
+                  Discovery Logs
+                </h3>
+                <div className="p-6 border-l-2 border-black/5 bg-white/20 space-y-4">
+                  <CustomToggle
+                    id="discovery-view-mode"
+                    label={
+                      discoveryViewMode === 'shelf'
+                        ? '3D Shelf (New)'
+                        : 'Classic Viewer (Old)'
+                    }
+                    checked={discoveryViewMode === 'shelf'}
+                    onChange={toggleDiscoveryViewMode}
+                    colorTheme="amber"
+                    {...toggleClasses}
+                  />
+                  <p className="mt-4 font-outfit text-sm text-black/40 italic leading-relaxed">
+                    Toggle between the 3D collector&apos;s shelf (new) and the
+                    classic editorial log list (old).
+                  </p>
+                </div>
               </div>
             </div>
           </LuxeSection>

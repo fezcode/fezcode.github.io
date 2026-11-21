@@ -136,6 +136,8 @@ const TerracottaSettingsPage = () => {
     setFezcodexTheme,
     blogPostViewMode,
     setBlogPostViewMode,
+    discoveryViewMode,
+    toggleDiscoveryViewMode,
     headerFont,
     setHeaderFont,
     bodyFont,
@@ -520,6 +522,23 @@ const TerracottaSettingsPage = () => {
             />
             <SettingRow
               number={3}
+              heading="Discovery logs viewer"
+              description="Toggle between the 3D collector's shelf (new) and the classic archive view (old) when opening /logs."
+              control={
+                <TerracottaToggle
+                  id="discovery-view-mode"
+                  label={
+                    discoveryViewMode === 'shelf'
+                      ? '3D Shelf (New)'
+                      : 'Classic (Old)'
+                  }
+                  checked={discoveryViewMode === 'shelf'}
+                  onChange={toggleDiscoveryViewMode}
+                />
+              }
+            />
+            <SettingRow
+              number={4}
               heading="Dashboard order"
               description="Which chapter opens first on the home page — archive or field notes."
               control={
@@ -548,7 +567,7 @@ const TerracottaSettingsPage = () => {
               }
             />
             <SettingRow
-              number={4}
+              number={5}
               heading="App fullscreen"
               description="Hide the chrome when running an instrument."
               control={
@@ -586,7 +605,7 @@ const TerracottaSettingsPage = () => {
           </div>
           <ol className="border-t border-[#1A161320]">
             <SettingRow
-              number={5}
+              number={6}
               heading="Header font"
               description="Used for blog-post headings and titles in reader views."
               control={
@@ -603,7 +622,7 @@ const TerracottaSettingsPage = () => {
               }
             />
             <SettingRow
-              number={6}
+              number={7}
               heading="Body font"
               description="Running text in reader views."
               control={
@@ -635,7 +654,7 @@ const TerracottaSettingsPage = () => {
           />
           <ol className="border-t border-[#1A161320]">
             <SettingRow
-              number={7}
+              number={8}
               heading="Reduce motion"
               description="Honour device-level motion sensitivity; disable framer animations."
               control={
@@ -648,7 +667,7 @@ const TerracottaSettingsPage = () => {
               }
             />
             <SettingRow
-              number={8}
+              number={9}
               heading="Splash quotations"
               description="A rotating line beneath the hero on the home page."
               control={
@@ -661,7 +680,7 @@ const TerracottaSettingsPage = () => {
               }
             />
             <SettingRow
-              number={9}
+              number={10}
               heading="Syntax · the companion"
               description="A small plumb-bob that walks along the bottom and leaves marginal notes."
               control={
@@ -674,7 +693,7 @@ const TerracottaSettingsPage = () => {
               }
             />
             <SettingRow
-              number={10}
+              number={11}
               heading="Honor notices"
               description="Surface a margin-note toast each time an achievement is held."
               control={
@@ -704,7 +723,7 @@ const TerracottaSettingsPage = () => {
             {fxToggles.map((t, i) => (
               <SettingRow
                 key={t.id}
-                number={11 + i}
+                number={12 + i}
                 heading={t.label}
                 control={
                   <TerracottaToggle
@@ -721,7 +740,7 @@ const TerracottaSettingsPage = () => {
           <div className="mt-10 border border-[#1A161320] p-6 md:p-8 bg-[#E8DECE]/30">
             <div className="flex items-center justify-between pb-4 border-b border-dashed border-[#1A161320] mb-6">
               <div className="flex items-baseline gap-3 font-ibm-plex-mono text-[10px] tracking-[0.22em] uppercase">
-                <span className="text-[#9E4A2F]">§ 29</span>
+                <span className="text-[#9E4A2F]">§ 30</span>
                 <span className="text-[#1A1613]">Fallout overlay</span>
               </div>
               <TerracottaToggle
@@ -788,7 +807,7 @@ const TerracottaSettingsPage = () => {
           />
           <ol className="border-t border-[#1A161320]">
             <SettingRow
-              number={32}
+              number={33}
               heading="Lightning strikes"
               description="Occasional flashes across the story sheet."
               control={
@@ -801,7 +820,7 @@ const TerracottaSettingsPage = () => {
               }
             />
             <SettingRow
-              number={33}
+              number={34}
               heading="Loot discovery"
               description="Found objects announce themselves when passed."
               control={
@@ -814,7 +833,7 @@ const TerracottaSettingsPage = () => {
               }
             />
             <SettingRow
-              number={34}
+              number={35}
               heading="Fire overlay"
               description="A slow ember halo along the page edges."
               control={
@@ -827,7 +846,7 @@ const TerracottaSettingsPage = () => {
               }
             />
             <SettingRow
-              number={35}
+              number={36}
               heading="Fire particles"
               description="Rising embers, drifting across the reading area."
               control={
@@ -840,7 +859,7 @@ const TerracottaSettingsPage = () => {
               }
             />
             <SettingRow
-              number={36}
+              number={37}
               heading="Viewport frame"
               description="A parchment-style border around the whole page."
               control={

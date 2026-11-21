@@ -199,6 +199,10 @@ export function entryPath(entry) {
   return `/discovery/${encodeURIComponent(categoryKey(entry.category))}/${encodeURIComponent(entry.slug)}`;
 }
 
+export function classicEntryPath(entry) {
+  return `/logs/${encodeURIComponent(categoryKey(entry.category))}/${encodeURIComponent(entry.slug)}?view=classic`;
+}
+
 function normalizeEntry(raw, category) {
   const slug = text(raw?.slug);
   const title = text(raw?.title);

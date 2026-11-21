@@ -20,6 +20,7 @@ import {
   BookOpenIcon,
   CaretDownIcon,
   CircleNotchIcon,
+  ListBulletsIcon,
   StarIcon,
   XIcon,
 } from '@phosphor-icons/react';
@@ -28,7 +29,9 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import Seo from '../../components/Seo';
 import LogViewSwitch from '../../components/LogViewSwitch';
+import { useVisualSettings } from '../../context/VisualSettingsContext';
 import {
+  classicEntryPath,
   entryPath,
   fetchDiscoveryEntries,
   filterDiscoveryEntries,
@@ -632,6 +635,13 @@ function Showcase({
                 {notesOpen ? 'Close full entry' : 'Read the full entry'}
                 <CaretDownIcon size={15} />
               </button>
+              <Link
+                to={classicEntryPath(entry)}
+                className="dc-secondary-button"
+              >
+                <ListBulletsIcon size={17} aria-hidden="true" />
+                Open in classic viewer
+              </Link>
               {entry.link && (
                 <a
                   href={entry.link}
@@ -717,6 +727,8 @@ export default function DiscoveryPage() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const reducedMotion = useReducedMotion();
+  const discoveryViewMode =
+    useVisualSettings?.()?.discoveryViewMode || 'shelf';
   const [data, setData] = useState({
     entries: [],
     categories: [],
@@ -899,20 +911,23 @@ export default function DiscoveryPage() {
         if (document.fullscreenElement)
           document.exitFullscreen?.().catch(() => {});
         if (openedFromShelf.current) navigate(-1);
-        else
+        else {
+          const shelfBase =
+            discoveryViewMode === 'classic' ? '/discovery' : '/logs';
           navigate(
-            '/logs' +
+            shelfBase +
               (categoryFilter === 'all'
                 ? ''
                 : `?category=${encodeURIComponent(categoryFilter)}`),
             { replace: true },
           );
+        }
         openedFromShelf.current = false;
         closeTimer.current = null;
       },
       reducedMotion ? 0 : 380,
     );
-  }, [navigate, reducedMotion, categoryFilter]);
+  }, [navigate, reducedMotion, categoryFilter, discoveryViewMode]);
   const navigateEntry = useCallback(
     (entry) => {
       if (entry && !closeTimer.current)

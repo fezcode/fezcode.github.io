@@ -107,6 +107,10 @@ function mountPage(path = '/discovery') {
         <Route path="/" element={<p>Home page</p>} />
         <Route path="/logs" element={<DiscoveryPage />} />
         <Route
+          path="/logs/:category/:slug"
+          element={<p>Classic log detail</p>}
+        />
+        <Route
           path="/discovery/:category?/:slug?"
           element={<DiscoveryPage />}
         />
@@ -970,5 +974,19 @@ describe('showcase notes and fullscreen', () => {
       'The showcase already fills your window.',
     );
     expect(dialog).toBeInTheDocument();
+  });
+  it('offers a direct link to open the current entry in the classic viewer', async () => {
+    mountPage('/discovery/game/entry-01');
+    const dialog = await screen.findByRole('dialog', { name: 'Discovery 01' });
+    const classicLink = within(dialog).getByRole('link', {
+      name: 'Open in classic viewer',
+    });
+    expect(classicLink).toHaveAttribute(
+      'href',
+      '/logs/game/entry-01?view=classic',
+    );
+    fireEvent.click(classicLink);
+    expect(await screen.findByText('Classic log detail')).toBeInTheDocument();
+    expect(route()).toBe('/logs/game/entry-01?view=classic');
   });
 });

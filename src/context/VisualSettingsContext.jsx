@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useRef } from 'react';
 import usePersistentState from '../hooks/usePersistentState';
 import { useAchievements } from './AchievementContext';
 import { isSiteTheme } from '../utils/siteThemes';
+import { DISCOVERY_VIEW_MODES } from '../utils/discoveryMode';
 import useSiteTheme from '../hooks/useSiteTheme';
 
 const VisualSettingsContext = createContext();
@@ -112,6 +113,20 @@ export const VisualSettingsProvider = ({ children }) => {
       setBlogPostViewMode(blogPostViewMode);
     }
   }, [savedBlogPostViewMode, blogPostViewMode, setBlogPostViewMode]);
+  const [savedDiscoveryViewMode, setDiscoveryViewMode] = usePersistentState(
+    'discovery-logs-view-mode',
+    'shelf',
+  );
+  const discoveryViewMode = DISCOVERY_VIEW_MODES.includes(
+    savedDiscoveryViewMode,
+  )
+    ? savedDiscoveryViewMode
+    : 'shelf';
+  useEffect(() => {
+    if (savedDiscoveryViewMode !== discoveryViewMode) {
+      setDiscoveryViewMode(discoveryViewMode);
+    }
+  }, [savedDiscoveryViewMode, discoveryViewMode, setDiscoveryViewMode]);
   const [isSplashTextEnabled, setIsSplashTextEnabled] = usePersistentState(
     'is-splash-text-enabled',
     true,
@@ -377,6 +392,8 @@ export const VisualSettingsProvider = ({ children }) => {
   const toggleSplashText = () => setIsSplashTextEnabled((prev) => !prev);
   const toggleAppFullscreen = () => setIsAppFullscreen((prev) => !prev);
   const toggleSyntaxSprite = () => setIsSyntaxSpriteEnabled((prev) => !prev);
+  const toggleDiscoveryViewMode = () =>
+    setDiscoveryViewMode((prev) => (prev === 'classic' ? 'shelf' : 'classic'));
 
   return (
     <VisualSettingsContext.Provider
@@ -429,6 +446,9 @@ export const VisualSettingsProvider = ({ children }) => {
         toggleFalloutVignette,
         blogPostViewMode,
         setBlogPostViewMode,
+        discoveryViewMode,
+        setDiscoveryViewMode,
+        toggleDiscoveryViewMode,
         headerFont,
         setHeaderFont,
         bodyFont,

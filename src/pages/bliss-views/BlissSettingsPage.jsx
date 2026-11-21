@@ -258,6 +258,8 @@ const BlissSettingsPage = () => {
     setFezcodexTheme,
     blogPostViewMode,
     setBlogPostViewMode,
+    discoveryViewMode,
+    toggleDiscoveryViewMode,
     headerFont,
     setHeaderFont,
     bodyFont,
@@ -637,6 +639,26 @@ const BlissSettingsPage = () => {
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}
                 />
+              }
+            />
+            <SettingRow
+              number={nextNo()}
+              heading="Discovery logs viewer"
+              description="Toggle between the 3D collector's shelf (new) and the classic desktop archive (old) when opening /logs."
+              control={
+                <div className="flex items-center gap-3">
+                  <span className="bl-meta">
+                    {discoveryViewMode === 'shelf'
+                      ? '3D Shelf (New)'
+                      : 'Classic (Old)'}
+                  </span>
+                  <BlissSwitch
+                    id="discovery-view-mode"
+                    label="3D shelf viewer (new)"
+                    checked={discoveryViewMode === 'shelf'}
+                    onChange={toggleDiscoveryViewMode}
+                  />
+                </div>
               }
             />
             <SettingRow

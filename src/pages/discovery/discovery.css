@@ -1009,6 +1009,26 @@ html:has(.dc-root) {
 .dc-primary-button:hover {
   filter: brightness(1.07);
 }
+.dc-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 4px;
+  border: 1px solid #ffffff29;
+  background: #ffffff08;
+  color: #eef1ea !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+.dc-secondary-button:hover {
+  background: #ffffff14;
+  border-color: var(--entry-accent, #e4b493);
+}
 .dc-source-link {
   display: inline-flex;
   align-items: center;

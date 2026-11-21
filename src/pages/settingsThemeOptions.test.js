@@ -45,4 +45,13 @@ describe('theme settings pages', () => {
     const missing = blogViewModes.filter((mode) => !values.has(mode));
     expect(missing).toEqual([]);
   });
+
+  it.each(settingsPages)(
+    '%s offers the discovery logs viewer toggle',
+    (page) => {
+      const source = readFileSync(join(PAGES_DIR, page), 'utf8');
+      expect(source).toContain('discoveryViewMode');
+      expect(source).toContain('toggleDiscoveryViewMode');
+    },
+  );
 });

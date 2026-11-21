@@ -37,8 +37,10 @@ vi.mock('./context/AchievementContext', () => ({
 vi.mock('./context/HomepageOrderContext', () => ({
   HomepageOrderProvider: ({ children }) => children,
 }));
+let mockedDiscoveryViewMode = 'shelf';
 vi.mock('./context/VisualSettingsContext', () => ({
   VisualSettingsProvider: ({ children }) => children,
+  useVisualSettings: () => ({ discoveryViewMode: mockedDiscoveryViewMode }),
 }));
 vi.mock('./context/CommandPaletteContext', () => ({
   CommandPaletteProvider: ({ children }) => children,
@@ -57,25 +59,30 @@ vi.mock('./app/apps/CloudMusicPlayer/components/TinyCloudPlayer', () => ({
 }));
 vi.mock('framer-motion', () => ({ MotionConfig: ({ children }) => children }));
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  mockedDiscoveryViewMode = 'shelf';
+});
 
 describe('log view routing in App', () => {
-  it.each(['/logs', '/discovery', '/discovery/game/example'])(
-    'renders %s as the standalone shelf',
-    async (path) => {
-      render(
-        <MemoryRouter initialEntries={[path]}>
-          <App />
-        </MemoryRouter>,
-      );
-      expect(await screen.findByText('Shelf route')).toBeInTheDocument();
-      expect(
-        screen.queryByRole('region', { name: 'Classic layout' }),
-      ).not.toBeInTheDocument();
-    },
-  );
+  it.each([
+    '/logs',
+    '/logs/game/example',
+    '/discovery',
+    '/discovery/game/example',
+  ])('renders %s as the standalone shelf by default', async (path) => {
+    render(
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>,
+    );
+    expect(await screen.findByText('Shelf route')).toBeInTheDocument();
+    expect(
+      screen.queryByRole('region', { name: 'Classic layout' }),
+    ).not.toBeInTheDocument();
+  });
 
-  it.each(['/logs?view=classic', '/logs/game/example'])(
+  it.each(['/logs?view=classic', '/logs/game/example?view=classic'])(
     'keeps %s inside the classic site layout',
     async (path) => {
       render(
@@ -89,4 +96,25 @@ describe('log view routing in App', () => {
       expect(screen.queryByText('Shelf route')).not.toBeInTheDocument();
     },
   );
+
+  it('renders /logs inside the classic layout when classic viewer is permanently selected, while keeping /logs?view=shelf and /discovery on the shelf', async () => {
+    mockedDiscoveryViewMode = 'classic';
+    const { unmount } = render(
+      <MemoryRouter initialEntries={['/logs']}>
+        <App />
+      </MemoryRouter>,
+    );
+    expect(
+      await screen.findByRole('region', { name: 'Classic layout' }),
+    ).toHaveTextContent('Classic route');
+    expect(screen.queryByText('Shelf route')).not.toBeInTheDocument();
+    unmount();
+
+    render(
+      <MemoryRouter initialEntries={['/logs?view=shelf']}>
+        <App />
+      </MemoryRouter>,
+    );
+    expect(await screen.findByText('Shelf route')).toBeInTheDocument();
+  });
 });

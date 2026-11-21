@@ -1,4 +1,4 @@
-import { cleanup, renderHook, waitFor } from '@testing-library/react';
+import { act, cleanup, renderHook, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   VisualSettingsProvider,
@@ -58,5 +58,28 @@ describe('saved reader preferences', () => {
       'knit',
     );
     expect(window.location.search).toBe('');
+  });
+
+  it('defaults discovery logs to shelf, normalizes invalid values, and toggles permanently to classic', async () => {
+    localStorage.setItem(
+      'discovery-logs-view-mode',
+      JSON.stringify('invalid-view'),
+    );
+    const { result } = mount();
+    await waitFor(() =>
+      expect(result.current.discoveryViewMode).toBe('shelf'),
+    );
+    expect(JSON.parse(localStorage.getItem('discovery-logs-view-mode'))).toBe(
+      'shelf',
+    );
+
+    act(() => result.current.toggleDiscoveryViewMode());
+    expect(result.current.discoveryViewMode).toBe('classic');
+    expect(JSON.parse(localStorage.getItem('discovery-logs-view-mode'))).toBe(
+      'classic',
+    );
+
+    act(() => result.current.toggleDiscoveryViewMode());
+    expect(result.current.discoveryViewMode).toBe('shelf');
   });
 });

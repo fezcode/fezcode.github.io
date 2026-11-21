@@ -214,6 +214,8 @@ const OrbitSettingsPage = () => {
     setFezcodexTheme,
     blogPostViewMode,
     setBlogPostViewMode,
+    discoveryViewMode,
+    toggleDiscoveryViewMode,
     headerFont,
     setHeaderFont,
     bodyFont,
@@ -592,6 +594,26 @@ const OrbitSettingsPage = () => {
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}
                 />
+              }
+            />
+            <SettingRow
+              number={nextNo()}
+              heading="DISCOVERY LOGS VIEWER"
+              description="Toggle between the 3D collector's shelf (new) and the classic archive view (old) when opening /logs."
+              control={
+                <div className="flex items-baseline gap-3">
+                  <span className="orb-label">
+                    {discoveryViewMode === 'shelf'
+                      ? '3D SHELF · NEW'
+                      : 'CLASSIC · OLD'}
+                  </span>
+                  <OrbitToggle
+                    id="discovery-view-mode"
+                    label="3D shelf viewer (new)"
+                    checked={discoveryViewMode === 'shelf'}
+                    onChange={toggleDiscoveryViewMode}
+                  />
+                </div>
               }
             />
             <SettingRow

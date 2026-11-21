@@ -129,6 +129,8 @@ const SettingsPage = () => {
     setFezcodexTheme,
     blogPostViewMode,
     setBlogPostViewMode,
+    discoveryViewMode,
+    toggleDiscoveryViewMode,
     headerFont,
     setHeaderFont,
     bodyFont,
@@ -392,6 +394,31 @@ const SettingsPage = () => {
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}
                   icon={ArticleIcon}
+                />
+              </div>
+
+              <div className="p-6 border border-white/5 bg-white/[0.01] flex flex-col justify-between gap-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    Discovery Logs Viewer
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    Toggle between the 3D collector&apos;s shelf (New) and the
+                    classic theme archive (Old).
+                  </p>
+                </div>
+                <CustomToggle
+                  variant="brutalist"
+                  id="discovery-view-mode"
+                  label={
+                    discoveryViewMode === 'shelf'
+                      ? '3D Shelf (New)'
+                      : 'Classic Viewer (Old)'
+                  }
+                  checked={discoveryViewMode === 'shelf'}
+                  onChange={toggleDiscoveryViewMode}
+                  colorTheme="green"
+                  fontClass="font-outfit"
                 />
               </div>
             </div>
