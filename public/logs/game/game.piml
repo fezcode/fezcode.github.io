@@ -2,6 +2,30 @@
   > (item)
     (category) Game
     (developer) Obsidian Entertainment
+    (date) 2026-11-22
+    (link) https://store.steampowered.com/app/2457220/
+    (platform) PC, Xbox Series X|S
+    (rating) 5
+    (slug) avowed
+    (tags)
+      > rpg
+      > fantasy
+      > first-person
+      > action
+    (title) Avowed
+    (image) /images/discovery/covers/game/avowed.webp
+    (imageSource)
+      (provider) Steam store artwork
+      (page) https://store.steampowered.com/app/2457220/
+      (url) https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2457220/daca2b22832ca67d1a675b02cdeca255eb318da2/library_600x900_2x.jpg?t=1771352530
+      (title) Avowed
+      (width) 600
+      (height) 900
+    (description) Obsidian's fantasy RPG looks alive and fights fast: great character animations, swift combat with a wide range of weapons, spells mixed with gunpowder, and near-perfect voice acting. Three hours in and the main quest can wait.
+
+  > (item)
+    (category) Game
+    (developer) Obsidian Entertainment
     (date) 2026-11-21
     (link) https://store.steampowered.com/app/1449110/
     (platform) PC, PS5, Xbox Series X|S

@@ -1,0 +1,41 @@
+# Avowed
+
+These are first impressions, and they're already enough for a 5. I've put about three hours into Avowed and haven't touched the main quest yet, which says something on its own: the game keeps finding ways to pull me sideways.
+
+## It looks alive
+
+I'll start with the character animations, because they're great. Faces move the way faces should, and the world around them looks just as good.
+
+Sometimes my character looks straight at the camera. It's beautiful and a little creepy at the same time.
+
+![My character at the docks, looking straight into the camera](/images/logs/games/avowed/docks-camera.webp)
+
+## Combat that never drags
+
+The weapon play is good, and the variety of weapon types is even better. Fights feel swift. Nothing about them is boring, which is more than I can say for The Outer Worlds 2, Obsidian's other recent release.
+
+Even the UI moves with you. Fire a gun and the whole screen shakes, HUD included. It's a small touch, and it makes everything feel far more immersive.
+
+Mixing spells with gunpowder is extremely fun.
+
+## Voices worth listening to
+
+The sound design is fine, but the voice acting is almost perfect. Conversations are where the game earns your time.
+
+![Sword and shield on a road at night](/images/logs/games/avowed/night-road.webp)
+
+![Standing by a campfire under the stars](/images/logs/games/avowed/campfire.webp)
+
+![Shield raised toward the moon](/images/logs/games/avowed/moonlit-shield.webp)
+
+![Ready for a fight beside the bonfire](/images/logs/games/avowed/bonfire-stance.webp)
+
+![A low angle by the bonfire](/images/logs/games/avowed/bonfire-low-angle.webp)
+
+## One complaint, for every game
+
+Character creation should turn DLSS off. Every slider changes the face in front of you, DLSS can't keep up with those changes, and you end up judging your character through a smeared mess.
+
+## So far
+
+Three hours in, Avowed is everything The Outer Worlds 2 wasn't: it looks alive, it fights fast, and it sounds right. More once I actually start the story.

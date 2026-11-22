@@ -5,8 +5,8 @@
   > (item)
     (slug) action
     (label) Action
-    (count) 49
-    (logs) 49
+    (count) 50
+    (logs) 50
   > (item)
     (slug) comedy
     (label) Comedy
@@ -139,6 +139,13 @@
     (logs) 4
     (projects) 9
   > (item)
+    (slug) rpg
+    (label) RPG
+    (count) 13
+    (posts) 1
+    (logs) 11
+    (projects) 1
+  > (item)
     (slug) csharp
     (label) C#
     (count) 12
@@ -149,6 +156,11 @@
     (count) 12
     (projects) 12
   > (item)
+    (slug) fantasy
+    (label) Fantasy
+    (count) 12
+    (logs) 12
+  > (item)
     (slug) first-person-shooter
     (label) First-person shooter
     (count) 12
@@ -158,13 +170,6 @@
     (label) Indie
     (count) 12
     (logs) 12
-  > (item)
-    (slug) rpg
-    (label) RPG
-    (count) 12
-    (posts) 1
-    (logs) 10
-    (projects) 1
   > (item)
     (slug) webdev
     (label) Web dev
@@ -195,11 +200,6 @@
     (posts) 2
     (logs) 5
     (projects) 4
-  > (item)
-    (slug) fantasy
-    (label) Fantasy
-    (count) 11
-    (logs) 11
   > (item)
     (slug) frontend
     (label) Frontend
@@ -1081,6 +1081,11 @@
     (label) Ffmpeg
     (count) 2
     (projects) 2
+  > (item)
+    (slug) first-person
+    (label) First person
+    (count) 2
+    (logs) 2
   > (item)
     (slug) football
     (label) Football
@@ -2024,11 +2029,6 @@
     (label) Filesystems
     (count) 1
     (posts) 1
-  > (item)
-    (slug) first-person
-    (label) First person
-    (count) 1
-    (logs) 1
   > (item)
     (slug) five-monkeys
     (label) Five monkeys
@@ -3628,6 +3628,19 @@
     (alias) web-development
     (tag) webdev
 (items)
+  > (item)
+    (id) log/game/avowed
+    (type) log
+    (title) Avowed
+    (path) /logs/game/avowed
+    (date) 2026-11-22
+    (category) game
+    (description) Obsidian's fantasy RPG looks alive and fights fast: great character animations, swift combat with a wide range of weapons, spells mixed with gunpowder, and near-perfect voice acti…
+    (tags)
+      > rpg
+      > fantasy
+      > first-person
+      > action
   > (item)
     (id) log/game/the-outer-worlds-2
     (type) log
