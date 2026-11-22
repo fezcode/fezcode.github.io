@@ -226,6 +226,12 @@
     (posts) 1
     (logs) 10
   > (item)
+    (slug) psychology
+    (label) Psychology
+    (count) 11
+    (posts) 8
+    (logs) 3
+  > (item)
     (slug) strategy
     (label) Strategy
     (count) 11
@@ -242,12 +248,6 @@
     (count) 10
     (posts) 5
     (projects) 5
-  > (item)
-    (slug) psychology
-    (label) Psychology
-    (count) 10
-    (posts) 7
-    (logs) 3
   > (item)
     (slug) tools
     (label) Tools
@@ -479,6 +479,11 @@
     (logs) 1
     (projects) 4
   > (item)
+    (slug) culture
+    (label) Culture
+    (count) 5
+    (posts) 5
+  > (item)
     (slug) education
     (label) Education
     (count) 5
@@ -568,11 +573,6 @@
   > (item)
     (slug) canvas
     (label) Canvas
-    (count) 4
-    (posts) 4
-  > (item)
-    (slug) culture
-    (label) Culture
     (count) 4
     (posts) 4
   > (item)
@@ -1006,6 +1006,12 @@
     (label) Conspiracy
     (count) 2
     (logs) 2
+  > (item)
+    (slug) cooking
+    (label) Cooking
+    (count) 2
+    (posts) 1
+    (logs) 1
   > (item)
     (slug) courtroom
     (label) Courtroom
@@ -1730,11 +1736,6 @@
     (count) 1
     (posts) 1
   > (item)
-    (slug) cooking
-    (label) Cooking
-    (count) 1
-    (logs) 1
-  > (item)
     (slug) cot
     (label) Cot
     (count) 1
@@ -2117,6 +2118,11 @@
   > (item)
     (slug) geist
     (label) Geist
+    (count) 1
+    (posts) 1
+  > (item)
+    (slug) gender
+    (label) Gender
     (count) 1
     (posts) 1
   > (item)
@@ -3641,6 +3647,19 @@
       > fantasy
       > first-person
       > action
+  > (item)
+    (id) post/men-eat-the-meat-women-cook-the-meals
+    (type) post
+    (title) Men Eat the Meat, Women Cook the Meals
+    (path) /blog/men-eat-the-meat-women-cook-the-meals
+    (date) 2026-11-22
+    (category) essay
+    (description) What surveys and studies say about who eats more meat, who gives it up, who does the home cooking and who owns the grill, with every figure sourced.
+    (tags)
+      > cooking
+      > gender
+      > psychology
+      > culture
   > (item)
     (id) log/game/the-outer-worlds-2
     (type) log

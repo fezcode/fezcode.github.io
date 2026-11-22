@@ -1,5 +1,23 @@
 [
   {
+    "slug": "men-eat-the-meat-women-cook-the-meals",
+    "title": "Men Eat the Meat, Women Cook the Meals",
+    "date": "2026-11-22",
+    "updated": "2026-11-22",
+    "description": "What surveys and studies say about who eats more meat, who gives it up, who does the home cooking and who owns the grill, with every figure sourced.",
+    "tags": [
+      "cooking",
+      "gender",
+      "psychology",
+      "culture"
+    ],
+    "category": "essay",
+    "filename": "men-eat-the-meat-women-cook-the-meals.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "moving-deploys-to-github-actions",
     "title": "From 12 Minutes to 2: Moving Fezcodex Deploys to GitHub Actions",
     "date": "2026-11-16",

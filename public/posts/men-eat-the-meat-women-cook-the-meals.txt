@@ -1,0 +1,193 @@
+# Men Eat the Meat, Women Cook the Meals
+
+I wanted to know two things: who eats more meat, and who actually does the cooking. This post is only what the surveys and studies say. Every number has a source in the notes at the bottom, and where a source is weak, the note says so.
+
+A note on terms: national surveys record binary sex. The psychology studies further down measure gender, things like masculinity and how closely people follow traditional gender roles.
+
+## Who eats more meat
+
+Men eat roughly 1.5 to 2 times as much meat as women in every national survey I found.
+
+| Country (survey) | Men | Women | Measure |
+|---|---|---|---|
+| UK (NDNS, ages 19–64) | 76 g/day | 48 g/day | Red + processed meat[^ndns] |
+| Germany (NVS II, 2005–07) | ~156 g/day | ~84 g/day | Meat, sausage, meat products[^nvs] |
+| Poland (2017–20) | 171 g/day | 106 g/day | Red + processed meat[^poland] |
+
+In the UK, 57% of men and 31% of women eat more than the 70 g/day guideline.[^ndns]
+
+```mermaid
+pie title UK red + processed meat, g/day
+    "Men: 76 g" : 76
+    "Women: 48 g" : 48
+```
+
+The type of meat differs a little too. In the US, about 60% of the meat men ate was red meat and 30% poultry. For women it was 55% and 34%.[^daniel]
+
+**The gap opens at puberty.** Across five US NHANES waves, the difference between boys and girls is about 7 g/day at ages 0–4, 27 g at 5–11 and 123 g at 12–20, and it peaks at 160 g at ages 36–50. After 65 it narrows to 94 g. The authors say this fits a hormonal contribution, but their data only "indicate" it.[^ritzel]
+
+**Part of the gap is just eating more food.** Measured as a share of everything eaten, the adult US gap shrinks to about 3.2–3.5 percentage points.[^ritzel] A five-country European survey found that once intake was adjusted for body weight, women ate significantly more white meat and fish than men.[^augsburg]
+
+## Who is giving meat up
+
+- **US:** 6% of women and 2% of men called themselves vegetarian in 2023.[^gallup23]
+- **Netherlands:** 7% of women and 4% of men were vegetarian in 2018.[^nl]
+- **UK vegans:** only 37% are men, though 41% of non-vegan men said they were interested in a vegan diet.[^vegansoc]
+- **US vegetarians overall:** an older review estimated about 63% are women.[^fauna]
+
+```mermaid
+pie title UK vegans by sex
+    "Women: 63%" : 63
+    "Men: 37%" : 37
+```
+
+Cutting back follows the same line. In 2019, 31% of American women and 15% of men said they ate less meat than a year earlier. Health was the top reason (70%), ahead of environment (49%) and animal welfare (41%).[^gallup20] In the EU, 59% of women and 40% of men said they would replace a large share of their meat with vegetables.[^eurobaro]
+
+At one US university, women's vegetarian or vegan rate rose from about 4% to 9% between 2008 and 2023, while men's stayed at about 3%.[^wm] That is one campus, though. US national vegetarian rates have barely moved (about 4–5% in 2012, 2018 and 2023).[^gallup23]
+
+## Why men hold on to meat
+
+- **A 29-study review:** men report more positive attitudes toward meat, and women more positive attitudes toward vegetarians and vegans.[^modlinska]
+- **Belgium (870 people):** men ate more meat, were more attached to it and were less willing to cut back. The men who saw themselves as more masculine were the most attached.[^peeters]
+- **US (1,706 people, preregistered):** men who conform more to traditional gender roles were less open to vegetarianism, especially for environmental reasons.[^rosenfeld]
+- **"Is meat male?":** across six studies, meat, especially steak, was rated more masculine than vegetables. In most of 23 languages with grammatical gender, the words for meat are masculine.[^rozin]
+- **Social cost:** in vignette studies, a vegetarian man is rated less masculine but a vegetarian woman is not, and heterosexual women rated vegetarian men as less attractive.[^bps]
+- **Different defenses:** men defend eating meat directly (health, human dominance, "I like it too much"), while women avoid thinking about where it comes from.[^rothgerber] When an experiment reminded people that meat comes from animals, women's attachment to meat fell and men's rose.[^appetite18]
+
+How strong is each explanation? Masculinity norms have the best evidence for an association, but it rests mostly on vignettes, hypothetical menus and student samples. Health and ethics are well documented as women's stated reasons for cutting back. Biology (energy needs, hormones) is plausible but no human study links hormones directly to meat preference. Marketing effects are often claimed but have not been measured causally.
+
+**The surprise:** in a survey of 20,802 people in 23 countries, men ate meat more often than women everywhere except China, India and Indonesia. The gap was larger in countries with a higher Human Development Index and more gender equality, and biggest in Germany, Argentina, Poland and the UK.[^hopwood] The study measured how often people eat meat, not how much, and it was funded by the advocacy group Mercy for Animals.[^upi]
+
+## Who does the cooking
+
+```mermaid
+pie title Meals cooked per week
+    "Women: 8.7 meals" : 8.7
+    "Men: 4.0 meals" : 4.0
+```
+
+Worldwide, women cooked 8.7 meals a week and men 4.0 in 2022.[^gallup-cookpad] In the US in 2024, 71.6% of women and 54.2% of men did some food preparation or cleanup on an average day. Women averaged about 52 minutes and men about 28. Among people who cooked that day, it was about 72 minutes against 52.[^atus]
+
+```mermaid
+pie title US food prep, min/day
+    "Women: 52 min" : 52
+    "Men: 28 min" : 28
+```
+
+Children widen it. Among US couples with children, 80% of mothers and 19% of fathers say they usually make the meals. Even among parents who are the usual cook, mothers spend about 75 minutes a day and fathers 43.[^pew]
+
+| Source | Women | Men | Note |
+|---|---|---|---|
+| Gallup–Cookpad, 142 countries (2022) | 8.7 meals/wk | 4.0 meals/wk | Meals cooked from scratch[^gallup-cookpad] |
+| US ATUS (2024) | ~52 min/day | ~28 min/day | Food prep + cleanup[^atus] |
+| UK time use (2005) | 50 min median | 10 min median | Cooking only[^adams] |
+| OECD average (2011) | ~4× men's time | — | 82% vs 44% cook on a given day[^oecd11] |
+| India (2024) | 289 min/day | 88 min/day | All unpaid domestic work[^india] |
+
+For India and Japan I only found totals for all unpaid housework, not cooking on its own. In Japan, wives with children under six spend about 7h28m a day on housework and childcare, and husbands 1h54m.[^japan] About 70% of Japanese men in their 40s say they hardly ever help with weekday dinner.[^nippon]
+
+### Where it's most and least equal
+
+The smallest gaps were all in Europe, plus Jamaica. Italy was the only country where men cooked more, by 0.4 meals a week, with Spain and the UK close to even. Gallup itself urged caution on Italy: it swung 5.5 meals in two years. The largest gaps were in Ethiopia (8.6 meals), Tajikistan (8.2), and Egypt, Nepal, Yemen and Algeria (about 8).[^gallup-cookpad]
+
+Time-use data, which counts all unpaid work rather than meals, ranks countries differently. The gap is over 200 minutes a day in Mexico, Portugal and Türkiye, and under 60 in Denmark, Norway and Sweden.[^oecd23]
+
+### Is it changing?
+
+- **US, 1965–2008:** women's cooking time roughly halved until the mid-1990s and then levelled off. Men's rose only slightly.[^smith]
+- **US, 2003–2016:** the share of men who cook rose 9 points and women 3 points, but women still led 70% to 46%. The rise was among college-educated men; men without a high-school diploma didn't change.[^taillie]
+- **US, 2003–2023:** men who cook went from 45 to 50 minutes a day, while women who cook stayed at 71. (This one is from a summary of the paper.)[^pmc2025]
+- **Worldwide, 2018–2022:** men cooked a little more each year through 2021, helped by lockdowns, then dropped 0.7 meals a week in 2022. The gap widened to 4.7 meals, the first widening in the series.[^gallup-cookpad]
+
+Men also make up 59% of Cookpad's "Reluctant Cooks", people who cook about 5 meals a week and don't enjoy any of it.[^gallup-cookpad] I didn't find any survey that splits young people's (Gen Z) cooking by gender.
+
+## Who cooks what
+
+The grill is the clearest case. In the US, men decided to cook out 62% of the time, lit the grill 73% of the time and did the cooking 68% of the time.[^hpba] In 2018, 67% of men and 18% of women said they were the main griller in their family.[^msu]
+
+In the UK, men grill at 62% of barbecues and women at 25%, while women make the salads and sides at 66% against men's 24%.[^grocer]
+
+```mermaid
+pie title Who grills (UK)
+    "Men: 62%" : 62
+    "Women: 25%" : 25
+    "Not stated: 13%" : 13
+```
+
+```mermaid
+pie title Who makes sides (UK)
+    "Women: 66%" : 66
+    "Men: 24%" : 24
+    "Not stated: 10%" : 10
+```
+
+At the table, green salad is liked by 83% of women and 70% of men.[^yougov] Claims that more women are grilling come almost entirely from brand surveys, such as Perdue's 2024 poll where 53% called male grill dominance "outdated".[^perdue]
+
+Sociologists describe men's cooking as limited to particular events, such as the weekend fry-up, the Sunday roast and the barbecue. These are occasional, public, meat-centred and chosen rather than required.[^meah] Sobal called meat "an archetypical masculine food".[^sobal]
+
+What the studies observed in real kitchens:
+
+- **South Yorkshire, UK:** men came into the kitchen "largely on their own terms, as a lifestyle choice", with "pseudo-professional knife skills" and "culinary displays", while women "appeared to be discretely getting on with the everyday business".[^meah]
+- **Toronto:** men who did much of their household's cooking made it leisurely, with music, wine and slow, "meditative" cooking. The one father who was the main caregiver, cooking fast around squabbling kids, said he felt like a "maid".[^szabo]
+- **Canada, foodies:** men built skill through "projects", like spending months perfecting a sorbet, while women's interest in food stayed tied to family health and care.[^cairns]
+- **Sweden:** women still do about twice the cooking, and the men studied valued cooking mostly as a social thing, for friends, children and partners.[^neuman]
+
+```mermaid
+pie title US head chefs by sex
+    "Men: 73.6%" : 73.6
+    "Women: 26.4%" : 26.4
+```
+
+Paid kitchens flip the home pattern. In the US, women are 56.8% of food preparation workers and 43.7% of cooks, but only 26.4% of chefs and head cooks.[^bls]
+
+## What's missing
+
+There's no nationally representative time series of meat intake by sex, no dish-by-dish data on who cooks what, little recent cooking data outside the US, and nothing split by gender on Gen Z or social-media cooking.
+
+## Notes
+
+[^ndns]: Hobbs-Grimmer et al. 2021, UK National Diet and Nutrition Survey. https://pmc.ncbi.nlm.nih.gov/articles/PMC8354925/ (figures taken from a search summary; full text not read)
+[^nvs]: Nationale Verzehrsstudie II, reported by evangelisch.de (https://www.evangelisch.de/inhalte/91276/07-01-2014/maenner-essen-doppelt-soviel-fleisch-wie-frauen) and Ärzte Zeitung (https://www.aerztezeitung.de/Medizin/Was-Frauen-und-Maenner-essen-359724.html).
+[^poland]: Nutrients 2025, Polish national survey 2017–2020. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11901433/ (figures taken from a search summary; full text not read)
+[^daniel]: Daniel et al. 2011, Public Health Nutrition, NHANES 2003–04. https://www.cambridge.org/core/journals/public-health-nutrition/article/trends-in-meat-consumption-in-the-usa/AF54FD0E4A321394C09BC8087640AA0C
+[^ritzel]: Ritzel & Mann 2021, five NHANES waves (2007–16), 41,262 observations. https://pmc.ncbi.nlm.nih.gov/articles/PMC8619336/
+[^augsburg]: University of Augsburg, five-country European survey of more than 10,000 people. https://opus.bibliothek.uni-augsburg.de/opus4/files/86081/86081.pdf
+[^gallup23]: Gallup 2023. https://news.gallup.com/poll/510038/identify-vegetarian-vegan.aspx
+[^nl]: Statista, Netherlands 2018. https://statista.com/statistics/909840/share-of-vegetarians-in-the-netherlands-by-gender
+[^vegansoc]: The Vegan Society, Veganism and Masculinity Report 2024. https://www.vegansociety.com/sites/default/files/uploads/downloads/TVS_Veganism_and_Masculinity_Report%202024.pdf
+[^fauna]: Faunalytics. https://faunalytics.org/?p=513
+[^gallup20]: Gallup 2020. https://news.gallup.com/poll/282779/nearly-one-four-cut-back-eating-meat.aspx
+[^eurobaro]: Flash Eurobarometer 2013, summarized by Compassion in World Farming. https://ciwf.org.uk/news/2013/09/eating-and-ethics-in-europe-getting-to-the-meat-of-our-consumption-habits
+[^wm]: Nezlek & Forestell 2024, 12,707 William & Mary undergraduates, via Faunalytics. https://faunalytics.org/?p=88486 (single campus, not representative)
+[^modlinska]: Modlinska et al. 2020, Sustainability, systematic review of 29 studies. https://mdpi.com/2071-1050/12/16/6292
+[^peeters]: Peeters et al., University of Antwerp. https://medialibrary.uantwerpen.be/files/59457/bbbdf411-57ab-4b9e-a9a0-2909b894dfc9.pdf
+[^rosenfeld]: Rosenfeld & Tomiyama 2021. https://pubmed.ncbi.nlm.nih.gov/34166748/
+[^rozin]: Rozin et al. 2012, "Is Meat Male?", Journal of Consumer Research. https://ideas.repec.org/a/oup/jconrs/doi10.1086-664970.html
+[^bps]: "Meatheads and soy boys", The Psychologist (British Psychological Society). https://www.bps.org.uk/psychologist/meatheads-and-soy-boys
+[^rothgerber]: Rothgerber 2013. https://oa.mg/work/10.1037/a0030379
+[^appetite18]: Appetite 2018, experiment with 460 participants. https://pubmed.ncbi.nlm.nih.gov/29307499/
+[^hopwood]: Hopwood et al. 2024, Scientific Reports (https://doaj.org/article/a5cfc9aebdc944208ea306e9d5ab8c95); University of Zurich summary (https://www.news.uzh.ch/en/articles/media/2024/meat-consumption.html).
+[^upi]: UPI on the study's funding and method. https://www.upi.com/Health_News/2024/06/13/men-meat-consumption-women-equality/7211718306770/
+[^gallup-cookpad]: Gallup–Cookpad World Cooking Index, 2022 data, published 2023. https://news.gallup.com/opinion/gallup/512918/gender-gap-home-cooking-grows.aspx
+[^atus]: US Bureau of Labor Statistics, American Time Use Survey 2024, Table 1 (minutes converted from hours). https://www.bls.gov/news.release/atus.t01.htm
+[^pew]: Pew Research Center 2019. https://www.pewresearch.org/short-reads/2019/09/24/among-u-s-couples-women-do-more-cooking-and-grocery-shopping-than-men/
+[^adams]: Adams & White, UK 2005 time-use survey. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4509715/
+[^oecd11]: OECD 2011, Society at a Glance. https://web-archive-storage.oecd.org/aemint-web-archive-prod/web-archive/dc/dc25fe4fc67a7f423f973c8c33fe997387159552d9e0942821e766260e7e53fa.pdf
+[^india]: Ministry of Statistics and Programme Implementation, India Time Use Survey 2024. https://mospi.gov.in/sites/default/files/press_release/PR_TUS_25022025.pdf
+[^japan]: Statistics Bureau of Japan, Survey on Time Use 2021. https://www.stat.go.jp/english/data/shakai/2021/pdf/timeuse-a2021.pdf
+[^nippon]: Nippon.com. https://www.nippon.com/en/articles/print/17552
+[^oecd23]: OECD 2023, Gender Equality in a Changing World. https://www.oecd.org/en/publications/gender-equality-in-a-changing-world_e808086f-en/full-report/persistent-gender-gaps-in-paid-and-unpaid-work_cb137837.html
+[^smith]: Smith, Ng & Popkin 2013, Nutrition Journal. https://pmc.ncbi.nlm.nih.gov/articles/PMC3639863
+[^taillie]: Taillie 2018, Nutrition Journal. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5881182/
+[^pmc2025]: 2025 analysis of ATUS 2003–2023. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12512152/ (figures taken from a summary; full text not read)
+[^hpba]: Hearth, Patio & Barbecue Association 2013, reported by The Nibble. https://blog.thenibble.com/2014/05/27/trends-2014-grilling/
+[^msu]: Michigan State University 2018 survey, reported by AmazingRibs. https://amazingribs.com/?p=76137
+[^grocer]: The Grocer. https://www.thegrocer.co.uk/analysis-and-features/sausages-salads-and-the-great-british-bbq-gender-divide/691277.article
+[^yougov]: YouGov. https://yougov.com/en-gb/articles/50291-bread-chicken-and-beef-burgers-but-please-no-aubergine-steaks-britains-favourite-bbq-foods
+[^perdue]: Perdue 2024 (brand survey). https://www.perdue.com/the-table-blog/entertaining/occasions/womaning-the-grill
+[^meah]: Meah & Jackson 2013, "Crowded kitchens". https://eprints.whiterose.ac.uk/95616/1/Meah%20%26%20Jackson_Crowded%20kitchens%202013.pdf
+[^sobal]: Sobal 2005, as cited in Sex Roles 2023. https://link.springer.com/10.1007/s11199-023-01346-0 (secondary citation)
+[^szabo]: Szabo 2013, via JSTOR Daily. https://daily.jstor.org/when-is-cooking-fun
+[^cairns]: Cairns, Johnston & Baumann 2010, Gender & Society, via a summary. https://hdmzweb.hu.mtu.edu/cookingbooks/?p=867 (secondary summary)
+[^neuman]: Neuman et al. 2016, via Uppsala University. https://www.uu.se/en/news/2016/2016-11-22-new-study-looks-at-swedish-men-and-their-cooking
+[^bls]: US Bureau of Labor Statistics, Current Population Survey 2025, Table 11. https://www.bls.gov/cps/cpsaat11.htm
