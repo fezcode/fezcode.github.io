@@ -1,7 +1,7 @@
 [
   {
-    "slug": "pink-for-girls-blue-for-boys",
-    "title": "Pink for Girls, Blue for Boys: A Short History",
+    "slug": "when-pink-was-for-boys",
+    "title": "When Pink Was for Boys",
     "date": "2026-11-23",
     "updated": "2026-11-23",
     "description": "When pink and blue became gendered, why both rules ran side by side until the 1930s, what other colours meant in other cultures, and what the science says about girls and pink. Every claim sourced.",
@@ -13,14 +13,14 @@
       "psychology"
     ],
     "category": "essay",
-    "filename": "pink-for-girls-blue-for-boys.txt",
+    "filename": "when-pink-was-for-boys.txt",
     "authors": [
       "fezcode"
     ]
   },
   {
-    "slug": "men-eat-the-meat-women-cook-the-meals",
-    "title": "Men Eat the Meat, Women Cook the Meals",
+    "slug": "who-eats-the-steak-who-makes-dinner",
+    "title": "Who Eats the Steak, Who Makes Dinner",
     "date": "2026-11-22",
     "updated": "2026-11-22",
     "description": "What surveys and studies say about who eats more meat, who gives it up, who does the home cooking and who owns the grill, with every figure sourced.",
@@ -31,7 +31,7 @@
       "culture"
     ],
     "category": "essay",
-    "filename": "men-eat-the-meat-women-cook-the-meals.txt",
+    "filename": "who-eats-the-steak-who-makes-dinner.txt",
     "authors": [
       "fezcode"
     ]

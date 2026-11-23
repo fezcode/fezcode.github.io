@@ -3635,10 +3635,10 @@
     (tag) webdev
 (items)
   > (item)
-    (id) post/pink-for-girls-blue-for-boys
+    (id) post/when-pink-was-for-boys
     (type) post
-    (title) Pink for Girls, Blue for Boys: A Short History
-    (path) /blog/pink-for-girls-blue-for-boys
+    (title) When Pink Was for Boys
+    (path) /blog/when-pink-was-for-boys
     (date) 2026-11-23
     (category) essay
     (description) When pink and blue became gendered, why both rules ran side by side until the 1930s, what other colours meant in other cultures, and what the science says about girls and pink. Ev…
@@ -3662,10 +3662,10 @@
       > first-person
       > action
   > (item)
-    (id) post/men-eat-the-meat-women-cook-the-meals
+    (id) post/who-eats-the-steak-who-makes-dinner
     (type) post
-    (title) Men Eat the Meat, Women Cook the Meals
-    (path) /blog/men-eat-the-meat-women-cook-the-meals
+    (title) Who Eats the Steak, Who Makes Dinner
+    (path) /blog/who-eats-the-steak-who-makes-dinner
     (date) 2026-11-22
     (category) essay
     (description) What surveys and studies say about who eats more meat, who gives it up, who does the home cooking and who owns the grill, with every figure sourced.

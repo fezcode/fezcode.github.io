@@ -1249,6 +1249,17 @@ const AnimatedRoutes = ({
           path="/apps/demystified-genre"
           element={<Navigate to="/demystify/genre" replace />}
         />
+        {/* Renamed blog posts: keep the old links working */}
+        <Route
+          path="/blog/men-eat-the-meat-women-cook-the-meals"
+          element={
+            <Navigate to="/blog/who-eats-the-steak-who-makes-dinner" replace />
+          }
+        />
+        <Route
+          path="/blog/pink-for-girls-blue-for-boys"
+          element={<Navigate to="/blog/when-pink-was-for-boys" replace />}
+        />
         {/* Hardcoded redirects for fc::apps:: paths */}
         <Route
           path="/apps::pinned"
