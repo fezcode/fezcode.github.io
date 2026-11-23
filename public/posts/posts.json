@@ -1,5 +1,24 @@
 [
   {
+    "slug": "pink-for-girls-blue-for-boys",
+    "title": "Pink for Girls, Blue for Boys: A Short History",
+    "date": "2026-11-23",
+    "updated": "2026-11-23",
+    "description": "When pink and blue became gendered, why both rules ran side by side until the 1930s, what other colours meant in other cultures, and what the science says about girls and pink. Every claim sourced.",
+    "tags": [
+      "history",
+      "gender",
+      "culture",
+      "design",
+      "psychology"
+    ],
+    "category": "essay",
+    "filename": "pink-for-girls-blue-for-boys.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "men-eat-the-meat-women-cook-the-meals",
     "title": "Men Eat the Meat, Women Cook the Meals",
     "date": "2026-11-22",

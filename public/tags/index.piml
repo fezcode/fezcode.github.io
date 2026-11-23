@@ -37,18 +37,18 @@
     (posts) 15
     (projects) 9
   > (item)
+    (slug) history
+    (label) History
+    (count) 23
+    (posts) 8
+    (logs) 15
+  > (item)
     (slug) gaming
     (label) Gaming
     (count) 22
     (posts) 4
     (logs) 13
     (projects) 5
-  > (item)
-    (slug) history
-    (label) History
-    (count) 22
-    (posts) 7
-    (logs) 15
   > (item)
     (slug) dev
     (label) Dev
@@ -151,6 +151,13 @@
     (count) 12
     (projects) 12
   > (item)
+    (slug) design
+    (label) Design
+    (count) 12
+    (posts) 3
+    (logs) 5
+    (projects) 4
+  > (item)
     (slug) dotnet
     (label) .NET
     (count) 12
@@ -170,6 +177,12 @@
     (label) Indie
     (count) 12
     (logs) 12
+  > (item)
+    (slug) psychology
+    (label) Psychology
+    (count) 12
+    (posts) 9
+    (logs) 3
   > (item)
     (slug) webdev
     (label) Web dev
@@ -193,13 +206,6 @@
     (label) Avalonia UI
     (count) 11
     (projects) 11
-  > (item)
-    (slug) design
-    (label) Design
-    (count) 11
-    (posts) 2
-    (logs) 5
-    (projects) 4
   > (item)
     (slug) frontend
     (label) Frontend
@@ -225,12 +231,6 @@
     (count) 11
     (posts) 1
     (logs) 10
-  > (item)
-    (slug) psychology
-    (label) Psychology
-    (count) 11
-    (posts) 8
-    (logs) 3
   > (item)
     (slug) strategy
     (label) Strategy
@@ -413,6 +413,11 @@
     (count) 6
     (posts) 6
   > (item)
+    (slug) culture
+    (label) Culture
+    (count) 6
+    (posts) 6
+  > (item)
     (slug) data-format
     (label) Data format
     (count) 6
@@ -478,11 +483,6 @@
     (count) 5
     (logs) 1
     (projects) 4
-  > (item)
-    (slug) culture
-    (label) Culture
-    (count) 5
-    (posts) 5
   > (item)
     (slug) education
     (label) Education
@@ -1105,6 +1105,11 @@
   > (item)
     (slug) gemini-2-5-flash
     (label) Gemini 2 5 flash
+    (count) 2
+    (posts) 2
+  > (item)
+    (slug) gender
+    (label) Gender
     (count) 2
     (posts) 2
   > (item)
@@ -2118,11 +2123,6 @@
   > (item)
     (slug) geist
     (label) Geist
-    (count) 1
-    (posts) 1
-  > (item)
-    (slug) gender
-    (label) Gender
     (count) 1
     (posts) 1
   > (item)
@@ -3634,6 +3634,20 @@
     (alias) web-development
     (tag) webdev
 (items)
+  > (item)
+    (id) post/pink-for-girls-blue-for-boys
+    (type) post
+    (title) Pink for Girls, Blue for Boys: A Short History
+    (path) /blog/pink-for-girls-blue-for-boys
+    (date) 2026-11-23
+    (category) essay
+    (description) When pink and blue became gendered, why both rules ran side by side until the 1930s, what other colours meant in other cultures, and what the science says about girls and pink. Ev…
+    (tags)
+      > history
+      > gender
+      > culture
+      > design
+      > psychology
   > (item)
     (id) log/game/avowed
     (type) log

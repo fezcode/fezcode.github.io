@@ -1,0 +1,190 @@
+# Pink for Girls, Blue for Boys: A Short History
+
+Pink is for girls and blue is for boys. It feels old and obvious, but the rule only became dominant in the United States in the 1940s and 1950s.[^steele] Before that, two opposite conventions were in use at the same time. And the science on whether girls are "wired" for pink mostly says they aren't.
+
+This post is only what historians, museums and studies document. Every claim has a note at the bottom, and where a source couldn't be checked directly, the note says so.
+
+## Before 1900, babies wore white
+
+For most of the 19th century, colour barely mattered in children's clothes. Historian Jo B. Paoletti writes that "infants of both sexes wore long white dresses until they began to walk." Boys then wore skirted suits until about age 5 or 6, when they were "breeched" into trousers. In 1890, she notes, "men and women dressed completely differently, but little boys and girls were dressed very much alike."[^jstor] Tsar Nicholas II, Franklin D. Roosevelt and Ernest Hemingway were all photographed as small boys in dresses.[^jstor]
+
+When pink and blue did appear on babies, it was as ribbons, sashes and trim on a white base, not as whole outfits.[^smithsonian]
+
+## Pink was a man's colour first
+
+In adult fashion, pink was a luxury colour for elite men as well as women. Colour historian Michel Pastoureau writes that "in the eighteenth century, pink was frequently masculine," and calls it "anachronistic" to read a man's pink suit from that time as effeminate.[^pastoureau-pink] The Museum at FIT has shown a man's pink banyan (a kind of robe) from 1748–1760, and credits Madame de Pompadour with making pink fashionable at the French court.[^fit]
+
+Pink turned feminine in the early 1800s. By Pastoureau's account it "became almost exclusively feminine" then, and around 1820 "men no longer wore pink except for shock value."[^pastoureau-pink] Men in India, the FIT exhibition notes, never gave pink up.[^fit]
+
+Blue, meanwhile, had gained prestige in medieval Europe through the Virgin Mary's robes and royal heraldry from the 12th century onward.[^pastoureau-blue]
+
+## Two rules at once, 1889 to the 1930s
+
+The rule we use today is actually the older one in print:[^wiki-list]
+
+| Year | Source | What it says |
+|---|---|---|
+| 1823 | French account of the Dutch court | A blue pincushion "announces that it is a boy" |
+| 1834 | French manual | "Pink satin… in the case of a little girl, and blue satin if it is a little boy" |
+| 1856 | *Godey's* (US) | Blue is "the color appropriated to male children, as rose or pink to those of the opposite sex" |
+| 1869 | *Little Women* | "A blue ribbon on the boy and a pink on the girl, French fashion" |
+
+But the reverse rule was real too:
+
+- ***Ladies' Home Journal*, November 1890:** "Pure white is used for all babies—blue for girls and pink for boys, when a color is wished."[^wiki-list]
+- ***Earnshaw's Infants' Department*, June 1918:** "The generally accepted rule is pink for the boys, and blue for the girls. The reason is that pink, being a more decided and stronger color, is more suitable for the boy, while blue, which is more delicate and dainty, is prettier for the girl."[^earnshaws]
+- **Mary Roberts Rinehart's 1918 novel *The Amazing Interlude*:** a character says "Pink is for boys."[^wiki-list]
+
+That 1918 quote is the famous one, and it's often wrongly credited to *Ladies' Home Journal*. It traces to the trade journal *Earnshaw's*, but no full scan of the page has been found, and its wording varies between retellings.[^earnshaws-trace]
+
+In 1927, *Time* asked US department stores which colour was for boys. **Six said pink and four said blue.**[^wiki-list]
+
+```mermaid
+pie title Time 1927: stores' colour for boys
+    "Pink: 6 stores" : 6
+    "Blue: 4 stores" : 4
+```
+
+*Time* explained the pink-for-boys custom as Catholic: "In Catholic countries (France, Belgium, Spain, etc.) blue (the Virgin's color) is used for girls and pink for boys."[^wiki-list] That's the standard explanation, but it's a 1927 one. The research found no earlier text giving it as the cause.
+
+### Did it really flip?
+
+- **The popular story:** "it used to be pink for boys, and it flipped around 1940." Even some scientific papers repeated it.[^wiki-gendered]
+- **Paoletti's actual claim is more careful:** "pink-blue gender coding was known in the late 1860s but was not dominant until the 1950s."[^wiki-gendered]
+- **Psychologist Marco Del Giudice, 2012:** he called the reversal "a scientific urban legend." Searching Google Books, he found no reversed phrases at all.[^neuroskeptic]
+- **Del Giudice, 2017:** his own follow-up search of newspapers and magazines from 1881 to 1930 found **34 standard uses and 28 reversed ones**. He conceded "a certain degree of inconsistency."[^delgiudice17]
+
+```mermaid
+pie title Del Giudice 2017: press uses 1881–1930
+    "Pink girls, blue boys: 34" : 34
+    "Pink boys, blue girls: 28" : 28
+```
+
+So it wasn't a clean flip, and it wasn't a myth either. The modern rule came first and was probably more common, but the opposite was genuinely in use.
+
+## How it settled, and kept moving
+
+- **1940s–50s:** the FIT exhibition says the stereotype "only gained traction in the mid-20th century," when postwar culture tied pink to a femininity in which "biology was destiny."[^steele]
+- **1953:** Mamie Eisenhower gave her name to "Mamie Pink", and the press called the White House she redecorated "the Pink Palace".[^wiki-gendered]
+- **1959:** Pastoureau dates pink's final turn to feminine to Barbie's arrival.[^pastoureau-pu]
+- **Late 1960s–70s:** unisex baby clothes spread alongside the women's movement. In the mid-1980s pink and blue came back as prenatal testing let parents shop by sex before birth. (This is Paoletti's reading, reported second-hand.)[^jezebel]
+
+Toy catalogues show the same rise and fall. Sociologist Elizabeth Sweet studied about 7,000 Sears catalogue toy ads. **In 1975 only about 2% of toys were marketed by gender. By 1995 it was about half.** She points to the 1984 deregulation of US children's TV advertising, which allowed toy-based shows aimed at one gender, like *My Little Pony* and *Transformers*.[^sweet]
+
+The first viral gender reveal party was Jenna Karvunidis's in 2008, with a cake iced pink inside. In 2019 she wrote that "the world's first gender-reveal party baby is a girl who wears suits!"[^nbc]
+
+Colour coding also has a price. New York City's 2015 study of nearly 800 paired products found women's versions cost 7% more on average, including 7% more for toys.[^nyc] Critics note the products weren't randomly sampled.[^pinktax]
+
+## Other colours, other places
+
+Outside pink and blue, colour codes are usually about rank, life stage or morality more than sex.
+
+**Red: a mark of male rank in Europe, the bride's colour in Asia.**
+- At Louis XIV's court, red heels were "a principal signifier of political privilege limited to the king and his courtiers."[^getty] The often-repeated 1670 edict limiting them to the court is unverified: no one cites the original.
+- British infantry wore red from 1645 until the Boer War. The claim that red was chosen "to hide blood" is a myth, since blood dries dark on red cloth.[^redcoat]
+- Across Asia, red belongs to brides: the Chinese red veil,[^honggaitou] Indian bridal saris and sindoor,[^vam-wedding] and the red veil of the Turkish henna night.[^henna]
+- English brides before 1840 wore red, pink, blue, brown or black too.[^vam-wedding]
+
+**White: a bride in the West, mourning in the East.**
+- Queen Victoria's 1840 wedding made white the Western bridal colour. She wasn't the first white bride, but the V&A calls her the first British royal to dress entirely in white.[^victoria]
+- Before cheap bleaching, white signalled wealth more than purity.[^history-white]
+- In China, white is the colour of mourning.[^scmp] In parts of India it marks a widow, who traditionally gives up red sindoor for a white sari. Widowers have no equivalent. (The sources on widows' dress are mostly popular ones.)[^widows]
+
+**Purple: from emperors to suffragettes to queer history.**
+- In 301 CE, Diocletian's price edict valued a pound of Tyrian purple dye at 150,000 denarii,[^tyrian] and Byzantine heirs were "born in the purple".[^born]
+- In 1908 the suffragettes (WSPU) chose purple, white and green, purple being "the royal blood that flows in the veins of every suffragette".[^vam-suffrage] The claim that the colours' initials spell "Give Women Votes" is weakly sourced.[^crw]
+- Lavender became a queer marker. Its history runs from Berlin's 1920s *Lavender Song* to the 1950s Lavender Scare, when more than 5,000 gay and lesbian US federal employees lost their jobs, and on to the reclaimed "Lavender Menace" of 1970.[^dundee][^time-lavender] The idea that lavender is queer because it mixes pink and blue is folk theory.[^cnn]
+
+**Blue and yellow.**
+- Blue became masculine mainly through workwear: Levi Strauss's riveted denim (1873) and the phrase "blue collar," first seen in a 1924 Iowa newspaper.[^conversation]
+- In medieval Europe, yellow marked outcasts, including prostitutes, rather than women in general.[^yellow]
+
+**East Asia used a different logic altogether.**
+- In Joseon Korea, women's colours marked life stage: a yellow jacket and red skirt for unmarried girls, red and green for brides, and blue or indigo for older married women.[^hanbok][^vam-hanbok]
+- In Heian Japan, layered seasonal colours signalled taste and rank for both sexes.[^heian]
+- The popular claim that pink is masculine in Japan because of samurai and cherry blossoms has no reliable source.
+
+## Is it in our biology?
+
+**The study everyone cites says something different.** Hurlbert and Ling (2007) tested 171 British and 37 Chinese young adults and found **blue was the favourite colour of both sexes**. Women just leaned a bit more toward reds and pinks. Hurlbert suggested an evolutionary reason ("reddish fruits, healthy, reddish faces") but was open that "I can only speculate."[^hurlbert]
+
+**The small adult difference partly replicates, but the explanation doesn't.**
+- Arabic and English women preferred reddish hues more than men did,[^alrasheed] and Polish and Papuan sex differences matched closely.[^sorokowski]
+- A reanalysis found that the proposed eye mechanism did not predict the sex differences.[^witzel]
+- The Himba of rural Namibia showed no sex differences at all, though critics questioned testing them on computer screens.[^himba][^witzel]
+
+**Babies show no difference.** Among 120 infants aged 12 to 24 months, "both girls and boys preferred reddish colors over blue."[^jadva]
+
+**Pink arrives at age two to three.** In a study of 192 children:[^lobue]
+- Girls' preference for pink appeared only around age 2 to 2.5 and peaked near 80% at age 4.
+- Boys at the same ages started avoiding pink, falling to about 20% by age 5.
+- Another study found the colour gap appears later than the gap in toy preference and is less stable.[^wong]
+
+**It's absent where the marketing doesn't reach.**
+- Children aged 4 to 11 in small-scale societies in Peru, Vanuatu and Congo showed no sex difference in liking pink, while children in Brisbane did. The authors concluded the pairing "is a cultural phenomenon."[^davis]
+- In Hong Kong, preschoolers with no colour preference picked a colour once they were told it was the "girls'" or "boys'" colour.[^yeung]
+
+**Adults mostly pick blue.** In YouGov's 2015 survey of ten countries, blue was the favourite in every one. Men picked it more (40% vs 24% of women in the US), but women still chose blue more than any other colour, and only about 10–13% of women chose pink.[^yougov]
+
+**Two popular "proofs" don't hold up.**
+- The often-shared statistic that 23% of women and 0% of men prefer purple comes from a 2003 student web survey of 232 self-selected people.[^hallock]
+- The monkey study often cited as proof of innate toy preferences never tested colour.[^monkeys]
+
+## What's still open
+
+There seems to be a small adult sex difference in which hues people like, but its cause is unknown, and it isn't a preference for pink. The studies behind it are small, mostly screen-based, and there's no large preregistered cross-cultural test yet.
+
+## Notes
+
+[^steele]: Valerie Steele and Penny Sparke, *Pink: The History of a Punk, Pretty, Powerful Color*, Museum at FIT. https://exhibitions.fitnyc.edu/pink/
+[^jstor]: JSTOR Daily, drawing on Jo B. Paoletti, *Signs* (1987). https://daily.jstor.org/boys-in-dresses-the-tradition
+[^smithsonian]: Jeanne Maglaty, "When Did Girls Start Wearing Pink?", Smithsonian Magazine, 2011. https://www.smithsonianmag.com/arts-culture/when-did-girls-start-wearing-pink-1370097/ (the page blocked direct reading; wording seen only in snippets)
+[^pastoureau-pink]: Michel Pastoureau, *Pink: The History of a Color*, excerpt in Lit Hub. https://lithub.com/from-princely-regalia-to-womens-underwear-the-evolution-of-the-color-pink
+[^fit]: Museum at FIT, *Pink* exhibition. https://exhibitions.fitnyc.edu/pink/
+[^pastoureau-blue]: Michel Pastoureau, *Blue: The History of a Color*, Princeton University Press. https://press.princeton.edu/isbn/9780691251356
+[^wiki-list]: Wikipedia, List of historical sources for pink and blue as gender signifiers (quotes from the primary sources listed there; individual citations not checked against originals). https://en.wikipedia.org/wiki/List_of_historical_sources_for_pink_and_blue_as_gender_signifiers
+[^earnshaws]: Quoted via Britannica, "Has Pink Always Been a Girly Color?" (seen through a search summary). https://www.britannica.com/story/has-pink-always-been-a-girly-color
+[^earnshaws-trace]: Tracing of the quote to *Earnshaw's*: Ask MetaFilter (https://ask.metafilter.com/287687/What-will-I-do-with-you-pink-and-blue) and the Columbia statistical modeling blog (https://statmodeling.stat.columbia.edu/2011/05/when_did_girls/).
+[^wiki-gendered]: Wikipedia, Gendered associations of pink and blue, including Paoletti, *Pink and Blue: Telling the Boys from the Girls in America* (2012), p. 89. https://en.wikipedia.org/wiki/Gendered_associations_of_pink_and_blue
+[^neuroskeptic]: Del Giudice 2012, *Archives of Sexual Behavior* 41(6), discussed by Neuroskeptic in Discover. https://discovermagazine.com/mind/did-boys-use-to-wear-pink
+[^delgiudice17]: Del Giudice 2017 follow-up (preprint: https://iris.unito.it/bitstream/2318/1853049/1/DelGiudice_2017_pink_blue_update_pre.pdf). The preprint couldn't be read directly; the 34/28 figures come from Wikipedia and search summaries.
+[^pastoureau-pu]: Princeton University Press, on Pastoureau's *Pink*. https://press.princeton.edu/node/63265
+[^jezebel]: Jezebel, summarizing the Smithsonian piece. https://www.jezebel.com/the-history-of-pink-for-girls-blue-for-boys-5790638 (second-hand)
+[^sweet]: Elizabeth Sweet's research, via UC Davis (https://ucdavis.edu/news/pink-and-blue-toy-divide) and National Geographic (https://www.nationalgeographic.com/magazine/article/gender-toys-departments-piece). Figures from press coverage, not her papers.
+[^nbc]: NBC News, 2019. https://www.nbcnews.com/news/us-news/woman-who-helped-pioneer-gender-reveal-parties-now-says-who-n1035326
+[^nyc]: NYC Department of Consumer and Worker Protection, gender pricing study, 2015. https://www.nyc.gov/site/dca/partners/gender-pricing-study.page
+[^pinktax]: Wikipedia, Pink tax (criticism of the NYC sample). https://en.wikipedia.org/wiki/Pink_tax
+[^getty]: Elizabeth Semmelhack (Bata Shoe Museum), Getty Iris. https://blogs.getty.edu/iris/?p=23772
+[^redcoat]: Wikipedia, Red coat (military uniform). https://en.wikipedia.org/wiki/Red_coat_(military_uniform)
+[^honggaitou]: Wikipedia, Honggaitou. https://en.wikipedia.org/wiki/Honggaitou
+[^vam-wedding]: V&A, "Wedding colour". https://www.vam.ac.uk/articles/wedding-colour
+[^henna]: Daily Sabah, on the Turkish henna night. https://www.dailysabah.com/life/diving-into-turkish-wedding-traditions-as-an-expat-the-henna-night/news
+[^victoria]: V&A blog, Queen Victoria and the white wedding dress. https://www.vam.ac.uk/blog/here-come-brides/queen-victoria-and-the-white-wedding-dress
+[^history-white]: History.com. https://www.history.com/articles/white-wedding-dresses-western-tradition
+[^scmp]: South China Morning Post. https://www.scmp.com/magazines/post-magazine/short-reads/article/3168933/how-colours-chinese-culture-can-still-strike
+[^widows]: This Is Beirut, on widows' dress around the world (popular source). https://thisisbeirut.com.lb/articles/1322184/clothing-the-silence-widows-attires-around-the-world
+[^tyrian]: Wikipedia, Tyrian purple. https://en.wikipedia.org/wiki/Tyrian_purple
+[^born]: Wikipedia, Born in the purple. https://en.wikipedia.org/wiki/Born_in_the_purple
+[^vam-suffrage]: V&A collections, suffragette colours. https://collections.vam.ac.uk/item/O101367
+[^crw]: CRW Flags, on the "Give Women Votes" claim. https://crwflags.com/FOTW/flags/gb_suffr.html
+[^dundee]: V&A Dundee, "Violet delights: a queer history of purple". https://www.vam.ac.uk/dundee/articles/violet-delights-a-queer-history-of-purple
+[^time-lavender]: TIME, on the Lavender Scare. https://time.com/5922679/lavender-scare-history/
+[^cnn]: CNN, on lavender symbolism. https://amp.cnn.com/cnn/style/article/lgbtq-lavender-symbolism-pride
+[^conversation]: The Conversation, on blue-collar workwear. https://theconversation.com/fashioning-blue-collars-chambray-shirts-and-indigo-dyed-workwear-24603
+[^yellow]: Hyperallergic, on Pastoureau's *Yellow*. https://hyperallergic.com/the-complex-history-of-yellow-a-mediocre-color.md
+[^hanbok]: University of Hawaiʻi CTAHR costume project on hanbok. https://www.ctahr.hawaii.edu/costume/StudentProj/hanbok/04.html (sources disagree on details)
+[^vam-hanbok]: V&A, Hanbok. https://www.vam.ac.uk/articles/hanbok-traditional-korean-dress
+[^heian]: MIT JPNet, Heian kimono history. https://web.mit.edu/course/other/jpnet/kimono/history-heian.html
+[^hurlbert]: Hurlbert & Ling 2007, *Current Biology*, via ScienceDaily. https://www.sciencedaily.com/releases/2007/08/070820120720.htm
+[^alrasheed]: Al-Rasheed 2015, *Frontiers in Psychology*. https://www.frontiersin.org/articles/10.3389/fpsyg.2015.00030
+[^sorokowski]: Sorokowski et al. 2014. https://pmc.ncbi.nlm.nih.gov/articles/PMC4181517
+[^witzel]: Witzel 2015 reanalysis. https://pmc.ncbi.nlm.nih.gov/articles/PMC4664724
+[^himba]: Taylor, Clifford & Franklin 2013. https://pubmed.ncbi.nlm.nih.gov/23148465/
+[^jadva]: Jadva, Hines & Golombok 2010. https://pubmed.ncbi.nlm.nih.gov/20232129/
+[^lobue]: LoBue & DeLoache 2011, via BPS Research Digest. https://bps.org.uk/research-digest/what-age-do-girls-prefer-pink
+[^wong]: Wong & Hines 2015, *Archives of Sexual Behavior*. https://link.springer.com/10.1007/s10508-015-0489-1
+[^davis]: Davis et al. 2021, *Child Development*. https://pmc.ncbi.nlm.nih.gov/articles/PMC8451877
+[^yeung]: Yeung & Wong 2017, *Sex Roles*. https://link.springer.com/article/10.1007/s11199-017-0875-3
+[^yougov]: YouGov 2015. https://yougov.com/en-us/articles/12335-why-blue-worlds-favorite-color
+[^hallock]: Joe Hallock, 2003 colour preference survey. https://www.joehallock.com/edu/COM498/preferences.html
+[^monkeys]: Alexander & Hines 2002 coverage (https://phys.org/news/2005-12-monkeys-mimic-kids-toy.html) and later primate work (https://durham-repository.worktribe.com/OutputFile/1449038).
