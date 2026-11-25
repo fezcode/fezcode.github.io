@@ -94,6 +94,8 @@ const expectShareImage = (path) => {
 };
 
 beforeEach(() => {
+  // Keep selection assertions deterministic now that collection order is random.
+  vi.spyOn(Math, 'random').mockReturnValue(0.999);
   vi.stubGlobal(
     'fetch',
     vi.fn(async (path) => ({
@@ -105,6 +107,7 @@ beforeEach(() => {
 
 afterEach(() => {
   cleanup();
+  vi.restoreAllMocks();
   vi.unstubAllGlobals();
 });
 

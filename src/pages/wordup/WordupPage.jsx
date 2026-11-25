@@ -12,7 +12,6 @@ const places = [
   { left: '22%', top: '59%' },
   { left: '76%', top: '59%' },
   { left: '43%', top: '9%' },
-  { left: '47%', top: '61%' },
 ];
 
 export default function WordupPage() {
@@ -30,13 +29,28 @@ export default function WordupPage() {
     else next.delete('view');
     setSearchParams(next, { preventScrollReset: true });
   };
+  // Shuffle once per loaded collection so previews and filters stay stable.
+  const shuffledWords = useMemo(() => {
+    const shuffled = [...words];
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[randomIndex]] = [
+        shuffled[randomIndex],
+        shuffled[index],
+      ];
+    }
+    return shuffled;
+  }, [words]);
   const visibleWords = useMemo(
-    () => filterWordupWords(words, { language, query }),
-    [words, language, query],
+    () => filterWordupWords(shuffledWords, { language, query }),
+    [shuffledWords, language, query],
   );
-  const pageCount = Math.max(1, Math.ceil(visibleWords.length / 6));
+  const pageCount = Math.max(1, Math.ceil(visibleWords.length / places.length));
   const currentPage = Math.min(page, pageCount - 1);
-  const orbitWords = visibleWords.slice(currentPage * 6, currentPage * 6 + 6);
+  const orbitWords = visibleWords.slice(
+    currentPage * places.length,
+    (currentPage + 1) * places.length,
+  );
   const selected =
     orbitWords.find((word) => word.slug === selectedSlug) || orbitWords[0];
   const reset = () => {
