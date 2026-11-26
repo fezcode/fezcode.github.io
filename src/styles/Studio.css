@@ -301,6 +301,13 @@
 .std-sidebar {
   background: var(--std-bg);
 }
+.std-sidebar-footer .std-btn {
+  min-height: 44px;
+  padding: 0;
+}
+.std-sidebar-footer .std-btn svg {
+  flex-shrink: 0;
+}
 .std-nav-head {
   text-transform: none;
 }

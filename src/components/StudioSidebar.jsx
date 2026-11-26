@@ -208,7 +208,7 @@ const StudioSidebar = ({
               }}
               aria-label="Open command palette"
             >
-              <CommandIcon size={17} />
+              <CommandIcon size={20} />
             </button>
             <Link
               className="std-btn"
@@ -216,7 +216,7 @@ const StudioSidebar = ({
               aria-label="Settings"
               onClick={closeOnMobile}
             >
-              <GearIcon size={17} />
+              <GearIcon size={20} />
             </Link>
             <Link
               className="std-btn"
@@ -227,7 +227,7 @@ const StudioSidebar = ({
                 unlockAchievement('feeling_lucky');
               }}
             >
-              <ShuffleIcon size={17} />
+              <ShuffleIcon size={20} />
             </Link>
             <button
               type="button"
@@ -238,7 +238,7 @@ const StudioSidebar = ({
               }}
               aria-label="Contact Samil"
             >
-              <EnvelopeSimpleIcon size={17} />
+              <EnvelopeSimpleIcon size={20} />
             </button>
           </div>
 
