@@ -131,7 +131,7 @@ const StudioSidebar = ({
               <XIcon size={20} />
             </button>
           </div>
-          <p className="std-label mt-3">A little room for curiosity</p>
+          <p className="std-label mt-3">{config?.kernel?.codename}</p>
         </div>
         <div className="std-sidebar-nav">
           {navLoading && (
