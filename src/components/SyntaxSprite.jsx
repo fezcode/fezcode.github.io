@@ -1,8 +1,9 @@
 import '../styles/Studio.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { useVisualSettings } from '../context/VisualSettingsContext';
+import { useToast } from '../hooks/useToast';
 import {
   BrainIcon,
   ChatCircleDotsIcon,
@@ -83,104 +84,99 @@ const KnitHen = ({ thinking }) => (
   />
 );
 
+// Clicks in a streak before Syntax gives up and leaves.
+const SHOVE_CLICKS = 10;
+// Max gap between two clicks for them to count as one streak (ms).
+const CLICK_STREAK_GAP = 2500;
+
 const QUOTES = [
-  "Go's defer statement executes in LIFO order (Last-In, First-Out).",
-  'XOR distance in Kademlia is a true metric: it satisfies triangle inequality.',
-  'Distributed Hash Tables (DHT) provide O(log N) lookup complexity.',
-  'In Go, a nil slice has a length and capacity of 0, but no underlying array.',
-  'Semantic file systems use metadata to provide associative access to data.',
-  "The 'Gopher' was designed by Renée French. Go was born at Google.",
-  'Channels in Go are first-class citizens: they can be passed as variables.',
-  'Goroutines start with a tiny 2KB stack that grows and shrinks dynamically.',
-  "A Tag File System solves the 'Hierarchy Trap' where files belong in multiple places.",
-  "In Kademlia, nodes are organized into 'k-buckets' based on their ID prefix.",
-  "Go's 'select' statement blocks until one of its cases can run.",
-  'FUSE (Filesystem in Userspace) allows non-privileged users to create filesystems.',
-  "A 'Pointer' stores the memory address of another value. Use with care!",
-  'Immutable data structures are safer for concurrent programming.',
-  "Clean code is not just about logic; it's about empathy for future readers.",
-  'In a DHT, each node is responsible for a specific segment of the keyspace.',
-  "The 'empty interface' interface{} can hold values of any type in Go.",
-  "Go's scheduler uses 'work stealing' to balance goroutines across CPU cores.",
-  'TCP ensures ordered delivery, while UDP is fire-and-forget.',
-  'The CAP theorem states you can only have two: Consistency, Availability, or Partition Tolerance.',
-  'A mutex (Mutual Exclusion) prevents race conditions in concurrent code.',
-  "Big-O notation describes the upper bound of an algorithm's complexity.",
-  'Hash collisions occur when two different keys produce the same hash value.',
-  'In Go, methods can be defined on any named type, not just structs.',
-  "A 'deadlock' happens when two processes wait for each other to release resources.",
-  'Environment variables are a great way to handle configuration secrets.',
-  'Binary search requires a sorted collection and runs in O(log N) time.',
-  "The 'Init' function in Go runs automatically before main.",
-  "Standard library documentation is a developer's best friend.",
-  'Zero memory allocation is the holy grail of performance optimization.',
-  'HTTP/2 multiplexing allows multiple requests over a single TCP connection.',
-  "A 'Race Condition' occurs when the output depends on the timing of events.",
-  'JWT (JSON Web Tokens) consist of Header, Payload, and Signature.',
-  'In Go, a map is a reference to a runtime.hmap header.',
-  "The 'Decorator Pattern' allows behavior to be added to an object dynamically.",
-  'SQL injection can be prevented by using prepared statements and parameters.',
-  'DNS (Domain Name System) translates human-readable names into IP addresses.',
-  'Eventual consistency means all nodes will eventually have the latest data.',
-  "The 'Single Responsibility Principle' (SRP) states a class should have one job.",
-  "Go's garbage collector uses a 'tri-color mark-and-sweep' algorithm.",
-  "A 'Slice Header' contains a pointer to the array, a length, and a capacity.",
-  'Semantic Versioning: Major.Minor.Patch (e.g., 1.2.3).',
-  "Tailwind CSS uses 'Utility-First' methodology for rapid UI development.",
-  "A 'Closure' is a function that references variables from outside its scope.",
-  'RAID 0 provides performance, while RAID 1 provides data redundancy.',
-  "The 'Observer Pattern' defines a one-to-many dependency between objects.",
-  "Go's 'context' package is used for timeouts and cancellation signals.",
-  "Docker containers share the host's OS kernel for lightweight virtualization.",
-  "A 'Load Balancer' distributes network traffic across multiple servers.",
-  "The 'Law of Demeter' suggests objects should only talk to their neighbors.",
-  "There's no place like 127.0.0.1.",
-  "I'd tell you a joke about UDP, but you might not get it.",
-  'It works on my machine!',
-  'CSS is like magic, but the kind where you accidentally set your house on fire.',
-  'A Gopher walks into a bar... and parallelizes the drink orders.',
-  "My code doesn't have bugs, it just has undocumented features.",
-  'The best part about Go? No semicolons to lose in the couch cushions.',
-  'To understand recursion, you must first understand recursion.',
-  'Real programmers count from 0.',
-  'Cache invalidation and naming things: the two hardest problems in CS.',
-  "A SQL query walks into a bar, walks up to two tables, and asks... 'Can I join you?'",
-  "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
-  "I have a joke about stack overflow, but it's too long to tell.",
-  "Go: come for the speed, stay because you can't figure out why your pointer is nil.",
-  "Wait, where did the semicolon go? Oh right, I'm in Go mode.",
-  "If at first you don't succeed, call it version 1.0.",
-  "Software is like entropy: it's difficult to grasp, weighs nothing, and obeys the second law of thermodynamics.",
-  "Why do Java developers wear glasses? Because they can't C#!",
-  'Debugging is like being the detective in a crime movie where you are also the murderer.',
-  'The first bug was a literal moth found in a Mark II computer in 1947.',
-  'Git was created by Linus Torvalds in just two weeks to manage Linux development.',
-  "The term 'bit' (Binary Digit) was coined by John Tukey in 1946.",
-  "JavaScript's 'typeof null' is 'object'. A legacy bug from the first version.",
-  "Python was named after Monty Python's Flying Circus, not the reptile.",
-  'The first website ever (info.cern.ch) went live on August 6, 1991.',
-  "SpaceX's Crew Dragon runs on a customized Linux OS and Chromium-based UI.",
-  'The Linux kernel surpassed 30 million lines of code in 2024.',
-  'Nintendo started as a playing card company in 1889.',
-  "The 'Save' icon is a 3.5-inch floppy disk. It held 1.44 MB of data.",
-  'Ada Lovelace wrote the first algorithm intended for a machine in 1843.',
-  'The C language was born at Bell Labs to rewrite the Unix operating system.',
-  "A Yottabyte is 1,024 Zettabytes. We haven't even reached the Zettabyte era fully.",
-  'The first computer mouse was made of wood and had only one button.',
-  'The QWERTY keyboard layout was designed to slow down typists to prevent jams.',
-  "Apollo 11's guidance computer had less processing power than a modern calculator.",
-  "CAPTCHA stands for 'Completely Automated Public Turing test to tell Computers and Humans Apart'.",
-  "The '404 Not Found' error was named after Room 404 at CERN where the first servers were.",
-  'Domain names were free until 1995.',
-  'The first banner ad was used in 1994 and had a 44% click-through rate.',
-  'Linux is everywhere: from Android phones to the International Space Station.',
-  "The 'Gopher' in Go isn't just a mascot; it's a symbol of efficiency and speed.",
-  'Docker was originally an internal project at a company called dotCloud.',
-  "Kubernetes is Greek for 'Helmsman' or 'Pilot'.",
-  'The first 1GB hard drive (1980) weighed 550 pounds and cost $40,000.',
-  "Programming is the art of telling a computer what to do. It's also the art of arguing with it.",
-  "If you ever feel useless, remember that someone is maintaining the 'Scroll Lock' key.",
-  "Wi-Fi doesn't stand for anything. It's just a catchy name.",
+  // ─── Systems, under the hood ───
+  'Go randomizes map iteration order on purpose, so no program can come to depend on it.',
+  "A Go interface holding a nil pointer is not nil: the interface still carries the pointer's type.",
+  'Go 1.22 made loop variables per-iteration, ending a decade of closures capturing the same variable.',
+  'Go 1.24 rebuilt maps on Swiss Tables: slots in groups of eight, scanned via one control byte each.',
+  'A growing goroutine stack is copied to a buffer twice its size, and every pointer into it is rewritten.',
+  'False sharing: two cores writing different variables on one 64-byte cache line take turns owning it, and both slow down.',
+  'An L1 cache hit costs about a nanosecond; main memory, around a hundred. Data layout beats clever code.',
+  'Structure-of-arrays often beats array-of-structures: each cache line then carries only the fields you read.',
+  'Spectre made speculation a side channel: the CPU rolls back the results, not the cache footprint.',
+  'Copy-on-write makes fork() cheap: parent and child share every page until one of them writes.',
+  'sendfile() moves file bytes straight to a socket without ever copying them through user space.',
+  'io_uring lets Linux programs queue I/O through shared ring buffers instead of paying a syscall per operation.',
+  'fsync on a new file is not enough to survive a crash. The directory entry needs its own fsync.',
+  "In 2018 PostgreSQL found Linux could report a failed fsync once, then mark the pages clean. 'fsyncgate'.",
+  'SQLite carries roughly 590 lines of test code for every line of library code.',
+  'A B-tree node is sized to a disk page, so finding one row among a billion touches only a handful of pages.',
+  'LSM trees turn random writes into sequential ones, and pay the bill later in compaction.',
+  'Write-ahead logging: record what you are about to do before doing it, so a crash leaves something to replay.',
+  "Nagle's algorithm plus delayed ACKs can stall small TCP writes by tens of milliseconds. Hence TCP_NODELAY.",
+  'QUIC runs over UDP partly because middleboxes ossified TCP: packets with unfamiliar TCP options got dropped.',
+  'TLS 1.3 needs one round trip to set up; its optional zero-RTT data can be replayed by an attacker.',
+  'BGP believes what neighbours announce. In 2008 one bad announcement from Pakistan took YouTube offline worldwide.',
+  'There are 13 DNS root server names, answered by well over a thousand anycast instances around the world.',
+  'IANA handed out its last blocks of IPv4 addresses in February 2011.',
+  'A MAC address with the second-lowest bit of its first byte set is locally administered. Randomized Wi-Fi MACs set it.',
+  'Tony Hoare calls the null reference his billion-dollar mistake. He added it to ALGOL W in 1965.',
+  'Rust stores Option<&T> in the space of a bare pointer: the impossible null value means None.',
+  'Garbage collection predates most languages that use it: John McCarthy invented it for Lisp around 1959.',
+  "Dijkstra's famous 1968 letter was titled by its editor, Niklaus Wirth: 'Go To Statement Considered Harmful'.",
+  "Ken Thompson's 'Reflections on Trusting Trust' (1984): a compiler can plant a backdoor that survives a rebuild from clean source.",
+
+  // ─── Distributed systems ───
+  'FLP (1985): in a fully asynchronous network, no deterministic consensus protocol can guarantee progress if one process may crash.',
+  'CAP only bites during a partition. PACELC adds: otherwise, you trade latency against consistency.',
+  'Raft and Paxos survive f crashed nodes with 2f+1 replicas. Byzantine (lying) nodes need 3f+1.',
+  "Lamport clocks respect causality, but a smaller timestamp doesn't prove cause. Vector clocks can tell.",
+  'Spanner waits out its clock uncertainty before committing: a few milliseconds of patience buys external consistency.',
+  "Exactly-once delivery doesn't exist on a lossy network. Systems fake it with at-least-once plus idempotent handlers.",
+  'Consistent hashing moves about K/N keys when a node joins, instead of reshuffling almost all of them.',
+  "Little's law: items in a system = arrival rate × time each spends there. It holds for caches and checkout lines alike.",
+  'In a simple queue, wait time grows like 1/(1−ρ). Run a server at 99% busy and the queue explodes.',
+  "Amdahl's law: if 5% of a job must run serially, no number of cores makes it more than 20× faster.",
+  'Google smears leap seconds across a whole day after a 2012 leap second hung Linux servers. Leap seconds are due to be dropped by 2035.',
+
+  // ─── Algorithms, numbers and text ───
+  "Bloom filters answer 'definitely not' or 'maybe'. Never a definite yes.",
+  'HyperLogLog counts billions of distinct items in about 12 KB, within roughly 0.8% error.',
+  'The birthday bound: random 64-bit IDs reach a 50% collision chance after about five billion of them.',
+  'Quicksort is O(n²) in the worst case. Introsort falls back to heapsort when recursion runs too deep.',
+  "In 2015, researchers formally verifying Timsort found a bug in it: Java's and Python's sort, used by billions.",
+  "Java's binary search hid an overflow for about nine years: (low + high) / 2 breaks once arrays pass 2³⁰ elements.",
+  '0.1 + 0.2 = 0.30000000000000004, because 0.1 has no finite binary expansion.',
+  "Floating-point addition isn't associative, so a parallel sum can change with the number of threads.",
+  "NaN is the only value not equal to itself. That's why x != x works as an isnan test.",
+  'Signed 32-bit Unix time runs out at 03:14:07 UTC on 19 January 2038, then wraps to 1901.',
+  'UTF-8 bytes label themselves: 10xxxxxx is always a continuation, so a reader can resync mid-stream.',
+  'Ken Thompson and Rob Pike sketched UTF-8 on a placemat in a New Jersey diner in 1992.',
+  "'é' can be one code point or two (e plus a combining accent): identical on screen, unequal to a naive compare.",
+  "Two's complement makes −x equal to ~x + 1, so one adder circuit serves signed and unsigned arithmetic.",
+  'x & (x − 1) clears the lowest set bit. Loop it and you count bits in as many steps as there are ones.',
+  "Quake III's fast inverse square root: reinterpret the float as an integer, subtract from 0x5f3759df, one Newton step.",
+  "Duff's device interleaves a switch with a do-while to unroll a loop. It is perfectly legal C.",
+  "Regexes with backreferences aren't regular any more: matching them is NP-complete.",
+  "Catastrophic backtracking in a single regex took down Cloudflare's network for 27 minutes in 2019.",
+  "Rice's theorem: every non-trivial question about what a program does is undecidable.",
+  'Hindley–Milner infers every type with no annotations, yet its worst case is exponential in program size.',
+  'The Y combinator gives recursion to a language that has no names to recurse by.',
+
+  // ─── Security ───
+  'Diffie–Hellman lets two strangers agree on a secret over a channel everyone can read.',
+  "Forward secrecy: steal a TLS 1.3 server's key tomorrow and yesterday's recorded traffic stays sealed.",
+  'Comparing secrets with == leaks, through timing, how many leading bytes matched. Use a constant-time compare.',
+  'bcrypt, scrypt and Argon2 are slow on purpose. A fast password hash is a gift to anyone with a GPU.',
+  'Heartbleed (2014): one trusted length field let anyone read up to 64 KB of server memory per request.',
+  "Shor's algorithm would break RSA on a large quantum computer. NIST finalized the ML-KEM replacement in 2024.",
+
+  // ─── History, precisely ───
+  "The 1947 Mark II moth was logged as the 'first actual case of bug being found'. Engineers already said 'bug'.",
+  "During Apollo 11's landing the guidance computer threw 1202 alarms, shed low-priority work and kept flying.",
+  'ENIAC was programmed by rewiring it. Its six original programmers, all women, went uncredited for decades.',
+  'The Morris worm (1988) hit roughly 10% of the 60,000 machines then on the Internet, and led to the first CERT.',
+  "Ariane 5's first flight (1996) was lost when reused Ariane 4 code squeezed a 64-bit float into a 16-bit integer.",
+  'Therac-25 overdosed patients through a race condition that only fast, experienced operators could trigger.',
+  'NASA lost the Mars Climate Orbiter in 1999: one team worked in pound-force seconds, the other in newton-seconds.',
+  'Knight Capital lost $440 million in 45 minutes in 2012 when a reused flag woke up retired trading code.',
+  'Early Unix counted time in sixtieths of a second from 1971. The 1970 epoch came later.',
 
   // ─── Deeper notes — on computer science & craft ───
   "In Dijkstra's words: 'Simplicity is a prerequisite for reliability.'",
@@ -259,54 +255,33 @@ const QUOTES = [
   'A file is a letter to the version of yourself who will read it next.',
   'Do the work. Write it down. Drop the line. Read it true.',
 
-  // Fun facts — nature
-  'Octopuses have three hearts and blue blood. Copper-based hemocyanin, not iron.',
-  'Bananas are botanically berries. Strawberries are not.',
-  'Wombats produce cube-shaped droppings. Nature ships square packets.',
-  'Sharks are older than trees. Sharks: ~450 million years. Trees: ~385 million.',
-  'Tardigrades survived 10 days exposed to open space in 2007. Uptime goals.',
-  'Crows can recognize individual human faces and hold a grudge for years.',
-  'Koalas have fingerprints so close to ours they could confuse a crime scene.',
-  'Sea otters often hold hands while sleeping so they do not drift apart.',
-  "A mantis shrimp's punch is so fast it boils the water around it for an instant.",
-  'Sloths can hold their breath for up to 40 minutes. Longer than most standups.',
-  'Elephants are one of the very few mammals that cannot jump.',
-  'Peanuts are not nuts. They are legumes, closer to beans and lentils.',
-
-  // Fun facts — science
-  'Sunlight takes about 8 minutes and 20 seconds to reach you. You are always seeing the past.',
-  'A day on Venus is longer than a year on Venus.',
-  'Pluto has not completed a single orbit since it was discovered in 1930. It needs 248 years.',
-  'A teaspoon of neutron star would weigh around a billion tons.',
-  'A lightning bolt can reach ~30,000 K, about five times hotter than the surface of the Sun.',
-  'Saturn is less dense than water. Find a big enough bathtub and it would float.',
-  'Your body carries roughly as many bacterial cells as human cells. You are a distributed system.',
-  'Humans faintly glow. The light is about a thousand times too weak for our eyes to see.',
-  'Your stomach lining replaces itself every few days, so it does not digest itself.',
-  'The Eiffel Tower grows up to 15 cm taller in summer heat. Thermal expansion is real.',
-  'In a room of just 23 people, the odds that two share a birthday are over 50%.',
-
-  // Fun facts — history & society
-  'Oxford University was teaching before the Aztec capital Tenochtitlan was even founded.',
+  // ─── Science and mathematics ───
+  'There are exactly as many even numbers as whole numbers, and strictly more real numbers than either. Cantor.',
+  'Gödel: any consistent formal system strong enough for arithmetic contains true statements it cannot prove.',
+  "Benford's law: in many real datasets about 30% of numbers start with 1. Fraud auditors check for it.",
+  'A random walk on a line or a plane returns home with certainty. In three dimensions, only about 34% of the time.',
+  'The four colour theorem (1976) was the first major proof that needed a computer to check its cases.',
+  "Landauer's limit: erasing one bit costs at least kT ln 2 of energy. Forgetting has a price.",
+  'GPS satellite clocks run about 38 microseconds a day fast against ours. Relativity, corrected in orbit.',
+  "Light in optical fibre travels about a third slower than in vacuum: New York–London can't round-trip in under ~56 ms.",
+  'Every gold atom on Earth was forged in a cosmic catastrophe, such as a supernova or a neutron-star merger.',
+  "Pressure waves in the Perseus cluster's gas form a note about 57 octaves below middle C.",
+  "Two-thirds of an octopus's neurons sit in its arms. A severed arm will still reach for food.",
+  'Mitochondria carry their own DNA, inherited almost entirely from the mother.',
+  'Each of your cells packs about two metres of DNA into a nucleus a few micrometres wide.',
+  'Tardigrades survive drying out by turning their insides to glass: sugars and proteins vitrify in place of water.',
+  'Honeybees can learn that zero is less than one, according to a 2018 study.',
+  'Water is densest at about 4 °C, so lakes freeze from the top down and life survives underneath.',
   'Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid.',
-  'The shortest war in history, Anglo-Zanzibar 1896, lasted about 40 minutes.',
-  "Scotland's national animal is the unicorn.",
-  'In the 1830s, ketchup was sold in America as a medicine.',
-  'When a Byzantine princess ate with a golden fork in 11th-century Venice, clergy called it decadent.',
-  "The word 'coffee' traveled from Arabic qahwa through Turkish kahve before reaching Europe.",
-  "The English word 'tulip' likely comes from Turkish tülbent, turban. The flower came via the Ottomans.",
-  'Robin Dunbar suggested humans can keep about 150 stable relationships. Your follower count disagrees.',
-  'The Ottoman spoon-makers had their own guild. A good spoon was practically personal property.',
-
-  // Fun facts — life
-  'Most people can only hold about four things in working memory at once. Write it down.',
-  'Laughter is around 30 times more likely when you are with other people than alone.',
-  'Walking meetings measurably boost creative thinking, at least in Stanford studies. Go outside.',
-  'You blink around 15 to 20 times a minute, a bit less when staring at a screen. Look away sometimes.',
+  'The Monty Hall problem: switching wins two times in three. Paul Erdős reportedly needed a simulation to believe it.',
 ];
 
 const SyntaxSprite = () => {
-  const { isSyntaxSpriteEnabled, fezcodexTheme } = useVisualSettings();
+  const { isSyntaxSpriteEnabled, toggleSyntaxSprite, fezcodexTheme } =
+    useVisualSettings();
+  const { addToast } = useToast() || {};
+  const clickStreak = useRef(0);
+  const lastClickAt = useRef(0);
   const location = useLocation();
   const [position, setPosition] = useState({ x: 100, direction: -1 }); // Spawn right, walk left
   const [state, setState] = useState('walking'); // idle, walking, thinking
@@ -385,9 +360,36 @@ const SyntaxSprite = () => {
   }, [location.pathname]);
 
   const handleSpriteClick = () => {
+    // Ten clicks in a row (each within CLICK_STREAK_GAP of the last) and
+    // Syntax takes the hint: it leaves and says where to bring it back.
+    const now = Date.now();
+    clickStreak.current =
+      now - lastClickAt.current <= CLICK_STREAK_GAP ? clickStreak.current + 1 : 1;
+    lastClickAt.current = now;
+
+    if (clickStreak.current >= SHOVE_CLICKS) {
+      clickStreak.current = 0;
+      setThought('');
+      setState('idle');
+      setIsJumping(false);
+      toggleSyntaxSprite();
+      addToast?.({
+        title: 'Syntax has left',
+        message:
+          'Ten pokes was enough. Bring your companion back any time in Settings.',
+        duration: 6000,
+      });
+      return;
+    }
+
     setIsJumping(true);
+    const left = SHOVE_CLICKS - clickStreak.current;
     setThought(
-      'I am Syntax, the Codex Companion. You can stow me in Settings anytime!',
+      clickStreak.current >= 5
+        ? left === 1
+          ? 'One more and I am gone. I mean it.'
+          : `Easy there. ${left} more pokes and I am leaving.`
+        : 'I am Syntax, the Codex Companion. You can stow me in Settings anytime!',
     );
     setState('thinking');
     setTimeout(() => {
@@ -1035,6 +1037,8 @@ const SyntaxSprite = () => {
         className="absolute bottom-2 flex flex-col items-center pointer-events-auto cursor-help"
         style={{ width: '60px' }}
         onClick={handleSpriteClick}
+        role="button"
+        aria-label="Talk to Syntax, the codex companion"
       >
         {/* Thought Bubble */}
         <AnimatePresence>
