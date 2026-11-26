@@ -131,6 +131,8 @@ export const ICONS = {
   bell: ['0001000', '0011100', '0111110', '0111110', '0111110', '1111111', '0001000'],
   eye: ['0000000', '0011100', '0110110', '1101011', '0110110', '0011100', '0000000'],
   flask: ['0011100', '0010100', '0010100', '0110110', '0111110', '1111111', '1111111'],
+  // fezcode.studio: a fez with its tassel swinging off the crown.
+  fez: ['0011110', '0011101', '0111101', '0111100', '0111100', '1111110', '1111110'],
 };
 
 /** Phosphor icon names used in sidebar.piml and app data, charted as stitches. */
@@ -195,6 +197,7 @@ const PHOSPHOR_TO_KNIT = {
   Flask: 'flask',
   TreeStructure: 'graph',
   GitBranch: 'graph',
+  HardDrive: 'fez',
 };
 
 export const knitIconFor = (phosphorName) => {

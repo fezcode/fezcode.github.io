@@ -348,8 +348,15 @@ export const badgeGrid = (seed, size = 11) => {
 };
 
 /** A woven icon: a Knit bitmap (or Phosphor name) on an optional ground. */
+// Pictograms Kilim weaves its own way instead of borrowing Knit's chart.
+const KILIM_ICONS = {
+  // fezcode.studio: a stepped fez, knotted on top and fringed like a rug.
+  fez: ['0001000', '0011100', '0011100', '0111110', '0111110', '1111111', '1010101'],
+};
+
 export const iconGrid = (name, { fg = WOOL.ivory, bg = null, pad = 0 } = {}) => {
-  const bitmap = ICONS[name] || ICONS[knitIconFor(name)] || ICONS.dot;
+  const key = ICONS[name] ? name : knitIconFor(name);
+  const bitmap = KILIM_ICONS[name] || KILIM_ICONS[key] || ICONS[key] || ICONS.dot;
   const size = bitmap.length + pad * 2;
   const g = makeGrid(size, size, bg);
   bitmap.forEach((line, r) => {

@@ -49,6 +49,10 @@
         (label) Achievements
         (to) /achievements
         (icon) TrophyIcon
+      > (item)
+        (label) Fezcode Studio
+        (to) https://fezcode.studio/
+        (icon) HardDriveIcon
 
   > (section)
     (id) isContentOpen
