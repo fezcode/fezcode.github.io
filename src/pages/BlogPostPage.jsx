@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioBlogPostPage from './studio-views/StudioBlogPostPage';
 import { useSearchParams } from 'react-router-dom';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import DossierBlogPostPage from './blog-views/DossierBlogPostPage';
@@ -39,6 +40,7 @@ const BlogPostPage = () => {
         'knit',
         'kilim',
         'bliss',
+        'studio',
       ].includes(themeParam)
     ) {
       return themeParam;
@@ -48,6 +50,7 @@ const BlogPostPage = () => {
       return blogPostViewMode;
     }
 
+    if (fezcodexTheme === 'studio') return 'studio';
     if (fezcodexTheme === 'luxe') return 'luxe';
     if (fezcodexTheme === 'terracotta') return 'terracotta';
     if (fezcodexTheme === 'orbit') return 'orbit';
@@ -58,6 +61,7 @@ const BlogPostPage = () => {
     return 'brutalist';
   })();
 
+  if (effectiveViewMode === 'studio') return <StudioBlogPostPage />;
   if (effectiveViewMode === 'luxe') return <LuxeBlogPostPage />;
   if (effectiveViewMode === 'terracotta') return <TerracottaBlogPostPage />;
   if (effectiveViewMode === 'galley') return <GalleyBlogPostPage />;

@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioAchievementsPage from './studio-views/StudioAchievementsPage';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistAchievementsPage from './brutalist-views/BrutalistAchievementsPage';
 import LuxeAchievementsPage from './luxe-views/LuxeAchievementsPage';
@@ -13,6 +14,7 @@ import BlissAchievementsPage from './bliss-views/BlissAchievementsPage';
 const AchievementsPage = () => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioAchievementsPage />;
   if (fezcodexTheme === 'luxe') return <LuxeAchievementsPage />;
   if (fezcodexTheme === 'terracotta') return <TerracottaAchievementsPage />;
   if (fezcodexTheme === 'mist') return <MistAchievementsPage />;

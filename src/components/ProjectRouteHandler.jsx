@@ -4,6 +4,7 @@ import { useProjects } from '../utils/projectParser';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import Loading from './Loading';
 
+const StudioProjectDetailPage = lazy(() => import('../pages/studio-views/StudioProjectDetailPage'));
 const ProjectPage = lazy(() => import('../pages/ProjectPage'));
 const StylishProjectDetailsPage = lazy(
   () => import('../pages/project-pages/StylishProjectDetailsPage'),
@@ -223,6 +224,8 @@ const ProjectRouteHandler = () => {
   }
 
   // Fallback to theme based routing if style is default
+  if (fezcodexTheme === 'studio') return <Suspense fallback={<Loading />}><StudioProjectDetailPage /></Suspense>;
+
   if (fezcodexTheme === 'luxe') {
     return (
       <Suspense fallback={<Loading />}>

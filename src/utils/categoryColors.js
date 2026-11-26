@@ -116,6 +116,7 @@ export const CATEGORY_PALETTES = {
 
   // Day / night observatory.
   orbit: registerVars('--orb-cat-'),
+  studio: registerVars('--std-cat-'),
 
   // Yarns knitted onto dark wool — fixed hex because the canvas needs it.
   knit: {

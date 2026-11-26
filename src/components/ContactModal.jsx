@@ -1,3 +1,4 @@
+import '../styles/Studio.css';
 import React from 'react';
 import {
   EnvelopeSimpleIcon,
@@ -127,6 +128,32 @@ const ContactModal = ({ isOpen, onClose }) => {
                   {link.label}
                 </span>
                 <ArrowUpRightIcon size={16} weight="bold" aria-hidden="true" />
+              </a>
+            );
+          })}
+        </div>
+      </GenericModal>
+    );
+  }
+
+  if (fezcodexTheme === 'studio') {
+    return (
+      <GenericModal isOpen={isOpen} onClose={onClose} title="Say hello">
+        <p className="std-muted mb-5">A few ways to find Samil.</p>
+        <div className="flex flex-col gap-2">
+          {(config?.socials || []).map((link) => {
+            const Icon = socialIcons[link.icon] || GlobeIcon;
+            return (
+              <a
+                key={link.id}
+                href={link.url}
+                className="std-row-link"
+                target={link.url.startsWith('mailto:') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+              >
+                <Icon size={20} className="std-accent shrink-0" />
+                <span className="flex-1 min-w-0">{link.label}</span>
+                <ArrowUpRightIcon size={16} />
               </a>
             );
           })}

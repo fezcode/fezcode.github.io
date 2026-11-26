@@ -1,3 +1,4 @@
+import StudioNotFoundPage from './studio-views/StudioNotFoundPage';
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { WarningIcon, ArrowLeftIcon } from '@phosphor-icons/react';
@@ -285,6 +286,7 @@ const VIEWS = {
   terracotta: TerracottaNotFound,
   mist: MistNotFound,
   ledger: LedgerNotFound,
+  studio: StudioNotFoundPage,
   orbit: OrbitNotFound,
   knit: KnitNotFound,
   kilim: KilimNotFound,

@@ -111,4 +111,18 @@ describe('theme preference and campaign precedence', () => {
     expect(result.current[0]).toBe('ledger');
     expect(JSON.parse(localStorage.getItem('fezcodex-theme'))).toBe('ledger');
   });
+
+  it('persists Studio and restores it after leaving and reopening the page', async () => {
+    const { result, unmount } = renderHook(useSiteTheme);
+    act(() => result.current[1]('studio'));
+    expect(result.current[0]).toBe('studio');
+    expect(JSON.parse(localStorage.getItem('fezcodex-theme'))).toBe('studio');
+    unmount();
+    const { result: restoredResult } = renderHook(useSiteTheme);
+    await act(async () => {
+      await Promise.resolve();
+    });
+    expect(restoredResult.current[0]).toBe('studio');
+    expect(document.documentElement.dataset.fezcodexTheme).toBe('studio');
+  });
 });

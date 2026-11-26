@@ -82,6 +82,7 @@ const FONTS = {
   terracotta: "'IBM Plex Mono', 'JetBrains Mono', monospace",
   mist: "'IBM Plex Mono', 'JetBrains Mono', monospace",
   ledger: "'IBM Plex Mono', 'JetBrains Mono', monospace",
+  studio: "'Studio Inter', sans-serif",
   orbit: "'IBM Plex Mono', 'JetBrains Mono', monospace",
   knit: "'Nunito', 'Inter', system-ui, sans-serif",
   kilim: "'Bitter', Georgia, serif",

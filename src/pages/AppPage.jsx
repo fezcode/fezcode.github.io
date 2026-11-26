@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioAppsPage from './studio-views/StudioAppsPage';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistAppsPage from './brutalist-views/BrutalistAppsPage';
 import LuxeAppsPage from './luxe-views/LuxeAppsPage';
@@ -13,6 +14,7 @@ import BlissAppsPage from './bliss-views/BlissAppsPage';
 const AppPage = () => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioAppsPage />;
   if (fezcodexTheme === 'luxe') return <LuxeAppsPage />;
   if (fezcodexTheme === 'terracotta') return <TerracottaAppsPage />;
   if (fezcodexTheme === 'mist') return <MistAppsPage />;

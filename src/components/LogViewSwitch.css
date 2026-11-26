@@ -95,3 +95,11 @@
   --classic-view-fg: var(--bl-ink, #1a1a1a);
   --classic-view-border: var(--bl-line, #c9c4ad);
 }
+
+.logs-view-page[data-theme='studio'] {
+  --classic-view-bg: #faf9f6;
+  --classic-view-fg: #16130f;
+  --classic-view-border: #e5e2dc;
+}
+.logs-view-page[data-theme='studio'] .log-view-switch { border-radius: 99px; font-family: 'Studio Inter', sans-serif; }
+.logs-view-page[data-theme='studio'] .log-view-switch a { border-radius: 99px; }

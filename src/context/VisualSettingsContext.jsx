@@ -23,6 +23,7 @@ const BLOG_POST_VIEW_MODES = [
   'knit',
   'kilim',
   'bliss',
+  'studio',
 ];
 
 export const useVisualSettings = () => {

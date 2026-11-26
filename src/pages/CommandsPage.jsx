@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioCommandsPage from './studio-views/StudioCommandsPage';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistCommandsPage from './brutalist-views/BrutalistCommandsPage';
 import LuxeCommandsPage from './luxe-views/LuxeCommandsPage';
@@ -13,6 +14,7 @@ import BlissCommandsPage from './bliss-views/BlissCommandsPage';
 const CommandsPage = () => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioCommandsPage />;
   if (fezcodexTheme === 'luxe') return <LuxeCommandsPage />;
   if (fezcodexTheme === 'terracotta') return <TerracottaCommandsPage />;
   if (fezcodexTheme === 'mist') return <MistCommandsPage />;

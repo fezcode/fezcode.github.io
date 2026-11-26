@@ -1,3 +1,7 @@
+import StudioSidebar from './StudioSidebar';
+import StudioNavbar from './studio/StudioNavbar';
+import StudioFooter from './studio/StudioFooter';
+import '../styles/Studio.css';
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -86,7 +90,7 @@ const Layout = ({
   const isAboutPage = location.pathname.startsWith('/about');
   // These themes keep their sidebar on their own About view.
   const isOrbitAboutPage =
-    ['orbit', 'knit', 'bliss', 'kilim'].includes(fezcodexTheme) &&
+    ['studio', 'orbit', 'knit', 'bliss', 'kilim'].includes(fezcodexTheme) &&
     [
       '/about',
       '/about/',
@@ -171,7 +175,9 @@ const Layout = ({
   ) : (
     <div
       className={`${
-        fezcodexTheme === 'luxe'
+        fezcodexTheme === 'studio'
+          ? `std-appframe ${reduceMotion ? 'std-still' : ''}`
+          : fezcodexTheme === 'luxe'
           ? 'bg-[#F5F5F0]'
           : fezcodexTheme === 'terracotta'
             ? 'bg-[#F3ECE0]'
@@ -241,7 +247,14 @@ const Layout = ({
             toggleModal={toggleModal}
             setIsPaletteOpen={setIsPaletteOpen}
           />
-        ) : fezcodexTheme === 'orbit' ? (
+        ) : fezcodexTheme === 'studio' ? (
+          <StudioSidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            toggleModal={toggleModal}
+            setIsPaletteOpen={setIsPaletteOpen}
+          />
+          ) : fezcodexTheme === 'orbit' ? (
           <OrbitSidebar
             isOpen={isSidebarOpen}
             toggleSidebar={toggleSidebar}
@@ -257,7 +270,7 @@ const Layout = ({
           />
         ))}
       <div
-        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? (fezcodexTheme === 'orbit' ? 'orb-content-open' : fezcodexTheme === 'knit' ? 'knt-content-open' : fezcodexTheme === 'kilim' ? 'klm-content-open' : fezcodexTheme === 'bliss' ? 'bl-content-open' : 'md:ml-72') : 'md:ml-0'}`}
+        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? (fezcodexTheme === 'studio' ? 'std-content-open' : fezcodexTheme === 'orbit' ? 'orb-content-open' : fezcodexTheme === 'knit' ? 'knt-content-open' : fezcodexTheme === 'kilim' ? 'klm-content-open' : fezcodexTheme === 'bliss' ? 'bl-content-open' : 'md:ml-72') : 'md:ml-0'}`}
       >
         {!hideLayout &&
           (fezcodexTheme === 'terracotta' ? (
@@ -309,6 +322,13 @@ const Layout = ({
               isSearchVisible={isSearchVisible}
               toggleSearch={toggleSearch}
             />
+          ) : fezcodexTheme === 'studio' ? (
+            <StudioNavbar
+              toggleSidebar={toggleSidebar}
+              isSidebarOpen={isSidebarOpen}
+              isSearchVisible={isSearchVisible}
+              toggleSearch={toggleSearch}
+            />
           ) : fezcodexTheme === 'orbit' ? (
             <OrbitNavbar
               toggleSidebar={toggleSidebar}
@@ -347,6 +367,8 @@ const Layout = ({
             <KilimFooter />
           ) : fezcodexTheme === 'knit' ? (
             <KnitFooter />
+          ) : fezcodexTheme === 'studio' ? (
+            <StudioFooter />
           ) : fezcodexTheme === 'orbit' ? (
             <OrbitFooter />
           ) : (

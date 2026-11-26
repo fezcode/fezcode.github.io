@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioSearch from './StudioSearch';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistSearch from './BrutalistSearch';
 import LuxeSearch from './LuxeSearch';
@@ -13,6 +14,7 @@ import BlissSearch from './BlissSearch';
 const Search = (props) => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioSearch {...props} />;
   if (fezcodexTheme === 'luxe') return <LuxeSearch {...props} />;
   if (fezcodexTheme === 'terracotta') return <TerracottaSearch {...props} />;
   if (fezcodexTheme === 'mist') return <MistSearch {...props} />;

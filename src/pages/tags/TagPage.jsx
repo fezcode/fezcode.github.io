@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioTagPage from '../studio-views/StudioTagPage';
 import { Navigate } from 'react-router-dom';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
 import { useTagView } from './useTagData';
@@ -20,6 +21,7 @@ const VIEWS = {
   terracotta: TerracottaTagPage,
   mist: MistTagPage,
   ledger: LedgerTagPage,
+  studio: StudioTagPage,
   orbit: OrbitTagPage,
   knit: KnitTagPage,
   kilim: KilimTagPage,

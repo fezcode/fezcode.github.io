@@ -1,3 +1,4 @@
+import '../styles/Studio.css';
 import { readActiveTheme } from '../utils/featureFlags';
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -306,6 +307,80 @@ const Toast = ({
             aria-label="Dismiss notification"
           >
             <KilimIcon name="close" fg={WOOL.ivory} />
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (theme === 'studio') {
+    const Icon =
+      type === 'error'
+        ? WarningCircleIcon
+        : type === 'gold'
+          ? TrophyIcon
+          : type === 'techno'
+            ? TerminalIcon
+            : CheckCircleIcon;
+    return (
+      <div
+        className="std-toast relative w-80 md:w-96 max-w-[calc(100vw-2rem)] mb-4"
+        role={type === 'error' ? 'alert' : 'status'}
+      >
+        <div className="flex items-start gap-3">
+          <span className="std-accent shrink-0 mt-1">
+            {icon || <Icon size={22} />}
+          </span>
+          <div className="min-w-0 flex-1">
+            <h4 className="font-medium text-base">{title}</h4>
+            <p className="std-muted text-sm mt-1">{message}</p>
+            {links?.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-3">
+                {links.map((link, i) =>
+                  link.to ? (
+                    <Link
+                      key={i}
+                      to={link.to}
+                      className="std-btn"
+                      onClick={() => removeToast(id)}
+                    >
+                      {link.label}
+                    </Link>
+                  ) : link.href ? (
+                    <a
+                      key={i}
+                      href={link.href}
+                      className="std-btn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => removeToast(id)}
+                    >
+                      {link.label}
+                    </a>
+                  ) : link.onClick ? (
+                    <button
+                      key={i}
+                      type="button"
+                      className="std-btn"
+                      onClick={() => {
+                        link.onClick();
+                        removeToast(id);
+                      }}
+                    >
+                      {link.label}
+                    </button>
+                  ) : null,
+                )}
+              </div>
+            )}
+          </div>
+          <button
+            type="button"
+            className="std-link p-1"
+            onClick={() => removeToast(id)}
+            aria-label="Dismiss notification"
+          >
+            <XIcon size={17} />
           </button>
         </div>
       </div>

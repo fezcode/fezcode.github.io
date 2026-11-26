@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioHomePage from './studio-views/StudioHomePage';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistHomePage from './brutalist-views/BrutalistHomePage';
 import LuxeHomePage from './luxe-views/LuxeHomePage';
@@ -13,6 +14,7 @@ import BlissHomePage from './bliss-views/BlissHomePage';
 const HomePage = () => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioHomePage />;
   if (fezcodexTheme === 'luxe') return <LuxeHomePage />;
   if (fezcodexTheme === 'terracotta') return <TerracottaHomePage />;
   if (fezcodexTheme === 'mist') return <MistHomePage />;

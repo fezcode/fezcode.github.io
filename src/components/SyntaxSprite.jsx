@@ -1,3 +1,4 @@
+import '../styles/Studio.css';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
@@ -498,6 +499,37 @@ const SyntaxSprite = () => {
       </div>
     );
   }
+  if (fezcodexTheme === 'studio') {
+    return (
+      <div
+        className="fixed bottom-4 right-4 z-[9999] max-w-[calc(100vw-2rem)]"
+        style={{ fontFamily: "'Studio Inter', sans-serif" }}
+      >
+        {thought && (
+          <div className="std-toast mb-3 max-w-xs">
+            <p className="std-eyebrow mb-2">Syntax · a passing thought</p>
+            <p className="text-sm">{thought}</p>
+          </div>
+        )}
+        <button
+          type="button"
+          onClick={handleSpriteClick}
+          aria-label="Talk to Syntax, the codex companion"
+          className="std-btn float-right"
+          style={{
+            borderRadius: '50%',
+            width: 42,
+            height: 42,
+            color: 'var(--std-accent)',
+            fontSize: 23,
+          }}
+        >
+          ◎
+        </button>
+      </div>
+    );
+  }
+
   if (fezcodexTheme === 'orbit') {
     return (
       <div

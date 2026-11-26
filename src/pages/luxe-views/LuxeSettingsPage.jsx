@@ -290,6 +290,7 @@ const LuxeSettingsPage = () => {
                 { label: 'Knit', note: 'Colourwork', value: 'knit' },
                 { label: 'Kilim', note: 'Weave', value: 'kilim' },
                 { label: 'Bliss', note: 'Desktop', value: 'bliss' },
+                { label: 'Studio', note: 'Daylight', value: 'studio' },
               ]}
               value={fezcodexTheme}
               onChange={setFezcodexTheme}
@@ -380,6 +381,7 @@ const LuxeSettingsPage = () => {
                     { label: 'Knit', value: 'knit' },
                     { label: 'Kilim', value: 'kilim' },
                     { label: 'Bliss', value: 'bliss' },
+                    { label: 'Studio', value: 'studio' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}

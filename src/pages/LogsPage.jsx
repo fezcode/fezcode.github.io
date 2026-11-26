@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioLogsPage from './studio-views/StudioLogsPage';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistLogsPage from './brutalist-views/BrutalistLogsPage';
 import LuxeLogsPage from './luxe-views/LuxeLogsPage';
@@ -12,6 +13,7 @@ import BlissLogsPage from './bliss-views/BlissLogsPage';
 import LogViewSwitch from '../components/LogViewSwitch';
 
 const CLASSIC_VIEWS = {
+  studio: StudioLogsPage,
   luxe: LuxeLogsPage,
   terracotta: TerracottaLogsPage,
   mist: MistLogsPage,

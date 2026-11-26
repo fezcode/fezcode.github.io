@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioModal from './StudioModal';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistModal from './BrutalistModal';
 import LuxeModal from './LuxeModal';
@@ -13,6 +14,7 @@ import BlissModal from './BlissModal';
 const GenericModal = (props) => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioModal {...props} />;
   if (fezcodexTheme === 'luxe') return <LuxeModal {...props} />;
   if (fezcodexTheme === 'terracotta') return <TerracottaModal {...props} />;
   if (fezcodexTheme === 'mist') return <MistModal {...props} />;

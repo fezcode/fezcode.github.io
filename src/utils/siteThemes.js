@@ -1,5 +1,13 @@
 export const SITE_THEMES = [
   {
+    id: 'studio',
+    name: 'Studio',
+    description: 'Daylight, soft shapes and a curious mind',
+    background: '#faf9f6',
+    foreground: '#16130f',
+    accent: '#3f7a5c',
+  },
+  {
     id: 'brutalist',
     name: 'Brufez',
     description: 'Systemic brutalism',

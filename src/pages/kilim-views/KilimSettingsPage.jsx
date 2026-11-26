@@ -471,6 +471,7 @@ const KilimSettingsPage = () => {
                       { label: 'Knit', value: 'knit' },
                       { label: 'Kilim', value: 'kilim' },
                       { label: 'Bliss', value: 'bliss' },
+                    { label: 'Studio', value: 'studio' },
                     ]}
                     value={fezcodexTheme}
                     onChange={setFezcodexTheme}
@@ -553,6 +554,7 @@ const KilimSettingsPage = () => {
                       { label: 'Knit', value: 'knit' },
                       { label: 'Kilim', value: 'kilim' },
                       { label: 'Bliss', value: 'bliss' },
+                    { label: 'Studio', value: 'studio' },
                     ]}
                     value={blogPostViewMode}
                     onChange={setBlogPostViewMode}

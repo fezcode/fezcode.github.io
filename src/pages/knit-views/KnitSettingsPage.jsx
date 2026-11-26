@@ -418,6 +418,7 @@ const KnitSettingsPage = () => {
                     { label: 'KNIT', value: 'knit' },
                     { label: 'KILIM', value: 'kilim' },
                     { label: 'BLISS', value: 'bliss' },
+                    { label: 'Studio', value: 'studio' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
@@ -501,6 +502,7 @@ const KnitSettingsPage = () => {
                     { label: 'KNIT', value: 'knit' },
                     { label: 'KILIM', value: 'kilim' },
                     { label: 'BLISS', value: 'bliss' },
+                    { label: 'Studio', value: 'studio' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}

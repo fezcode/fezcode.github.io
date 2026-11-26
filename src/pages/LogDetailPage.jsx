@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioLogDetailPage from './studio-views/StudioLogDetailPage';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistLogDetailPage from './brutalist-views/BrutalistLogDetailPage';
 import LuxeLogDetailPage from './luxe-views/LuxeLogDetailPage';
@@ -13,6 +14,7 @@ import BlissLogDetailPage from './bliss-views/BlissLogDetailPage';
 const LogDetailPage = () => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioLogDetailPage />;
   if (fezcodexTheme === 'luxe') return <LuxeLogDetailPage />;
   if (fezcodexTheme === 'terracotta') return <TerracottaLogDetailPage />;
   if (fezcodexTheme === 'mist') return <MistLogDetailPage />;

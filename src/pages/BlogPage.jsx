@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioBlogPage from './studio-views/StudioBlogPage';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistBlogPage from './blog-views/BrutalistBlogPage';
 import LuxeBlogPage from './luxe-views/LuxeBlogPage';
@@ -13,6 +14,7 @@ import BlissBlogPage from './blog-views/BlissBlogPage';
 const BlogPage = () => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioBlogPage />;
   if (fezcodexTheme === 'luxe') return <LuxeBlogPage />;
   if (fezcodexTheme === 'terracotta') return <TerracottaBlogPage />;
   if (fezcodexTheme === 'mist') return <MistBlogPage />;

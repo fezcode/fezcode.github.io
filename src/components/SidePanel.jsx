@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioSidePanel from './StudioSidePanel';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistSidePanel from './BrutalistSidePanel';
 import LuxeSidePanel from './LuxeSidePanel';
@@ -13,6 +14,7 @@ import BlissSidePanel from './BlissSidePanel';
 const SidePanel = (props) => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioSidePanel {...props} />;
   if (fezcodexTheme === 'luxe') return <LuxeSidePanel {...props} />;
   if (fezcodexTheme === 'terracotta') return <TerracottaSidePanel {...props} />;
   if (fezcodexTheme === 'mist') return <MistSidePanel {...props} />;

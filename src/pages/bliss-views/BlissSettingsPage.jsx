@@ -46,6 +46,7 @@ const THEME_OPTIONS = [
   { label: 'KNIT', value: 'knit' },
   { label: 'KILIM', value: 'kilim' },
   { label: 'BLISS', value: 'bliss' },
+  { label: 'Studio', value: 'studio' },
 ];
 
 const READER_OPTIONS = [
@@ -64,6 +65,7 @@ const READER_OPTIONS = [
   { label: 'KNIT', value: 'knit' },
   { label: 'KILIM', value: 'kilim' },
   { label: 'BLISS', value: 'bliss' },
+  { label: 'Studio', value: 'studio' },
 ];
 
 const FALLOUT_VARIANTS = [

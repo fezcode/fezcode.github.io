@@ -627,6 +627,7 @@ const MistSettingsPage = () => {
                     { label: 'knit', note: 'colourwork', value: 'knit' },
                     { label: 'kilim', note: 'weave', value: 'kilim' },
                     { label: 'bliss', note: 'desktop', value: 'bliss' },
+                    { label: 'Studio', note: 'Daylight', value: 'studio' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
@@ -672,6 +673,7 @@ const MistSettingsPage = () => {
                     { label: 'Knit', value: 'knit' },
                     { label: 'Kilim', value: 'kilim' },
                     { label: 'Bliss', value: 'bliss' },
+                    { label: 'Studio', value: 'studio' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}

@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioCommandPalette from './StudioCommandPalette';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistCommandPalette from './BrutalistCommandPalette';
 import LuxeCommandPalette from './LuxeCommandPalette';
@@ -13,6 +14,7 @@ import BlissCommandPalette from './BlissCommandPalette';
 const CommandPalette = (props) => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioCommandPalette {...props} />;
   if (fezcodexTheme === 'luxe') return <LuxeCommandPalette {...props} />;
   if (fezcodexTheme === 'terracotta')
     return <TerracottaCommandPalette {...props} />;

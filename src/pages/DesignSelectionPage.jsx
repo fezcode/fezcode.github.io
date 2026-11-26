@@ -1,3 +1,5 @@
+import { SITE_THEMES } from '../utils/siteThemes';
+import '../styles/Studio.css';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useVisualSettings } from '../context/VisualSettingsContext';
@@ -47,7 +49,7 @@ const DesignSelectionPage = () => {
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black flex flex-col">
       <Seo
         title="Design System | Fezcodex"
-        description="Explore nine Fezcodex themes, from Brutalist to Bliss."
+        description={`Explore ${SITE_THEMES.length} Fezcodex themes, including Studio, Brutalist and Luxe.}`}
       />
 
       <div className="w-full min-w-0 max-w-[1400px] mx-auto px-6 md:px-12 py-24 flex-1 flex flex-col">
@@ -62,12 +64,18 @@ const DesignSelectionPage = () => {
             Aesthetics
           </h1>
           <p className="font-outfit text-sm text-[#1A1A1A]/60 max-w-lg leading-relaxed">
-            Explore the visual foundations of Fezcodex. Seven ways to make the
+            Explore the visual foundations of Fezcodex. {SITE_THEMES.length} ways to make the
             codex feel like your corner of the web.
           </p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 flex-1">
+          <button id="studio" type="button" aria-label="Activate Studio theme" onClick={() => { setFezcodexTheme('studio'); navigate('/'); }} className="std-surface std-design-card">
+            <span className="std-mark" aria-hidden="true" />
+            <h2>Studio</h2>
+            <p>A little daylight. A lot of curiosity. Soft colours, rounded tiles and the familiar feel of Fezcode Studio.</p>
+            <span className="std-button">Use Studio</span>
+          </button>
           {/* BRUFEZ CARD */}
           <Link to="/design/brufez" className="group block relative">
             <motion.div

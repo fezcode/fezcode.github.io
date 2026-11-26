@@ -1,3 +1,4 @@
+import StudioAboutPage from './studio-views/StudioAboutPage';
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useParams, Navigate } from 'react-router-dom';
@@ -34,6 +35,7 @@ import Seo from '../components/Seo';
 
 const ViewSwitcher = ({ currentView }) => {
   const views = [
+    { id: 'studio', icon: CloudIcon, label: 'Studio' },
     { id: 'bliss', icon: CloudIcon, label: 'Bliss' },
     { id: 'kilim', icon: DiamondIcon, label: 'Kilim' },
     { id: 'knit', icon: HeartIcon, label: 'Knit' },
@@ -102,6 +104,8 @@ const ViewSwitcher = ({ currentView }) => {
     );
   }
 
+  if (currentView === 'studio') return <nav className="std-view-switcher" aria-label="About page style">{views.map((view) => <Link key={view.id} to={`/about/${view.id}`} className="std-chip" aria-current={view.id === currentView ? 'page' : undefined}>{view.label}</Link>)}</nav>;
+
   if (currentView === 'orbit') {
     return (
       <nav className="flex flex-wrap gap-2" aria-label="About page styles">
@@ -162,6 +166,7 @@ const AboutPage = () => {
   const { viewId } = useParams();
   const { fezcodexTheme } = useVisualSettings();
   const validViews = [
+    'studio',
     'bliss',
     'kilim',
     'knit',
@@ -186,7 +191,7 @@ const AboutPage = () => {
     return (
       <Navigate
         to={`/about/${
-          ['orbit', 'knit', 'bliss', 'kilim'].includes(fezcodexTheme)
+          ['studio', 'orbit', 'knit', 'bliss', 'kilim'].includes(fezcodexTheme)
             ? fezcodexTheme
             : 'terracotta'
         }`}
@@ -198,6 +203,8 @@ const AboutPage = () => {
   }
 
   const view = viewId;
+
+  if (view === 'studio') return <StudioAboutPage viewSwitcher={<ViewSwitcher currentView="studio" />} />;
 
   if (view === 'bliss')
     return (

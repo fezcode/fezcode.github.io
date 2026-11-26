@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioPinnedAppPage from './studio-views/StudioPinnedAppPage';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistPinnedAppPage from './brutalist-views/BrutalistPinnedAppPage';
 import LuxePinnedAppsPage from './luxe-views/LuxePinnedAppsPage';
@@ -13,6 +14,7 @@ import BlissPinnedAppPage from './bliss-views/BlissPinnedAppPage';
 const PinnedAppPage = () => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioPinnedAppPage />;
   if (fezcodexTheme === 'luxe') return <LuxePinnedAppsPage />;
   if (fezcodexTheme === 'terracotta') return <TerracottaPinnedAppPage />;
   if (fezcodexTheme === 'mist') return <MistPinnedAppPage />;

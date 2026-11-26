@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioTagsPage from '../studio-views/StudioTagsPage';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
 import { useTagsIndexView } from './useTagData';
 import BrutalistTagsPage from '../brutalist-views/BrutalistTagsPage';
@@ -19,6 +20,7 @@ const VIEWS = {
   terracotta: TerracottaTagsPage,
   mist: MistTagsPage,
   ledger: LedgerTagsPage,
+  studio: StudioTagsPage,
   orbit: OrbitTagsPage,
   knit: KnitTagsPage,
   kilim: KilimTagsPage,

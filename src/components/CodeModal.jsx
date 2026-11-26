@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioCodeModal from './StudioCodeModal';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistCodeModal from './BrutalistCodeModal';
 import LuxeCodeModal from './LuxeCodeModal';
@@ -13,6 +14,7 @@ import BlissCodeModal from './BlissCodeModal';
 const CodeModal = (props) => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioCodeModal {...props} />;
   if (fezcodexTheme === 'luxe') return <LuxeCodeModal {...props} />;
   if (fezcodexTheme === 'terracotta') return <TerracottaCodeModal {...props} />;
   if (fezcodexTheme === 'mist') return <MistCodeModal {...props} />;

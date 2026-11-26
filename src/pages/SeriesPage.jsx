@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioSeriesPage from './studio-views/StudioSeriesPage';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistSeriesPage from './brutalist-views/BrutalistSeriesPage';
 import LuxeSeriesPage from './luxe-views/LuxeSeriesPage';
@@ -13,6 +14,7 @@ import BlissSeriesPage from './bliss-views/BlissSeriesPage';
 const SeriesPage = () => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioSeriesPage />;
   if (fezcodexTheme === 'luxe') return <LuxeSeriesPage />;
   if (fezcodexTheme === 'terracotta') return <TerracottaSeriesPage />;
   if (fezcodexTheme === 'mist') return <MistSeriesPage />;

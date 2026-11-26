@@ -1,0 +1,339 @@
+import React, { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import piml from 'piml';
+import Seo from '../../components/Seo';
+import GenericModal from '../../components/GenericModal';
+import RatingSystemDetail from '../../components/RatingSystemDetail';
+import { useAchievements } from '../../context/AchievementContext';
+import { useSidePanel } from '../../context/SidePanelContext';
+import {
+  StudioFolio,
+  StudioNotice,
+  StudioRule,
+  StudioStamp,
+} from '../../components/studio';
+import '../../styles/Studio.css';
+import {
+  FALLBACK_CATEGORIES,
+  fetchLogCategories,
+  fetchLogsForCategories,
+} from '../../utils/logCategories';
+
+const MONTHS = [
+  'JANUARY',
+  'FEBRUARY',
+  'MARCH',
+  'APRIL',
+  'MAY',
+  'JUNE',
+  'JULY',
+  'AUGUST',
+  'SEPTEMBER',
+  'OCTOBER',
+  'NOVEMBER',
+  'DECEMBER',
+];
+
+const isoDate = (d) => {
+  const date = new Date(d);
+  if (Number.isNaN(date.getTime())) return String(d);
+  return date.toISOString().slice(0, 10);
+};
+
+const starLine = (rating) =>
+  rating > 0 ? '★'.repeat(rating) + '·'.repeat(5 - rating) : '—';
+
+const creatorOf = (log) =>
+  log.author ||
+  log.director ||
+  log.artist ||
+  log.creator ||
+  log.by ||
+  log.studio ||
+  '';
+
+const StudioLogsPage = () => {
+  const [categories, setCategories] = useState(FALLBACK_CATEGORIES);
+  const [logs, setLogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState([]);
+  const [query, setQuery] = useState('');
+  const [showInfo, setShowInfo] = useState(false);
+  const { unlockAchievement } = useAchievements();
+  const { openSidePanel } = useSidePanel();
+
+  useEffect(() => {
+    unlockAchievement('log_diver');
+    let cancelled = false;
+    (async () => {
+      try {
+        const cats = await fetchLogCategories();
+        setCategories(cats);
+        const all = await fetchLogsForCategories(cats, piml.parse);
+        const withId = all
+          .map((log, i) => ({
+            ...log,
+            id: `${log.title}-${log.date}-${i}`,
+            originalIndex: i,
+          }))
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
+        if (!cancelled) setLogs(withId);
+      } catch (e) {
+        // ignore
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [unlockAchievement]);
+
+  const toggleCategory = (c) =>
+    setSelected((prev) =>
+      prev.includes(c) ? prev.filter((x) => x !== c) : [...prev, c],
+    );
+
+  const clearFilters = () => {
+    setSelected([]);
+    setQuery('');
+  };
+
+  const filtered = useMemo(() => {
+    const q = query.toLowerCase();
+    return logs.filter((log) => {
+      if (selected.length && !selected.includes(log.category)) return false;
+      if (!q) return true;
+      return (
+        log.title?.toLowerCase().includes(q) ||
+        log.description?.toLowerCase().includes(q) ||
+        log.author?.toLowerCase().includes(q) ||
+        (log.director || '').toLowerCase().includes(q)
+      );
+    });
+  }, [logs, selected, query]);
+
+  // Ruled month heads: the daybook is read newest page first.
+  const groups = useMemo(() => {
+    const byMonth = [];
+    filtered.forEach((log) => {
+      const date = new Date(log.date);
+      const key = Number.isNaN(date.getTime())
+        ? 'UNDATED'
+        : `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
+      const last = byMonth[byMonth.length - 1];
+      if (last && last.key === key) {
+        last.entries.push(log);
+      } else {
+        byMonth.push({ key, entries: [log] });
+      }
+    });
+    return byMonth;
+  }, [filtered]);
+
+  return (
+    <div className="std-root">
+      <Seo
+        title="Discovery Logs | Fezcodex"
+        description="Films, books, music, games, and other discoveries worth keeping."
+      />
+
+      <div className="std-page">
+        <StudioFolio
+          folio="FOLIO NO. 08 — DISCOVERY LOGS"
+          title="DISCOVERY LOGS"
+          sub="Things seen, read, played, tasted. A record of curiosity."
+          aside={<StudioStamp>Collected along the way</StudioStamp>}
+        >
+          <p className="std-stats mt-4">
+            <span>
+              <strong>{String(logs.length).padStart(3, '0')}</strong> ENTRIES
+            </span>
+            <span>
+              <strong>{String(categories.length).padStart(2, '0')}</strong>{' '}
+              CATEGORIES
+            </span>
+            <span>
+              <strong>{String(filtered.length).padStart(3, '0')}</strong> SHOWN
+            </span>
+            <span>
+              SCALE <strong>1★–5★</strong>
+            </span>
+          </p>
+        </StudioFolio>
+
+        {/* filters */}
+        <div
+          className="flex flex-col gap-3 mb-6 pb-4"
+          style={{ borderBottom: '1px solid var(--std-rule)' }}
+        >
+          <input
+            className="std-input"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search discoveries…"
+            aria-label="Search logs"
+          />
+          <div className="flex flex-wrap gap-1.5 items-baseline">
+            {categories.map((c) => (
+              <button
+                key={c}
+                type="button"
+                className="std-chip"
+                aria-pressed={selected.includes(c)}
+                onClick={() => toggleCategory(c)}
+              >
+                {c}
+              </button>
+            ))}
+            {(selected.length > 0 || query) && (
+              <button type="button" className="std-chip" onClick={clearFilters}>
+                [× CLEAR]
+              </button>
+            )}
+          </div>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 items-baseline">
+            <button
+              type="button"
+              className="std-btn std-btn-accent"
+              onClick={() => setShowInfo(true)}
+            >
+              RATING SCALE
+            </button>
+            <Link
+              to="/reading"
+              className="std-label no-underline hover:text-[var(--std-accent)]"
+            >
+              READING LIST →
+            </Link>
+          </div>
+        </div>
+
+        {/* daybook */}
+        {loading && <StudioNotice>OPENING DISCOVERY LOGS…</StudioNotice>}
+
+        {!loading && filtered.length === 0 && (
+          <>
+            <StudioNotice>
+              NO ENTRIES MATCH — THE COLLECTION STAYS BLANK
+            </StudioNotice>
+            <div className="mt-3 text-center">
+              <button type="button" className="std-btn" onClick={clearFilters}>
+                CLEAR THE FILTERS
+              </button>
+            </div>
+          </>
+        )}
+
+        {!loading &&
+          groups.map((group) => (
+            <section key={group.key} className="mb-6">
+              <StudioRule label={group.key} className="mb-2" />
+              <ul
+                className="list-none m-0 p-0 flex flex-col"
+                style={{ gap: 2 }}
+              >
+                {group.entries.map((log) => {
+                  const category = (log.category || 'log').toLowerCase();
+                  const creator = creatorOf(log);
+                  const rating = Number(log.rating) || 0;
+                  return (
+                    <li key={log.id}>
+                      <Link
+                        to={`/logs/${category}/${log.slug}`}
+                        className="std-row-link"
+                      >
+                        <span className="std-rank shrink-0">
+                          {isoDate(log.date)}
+                        </span>
+                        <span
+                          className="std-label hidden md:inline shrink-0"
+                          style={{ width: '9ch' }}
+                        >
+                          {category}
+                        </span>
+                        <span className="font-bold truncate">
+                          {log.title}
+                          {creator && (
+                            <span className="std-muted font-normal">
+                              {' '}
+                              — {creator}
+                            </span>
+                          )}
+                        </span>
+                        <span className="std-leader" aria-hidden="true" />
+                        <span
+                          className="std-accent shrink-0"
+                          aria-label={
+                            rating > 0 ? `Rated ${rating} of 5` : 'Unrated'
+                          }
+                        >
+                          {starLine(rating)}
+                        </span>
+                        <span className="font-bold shrink-0" aria-hidden="true">
+                          →
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          ))}
+
+        {!loading && filtered.length > 0 && (
+          <p className="std-stats mt-8">
+            <span>
+              TOTAL: <strong>{String(filtered.length).padStart(3, '0')}</strong>{' '}
+              ENTRIES THIS VIEW
+            </span>
+          </p>
+        )}
+      </div>
+
+      {/* rating scale */}
+      <GenericModal
+        isOpen={showInfo}
+        onClose={() => setShowInfo(false)}
+        title="Rating scale"
+      >
+        <div className="std-prose">
+          <p>
+            Every entry uses the same five-star scale. Stars are not preference;
+            they record <strong>how much of the thing held up</strong>.
+          </p>
+          <dl className="std-meta mt-4">
+            {[
+              ['★★★★★', 'ESSENTIAL — pressed into hands, no caveats.'],
+              ['★★★★·', 'CLEAR — recommended without hesitation.'],
+              ['★★★··', 'WORTHWHILE — has its hour; it might be yours.'],
+              ['★★···', 'THIN — a caveat beside every virtue.'],
+              ['★····', 'STRUCK — kept only so the record is honest.'],
+            ].map(([marks, desc]) => (
+              <div className="std-meta-row" key={marks}>
+                <dt className="std-meta-label">{marks}</dt>
+                <dd className="std-meta-value">{desc}</dd>
+              </div>
+            ))}
+          </dl>
+          <button
+            type="button"
+            className="std-btn std-btn-accent mt-5 w-full"
+            onClick={() => {
+              setShowInfo(false);
+              openSidePanel(
+                'Rating System Details',
+                <RatingSystemDetail />,
+                600,
+              );
+            }}
+          >
+            READ THE FULL GUIDE →
+          </button>
+        </div>
+      </GenericModal>
+    </div>
+  );
+};
+
+export default StudioLogsPage;

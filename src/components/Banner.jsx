@@ -1,3 +1,4 @@
+import '../styles/Studio.css';
 import React, { useState, useEffect, useRef } from 'react';
 import piml from 'piml';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -27,7 +28,9 @@ const Banner = () => {
 
   // Orbit and Knit pin their sidebars below the banner while it shows.
   const offsetVar =
-    fezcodexTheme === 'orbit'
+    fezcodexTheme === 'studio'
+      ? '--std-banner-offset'
+      : fezcodexTheme === 'orbit'
       ? '--orb-banner-offset'
       : fezcodexTheme === 'knit'
         ? '--knt-banner-offset'
@@ -288,6 +291,30 @@ const Banner = () => {
             aria-label="Dismiss banner"
           >
             <XIcon size={13} weight="bold" />
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (fezcodexTheme === 'studio') {
+    return (
+      <div ref={orbitBannerRef} className="std-banner relative z-[100]">
+        <div className="max-w-[1800px] mx-auto flex items-start sm:items-center gap-4">
+          <span className="std-accent pt-1">
+            {iconFor(bannerType, 'regular', 17)}
+          </span>
+          <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-3">
+            <span>{banner.text}</span>
+            {renderLink('std-link shrink-0')}
+          </div>
+          <button
+            type="button"
+            onClick={handleDismiss}
+            className="std-link shrink-0 p-1"
+            aria-label="Dismiss banner"
+          >
+            <XIcon size={18} />
           </button>
         </div>
       </div>

@@ -2,6 +2,7 @@ export const staticRoutes = [
   '/',
   '/about',
   '/about/orbit',
+  '/about/studio',
   '/about/knit',
   '/about/friends',
   '/achievements',

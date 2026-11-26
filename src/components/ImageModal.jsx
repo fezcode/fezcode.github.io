@@ -1,4 +1,5 @@
 import React from 'react';
+import StudioImageModal from './StudioImageModal';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistImageModal from './BrutalistImageModal';
 import LuxeImageModal from './LuxeImageModal';
@@ -13,6 +14,7 @@ import BlissImageModal from './BlissImageModal';
 const ImageModal = (props) => {
   const { fezcodexTheme } = useVisualSettings();
 
+  if (fezcodexTheme === 'studio') return <StudioImageModal {...props} />;
   if (fezcodexTheme === 'luxe') return <LuxeImageModal {...props} />;
   if (fezcodexTheme === 'terracotta')
     return <TerracottaImageModal {...props} />;
