@@ -1,5 +1,23 @@
 [
   {
+    "slug": "introducing-fezcode-studio",
+    "title": "Introducing Fezcode Studio",
+    "date": "2026-11-26",
+    "updated": "2026-11-26",
+    "description": "fezcode.studio is the new home for the things I build that need a server: Urban Tasks, a task manager, and Drops, a file drop between my devices. What they are and how one small box runs them.",
+    "tags": [
+      "webdev",
+      "go",
+      "deployment",
+      "productivity"
+    ],
+    "category": "feat",
+    "filename": "introducing-fezcode-studio.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "when-pink-was-for-boys",
     "title": "When Pink Was for Boys",
     "date": "2026-11-23",

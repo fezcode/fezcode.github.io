@@ -1,0 +1,59 @@
+# Introducing Fezcode Studio
+
+Fezcodex is where I write, log what I watch and read, and list the things I build. It was never a good place to *run* things. Anything that needs a server, an account or a database has no home on a static site.
+
+So that part now has its own address: **[fezcode.studio](https://fezcode.studio)**.
+
+![The fezcode.studio landing page](/images/posts/introducing-fezcode-studio/landing.png)
+
+It opens with two apps.
+
+## Urban Tasks
+
+**[tasks.fezcode.studio](https://tasks.fezcode.studio)** is my task manager. Projects, tasks with due dates and tags, dashboards, and burndown charts for when I want to see where a week went. I have been using it daily for months at a bare IP address, which is a slightly embarrassing way to run the tool that holds your whole to-do list. It has a real name and a certificate now.
+
+![Urban Tasks with a few sample projects](/images/posts/introducing-fezcode-studio/urban-tasks.png)
+
+## Drops
+
+**[drops.fezcode.studio](https://drops.fezcode.studio)** exists because of one annoying afternoon. My PC is on Ethernet, my phone is an iPhone, and every "just send it to yourself" trick assumes both are on the same Wi-Fi, in the same ecosystem, or signed in to the same chat app.
+
+Drops is the dumbest possible answer. Put a file in on one device, take it out on the other. Everything deletes itself after an hour. That is the whole product.
+
+![Drops with four files counting down to their hour](/images/posts/introducing-fezcode-studio/drops.png)
+
+Some details I enjoyed building:
+
+- It is a single Go binary using only the standard library, with the page embedded in it.
+- Files live for an hour and the whole drop is capped at 2 GB, so it can never quietly fill the disk.
+- You can send a piece of text instead of a file, which turns out to be half of what I use it for.
+- Uploads go one at a time so the progress bar tells the truth on a slow connection.
+
+## Invitation only, for now
+
+Both apps are closed to sign-ups. That is not a growth strategy, it is a budget. Everything runs on one small server that I pay for, and a public file drop is an open invitation to become somebody's free storage. For the moment the user list is short and I know everyone on it.
+
+## How it is put together
+
+```mermaid
+graph LR
+    A[fezcode.studio] --> C[Caddy]
+    B[apps.fezcode.studio] --> C
+    D[drops.fezcode.studio] --> C
+    E[tasks.fezcode.studio] --> C
+    C --> F[static pages]
+    C --> G[Drops, Go]
+    C --> H[Urban Tasks, Go + Postgres]
+```
+
+- **One box, one proxy.** A single Caddy instance owns ports 80 and 443, gets the certificates, and routes each hostname. Unknown hostnames are dropped.
+- **Push to deploy.** Each app is its own repository. A push to `main` runs a GitHub Actions workflow that ships it to the server. The key the workflow holds can do exactly one thing, which is ask for a deploy of one of the four sites.
+- **A shared look.** The landing page, the app list and Drops share a small design kit: bright paper, one colour per app, and a slow abstract colour field drawn with WebGL behind the important surfaces. Urban Tasks keeps the design it already had.
+
+## What stays here
+
+Nothing moves. The desktop apps, the terminal tools, the games, the essays and the logs all stay on fezcode.com. Fezcode Studio is only for the things that have to be running somewhere to be useful.
+
+If more of them show up, they will be listed at [apps.fezcode.studio](https://apps.fezcode.studio).
+
+![The app list at apps.fezcode.studio](/images/posts/introducing-fezcode-studio/apps.png)

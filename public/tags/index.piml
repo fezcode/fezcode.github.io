@@ -33,8 +33,8 @@
   > (item)
     (slug) go
     (label) Go
-    (count) 24
-    (posts) 15
+    (count) 25
+    (posts) 16
     (projects) 9
   > (item)
     (slug) history
@@ -83,17 +83,17 @@
     (logs) 4
     (description) Artificial intelligence: models, agents, and what they mean for the people using them.
   > (item)
+    (slug) productivity
+    (label) Productivity
+    (count) 17
+    (posts) 5
+    (logs) 4
+    (projects) 8
+  > (item)
     (slug) horror
     (label) Horror
     (count) 16
     (logs) 16
-  > (item)
-    (slug) productivity
-    (label) Productivity
-    (count) 16
-    (posts) 4
-    (logs) 4
-    (projects) 8
   > (item)
     (slug) story-rich
     (label) Story rich
@@ -146,6 +146,13 @@
     (logs) 11
     (projects) 1
   > (item)
+    (slug) webdev
+    (label) Web dev
+    (count) 13
+    (posts) 7
+    (logs) 4
+    (projects) 2
+  > (item)
     (slug) csharp
     (label) C#
     (count) 12
@@ -183,13 +190,6 @@
     (count) 12
     (posts) 9
     (logs) 3
-  > (item)
-    (slug) webdev
-    (label) Web dev
-    (count) 12
-    (posts) 6
-    (logs) 4
-    (projects) 2
   > (item)
     (slug) windows
     (label) Windows
@@ -1033,6 +1033,11 @@
     (count) 2
     (posts) 2
   > (item)
+    (slug) deployment
+    (label) Deployment
+    (count) 2
+    (posts) 2
+  > (item)
     (slug) design-patterns
     (label) Design patterns
     (count) 2
@@ -1863,11 +1868,6 @@
   > (item)
     (slug) definitions
     (label) Definitions
-    (count) 1
-    (posts) 1
-  > (item)
-    (slug) deployment
-    (label) Deployment
     (count) 1
     (posts) 1
   > (item)
@@ -3634,6 +3634,19 @@
     (alias) web-development
     (tag) webdev
 (items)
+  > (item)
+    (id) post/introducing-fezcode-studio
+    (type) post
+    (title) Introducing Fezcode Studio
+    (path) /blog/introducing-fezcode-studio
+    (date) 2026-11-26
+    (category) feat
+    (description) fezcode.studio is the new home for the things I build that need a server: Urban Tasks, a task manager, and Drops, a file drop between my devices. What they are and how one small b…
+    (tags)
+      > webdev
+      > go
+      > deployment
+      > productivity
   > (item)
     (id) post/when-pink-was-for-boys
     (type) post
