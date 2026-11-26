@@ -528,6 +528,12 @@
     (posts) 1
     (projects) 4
   > (item)
+    (slug) programming
+    (label) Programming
+    (count) 5
+    (posts) 1
+    (logs) 4
+  > (item)
     (slug) resident-evil
     (label) Resident evil
     (count) 5
@@ -655,12 +661,6 @@
     (count) 4
     (logs) 4
   > (item)
-    (slug) programming
-    (label) Programming
-    (count) 4
-    (posts) 1
-    (logs) 3
-  > (item)
     (slug) raylib
     (label) Raylib
     (count) 4
@@ -774,6 +774,13 @@
     (label) Gemini
     (count) 3
     (posts) 3
+  > (item)
+    (slug) graphics
+    (label) Graphics
+    (count) 3
+    (posts) 1
+    (logs) 1
+    (projects) 1
   > (item)
     (slug) hooks
     (label) Hooks
@@ -1123,12 +1130,6 @@
     (count) 2
     (posts) 2
   > (item)
-    (slug) graphics
-    (label) Graphics
-    (count) 2
-    (posts) 1
-    (projects) 1
-  > (item)
     (slug) grief
     (label) Grief
     (count) 2
@@ -1261,6 +1262,12 @@
     (label) Refactor
     (count) 2
     (posts) 2
+  > (item)
+    (slug) rendering
+    (label) Rendering
+    (count) 2
+    (posts) 1
+    (logs) 1
   > (item)
     (slug) sdl2
     (label) Sdl2
@@ -2926,11 +2933,6 @@
     (count) 1
     (posts) 1
   > (item)
-    (slug) rendering
-    (label) Rendering
-    (count) 1
-    (posts) 1
-  > (item)
     (slug) resources
     (label) Resources
     (count) 1
@@ -3634,6 +3636,18 @@
     (alias) web-development
     (tag) webdev
 (items)
+  > (item)
+    (id) log/video/i-tried-coding-my-own-graphics-library
+    (type) log
+    (title) I Tried Coding my own Graphics Library
+    (path) /logs/video/i-tried-coding-my-own-graphics-library
+    (date) 2026-11-27
+    (category) video
+    (description) Sebastian Lague sets out to write his own graphics library from scratch.
+    (tags)
+      > graphics
+      > rendering
+      > programming
   > (item)
     (id) post/introducing-fezcode-studio
     (type) post

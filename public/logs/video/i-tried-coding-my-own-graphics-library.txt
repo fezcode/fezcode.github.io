@@ -1,0 +1,15 @@
+# I Tried Coding my own Graphics Library
+
+- **Category:** Video
+- **Channel:** Sebastian Lague
+- **Date:** 2026-11-27
+- **Rating:** 4/5
+- **Link:** [Watch on YouTube](https://www.youtube.com/watch?v=_JGMgpyCTsY)
+
+## Thoughts
+
+Sebastian Lague sets out to write his own graphics library from scratch.
+
+## The Video
+
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/_JGMgpyCTsY" title="I Tried Coding my own Graphics Library" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

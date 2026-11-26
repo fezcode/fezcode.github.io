@@ -1,6 +1,26 @@
 (logs)
   > (item)
     (category) Video
+    (date) 2026-11-27
+    (link) https://www.youtube.com/watch?v=_JGMgpyCTsY
+    (rating) 4
+    (slug) i-tried-coding-my-own-graphics-library
+    (tags)
+      > graphics
+      > rendering
+      > programming
+    (title) I Tried Coding my own Graphics Library
+    (image) /images/discovery/covers/video/i-tried-coding-my-own-graphics-library.webp
+    (imageSource)
+      (provider) YouTube
+      (page) https://www.youtube.com/watch?v=_JGMgpyCTsY
+      (url) https://i.ytimg.com/vi/_JGMgpyCTsY/maxresdefault.jpg
+      (width) 720
+      (height) 405
+    (description) Sebastian Lague sets out to write his own graphics library from scratch.
+
+  > (item)
+    (category) Video
     (date) 2026-11-14
     (link) https://www.youtube.com/watch?v=mXC13gtc8Js
     (rating) 4
