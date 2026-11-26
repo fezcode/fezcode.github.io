@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   BUNDLED_FEATURE_FLAGS,
+  FALLBACK_THEME,
   defaultThemeFor,
   parseFeatureFlags,
 } from './featureFlags';
@@ -18,10 +19,10 @@ describe('scheduled default theme', () => {
   it('includes both Istanbul calendar boundaries and expires immediately after', () => {
     const from = Date.parse(flag.from);
     const to = Date.parse(flag.to);
-    expect(defaultThemeFor([flag], from - 1)).toBe('brutalist');
+    expect(defaultThemeFor([flag], from - 1)).toBe(FALLBACK_THEME);
     expect(defaultThemeFor([flag], from)).toBe('knit');
     expect(defaultThemeFor([flag], to)).toBe('knit');
-    expect(defaultThemeFor([flag], to + 1)).toBe('brutalist');
+    expect(defaultThemeFor([flag], to + 1)).toBe(FALLBACK_THEME);
   });
 
   it('falls back for disabled, invalid, reversed, and unrelated flags', () => {
@@ -34,17 +35,19 @@ describe('scheduled default theme', () => {
       { to: 'invalid' },
       { from: flag.to, to: flag.from },
     ]) {
-      expect(defaultThemeFor([{ ...flag, ...change }], now)).toBe('brutalist');
+      expect(defaultThemeFor([{ ...flag, ...change }], now)).toBe(FALLBACK_THEME);
     }
   });
 
   it('loads the actual PIML campaign and tolerates missing configuration', () => {
-    expect(BUNDLED_FEATURE_FLAGS).toEqual([flag]);
+    // The Knit campaign was switched off when Studio became the default.
+    expect(BUNDLED_FEATURE_FLAGS).toEqual([{ ...flag, isActive: false }]);
+    expect(FALLBACK_THEME).toBe('studio');
     expect(defaultThemeFor(parseFeatureFlags(''), Date.parse(flag.from))).toBe(
-      'brutalist',
+      FALLBACK_THEME,
     );
     expect(defaultThemeFor(parseFeatureFlags('(unrelated) true'))).toBe(
-      'brutalist',
+      FALLBACK_THEME,
     );
   });
 });

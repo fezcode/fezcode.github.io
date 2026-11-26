@@ -5,7 +5,7 @@ import bundledFlags from '/feature-flag.piml?url&raw';
 import { isSiteTheme } from './siteThemes';
 import * as LocalStorageManager from './LocalStorageManager';
 
-export const FALLBACK_THEME = 'brutalist';
+export const FALLBACK_THEME = 'studio';
 
 export const parseFeatureFlags = (text) => {
   try {

@@ -21,6 +21,7 @@ const PALETTE_NAMES = [
   'knit',
   'kilim',
   'bliss',
+  'studio',
   'dossier',
   'dokument',
   'editorial',

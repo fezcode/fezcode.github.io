@@ -33,12 +33,14 @@ describe('theme preference and campaign precedence', () => {
     vi.unstubAllGlobals();
   });
 
-  it('uses the active campaign immediately without persisting a preference', async () => {
+  it('starts on the bundled default, then applies a fetched campaign without persisting it', async () => {
     const { result } = renderHook(useSiteTheme);
-    expect(result.current[0]).toBe('knit');
+    // The bundled flags carry no active campaign: Studio is the default.
+    expect(result.current[0]).toBe('studio');
     await act(async () => {
       await Promise.resolve();
     });
+    expect(result.current[0]).toBe('knit');
     expect(localStorage.getItem('fezcodex-theme')).toBeNull();
   });
 
@@ -85,7 +87,7 @@ describe('theme preference and campaign precedence', () => {
     });
     expect(result.current[0]).toBe('knit');
     act(() => vi.advanceTimersByTime(1000));
-    expect(result.current[0]).toBe('brutalist');
+    expect(result.current[0]).toBe('studio');
     expect(localStorage.getItem('fezcodex-theme')).toBeNull();
   });
 
@@ -98,7 +100,7 @@ describe('theme preference and campaign precedence', () => {
       await Promise.resolve();
     });
     act(() => result.current[1]('invalid'));
-    expect(result.current[0]).toBe('knit');
+    expect(result.current[0]).toBe('studio');
   });
 
   it('ignores an invalid URL theme when a valid preference is saved', async () => {
