@@ -14,6 +14,7 @@ import { useToast } from '../../hooks/useToast';
 import ImageModal from '../../components/ImageModal';
 import Seo from '../../components/Seo';
 import ShareButtons from '../../components/ShareButtons';
+import BlogShareButton from '../../components/BlogShareButton';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
@@ -343,6 +344,12 @@ const OldBlogPostPage = () => {
             </h1>
 
             <div className="mb-8">
+              <BlogShareButton
+                title={post.attributes.title}
+                image={post.attributes.image}
+                tone="dark"
+                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-mono text-sm tracking-widest uppercase hover:underline decoration-cyan-500/50 underline-offset-4 transition-all"
+              />
               <ShareButtons
                 title={post.attributes.title}
                 url={window.location.href}

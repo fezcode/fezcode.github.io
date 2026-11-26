@@ -17,6 +17,7 @@ import CoffeeStain from '../../components/CoffeeStain';
 import CensoredPolaroid from '../../components/CensoredPolaroid';
 import { getCategoryColor } from '../../utils/categoryColors';
 import Seo from '../../components/Seo';
+import BlogShareButton from '../../components/BlogShareButton';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { useAchievements } from '../../context/AchievementContext';
 import MarkdownLink from '../../components/MarkdownLink';
@@ -482,6 +483,16 @@ const DossierBlogPostPage = () => {
                 </span>
               </div>
             )}
+          </div>
+
+          <div className="mt-6">
+            <BlogShareButton
+              title={post.attributes.title}
+              image={post?.attributes?.ogImage || post?.attributes?.image}
+              tone="light"
+              iconSize={12}
+              className="inline-flex items-center gap-2 bg-white border border-black px-2 py-1 text-xs uppercase font-mono tracking-wider hover:bg-black hover:text-white transition-colors shadow-sm"
+            />
           </div>
         </header>
 

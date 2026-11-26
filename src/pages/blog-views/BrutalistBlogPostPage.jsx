@@ -13,6 +13,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../../utils/customTheme';
 import CodeModal from '../../components/CodeModal';
 import Seo from '../../components/Seo';
+import BlogShareButton from '../../components/BlogShareButton';
 import TagLink from '../../components/TagLink';
 import GenerativeArt from '../../components/GenerativeArt';
 import { calculateReadingTime } from '../../utils/readingTime';
@@ -278,6 +279,13 @@ const BrutalistBlogPostPage = () => {
             >
               Category: {post.attributes.category || 'Brutalist'}
             </span>
+            <BlogShareButton
+              title={post.attributes.title}
+              image={post?.attributes?.ogImage || post?.attributes?.image}
+              tone="dark"
+              iconSize={14}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/50 px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-white backdrop-blur-md transition-colors hover:bg-white hover:text-black"
+            />
           </div>
 
           <h1 className="text-4xl md:text-7xl font-medium font-playfairDisplay uppercase tracking-tighter text-white leading-none max-w-5xl">

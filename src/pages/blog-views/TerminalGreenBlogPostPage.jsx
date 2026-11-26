@@ -14,6 +14,7 @@ import CodeModal from '../../components/CodeModal';
 import ImageModal from '../../components/ImageModal';
 import MermaidDiagram from '../../components/MermaidDiagram';
 import TagLink from '../../components/TagLink';
+import BlogShareButton from '../../components/BlogShareButton';
 
 const emeraldTerminalTheme = {
   'code[class*="language-"]': {
@@ -261,6 +262,16 @@ const TerminalGreenBlogPostPage = () => {
                 ))}
               </span>
             )}
+          </div>
+          <div className="mt-6">
+            <BlogShareButton
+              title={post?.attributes?.title}
+              image={post?.attributes?.ogImage || post?.attributes?.image}
+              tone="dark"
+              label="[ SHARE ]"
+              iconSize={12}
+              className="inline-flex items-center gap-2 border border-emerald-500/30 px-4 py-1 text-[10px] uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all"
+            />
           </div>
         </div>
       </div>

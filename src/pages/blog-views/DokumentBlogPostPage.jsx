@@ -23,6 +23,7 @@ import MarkdownLink from '../../components/MarkdownLink';
 import ImageModal from '../../components/ImageModal';
 import CodeModal from '../../components/CodeModal';
 import Seo from '../../components/Seo';
+import BlogShareButton from '../../components/BlogShareButton';
 import { useToast } from '../../hooks/useToast';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import { getCategoryColor } from '../../utils/categoryColors';
@@ -356,6 +357,13 @@ const DokumentBlogPostPage = () => {
             >
               CLASSIFIED // {post.attributes.category}
             </div>
+            <BlogShareButton
+              title={post.attributes.title}
+              image={post?.attributes?.ogImage || post?.attributes?.image}
+              tone="light"
+              iconSize={14}
+              className="inline-flex items-center gap-2 border-2 border-black bg-white px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-black hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+            />
           </div>
 
           <h1 className="text-4xl md:text-7xl font-playfairDisplay font-black uppercase tracking-tight text-black leading-none max-w-5xl">

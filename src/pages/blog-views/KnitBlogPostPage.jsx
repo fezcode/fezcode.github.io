@@ -7,6 +7,7 @@ import { calculateReadingTime } from '../../utils/readingTime';
 import { getCategoryColor } from '../../utils/categoryColors';
 import Seo from '../../components/Seo';
 import TagLink from '../../components/TagLink';
+import BlogShareButton from '../../components/BlogShareButton';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
 import MermaidDiagram from '../../components/MermaidDiagram';
@@ -209,19 +210,27 @@ const KnitBlogPostPage = () => {
           ]}
         />
         <div className="knt-page knt-reader !pb-8">
-          <Link
-            to={post.series ? `/blog/series/${post.series.slug}` : '/blog'}
-            className="knt-btn"
-          >
-            <KnitIcon name="arrowLeft" fg={YARN.gold} />
-            <KnitText
-              text={post.series ? post.series.title : 'All writing'}
-              size="small"
-              fg={YARN.cream}
-              fit
-              maxLines={1}
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <Link
+              to={post.series ? `/blog/series/${post.series.slug}` : '/blog'}
+              className="knt-btn"
+            >
+              <KnitIcon name="arrowLeft" fg={YARN.gold} />
+              <KnitText
+                text={post.series ? post.series.title : 'All writing'}
+                size="small"
+                fg={YARN.cream}
+                fit
+                maxLines={1}
+              />
+            </Link>
+            <BlogShareButton
+              title={post.title}
+              image={post.ogImage || post.image}
+              tone="dark"
+              className="knt-btn"
             />
-          </Link>
+          </div>
           <KnitText
             text={`${post.category || 'Writing'} · ${knitDate(post.date)} · ${calculateReadingTime(post.content)} min read`}
             size="small"

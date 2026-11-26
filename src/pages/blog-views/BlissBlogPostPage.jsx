@@ -19,6 +19,7 @@ import Seo from '../../components/Seo';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
 import TagLink from '../../components/TagLink';
+import BlogShareButton from '../../components/BlogShareButton';
 import MermaidDiagram from '../../components/MermaidDiagram';
 import CodeModal from '../../components/CodeModal';
 import { useToast } from '../../hooks/useToast';
@@ -274,10 +275,19 @@ const BlissBlogPostPage = () => {
             }
           >
             <header className="mb-5">
-              <Link to={backTo} className="bl-btn bl-btn-sm max-w-full">
-                <ArrowLeftIcon size={15} weight="bold" aria-hidden="true" />
-                <span className="truncate">{backLabel}</span>
-              </Link>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <Link to={backTo} className="bl-btn bl-btn-sm max-w-full">
+                  <ArrowLeftIcon size={15} weight="bold" aria-hidden="true" />
+                  <span className="truncate">{backLabel}</span>
+                </Link>
+                <BlogShareButton
+                  title={post.title}
+                  image={post.ogImage || post.image}
+                  tone="light"
+                  className="bl-btn bl-btn-sm"
+                  iconSize={15}
+                />
+              </div>
               <p className="bl-meta flex flex-wrap items-center gap-2 mt-5 mb-0">
                 <span
                   className="inline-flex items-center rounded-sm px-1.5 text-[11px] font-bold uppercase tracking-wide text-white"

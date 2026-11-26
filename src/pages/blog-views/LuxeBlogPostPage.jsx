@@ -5,7 +5,6 @@ import {
   ArrowLeft,
   Calendar,
   Clock,
-  ShareNetwork,
   ArrowsOutSimple,
   ClipboardText,
 } from '@phosphor-icons/react';
@@ -22,6 +21,7 @@ import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
 import MermaidDiagram from '../../components/MermaidDiagram';
 import TagLink from '../../components/TagLink';
+import BlogShareButton from '../../components/BlogShareButton';
 
 const LuxeBlogPostPage = () => {
   const { slug, episodeSlug } = useParams();
@@ -234,6 +234,15 @@ const LuxeBlogPostPage = () => {
             <span className="flex items-center gap-2">
               <Clock size={14} /> {estimatedReadingTime} Min Read
             </span>
+            <span>•</span>
+            <BlogShareButton
+              title={post.attributes.title}
+              image={post.attributes.ogImage || post.attributes.image}
+              tone="light"
+              label="Share"
+              iconSize={14}
+              className="inline-flex items-center gap-2 uppercase tracking-widest hover:text-[#8D4004] transition-colors"
+            />
           </div>
 
           <h1 className="font-playfairDisplay text-5xl md:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.9]">
@@ -286,9 +295,13 @@ const LuxeBlogPostPage = () => {
             </div>
 
             <div className="flex gap-4">
-              <button className="flex items-center gap-2 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/60 hover:text-[#8D4004] transition-colors">
-                <ShareNetwork size={16} /> Share
-              </button>
+              <BlogShareButton
+                title={post.attributes.title}
+                image={post.attributes.ogImage || post.attributes.image}
+                tone="light"
+                label="Share"
+                className="inline-flex items-center gap-2 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/60 hover:text-[#8D4004] transition-colors"
+              />
             </div>
           </div>
         </div>

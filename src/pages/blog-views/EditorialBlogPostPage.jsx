@@ -9,6 +9,7 @@ import {
 import CodeModal from '../../components/CodeModal';
 import ImageModal from '../../components/ImageModal';
 import Seo from '../../components/Seo';
+import BlogShareButton from '../../components/BlogShareButton';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import { getCategoryColor } from '../../utils/categoryColors';
@@ -409,6 +410,16 @@ const EditorialBlogPostPage = () => {
                       className={`w-[0.83333rem] h-[0.83333rem] rounded-full border-2 ${isInvert ? 'bg-[#f4f4f4] border-[#f4f4f4]' : 'bg-[#1a1a1a] border-[#1a1a1a]'}`}
                     ></span>
                   </button>
+
+                  <BlogShareButton
+                    title={post.attributes.title}
+                    image={
+                      post?.attributes?.ogImage || post?.attributes?.image
+                    }
+                    tone={isInvert ? 'dark' : 'light'}
+                    iconSize={14}
+                    className={`inline-flex items-center justify-center gap-2 h-[2.66667rem] px-[1.33333rem] border-2 uppercase tracking-widest text-[10px] font-black font-instr-sans transition-colors ${isInvert ? 'border-[#f4f4f4] text-[#f4f4f4] hover:bg-[#f4f4f4] hover:text-[#1a1a1a]' : 'border-[#1a1a1a] text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-[#f4f4f4]'}`}
+                  />
                 </div>
 
                 <div

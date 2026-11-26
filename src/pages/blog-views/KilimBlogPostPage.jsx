@@ -6,6 +6,7 @@ import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import { calculateReadingTime } from '../../utils/readingTime';
 import Seo from '../../components/Seo';
 import TagLink from '../../components/TagLink';
+import BlogShareButton from '../../components/BlogShareButton';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
 import MermaidDiagram from '../../components/MermaidDiagram';
@@ -204,13 +205,21 @@ const KilimBlogPostPage = () => {
         <article className="klm-post-runner">
           <KilimBand pattern={['end', 'chain']} />
           <header className="klm-post-head">
-            <Link
-              to={post.series ? `/blog/series/${post.series.slug}` : '/blog'}
-              className="klm-btn klm-btn-ivory klm-btn-small"
-            >
-              <span aria-hidden="true">←</span>
-              {post.series ? post.series.title : 'All writing'}
-            </Link>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <Link
+                to={post.series ? `/blog/series/${post.series.slug}` : '/blog'}
+                className="klm-btn klm-btn-ivory klm-btn-small"
+              >
+                <span aria-hidden="true">←</span>
+                {post.series ? post.series.title : 'All writing'}
+              </Link>
+              <BlogShareButton
+                title={post.title}
+                image={post.ogImage || post.image}
+                tone="dark"
+                className="klm-btn klm-btn-small"
+              />
+            </div>
             <div className="klm-post-meta">
               <span className="klm-tag">{post.category || 'Writing'}</span>
               <span className="klm-label">

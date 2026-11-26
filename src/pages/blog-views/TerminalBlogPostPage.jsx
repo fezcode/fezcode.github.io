@@ -20,6 +20,7 @@ import { useToast } from '../../hooks/useToast';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import MermaidDiagram from '../../components/MermaidDiagram';
 import TagLink from '../../components/TagLink';
+import BlogShareButton from '../../components/BlogShareButton';
 
 const terminalCodeTheme = {
   'code[class*="language-"]': {
@@ -438,6 +439,16 @@ const TerminalBlogPostPage = () => {
             ))}
           </p>
         )}
+        <div className="mb-4">
+          <BlogShareButton
+            title={post?.attributes?.title}
+            image={post?.attributes?.ogImage || post?.attributes?.image}
+            tone="dark"
+            label="[ SHARE ]"
+            iconSize={14}
+            className="inline-flex items-center gap-2 text-sm uppercase text-orange-400 hover:text-orange-200 transition-colors"
+          />
+        </div>
         <hr className="border-orange-500/50 mb-8" />
 
         <article

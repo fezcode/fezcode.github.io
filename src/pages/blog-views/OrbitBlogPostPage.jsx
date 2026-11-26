@@ -16,6 +16,7 @@ import MarkdownLink from '../../components/MarkdownLink';
 import MermaidDiagram from '../../components/MermaidDiagram';
 import CodeModal from '../../components/CodeModal';
 import TagLink from '../../components/TagLink';
+import BlogShareButton from '../../components/BlogShareButton';
 import { OrbitNotice } from '../../components/orbit';
 import { orbitDate } from '../../components/orbit/useOrbitContent';
 import { useToast } from '../../hooks/useToast';
@@ -203,13 +204,22 @@ const OrbitBlogPostPage = () => {
       />
       <div className="orb-page">
         <article className="orb-reader">
-          <Link
-            to={post.series ? `/blog/series/${post.series.slug}` : '/blog'}
-            className="orb-link"
-          >
-            <ArrowLeftIcon size={16} />
-            {post.series ? post.series.title : 'All writing'}
-          </Link>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <Link
+              to={post.series ? `/blog/series/${post.series.slug}` : '/blog'}
+              className="orb-link"
+            >
+              <ArrowLeftIcon size={16} />
+              {post.series ? post.series.title : 'All writing'}
+            </Link>
+            <BlogShareButton
+              title={post.title}
+              image={post.ogImage || post.image}
+              tone="light"
+              className="orb-btn"
+              iconSize={15}
+            />
+          </div>
           <header className="mt-10">
             <p className="orb-eyebrow">
               <span

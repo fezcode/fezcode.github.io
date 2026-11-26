@@ -14,6 +14,7 @@ import { customTheme } from '../../utils/customTheme';
 import CodeModal from '../../components/CodeModal';
 import Seo from '../../components/Seo';
 import TagLink from '../../components/TagLink';
+import BlogShareButton from '../../components/BlogShareButton';
 import TerracottaGenerativeArt from '../../components/TerracottaGenerativeArt';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
@@ -296,6 +297,14 @@ const TerracottaBlogPostPage = () => {
             >
               Category: {post.attributes.category || 'Terracotta'}
             </span>
+            <BlogShareButton
+              title={post?.attributes?.title}
+              image={post?.attributes?.ogImage || post?.attributes?.image}
+              tone="light"
+              label="Share"
+              iconSize={14}
+              className="inline-flex items-center gap-2 rounded-full border border-[#1A161320] bg-[#F3ECE0]/80 px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-[#1A1613] backdrop-blur-md transition-colors hover:bg-[#1A1613] hover:text-[#F3ECE0]"
+            />
           </div>
 
           <h1 className="text-4xl md:text-7xl font-fraunces italic tracking-tight text-[#1A1613] leading-none max-w-5xl">

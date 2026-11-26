@@ -18,6 +18,7 @@ import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
 import MermaidDiagram from '../../components/MermaidDiagram';
 import TagLink from '../../components/TagLink';
+import BlogShareButton from '../../components/BlogShareButton';
 import TerracottaGenerativeArt from '../../components/TerracottaGenerativeArt';
 
 /*
@@ -398,7 +399,7 @@ const GalleyBlogPostPage = () => {
         </div>
 
         {/* back link */}
-        <div className="mb-8">
+        <div className="mb-8 flex items-center justify-between gap-4">
           <Link
             to={
               post.attributes.series
@@ -414,6 +415,14 @@ const GalleyBlogPostPage = () => {
                 : 'Back to the stone'}
             </span>
           </Link>
+          <BlogShareButton
+            title={post?.attributes?.title}
+            image={post?.attributes?.ogImage || post?.attributes?.image}
+            tone="light"
+            label="Share proof"
+            iconSize={11}
+            className="inline-flex items-center gap-2 bg-[#F3ECE0] border border-[#1A161340] px-2 py-1 text-[9px] uppercase font-ibm-plex-mono tracking-[0.22em] text-[#1A1613] hover:bg-[#1A1613] hover:text-[#F3ECE0] transition-colors"
+          />
         </div>
 
         {/* galley slip */}
