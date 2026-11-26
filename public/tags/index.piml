@@ -33,8 +33,8 @@
   > (item)
     (slug) go
     (label) Go
-    (count) 25
-    (posts) 16
+    (count) 26
+    (posts) 17
     (projects) 9
   > (item)
     (slug) history
@@ -243,6 +243,11 @@
     (count) 11
     (logs) 11
   > (item)
+    (slug) architecture
+    (label) Architecture
+    (count) 10
+    (posts) 10
+  > (item)
     (slug) javascript
     (label) JavaScript
     (count) 10
@@ -254,11 +259,6 @@
     (count) 10
     (posts) 2
     (projects) 8
-  > (item)
-    (slug) architecture
-    (label) Architecture
-    (count) 9
-    (posts) 9
   > (item)
     (slug) cli
     (label) Cli
@@ -549,6 +549,12 @@
     (logs) 4
     (projects) 1
   > (item)
+    (slug) security
+    (label) Security
+    (count) 5
+    (posts) 4
+    (projects) 1
+  > (item)
     (slug) serialization
     (label) Serialization
     (count) 5
@@ -671,12 +677,6 @@
     (posts) 3
     (logs) 1
   > (item)
-    (slug) security
-    (label) Security
-    (count) 4
-    (posts) 3
-    (projects) 1
-  > (item)
     (slug) shell
     (label) Shell
     (count) 4
@@ -740,6 +740,11 @@
   > (item)
     (slug) devops
     (label) Devops
+    (count) 3
+    (posts) 3
+  > (item)
+    (slug) distributed-systems
+    (label) Distributed systems
     (count) 3
     (posts) 3
   > (item)
@@ -1047,11 +1052,6 @@
     (label) Deus ex
     (count) 2
     (logs) 2
-  > (item)
-    (slug) distributed-systems
-    (label) Distributed systems
-    (count) 2
-    (posts) 2
   > (item)
     (slug) dnd
     (label) Dnd
@@ -3647,6 +3647,19 @@
       > go
       > deployment
       > productivity
+  > (item)
+    (id) post/one-identity-many-machines
+    (type) post
+    (title) One Identity, Many Machines
+    (path) /blog/one-identity-many-machines
+    (date) 2026-11-26
+    (category) dev
+    (description) When a machine image ships with an agent's identity baked in, every clone claims the same ID and the server falls into a write loop. Here is the problem, and a self-healing fix: a…
+    (tags)
+      > distributed-systems
+      > architecture
+      > security
+      > go
   > (item)
     (id) post/when-pink-was-for-boys
     (type) post

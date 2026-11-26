@@ -1,0 +1,212 @@
+# One Identity, Many Machines
+
+Agents that phone home are everywhere: monitoring agents, device management agents, update clients, backup clients. On its first run, an agent registers with a server, gets an ID and some credentials, and saves them to a local file. After that, it polls the server on a schedule: here's who I am, here's my state, anything for me?
+
+That setup has a quiet assumption: **one identity file means one machine**. This post is about what happens when that stops being true, and a design that fixes it without anyone stepping in by hand.
+
+## The problem
+
+Someone builds a machine image. They install the agent, the agent registers, and then the image gets captured, local identity file included. Now every machine started from that image boots up already holding the same ID and the same credentials.
+
+To the server, ten machines (or a few hundred) look like one device that can't make up its mind.
+
+None of this is malicious. The credentials are real, the agent builds are normal, and the traffic follows working hours. It's an image-hygiene mistake, and it's easy to make: the agent did exactly what it was told, once, on the machine that built the image.
+
+## Why it turns into a loop
+
+Sharing an ID is bad on its own: policies and reports for one machine land on another. It gets much worse when the clones drift apart, and they always do. They run different agent versions, have different hostnames, and get patched at different times.
+
+A typical poll path saves whatever changed and asks the agent to refresh its config. A refresh usually tells the agent to check back quickly instead of waiting for its normal interval. Put two machines with different versions on one ID and you get this:
+
+```mermaid
+sequenceDiagram
+    participant A as Machine A (v1.0)
+    participant S as Server
+    participant B as Machine B (v2.0)
+    A->>S: poll (id X, v1.0)
+    S->>S: version changed, save, flag refresh
+    S-->>A: refresh_config
+    B->>S: poll (id X, v2.0)
+    S->>S: version changed again, save
+    S-->>B: refresh_config
+    A->>S: quick re-poll (v1.0)
+    S->>S: changed again, save
+    Note over A,B: every poll is a write, forever
+```
+
+Every poll changes the stored record, every change triggers a refresh, and every refresh brings the agent back sooner. Nothing in that cycle ever settles. One fake "device" becomes a hot key. It produces a steady stream of database writes, and every system that consumes those changes downstream falls behind, for everyone, not just the cloned fleet.
+
+What makes this nasty is how it shows up. Total traffic doesn't spike much. A single ID quietly becomes the busiest thing in the system, so it looks like a slow backlog somewhere else.
+
+## Fixes that don't quite work
+
+**Block the duplicates.** Rate-limit or reject the shared ID until an admin cleans up the image. This makes the problem visible, but it also means a fleet of real machines stops being managed until a human acts. That's a reasonable choice for some products, and a painful one for most.
+
+**Last writer wins.** Let whoever polled most recently own the ID. That's the loop again, just with a friendlier name: the owner flips on every poll.
+
+**Check on the agent only.** Have the agent remember which machine it was installed on and wipe itself if it wakes up somewhere else. It's cheap and it works for one-off copies. But if that memory is a file, it gets baked into the image too. And with no server involved, there's nobody to decide which copy is the real one.
+
+**Make the hardware the identity.** If a hardware fingerprint *is* the ID, clones can never share one. This is the right long-term model, but it's a migration, and it doesn't do anything for the IDs that are already shared today.
+
+## The solution: a sticky fingerprint, then rekey
+
+The fix keeps today's ID model and adds one thing to every poll: a **fingerprint** of the machine. The server then follows a small set of rules:
+
+1. The **first fingerprint** seen for an ID is bound to it. It's *sticky*.
+2. A poll whose fingerprint **matches** gets normal service.
+3. A poll whose fingerprint **doesn't match** comes from a clone. The server **writes nothing** for it and answers with a `rekey` directive.
+4. The clone wipes its local identity, registers again, and gets **a new ID of its own**.
+
+```mermaid
+flowchart TD
+    P[Poll: id + fingerprint] --> B{ID already bound?}
+    B -- no --> C[Bind this fingerprint] --> N[Normal poll]
+    B -- yes --> M{Fingerprint matches?}
+    M -- yes --> N
+    M -- no --> X[Clone: skip all writes]
+    X --> R[Reply rekey + signed token]
+    R --> W[Agent wipes identity]
+    W --> G[Registers again with token]
+    G --> I[New ID, bound to its own fingerprint]
+```
+
+Two details make or break this.
+
+**A mismatch has to short-circuit the write path.** If the server still saves the clone's version before deciding it's a clone, the loop keeps feeding itself even while healing is under way. The fingerprint check comes first, before anything else.
+
+**Re-registering can't need a human.** First-time enrollment usually takes a key that an admin pastes in. A clone healing itself can't ask for one. So the `rekey` reply carries a token signed by the server that lets this machine register as a new device in the same org. To be safe, the token:
+
+- is **short-lived** (a couple of minutes),
+- works **once**,
+- is bound to the **org**,
+- is bound to the **fingerprint of the machine it was issued to**.
+
+A token that leaks is close to useless: it expires fast, it's single use, and it only works for the machine that was told to rekey.
+
+```mermaid
+sequenceDiagram
+    participant C as Clone
+    participant S as Server
+    C->>S: poll (id X, fingerprint F2)
+    S->>S: X is bound to F1, so F2 is a clone
+    S-->>C: rekey + token(org, F2, expires, nonce)
+    C->>C: delete local identity
+    C->>S: register (token, fingerprint F2)
+    S->>S: verify signature, expiry, nonce, org, F2
+    S-->>C: new id Y, bound to F2
+    C->>S: poll (id Y, F2)
+    S-->>C: normal service
+```
+
+## What goes into a fingerprint
+
+A fingerprint has to stay the same on one machine across restarts and be different on every clone. No single signal does both, so use several:
+
+| Signal | Same on clones? | Survives restarts? |
+|---|---|---|
+| Cloud instance ID | no | yes |
+| OS machine ID (`/etc/machine-id`, machine GUID, hardware UUID) | **often yes**, it's on the disk | yes |
+| Primary MAC address | no | usually |
+
+The machine ID is the trap. It lives on the disk, so it gets cloned along with everything else. That's why it works as one vote among several and never as the whole answer.
+
+Three rules keep this honest:
+
+- **Hash each component on the server**, with a salt, so raw hardware identifiers aren't kept around.
+- **Drop empty components.** A machine with no cloud metadata shouldn't end up with the same "empty" fingerprint as every other machine with no cloud metadata.
+- **Match on a majority, not on everything.** If most comparable components agree, it's the same machine. Replace a network card and one signal changes, but two still match, so the binding is updated quietly instead of evicting a real machine. A clone shares only what was baked into the image, so it fails.
+
+The whole matching rule is small:
+
+```go
+// Same machine if a strict majority of comparable components agree.
+func compare(sticky, fp map[string]string, min int) verdict {
+	comparable, agree := 0, 0
+	for k, v := range fp {
+		if s, ok := sticky[k]; ok {
+			comparable++
+			if s == v {
+				agree++
+			}
+		}
+	}
+	if comparable < min {
+		return weak // not enough to judge: don't claim, don't evict
+	}
+	if agree*2 > comparable {
+		return match
+	}
+	return mismatch
+}
+```
+
+## Safeguards
+
+The core rules fit in a paragraph. The safeguards are where the design actually earns its keep.
+
+**Thundering herd.** If three hundred clones find out at once that they're clones, three hundred registrations arrive at once. So rekeys are rate limited per original ID with a token bucket. Clones over the limit get a `backoff` reply with a retry delay, and the agent adds jitter. Healing a few machines per second is fine. Healing all of them in the same second is the problem you started with, wearing a new hat.
+
+**The image builder wins the race.** This one is easy to miss. The first machine to claim the ID is often the one that *built the image*, and it shuts down minutes later. With a strict "first wins forever" rule, the original ID ends up owned by a machine that no longer exists, and every real machine gets rekeyed off it.
+
+The fix is to make ownership **provisional** until it's proven:
+
+- A new binding has to match on a few polls before it counts as **confirmed**.
+- While it's provisional, mismatching machines **aren't evicted**. They're told to back off and wait.
+- If the provisional owner stays silent past a short grace period, the next live machine **takes the ID** and goes through confirmation itself.
+- Once an owner is confirmed, mismatches get rekeyed as usual.
+
+So the builder registers and leaves, the clones wait a few seconds, one of them takes over the original ID, and the rest rekey. A confirmed owner that goes silent for a long time can be replaced the same way.
+
+**False positives.** Majority matching covers the common cases: a replaced network card, a moved VM, a regenerated machine ID. For a deliberate full hardware swap there's an admin action that resets the binding, so the next poll claims it again.
+
+**Old agents.** An agent that doesn't send a fingerprint yet gets normal service and is never judged. Rollout can be gradual.
+
+**An off switch.** Auto-heal can be frozen for one org, for anyone who'd rather fix their image by hand.
+
+**Detection on its own.** Even with healing switched off, the server counts how many distinct fingerprints each ID has shown recently and raises an alert when one ID has too many. That alert is what tells you about the next cloned image before it turns into a backlog.
+
+## Does it actually work?
+
+I built a small model of this in Go. It has a registry server, an agent and a verifier, all packed into one `scratch` Docker image of about 23 MB. One container plays the image builder: it registers, writes its identity into a shared volume and exits. Ten more containers start from that "image" with the identity already in place. They all share the same baked-in machine ID but have their own hostname and MAC, and they report a mix of agent versions.
+
+With auto-heal **off**, the bug shows up right away:
+
+| | Auto-heal off | Auto-heal on |
+|---|---|---|
+| IDs in use by 10 machines | 1 (shared) | 10 (one each) |
+| Server writes per second | **79.6**, and it never stops | **0.00** once settled |
+| Time to settle | never | about 18 seconds |
+| Shared-ID alert | fired | fired |
+
+With auto-heal **on**:
+
+1. The builder's provisional claim expired.
+2. One clone took over the original ID and confirmed it.
+3. The other nine got rekey tokens, a few at a time, and registered as new devices.
+4. After that, every machine polled its own ID and the stored state stopped changing.
+
+The unit tests cover each rule on its own:
+
+- a clone causes no writes,
+- tokens are single use, expire, and are bound to the fingerprint,
+- one changed signal counts as drift, not a clone,
+- rate limiting holds back a burst of rekeys,
+- the image builder gets replaced,
+- a weak fingerprint never claims or evicts,
+- the admin reset and freeze work.
+
+## Layers, not one fix
+
+This isn't a single switch. The pieces stack:
+
+1. **Break the loop.** Stop saving state on every flip, and limit how often one device can be told to refresh. This stops the damage on day one, even before any healing exists.
+2. **Detect.** Alert when one ID shows many fingerprints. This finds the next cloned image early.
+3. **Auto-heal.** The sticky fingerprint and rekey described above. This moves clones off the shared ID without anyone stepping in.
+4. **Prevent.** In the long run, derive identity from hardware so clones can't share an ID in the first place.
+
+There are a few decisions I left out on purpose:
+
+- **Groups and policies.** Healed clones start as new devices. Whether they should copy the original owner's groups and policies is a product decision, not a technical one.
+- **Storage.** The binding needs to live next to the device record. Claiming or taking over an ID has to be an atomic compare-and-set once more than one server is involved.
+
+The general lesson goes beyond agents: **an identity copied by accident needs a tiebreaker that can't be copied.** A credential on disk can be cloned. Where the machine actually is, its instance and its network card, can't. Make the second one decide what the first one means.

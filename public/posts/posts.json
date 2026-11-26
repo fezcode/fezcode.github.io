@@ -1,5 +1,23 @@
 [
   {
+    "slug": "one-identity-many-machines",
+    "title": "One Identity, Many Machines",
+    "date": "2026-11-26",
+    "updated": "2026-11-26",
+    "description": "When a machine image ships with an agent's identity baked in, every clone claims the same ID and the server falls into a write loop. Here is the problem, and a self-healing fix: a sticky fingerprint, a signed rekey, and the safeguards that make it safe.",
+    "tags": [
+      "distributed-systems",
+      "architecture",
+      "security",
+      "go"
+    ],
+    "category": "dev",
+    "filename": "one-identity-many-machines.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "introducing-fezcode-studio",
     "title": "Introducing Fezcode Studio",
     "date": "2026-11-26",
