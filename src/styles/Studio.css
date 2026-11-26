@@ -778,6 +778,12 @@
   font-family: 'Studio Display', system-ui, sans-serif;
   font-weight: 700;
 }
+/* The prose allows breaks anywhere, which lets tables shrink a column until
+   words split mid-letter. break-word still wraps long URLs but sizes columns
+   by whole words. */
+.std-reading-prose table {
+  overflow-wrap: break-word;
+}
 .std-reader {
   max-width: 78ch;
 }
