@@ -875,3 +875,23 @@
     (status) Completed
     (created_at) 2026-11-18T23:54:19+03:00
     (notes) Backfilled from commit b133b4717. Date reflects the implementation commit.
+
+  > (issues)
+    (id) FEZ-76
+    (title) fezcode.studio release
+    (description) Launch fezcode.studio, the home for apps that need a server, starting with Urban Tasks and Drops, and link it from the sidebar.
+    (category) Infrastructure
+    (epic) Core Infrastructure
+    (status) Completed
+    (created_at) 2026-11-26T20:00:00+03:00
+    (notes) Announced in the post "Introducing Fezcode Studio" (/blog/introducing-fezcode-studio).
+
+  > (issues)
+    (id) FEZ-77
+    (title) Studio theme
+    (description) Add the Studio site theme, inspired by fezcode.studio, and make it the default theme.
+    (category) UI/UX
+    (epic) Design Systems
+    (status) Completed
+    (created_at) 2026-11-27T00:44:06+03:00
+    (notes) Theme added in commit 0f4d1fa06. Became the default when the Knit default-theme campaign was switched off.
