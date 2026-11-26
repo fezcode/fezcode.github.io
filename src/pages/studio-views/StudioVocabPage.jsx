@@ -5,6 +5,7 @@ import { useSidePanel } from '../../context/SidePanelContext';
 import { StudioFolio, StudioNotice, StudioRule } from '../../components/studio';
 import '../../styles/Studio.css';
 
+import { scrollToElement } from '../../utils/scrollToElement';
 const Retrieving = () => (
   <div className="std-root p-6">
     <StudioNotice>RETRIEVING ENTRY…</StudioNotice>
@@ -104,8 +105,7 @@ const StudioVocabPage = () => {
     requestAnimationFrame(() => {
       const el = document.getElementById(`letter-${letter}`);
       if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - 140;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        scrollToElement(el, 140);
       }
     });
   };

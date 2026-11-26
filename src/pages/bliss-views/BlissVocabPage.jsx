@@ -12,6 +12,7 @@ import { getCategoryColor } from '../../utils/categoryColors';
 import { BlissWindow, BlissIcon, BlissNotice } from '../../components/bliss';
 import '../../styles/Bliss.css';
 
+import { scrollToElement } from '../../utils/scrollToElement';
 const Retrieving = () => (
   <div className="bl-root p-6">
     <BlissNotice>Finding the entry…</BlissNotice>
@@ -84,8 +85,7 @@ const BlissVocabPage = () => {
     requestAnimationFrame(() => {
       const el = document.getElementById(`letter-${letter}`);
       if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - 140;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        scrollToElement(el, 140);
       }
     });
   };

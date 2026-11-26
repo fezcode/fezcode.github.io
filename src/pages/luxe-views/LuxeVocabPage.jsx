@@ -9,6 +9,7 @@ import Seo from '../../components/Seo';
 import { vocabulary } from '../../data/vocabulary';
 import { useSidePanel } from '../../context/SidePanelContext';
 
+import { scrollToElement } from '../../utils/scrollToElement';
 const LuxeVocabPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const { openSidePanel } = useSidePanel();
@@ -57,10 +58,7 @@ const LuxeVocabPage = () => {
   const scrollToLetter = (letter) => {
     const element = document.getElementById(`letter-${letter}`);
     if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 120,
-        behavior: 'smooth',
-      });
+      scrollToElement(element, 120);
     }
   };
 

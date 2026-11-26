@@ -9,6 +9,7 @@ import {
 } from '../../components/ledger';
 import '../../styles/Ledger.css';
 
+import { scrollToElement } from '../../utils/scrollToElement';
 /**
  * Ledger view of the vocabulary — the GLOSSARY folio. Terms filed under
  * ruled letter headings with a running entry number; opening one retrieves
@@ -108,8 +109,7 @@ const LedgerVocabPage = () => {
     requestAnimationFrame(() => {
       const el = document.getElementById(`letter-${letter}`);
       if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - 140;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        scrollToElement(el, 140);
       }
     });
   };

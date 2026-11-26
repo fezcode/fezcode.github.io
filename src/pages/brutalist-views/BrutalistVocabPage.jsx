@@ -11,6 +11,7 @@ import { vocabulary } from '../../data/vocabulary';
 import Seo from '../../components/Seo';
 import { useSidePanel } from '../../context/SidePanelContext';
 
+import { scrollToElement } from '../../utils/scrollToElement';
 const BauhausShapes = ({ seed }) => {
   const shapes = useMemo(() => {
     // Simple deterministic RNG based on string seed
@@ -140,16 +141,7 @@ const VocabPage = () => {
   const scrollToLetter = (letter) => {
     const element = document.getElementById(`letter-${letter}`);
     if (element) {
-      const offset = 140;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
+      scrollToElement(element, 140);
     }
   };
 

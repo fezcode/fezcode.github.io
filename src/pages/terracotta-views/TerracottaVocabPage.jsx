@@ -12,6 +12,7 @@ import {
   TerracottaSpec,
 } from '../../components/terracotta';
 
+import { scrollToElement } from '../../utils/scrollToElement';
 const PAPER_GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.28 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")`;
 const PAPER_GRADIENT =
   'radial-gradient(1100px 600px at 85% -10%, #E8DECE 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #EDE3D3 0%, transparent 50%)';
@@ -128,8 +129,7 @@ const TerracottaVocabPage = () => {
     requestAnimationFrame(() => {
       const el = document.getElementById(`letter-${letter}`);
       if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - 120;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        scrollToElement(el, 120);
       }
     });
   };

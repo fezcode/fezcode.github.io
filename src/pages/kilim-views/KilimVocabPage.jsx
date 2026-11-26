@@ -14,6 +14,7 @@ import {
 import '../../styles/Kilim.css';
 import './kilim-utility.css';
 
+import { scrollToElement } from '../../utils/scrollToElement';
 /*
  * The vocabulary as a weaver's glossary written on an ivory runner: a narrow
  * rug with fringe at both ends and sawtooth selvedges, the letters woven as
@@ -92,8 +93,7 @@ const KilimVocabPage = () => {
     requestAnimationFrame(() => {
       const el = document.getElementById(`letter-${letter}`);
       if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - 140;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        scrollToElement(el, 140);
       }
     });
   };

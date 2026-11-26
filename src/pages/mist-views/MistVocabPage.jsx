@@ -14,6 +14,7 @@ import {
   MistColophon,
 } from '../../components/mist';
 
+import { scrollToElement } from '../../utils/scrollToElement';
 const FOG_GRADIENT =
   'radial-gradient(1100px 600px at 80% -10%, #FFFFFF 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #D2DBD8 0%, transparent 50%), radial-gradient(700px 500px at 95% 90%, #E5EBE9 0%, transparent 45%)';
 
@@ -157,8 +158,7 @@ const MistVocabPage = () => {
     requestAnimationFrame(() => {
       const el = document.getElementById(`letter-${letter}`);
       if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - 120;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        scrollToElement(el, 120);
       }
     });
   };

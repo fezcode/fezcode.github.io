@@ -5,6 +5,7 @@ import { useSidePanel } from '../../context/SidePanelContext';
 import { OrbitFolio, OrbitNotice, OrbitRule } from '../../components/orbit';
 import '../../styles/Orbit.css';
 
+import { scrollToElement } from '../../utils/scrollToElement';
 const Retrieving = () => (
   <div className="orb-root p-6">
     <OrbitNotice>RETRIEVING ENTRY…</OrbitNotice>
@@ -104,8 +105,7 @@ const OrbitVocabPage = () => {
     requestAnimationFrame(() => {
       const el = document.getElementById(`letter-${letter}`);
       if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - 140;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        scrollToElement(el, 140);
       }
     });
   };

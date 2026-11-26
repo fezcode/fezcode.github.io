@@ -12,6 +12,7 @@ import {
 } from '../../components/knit';
 import '../../styles/Knit.css';
 
+import { scrollToElement } from '../../utils/scrollToElement';
 const Retrieving = () => (
   <div className="knt-root p-6">
     <KnitNotice>Finding the entry…</KnitNotice>
@@ -84,8 +85,7 @@ const KnitVocabPage = () => {
     requestAnimationFrame(() => {
       const el = document.getElementById(`letter-${letter}`);
       if (el) {
-        const y = el.getBoundingClientRect().top + window.scrollY - 140;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        scrollToElement(el, 140);
       }
     });
   };
