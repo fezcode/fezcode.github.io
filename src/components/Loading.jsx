@@ -6,6 +6,7 @@ import { MistOrb } from './mist';
 import { KnitBand, KnitText, YARN } from './knit';
 import { KilimBand, KilimText, WOOL } from './kilim';
 import { BlissWindow, BlissProgress } from './bliss';
+import StudioLoading from './studio/StudioLoading';
 
 /** Three dots that pulse in turn, coloured by the caller. */
 const Dots = ({ color }) => (
@@ -268,6 +269,7 @@ const BlissLoading = () => {
 };
 
 const VIEWS = {
+  studio: StudioLoading,
   luxe: LuxeLoading,
   terracotta: TerracottaLoading,
   mist: MistLoading,
