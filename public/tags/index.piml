@@ -297,6 +297,12 @@
     (count) 9
     (logs) 9
   > (item)
+    (slug) turkish
+    (label) Turkish
+    (count) 9
+    (posts) 3
+    (logs) 6
+  > (item)
     (slug) video-game-music
     (label) Video game music
     (count) 9
@@ -341,12 +347,6 @@
     (label) Space
     (count) 8
     (logs) 8
-  > (item)
-    (slug) turkish
-    (label) Turkish
-    (count) 8
-    (posts) 2
-    (logs) 6
   > (item)
     (slug) adventure
     (label) Adventure
@@ -434,6 +434,12 @@
     (count) 6
     (posts) 6
   > (item)
+    (slug) language
+    (label) Language
+    (count) 6
+    (posts) 4
+    (logs) 2
+  > (item)
     (slug) literature
     (label) Literature
     (count) 6
@@ -510,12 +516,6 @@
     (label) Fun
     (count) 5
     (posts) 5
-  > (item)
-    (slug) language
-    (label) Language
-    (count) 5
-    (posts) 3
-    (logs) 2
   > (item)
     (slug) multiplayer
     (label) Multiplayer
@@ -924,6 +924,12 @@
     (count) 3
     (logs) 3
   > (item)
+    (slug) vocabulary
+    (label) Vocabulary
+    (count) 3
+    (posts) 2
+    (projects) 1
+  > (item)
     (slug) webextension
     (label) Webextension
     (count) 3
@@ -1211,6 +1217,11 @@
     (count) 2
     (logs) 2
   > (item)
+    (slug) ottoman
+    (label) Ottoman
+    (count) 2
+    (posts) 2
+  > (item)
     (slug) personal-website
     (label) Personal website
     (count) 2
@@ -1356,12 +1367,6 @@
     (label) Vite
     (count) 2
     (posts) 2
-  > (item)
-    (slug) vocabulary
-    (label) Vocabulary
-    (count) 2
-    (posts) 1
-    (projects) 1
   > (item)
     (slug) webview2
     (label) Webview2
@@ -2703,11 +2708,6 @@
     (count) 1
     (posts) 1
   > (item)
-    (slug) ottoman
-    (label) Ottoman
-    (count) 1
-    (posts) 1
-  > (item)
     (slug) output-format
     (label) Output format
     (count) 1
@@ -3661,6 +3661,19 @@
       > go
       > deployment
       > productivity
+  > (item)
+    (id) post/not-everything-is-tartisma
+    (type) post
+    (title) Not Everything Is “Tartışma”
+    (path) /blog/not-everything-is-tartisma
+    (date) 2026-11-26
+    (category) gist
+    (description) Turkish uses tartışmak for a calm panel, a shouting match and a scolding alike. Ottoman Turkish had a word for each: münakaşa, münazara, mübahase, muahaze and more.
+    (tags)
+      > turkish
+      > language
+      > vocabulary
+      > ottoman
   > (item)
     (id) post/one-identity-many-machines
     (type) post
