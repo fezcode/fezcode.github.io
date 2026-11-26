@@ -490,10 +490,10 @@ const LedgerSettingsPage = () => {
                     { label: 'TERRACOTTA', value: 'terracotta' },
                     { label: 'MIST', value: 'mist' },
                     { label: 'LEDGER', value: 'ledger' },
-                    { label: 'Orbit (Observatory)', value: 'orbit' },
-                    { label: 'Knit (Colourwork)', value: 'knit' },
-                    { label: 'Kilim (Weave)', value: 'kilim' },
-                    { label: 'Bliss (Desktop)', value: 'bliss' },
+                    { label: 'ORBIT', value: 'orbit' },
+                    { label: 'KNIT', value: 'knit' },
+                    { label: 'KILIM', value: 'kilim' },
+                    { label: 'BLISS', value: 'bliss' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}

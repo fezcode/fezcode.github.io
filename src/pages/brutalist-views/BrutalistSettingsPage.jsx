@@ -13,6 +13,7 @@ import {
   MagicWandIcon,
   ArticleIcon,
   BrainIcon,
+  PaletteIcon,
 } from '@phosphor-icons/react';
 import { useAnimation } from '../../context/AnimationContext';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
@@ -55,6 +56,44 @@ const Section = ({ title, icon, children, delay = 0, id }) => (
     </div>
     <div className="relative z-10">{children}</div>
   </motion.div>
+);
+
+const BrutalistThemePicker = ({ options, value, onChange }) => (
+  <div
+    role="radiogroup"
+    aria-label="Fezcodex theme"
+    className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px"
+  >
+    {options.map((option, index) => {
+      const active = value === option.value;
+      return (
+        <button
+          key={option.value}
+          type="button"
+          role="radio"
+          aria-checked={active}
+          onClick={() => onChange(option.value)}
+          className={`text-left px-5 py-4 font-mono uppercase transition-colors outline outline-1 outline-white/10 ${
+            active
+              ? 'bg-emerald-500 text-black'
+              : 'bg-[#050505] text-white hover:bg-white/[0.06] hover:text-emerald-400'
+          }`}
+        >
+          <span
+            className={`block text-[10px] tracking-[0.3em] ${
+              active ? 'text-black/60' : 'text-gray-600'
+            }`}
+          >
+            {String(index + 1).padStart(2, '0')} / {option.note}
+          </span>
+          <span className="mt-1 block text-lg font-bold tracking-tighter">
+            {active ? '> ' : ''}
+            {option.label}
+          </span>
+        </button>
+      );
+    })}
+  </div>
 );
 
 const SettingsPage = () => {
@@ -261,6 +300,33 @@ const SettingsPage = () => {
         </header>
 
         <div className="grid grid-cols-1 gap-12">
+          {/* Design Language */}
+          <Section
+            id="design-language"
+            title="Design Language"
+            icon={<PaletteIcon />}
+            delay={0.0}
+          >
+            <p className="text-sm text-gray-500 mb-8 max-w-xl">
+              The visual foundation of the whole codex.
+            </p>
+            <BrutalistThemePicker
+              options={[
+                { label: 'Brutalist', note: 'Dark', value: 'brutalist' },
+                { label: 'Luxe', note: 'Refined', value: 'luxe' },
+                { label: 'Terracotta', note: 'Warm', value: 'terracotta' },
+                { label: 'Mist', note: 'Hazy', value: 'mist' },
+                { label: 'Ledger', note: 'Archive', value: 'ledger' },
+                { label: 'Orbit', note: 'Observatory', value: 'orbit' },
+                { label: 'Knit', note: 'Colourwork', value: 'knit' },
+                { label: 'Kilim', note: 'Weave', value: 'kilim' },
+                { label: 'Bliss', note: 'Desktop', value: 'bliss' },
+              ]}
+              value={fezcodexTheme}
+              onChange={setFezcodexTheme}
+            />
+          </Section>
+
           {/* Layout Configuration */}
           <Section
             id="interface"
@@ -320,36 +386,6 @@ const SettingsPage = () => {
                     fontClass="font-outfit"
                   />
                 </div>
-              </div>
-
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border border-white/5 bg-white/[0.01] ">
-                <div>
-                  <h3 className="text-lg font-bold text-white mb-1">
-                    Fezcodex Theme
-                  </h3>
-                  <p className="text-sm text-gray-500">
-                    Choose between the high-contrast brutalist vault or the
-                    sophisticated luxe interface.
-                  </p>
-                </div>
-                <CustomDropdown
-                  variant="brutalist"
-                  label="Select Theme"
-                  options={[
-                    { label: 'Brutalist (Dark)', value: 'brutalist' },
-                    { label: 'Luxe (Refined)', value: 'luxe' },
-                    { label: 'Terracotta (Warm)', value: 'terracotta' },
-                    { label: 'Mist (Hazy)', value: 'mist' },
-                    { label: 'Ledger (Archive)', value: 'ledger' },
-                    { label: 'Orbit (Observatory)', value: 'orbit' },
-                    { label: 'Knit (Colourwork)', value: 'knit' },
-                    { label: 'Kilim (Weave)', value: 'kilim' },
-                    { label: 'Bliss (Desktop)', value: 'bliss' },
-                  ]}
-                  value={fezcodexTheme}
-                  onChange={setFezcodexTheme}
-                  icon={LayoutIcon}
-                />
               </div>
             </div>
           </Section>

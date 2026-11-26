@@ -33,8 +33,52 @@ const PAPER_GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/
 const PAPER_GRADIENT =
   'radial-gradient(1100px 600px at 85% -10%, #E8DECE 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #EDE3D3 0%, transparent 50%)';
 
-const SettingRow = ({ number, heading, description, control }) => (
-  <li className="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-10 items-center py-6 pl-[46px] border-b border-dashed border-[#1A161320]">
+const TerracottaThemePicker = ({ options, value, onChange }) => (
+  <div
+    role="radiogroup"
+    aria-label="Fezcodex theme"
+    className="flex flex-wrap gap-2"
+  >
+    {options.map((option) => {
+      const active = value === option.value;
+      return (
+        <button
+          key={option.value}
+          type="button"
+          role="radio"
+          aria-checked={active}
+          onClick={() => onChange(option.value)}
+          className={`inline-flex items-baseline gap-2 px-4 py-2 rounded-full border transition-colors duration-200 ${
+            active
+              ? 'bg-[#C96442] border-[#9E4A2F] text-[#F3ECE0]'
+              : 'bg-[#F3ECE0]/60 border-[#1A161330] text-[#1A1613] hover:border-[#C96442] hover:text-[#9E4A2F]'
+          }`}
+        >
+          <span
+            className="font-fraunces text-[16px]"
+            style={{
+              fontVariationSettings: '"opsz" 22, "SOFT" 50, "WONK" 1, "wght" 460',
+            }}
+          >
+            {option.label}
+          </span>
+          <span
+            className={`font-ibm-plex-mono text-[10px] uppercase tracking-[0.12em] ${
+              active ? 'text-[#F3ECE0]/75' : 'text-[#9E4A2F]'
+            }`}
+          >
+            {option.note}
+          </span>
+        </button>
+      );
+    })}
+  </div>
+);
+
+const SettingRow = ({ number, heading, description, control, stacked }) => (
+  <li
+    className={`relative grid grid-cols-1 ${stacked ? '' : 'md:grid-cols-[1fr_auto]'} gap-4 md:gap-10 items-center py-6 pl-[46px] border-b border-dashed border-[#1A161320]`}
+  >
     <span
       aria-hidden="true"
       className="absolute left-0 top-6 font-ibm-plex-mono text-[11px] tracking-[0.08em] text-[#9E4A2F] font-medium"
@@ -61,7 +105,13 @@ const SettingRow = ({ number, heading, description, control }) => (
         </p>
       )}
     </div>
-    <div className="justify-self-start md:justify-self-end">{control}</div>
+    <div
+      className={
+        stacked ? 'justify-self-stretch' : 'justify-self-start md:justify-self-end'
+      }
+    >
+      {control}
+    </div>
   </li>
 );
 
@@ -454,7 +504,48 @@ const TerracottaSettingsPage = () => {
           </div>
         </section>
 
-        <section id="interface" className="pt-16 border-t border-[#1A161320]">
+        <section
+          id="design-language"
+          className="pt-16 border-t border-[#1A161320]"
+        >
+          <TerracottaChapter
+            numeral="0"
+            label="Design language"
+            title={
+              <>
+                The <ChapterEm>clay it is fired in.</ChapterEm>
+              </>
+            }
+            blurb="The visual foundation of the whole codex."
+          />
+          <ol className="border-t border-[#1A161320]">
+            <SettingRow
+              number={1}
+              heading="Fezcodex theme"
+              description="Choose a visual foundation for the whole codex."
+              stacked
+              control={
+                <TerracottaThemePicker
+                  options={[
+                    { label: 'Brutalist', note: 'Dark', value: 'brutalist' },
+                    { label: 'Luxe', note: 'Refined', value: 'luxe' },
+                    { label: 'Terracotta', note: 'Warm', value: 'terracotta' },
+                    { label: 'Mist', note: 'Hazy', value: 'mist' },
+                    { label: 'Ledger', note: 'Archive', value: 'ledger' },
+                    { label: 'Orbit', note: 'Observatory', value: 'orbit' },
+                    { label: 'Knit', note: 'Colourwork', value: 'knit' },
+                    { label: 'Kilim', note: 'Weave', value: 'kilim' },
+                    { label: 'Bliss', note: 'Desktop', value: 'bliss' },
+                  ]}
+                  value={fezcodexTheme}
+                  onChange={setFezcodexTheme}
+                />
+              }
+            />
+          </ol>
+        </section>
+
+        <section id="interface" className="pt-20">
           <TerracottaChapter
             numeral="I"
             label="Interface"
@@ -463,33 +554,9 @@ const TerracottaSettingsPage = () => {
                 How the <ChapterEm>page is held.</ChapterEm>
               </>
             }
-            blurb="Theme, reading mode, dashboard priority."
+            blurb="Reading mode, dashboard priority."
           />
           <ol className="border-t border-[#1A161320]">
-            <SettingRow
-              number={1}
-              heading="Fezcodex theme"
-              description="The visual foundation — dark/neon brutalist, light/refined luxe, or this one."
-              control={
-                <CustomDropdown
-                  variant="terracotta"
-                  label="Select theme"
-                  options={[
-                    { label: 'Brutalist (Dark)', value: 'brutalist' },
-                    { label: 'Luxe (Refined)', value: 'luxe' },
-                    { label: 'Terracotta (Warm)', value: 'terracotta' },
-                    { label: 'Mist (Hazy)', value: 'mist' },
-                    { label: 'Ledger (Archive)', value: 'ledger' },
-                    { label: 'Orbit (Observatory)', value: 'orbit' },
-                    { label: 'Knit (Colourwork)', value: 'knit' },
-                    { label: 'Kilim (Weave)', value: 'kilim' },
-                    { label: 'Bliss (Desktop)', value: 'bliss' },
-                  ]}
-                  value={fezcodexTheme}
-                  onChange={setFezcodexTheme}
-                />
-              }
-            />
             <SettingRow
               number={2}
               heading="Long-form reader"

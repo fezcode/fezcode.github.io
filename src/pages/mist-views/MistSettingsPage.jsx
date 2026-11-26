@@ -164,8 +164,48 @@ const MistDropdown = ({ label, options, value, onChange }) => {
   );
 };
 
-const SettingRow = ({ number, heading, description, control }) => (
-  <li className="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-10 items-center py-6 pl-[46px] border-b border-[#3C4845]/10">
+/* =========================================================================
+   MistThemePicker — soft glass pebbles; the chosen one glows drift-blue.
+   ========================================================================= */
+const MistThemePicker = ({ options, value, onChange }) => (
+  <div
+    role="radiogroup"
+    aria-label="fezcodex theme"
+    className="flex flex-wrap gap-2.5"
+  >
+    {options.map((option) => {
+      const active = value === option.value;
+      return (
+        <button
+          key={option.value}
+          type="button"
+          role="radio"
+          aria-checked={active}
+          onClick={() => onChange(option.value)}
+          className={`inline-flex items-baseline gap-2 px-5 py-2 rounded-full backdrop-blur-sm transition-all duration-250 ${
+            active
+              ? 'bg-white/80 ring-1 ring-[#5F837B]/40 text-[#5F837B] shadow-[0_0_18px_rgba(143,168,188,0.45)]'
+              : 'bg-white/35 ring-1 ring-[#3C4845]/10 text-[#3C4845] hover:bg-white/60 hover:text-[#5F837B]'
+          }`}
+        >
+          <span
+            className={`font-instr-serif text-[16px] ${active ? 'italic' : ''}`}
+          >
+            {option.label}
+          </span>
+          <span className="font-ibm-plex-mono text-[9.5px] tracking-[0.14em] lowercase text-[#5C6B67]">
+            {option.note}
+          </span>
+        </button>
+      );
+    })}
+  </div>
+);
+
+const SettingRow = ({ number, heading, description, control, stacked }) => (
+  <li
+    className={`relative grid grid-cols-1 ${stacked ? '' : 'md:grid-cols-[1fr_auto]'} gap-4 md:gap-10 items-center py-6 pl-[46px] border-b border-[#3C4845]/10`}
+  >
     <span
       aria-hidden="true"
       className="absolute left-0 top-6 font-ibm-plex-mono text-[10.5px] tracking-[0.08em] lowercase text-[#5F837B]"
@@ -182,7 +222,13 @@ const SettingRow = ({ number, heading, description, control }) => (
         </p>
       )}
     </div>
-    <div className="justify-self-start md:justify-self-end">{control}</div>
+    <div
+      className={
+        stacked ? 'justify-self-stretch' : 'justify-self-start md:justify-self-end'
+      }
+    >
+      {control}
+    </div>
   </li>
 );
 
@@ -550,8 +596,47 @@ const MistSettingsPage = () => {
           </motion.div>
         </section>
 
-        <section id="interface" className="pt-16">
+        <section id="design-language" className="pt-16">
           <MistHorizon className="mb-16" />
+          <MistChapter
+            numeral="o"
+            label="design language"
+            title={
+              <>
+                the <ChapterEm>weather it all sits in.</ChapterEm>
+              </>
+            }
+            blurb="the visual foundation of the whole codex."
+          />
+          <ol>
+            <MistHorizon tint="rgba(60,72,69,0.18)" />
+            <SettingRow
+              number={1}
+              heading="fezcodex theme"
+              description="choose a visual foundation for the whole codex."
+              stacked
+              control={
+                <MistThemePicker
+                  options={[
+                    { label: 'brutalist', note: 'dark', value: 'brutalist' },
+                    { label: 'luxe', note: 'refined', value: 'luxe' },
+                    { label: 'terracotta', note: 'warm', value: 'terracotta' },
+                    { label: 'mist', note: 'this fog', value: 'mist' },
+                    { label: 'ledger', note: 'archive', value: 'ledger' },
+                    { label: 'orbit', note: 'observatory', value: 'orbit' },
+                    { label: 'knit', note: 'colourwork', value: 'knit' },
+                    { label: 'kilim', note: 'weave', value: 'kilim' },
+                    { label: 'bliss', note: 'desktop', value: 'bliss' },
+                  ]}
+                  value={fezcodexTheme}
+                  onChange={setFezcodexTheme}
+                />
+              }
+            />
+          </ol>
+        </section>
+
+        <section id="interface" className="pt-20">
           <MistChapter
             numeral="i"
             label="interface"
@@ -560,33 +645,10 @@ const MistSettingsPage = () => {
                 how the <ChapterEm>page is held.</ChapterEm>
               </>
             }
-            blurb="theme, reading mode, dashboard priority."
+            blurb="reading mode, dashboard priority."
           />
           <ol>
             <MistHorizon tint="rgba(60,72,69,0.18)" />
-            <SettingRow
-              number={1}
-              heading="fezcodex theme"
-              description="the visual foundation — dark/neon brutalist, light/refined luxe, warm terracotta, or this fog."
-              control={
-                <MistDropdown
-                  label="select theme"
-                  options={[
-                    { label: 'brutalist (dark)', value: 'brutalist' },
-                    { label: 'luxe (refined)', value: 'luxe' },
-                    { label: 'terracotta (warm)', value: 'terracotta' },
-                    { label: 'mist (this fog)', value: 'mist' },
-                    { label: 'ledger (archive)', value: 'ledger' },
-                    { label: 'Orbit (Observatory)', value: 'orbit' },
-                    { label: 'Knit (Colourwork)', value: 'knit' },
-                    { label: 'Kilim (Weave)', value: 'kilim' },
-                    { label: 'Bliss (Desktop)', value: 'bliss' },
-                  ]}
-                  value={fezcodexTheme}
-                  onChange={setFezcodexTheme}
-                />
-              }
-            />
             <SettingRow
               number={2}
               heading="long-form reader"

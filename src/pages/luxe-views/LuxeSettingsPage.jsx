@@ -13,6 +13,7 @@ import {
   ArticleIcon,
   CheckCircleIcon,
   BrainIcon,
+  PaletteIcon,
 } from '@phosphor-icons/react';
 import { useAnimation } from '../../context/AnimationContext';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
@@ -53,6 +54,44 @@ const LuxeSection = ({ title, icon, children, delay = 0, id }) => (
     </div>
     <div className="relative z-10">{children}</div>
   </motion.div>
+);
+
+const LuxeThemePicker = ({ options, value, onChange }) => (
+  <div
+    role="radiogroup"
+    aria-label="Fezcodex theme"
+    className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3"
+  >
+    {options.map((option) => {
+      const active = value === option.value;
+      return (
+        <button
+          key={option.value}
+          type="button"
+          role="radio"
+          aria-checked={active}
+          onClick={() => onChange(option.value)}
+          className={`group text-left px-5 py-4 rounded-sm border transition-all duration-300 ${
+            active
+              ? 'bg-[#1A1A1A] border-[#1A1A1A] text-[#F5F5F0] shadow-md'
+              : 'bg-white/50 border-black/10 text-[#1A1A1A] hover:border-[#8D4004]/40 hover:bg-white'
+          }`}
+        >
+          <span className="block font-playfairDisplay italic text-xl leading-tight">
+            {option.label}
+          </span>
+          <span
+            className={`mt-1 flex items-center gap-1.5 font-outfit text-[10px] uppercase tracking-[0.2em] ${
+              active ? 'text-[#C0B298]' : 'text-black/40'
+            }`}
+          >
+            {active && <CheckCircleIcon size={12} weight="fill" />}
+            {option.note}
+          </span>
+        </button>
+      );
+    })}
+  </div>
 );
 
 const LuxeSettingsPage = () => {
@@ -230,6 +269,33 @@ const LuxeSettingsPage = () => {
         </header>
 
         <div className="space-y-12">
+          {/* Design Language */}
+          <LuxeSection
+            id="design-language"
+            title="Design Language"
+            icon={<PaletteIcon />}
+            delay={0.05}
+          >
+            <p className="font-outfit text-sm text-black/50 leading-relaxed mb-8 max-w-xl">
+              The visual foundation of the whole codex.
+            </p>
+            <LuxeThemePicker
+              options={[
+                { label: 'Brutalist', note: 'Dark', value: 'brutalist' },
+                { label: 'Luxe', note: 'Refined', value: 'luxe' },
+                { label: 'Terracotta', note: 'Warm', value: 'terracotta' },
+                { label: 'Mist', note: 'Hazy', value: 'mist' },
+                { label: 'Ledger', note: 'Archive', value: 'ledger' },
+                { label: 'Orbit', note: 'Observatory', value: 'orbit' },
+                { label: 'Knit', note: 'Colourwork', value: 'knit' },
+                { label: 'Kilim', note: 'Weave', value: 'kilim' },
+                { label: 'Bliss', note: 'Desktop', value: 'bliss' },
+              ]}
+              value={fezcodexTheme}
+              onChange={setFezcodexTheme}
+            />
+          </LuxeSection>
+
           {/* Interface Layout */}
           <LuxeSection
             id="interface"
@@ -239,32 +305,6 @@ const LuxeSettingsPage = () => {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="space-y-8">
-                <div className="p-6 border-l-2 border-[#8D4004]/20 bg-white/40 space-y-4">
-                  <h3 className="font-playfairDisplay text-xl">Core Theme</h3>
-                  <p className="font-outfit text-xs text-black/50 leading-relaxed mb-4">
-                    Select the primary visual foundation for the system.
-                  </p>
-                  <CustomDropdown
-                    variant="paper"
-                    label="Select Theme"
-                    options={[
-                      { label: 'Brutalist (Dark)', value: 'brutalist' },
-                      { label: 'Luxe (Refined)', value: 'luxe' },
-                      { label: 'Terracotta (Warm)', value: 'terracotta' },
-                      { label: 'Mist (Hazy)', value: 'mist' },
-                      { label: 'Ledger (Archive)', value: 'ledger' },
-                      { label: 'Orbit (Observatory)', value: 'orbit' },
-                      { label: 'Knit (Colourwork)', value: 'knit' },
-                      { label: 'Kilim (Weave)', value: 'kilim' },
-                      { label: 'Bliss (Desktop)', value: 'bliss' },
-                    ]}
-                    value={fezcodexTheme}
-                    onChange={setFezcodexTheme}
-                    icon={LayoutIcon}
-                    fullWidth
-                  />
-                </div>
-
                 <div className="p-6 border-l-2 border-black/5 bg-white/20 space-y-4">
                   <h3 className="font-playfairDisplay text-xl">App Display</h3>
                   <CustomToggle
