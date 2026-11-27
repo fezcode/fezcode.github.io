@@ -4,6 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useProjects } from '../../utils/projectParser';
 import Seo from '../../components/Seo';
 import {
+  applyLatestRelease,
+  resolveLatest,
+} from '../../utils/projectReleases';
+import {
   ArrowLeftIcon,
   ArrowUpRightIcon,
   GithubLogoIcon,
@@ -168,7 +172,16 @@ const HifiProjectPage = () => {
         if (!res.ok) throw new Error(`hifi.txt missing for ${slug}`);
         return res.json();
       })
-      .then((data) => alive && setCfg(data))
+      .then((data) => {
+        if (!alive) return;
+        setCfg(data);
+        // Live release from Airlift's index: newest version, OS download.
+        resolveLatest(data.repo || data.download)
+          .then((latest) => {
+            if (alive && latest) setCfg(applyLatestRelease(data, latest));
+          })
+          .catch(() => {});
+      })
       .catch(() => alive && setFailed(true));
     return () => {
       alive = false;

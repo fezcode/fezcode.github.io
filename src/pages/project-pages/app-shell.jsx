@@ -3,6 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import { useProjects } from '../../utils/projectParser';
 import Seo from '../../components/Seo';
 import Loading from '../../components/Loading';
+import {
+  applyLatestRelease,
+  resolveLatest,
+} from '../../utils/projectReleases';
 
 /* ============================================================
  * Shared plumbing for the per-project application themes.
@@ -27,7 +31,18 @@ export const useAppConfig = () => {
         if (!res.ok) throw new Error(`app.txt missing for ${slug}`);
         return res.json();
       })
-      .then((data) => alive && setCfg(data))
+      .then((data) => {
+        if (!alive) return;
+        setCfg(data);
+        // Then bring in the live release (Airlift's index): newest version,
+        // and a download link for this visitor's OS. The page renders first
+        // with the stored values, so a slow or failed lookup costs nothing.
+        resolveLatest(data.repo || data.download)
+          .then((latest) => {
+            if (alive && latest) setCfg(applyLatestRelease(data, latest));
+          })
+          .catch(() => {});
+      })
       .catch(() => alive && setFailed(true));
     return () => {
       alive = false;

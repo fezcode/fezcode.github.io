@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react';
 import piml from 'piml';
+import {
+  isNewer,
+  latestFromIndex,
+  loadReleaseIndex,
+  repoFromLink,
+} from './projectReleases';
 
 export const useProjects = (fetchPinnedOnly = false) => {
   const [projects, setProjects] = useState([]);
@@ -54,6 +60,28 @@ export const useProjects = (fetchPinnedOnly = false) => {
         }
 
         setProjects(projectList);
+
+        // Then raise stored versions to each repo's latest release, read
+        // from Airlift's release index the way Airlift does (one request,
+        // cached). Lists render first; a failed lookup changes nothing.
+        loadReleaseIndex()
+          .then((index) => {
+            if (!index) return;
+            const updated = projectList.map((project) => {
+              if (!project.version || !project.repo_link) return project;
+              const latest = latestFromIndex(
+                index,
+                repoFromLink(project.repo_link),
+              );
+              return latest && isNewer(latest.version, project.version)
+                ? { ...project, version: latest.version }
+                : project;
+            });
+            if (updated.some((p, i) => p !== projectList[i])) {
+              setProjects(updated);
+            }
+          })
+          .catch(() => {});
       } catch (e) {
         console.error('Error parsing projects.piml:', e);
         setError(e);
