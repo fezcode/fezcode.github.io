@@ -123,10 +123,24 @@
     (count) 14
     (posts) 14
   > (item)
+    (slug) webdev
+    (label) Web dev
+    (count) 14
+    (posts) 7
+    (logs) 5
+    (projects) 2
+  > (item)
     (slug) dark-comedy
     (label) Dark comedy
     (count) 13
     (logs) 13
+  > (item)
+    (slug) design
+    (label) Design
+    (count) 13
+    (posts) 3
+    (logs) 6
+    (projects) 4
   > (item)
     (slug) mystery
     (label) Mystery
@@ -146,24 +160,10 @@
     (logs) 11
     (projects) 1
   > (item)
-    (slug) webdev
-    (label) Web dev
-    (count) 13
-    (posts) 7
-    (logs) 4
-    (projects) 2
-  > (item)
     (slug) csharp
     (label) C#
     (count) 12
     (projects) 12
-  > (item)
-    (slug) design
-    (label) Design
-    (count) 12
-    (posts) 3
-    (logs) 5
-    (projects) 4
   > (item)
     (slug) dotnet
     (label) .NET
@@ -179,6 +179,13 @@
     (label) First-person shooter
     (count) 12
     (logs) 12
+  > (item)
+    (slug) frontend
+    (label) Frontend
+    (count) 12
+    (posts) 8
+    (logs) 3
+    (projects) 1
   > (item)
     (slug) indie
     (label) Indie
@@ -206,13 +213,6 @@
     (label) Avalonia UI
     (count) 11
     (projects) 11
-  > (item)
-    (slug) frontend
-    (label) Frontend
-    (count) 11
-    (posts) 8
-    (logs) 2
-    (projects) 1
   > (item)
     (slug) llm
     (label) LLM
@@ -567,6 +567,12 @@
     (posts) 2
     (projects) 3
   > (item)
+    (slug) ui-ux
+    (label) UI/UX
+    (count) 5
+    (posts) 4
+    (logs) 1
+  > (item)
     (slug) writing
     (label) Writing
     (count) 5
@@ -698,11 +704,6 @@
     (count) 4
     (posts) 1
     (projects) 3
-  > (item)
-    (slug) ui-ux
-    (label) UI/UX
-    (count) 4
-    (posts) 4
   > (item)
     (slug) visualization
     (label) Visualization
@@ -3648,6 +3649,19 @@
       > graphics
       > rendering
       > programming
+  > (item)
+    (id) log/websites/land-book
+    (type) log
+    (title) Land-book
+    (path) /logs/websites/land-book
+    (date) 2026-11-27
+    (category) websites
+    (description) A hand-curated web design inspiration gallery collecting standout landing pages, portfolios, stores, and editorial sites, filterable by page section, visual style, typography, and…
+    (tags)
+      > design
+      > ui-ux
+      > frontend
+      > webdev
   > (item)
     (id) post/introducing-fezcode-studio
     (type) post

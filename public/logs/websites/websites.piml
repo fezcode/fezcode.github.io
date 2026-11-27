@@ -1,6 +1,19 @@
 (logs)
   > (item)
     (category) Websites
+    (date) 2026-11-27
+    (link) https://land-book.com/
+    (rating) 5
+    (slug) land-book
+    (tags)
+      > design
+      > ui-ux
+      > frontend
+      > webdev
+    (title) Land-book
+    (description) A hand-curated web design inspiration gallery collecting standout landing pages, portfolios, stores, and editorial sites, filterable by page section, visual style, typography, and color palette.
+  > (item)
+    (category) Websites
     (date) 2026-11-18
     (link) https://dapan.es
     (rating) 4

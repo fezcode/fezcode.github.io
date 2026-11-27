@@ -1,0 +1,7 @@
+# Land-book
+
+Land-book is a hand-curated web design inspiration gallery for browsing real, well-crafted websites without wading through generic templates. Originally focused on landing pages, it now covers portfolios, blogs, agencies, and online stores, with filters for visual style, industry, typography, and dominant color palette.
+
+One of its handiest touches is section-level browsing — instead of scanning whole pages every time, you can jump straight to hero sections, pricing tables, feature blocks, testimonials, or footers when looking for layout ideas.
+
+Rating: 5/5
