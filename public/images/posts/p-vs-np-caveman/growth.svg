@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-labelledby="t d">
+  <title id="t">Slow grow versus boom grow</title>
+  <desc id="d">A chart of steps against number of rocks from 1 to 20. The n squared curve rises gently to 400. The 2 to the n curve shoots off the top of the chart after about 9 rocks.</desc>
+  <rect width="800" height="420" rx="22" fill="#f4ead5"/>
+  <text x="40" y="52" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="28" font-weight="800" fill="#2b2118">HOW MANY STEPS?</text>
+  <!-- axes: x 1..20 -> 90..730 ; y 0..520 steps -> 360..80 -->
+  <g stroke="#2b2118" stroke-width="4" stroke-linecap="round">
+    <line x1="90" y1="360" x2="740" y2="360"/><line x1="90" y1="360" x2="90" y2="76"/>
+  </g>
+  <g stroke="#2b2118" stroke-width="1.5" opacity=".2">
+    <line x1="90" y1="252" x2="740" y2="252"/><line x1="90" y1="145" x2="740" y2="145"/>
+  </g>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-size="16" fill="#2b2118" text-anchor="end">
+    <text x="82" y="365">0</text><text x="82" y="257">200</text><text x="82" y="150">400</text>
+  </g>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-size="16" fill="#2b2118" text-anchor="middle">
+    <text x="90" y="384">1</text><text x="259" y="384">5</text><text x="427" y="384">10</text><text x="596" y="384">15</text><text x="730" y="384">20</text>
+    <text x="415" y="408" font-weight="700">ROCKS (n)</text>
+  </g>
+  <!-- n^2: y = 360 - n^2*0.535 ; x = 90 + (n-1)*33.68 -->
+  <polyline fill="none" stroke="#4f7a3a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"
+    points="90,359.5 124,357.9 157,355.2 191,351.4 225,346.6 259,340.6 292,333.8 326,325.8 360,316.7 393,306.5 427,295.3 461,283 495,269.6 528,255.1 562,239.6 596,223 629,205.4 663,186.8 697,166.9 730,146"/>
+  <!-- 2^n: same scale, leaves chart near n=9 (512) -->
+  <polyline fill="none" stroke="#b8442e" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"
+    points="90,358.9 124,357.9 157,355.7 191,351.4 225,342.9 259,325.8 292,291.5 326,223 360,86 364,70"/>
+  <path d="M364 70 l-6 -26 l20 18 z" fill="#b8442e"/>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800">
+    <text x="740" y="262" font-size="20" fill="#4f7a3a" text-anchor="end">n² = SLOW GROW</text>
+    <text x="740" y="284" font-size="15" fill="#4f7a3a" text-anchor="end">(20 rocks: 400 steps)</text>
+    <text x="388" y="98" font-size="20" fill="#b8442e">2ⁿ = BOOM GROW</text>
+    <text x="388" y="120" font-size="15" fill="#b8442e">(20 rocks: 1,048,576 steps)</text>
+  </g>
+</svg>

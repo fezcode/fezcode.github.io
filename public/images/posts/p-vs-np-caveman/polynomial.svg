@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="t d">
+  <title id="t">A polynomial, drawn with rocks</title>
+  <desc id="d">The polynomial 3n squared plus 2n plus 7 drawn for n equals 4: three 4 by 4 squares of rocks (48), two rows of 4 rocks (8) and 7 loose rocks, 63 rocks in all.</desc>
+  <rect width="800" height="400" rx="22" fill="#f4ead5"/>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" fill="#2b2118" text-anchor="middle">
+    <text x="400" y="56" font-size="32">3n² + 2n + 7</text>
+    <text x="400" y="84" font-size="17" font-weight="700">n = 4 rocks wide</text>
+  </g>
+  <defs>
+    <g id="r"><circle r="9" fill="#8c8174" stroke="#2b2118" stroke-width="2.5"/></g>
+    <g id="row">
+      <use href="#r" x="0"/><use href="#r" x="22"/><use href="#r" x="44"/><use href="#r" x="66"/>
+    </g>
+    <g id="sq">
+      <use href="#row" y="0"/><use href="#row" y="22"/><use href="#row" y="44"/><use href="#row" y="66"/>
+    </g>
+  </defs>
+  <!-- 3 squares -->
+  <g transform="translate(60 140)"><use href="#sq"/></g>
+  <g transform="translate(170 140)"><use href="#sq"/></g>
+  <g transform="translate(280 140)"><use href="#sq"/></g>
+  <text x="203" y="262" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="20" font-weight="800" fill="#c8862a" text-anchor="middle">3n² = 48</text>
+  <text x="380" y="190" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="34" font-weight="800" fill="#2b2118">+</text>
+  <!-- 2 rows -->
+  <g transform="translate(430 160)"><use href="#row"/></g>
+  <g transform="translate(430 190)"><use href="#row"/></g>
+  <text x="463" y="262" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="20" font-weight="800" fill="#4f7a3a" text-anchor="middle">2n = 8</text>
+  <text x="528" y="190" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="34" font-weight="800" fill="#2b2118">+</text>
+  <!-- 7 loose -->
+  <g transform="translate(580 150)">
+    <use href="#r" x="0" y="0"/><use href="#r" x="26" y="6"/><use href="#r" x="54" y="-2"/>
+    <use href="#r" x="10" y="30"/><use href="#r" x="40" y="34"/><use href="#r" x="70" y="26"/><use href="#r" x="24" y="60"/>
+  </g>
+  <text x="618" y="262" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="20" font-weight="800" fill="#b8442e" text-anchor="middle">7</text>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" fill="#2b2118" text-anchor="middle">
+    <text x="400" y="318" font-size="24">= 63 rocks</text>
+    <text x="400" y="356" font-size="17" font-weight="700">powers are whole numbers (n², n¹, n⁰). biggest power = 2, so "degree 2".</text>
+  </g>
+</svg>

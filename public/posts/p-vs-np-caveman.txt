@@ -1,0 +1,193 @@
+# P vs NP: A Caveman Story
+
+![Ugg holds his club next to a stone tablet: EASY CHECK = EASY DO?](/images/posts/p-vs-np-caveman/ugg.svg)
+
+Ooga booga. Long ago, before wheel, there lived Ugg. Ugg strong. Ugg not always smart. But Ugg ask good question, and question so good that today, many moons later, the smartest people in the world still cannot answer it.
+
+Each chapter is Ugg's story. After it comes **Elder Grok's wall**: what the old one scratched into the cave wall, which is the real computer science, in plain words.
+
+## Chapter 0: Grok teaches counting work
+
+Ugg tired. Every job take forever. Ugg ask Elder Grok: "How know if job big or small?"
+
+Grok pick up charcoal. "Not count rocks, Ugg. Count *how work grow* when rocks grow."
+
+### Elder Grok's wall: polynomials
+
+**A polynomial** is an expression built by adding *terms*. Each term is a plain number times the variable raised to a **whole-number power** (0, 1, 2, 3...).
+
+![The polynomial 3n² + 2n + 7 drawn with rocks for n = 4: 48 + 8 + 7 = 63](/images/posts/p-vs-np-caveman/polynomial.svg)
+
+- `3n² + 2n + 7` is a polynomial. Its biggest power is 2, so it has **degree 2**.
+- `n`, `5`, `n³ − n` and `100n⁴` are polynomials too.
+- `2ⁿ` is **not**: the variable sits in the exponent. `n!` (n × (n−1) × ... × 1) is not either.
+
+For big `n`, the highest-power term swamps the rest. At `n = 1000`, `3n²` is 3,000,000 and `2n + 7` is only 2,007. So people describe growth by its biggest term.
+
+The difference between a polynomial and an exponential is the whole story:
+
+| n | n² | n³ | 2ⁿ |
+|---|---|---|---|
+| 10 | 100 | 1,000 | 1,024 |
+| 20 | 400 | 8,000 | 1,048,576 |
+| 50 | 2,500 | 125,000 | about 1.1 × 10¹⁵ |
+| 100 | 10,000 | 1,000,000 | about 1.3 × 10³⁰ |
+
+**Polynomial time** means an algorithm's number of steps, for an input of size `n`, is at most some polynomial: `c · nᵏ` for fixed numbers `c` and `k`. In big-O notation, `O(nᵏ)`. Here `n` is the size of the input: how many symbols it takes to write it down.
+
+Why draw the line at polynomials?
+
+1. **They stay tame.** Double the input of an `n³` algorithm and the work grows 8×, every time. Add a single item to a `2ⁿ` algorithm and the work doubles.
+2. **They combine.** A polynomial-time program that calls a polynomial-time helper a polynomial number of times is still polynomial.
+3. **They don't depend on the machine.** Reasonable models of ordinary computers can simulate each other with only polynomial slowdown, so "polynomial time" means the same thing on all of them.
+
+## Chapter 1: Ugg sorts rocks
+
+Chief want rocks in line, small to big. Ugg grab two rocks, compare, swap. Again. Again. More rocks, more work, but work grow slow. Sun still up when Ugg done.
+
+![Messy rocks become rocks sorted from small to big in a few steps](/images/posts/p-vs-np-caveman/p-easy-do.svg)
+
+### Elder Grok's wall: the class P
+
+Complexity theory mostly studies **decision problems**: questions with a yes-or-no answer, like "is this number prime?" or "is there a path shorter than 10 km?".
+
+**P** is the class of decision problems that some ordinary, step-by-step (deterministic) algorithm solves in polynomial time.
+
+Things known to be in P:
+
+- **Sorting** takes about `n log n` comparisons, which is less than `n²`.
+- **Shortest paths** in a road map (Dijkstra's algorithm).
+- **Linear programming** (proved in P by Khachiyan in 1979).
+- **Primality**: "is this number prime?" The AKS algorithm proved it in P in 2002.
+
+## Chapter 2: The shaman's puzzle
+
+Shaman Zog come with puzzle carved in stone. "Fill the grid. Every row, every column, each sign once." Ugg try. Ugg fail. Ugg try more. Moon come up. Ugg cry.
+
+Next day Zog's apprentice show a filled grid. Ugg look. Row one good. Row two good. Every column good. *Ugg check whole thing before breakfast.*
+
+Ugg confused. "Finding answer take all night. Checking answer take one look. Why?"
+
+![Left: an empty puzzle full of question marks, Ugg sweating. Right: a filled puzzle with a green check](/images/posts/p-vs-np-caveman/np-easy-check.svg)
+
+### Elder Grok's wall: the class NP
+
+**NP** is the class of decision problems where every "yes" answer comes with a short **proof**, called a **certificate**, that can be checked in polynomial time.
+
+- The certificate has to be short too: polynomial in the size of the input.
+- The checker, called a **verifier**, is an ordinary polynomial-time algorithm.
+- For the puzzle, the certificate is the filled grid, and the verifier checks each row and column.
+
+![A problem and a proof stone go into a checker machine, which answers YES or NO in polynomial steps](/images/posts/p-vs-np-caveman/verifier.svg)
+
+NP stands for **nondeterministic polynomial time**, not "not polynomial". It's an equivalent definition: an imaginary machine that could *guess* the certificate perfectly would solve the problem in polynomial time.
+
+**P is inside NP.** If you can solve a problem fast, you can check it fast: ignore the certificate and solve it.
+
+The definition is one-sided. Only "yes" answers need short proofs. Problems whose "no" answers have short proofs form a class called **co-NP**.
+
+## Chapter 3: Boom grow
+
+Ugg get idea: "Try every answer!" For small puzzle, work fine. For bigger puzzle, Ugg grow old. Ugg's children grow old. Puzzle still not done.
+
+![Chart: n squared rises gently, 2 to the n shoots off the chart after about 9 rocks](/images/posts/p-vs-np-caveman/growth.svg)
+
+### Elder Grok's wall: brute force
+
+Trying everything is called **brute force**, and it usually costs exponential time. A list of `n` items has `2ⁿ` subsets.
+
+- 60 items: about 1.15 × 10¹⁸ subsets. At a billion checks per second that's roughly 36 years.
+- 100 items: longer than the universe has existed.
+
+Faster computers barely help. A machine 1,000 times faster handles only about 10 more items, because 2¹⁰ ≈ 1,000.
+
+## Chapter 4: The rock pile and the cave trip
+
+Trader want rocks weighing exactly 15. Ugg have rocks of 3, 7, 2, 9, 5 and 8. Which ones? Then Chief say: "Visit every cave in valley, come home, walk least."
+
+![Rocks weighing 3, 7, 2, 9, 5 and 8. 7 plus 8 makes 15](/images/posts/p-vs-np-caveman/rocks-sum.svg)
+
+![Five caves joined in a loop, and a table: 5 caves 12 trips, 10 caves 181,440, 20 caves about 60 quadrillion](/images/posts/p-vs-np-caveman/cave-tour.svg)
+
+### Elder Grok's wall: two famous NP problems
+
+- **Subset sum.** "Do some of these numbers add up to exactly T?" The certificate is the chosen numbers, and checking means adding them.
+- **Traveling salesperson (decision version).** "Is there a round trip through every city of total length at most L?" The certificate is the route, and checking means adding its legs. With `n` cities there are `(n−1)!/2` round trips.
+
+**Decision versus optimization.** These questions ask yes or no, not "what is the best?". That costs little: if you can answer "is there one at most L?" quickly, you can find the best value by repeatedly halving the range (binary search).
+
+**Fine print on "fast".** Subset sum has a dynamic-programming algorithm that takes about `n · T` steps. That sounds polynomial, but `T` is written with only about `log T` digits. Measured against the input's actual length, it's exponential. It's called **pseudo-polynomial**.
+
+## Chapter 5: The translator stone
+
+Ugg find strange stone. Put one puzzle in, other puzzle come out, fast. Rock pile go in, cave trip come out. Ugg think: "If anyone ever solve cave trip fast, Ugg can solve rock pile fast too. Just translate first!"
+
+![Puzzle A goes through a translator stone and comes out as puzzle B. If B is solved fast, A is solved fast too](/images/posts/p-vs-np-caveman/reduction.svg)
+
+### Elder Grok's wall: reductions and NP-completeness
+
+A **polynomial-time reduction** from problem A to problem B is a fast translation. It turns any instance of A into an instance of B with the **same yes-or-no answer**. If B is easy, A is easy, so B is **at least as hard as A**.
+
+- **NP-hard** means every problem in NP reduces to it.
+- **NP-complete** means NP-hard *and* in NP. These are the hardest problems inside NP.
+
+The first one is the hard part:
+
+- **Cook–Levin theorem** (Stephen Cook in 1971, and independently Leonid Levin in 1973): **SAT** is NP-complete. SAT asks: can these true/false variables be set so that a logical formula like `(x or y) and (not x or z)` comes out true? The proof shows that the run of *any* polynomial-time verifier can be written as such a formula.
+- **Karp's 21 problems** (Richard Karp, 1972): reductions showed 21 well-known problems are NP-complete too, including clique, vertex cover and the Hamiltonian cycle.
+- Today **thousands** of problems are known to be NP-complete, from scheduling and packing to generalized Sudoku and Tetris.
+
+So: **solve any one NP-complete problem in polynomial time, and every NP problem falls with it.**
+
+NP-hard problems don't have to be in NP. The halting problem ("does this program ever stop?") is NP-hard and can't be solved by any algorithm at all.
+
+## Chapter 6: Two worlds
+
+Ugg climb mountain to ask the sky. Is every easy-check job also an easy-do job? Sky say nothing.
+
+![Two worlds: in one, P sits inside a bigger NP with the hardest problems at its edge; in the other, P and NP are one circle](/images/posts/p-vs-np-caveman/two-worlds.svg)
+
+### Elder Grok's wall: the open question
+
+**P vs NP asks: is P equal to NP?** Can every problem whose answers are easy to check also be solved easily?
+
+- **If P = NP**, every NP-complete problem has a polynomial-time algorithm.
+- **If P ≠ NP**, none of them does. Ladner's theorem (1975) adds that NP would then also contain problems in between: neither in P nor NP-complete.
+  - The usual suspects for "in between" are **factoring** and **graph isomorphism** (are these two networks the same network, drawn differently?).
+
+## Chapter 7: The cave lock
+
+Ugg lock food cave. Multiply two big numbers, carve the answer on the boulder. Only Ugg know the two numbers. Thief see the boulder, but splitting the number back is too hard.
+
+![61 times 53 makes 3233, a boulder sealing a cave. Multiplying is easy; splitting it back is hard](/images/posts/p-vs-np-caveman/cave-lock.svg)
+
+### Elder Grok's wall: what's at stake
+
+- **Locks.** RSA encryption relies on factoring being hard: multiplying two large primes is quick, recovering them from the product is not, as far as anyone knows.
+  - Factoring's decision version is in NP (and in co-NP), but it is **not believed to be NP-complete**.
+- **If P = NP**, one-way functions (easy to compute, hard to reverse) could not exist, and most of today's cryptography would break.
+- **If P ≠ NP**, that alone would not prove crypto safe. P vs NP is about the worst case, and a lock has to be hard to break on *typical* inputs.
+- **Quantum computers.** Shor's algorithm factors in polynomial time on a quantum computer. But quantum computers are **not** believed to solve NP-complete problems efficiently.
+- **The fine print in reverse.** A polynomial algorithm running in `n¹⁰⁰` steps would settle P = NP and still be useless in practice.
+
+## Chapter 8: Why Grok cannot prove it
+
+Grok scratch wall many winters. Grok try every trick Grok know. Every trick break.
+
+### Elder Grok's wall: the barriers
+
+Researchers have proved that whole families of proof techniques **can't** settle the question:
+
+- **Relativization** (Baker, Gill and Solovay, 1975). There are imaginary "oracles" under which P = NP, and others under which P ≠ NP. Any proof that works the same way regardless of the oracle is therefore doomed.
+- **Natural proofs** (Razborov and Rudich, 1994). A broad, natural style of lower-bound argument would itself break strong cryptography. If such cryptography exists, those proofs can't work.
+- **Algebrization** (Aaronson and Wigderson, 2008). This extends the oracle barrier to the algebraic techniques that got around it.
+
+Any proof has to dodge all three.
+
+## The end, for now
+
+- The Clay Mathematics Institute offered **$1,000,000** for a solution in 2000. Nobody has claimed it.
+- In a 2019 poll of researchers by William Gasarch, about **88%** said they believe **P ≠ NP**: some problems really are harder to solve than to check.
+- Nobody has proved it, either way.
+
+Ugg go back to cave. Ugg check rocks. Checking easy. Ooga booga.

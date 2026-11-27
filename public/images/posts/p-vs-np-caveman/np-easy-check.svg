@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" role="img" aria-labelledby="t d">
+  <title id="t">NP: easy to check</title>
+  <desc id="d">Left: an empty puzzle grid full of question marks, Ugg sweating, labelled FIND, hard. Right: a filled grid with a big green check mark, labelled CHECK, fast.</desc>
+  <rect width="800" height="380" rx="22" fill="#f4ead5"/>
+  <text x="40" y="56" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="30" font-weight="800" fill="#2b2118">NP = UGG CAN <tspan fill="#c8862a">CHECK</tspan> IT FAST</text>
+  <line x1="400" y1="84" x2="400" y2="350" stroke="#2b2118" stroke-width="3" stroke-dasharray="8 8" opacity=".4"/>
+  <!-- left grid: find -->
+  <g transform="translate(90 100)">
+    <rect width="210" height="210" rx="10" fill="#e8dcc0" stroke="#2b2118" stroke-width="4"/>
+    <g stroke="#2b2118" stroke-width="2" opacity=".55">
+      <line x1="70" y1="0" x2="70" y2="210"/><line x1="140" y1="0" x2="140" y2="210"/>
+      <line x1="0" y1="70" x2="210" y2="70"/><line x1="0" y1="140" x2="210" y2="140"/>
+    </g>
+    <g font-family="'Trebuchet MS', Verdana, sans-serif" font-size="40" font-weight="800" fill="#b8442e" text-anchor="middle">
+      <text x="35" y="50">?</text><text x="105" y="50">3</text><text x="175" y="50">?</text>
+      <text x="35" y="120">?</text><text x="105" y="120">?</text><text x="175" y="120">1</text>
+      <text x="35" y="190">2</text><text x="105" y="190">?</text><text x="175" y="190">?</text>
+    </g>
+  </g>
+  <!-- sweat drops -->
+  <g fill="#5b9bd5"><path d="M318 110 q8 14 0 22 q-8-8 0-22z"/><path d="M336 140 q6 10 0 16 q-6-6 0-16z"/></g>
+  <text x="195" y="350" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="22" font-weight="800" fill="#b8442e" text-anchor="middle">FIND: try, try, try...</text>
+  <!-- right grid: check -->
+  <g transform="translate(500 100)">
+    <rect width="210" height="210" rx="10" fill="#e8dcc0" stroke="#2b2118" stroke-width="4"/>
+    <g stroke="#2b2118" stroke-width="2" opacity=".55">
+      <line x1="70" y1="0" x2="70" y2="210"/><line x1="140" y1="0" x2="140" y2="210"/>
+      <line x1="0" y1="70" x2="210" y2="70"/><line x1="0" y1="140" x2="210" y2="140"/>
+    </g>
+    <g font-family="'Trebuchet MS', Verdana, sans-serif" font-size="40" font-weight="800" fill="#2b2118" text-anchor="middle">
+      <text x="35" y="50">1</text><text x="105" y="50">3</text><text x="175" y="50">2</text>
+      <text x="35" y="120">3</text><text x="105" y="120">2</text><text x="175" y="120">1</text>
+      <text x="35" y="190">2</text><text x="105" y="190">1</text><text x="175" y="190">3</text>
+    </g>
+  </g>
+  <!-- check badge beside the grid, not over the numbers -->
+  <circle cx="738" cy="112" r="34" fill="#4f7a3a" stroke="#2b2118" stroke-width="4"/>
+  <path d="M721 112 L734 126 L757 98" stroke="#f4ead5" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="605" y="350" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="22" font-weight="800" fill="#4f7a3a" text-anchor="middle">CHECK: look once. yes!</text>
+</svg>

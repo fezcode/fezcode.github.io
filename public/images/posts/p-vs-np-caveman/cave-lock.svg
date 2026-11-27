@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-labelledby="t d">
+  <title id="t">The cave lock</title>
+  <desc id="d">Two rocks marked 61 and 53 multiply into one boulder marked 3233 that seals a cave. Multiplying is easy; splitting 3233 back into 61 times 53 is hard when the numbers are huge.</desc>
+  <rect width="800" height="360" rx="22" fill="#f4ead5"/>
+  <text x="40" y="54" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="28" font-weight="800" fill="#2b2118">UGG LOCK CAVE WITH BIG NUMBER</text>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" text-anchor="middle">
+    <g transform="translate(100 200)"><path d="M-46 40 q0-80 46-80 q46 0 46 80 z" fill="#9a8f80" stroke="#2b2118" stroke-width="4"/><text y="24" font-size="30" fill="#f4ead5">61</text></g>
+    <text x="180" y="226" font-size="40" fill="#2b2118">×</text>
+    <g transform="translate(260 200)"><path d="M-46 40 q0-80 46-80 q46 0 46 80 z" fill="#9a8f80" stroke="#2b2118" stroke-width="4"/><text y="24" font-size="30" fill="#f4ead5">53</text></g>
+  </g>
+  <!-- easy arrow -->
+  <path d="M330 190 H436" stroke="#4f7a3a" stroke-width="9" stroke-linecap="round"/>
+  <path d="M428 172 L458 190 L428 208 Z" fill="#4f7a3a"/>
+  <text x="392" y="170" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="17" font-weight="800" fill="#4f7a3a" text-anchor="middle">easy</text>
+  <!-- hard arrow back -->
+  <path d="M452 266 Q392 312 300 270" fill="none" stroke="#b8442e" stroke-width="6" stroke-dasharray="10 8" stroke-linecap="round"/>
+  <path d="M308 256 L288 266 L306 282 Z" fill="#b8442e"/>
+  <text x="380" y="330" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="17" font-weight="800" fill="#b8442e" text-anchor="middle">hard back (we think)</text>
+  <!-- cave with boulder -->
+  <path d="M500 300 Q520 110 640 104 Q760 110 780 300 Z" fill="#6d6357" stroke="#2b2118" stroke-width="5"/>
+  <path d="M560 300 Q566 190 640 186 Q716 190 722 300 Z" fill="#2b2118"/>
+  <g transform="translate(642 252)">
+    <ellipse rx="86" ry="56" fill="#8c8174" stroke="#2b2118" stroke-width="5"/>
+    <text y="12" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="34" font-weight="800" fill="#f4ead5" text-anchor="middle">3233</text>
+  </g>
+  <path d="M480 302 H792" stroke="#2b2118" stroke-width="5" stroke-linecap="round"/>
+</svg>

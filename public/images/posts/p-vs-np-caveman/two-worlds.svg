@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-labelledby="t d">
+  <title id="t">Two possible worlds</title>
+  <desc id="d">Left world: P is a smaller circle inside the bigger NP circle, with the NP-complete problems at the edge of NP, outside P. Right world: P and NP are the same circle. Nobody knows which world is ours.</desc>
+  <rect width="800" height="420" rx="22" fill="#f4ead5"/>
+  <line x1="400" y1="30" x2="400" y2="356" stroke="#2b2118" stroke-width="3" stroke-dasharray="8 8" opacity=".35"/>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" fill="#2b2118" text-anchor="middle">
+    <text x="200" y="58" font-size="24">WORLD 1: P ≠ NP</text>
+    <text x="600" y="58" font-size="24">WORLD 2: P = NP</text>
+  </g>
+  <!-- world 1 -->
+  <ellipse cx="200" cy="215" rx="160" ry="130" fill="#f2d6a2" stroke="#c8862a" stroke-width="5"/>
+  <ellipse cx="160" cy="232" rx="78" ry="64" fill="#cfe0b8" stroke="#4f7a3a" stroke-width="5"/>
+  <path d="M290 140 A160 130 0 0 1 340 270 L300 256 A120 96 0 0 0 266 162 Z" fill="#e8b4a4" stroke="#b8442e" stroke-width="3"/>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" text-anchor="middle">
+    <text x="160" y="240" font-size="30" fill="#4f7a3a">P</text>
+    <text x="200" y="118" font-size="24" fill="#c8862a">NP</text>
+    <text x="312" y="304" font-size="14" fill="#b8442e">NP-COMPLETE</text>
+    <text x="312" y="320" font-size="14" fill="#b8442e">(hardest rocks)</text>
+  </g>
+  <!-- world 2 -->
+  <ellipse cx="600" cy="215" rx="160" ry="130" fill="#d9dfb8" stroke="#4f7a3a" stroke-width="5"/>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" text-anchor="middle">
+    <text x="600" y="214" font-size="32" fill="#2b2118">P = NP</text>
+    <text x="600" y="246" font-size="17" fill="#2b2118">easy check means easy do</text>
+  </g>
+  <text x="400" y="400" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="20" font-weight="800" fill="#b8442e" text-anchor="middle">WHICH WORLD UGG LIVE IN? NOBODY KNOW.</text>
+</svg>

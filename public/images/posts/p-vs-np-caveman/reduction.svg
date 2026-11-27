@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-labelledby="t d">
+  <title id="t">The translator stone</title>
+  <desc id="d">Puzzle A goes through a translator stone and comes out as puzzle B, quickly. If anyone can solve B fast, then A can be solved fast too, so B is at least as hard as A.</desc>
+  <rect width="800" height="360" rx="22" fill="#f4ead5"/>
+  <text x="40" y="54" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="28" font-weight="800" fill="#2b2118">THE TRANSLATOR STONE (REDUCTION)</text>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" text-anchor="middle">
+    <rect x="50" y="110" width="170" height="120" rx="16" fill="#e8b4a4" stroke="#b8442e" stroke-width="5"/>
+    <text x="135" y="160" font-size="28" fill="#2b2118">PUZZLE</text>
+    <text x="135" y="198" font-size="40" fill="#b8442e">A</text>
+  </g>
+  <path d="M226 170 H300" stroke="#c8862a" stroke-width="8" stroke-linecap="round"/>
+  <!-- translator stone -->
+  <path d="M310 110 Q300 96 324 94 L474 92 Q498 92 496 114 L500 226 Q502 248 478 248 L328 250 Q304 250 306 228 Z" fill="#b9b2a4" stroke="#2b2118" stroke-width="5"/>
+  <g stroke="#2b2118" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M350 150 q20-20 40 0 t40 0"/><path d="M350 186 q20 20 40 0 t40 0"/>
+  </g>
+  <text x="403" y="232" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="15" font-weight="800" fill="#2b2118" text-anchor="middle">fast translate</text>
+  <path d="M502 170 H574" stroke="#c8862a" stroke-width="8" stroke-linecap="round"/>
+  <path d="M566 152 L594 170 L566 188 Z" fill="#c8862a"/>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" text-anchor="middle">
+    <rect x="600" y="110" width="170" height="120" rx="16" fill="#cfe0b8" stroke="#4f7a3a" stroke-width="5"/>
+    <text x="685" y="160" font-size="28" fill="#2b2118">PUZZLE</text>
+    <text x="685" y="198" font-size="40" fill="#4f7a3a">B</text>
+    <text x="400" y="292" font-size="22" fill="#2b2118">B solved fast  →  A solved fast too.</text>
+    <text x="400" y="326" font-size="18" fill="#b8442e">so B at least as hard as A.</text>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="t d">
+  <title id="t">Visit every cave, walk the least</title>
+  <desc id="d">Five caves joined by paths, one round trip highlighted. A table: 5 caves have 12 round trips, 10 caves have 181,440, 20 caves have about 60 quadrillion.</desc>
+  <rect width="800" height="400" rx="22" fill="#f4ead5"/>
+  <text x="40" y="54" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="28" font-weight="800" fill="#2b2118">VISIT ALL CAVES. COME HOME. WALK LEAST.</text>
+  <!-- caves: A(120,150) B(330,110) C(400,280) D(200,330) E(80,250) -->
+  <g stroke="#2b2118" stroke-width="2.5" opacity=".28" stroke-dasharray="6 6">
+    <line x1="120" y1="150" x2="400" y2="280"/><line x1="120" y1="150" x2="200" y2="330"/>
+    <line x1="330" y1="110" x2="200" y2="330"/><line x1="330" y1="110" x2="80" y2="250"/>
+    <line x1="400" y1="280" x2="80" y2="250"/>
+  </g>
+  <polygon points="120,150 330,110 400,280 200,330 80,250" fill="none" stroke="#c8862a" stroke-width="7" stroke-linejoin="round"/>
+  <g stroke="#2b2118" stroke-width="4">
+    <g transform="translate(120 150)"><path d="M-30 18 q0-44 30-44 q30 0 30 44 z" fill="#7d7266"/><path d="M-11 18 q0-16 11-16 q11 0 11 16 z" fill="#2b2118"/></g>
+    <g transform="translate(330 110)"><path d="M-30 18 q0-44 30-44 q30 0 30 44 z" fill="#7d7266"/><path d="M-11 18 q0-16 11-16 q11 0 11 16 z" fill="#2b2118"/></g>
+    <g transform="translate(400 280)"><path d="M-30 18 q0-44 30-44 q30 0 30 44 z" fill="#7d7266"/><path d="M-11 18 q0-16 11-16 q11 0 11 16 z" fill="#2b2118"/></g>
+    <g transform="translate(200 330)"><path d="M-30 18 q0-44 30-44 q30 0 30 44 z" fill="#7d7266"/><path d="M-11 18 q0-16 11-16 q11 0 11 16 z" fill="#2b2118"/></g>
+    <g transform="translate(80 250)"><path d="M-30 18 q0-44 30-44 q30 0 30 44 z" fill="#7d7266"/><path d="M-11 18 q0-16 11-16 q11 0 11 16 z" fill="#2b2118"/></g>
+  </g>
+  <text x="120" y="112" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="18" font-weight="800" fill="#2b2118" text-anchor="middle">HOME</text>
+  <!-- table -->
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" fill="#2b2118">
+    <rect x="470" y="104" width="296" height="250" rx="16" fill="#e8dcc0" stroke="#2b2118" stroke-width="3"/>
+    <text x="490" y="140" font-size="18" font-weight="800">CAVES</text>
+    <text x="746" y="140" font-size="18" font-weight="800" text-anchor="end">ROUND TRIPS</text>
+    <line x1="488" y1="152" x2="748" y2="152" stroke="#2b2118" stroke-width="2" opacity=".4"/>
+    <text x="490" y="190" font-size="24" font-weight="800">5</text>
+    <text x="746" y="190" font-size="24" font-weight="800" text-anchor="end" fill="#4f7a3a">12</text>
+    <text x="490" y="240" font-size="24" font-weight="800">10</text>
+    <text x="746" y="240" font-size="24" font-weight="800" text-anchor="end" fill="#c8862a">181,440</text>
+    <text x="490" y="290" font-size="24" font-weight="800">20</text>
+    <text x="746" y="290" font-size="22" font-weight="800" text-anchor="end" fill="#b8442e">~60 quadrillion</text>
+    <text x="618" y="332" font-size="16" font-weight="700" text-anchor="middle">check one trip: easy. try all: no.</text>
+  </g>
+</svg>

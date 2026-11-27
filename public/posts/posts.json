@@ -1,5 +1,23 @@
 [
   {
+    "slug": "p-vs-np-caveman",
+    "title": "P vs NP: A Caveman Story",
+    "date": "2026-11-27",
+    "updated": "2026-11-27",
+    "description": "Ugg learns polynomials, sorts rocks, fails the shaman's puzzle and finds a translator stone. Each chapter is followed by the real computer science: P, NP, certificates, reductions, NP-completeness, Cook–Levin and why nobody can prove it.",
+    "tags": [
+      "math",
+      "algorithms",
+      "theory",
+      "fun"
+    ],
+    "category": "gist",
+    "filename": "p-vs-np-caveman.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "one-identity-many-machines",
     "title": "One Identity, Many Machines",
     "date": "2026-11-26",

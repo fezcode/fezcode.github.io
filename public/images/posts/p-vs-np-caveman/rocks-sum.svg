@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-labelledby="t d">
+  <title id="t">Pick rocks that weigh exactly 15</title>
+  <desc id="d">Six rocks weighing 3, 7, 2, 9, 5 and 8. The 7 and 8 rocks are circled: 7 plus 8 equals 15. Checking that sum is one quick addition; finding it means trying many piles.</desc>
+  <rect width="800" height="360" rx="22" fill="#f4ead5"/>
+  <text x="40" y="54" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="28" font-weight="800" fill="#2b2118">UGG NEED ROCKS. EXACTLY <tspan fill="#c8862a">15</tspan> HEAVY.</text>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-size="30" font-weight="800" text-anchor="middle" stroke-linejoin="round">
+    <g transform="translate(95 170)"><path d="M-44 40 q0-74 44-74 q44 0 44 74 z" fill="#9a8f80" stroke="#2b2118" stroke-width="4"/><text y="24" fill="#f4ead5">3</text></g>
+    <g transform="translate(215 170)"><path d="M-48 40 q0-80 48-80 q48 0 48 80 z" fill="#7d7266" stroke="#2b2118" stroke-width="4"/><text y="24" fill="#f4ead5">7</text></g>
+    <g transform="translate(335 170)"><path d="M-40 40 q0-66 40-66 q40 0 40 66 z" fill="#a69b8c" stroke="#2b2118" stroke-width="4"/><text y="24" fill="#f4ead5">2</text></g>
+    <g transform="translate(455 170)"><path d="M-50 40 q0-84 50-84 q50 0 50 84 z" fill="#8c8174" stroke="#2b2118" stroke-width="4"/><text y="24" fill="#f4ead5">9</text></g>
+    <g transform="translate(575 170)"><path d="M-44 40 q0-74 44-74 q44 0 44 74 z" fill="#9a8f80" stroke="#2b2118" stroke-width="4"/><text y="24" fill="#f4ead5">5</text></g>
+    <g transform="translate(695 170)"><path d="M-48 40 q0-80 48-80 q48 0 48 80 z" fill="#7d7266" stroke="#2b2118" stroke-width="4"/><text y="24" fill="#f4ead5">8</text></g>
+  </g>
+  <!-- circles on 7 and 8 -->
+  <g fill="none" stroke="#4f7a3a" stroke-width="6">
+    <ellipse cx="215" cy="172" rx="68" ry="62"/><ellipse cx="695" cy="172" rx="68" ry="62"/>
+  </g>
+  <path d="M215 240 Q455 320 695 240" fill="none" stroke="#4f7a3a" stroke-width="5" stroke-dasharray="10 8"/>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" text-anchor="middle">
+    <text x="455" y="300" font-size="26" fill="#4f7a3a">CHECK: 7 + 8 = 15. one add. done!</text>
+    <text x="455" y="336" font-size="20" fill="#b8442e">FIND: 6 rocks = 64 piles. 60 rocks = a billion billion piles.</text>
+  </g>
+</svg>

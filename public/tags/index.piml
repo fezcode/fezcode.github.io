@@ -100,18 +100,18 @@
     (count) 16
     (logs) 16
   > (item)
+    (slug) algorithms
+    (label) Algorithms
+    (count) 15
+    (posts) 14
+    (projects) 1
+  > (item)
     (slug) developer-tools
     (label) Developer tools
     (count) 15
     (posts) 1
     (logs) 4
     (projects) 10
-  > (item)
-    (slug) algorithms
-    (label) Algorithms
-    (count) 14
-    (posts) 13
-    (projects) 1
   > (item)
     (slug) open-world
     (label) Open world
@@ -192,6 +192,12 @@
     (count) 12
     (logs) 12
   > (item)
+    (slug) math
+    (label) Math
+    (count) 12
+    (posts) 11
+    (logs) 1
+  > (item)
     (slug) psychology
     (label) Psychology
     (count) 12
@@ -219,12 +225,6 @@
     (count) 11
     (posts) 9
     (logs) 2
-  > (item)
-    (slug) math
-    (label) Math
-    (count) 11
-    (posts) 10
-    (logs) 1
   > (item)
     (slug) psychological
     (label) Psychological
@@ -429,6 +429,11 @@
     (count) 6
     (posts) 6
   > (item)
+    (slug) fun
+    (label) Fun
+    (count) 6
+    (posts) 6
+  > (item)
     (slug) graphs
     (label) Graphs
     (count) 6
@@ -511,11 +516,6 @@
     (count) 5
     (posts) 2
     (logs) 3
-  > (item)
-    (slug) fun
-    (label) Fun
-    (count) 5
-    (posts) 5
   > (item)
     (slug) multiplayer
     (label) Multiplayer
@@ -1326,6 +1326,11 @@
     (count) 2
     (posts) 1
     (logs) 1
+  > (item)
+    (slug) theory
+    (label) Theory
+    (count) 2
+    (posts) 2
   > (item)
     (slug) time-travel
     (label) Time travel
@@ -3259,11 +3264,6 @@
     (count) 1
     (projects) 1
   > (item)
-    (slug) theory
-    (label) Theory
-    (count) 1
-    (posts) 1
-  > (item)
     (slug) time
     (label) Time
     (count) 1
@@ -3662,6 +3662,19 @@
       > ui-ux
       > frontend
       > webdev
+  > (item)
+    (id) post/p-vs-np-caveman
+    (type) post
+    (title) P vs NP: A Caveman Story
+    (path) /blog/p-vs-np-caveman
+    (date) 2026-11-27
+    (category) gist
+    (description) Ugg learns polynomials, sorts rocks, fails the shaman's puzzle and finds a translator stone. Each chapter is followed by the real computer science: P, NP, certificates, reductions…
+    (tags)
+      > math
+      > algorithms
+      > theory
+      > fun
   > (item)
     (id) post/introducing-fezcode-studio
     (type) post
