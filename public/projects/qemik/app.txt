@@ -1,6 +1,6 @@
 {
   "name": "Qemik",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "status": "Available now",
   "tagline": "Virtual machines, with backbone.",
   "subtitle": "A native QEMU desktop for Windows. Create a Linux workspace. Keep a Windows sandbox. Give an old system another life.",

@@ -1,6 +1,6 @@
 {
   "name": "Lounge",
-  "version": "1.0.28",
+  "version": "1.0.31",
   "tagline": "Your PC, on the couch.",
   "subtitle": "A full-screen media center for Windows, driven with an Xbox controller. Your films, music, games, web tiles, and files, from the best seat in the house.",
   "repo": "https://github.com/fezcode/Lounge",

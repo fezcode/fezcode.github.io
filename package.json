@@ -49,6 +49,7 @@
     "generate-logs-manifest": "node scripts/generate-logs-manifest.mjs",
     "generate-discovery-covers": "node scripts/generate-discovery-covers.mjs",
     "generate-tags": "node scripts/generate-tags-index.mjs",
+    "sync-project-versions": "node scripts/sync-project-versions.mjs",
     "mcp": "node scripts/mcp-server/index.mjs",
     "pregenerate": "npm run generate-logs-manifest && npm run generate-tags && npm run generate-discovery-covers && npm run generate-wallpapers && npm run generate-rss && npm run generate-sitemap && npm run generate-wordup-og && npm run generate-codex-og",
     "prestart": "npm run pregenerate",

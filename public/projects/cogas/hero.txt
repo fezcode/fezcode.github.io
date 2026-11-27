@@ -1,6 +1,6 @@
 # Cogas
 One library for every store.
-(version) 0.15.2
+(version) 0.18.0
 
 **Cogas** — *common gaming software* — collects the games already installed on this PC across **Steam, Epic, GOG, Ubisoft Connect, Battle.net, EA and the Microsoft Store**, plus anything you point it at yourself, into a single cover grid. Every one of them launches through its own platform. It also searches every storefront at once, compares prices, tracks a wishlist, and puts critic scores on the art.
 

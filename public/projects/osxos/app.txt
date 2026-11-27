@@ -1,6 +1,6 @@
 {
   "name": "osXos",
-  "version": "0.2.6",
+  "version": "0.2.8",
   "tagline": "Know the operation. Then make the change.",
   "subtitle": "A considered maintenance toolkit that explains the operation, shows the evidence, and accounts for the result.",
   "repo": "https://github.com/fezcode/osXos",

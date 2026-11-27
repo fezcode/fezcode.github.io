@@ -5,7 +5,7 @@
   "subtitle": "Keyboard-driven, written in C with SDL2 and Lua. Vault sidebar, wiki links, tags, backlinks, a graph view and a real plugin host — Obsidian ergonomics without the Electron tax.",
   "accent": "#C98A5C",
   "accent2": "#A2663C",
-  "version": "0.90.1",
+  "version": "0.94.2",
   "platforms": [
     "Windows",
     "macOS",
@@ -149,32 +149,32 @@
     {
       "os": "windows",
       "label": "Windows installer",
-      "file": "Descry-Setup-0.90.1.exe",
-      "href": "https://github.com/fezcode/Descry/releases/download/v0.90.1/Descry-Setup-0.90.1.exe"
+      "file": "Descry-Setup-0.94.2.exe",
+      "href": "https://github.com/fezcode/Descry/releases/download/v0.94.2/Descry-Setup-0.94.2.exe"
     },
     {
       "os": "windows",
       "label": "Windows portable",
-      "file": "Descry-0.90.1-windows-x64-portable.zip",
-      "href": "https://github.com/fezcode/Descry/releases/download/v0.90.1/Descry-0.90.1-windows-x64-portable.zip"
+      "file": "Descry-0.94.2-windows-x64-portable.zip",
+      "href": "https://github.com/fezcode/Descry/releases/download/v0.94.2/Descry-0.94.2-windows-x64-portable.zip"
     },
     {
       "os": "mac",
       "label": "macOS (Apple Silicon)",
-      "file": "Descry-0.90.1.dmg",
-      "href": "https://github.com/fezcode/Descry/releases/download/v0.90.1/Descry-0.90.1.dmg"
+      "file": "Descry-0.94.2.dmg",
+      "href": "https://github.com/fezcode/Descry/releases/download/v0.94.2/Descry-0.94.2.dmg"
     },
     {
       "os": "mac",
       "label": "macOS zip",
-      "file": "Descry-0.90.1-macos-arm64.zip",
-      "href": "https://github.com/fezcode/Descry/releases/download/v0.90.1/Descry-0.90.1-macos-arm64.zip"
+      "file": "Descry-0.94.2-macos-arm64.zip",
+      "href": "https://github.com/fezcode/Descry/releases/download/v0.94.2/Descry-0.94.2-macos-arm64.zip"
     },
     {
       "os": "linux",
       "label": "Linux AppImage",
-      "file": "Descry-0.90.1-x86_64.AppImage",
-      "href": "https://github.com/fezcode/Descry/releases/download/v0.90.1/Descry-0.90.1-x86_64.AppImage"
+      "file": "Descry-0.94.2-x86_64.AppImage",
+      "href": "https://github.com/fezcode/Descry/releases/download/v0.94.2/Descry-0.94.2-x86_64.AppImage"
     }
   ],
   "sample": "# Field notes\n\nA vault is a graph, not a folder. See [[graph view]] and the [[plugins]] note for the Lua host. #descry\n\n## What survives a restart\n\n- [x] tab text, caret and scroll\n- [x] undo history per tab\n- [ ] the coffee\n\n> Obsidian ergonomics, no Electron tax. #editor\n\n| Key | Does |\n|---|---|\n| `Ctrl+P` | quick switcher |\n| `Ctrl+Shift+M` | [[graph view]] |\n\nMath renders typographically: $\\sum_{i=1}^{n} x_i^2$ #math",

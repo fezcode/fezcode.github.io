@@ -6,7 +6,7 @@
   "subtitle": "Hisashi (庇) is Japanese for eaves — the protruding edge of a roof, the strip at the top of a structure. It is a plugin-driven top bar for Windows, and every display gets its own with its own widgets, theme and behaviour.",
   "accent": "#F472B6",
   "accent2": "#A78BFA",
-  "version": "0.6.19",
+  "version": "0.6.27",
   "platforms": [
     "Windows 10",
     "Windows 11"

@@ -2,7 +2,7 @@
   "wordmark": "TIMP",
   "tagline": "A small, native, album-art-forward music player. The cover is the interface — and the interface takes its color from the cover.",
   "artist": "fezcode · Şamil Bülbül",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "repo": "https://github.com/fezcode/timp",
   "download": "https://github.com/fezcode/timp/releases",
   "downloadLabel": "Installer · Windows & macOS",

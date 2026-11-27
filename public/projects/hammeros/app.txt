@@ -1,6 +1,6 @@
 {
   "name": "HammerOS",
-  "version": "0.3.7",
+  "version": "0.4.0",
   "tagline": "Your work has a new world.",
   "subtitle": "A native, full-screen retro workspace for Windows. Real files, real PowerShell, borrowed app windows, and a wonderfully strange Department to work inside.",
   "repo": "https://github.com/fezcode/hammeros",

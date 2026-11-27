@@ -1,6 +1,6 @@
 {
   "name": "Gitland",
-  "version": "0.14.4",
+  "version": "0.15.0",
   "tagline": "A clear view of your code.",
   "subtitle": "A native Git client for Windows built around readable diffs, three-way review, an editable merge result, and a workspace for many repositories.",
   "repo": "https://github.com/fezcode/gitland",

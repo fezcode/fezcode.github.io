@@ -1,6 +1,6 @@
 {
   "name": "Beetle",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "tagline": "Light, with a life of its own.",
   "subtitle": "Your ELK-BLEDOM strip, in tune with your screen, your music, and your mood. A native Bluetooth light controller for Windows.",
   "repo": "https://github.com/fezcode/Beetle",

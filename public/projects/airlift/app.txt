@@ -2,7 +2,7 @@
   "name": "Airlift",
   "byline": "by Fezcode",
   "logo": "/images/projects/airlift/logo.svg",
-  "version": "0.3.3",
+  "version": "0.3.6",
   "tagline": "Your apps. In good hands.",
   "subtitle": "A modern app manager for independent software. Discover apps, follow their public GitHub releases, and install, update and remove them from one place.",
   "download": "https://github.com/fezcode/Airlift/releases/latest",
@@ -326,7 +326,7 @@
       {
         "name": "Installer",
         "art": "installer",
-        "file": "Airlift-Setup-0.3.3.exe",
+        "file": "Airlift-Setup-0.3.6.exe",
         "badge": "Recommended",
         "cta": { "label": "Download Setup", "href": "https://github.com/fezcode/Airlift/releases/latest" },
         "ratings": [

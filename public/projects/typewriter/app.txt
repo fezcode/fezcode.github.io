@@ -5,7 +5,7 @@
   "subtitle": "A distraction-free editor with the soul of a mechanical typewriter. Recorded key strikes are embedded in the binary, the paper is warm, and there is nothing in the window but the page.",
   "accent": "#9E4A38",
   "accent2": "#6F3226",
-  "version": "0.4.0",
+  "version": "0.6.0",
   "platforms": [
     "Windows",
     "macOS",

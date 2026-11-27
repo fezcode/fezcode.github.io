@@ -5,7 +5,7 @@
   "subtitle": "A terminal emulator and multiplexer for Windows. Sessions live in a background daemon, so closing a window never kills what was running in it.",
   "accent": "#6472E8",
   "accent2": "#A5B4FF",
-  "version": "0.5.11",
+  "version": "0.5.25",
   "platforms": [
     "Windows 10",
     "Windows 11"

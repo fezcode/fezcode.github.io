@@ -5,7 +5,7 @@
   "subtitle": "FFmpeg demux and decode with hardware acceleration, libass subtitles rasterized at display resolution, pitch-preserving speed, and GPU colour adjustments — inside a borderless window.",
   "accent": "#C9A45A",
   "accent2": "#A8843F",
-  "version": "0.4.1",
+  "version": "0.5.2",
   "platforms": [
     "Windows",
     "macOS"

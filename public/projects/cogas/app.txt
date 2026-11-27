@@ -5,7 +5,7 @@
   "subtitle": "Cogas — common gaming software — collects the games already installed on this PC across seven storefronts into a single cover grid, and launches every one of them through its own platform.",
   "accent": "#6B3AA0",
   "accent2": "#1F4F86",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "platforms": [
     {
       "key": "steam",
