@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-labelledby="t d">
+  <title id="t">NP-hard: every NP puzzle translates into it</title>
+  <desc id="d">Four NP puzzles, the rock pile, the cave trip, the shaman's grid and a true-false riddle, each have an arrow through a translator into one big stone labelled NP-hard. If that one stone is ever cracked fast, all four puzzles are cracked fast.</desc>
+  <rect width="800" height="400" rx="22" fill="#f4ead5"/>
+  <text x="40" y="52" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="26" font-weight="800" fill="#2b2118">NP-HARD: EVERY NP PUZZLE TRANSLATES <tspan fill="#b8442e">INTO</tspan> IT</text>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" text-anchor="middle">
+    <rect x="40" y="86" width="190" height="56" rx="12" fill="#e8dcc0" stroke="#2b2118" stroke-width="3"/>
+    <text x="135" y="120" font-size="17" fill="#2b2118">rock pile = 15?</text>
+    <rect x="40" y="160" width="190" height="56" rx="12" fill="#e8dcc0" stroke="#2b2118" stroke-width="3"/>
+    <text x="135" y="194" font-size="17" fill="#2b2118">cave trip ≤ L?</text>
+    <rect x="40" y="234" width="190" height="56" rx="12" fill="#e8dcc0" stroke="#2b2118" stroke-width="3"/>
+    <text x="135" y="268" font-size="17" fill="#2b2118">shaman's grid</text>
+    <rect x="40" y="308" width="190" height="56" rx="12" fill="#e8dcc0" stroke="#2b2118" stroke-width="3"/>
+    <text x="135" y="342" font-size="17" fill="#2b2118">any NP puzzle...</text>
+  </g>
+  <g fill="none" stroke="#c8862a" stroke-width="6" stroke-linecap="round">
+    <path d="M234 114 C340 114 380 200 470 214"/>
+    <path d="M234 188 C330 188 380 210 470 218"/>
+    <path d="M234 262 C330 262 380 232 470 224"/>
+    <path d="M234 336 C340 336 380 244 470 228"/>
+  </g>
+  <path d="M462 204 L490 220 L462 236 Z" fill="#c8862a"/>
+  <text x="352" y="98" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="15" font-weight="800" fill="#c8862a" text-anchor="middle">fast translate</text>
+  <!-- big stone -->
+  <path d="M500 120 Q490 100 520 98 L728 94 Q760 94 758 122 L766 300 Q768 330 736 330 L524 334 Q494 334 496 304 Z" fill="#8c8174" stroke="#2b2118" stroke-width="6"/>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" text-anchor="middle" fill="#f4ead5">
+    <text x="630" y="200" font-size="38">NP-HARD</text>
+    <text x="630" y="236" font-size="17">at least as hard</text>
+    <text x="630" y="258" font-size="17">as all of them</text>
+  </g>
+  <text x="400" y="388" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="18" font-weight="800" fill="#2b2118" text-anchor="middle">crack the big stone fast → every puzzle on the left cracks fast too.</text>
+</svg>

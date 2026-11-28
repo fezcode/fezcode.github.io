@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" role="img" aria-labelledby="t d">
+  <title id="t">NP and co-NP: who can show a proof stone</title>
+  <desc id="d">Left, an NP question: do some rocks make 15? If yes, the proof is quick: show 7 and 8. If no, there is no short proof known; you would try every pile. Right, the co-NP question: do no rocks make 15? Now a no answer has the quick proof, 7 and 8, and a yes answer needs every pile tried.</desc>
+  <rect width="800" height="440" rx="22" fill="#f4ead5"/>
+  <line x1="400" y1="28" x2="400" y2="412" stroke="#2b2118" stroke-width="3" stroke-dasharray="8 8" opacity=".35"/>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" fill="#2b2118" text-anchor="middle">
+    <text x="200" y="58" font-size="26" fill="#c8862a">NP</text>
+    <text x="200" y="90" font-size="19">"Do SOME rocks make 15?"</text>
+    <text x="600" y="58" font-size="26" fill="#6b4fa0">co-NP</text>
+    <text x="600" y="90" font-size="19">"Do NO rocks make 15?"</text>
+  </g>
+  <!-- left column -->
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800">
+    <rect x="40" y="114" width="320" height="130" rx="16" fill="#cfe0b8" stroke="#4f7a3a" stroke-width="4"/>
+    <text x="60" y="148" font-size="20" fill="#4f7a3a">IF YES: proof stone!</text>
+    <text x="60" y="178" font-size="17" fill="#2b2118" font-weight="700">"look: 7 + 8 = 15"</text>
+    <text x="60" y="206" font-size="17" fill="#2b2118" font-weight="700">Ugg checks in one add.</text>
+    <text x="60" y="230" font-size="15" fill="#4f7a3a">short proof for YES</text>
+    <rect x="40" y="262" width="320" height="130" rx="16" fill="#ead6cf" stroke="#b8442e" stroke-width="4"/>
+    <text x="60" y="296" font-size="20" fill="#b8442e">IF NO: no stone known</text>
+    <text x="60" y="326" font-size="17" fill="#2b2118" font-weight="700">to be sure, try every pile.</text>
+    <text x="60" y="354" font-size="17" fill="#2b2118" font-weight="700">many many piles.</text>
+    <text x="60" y="378" font-size="15" fill="#b8442e">no short proof for NO</text>
+  </g>
+  <!-- right column (mirror) -->
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800">
+    <rect x="440" y="114" width="320" height="130" rx="16" fill="#ead6cf" stroke="#b8442e" stroke-width="4"/>
+    <text x="460" y="148" font-size="20" fill="#b8442e">IF YES: no stone known</text>
+    <text x="460" y="178" font-size="17" fill="#2b2118" font-weight="700">"no pile works" means</text>
+    <text x="460" y="206" font-size="17" fill="#2b2118" font-weight="700">trying every pile.</text>
+    <text x="460" y="230" font-size="15" fill="#b8442e">no short proof for YES</text>
+    <rect x="440" y="262" width="320" height="130" rx="16" fill="#cfe0b8" stroke="#4f7a3a" stroke-width="4"/>
+    <text x="460" y="296" font-size="20" fill="#4f7a3a">IF NO: proof stone!</text>
+    <text x="460" y="326" font-size="17" fill="#2b2118" font-weight="700">"wrong! 7 + 8 = 15"</text>
+    <text x="460" y="354" font-size="17" fill="#2b2118" font-weight="700">Ugg checks in one add.</text>
+    <text x="460" y="378" font-size="15" fill="#4f7a3a">short proof for NO</text>
+  </g>
+  <text x="400" y="428" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="17" font-weight="800" fill="#2b2118" text-anchor="middle">same rocks, question flipped: the quick proof moves to the other answer.</text>
+</svg>

@@ -128,8 +128,10 @@ Ugg find strange stone. Put one puzzle in, other puzzle come out, fast. Rock pil
 
 A **polynomial-time reduction** from problem A to problem B is a fast translation. It turns any instance of A into an instance of B with the **same yes-or-no answer**. If B is easy, A is easy, so B is **at least as hard as A**.
 
-- **NP-hard** means every problem in NP reduces to it.
-- **NP-complete** means NP-hard *and* in NP. These are the hardest problems inside NP.
+- **NP-hard** means *every* problem in NP can be translated into it, so it's at least as hard as all of them.
+- **NP-complete** means NP-hard *and* itself in NP: its "yes" answers can still be checked fast. These are the hardest problems you can still check.
+
+(If those two lines feel slippery, Chapter 5½ below takes them slowly, with a map.)
 
 The first one is the hard part:
 
@@ -140,6 +142,59 @@ The first one is the hard part:
 So: **solve any one NP-complete problem in polynomial time, and every NP problem falls with it.**
 
 NP-hard problems don't have to be in NP. The halting problem ("does this program ever stop?") is NP-hard and can't be solved by any algorithm at all.
+
+## Chapter 5½: The tribe's map of hard
+
+Tribe argue around fire. "Rock pile hard!" "No, cave trip harder!" "Shaman puzzle hardest!" Shouting. Somebody's beard catch fire.
+
+Elder Grok raise hand. "Stop. Four kinds of hard. Grok tell four stories."
+
+**NP: the proud hunter.** Hunter Bok come back yelling, "Bok catch mammoth!" Is it true? Easy to know: Bok drags the mammoth into camp. Everyone looks once. True.
+
+*When the answer is YES, there's a proof you can check fast: the mammoth itself.* That's NP. For the rock pile: "yes, some rocks make 15. Look, 7 and 8."
+
+**co-NP: the empty valley.** Ugg say, "No mammoth anywhere in the valley." Is it true? To be sure, the tribe must walk every path in the valley. Slow. But if Ugg is *wrong*, it's quick to show: someone drags one mammoth into camp.
+
+*The question is "is there NO mammoth?", and now the quick proof belongs to the NO answer.* That's co-NP: NP with yes and no swapped.
+
+![Left, NP: "do some rocks make 15?" has a quick proof for yes. Right, co-NP: "do no rocks make 15?" has a quick proof for no](/images/posts/p-vs-np-caveman/yes-no-proof.svg)
+
+**NP-hard: the Mother Puzzle.** The shaman tells of a puzzle so deep that every other puzzle can be turned into it. Solve the Mother Puzzle fast, and you solve them all fast. But the legend says it can be so wild that even checking an answer is hard, or it might not be a yes-or-no question at all.
+
+*That's NP-hard: at least as hard as everything in NP.* "What is the exact shortest trip through all the caves?" is NP-hard. If someone hands you a trip and says "this is the shortest", there's no quick way known to check, short of comparing it against the others. The halting problem is NP-hard too, and no algorithm can solve it at all.
+
+![Four NP puzzles each translate into one big stone labelled NP-hard](/images/posts/p-vs-np-caveman/all-roads.svg)
+
+**NP-complete: the hardest puzzles you can still check.** Some puzzles are both: every NP puzzle translates into them (so they're NP-hard), *and* their answers can be checked fast (so they're in NP). The rock pile, "is there a cave trip of at most L?", the shaman's grid in any size, and SAT are all NP-complete.
+
+*They're really one puzzle in different disguises.* There's a translator stone between any two of them, so cracking one cracks them all.
+
+### Elder Grok's wall: the family, side by side
+
+| Class | Caveman version | What must be quick | Example | Inside NP? |
+|---|---|---|---|---|
+| **P** | Ugg can solve it fast | Finding the answer | Sort rocks, shortest path | Yes |
+| **NP** | YES answers come with a proof stone | Checking a proof of YES | "Do some rocks make 15?" | Yes, by definition |
+| **co-NP** | NO answers come with a proof stone | Checking a proof of NO | "Do no rocks make 15?" | Unknown; believed no for the hardest |
+| **NP-hard** | Every NP puzzle translates into it | Nothing; it may be unsolvable | Exact shortest cave trip, halting problem | Not necessarily |
+| **NP-complete** | NP-hard *and* checkable | Checking a proof of YES | Rock pile, cave trip of at most L, SAT | Yes |
+
+![The tribe's map: NP and co-NP overlap with P inside both; NP-complete is the edge of NP where it meets NP-hard; NP-hard extends beyond NP](/images/posts/p-vs-np-caveman/classes-map.svg)
+
+How to read the map:
+
+- **P sits in both NP and co-NP.** If you can solve a problem fast, you can check either answer fast.
+- **NP-complete is exactly where NP and NP-hard overlap.** Inside NP, it's the hardest part. Inside NP-hard, it's the part you can still check.
+- **NP-hard sticks out of NP.** It holds problems that aren't yes-or-no questions, and problems no computer can solve at all.
+- **Factoring** sits in the overlap of NP and co-NP. Asked as yes-or-no ("does N have a factor below k?"), both answers have a short proof: the full prime factorization of N, which is quick to check because testing primality is in P. It's believed to be outside P, but nobody has proved that.
+
+Things that trip people up:
+
+1. **NP doesn't mean "not polynomial" or "hard".** Everything in P is also in NP. Sorting rocks is technically an NP problem.
+2. **NP-hard isn't the same as NP-complete.** NP-complete = NP-hard *plus* checkable. An NP-hard problem can be far worse than anything in NP.
+3. **Reductions point one way.** To show a new problem X is NP-hard, you translate a known NP-hard problem *into* X. Translating X into SAT only shows X is no harder than SAT.
+4. **co-NP isn't "everything outside NP".** It's the mirror image: the same kind of class with yes and no swapped. Whether NP = co-NP is open too. If any NP-complete problem were in co-NP, the two would be equal.
+5. **The map is the believed picture, not a proven one.** If P = NP, the ovals collapse into one: P, NP and co-NP become the same class, and every problem in it except the two trivial ones (always yes, always no) becomes NP-complete. NP-hard would still stick out, because it contains problems no algorithm solves at all.
 
 ## Chapter 6: Two worlds
 

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 540" role="img" aria-labelledby="t d">
+  <title id="t">The tribe's map of hard problems</title>
+  <desc id="d">The usual picture, assuming P is not NP and NP is not co-NP. NP and co-NP are overlapping ovals. P sits inside their overlap; factoring sits in the overlap too, outside P. NP-complete is the far edge of NP, where NP meets the NP-hard region; co-NP-complete is the far edge of co-NP. NP-hard extends beyond NP and contains problems like finding the exact shortest cave trip and the halting problem.</desc>
+  <rect width="800" height="540" rx="22" fill="#f4ead5"/>
+  <defs>
+    <clipPath id="npClip"><ellipse cx="330" cy="300" rx="210" ry="160"/></clipPath>
+    <clipPath id="conpClip"><ellipse cx="470" cy="300" rx="210" ry="160"/></clipPath>
+  </defs>
+  <text x="400" y="44" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="26" font-weight="800" fill="#2b2118" text-anchor="middle">THE TRIBE'S MAP OF HARD</text>
+  <!-- NP-hard region (left, dashed) -->
+  <rect x="22" y="70" width="174" height="440" rx="22" fill="#ead6cf" stroke="#b8442e" stroke-width="4" stroke-dasharray="12 8"/>
+  <!-- NP and co-NP -->
+  <ellipse cx="330" cy="300" rx="210" ry="160" fill="#f2d6a2" fill-opacity=".85" stroke="#c8862a" stroke-width="5"/>
+  <ellipse cx="470" cy="300" rx="210" ry="160" fill="#ddd2ec" fill-opacity=".7" stroke="#6b4fa0" stroke-width="5"/>
+  <!-- NP-complete = NP ∩ NP-hard -->
+  <rect x="0" y="0" width="196" height="540" fill="#e39a86" clip-path="url(#npClip)"/>
+  <!-- co-NP-complete: far right edge of co-NP -->
+  <rect x="604" y="0" width="200" height="540" fill="#b9a6dc" clip-path="url(#conpClip)"/>
+  <ellipse cx="330" cy="300" rx="210" ry="160" fill="none" stroke="#c8862a" stroke-width="5"/>
+  <ellipse cx="470" cy="300" rx="210" ry="160" fill="none" stroke="#6b4fa0" stroke-width="5"/>
+  <!-- NP-hard border again, on top, so it shows where it crosses NP -->
+  <rect x="22" y="70" width="174" height="440" rx="22" fill="none" stroke="#b8442e" stroke-width="4" stroke-dasharray="12 8"/>
+  <!-- P -->
+  <circle cx="400" cy="338" r="52" fill="#cfe0b8" stroke="#4f7a3a" stroke-width="5"/>
+  <g font-family="'Trebuchet MS', Verdana, sans-serif" font-weight="800" text-anchor="middle">
+    <!-- class labels -->
+    <text x="302" y="174" font-size="26" fill="#c8862a">NP</text>
+    <text x="520" y="174" font-size="26" fill="#6b4fa0">co-NP</text>
+    <text x="400" y="334" font-size="28" fill="#4f7a3a">P</text>
+    <text x="400" y="356" font-size="13" fill="#2b2118">sort rocks</text>
+    <text x="109" y="104" font-size="20" fill="#b8442e">NP-HARD</text>
+    <!-- NP-complete -->
+    <text x="160" y="282" font-size="14" fill="#2b2118">NP-</text>
+    <text x="160" y="300" font-size="14" fill="#2b2118">complete</text>
+    <text x="160" y="324" font-size="12" fill="#2b2118" font-weight="700">rocks</text>
+    <text x="160" y="340" font-size="12" fill="#2b2118" font-weight="700">make 15?</text>
+    <!-- co-NP-complete -->
+    <text x="642" y="282" font-size="14" fill="#2b2118">co-NP-</text>
+    <text x="642" y="300" font-size="14" fill="#2b2118">complete</text>
+    <text x="642" y="324" font-size="12" fill="#2b2118" font-weight="700">NO rocks</text>
+    <text x="642" y="340" font-size="12" fill="#2b2118" font-weight="700">make 15?</text>
+    <!-- factoring in the overlap, outside P -->
+    <text x="400" y="232" font-size="13" fill="#2b2118">split 3233?</text>
+    <text x="400" y="249" font-size="12" fill="#2b2118" font-weight="700">(factoring)</text>
+    <!-- NP-hard outside NP -->
+    <text x="109" y="138" font-size="13" fill="#2b2118">exact best</text>
+    <text x="109" y="155" font-size="13" fill="#2b2118">cave trip</text>
+    <text x="109" y="466" font-size="13" fill="#2b2118">halting</text>
+    <text x="109" y="483" font-size="13" fill="#2b2118">problem</text>
+  </g>
+  <text x="400" y="528" font-family="'Trebuchet MS', Verdana, sans-serif" font-size="15" font-weight="800" fill="#2b2118" text-anchor="middle">the usual picture: true IF P ≠ NP and NP ≠ co-NP. nobody proved either.</text>
+</svg>
